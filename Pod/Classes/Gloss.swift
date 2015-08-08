@@ -22,22 +22,39 @@
 // THE SOFTWARE.
 //
 
-typealias JSON = [String : AnyObject]
+public typealias JSON = [String : AnyObject]
 
-protocol Glossy: Decodable {
-
+public protocol Glossy: Decodable {
+    
     init(json: JSON)
-
+    
 }
 
-protocol Decodable {
+public protocol Decodable {
     
     func decoders() -> [JSON -> ()]
     
 }
 
-protocol Encodable {
+public protocol Encodable {
     
     func encoders() -> [JSON?]
     func toJSON() -> JSON
+}
+
+public class Gloss: Glossy {
+    
+    // MARK: - Initialization
+    
+    required public init(json: JSON) {
+    }
+    
+    // MARK: - Protocol conformance
+    
+    // MARK: Decodable
+    
+    public func decoders() -> [JSON -> ()] {
+        return []
+    }
+    
 }
