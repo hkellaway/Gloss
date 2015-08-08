@@ -1,0 +1,13 @@
+use_frameworks!
+platform :ios, '8.0'
+
+target 'GlossExample' do
+
+pod 'Gloss', :git => 'https://github.com/hkellaway/Gloss.git', :branch => 'project/pod_setup'
+
+end
+
+target 'GlossExampleTests' do
+
+end
+

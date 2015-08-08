@@ -1,0 +1,20 @@
+PODS:
+  - Gloss (0.0.1)
+
+DEPENDENCIES:
+  - Gloss (from `https://github.com/hkellaway/Gloss.git`, branch `project/pod_setup`)
+
+EXTERNAL SOURCES:
+  Gloss:
+    :branch: project/pod_setup
+    :git: https://github.com/hkellaway/Gloss.git
+
+CHECKOUT OPTIONS:
+  Gloss:
+    :commit: ce7ebea319bbc6a99b1aa1cf33593fab27c4242b
+    :git: https://github.com/hkellaway/Gloss.git
+
+SPEC CHECKSUMS:
+  Gloss: 7c337be095fdea1a15dc3562976aa5e0d75e358c
+
+COCOAPODS: 0.37.2
