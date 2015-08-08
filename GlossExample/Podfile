@@ -3,7 +3,7 @@ platform :ios, '8.0'
 
 target 'GlossExample' do
 
-pod 'Gloss', :git => 'https://github.com/hkellaway/Gloss.git', :branch => 'project/pod_setup'
+pod 'Gloss', :git => 'https://github.com/hkellaway/Gloss.git', :tag => '0.0.1'
 
 end
 
