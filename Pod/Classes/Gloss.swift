@@ -42,11 +42,12 @@ public protocol Encodable {
     func toJSON() -> JSON
 }
 
-public class Gloss: Glossy {
+public class Gloss : Glossy, Encodable {
     
     // MARK: - Initialization
     
     required public init(json: JSON) {
+        applyDecoders(self.decoders())(json)
     }
     
     // MARK: - Protocol conformance
@@ -55,6 +56,44 @@ public class Gloss: Glossy {
     
     public func decoders() -> [JSON -> ()] {
         return []
+    }
+    
+    // MARK: Encodable
+    
+    public func encoders() -> [JSON?] {
+        return []
+    }
+    public
+    func toJSON() -> JSON {
+        var json: JSON = [:]
+        
+        for encoder in self.encoders() {
+            json.add(encoder!)
+        }
+        
+        return json
+    }
+    
+    // MARK: - Private methods
+    
+    private func applyDecoders(decoders: [JSON -> ()]) -> JSON -> () {
+        return {
+            json in
+            
+            for decoder in decoders {
+                decoder(json)
+            }
+        }
+    }
+    
+}
+
+extension Dictionary {
+    
+    mutating func add(other: Dictionary) {
+        for (key,value) in other {
+            self.updateValue(value, forKey:key)
+        }
     }
     
 }
