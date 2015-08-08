@@ -1,4 +1,4 @@
-//  Gloss.swift
+//  Dictionary.swift
 //  Gloss
 //
 // Copyright (c) 2015 Harlan Kellaway
@@ -22,67 +22,16 @@
 // THE SOFTWARE.
 //
 
-public typealias JSON = [String : AnyObject]
+/**
+    Adds entries from provided dictionary
 
-public protocol Glossy: Decodable {
+    :param: Dictionary to add entries from
+*/
+extension Dictionary {
     
-    init(json: JSON)
-    
-}
-
-public protocol Decodable {
-    
-    func decoders() -> [JSON -> ()]
-    
-}
-
-public protocol Encodable {
-    
-    func encoders() -> [JSON?]
-    func toJSON() -> JSON
-}
-
-public class Gloss : Glossy, Encodable {
-    
-    // MARK: - Initialization
-    
-    required public init(json: JSON) {
-        applyDecoders(self.decoders())(json)
-    }
-    
-    // MARK: - Protocol conformance
-    
-    // MARK: Decodable
-    
-    public func decoders() -> [JSON -> ()] {
-        return []
-    }
-    
-    // MARK: Encodable
-    
-    public func encoders() -> [JSON?] {
-        return []
-    }
-    public
-    func toJSON() -> JSON {
-        var json: JSON = [:]
-        
-        for encoder in self.encoders() {
-            json.add(encoder!)
-        }
-        
-        return json
-    }
-    
-    // MARK: - Private methods
-    
-    private func applyDecoders(decoders: [JSON -> ()]) -> JSON -> () {
-        return {
-            json in
-            
-            for decoder in decoders {
-                decoder(json)
-            }
+    mutating func add(other: Dictionary) {
+        for (key,value) in other {
+            self.updateValue(value, forKey:key)
         }
     }
     
