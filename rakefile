@@ -10,6 +10,6 @@ end
 desc "Builds and runs tests."
 # Usage: rake build
 task :build do
-  system "xctool test -project GlossExample/GlossExample.xcodeproj -scheme GlossExample -sdk iphonesimulator8.4"
+  system "xctool test -workspace GlossExample/GlossExample.xcworkspace -scheme GlossExample -sdk iphonesimulator8.4"
   puts "Build attempt complete."
 end
