@@ -1,0 +1,15 @@
+desc "Builds and pushes a specific branch."
+#Usage: rake push branch
+task :push do
+  branch = ARGV.last
+  task branch.to_sym do ; end
+  Rake::Task["build"].execute
+  system "git push origin #{branch}"
+end
+
+desc "Builds and runs tests."
+# Usage: rake build
+task :build do
+  system "xctool test -workspace GlossExample/GlossExample.xcworkspace -scheme GlossExample -sdk iphonesimulator8.4"
+  puts "Build attempt complete."
+end
