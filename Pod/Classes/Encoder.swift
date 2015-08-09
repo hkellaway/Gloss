@@ -141,3 +141,24 @@ public struct Encoder {
     }
     
 }
+
+// MARK: - Convenience functions
+
+/**
+Convenience function to encode value to JSON
+
+:param: key Key used to create JSON property
+
+:returns: Function decoding value to JSON
+*/
+public func encode<T>(key: String) ->  T? -> JSON? { return { return Encoder.encode(key)($0) } }
+
+/**
+Convenience function to encode value to JSON
+for objects the conform to the Encodable protocol
+
+:param: key Key used to create JSON property
+
+:returns: Function decoding value to JSON
+*/
+public func encode<T: Encodable>(key: String) -> T? -> JSON? { return { return Encoder.encode(key)($0) } }

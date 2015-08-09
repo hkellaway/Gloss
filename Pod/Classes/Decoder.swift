@@ -86,7 +86,7 @@ public struct Decoder {
     
     :returns: Function decoding JSON to date
     */
-    static func decodeDate(key: String, dateFormatter: NSDateFormatter) -> JSON -> NSDate? {
+    public static func decodeDate(key: String, dateFormatter: NSDateFormatter) -> JSON -> NSDate? {
         return {
             json in
             
@@ -151,3 +151,24 @@ public struct Decoder {
         }
     }
 }
+
+// MARK: - Convenience functions
+
+/**
+Convenience function to decode JSON to value type
+
+:param: key Key used to create JSON property
+
+:returns: Function encoding URL as JSON
+*/
+public  func decode<T>(key: String) -> JSON -> T? { return { return Decoder.decode(key)($0) } }
+
+/**
+Convenience function to decode JSON to value type
+for objects that conform to the Glossy protocol
+
+:param: key Key used to create JSON property
+
+:returns: Function encoding URL as JSON
+*/
+public  func decode<T: Glossy>(key: String) -> JSON -> T? { return { return Decoder.decode(key)($0) } }
