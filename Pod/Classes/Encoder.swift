@@ -1,4 +1,4 @@
-//  Decoder.swift
+//  Encoder.swift
 //  Gloss
 //
 // Copyright (c) 2015 Harlan Kellaway
@@ -22,79 +22,77 @@
 // THE SOFTWARE.
 //
 
-public struct Decoder {
+public struct Encoder {
     
-    public static func decode<T>(key: String) -> JSON -> T? {
+    public static func encode<T>(key: String) -> T? -> JSON? {
         return {
-            json in
+            object in
             
-            if let value = json[key] as? T {
-                return value
+            if let object = object {
+                
+                return [key : object as! AnyObject]
             }
             
             return nil
         }
     }
     
-    public static func decode<T: Glossy>(key: String) -> JSON -> T? {
+    public static func encode<T: Encodable>(key: String) -> T? -> JSON? {
         return {
-            json in
+            object in
             
-            if let value = json[key] as? JSON {
-                return T(json: value)
-            }
-            
-            return nil
-            
-        }
-    }
-    
-    // MARK: - Custom Decoders
-    
-    public static func decodeArray<T>(key: String) -> JSON -> [ [String : T] ]? {
-        return { return $0[key] as? [ [String : T] ] }
-    }
-    
-    static func decodeDate(key: String, dateFormatter: NSDateFormatter) -> JSON -> NSDate? {
-        return {
-            json in
-            
-            if let dateString = json[key] as? String {
-                return dateFormatter.dateFromString(dateString)
+            if let object = object {
+                return [key : object.toJSON()]
             }
             
             return nil
         }
     }
     
-    public static func decodeDateISO8601(key: String, dateFormatter: NSDateFormatter) -> JSON -> NSDate? {
+    // MARK: - Custom Encoders
+    
+    public static func encodeDate(key: String, dateFormatter: NSDateFormatter) -> NSDate? -> JSON? {
+        return {
+            date in
+            
+            if let d = date {
+                return [key : dateFormatter.stringFromDate(d)]
+            }
+            
+            return nil
+        }
+    }
+    
+    public static func encodeDateISO8601(key: String, dateFormatter: NSDateFormatter) -> NSDate -> JSON? {
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         
-        return Decoder.decodeDate(key, dateFormatter: dateFormatter)
+        return Encoder.encodeDate(key, dateFormatter: dateFormatter)
     }
     
-    public static func decodeEnum<T: RawRepresentable>(key: String) -> JSON -> T? {
+    public static func encodeEnum<T: RawRepresentable>(key: String) -> T? -> JSON? {
         return {
-            json in
+            enumValue in
             
-            if let rawValue = json[key] as? T.RawValue {
-                return T(rawValue: rawValue)
+            if let e = enumValue {
+                return [key : e.rawValue as! AnyObject]
             }
             
             return nil
         }
     }
     
-    public static func decodeURL(key: String) -> JSON -> NSURL? {
+    public static func encodeURL(key: String) -> NSURL? -> JSON? {
         return {
-            json in
+            url in
             
-            if let urlString = json[key] as? String {
-                return NSURL(string: urlString)
+            if let u = url {
+                return [key : u.absoluteString!]
             }
             
             return nil
         }
     }
+    
 }
+
