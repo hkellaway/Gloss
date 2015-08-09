@@ -12,3 +12,9 @@
 #define COCOAPODS_VERSION_MINOR_Gloss 0
 #define COCOAPODS_VERSION_PATCH_Gloss 1
 
+// Gloss/Extensions
+#define COCOAPODS_POD_AVAILABLE_Gloss_Extensions
+#define COCOAPODS_VERSION_MAJOR_Gloss_Extensions 0
+#define COCOAPODS_VERSION_MINOR_Gloss_Extensions 0
+#define COCOAPODS_VERSION_PATCH_Gloss_Extensions 1
+

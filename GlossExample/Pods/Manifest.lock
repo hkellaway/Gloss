@@ -1,20 +1,22 @@
 PODS:
-  - Gloss (0.0.1)
+  - Gloss (0.0.1):
+    - Gloss/Extensions (= 0.0.1)
+  - Gloss/Extensions (0.0.1)
 
 DEPENDENCIES:
-  - Gloss (from `https://github.com/hkellaway/Gloss.git`, tag `0.0.1`)
+  - Gloss (from `https://github.com/hkellaway/Gloss.git`, branch `feature/decoding_encoding`)
 
 EXTERNAL SOURCES:
   Gloss:
+    :branch: feature/decoding_encoding
     :git: https://github.com/hkellaway/Gloss.git
-    :tag: 0.0.1
 
 CHECKOUT OPTIONS:
   Gloss:
+    :commit: 480afe163f1530e674027ae73e922c86c8de0f3e
     :git: https://github.com/hkellaway/Gloss.git
-    :tag: 0.0.1
 
 SPEC CHECKSUMS:
-  Gloss: 7c337be095fdea1a15dc3562976aa5e0d75e358c
+  Gloss: 844ce500b88e3cf20eb03385f3701e369f00f198
 
 COCOAPODS: 0.37.2
