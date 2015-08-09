@@ -18,5 +18,11 @@
     "ios": "8.0"
   },
   "requires_arc": true,
-  "source_files": "Pod/**/*.{h,swift}"
+  "source_files": "Pod/Classes/*.{h,swift}",
+  "subspecs": [
+    {
+      "name": "Extensions",
+      "source_files": "Pod/Classes/Extensions/*.{swift}"
+    }
+  ]
 }
