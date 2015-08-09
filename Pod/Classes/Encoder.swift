@@ -1,3 +1,4 @@
+//
 //  Encoder.swift
 //  Gloss
 //
