@@ -23,20 +23,105 @@
 // THE SOFTWARE.
 //
 
+import Gloss
 import UIKit
+
+class Repo : Gloss {
+    
+    var repoId: Int?
+    var name: String?
+    var desc: String?
+    var url: NSURL?
+    var owner: RepoOwner?
+    var array: [ [String : String] ]?
+    var dateCreated: NSDate?
+    
+    override func decoders() -> [JSON -> ()] {
+        return [
+            { self.repoId = decode("id")($0) },
+            { self.name = decode("name")($0)},
+            { self.desc = decode("description")($0) },
+            { self.url = Decoder.decodeURL("url")($0) },
+            { self.owner = decode("owner")($0) },
+            { self.array = Decoder.decodeArray("array")($0) },
+            { self.dateCreated = Decoder.decodeDate("created_at", dateFormatter:Repo.dateFormatter)($0) }
+        ]
+    }
+    
+    override func encoders() -> [JSON?] {
+        return [
+            encode("id")(self.repoId),
+            encode("name")(self.name),
+            encode("description")(self.desc),
+            Encoder.encodeURL("url")(self.url),
+            encode("owner")(self.owner),
+            encode("array")(self.array),
+            Encoder.encodeDate("created_at", dateFormatter: Repo.dateFormatter)(self.dateCreated)
+        ]
+    }
+    
+    // MARK: - Private
+    
+    private static var dateFormatter: NSDateFormatter = {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        
+        return dateFormatter
+        }()
+    
+}
+
+class RepoOwner: Gloss {
+    
+    var ownerId: Int?
+    var username: String?
+    
+    override func decoders() -> [JSON -> ()] {
+        return [
+            { self.ownerId = decode("id")($0) },
+            { self.username = decode("login")($0) }
+        ]
+    }
+    
+    override func encoders() -> [JSON?] {
+        return [
+            encode("id")(self.ownerId),
+            encode("login")(self.username)
+        ]
+    }
+    
+}
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let repo = Repo(json: [
+            "id" : 38541958,
+            "name": "swift-json-comparison",
+            "description" : "Comparison of Swift JSON libraries",
+            "url" : "https://api.github.com/repos/hkellaway/swift-json-comparison",
+            "owner" : [
+                "id" : 5456481,
+                "login" : "hkellaway"
+            ],
+            "array" : [ ["a" : "test1"], ["b" : "test2"] ],
+            "created_at" : "2015-07-04T17:28:37Z",
+            "license" : "MIT",
+            "public" : true
+            ])
+        
+        println(repo.repoId)
+        println(repo.name)
+        println(repo.desc)
+        println(repo.url)
+        println(repo.owner)
+        println(repo.array)
+        println(repo.dateCreated)
+        println()
+        
+        println("JSON: \(repo.toJSON())")
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
