@@ -23,17 +23,16 @@
 //
 
 /**
-    Adds entries from provided dictionary
+Adds entries from provided dictionary
 
-    :param: Dictionary to add entries from
+:param: other    Dictionary to add entries from
 */
 extension Dictionary {
     
-    mutating func add(other: Dictionary) {
+    mutating func add(other: Dictionary) -> () {
         for (key,value) in other {
             self.updateValue(value, forKey:key)
         }
     }
     
 }
-

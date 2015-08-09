@@ -25,6 +25,13 @@
 
 public struct Decoder {
     
+    /**
+    Returns function to decode JSON to value type
+    
+    :param: key JSON key used to set value
+    
+    :returns: Function decoding JSON to value type
+    */
     public static func decode<T>(key: String) -> JSON -> T? {
         return {
             json in
@@ -37,6 +44,14 @@ public struct Decoder {
         }
     }
     
+    /**
+    Returns function to decode JSON to value type
+    for objects that conform to the Glossy protocol
+    
+    :param: key JSON key used to set value
+    
+    :returns: Function decoding JSON to value type
+    */
     public static func decode<T: Glossy>(key: String) -> JSON -> T? {
         return {
             json in
@@ -52,10 +67,25 @@ public struct Decoder {
     
     // MARK: - Custom Decoders
     
+    /**
+    Returns function to decode JSON to array
+    
+    :param: key JSON key used to set value
+    
+    :returns: Function decoding JSON to array
+    */
     public static func decodeArray<T>(key: String) -> JSON -> [ [String : T] ]? {
         return { return $0[key] as? [ [String : T] ] }
     }
     
+    /**
+    Returns function to decode JSON to date
+    
+    :param: key           JSON key used to set value
+    :param: dateFormatter Formatter used to format date
+    
+    :returns: Function decoding JSON to date
+    */
     static func decodeDate(key: String, dateFormatter: NSDateFormatter) -> JSON -> NSDate? {
         return {
             json in
@@ -68,6 +98,14 @@ public struct Decoder {
         }
     }
     
+    /**
+    Returns function to decode JSON to ISO8601 date
+    
+    :param: key           JSON key used to set value
+    :param: dateFormatter Formatter with ISO8601 format
+    
+    :returns: Function decoding JSON to ISO8601 date
+    */
     public static func decodeDateISO8601(key: String, dateFormatter: NSDateFormatter) -> JSON -> NSDate? {
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
@@ -75,6 +113,13 @@ public struct Decoder {
         return Decoder.decodeDate(key, dateFormatter: dateFormatter)
     }
     
+    /**
+    Returns function to decode JSON to enum value
+    
+    :param: key JSON key used to set value
+    
+    :returns: Function decoding JSON to enum value
+    */
     public static func decodeEnum<T: RawRepresentable>(key: String) -> JSON -> T? {
         return {
             json in
@@ -87,6 +132,13 @@ public struct Decoder {
         }
     }
     
+    /**
+    Returns function to decode JSON to URL
+    
+    :param: key JSON key used to set value
+    
+    :returns: Function decoding JSON to URL
+    */
     public static func decodeURL(key: String) -> JSON -> NSURL? {
         return {
             json in
