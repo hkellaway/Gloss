@@ -28,9 +28,9 @@ public struct Encoder {
     /**
     Returns function to encode value to JSON
     
-    :param: key Key used to create JSON property
+    - parameter key: Key used to create JSON property
     
-    :returns: Function decoding value to JSON
+    - returns: Function decoding value to JSON
     */
     public static func encode<T>(key: String) -> T? -> JSON? {
         return {
@@ -49,9 +49,9 @@ public struct Encoder {
     Returns function to encode value to JSON
     for objects the conform to the Encodable protocol
     
-    :param: key Key used to create JSON property
+    - parameter key: Key used to create JSON property
     
-    :returns: Function decoding value to JSON
+    - returns: Function decoding value to JSON
     */
     public static func encode<T: Encodable>(key: String) -> T? -> JSON? {
         return {
@@ -70,10 +70,10 @@ public struct Encoder {
     /**
     Returns function to encode date as JSON
     
-    :param: key           Key used to create JSON property
-    :param: dateFormatter Formatter used to format date string
+    - parameter key:           Key used to create JSON property
+    - parameter dateFormatter: Formatter used to format date string
     
-    :returns: Function encoding date as JSON
+    - returns: Function encoding date as JSON
     */
     public static func encodeDate(key: String, dateFormatter: NSDateFormatter) -> NSDate? -> JSON? {
         return {
@@ -90,10 +90,10 @@ public struct Encoder {
     /**
     Returns function to encode ISO8601 date as JSON
     
-    :param: key           Key used to create JSON property
-    :param: dateFormatter Formatter used to format date string
+    - parameter key:           Key used to create JSON property
+    - parameter dateFormatter: Formatter used to format date string
     
-    :returns: Function encoding ISO8601 date as JSON
+    - returns: Function encoding ISO8601 date as JSON
     */
     public static func encodeDateISO8601(key: String, dateFormatter: NSDateFormatter) -> NSDate -> JSON? {
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
@@ -105,9 +105,9 @@ public struct Encoder {
     /**
     Returns function to encode enum value as JSON
     
-    :param: key Key used to create JSON property
+    - parameter key: Key used to create JSON property
     
-    :returns: Function encoding enum value as JSON
+    - returns: Function encoding enum value as JSON
     */
     public static func encodeEnum<T: RawRepresentable>(key: String) -> T? -> JSON? {
         return {
@@ -124,16 +124,16 @@ public struct Encoder {
     /**
     Returns function to encode URL as JSON
     
-    :param: key Key used to create JSON property
+    - parameter key: Key used to create JSON property
     
-    :returns: Function encoding URL as JSON
+    - returns: Function encoding URL as JSON
     */
     public static func encodeURL(key: String) -> NSURL? -> JSON? {
         return {
             url in
             
             if let u = url {
-                return [key : u.absoluteString!]
+                return [key : u.absoluteString]
             }
             
             return nil
@@ -147,9 +147,9 @@ public struct Encoder {
 /**
 Convenience function to encode value to JSON
 
-:param: key Key used to create JSON property
+- parameter key: Key used to create JSON property
 
-:returns: Function decoding value to JSON
+- returns: Function decoding value to JSON
 */
 public func encode<T>(key: String) ->  T? -> JSON? { return { return Encoder.encode(key)($0) } }
 
@@ -157,8 +157,8 @@ public func encode<T>(key: String) ->  T? -> JSON? { return { return Encoder.enc
 Convenience function to encode value to JSON
 for objects the conform to the Encodable protocol
 
-:param: key Key used to create JSON property
+- parameter key: Key used to create JSON property
 
-:returns: Function decoding value to JSON
+- returns: Function decoding value to JSON
 */
 public func encode<T: Encodable>(key: String) -> T? -> JSON? { return { return Encoder.encode(key)($0) } }

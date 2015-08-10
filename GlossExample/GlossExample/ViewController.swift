@@ -36,6 +36,8 @@ class Repo : Gloss {
     var array: [ [String : String] ]?
     var dateCreated: NSDate?
     
+    // MARK: - Deserialization
+    
     override func decoders() -> [JSON -> ()] {
         return [
             { self.repoId = decode("id")($0) },
@@ -47,6 +49,8 @@ class Repo : Gloss {
             { self.dateCreated = Decoder.decodeDate("created_at", dateFormatter:Repo.dateFormatter)($0) }
         ]
     }
+    
+    // MARK - Serialization
     
     override func encoders() -> [JSON?] {
         return [
@@ -76,12 +80,16 @@ class RepoOwner: Gloss {
     var ownerId: Int?
     var username: String?
     
+    // MARK: - Deserialization
+    
     override func decoders() -> [JSON -> ()] {
         return [
             { self.ownerId = decode("id")($0) },
             { self.username = decode("login")($0) }
         ]
     }
+    
+    // MARK: - Serialization
     
     override func encoders() -> [JSON?] {
         return [
@@ -112,16 +120,16 @@ class ViewController: UIViewController {
             "public" : true
             ])
         
-        println(repo.repoId)
-        println(repo.name)
-        println(repo.desc)
-        println(repo.url)
-        println(repo.owner)
-        println(repo.array)
-        println(repo.dateCreated)
-        println()
+        print(repo.repoId, appendNewline: false)
+        print(repo.name, appendNewline: false)
+        print(repo.desc, appendNewline: false)
+        print(repo.url, appendNewline: false)
+        print(repo.owner, appendNewline: false)
+        print(repo.array, appendNewline: false)
+        print(repo.dateCreated, appendNewline: false)
+        print("", appendNewline: false)
         
-        println("JSON: \(repo.toJSON())")
+        print("JSON: \(repo.toJSON())", appendNewline: false)
     }
 }
 

@@ -26,7 +26,7 @@
 /**
 Adds entries from provided dictionary
 
-:param: other    Dictionary to add entries from
+- parameter other:    Dictionary to add entries from
 */
 extension Dictionary {
     
