@@ -31,7 +31,7 @@ public protocol Glossy: Decodable {
     Designated initializer to create new object
     from JSON representation
     
-    :param: json JSON representation of object
+    - parameter json: JSON representation of object
     */
     init(json: JSON)
     
