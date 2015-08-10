@@ -34,7 +34,15 @@ class Repo : Gloss {
     var url: NSURL?
     var owner: RepoOwner?
     var array: [ [String : String] ]?
+    var primaryLanguage: Language?
     var dateCreated: NSDate?
+    var uppercaseName: String?
+    var uppercaseDesc: String?
+    
+    enum Language: String {
+        case Swift = "Swift"
+        case ObjectiveC = "Objective-C"
+    }
     
     // MARK: - Deserialization
     
@@ -46,8 +54,23 @@ class Repo : Gloss {
             { self.url = Decoder.decodeURL("url")($0) },
             { self.owner = decode("owner")($0) },
             { self.array = Decoder.decodeArray("array")($0) },
-            { self.dateCreated = Decoder.decodeDate("created_at", dateFormatter:Repo.dateFormatter)($0) }
+            { self.primaryLanguage = Decoder.decodeEnum("language")($0) },
+            { self.dateCreated = Decoder.decodeDate("created_at", dateFormatter:Repo.dateFormatter)($0) },
+            { self.uppercaseName = self.decodeStringUpperCase("name")($0) },
+            { self.uppercaseDesc = self.decodeStringUpperCase("description")($0) }
         ]
+    }
+    
+    func decodeStringUpperCase(key: String) -> JSON -> String? {
+        return {
+            json in
+            
+            if let str = json[key] as? String {
+                return str.uppercaseString
+            }
+            
+            return nil
+        }
     }
     
     // MARK - Serialization
@@ -64,9 +87,7 @@ class Repo : Gloss {
         ]
     }
     
-    // MARK: - Private
-    
-    private static var dateFormatter: NSDateFormatter = {
+    static var dateFormatter: NSDateFormatter = {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
         
@@ -115,18 +136,20 @@ class ViewController: UIViewController {
                 "login" : "hkellaway"
             ],
             "array" : [ ["a" : "test1"], ["b" : "test2"] ],
-            "created_at" : "2015-07-04T17:28:37Z",
-            "license" : "MIT",
-            "public" : true
+            "language" : "Swift",
+            "created_at" : "2015-07-04T17:28:37Z"
             ])
         
-        print(repo.repoId, appendNewline: false)
-        print(repo.name, appendNewline: false)
-        print(repo.desc, appendNewline: false)
-        print(repo.url, appendNewline: false)
-        print(repo.owner, appendNewline: false)
-        print(repo.array, appendNewline: false)
-        print(repo.dateCreated, appendNewline: false)
+        print(repo.repoId, appendNewline: true)
+        print(repo.name, appendNewline: true)
+        print(repo.desc, appendNewline: true)
+        print(repo.url, appendNewline: true)
+        print(repo.owner, appendNewline: true)
+        print(repo.array, appendNewline: true)
+        print(repo.dateCreated, appendNewline: true)
+        print(repo.primaryLanguage, appendNewline: true)
+        print(repo.uppercaseName, appendNewline: true)
+        print(repo.uppercaseDesc, appendNewline: true)
         print("", appendNewline: false)
         
         print("JSON: \(repo.toJSON())", appendNewline: false)
