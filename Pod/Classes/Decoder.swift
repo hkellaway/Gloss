@@ -90,14 +90,17 @@ public struct Decoder {
         return {
             json in
             
-            let jsonArray: [JSON] = json[key] as! [JSON]
-            var objects: [T] = []
-            
-            for subJSON in jsonArray {
-                objects.append(T(json: subJSON))
+            if let jsonArray = json[key] as? [JSON] {
+                var models: [T] = []
+                
+                for subJSON in jsonArray {
+                    models.append(T(json: subJSON))
+                }
+                
+                return models
             }
             
-            return objects.isEmpty ? nil : objects
+            return nil
         }
     }
     
