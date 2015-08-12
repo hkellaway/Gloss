@@ -57,7 +57,7 @@ public struct Encoder {
             model in
             
             if let model = model {
-                return [key : model.toJSON()]
+                return [key : Gloss.toJSON(model)]
             }
             
             return nil
