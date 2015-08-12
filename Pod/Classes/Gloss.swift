@@ -25,7 +25,7 @@
 
 public typealias JSON = [String : AnyObject]
 
-public protocol Glossy: Decodable {
+public protocol Glossy {
     
     /**
     Designated initializer to create new object
@@ -37,72 +37,29 @@ public protocol Glossy: Decodable {
     
 }
 
-public protocol Decodable {
-    
-    /**
-    Array of decoding functions
-    */
-    func decoders() -> [JSON -> ()]
-    
-}
-
 public protocol Encodable {
     
     /**
     Array of encoded values as JSON
     */
     func encoders() -> [JSON?]
-    
-    /**
-    JSON representation of object
-    */
-    func toJSON() -> JSON
 }
 
-public class Gloss : Glossy, Encodable {
+public class Gloss {
     
-    // MARK: - Initialization
-    
-    required public init(json: JSON) {
-        applyDecoders(self.decoders())(json)
-    }
-    
-    // MARK: - Protocol conformance
-    
-    // MARK: Decodable
-    
-    public func decoders() -> [JSON -> ()] {
-        return []
-    }
-    
-    // MARK: Encodable
-    
-    public func encoders() -> [JSON?] {
-        return []
-    }
-    
-    public func toJSON() -> JSON {
+    /**
+    JSON representation of model
+    */
+    public static func toJSON<T: Encodable>(model: T) -> JSON {
         var json: JSON = [:]
         
-        for encoder in self.encoders() {
+        for encoder in model.encoders() {
             if let encoder = encoder {
                 json.add(encoder)
             }
         }
         
         return json
-    }
-    
-    // MARK: - Private methods
-    
-    private func applyDecoders(decoders: [JSON -> ()]) -> JSON -> () {
-        return {
-            json in
-            
-            for decoder in decoders {
-                decoder(json)
-            }
-        }
     }
     
 }
