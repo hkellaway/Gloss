@@ -147,9 +147,11 @@ public struct Encoder {
 /**
 Convenience function to encode value to JSON
 
+Note: This is the equivalent to Encoder.encode
+
 - parameter key: Key used to create JSON property
 
-- returns: Function decoding value to JSON
+- returns: Function encoding value to JSON
 */
 public func encode<T>(key: String) ->  T? -> JSON? { return { return Encoder.encode(key)($0) } }
 
@@ -157,8 +159,10 @@ public func encode<T>(key: String) ->  T? -> JSON? { return { return Encoder.enc
 Convenience function to encode value to JSON
 for objects the conform to the Encodable protocol
 
+Note: This is the equivalent to Encoder.encode
+
 - parameter key: Key used to create JSON property
 
-- returns: Function decoding value to JSON
+- returns: Function encoding value to JSON
 */
 public func encode<T: Encodable>(key: String) -> T? -> JSON? { return { return Encoder.encode(key)($0) } }
