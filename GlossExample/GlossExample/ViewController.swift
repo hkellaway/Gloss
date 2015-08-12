@@ -53,7 +53,8 @@ class ViewController: UIViewController {
         print(repo.primaryLanguage)
         print("")
         
-        print("JSON:\n\(Gloss.toJSON(repo))")
+        print(repo.toJSON())
+        
     }
 }
 
