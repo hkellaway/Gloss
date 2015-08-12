@@ -183,6 +183,8 @@ public struct Decoder {
 /**
 Convenience function to decode JSON to value type
 
+Note: This is the equivalent to Decoder.decode
+
 - parameter key: Key used to create JSON property
 
 - returns: Function encoding URL as JSON
@@ -192,6 +194,8 @@ public  func decode<T>(key: String) -> JSON -> T? { return { return Decoder.deco
 /**
 Convenience function to decode JSON to value type
 for objects that conform to the Glossy protocol
+
+Note: This is the equivalent to Decoder.decode
 
 - parameter key: Key used to create JSON property
 
