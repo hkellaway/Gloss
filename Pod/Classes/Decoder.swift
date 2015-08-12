@@ -79,6 +79,32 @@ public struct Decoder {
     }
     
     /**
+    Returns function to decode JSON to array
+    for objects that conform to the Glossy protocol
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to array
+    */
+    public static func decodeArray<T: Glossy>(key: String) -> JSON -> [T]? {
+        return {
+            json in
+            
+            if let jsonArray = json[key] as? [JSON] {
+                var models: [T] = []
+                
+                for subJSON in jsonArray {
+                    models.append(T(json: subJSON))
+                }
+                
+                return models
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
     Returns function to decode JSON to date
     
     - parameter key:           JSON key used to set value

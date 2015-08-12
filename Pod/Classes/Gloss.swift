@@ -85,7 +85,9 @@ public class Gloss : Glossy, Encodable {
         var json: JSON = [:]
         
         for encoder in self.encoders() {
-            json.add(encoder!)
+            if let encoder = encoder {
+                json.add(encoder)
+            }
         }
         
         return json
