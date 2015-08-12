@@ -34,11 +34,10 @@ public struct Encoder {
     */
     public static func encode<T>(key: String) -> T? -> JSON? {
         return {
-            object in
+            model in
             
-            if let object = object {
-                
-                return [key : object as! AnyObject]
+            if let model = model {
+                return [key : model as! AnyObject]
             }
             
             return nil
@@ -55,10 +54,10 @@ public struct Encoder {
     */
     public static func encode<T: Encodable>(key: String) -> T? -> JSON? {
         return {
-            object in
+            model in
             
-            if let object = object {
-                return [key : object.toJSON()]
+            if let model = model {
+                return [key : Gloss.toJSON(model)]
             }
             
             return nil
@@ -79,8 +78,8 @@ public struct Encoder {
         return {
             date in
             
-            if let d = date {
-                return [key : dateFormatter.stringFromDate(d)]
+            if let date = date {
+                return [key : dateFormatter.stringFromDate(date)]
             }
             
             return nil
@@ -113,8 +112,8 @@ public struct Encoder {
         return {
             enumValue in
             
-            if let e = enumValue {
-                return [key : e.rawValue as! AnyObject]
+            if let enumValue = enumValue {
+                return [key : enumValue.rawValue as! AnyObject]
             }
             
             return nil
@@ -132,8 +131,8 @@ public struct Encoder {
         return {
             url in
             
-            if let u = url {
-                return [key : u.absoluteString]
+            if let url = url {
+                return [key : url.absoluteString]
             }
             
             return nil

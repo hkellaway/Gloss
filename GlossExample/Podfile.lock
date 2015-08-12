@@ -4,19 +4,19 @@ PODS:
   - Gloss/Extensions (0.1.0)
 
 DEPENDENCIES:
-  - Gloss (from `https://github.com/hkellaway/Gloss.git`, tag `0.1.0`)
+  - Gloss (from `https://github.com/hkellaway/Gloss.git`, branch `feature/immutable_models`)
 
 EXTERNAL SOURCES:
   Gloss:
+    :branch: feature/immutable_models
     :git: https://github.com/hkellaway/Gloss.git
-    :tag: 0.1.0
 
 CHECKOUT OPTIONS:
   Gloss:
+    :commit: 7c984faa0d882c53750b2496cb636551a0e9ea3d
     :git: https://github.com/hkellaway/Gloss.git
-    :tag: 0.1.0
 
 SPEC CHECKSUMS:
   Gloss: 9d9625ec7c1377126babca58517b812bb33e222d
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.38.2

@@ -25,14 +25,14 @@
 
 import Gloss
 
-class Repo : Gloss {
+class Repo : Glossy, Encodable {
     
-    var repoId: Int?
-    var name: String?
-    var desc: String?
-    var url: NSURL?
-    var owner: RepoOwner?
-    var primaryLanguage: Language?
+    let repoId: Int?
+    let name: String?
+    let desc: String?
+    let url: NSURL?
+    let owner: RepoOwner?
+    let primaryLanguage: Language?
     
     enum Language: String {
         case Swift = "Swift"
@@ -41,20 +41,18 @@ class Repo : Gloss {
     
     // MARK: - Deserialization
     
-    override func decoders() -> [JSON -> ()] {
-        return [
-            { self.repoId = decode("id")($0) },
-            { self.name = decode("name")($0)},
-            { self.desc = decode("description")($0) },
-            { self.url = Decoder.decodeURL("html_url")($0) },
-            { self.owner = decode("owner")($0) },
-            { self.primaryLanguage = Decoder.decodeEnum("language")($0) }
-        ]
+    required init(json: JSON) {
+        self.repoId = decode("id")(json)
+        self.name = decode("name")(json)
+        self.desc = decode("description")(json)
+        self.url = Decoder.decodeURL("html_url")(json)
+        self.owner = decode("owner")(json)
+        self.primaryLanguage = Decoder.decodeEnum("language")(json)
     }
     
     // MARK - Serialization
     
-    override func encoders() -> [JSON?] {
+    func encoders() -> [JSON?] {
         return [
             encode("id")(self.repoId),
             encode("name")(self.name),
