@@ -23,6 +23,7 @@
 // THE SOFTWARE.
 //
 
+import Gloss
 import UIKit
 
 class ViewController: UIViewController {
@@ -52,7 +53,7 @@ class ViewController: UIViewController {
         print(repo.primaryLanguage)
         print("")
         
-        print("JSON:\n\(repo.toJSON())")
+        print("JSON:\n\(Gloss.toJSON(repo))")
     }
 }
 
