@@ -1,40 +1,29 @@
-# Gloss
-
-![Swift](https://img.shields.io/badge/language-swift-orange.svg)
-
-A shiny JSON parsing library in Swift
+![Gloss](http://hkellaway.github.io/Gloss/images/gloss_logo_tagline.png)
 
 ## Features :sparkles:
 
 * Mapping JSON to objects
 * Mapping objects to JSON
 * Nested Objects
-* Custom transformations during mapping
+* Custom transformations
 
-## Communication
+## Installation 
 
-- If you **have found a bug**, _and can provide steps to reliably reproduce it_, [open an issue](https://github.com/hkellaway/Gloss/issues/new).
-- If you **have a feature request**, [open an issue](https://github.com/hkellaway/Gloss/issues/new).
-- If you **want to contribute**, [submit a pull request](https://github.com/hkellaway/Gloss/pulls). Pull request should be made against the _develop_ branch.
+### Cocoapods
 
-## Getting Started
-
-- [Download Gloss](https://github.com/hkellaway/Gloss/archive/master.zip) and try out the included iOS example app
-- Check out the [documentation](http://cocoadocs.org/docsets/Gloss/) for a more comprehensive look at the classes available in Gloss
-
-### Swift 2 and Swift 1.2
-
-Gloss was written for use with Swift 2. If you are a Swift 1.2 user, you can utilize the version found on the `swift_1.2` branch. Though, note, this branch may not include improvements made using features specific to Swift 2.
-
-### Installation with CocoaPods
-
-[CocoaPods](http://cocoapods.org) is a dependency manager for Swift and Objective-C, which automates and simplifies the process of using 3rd-party libraries like Gloss in your projects. Cocoapods is the preferred way to incorporate Gloss in your project; if you are unfamiliar with how to install Cocoapods or how create a Podfile, there are many tutorials online.
-
-#### Podfile
 
 ```ruby
-pod "Gloss", "~> 0.1"
+pod 'Gloss', '~> 0.1'
 ```
+
+#### Swift 2 and Swift 1.2
+
+Gloss was written for use with Swift 2. If you are a Swift 1.2 user, you can install the version found on the `swift_1.2` branch using 
+
+`pod 'Gloss', :git => 'https://github.com/hkellaway/Gloss.git', :branch => 'swift_1.2'`.
+
+Note: The `swift_1.2` branch will not include improvements made using features specific to Swift 2.
+
 
 ## Usage
 
@@ -42,7 +31,7 @@ pod "Gloss", "~> 0.1"
 
 #### A Simple Model
 
-Let's imagine we had a simple model represented by the following JSON:
+Let's imagine we have a simple model represented by the following JSON:
 
 ``` JSON
 {
@@ -53,7 +42,7 @@ Let's imagine we had a simple model represented by the following JSON:
 }
 ```
 
-This model would be represented using Gloss as such:
+Our Gloss model would look as such:
 
 ``` swift
 import Gloss
@@ -77,10 +66,11 @@ class RepoOwner: Gloss {
 
 This model is characterized by:
 
-* subclassing `Gloss`
-* overriding the `decoders` function
+* Importing the `Gloss` library
+* Having the model subclass `Gloss`
+* Overriding the `decoders` function
 
-#### A Complex Model
+#### A More Complex Model
 
 Let's imagine we had a more complex model represented by the following JSON:
 
@@ -89,22 +79,26 @@ Let's imagine we had a more complex model represented by the following JSON:
 	"id" : 40102424,
 	"name": "Gloss",
 	"description" : "A shiny JSON parsing library in Swift",
-	"url" : "https://api.github.com/repos/hkellaway/Gloss",
-	"owner" : [
+	"html_url" : "https://github.com/hkellaway/Gloss",
+	"owner" : {
 		"id" : 5456481,
 		"login" : "hkellaway"
-	],
-	"language" : "Swift",
-	"created_at" : "2015-08-03T03:03:16Z"
+	},
+	"language" : "Swift"
 }
 ```
 
-This model is more complex with a couple reasons
 
-* It's properties are not just simple types - we have an `NSURL`, and enum, and an `NSDate`
+This model is more complex for a couple reasons
+
+* Its properties are not just simple types
 * It has a nested model, `owner`
 
+Let's see what it looks like with Gloss:
+
 ``` swift
+import Gloss
+
 class Repo : Gloss {
     
     var repoId: Int?
@@ -113,7 +107,6 @@ class Repo : Gloss {
     var url: NSURL?
     var owner: RepoOwner?
     var primaryLanguage: Language?
-    var dateCreated: NSDate?
 
     enum Language: String {
         case Swift = "Swift"
@@ -125,56 +118,59 @@ class Repo : Gloss {
     override func decoders() -> [JSON -> ()] {
         return [
             { self.repoId = decode("id")($0) },
-            { self.name = decode("name")($0)},
+            { self.name = decode("name")($0) },
             { self.desc = decode("description")($0) },
-            { self.url = Decoder.decodeURL("url")($0) },
+            { self.url = Decoder.decodeURL("html_url")($0) },
             { self.owner = decode("owner")($0) },
-            { self.primaryLanguage = Decoder.decodeEnum("language")($0) },
-            { self.dateCreated = Decoder.decodeDate("created_at", dateFormatter:Repo.dateFormatter)($0) }
+            { self.primaryLanguage = Decoder.decodeEnum("language")($0) }
         ]
     }
-    
-    // MARK: - Helpers
-    
-    private static var dateFormatter: NSDateFormatter = {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-        
-        return dateFormatter
-        }()
     
 }
 ```
 
-#### Decoders
-
-At the heart of deserialization with Gloss is the `decoders()` functions.
-
-Decoders take the format: 
-
-`{ self.propertyName = Decoder.decodeFunction(jsonKey)($0) }`
-
-where `propertyName` is one of the model's properties, `jsonKey` is the corresponding JSON key, and `Decoder.decodeFunction` is the function that handles the translation.
-
-#### Gloss Decoders
-
-Gloss automatically handles decoding simple types - as well as Gloss models :tada:
-
-Additionally, Gloss comes with a number of built in decoders for convenience:
-
-* `decodeDate` - for `NSDate`
-* `decodeDateISO8601` - for `NSDate` with the ISO8601 format
-* `decodeEnum` - for enums
-* `decodeURL` - for `NSURL`
-
-#### Custom Decoders
-
 
 ### Serialization
 
-### Initializing Model Objects
+How do we allow models to be translated to JSON? Let's take a look again at the `RepoOwner` class:
 
-We can simply create an object of the `RepoOwner` type as follows:
+``` swift
+import Gloss
+
+class RepoOwner: Gloss {
+    
+    var ownerId: Int?
+    var username: String?
+    
+    // MARK: - Deserialization
+    
+    override func decoders() -> [JSON -> ()] {
+        return [
+            { self.ownerId = decode("id")($0) },
+            { self.username = decode("login")($0) }
+        ]
+    }
+
+    // MARK: - Serialization
+
+    override func encoders() -> [JSON?] {
+        return [
+            encode("id")(self.ownerId),
+            encode("login")(self.username)
+        ]
+    }
+    
+}
+```
+
+We've simply added an override of the `encoders` function.
+
+
+## Initializing Model Objects
+
+Gloss models are initialized by passing JSON into the `init(json:)` initializer.
+
+For example, we can create an object of the `RepoOwner` type as follows:
 
 ``` swift
 let json = [
@@ -186,23 +182,182 @@ let repoOwner = RepoOwner(json: json)
 
 ```
 
-### Translating Model Objects to JSON
+## Translating Model Objects to JSON
 
-We can get the JSON representation of an object as such:
+The JSON representation of an object is retrieved as such:
 
 ```swift
 repoOwner.toJSON()
-``` 
+```
+Note: This requires an override of the `encoders` function in the Gloss model (see: [Serialization](#serialization))
 
 
-## TODO
+## Discussion
+
+### Decoders
+
+At the heart of deserialization with Gloss is the `decoders` function that returns an array of decoders.
+
+Decoders take the format: 
+
+`{ self.propertyName = Decoder.decodeFunction(jsonKey)($0) }`
+
+where `propertyName` is one of the model's properties, `jsonKey` is the corresponding JSON key, and `Decoder.decodeFunction` is the function that handles the translation.
+
+Note: The provided examples use `decode` instead of `Decoder.decode` - this is simply a shorthand for convenience, either can be used.
+
+#### Gloss Decoders
+
+Gloss handles decoding simple types. Nested Gloss models are also decoded automatically - no extra work! :tada:
+
+Gloss also comes with a number of built-in decoders for convenience:
+
+* `decodeArray` - for simple `Array`s or `Array`s of Gloss models
+* `decodeDate` - for `NSDate` types
+* `decodeDateISO8601` - for `NSDate` types with the ISO8601 format
+* `decodeEnum` - for enum values
+* `decodeURL` - for `NSURL` types
+
+
+### Encoders
+
+At the heart of serialization with Gloss is the `encoders` function that returns an array of JSON.
+
+Encoders take the format: 
+
+`Encoder.encodeFunction(jsonKey)(self.propertyName)`
+
+where `propertyName` is one of the model's properties, `jsonKey` is the corresponding JSON key, and `Encoder.encodeFunction` is the function that handles the translation.
+
+Note: The provided examples use `encode` instead of `Encoder.encode` - this is simply a shorthand for convenience, either can be used.
+
+#### Gloss Encoders
+
+Gloss handles encoding simple types. Nested Gloss models are also encoded automatically - no extra work! :confetti_ball:
+
+Gloss also comes with a number of built-in encoders for convenience:
+
+* `encodeDate` - for `NSDate` types
+* `encodeDateISO8601` - for `NSDate` types with the ISO8601 format
+* `encodeEnum` - for enum values
+* `encodeURL` - for `NSURL` types
+
+
+## Advanced Topics
+
+### Custom Transformations
+
+#### Custom Decoders
+
+You can write your own decoders to enact custom transformations during model creation.
+
+Let's imagine the `username` property on our `RepoOwner` model was to be an uppercase string. We would update as follows:
+
+``` swift
+import Gloss
+
+class RepoOwner: Gloss {
+    
+    var ownerId: Int?
+    var username: String?
+    
+    // MARK: - Deserialization
+    
+    override func decoders() -> [JSON -> ()] {
+        return [
+            { self.ownerId = decode("id")($0) },
+            { self.username = Decoder.decodeStringUpperCase("login")($0) }
+        ]
+    }
+    
+}
+
+extension Decoder {
+    
+    static func decodeStringUpperCase(key: String) -> JSON -> String? {
+        return {
+            json in
+            
+            if let str = json[key] as? String {
+                return str.uppercaseString
+            }
+            
+            return nil
+        }
+    }
+    
+}
+```
+
+We've created an extension on `Decoder` and written our own decode function, `decodeStringUpperCase`. 
+
+What's important to note is that the return type is a function that translates from `JSON` to the desired type -- in this case, `JSON -> String?`. The value you're working with will be accessible via `json[key]` and will need to be cast to the desired type using `as?`. Then, manipulation can be done - for example, uppercasing. The transformed value should be returned; in the case that the cast failed, `nil` can be returned. 
+
+Though depicted here as being in the same file, good practice would have the `Decoder` extension in a separate `Decoder.swift` file for organizational purposes.
+
+
+#### Custom Encoders
+
+You can also write your own encoders to enact custom transformations during JSON translation.
+
+Let's imagine the `username` property on our `RepoOwner` model was to be a lowercase string. We would update as follows:
+
+``` swift
+import Gloss
+
+class RepoOwner: Gloss {
+    
+    var ownerId: Int?
+    var username: String?
+    
+   // ... 
+
+   // MARK: - Serialization
+
+    override func encoders() -> [JSON?] {
+        return [
+            encode("id")(self.ownerId),
+            Encoder.encodeStringLowerCase("login")(self.username)
+        ]
+    }
+
+    
+}
+
+extension Encoder {
+    
+    static func encodeStringLowerCase(key: String) -> String? -> JSON? {
+        return {
+            string in
+            
+            if let string = string {
+                return [key : sting.lowercaseString]
+            }
+            
+            return nil
+        }
+    }
+    
+}
+```
+
+We've created an extension on `Encoder` and written our own encode function, `encodeStringLowerCase`. 
+
+What's important to note is that the return type is a function that translates from the property's type to `JSON` -- in this case, `String? -> JSON?`. The value you're working with will be accessible via the `if let` statement. Then, manipulation can be done - for example, lowercasing. What should be returned is a dictionary with `key` as the key and the manipulated value as its value. In the case that the `if let` failed, `nil` can be returned. 
+
+Though depicted here as being in the same file, good practice would have the `Encoder` extension in a separate `Encoder.swift` file for organizational purposes.
+
+
+## What's Next
 
 - [x] Swift 1.2 compatibility on `swift_1.2` branch
 - [ ] Tests
 
-## Why Gloss?
+## Why "Gloss"?
 
-The name for Gloss was inspired by the name for a popular Objective-C library, [Mantle](https://github.com/Mantle/Mantle) - both names are a play on the word "layer", in reference to their role in writing the model layer of the application. The particular word "gloss" was chosen as it evokes both being lightweight and adding beauty.
+The name for Gloss was inspired by the name for a popular Objective-C library, [Mantle](https://github.com/Mantle/Mantle) - both names are a play on the word "layer", in reference to their role in defining the model layer of the application. 
+
+The particular word "gloss" was chosen as it evokes both being lightweight and adding beauty.
 
 ## Credits
 
