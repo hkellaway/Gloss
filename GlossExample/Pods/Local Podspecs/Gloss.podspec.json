@@ -1,6 +1,6 @@
 {
   "name": "Gloss",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "summary": "A shiny JSON parsing library in Swift",
   "homepage": "https://github.com/hkellaway/Gloss",
   "license": {
@@ -12,11 +12,17 @@
   },
   "source": {
     "git": "https://github.com/hkellaway/Gloss.git",
-    "tag": "0.0.1"
+    "tag": "0.1.0"
   },
   "platforms": {
     "ios": "8.0"
   },
   "requires_arc": true,
-  "source_files": "Pod/**/*.{h,swift}"
+  "source_files": "Pod/Classes/*.{h,swift}",
+  "subspecs": [
+    {
+      "name": "Extensions",
+      "source_files": "Pod/Classes/Extensions/*.{swift}"
+    }
+  ]
 }

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  Repo.swift
 //  GlossExample
 //
 // Copyright (c) 2015 Harlan Kellaway
@@ -23,36 +23,45 @@
 // THE SOFTWARE.
 //
 
-import UIKit
+import Gloss
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let json = [
-            "id" : 40102424,
-            "name": "Gloss",
-            "description" : "A shiny JSON parsing library in Swift",
-            "html_url" : "https://github.com/hkellaway/Gloss",
-            "owner" : [
-                "id" : 5456481,
-                "login" : "hkellaway"
-            ],
-            "language" : "Swift"
-            ]
-        
-        let repo = Repo(json: json)
-        
-        print(repo.repoId)
-        print(repo.name)
-        print(repo.desc)
-        print(repo.url)
-        print(repo.owner)
-        print(repo.primaryLanguage)
-        print("")
-        
-        print("JSON:\n\(repo.toJSON())")
+class Repo : Gloss {
+    
+    var repoId: Int?
+    var name: String?
+    var desc: String?
+    var url: NSURL?
+    var owner: RepoOwner?
+    var primaryLanguage: Language?
+    
+    enum Language: String {
+        case Swift = "Swift"
+        case ObjectiveC = "Objective-C"
     }
+    
+    // MARK: - Deserialization
+    
+    override func decoders() -> [JSON -> ()] {
+        return [
+            { self.repoId = decode("id")($0) },
+            { self.name = decode("name")($0)},
+            { self.desc = decode("description")($0) },
+            { self.url = Decoder.decodeURL("html_url")($0) },
+            { self.owner = decode("owner")($0) },
+            { self.primaryLanguage = Decoder.decodeEnum("language")($0) }
+        ]
+    }
+    
+    // MARK - Serialization
+    
+    override func encoders() -> [JSON?] {
+        return [
+            encode("id")(self.repoId),
+            encode("name")(self.name),
+            encode("description")(self.desc),
+            Encoder.encodeURL("html_url")(self.url),
+            encode("owner")(self.owner)
+        ]
+    }
+    
 }
-

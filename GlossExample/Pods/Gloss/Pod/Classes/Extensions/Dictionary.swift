@@ -1,6 +1,6 @@
 //
-//  ViewController.swift
-//  GlossExample
+//  Dictionary.swift
+//  Gloss
 //
 // Copyright (c) 2015 Harlan Kellaway
 //
@@ -23,36 +23,17 @@
 // THE SOFTWARE.
 //
 
-import UIKit
+/**
+Adds entries from provided dictionary
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let json = [
-            "id" : 40102424,
-            "name": "Gloss",
-            "description" : "A shiny JSON parsing library in Swift",
-            "html_url" : "https://github.com/hkellaway/Gloss",
-            "owner" : [
-                "id" : 5456481,
-                "login" : "hkellaway"
-            ],
-            "language" : "Swift"
-            ]
-        
-        let repo = Repo(json: json)
-        
-        print(repo.repoId)
-        print(repo.name)
-        print(repo.desc)
-        print(repo.url)
-        print(repo.owner)
-        print(repo.primaryLanguage)
-        print("")
-        
-        print("JSON:\n\(repo.toJSON())")
+- parameter other:    Dictionary to add entries from
+*/
+extension Dictionary {
+    
+    mutating func add(other: Dictionary) -> () {
+        for (key,value) in other {
+            self.updateValue(value, forKey:key)
+        }
     }
+    
 }
-

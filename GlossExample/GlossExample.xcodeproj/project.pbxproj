@@ -13,6 +13,8 @@
 		DC08B5B91B76B3ED0098D6C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC08B5B81B76B3ED0098D6C8 /* Images.xcassets */; };
 		DC08B5BC1B76B3ED0098D6C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC08B5BA1B76B3ED0098D6C8 /* LaunchScreen.xib */; };
 		DC08B5C81B76B3ED0098D6C8 /* GlossExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC08B5C71B76B3ED0098D6C8 /* GlossExampleTests.swift */; };
+		DC690D901B7AF1A1001338D0 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC690D8F1B7AF1A1001338D0 /* Repo.swift */; };
+		DC690D921B7AF20D001338D0 /* RepoOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC690D911B7AF20D001338D0 /* RepoOwner.swift */; };
 		F0157B7C46CEF886BC8CFC43 /* Pods_GlossExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371978450C13B8BC0B320144 /* Pods_GlossExample.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		DC08B5C11B76B3ED0098D6C8 /* GlossExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlossExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC08B5C61B76B3ED0098D6C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC08B5C71B76B3ED0098D6C8 /* GlossExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlossExampleTests.swift; sourceTree = "<group>"; };
+		DC690D8F1B7AF1A1001338D0 /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
+		DC690D911B7AF20D001338D0 /* RepoOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoOwner.swift; sourceTree = "<group>"; };
 		ED8E6DA407D0AE26300C907D /* Pods-GlossExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlossExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-GlossExample/Pods-GlossExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				DC08B5B11B76B3ED0098D6C8 /* AppDelegate.swift */,
+				DC690D8F1B7AF1A1001338D0 /* Repo.swift */,
+				DC690D911B7AF20D001338D0 /* RepoOwner.swift */,
 				DC08B5B31B76B3ED0098D6C8 /* ViewController.swift */,
 				DC08B5B51B76B3ED0098D6C8 /* Main.storyboard */,
 				DC08B5B81B76B3ED0098D6C8 /* Images.xcassets */,
@@ -183,7 +189,9 @@
 		DC08B5A41B76B3ED0098D6C8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Harlan Kellaway";
 				TargetAttributes = {
 					DC08B5AB1B76B3ED0098D6C8 = {
@@ -287,8 +295,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC690D901B7AF1A1001338D0 /* Repo.swift in Sources */,
 				DC08B5B41B76B3ED0098D6C8 /* ViewController.swift in Sources */,
 				DC08B5B21B76B3ED0098D6C8 /* AppDelegate.swift in Sources */,
+				DC690D921B7AF20D001338D0 /* RepoOwner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +361,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -418,6 +429,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GlossExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.harlankellaway.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -429,6 +441,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GlossExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.harlankellaway.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -447,6 +460,7 @@
 				);
 				INFOPLIST_FILE = GlossExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.harlankellaway.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GlossExample.app/GlossExample";
 			};
@@ -462,6 +476,7 @@
 				);
 				INFOPLIST_FILE = GlossExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.harlankellaway.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GlossExample.app/GlossExample";
 			};
