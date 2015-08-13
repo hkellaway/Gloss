@@ -25,21 +25,18 @@
 
 infix operator <<< { associativity left precedence 150 }
 
-public func <<< <T>(key: String, json: JSON) -> T?
-{
-    if let value = json[key] as? T {
-            return value
-    }
-        
-    return nil
+public func <<< <T>(key: String, json: JSON) -> T? {
+    return Decoder.decode(key)(json)
 }
 
-public func <<< <T: Decodable>(key: String, json: JSON) -> T?
-{
-    if let json = json[key] as? JSON {
-        return T(json: json)
-    }
-    
-    return nil
+public func <<< <T: Decodable>(key: String, json: JSON) -> T? {
+    return Decoder.decode(key)(json)
 }
 
+public func <<< <T: RawRepresentable>(key: String, json: JSON) -> T? {
+    return Decoder.decodeEnum(key)(json)
+}
+
+public func <<< (key: String, json: JSON) -> NSURL? {
+    return Decoder.decodeURL(key)(json)
+}
