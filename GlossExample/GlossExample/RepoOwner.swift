@@ -25,18 +25,18 @@
 
 import Gloss
 
-class RepoOwner: Gloss {
+class RepoOwner: Glossy {
     
-    var ownerId: Int?
-    var username: String?
+    let ownerId: Int?
+    let username: String?
     
     // MARK: - Deserialization
     
-    override func decoders() -> [JSON -> ()] {
-        return [
-            { self.ownerId = decode("id")($0) },
-            { self.username = decode("login")($0) }
-        ]
+    required init(json: JSON) {
+        self.ownerId = decode("id")(json)
+        self.username = decode("login")(json)
+        
+        super.init(json: json)
     }
     
     // MARK: - Serialization

@@ -49,10 +49,11 @@ class ViewController: UIViewController {
         print(repo.desc)
         print(repo.url)
         print(repo.owner)
-        print(repo.primaryLanguage)
+        print(repo.primaryLanguage?.rawValue)
         print("")
         
-        print("JSON:\n\(repo.toJSON())")
+        print(repo.toJSON())
+        
     }
 }
 
