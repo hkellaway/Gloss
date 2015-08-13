@@ -28,12 +28,11 @@ public typealias JSON = [String : AnyObject]
 public protocol Decodable {
     
     /**
-    Designated initializer to create new object
-    from JSON representation
+    Returns new instance created from provided JSON
     
     - parameter json: JSON representation of object
     */
-    init(json: JSON)
+    static func fromJSON(json: JSON) -> Self
     
 }
 
@@ -43,20 +42,6 @@ public protocol Encodable {
     Array of encoded values as JSON
     */
     func encoders() -> [JSON?]
-}
-
-public class Glossy: Decodable, Encodable {
-    
-    public required init(json: JSON) { }
-    
-    public func toJSON() -> JSON? {
-        return Gloss.toJSON(self)
-    }
-    
-    public func encoders() -> [JSON?] {
-        return []
-    }
-    
 }
 
 struct Gloss {
