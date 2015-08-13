@@ -86,7 +86,7 @@ public struct Decoder {
     
     - returns: Function decoding JSON to array
     */
-    public static func decodeArray<T: Glossy>(key: String) -> JSON -> [T]? {
+    public static func decodeArray<T: Decodable>(key: String) -> JSON -> [T]? {
         return {
             json in
             
