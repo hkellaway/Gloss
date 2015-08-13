@@ -57,7 +57,7 @@ public struct Decoder {
             json in
             
             if let value = json[key] as? JSON {
-                return T(json: value)
+                return T.fromJSON(value)
             }
             
             return nil
@@ -94,7 +94,7 @@ public struct Decoder {
                 var models: [T] = []
                 
                 for subJSON in jsonArray {
-                    models.append(T(json: subJSON))
+                    models.append(T.fromJSON(subJSON))
                 }
                 
                 return models
