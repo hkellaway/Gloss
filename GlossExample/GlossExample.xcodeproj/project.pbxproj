@@ -15,6 +15,7 @@
 		DC08B5C81B76B3ED0098D6C8 /* GlossExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC08B5C71B76B3ED0098D6C8 /* GlossExampleTests.swift */; };
 		DC690D901B7AF1A1001338D0 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC690D8F1B7AF1A1001338D0 /* Repo.swift */; };
 		DC690D921B7AF20D001338D0 /* RepoOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC690D911B7AF20D001338D0 /* RepoOwner.swift */; };
+		DC690D951B7B1339001338D0 /* gloss_logo_tagline.png in Resources */ = {isa = PBXBuildFile; fileRef = DC690D941B7B1339001338D0 /* gloss_logo_tagline.png */; };
 		F0157B7C46CEF886BC8CFC43 /* Pods_GlossExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371978450C13B8BC0B320144 /* Pods_GlossExample.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		DC08B5C71B76B3ED0098D6C8 /* GlossExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlossExampleTests.swift; sourceTree = "<group>"; };
 		DC690D8F1B7AF1A1001338D0 /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		DC690D911B7AF20D001338D0 /* RepoOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoOwner.swift; sourceTree = "<group>"; };
+		DC690D941B7B1339001338D0 /* gloss_logo_tagline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gloss_logo_tagline.png; sourceTree = "<group>"; };
 		ED8E6DA407D0AE26300C907D /* Pods-GlossExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlossExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-GlossExample/Pods-GlossExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +114,7 @@
 				DC08B5B51B76B3ED0098D6C8 /* Main.storyboard */,
 				DC08B5B81B76B3ED0098D6C8 /* Images.xcassets */,
 				DC08B5BA1B76B3ED0098D6C8 /* LaunchScreen.xib */,
+				DC690D931B7B1329001338D0 /* Resources */,
 				DC08B5AF1B76B3ED0098D6C8 /* Supporting Files */,
 			);
 			path = GlossExample;
@@ -140,6 +143,14 @@
 				DC08B5C61B76B3ED0098D6C8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DC690D931B7B1329001338D0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DC690D941B7B1339001338D0 /* gloss_logo_tagline.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC690D951B7B1339001338D0 /* gloss_logo_tagline.png in Resources */,
 				DC08B5B71B76B3ED0098D6C8 /* Main.storyboard in Resources */,
 				DC08B5BC1B76B3ED0098D6C8 /* LaunchScreen.xib in Resources */,
 				DC08B5B91B76B3ED0098D6C8 /* Images.xcassets in Resources */,
