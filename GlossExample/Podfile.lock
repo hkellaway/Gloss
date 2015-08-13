@@ -1,22 +1,22 @@
 PODS:
-  - Gloss (0.1.0):
-    - Gloss/Extensions (= 0.1.0)
-  - Gloss/Extensions (0.1.0)
+  - Gloss (0.2.0):
+    - Gloss/Extensions (= 0.2.0)
+  - Gloss/Extensions (0.2.0)
 
 DEPENDENCIES:
-  - Gloss (from `https://github.com/hkellaway/Gloss.git`, branch `feature/tojson_nonstatic`)
+  - Gloss (from `https://github.com/hkellaway/Gloss.git`, tag `0.2.0`)
 
 EXTERNAL SOURCES:
   Gloss:
-    :branch: feature/tojson_nonstatic
     :git: https://github.com/hkellaway/Gloss.git
+    :tag: 0.2.0
 
 CHECKOUT OPTIONS:
   Gloss:
-    :commit: 859b411e5eb27ad4cb17995f067e77f3243ff47c
     :git: https://github.com/hkellaway/Gloss.git
+    :tag: 0.2.0
 
 SPEC CHECKSUMS:
-  Gloss: 9d9625ec7c1377126babca58517b812bb33e222d
+  Gloss: 5c6edef89a05af00da04d0b406304cff0fbaa244
 
 COCOAPODS: 0.38.2
