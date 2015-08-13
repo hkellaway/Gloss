@@ -4,16 +4,16 @@ PODS:
   - Gloss/Extensions (0.1.0)
 
 DEPENDENCIES:
-  - Gloss (from `https://github.com/hkellaway/Gloss.git`, branch `feature/immutable_models`)
+  - Gloss (from `https://github.com/hkellaway/Gloss.git`, branch `feature/tojson_nonstatic`)
 
 EXTERNAL SOURCES:
   Gloss:
-    :branch: feature/immutable_models
+    :branch: feature/tojson_nonstatic
     :git: https://github.com/hkellaway/Gloss.git
 
 CHECKOUT OPTIONS:
   Gloss:
-    :commit: 7c984faa0d882c53750b2496cb636551a0e9ea3d
+    :commit: 859b411e5eb27ad4cb17995f067e77f3243ff47c
     :git: https://github.com/hkellaway/Gloss.git
 
 SPEC CHECKSUMS:

@@ -25,7 +25,7 @@
 
 import Gloss
 
-class Repo : Glossy, Encodable {
+class Repo : Glossy {
     
     let repoId: Int?
     let name: String?
@@ -48,17 +48,20 @@ class Repo : Glossy, Encodable {
         self.url = Decoder.decodeURL("html_url")(json)
         self.owner = decode("owner")(json)
         self.primaryLanguage = Decoder.decodeEnum("language")(json)
+        
+        super.init(json: json)
     }
     
     // MARK - Serialization
     
-    func encoders() -> [JSON?] {
+    override func encoders() -> [JSON?] {
         return [
             encode("id")(self.repoId),
             encode("name")(self.name),
             encode("description")(self.desc),
             Encoder.encodeURL("html_url")(self.url),
-            encode("owner")(self.owner)
+            encode("owner")(self.owner),
+            Encoder.encodeEnum("language")(self.primaryLanguage)
         ]
     }
     
