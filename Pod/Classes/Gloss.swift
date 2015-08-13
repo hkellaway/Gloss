@@ -49,14 +49,12 @@ public class Glossy: Decodable, Encodable {
     
     public required init(json: JSON) { }
     
-    public func toJSON() -> JSON {
+    public func toJSON() -> JSON? {
         return Gloss.toJSON(self)
     }
     
     public func encoders() -> [JSON?] {
-        
         return []
-        
     }
     
 }
@@ -66,7 +64,7 @@ struct Gloss {
     /**
     JSON representation of model
     */
-    internal static func toJSON<T: Encodable>(model: T) -> JSON {
+    internal static func toJSON<T: Encodable>(model: T) -> JSON? {
         var json: JSON = [:]
         
         for encoder in model.encoders() {
@@ -75,7 +73,7 @@ struct Gloss {
             }
         }
         
-        return json
+        return json.isEmpty ? nil : json
     }
     
 }
