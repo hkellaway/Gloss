@@ -52,7 +52,7 @@ public struct Decoder {
     
     - returns: Function decoding JSON to value type
     */
-    public static func decode<T: Glossy>(key: String) -> JSON -> T? {
+    public static func decode<T: Decodable>(key: String) -> JSON -> T? {
         return {
             json in
             
@@ -86,7 +86,7 @@ public struct Decoder {
     
     - returns: Function decoding JSON to array
     */
-    public static func decodeArray<T: Glossy>(key: String) -> JSON -> [T]? {
+    public static func decodeArray<T: Decodable>(key: String) -> JSON -> [T]? {
         return {
             json in
             
@@ -201,4 +201,4 @@ Note: This is the equivalent to Decoder.decode
 
 - returns: Function encoding URL as JSON
 */
-public  func decode<T: Glossy>(key: String) -> JSON -> T? { return { return Decoder.decode(key)($0) } }
+public  func decode<T: Decodable>(key: String) -> JSON -> T? { return { return Decoder.decode(key)($0) } }

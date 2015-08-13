@@ -60,7 +60,8 @@ class Repo : Glossy {
             encode("name")(self.name),
             encode("description")(self.desc),
             Encoder.encodeURL("html_url")(self.url),
-            encode("owner")(self.owner)
+            encode("owner")(self.owner),
+            Encoder.encodeEnum("language")(self.primaryLanguage)
         ]
     }
     

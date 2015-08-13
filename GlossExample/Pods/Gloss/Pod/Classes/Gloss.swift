@@ -25,7 +25,7 @@
 
 public typealias JSON = [String : AnyObject]
 
-public protocol Glossy {
+public protocol Decodable {
     
     /**
     Designated initializer to create new object
@@ -45,12 +45,26 @@ public protocol Encodable {
     func encoders() -> [JSON?]
 }
 
-public class Gloss {
+public class Glossy: Decodable, Encodable {
+    
+    public required init(json: JSON) { }
+    
+    public func toJSON() -> JSON? {
+        return Gloss.toJSON(self)
+    }
+    
+    public func encoders() -> [JSON?] {
+        return []
+    }
+    
+}
+
+struct Gloss {
     
     /**
     JSON representation of model
     */
-    public static func toJSON<T: Encodable>(model: T) -> JSON {
+    internal static func toJSON<T: Encodable>(model: T) -> JSON? {
         var json: JSON = [:]
         
         for encoder in model.encoders() {
@@ -59,7 +73,7 @@ public class Gloss {
             }
         }
         
-        return json
+        return json.isEmpty ? nil : json
     }
     
 }
