@@ -23,7 +23,11 @@
 // THE SOFTWARE.
 //
 
+// MARK: - Types
+
 public typealias JSON = [String : AnyObject]
+
+// MARK: - Protocols
 
 public protocol Decodable {
     
@@ -41,24 +45,23 @@ public protocol Encodable {
     /**
     Array of encoded values as JSON
     */
-    func encoders() -> [JSON?]
+    func toJSON() -> JSON?
 }
 
-struct Gloss {
+// MARK: - Global functions
+
+/**
+Transforms an array of JSON optionals
+to a single optional JSON dictionary
+*/
+public func jsonify(array: [JSON?]) -> JSON? {
+    var json: JSON = [:]
     
-    /**
-    JSON representation of model
-    */
-    internal static func toJSON<T: Encodable>(model: T) -> JSON? {
-        var json: JSON = [:]
-        
-        for encoder in model.encoders() {
-            if let encoder = encoder {
-                json.add(encoder)
-            }
+    for j in array {
+        if(j != nil) {
+            json.add(j!)
         }
-        
-        return json.isEmpty ? nil : json
     }
     
+    return json.isEmpty ? nil : json
 }
