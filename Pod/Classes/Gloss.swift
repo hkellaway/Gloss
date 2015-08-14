@@ -29,6 +29,15 @@ public typealias JSON = [String : AnyObject]
 
 // MARK: - Protocols
 
+/**
+Convenience protocol for objects that can be
+translated from and to JSON
+*/
+public protocol Glossy: Decodable, Encodable { }
+
+/**
+Enables an object to be decoded from JSON
+*/
 public protocol Decodable {
     
     /**
@@ -40,6 +49,9 @@ public protocol Decodable {
     
 }
 
+/**
+Enables an object to be encoded to JSON
+*/
 public protocol Encodable {
     
     /**
