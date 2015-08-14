@@ -34,10 +34,10 @@ public struct Encoder {
     */
     public static func encode<T>(key: String) -> T? -> JSON? {
         return {
-            model in
+            property in
             
-            if let model = model {
-                return [key : model as! AnyObject]
+            if let property = property as? AnyObject {
+                return [key : property]
             }
             
             return nil
@@ -56,7 +56,7 @@ public struct Encoder {
         return {
             model in
             
-            if let model = model, json = Gloss.toJSON(model) {
+            if let model = model, json = model.toJSON() {
                 return [key : json]
             }
             
@@ -140,28 +140,3 @@ public struct Encoder {
     }
     
 }
-
-// MARK: - Convenience functions
-
-/**
-Convenience function to encode value to JSON
-
-Note: This is the equivalent to Encoder.encode
-
-- parameter key: Key used to create JSON property
-
-- returns: Function encoding value to JSON
-*/
-public func encode<T>(key: String) ->  T? -> JSON? { return { return Encoder.encode(key)($0) } }
-
-/**
-Convenience function to encode value to JSON
-for objects the conform to the Encodable protocol
-
-Note: This is the equivalent to Encoder.encode
-
-- parameter key: Key used to create JSON property
-
-- returns: Function encoding value to JSON
-*/
-public func encode<T: Encodable>(key: String) -> T? -> JSON? { return { return Encoder.encode(key)($0) } }

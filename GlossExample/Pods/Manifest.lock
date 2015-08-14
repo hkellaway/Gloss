@@ -4,17 +4,17 @@ PODS:
   - Gloss/Extensions (0.2.0)
 
 DEPENDENCIES:
-  - Gloss (from `https://github.com/hkellaway/Gloss.git`, tag `0.2.0`)
+  - Gloss (from `https://github.com/hkellaway/Gloss.git`, branch `feature/custom_operator`)
 
 EXTERNAL SOURCES:
   Gloss:
+    :branch: feature/custom_operator
     :git: https://github.com/hkellaway/Gloss.git
-    :tag: 0.2.0
 
 CHECKOUT OPTIONS:
   Gloss:
+    :commit: 1da1d6871ee717bae211f72830cd5aeab1b782de
     :git: https://github.com/hkellaway/Gloss.git
-    :tag: 0.2.0
 
 SPEC CHECKSUMS:
   Gloss: 5c6edef89a05af00da04d0b406304cff0fbaa244

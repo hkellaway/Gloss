@@ -23,57 +23,57 @@
 // THE SOFTWARE.
 //
 
+// MARK: - Types
+
 public typealias JSON = [String : AnyObject]
 
+// MARK: - Protocols
+
+/**
+Convenience protocol for objects that can be
+translated from and to JSON
+*/
+public protocol Glossy: Decodable, Encodable { }
+
+/**
+Enables an object to be decoded from JSON
+*/
 public protocol Decodable {
     
     /**
-    Designated initializer to create new object
-    from JSON representation
+    Returns new instance created from provided JSON
     
     - parameter json: JSON representation of object
     */
-    init(json: JSON)
+    static func fromJSON(json: JSON) -> Self
     
 }
 
+/**
+Enables an object to be encoded to JSON
+*/
 public protocol Encodable {
     
     /**
     Array of encoded values as JSON
     */
-    func encoders() -> [JSON?]
+    func toJSON() -> JSON?
 }
 
-public class Glossy: Decodable, Encodable {
-    
-    public required init(json: JSON) { }
-    
-    public func toJSON() -> JSON? {
-        return Gloss.toJSON(self)
-    }
-    
-    public func encoders() -> [JSON?] {
-        return []
-    }
-    
-}
+// MARK: - Global functions
 
-struct Gloss {
+/**
+Transforms an array of JSON optionals
+to a single optional JSON dictionary
+*/
+public func jsonify(array: [JSON?]) -> JSON? {
+    var json: JSON = [:]
     
-    /**
-    JSON representation of model
-    */
-    internal static func toJSON<T: Encodable>(model: T) -> JSON? {
-        var json: JSON = [:]
-        
-        for encoder in model.encoders() {
-            if let encoder = encoder {
-                json.add(encoder)
-            }
+    for j in array {
+        if(j != nil) {
+            json.add(j!)
         }
-        
-        return json.isEmpty ? nil : json
     }
     
+    return json.isEmpty ? nil : json
 }
