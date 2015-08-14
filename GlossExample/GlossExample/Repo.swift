@@ -25,7 +25,7 @@
 
 import Gloss
 
-class Repo : Glossy {
+struct Repo: Glossy {
     
     let repoId: Int?
     let name: String?
@@ -39,30 +39,29 @@ class Repo : Glossy {
         case ObjectiveC = "Objective-C"
     }
     
-    // MARK: - Deserialization
+    // MARK: - Serialization
     
-    required init(json: JSON) {
-        self.repoId = decode("id")(json)
-        self.name = decode("name")(json)
-        self.desc = decode("description")(json)
-        self.url = Decoder.decodeURL("html_url")(json)
-        self.owner = decode("owner")(json)
-        self.primaryLanguage = Decoder.decodeEnum("language")(json)
-        
-        super.init(json: json)
+    static func fromJSON(json: JSON) -> Repo {
+        return Repo (
+            repoId: "id" <~~ json,
+            name: "name" <~~ json,
+            desc: "description" <~~ json,
+            url: "html_url" <~~ json,
+            owner: "owner" <~~ json,
+            primaryLanguage: "language" <~~ json
+        )
     }
     
-    // MARK - Serialization
+    // MARK: - Serialization
     
-    override func encoders() -> [JSON?] {
-        return [
-            encode("id")(self.repoId),
-            encode("name")(self.name),
-            encode("description")(self.desc),
-            Encoder.encodeURL("html_url")(self.url),
-            encode("owner")(self.owner),
-            Encoder.encodeEnum("language")(self.primaryLanguage)
-        ]
+    func toJSON() -> JSON? {
+        return jsonify([
+            "id" ~~> self.repoId,
+            "name" ~~> self.name,
+            "description" ~~> self.desc,
+            "html_url" ~~> self.url,
+            "owner" ~~> self.owner,
+            "language" ~~> self.primaryLanguage
+            ])
     }
-    
 }

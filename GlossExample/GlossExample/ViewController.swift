@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let json = [
+        let repoJSON = [
             "id" : 40102424,
             "name": "Gloss",
             "description" : "A shiny JSON parsing library in Swift",
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
             "language" : "Swift"
             ]
         
-        let repo = Repo(json: json)
+        let repo = Repo.fromJSON(repoJSON)
         
         print(repo.repoId)
         print(repo.name)
@@ -52,8 +52,7 @@ class ViewController: UIViewController {
         print(repo.primaryLanguage?.rawValue)
         print("")
         
-        print(repo.toJSON())
-        
+        print("JSON: \(repo.toJSON())")
     }
 }
 
