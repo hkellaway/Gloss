@@ -1,5 +1,5 @@
 //
-//  Gloss.swift
+//  Operators.swift
 //  Gloss
 //
 // Copyright (c) 2015 Harlan Kellaway
@@ -23,57 +23,42 @@
 // THE SOFTWARE.
 //
 
-// MARK: - Types
+// MARK: - Operator <~~  (Decode)
 
-public typealias JSON = [String : AnyObject]
+infix operator <~~ { associativity left precedence 150 }
 
-// MARK: - Protocols
-
-/**
-Convenience protocol for objects that can be
-translated from and to JSON
-*/
-public protocol Glossy: Decodable, Encodable { }
-
-/**
-Enables an object to be decoded from JSON
-*/
-public protocol Decodable {
-    
-    /**
-    Returns new instance created from provided JSON
-    
-    - parameter json: JSON representation of object
-    */
-    static func fromJSON(json: JSON) -> Self
-    
+public func <~~ <T>(key: String, json: JSON) -> T? {
+    return Decoder.decode(key)(json)
 }
 
-/**
-Enables an object to be encoded to JSON
-*/
-public protocol Encodable {
-    
-    /**
-    Array of encoded values as JSON
-    */
-    func toJSON() -> JSON?
+public func <~~ <T: Decodable>(key: String, json: JSON) -> T? {
+    return Decoder.decode(key)(json)
 }
 
-// MARK: - Global functions
+public func <~~ <T: RawRepresentable>(key: String, json: JSON) -> T? {
+    return Decoder.decodeEnum(key)(json)
+}
 
-/**
-Transforms an array of JSON optionals
-to a single optional JSON dictionary
-*/
-public func jsonify(array: [JSON?]) -> JSON? {
-    var json: JSON = [:]
-    
-    for j in array {
-        if(j != nil) {
-            json.add(j!)
-        }
-    }
-    
-    return json.isEmpty ? nil : json
+public func <~~ (key: String, json: JSON) -> NSURL? {
+    return Decoder.decodeURL(key)(json)
+}
+
+// MARK: - Operator ~> (Encode)
+
+infix operator ~~> { associativity left precedence 150 }
+
+public func ~~> <T>(key: String, property: T?) -> JSON? {
+    return Encoder.encode(key)(property)
+}
+
+public func ~~> <T: Encodable>(key: String, property: T?) -> JSON? {
+    return Encoder.encode(key)(property)
+}
+
+public func ~~> <T: RawRepresentable>(key: String, property: T?) -> JSON? {
+    return Encoder.encodeEnum(key)(property)
+}
+
+public func ~~> (key: String, property: NSURL?) -> JSON? {
+    return Encoder.encodeURL(key)(property)
 }
