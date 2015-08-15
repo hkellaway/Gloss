@@ -67,6 +67,54 @@ public struct Encoder {
     // MARK: - Custom Encoders
     
     /**
+    Returns function to encode array as JSON
+    
+    - parameter key: Key used to create JSON property
+    
+    - returns: Function encoding array as JSON
+    */
+    public static func encodeArray<T>(key: String) -> [T]? -> JSON? {
+        return {
+            array in
+            
+            if let array = array as? AnyObject {
+                return [key : array]
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
+    Returns function to encode array as JSON
+    for objects the conform to the Encodable protocol
+    
+    - parameter key: Key used to create JSON property
+    
+    - returns: Function encoding array as JSON
+    */
+    public static func encodeArray<T: Encodable>(key: String) -> [T]? -> JSON? {
+        return {
+            array in
+            
+            if let array = array {
+                var encodedArray: [JSON] = []
+                
+                for model in array {
+                    if let json = model.toJSON() {
+                        encodedArray.append(json)
+                    }
+                }
+                
+                return encodedArray.isEmpty ? nil : [key : encodedArray]
+            }
+            
+            return nil
+        }
+    }
+    
+    
+    /**
     Returns function to encode date as JSON
     
     - parameter key:           Key used to create JSON property
