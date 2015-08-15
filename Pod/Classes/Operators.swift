@@ -35,6 +35,14 @@ public func <~~ <T: Decodable>(key: String, json: JSON) -> T? {
     return Decoder.decode(key)(json)
 }
 
+public func <~~ <T>(key: String, json: JSON) -> [ [String : T] ]? {
+    return Decoder.decodeArray(key)(json)
+}
+
+public func <~~ <T: Decodable>(key: String, json: JSON) -> [T]? {
+    return Decoder.decodeArray(key)(json)
+}
+
 public func <~~ <T: RawRepresentable>(key: String, json: JSON) -> T? {
     return Decoder.decodeEnum(key)(json)
 }
@@ -43,7 +51,7 @@ public func <~~ (key: String, json: JSON) -> NSURL? {
     return Decoder.decodeURL(key)(json)
 }
 
-// MARK: - Operator ~> (Encode)
+// MARK: - Operator ~~> (Encode)
 
 infix operator ~~> { associativity left precedence 150 }
 
@@ -53,6 +61,14 @@ public func ~~> <T>(key: String, property: T?) -> JSON? {
 
 public func ~~> <T: Encodable>(key: String, property: T?) -> JSON? {
     return Encoder.encode(key)(property)
+}
+
+public func ~~> <T>(key: String, property: [T]?) -> JSON? {
+    return Encoder.encodeArray(key)(property)
+}
+
+public func ~~> <T: Encodable>(key: String, property: [T]?) -> JSON? {
+    return Encoder.encodeArray(key)(property)
 }
 
 public func ~~> <T: RawRepresentable>(key: String, property: T?) -> JSON? {
