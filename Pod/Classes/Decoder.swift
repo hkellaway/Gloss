@@ -56,8 +56,8 @@ public struct Decoder {
         return {
             json in
             
-            if let value = json[key] as? JSON {
-                return T.fromJSON(value)
+            if let subJSON = json[key] as? JSON {
+                return T.fromJSON(subJSON)
             }
             
             return nil
@@ -75,7 +75,15 @@ public struct Decoder {
     - returns: Function decoding JSON to array
     */
     public static func decodeArray<T>(key: String) -> JSON -> [ [String : T] ]? {
-        return { return $0[key] as? [ [String : T] ] }
+        return {
+            json in
+            
+            if let models = json[key] as? [ [String : T] ] {
+                return models
+            }
+            
+            return nil
+        }
     }
     
     /**
