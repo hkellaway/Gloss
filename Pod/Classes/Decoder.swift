@@ -149,7 +149,8 @@ public struct Decoder {
     
     - returns: Function decoding JSON to ISO8601 date
     */
-    public static func decodeDateISO8601(key: String, dateFormatter: NSDateFormatter) -> JSON -> NSDate? {
+    public static func decodeDateISO8601(key: String) -> JSON -> NSDate? {
+        let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         
