@@ -40,44 +40,14 @@ class DecoderTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let float1: Float = 1.0
-        let float2: Float = 2.0
-        let float3: Float = 3.0
-        let double1: Double = 4.0
-        let double2: Double = 5.0
-        let double3: Double = 6.0
+        let testJSONPath: NSString = NSBundle(forClass: self.dynamicType).pathForResource("TestModel", ofType: "json")!
+        let testJSONData: NSData = NSData(contentsOfFile: testJSONPath as String)!
         
-        testJSON = [
-            "bool" : true,
-            "boolArray" : [true, false, true],
-            "integer" : 1,
-            "integerArray" : [1, 2, 3],
-            "float" : float2,
-            "floatArray" : [float1, float2, float3],
-            "double" : double3,
-            "doubleArray" : [double1, double2, double3],
-            "string" : "abc",
-            "stringArray" : ["def", "ghi", "jkl"],
-            "nestedModel" : [
-                "id" : 123,
-                "name" : "nestedModel1"
-            ],
-            "nestedModelArray" : [
-                [
-                    "id" : 456,
-                    "name" : "nestedModel2"
-                ],
-                [
-                    "id" : 789,
-                    "name" : "nestedModel3"
-                ]
-            ],
-            "enumValue" : "A",
-            "enumValueArray" : ["A", "B", "C"],
-            "date" : "2015-08-08T21:57:13Z",
-            "url" : "http://github.com"
-        ]
-        
+        do {
+            try testJSON = NSJSONSerialization.JSONObjectWithData(testJSONData, options: NSJSONReadingOptions(rawValue: 0)) as? JSON
+        } catch {
+            print(error)
+        }
     }
     
     override func tearDown() {
