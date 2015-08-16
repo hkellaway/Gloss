@@ -28,19 +28,19 @@ import Gloss
 struct TestModel: Glossy {
     
     let bool: Bool?
-    //    let boolArray: [Bool]?
+        let boolArray: [Bool]?
     let integer: Int?
-    //    let integerArray: [Int]?
+        let integerArray: [Int]?
     let float: Float?
-    //    let floatArray: [Float]?
+        let floatArray: [Float]?
     let double: Double?
-    //    let doubleArray: [Double]?
+        let doubleArray: [Double]?
     let string: String?
-    //    let stringArray: [String]?
+        let stringArray: [String]?
     let nestedModel: TestNestedModel?
     let nestedModelArray: [TestNestedModel]?
     let enumValue: EnumValue?
-    //    //    let enumValueArray: [EnumValue]?
+    let enumValueArray: [EnumValue]?
     let date: NSDate?
     let url: NSURL?
     
@@ -54,18 +54,19 @@ struct TestModel: Glossy {
     static func fromJSON(json: JSON) -> TestModel {
         return TestModel(
             bool: "bool" <~~ json,
-            //            boolArray: "boolArray" <~~ json,
+            boolArray: "boolArray" <~~ json,
             integer: "integer" <~~ json,
-            //            integerArray: "integerArray" <~~ json,
+            integerArray: "integerArray" <~~ json,
             float: "float" <~~ json,
-            //            floatArray: "floatArray" <~~ json,
+            floatArray: "floatArray" <~~ json,
             double: "double" <~~ json,
-            //            doubleArray: "doubleArray" <~~ json,
+            doubleArray: "doubleArray" <~~ json,
             string: "string" <~~ json,
-            //            stringArray: "stringArray" <~~ json,
+            stringArray: "stringArray" <~~ json,
             nestedModel: "nestedModel" <~~ json,
             nestedModelArray: "nestedModelArray" <~~ json,
             enumValue: "enum" <~~ json,
+            enumValueArray: "enumValueArray" <~~ json,
             date: Decoder.decodeDate("date", dateFormatter: TestModel.dateFormatter)(json),
             url: "url" <~~ json
         )
@@ -76,19 +77,19 @@ struct TestModel: Glossy {
     func toJSON() -> JSON? {
         return jsonify([
             "bool" ~~> self.bool,
-            //            "boolArray" ~~> self.boolArray,
+            "boolArray" ~~> self.boolArray,
             "integer" ~~> self.integer,
-            //            "integerArray" ~~> self.integerArray,
+            "integerArray" ~~> self.integerArray,
             "float" ~~> self.float,
-            //            "floatArray" ~~> self.floatArray,
+            "floatArray" ~~> self.floatArray,
             "double" ~~> self.double,
-            //            "doubleArray" ~~> self.doubleArray,
+            "doubleArray" ~~> self.doubleArray,
             "string" ~~> self.string,
-            //            "stringArray" ~~> self.stringArray,
+            "stringArray" ~~> self.stringArray,
             "nestedModel" ~~> self.nestedModel,
             "nestedModelArray" ~~> self.nestedModelArray,
             "enumValue" ~~> self.enumValue,
-            //            //            enumValueArray: "enumValueArray" <~~ json,
+            "enumValueArray" ~~> self.enumValueArray,
             Encoder.encodeDate("date", dateFormatter: TestModel.dateFormatter)(self.date),
             "url" ~~> self.url
             ])

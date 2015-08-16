@@ -49,10 +49,15 @@ class DecoderTests: XCTestCase {
         
         testJSON = [
             "bool" : true,
+            "boolArray" : [true, false, true],
             "integer" : 1,
+            "integerArray" : [1, 2, 3],
             "float" : float2,
+            "floatArray" : [float1, float2, float3],
             "double" : double3,
+            "doubleArray" : [double1, double2, double3],
             "string" : "abc",
+            "stringArray" : ["def", "ghi", "jkl"],
             "nestedModel" : [
                 "id" : 123,
                 "name" : "nestedModel1"
@@ -68,6 +73,7 @@ class DecoderTests: XCTestCase {
                 ]
             ],
             "enumValue" : "A",
+            "enumValueArray" : ["A", "B", "C"],
             "date" : "2015-08-08T21:57:13Z",
             "url" : "http://github.com"
         ]
@@ -86,10 +92,32 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((result == true), "Decode Bool should return correct value")
     }
     
+    func testDecodeBoolArray() {
+        let result: [Bool]? = Decoder.decode("boolArray")(testJSON!)
+        let element1: Bool = result![0]
+        let element2: Bool = result![1]
+        let element3: Bool = result![2]
+        
+        XCTAssertTrue((element1 == true), "Decode Bool array should return correct value")
+        XCTAssertTrue((element2 == false), "Decode Bool array should return correct value")
+        XCTAssertTrue((element3 == true), "Decode Bool array should return correct value")
+    }
+    
     func testDecodeInt() {
         let result: Int? = Decoder.decode("integer")(testJSON!)
         
         XCTAssertTrue((result == 1), "Decode Int should return correct value")
+    }
+    
+    func testDecodeIntArray() {
+        let result: [Int]? = Decoder.decode("integerArray")(testJSON!)
+        let element1: Int = result![0]
+        let element2: Int = result![1]
+        let element3: Int = result![2]
+        
+        XCTAssertTrue((element1 == 1), "Decode Int array should return correct value")
+        XCTAssertTrue((element2 == 2), "Decode Int array should return correct value")
+        XCTAssertTrue((element3 == 3), "Decode Int array should return correct value")
     }
     
     func testDecodeFloat() {
@@ -98,16 +126,49 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((result == 2.0), "Decode Float should return correct value")
     }
     
+    func testDecodeFloatArray() {
+        let result: [Float]? = Decoder.decode("floatArray")(testJSON!)
+        let element1: Float = result![0]
+        let element2: Float = result![1]
+        let element3: Float = result![2]
+        
+        XCTAssertTrue((element1 == 1.0), "Decode Float array should return correct value")
+        XCTAssertTrue((element2 == 2.0), "Decode Float array should return correct value")
+        XCTAssertTrue((element3 == 3.0), "Decode Float array should return correct value")
+    }
+    
     func testDecodeDouble() {
         let result: Double? = Decoder.decode("double")(testJSON!)
         
         XCTAssertTrue((result == 6.0), "Decode Double should return correct value")
     }
     
+    func testDecodeDoubleArray() {
+        let result: [Double]? = Decoder.decode("doubleArray")(testJSON!)
+        let element1: Double = result![0]
+        let element2: Double = result![1]
+        let element3: Double = result![2]
+        
+        XCTAssertTrue((element1 == 4.0), "Decode Double array should return correct value")
+        XCTAssertTrue((element2 == 5.0), "Decode Double array should return correct value")
+        XCTAssertTrue((element3 == 6.0), "Decode Double array should return correct value")
+    }
+    
     func testDecodeString() {
         let result: String? = Decoder.decode("string")(testJSON!)
         
         XCTAssertTrue((result == "abc"), "Decode String should return correct value")
+    }
+    
+    func testDecodeStringArray() {
+        let result: [String]? = Decoder.decode("stringArray")(testJSON!)
+        let element1: String = result![0]
+        let element2: String = result![1]
+        let element3: String = result![2]
+        
+        XCTAssertTrue((element1 == "def"), "Decode String array should return correct value")
+        XCTAssertTrue((element2 == "ghi"), "Decode String array should return correct value")
+        XCTAssertTrue((element3 == "jkl"), "Decode String array should return correct value")
     }
     
     func testDecodeNestedModel() {
@@ -119,19 +180,30 @@ class DecoderTests: XCTestCase {
     
     func testDecodeNestedModelArray() {
         let result: [TestNestedModel]? = Decoder.decodeArray("nestedModelArray")(testJSON!)
-        let model1: TestNestedModel = result![0]
-        let model2: TestNestedModel = result![1]
+        let element1: TestNestedModel = result![0]
+        let element2: TestNestedModel = result![1]
 
-        XCTAssertTrue((model1.id == 456), "Decode nested model array should return correct value")
-        XCTAssertTrue((model1.name == "nestedModel2"), "Decode nested model array should return correct value")
-        XCTAssertTrue((model2.id == 789), "Decode nested model array should return correct value")
-        XCTAssertTrue((model2.name == "nestedModel3"), "Decode nested model array should return correct value")
+        XCTAssertTrue((element1.id == 456), "Decode nested model array should return correct value")
+        XCTAssertTrue((element1.name == "nestedModel2"), "Decode nested model array should return correct value")
+        XCTAssertTrue((element2.id == 789), "Decode nested model array should return correct value")
+        XCTAssertTrue((element2.name == "nestedModel3"), "Decode nested model array should return correct value")
     }
     
     func testDecodeEnumValue() {
         let result: TestEnumValue? = Decoder.decodeEnum("enumValue")(testJSON!)
         
-        XCTAssertTrue((result?.rawValue == "A"), "Decode enum value should return correct value")
+        XCTAssertTrue((result == TestEnumValue.A), "Decode enum value should return correct value")
+    }
+    
+    func testDecodeEnumArray() {
+        let result: [TestEnumValue]? = Decoder.decodeArray("enumValueArray")(testJSON!)
+        let element1: TestEnumValue = result![0]
+        let element2: TestEnumValue = result![1]
+        let element3: TestEnumValue = result![2]
+        
+        XCTAssertTrue((element1 == TestEnumValue.A), "Decode enum value array should return correct value")
+        XCTAssertTrue((element2 == TestEnumValue.B), "Decode enum value array should return correct value")
+        XCTAssertTrue((element3 == TestEnumValue.C), "Decode enum value array should return correct value")
     }
     
     func testDecodeDate() {
