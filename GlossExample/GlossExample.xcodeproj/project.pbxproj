@@ -144,12 +144,10 @@
 			isa = PBXGroup;
 			children = (
 				DC935A411B8143900047FCA3 /* Extensions */,
+				DC935A441B8148690047FCA3 /* Test Models */,
 				DC9E42D41B8066D600D1792A /* DecoderTests.swift */,
 				DC935A3D1B813CA30047FCA3 /* EncoderTests.swift */,
 				DC935A3F1B813FF30047FCA3 /* GlossTests.swift */,
-				DC935A391B811A1F0047FCA3 /* TestModel.json */,
-				DCEA3C1F1B80FD960022F666 /* TestModel.swift */,
-				DCEA3C211B80FDE60022F666 /* TestNestedModel.swift */,
 				DC08B5AD1B76B3ED0098D6C8 /* Products */,
 				DC08B5C51B76B3ED0098D6C8 /* Supporting Files */,
 			);
@@ -178,6 +176,16 @@
 				DC935A421B81439D0047FCA3 /* DictionaryTests.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		DC935A441B8148690047FCA3 /* Test Models */ = {
+			isa = PBXGroup;
+			children = (
+				DC935A391B811A1F0047FCA3 /* TestModel.json */,
+				DCEA3C1F1B80FD960022F666 /* TestModel.swift */,
+				DCEA3C211B80FDE60022F666 /* TestNestedModel.swift */,
+			);
+			name = "Test Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
