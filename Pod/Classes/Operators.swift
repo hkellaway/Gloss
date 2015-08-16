@@ -67,6 +67,10 @@ public func ~~> <T>(key: String, property: [T]?) -> JSON? {
     return Encoder.encodeArray(key)(property)
 }
 
+public func ~~> <T: RawRepresentable>(key: String, property: [T]?) -> JSON? {
+    return Encoder.encodeArray(key)(property)
+}
+
 public func ~~> <T: Encodable>(key: String, property: [T]?) -> JSON? {
     return Encoder.encodeArray(key)(property)
 }
