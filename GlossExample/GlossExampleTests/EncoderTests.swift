@@ -1,0 +1,176 @@
+//
+//  EncoderTests.swift
+//  GlossExample
+//
+// Copyright (c) 2015 Harlan Kellaway
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+//
+
+import Gloss
+import UIKit
+import XCTest
+
+class EncoderTests: XCTestCase {
+    
+    var testNestedModel1: TestNestedModel? = nil
+    var testNestedModel2: TestNestedModel? = nil
+    
+    override func setUp() {
+        super.setUp()
+        
+        testNestedModel1 = TestNestedModel(id: 1, name: "nestedModel1")
+        testNestedModel2 = TestNestedModel(id: 2, name: "nestedModel2")
+    }
+    
+    override func tearDown() {
+        testNestedModel1 = nil
+        testNestedModel2 = nil
+        
+        super.tearDown()
+    }
+    
+    func testInvalidValue() {
+        let notAnyObject: NSURL? = NSURL()
+        let result: JSON? = Encoder.encode("invalid")(notAnyObject)
+        
+        XCTAssertTrue((result == nil), "Encode should return nil for invalid value");
+    }
+    
+    func testEncodeBool() {
+        let bool: Bool? = true
+        let result: JSON? = Encoder.encode("bool")(bool)
+        
+        XCTAssertTrue((result!["bool"] as! Bool == true), "Encode Bool should return correct value")
+    }
+    
+    func testEncodeBoolArray() {
+        let boolArray: [Bool]? = [true, false, true]
+        let result: JSON? = Encoder.encode("boolArray")(boolArray)
+        
+        XCTAssertTrue((result!["boolArray"] as! [Bool] == [true, false, true]), "Encode Bool array should return correct value")
+    }
+    
+    func testEncodeInt() {
+        let integer: Int? = 1
+        let result: JSON? = Encoder.encode("integer")(integer)
+        
+        XCTAssertTrue((result!["integer"] as! Int == 1), "Encode Int should return correct value")
+    }
+    
+    func testEncodeIntArray() {
+        let integerArray: [Int]? = [1, 2, 3]
+        let result: JSON? = Encoder.encode("integerArray")(integerArray)
+        
+        XCTAssertTrue((result!["integerArray"] as! [Int] == [1, 2, 3]), "Encode Int array should return correct value")
+    }
+
+    func testEncodeFloat() {
+        let float: Float? = 1.0
+        let result: JSON? = Encoder.encode("float")(float)
+        
+        XCTAssertTrue((result!["float"] as! Float == 1.0), "Encode Float should return correct value")
+    }
+    
+    func testEncodeFloatArray() {
+        let floatArray: [Float]? = [1.0, 2.0, 3.0]
+        let result: JSON? = Encoder.encode("floatArray")(floatArray)
+        
+        XCTAssertTrue((result!["floatArray"] as! [Float] == [1.0, 2.0, 3.0]), "Encode Float array should return correct value")
+    }
+    
+    func testEncodeDouble() {
+        let double: Double? = 4.0
+        let result: JSON? = Encoder.encode("double")(double)
+        
+        XCTAssertTrue((result!["double"] as! Double == 4.0), "Encode Double should return correct value")
+    }
+    
+    func testEncodeDoubleArray() {
+        let doubleArray: [Double]? = [4.0, 5.0, 6.0]
+        let result: JSON? = Encoder.encode("doubleArray")(doubleArray)
+        
+        XCTAssertTrue((result!["doubleArray"] as! [Double] == [4.0, 5.0, 6.0]), "Encode Double array should return correct value")
+    }
+
+    func testEncodeString() {
+        let string: String? = "abc"
+        let result: JSON? = Encoder.encode("string")(string)
+        
+        XCTAssertTrue((result!["string"] as! String == "abc"), "Encode String should return correct value")
+    }
+    
+    func testEncodeStringArray() {
+        let stringArray: [String]? = ["def", "ghi", "jkl"]
+        let result: JSON? = Encoder.encode("stringArray")(stringArray)
+        
+        XCTAssertTrue((result!["stringArray"] as! [String] == ["def", "ghi", "jkl"]), "String array should return correct value")
+    }
+    
+    func testEncodeNestedModel() {
+        let result: JSON? = Encoder.encode("nestedModel")(testNestedModel1)
+        let modelJSON: JSON = result!["nestedModel"] as! JSON
+        
+        XCTAssertTrue((modelJSON["id"] as! Int == 1), "Encode nested model should return correct value")
+        XCTAssertTrue((modelJSON["name"] as! String == "nestedModel1"), "Encode nested model should return correct value")
+    }
+    
+    func testEncodeNestedModelArray() {
+        let model1: TestNestedModel = testNestedModel1!
+        let model2: TestNestedModel = testNestedModel2!
+        let result: JSON? = Encoder.encodeArray("nestedModelArray")([model1, model2])
+        let modelsJSON: [JSON] = result!["nestedModelArray"] as! [JSON]
+        let model1JSON: JSON = modelsJSON[0]
+        let model2JSON: JSON = modelsJSON[1]
+        
+        XCTAssertTrue((model1JSON["id"] as! Int == 1), "Encode nested model array should return correct value")
+        XCTAssertTrue((model1JSON["name"] as! String == "nestedModel1"), "Encode nested model array should return correct value")
+        XCTAssertTrue((model2JSON["id"] as! Int == 2), "Encode nested model array should return correct value")
+        XCTAssertTrue((model2JSON["name"] as! String == "nestedModel2"), "Encode nested model array should return correct value")
+    }
+    
+    func testEncodeEnumValue() {
+        let enumValue: TestModel.EnumValue? = TestModel.EnumValue.A
+        let result: JSON? = Encoder.encodeEnum("enumValue")(enumValue)
+        
+        XCTAssertTrue((result!["enumValue"] as! TestModel.EnumValue.RawValue == "A"), "Encode enum value should return correct value")
+    }
+    
+    func testEncodeEnumArray() {
+        let enumArray: [TestModel.EnumValue]? = [TestModel.EnumValue.A, TestModel.EnumValue.B, TestModel.EnumValue.C]
+        let result: JSON? = Encoder.encodeArray("enumValueArray")(enumArray)
+        
+        XCTAssertTrue((result!["enumValueArray"] as! [TestModel.EnumValue.RawValue] == ["A", "B", "C"]), "Encode enum value array should return correct value")
+    }
+    
+    func testEncodeDate() {
+        let date: NSDate? = TestModel.dateFormatter.dateFromString("2015-08-08T21:57:13Z")
+        let result: JSON? = Encoder.encodeDate("date", dateFormatter: TestModel.dateFormatter)(date)
+        
+        XCTAssertTrue(result!["date"] as! String == "2015-08-08T21:57:13Z", "Encode NSDate should return correct value")
+    }
+    
+    func testEncodeURL() {
+        let url: NSURL? = NSURL(string: "http://github.com")
+        let result: JSON? = Encoder.encodeURL("url")(url)
+        
+        XCTAssertTrue(((result!["url"] as! NSURL).absoluteString == "http://github.com"), "Encode NSURL should return correct value")
+    }
+
+}

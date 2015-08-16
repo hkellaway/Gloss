@@ -45,8 +45,9 @@ struct TestModel: Glossy {
     let url: NSURL?
     
     enum EnumValue: String {
-        case Alpha = "Alpha"
-        case Beta = "Beta"
+        case A = "A"
+        case B = "B"
+        case C = "C"
     }
     
     // MARK: - Deserialization

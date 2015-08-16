@@ -30,12 +30,6 @@ import XCTest
 class DecoderTests: XCTestCase {
     
     var testJSON: JSON? = [:]
-    
-    enum TestEnumValue: String {
-        case A = "A"
-        case B = "B"
-        case C = "C"
-    }
 
     override func setUp() {
         super.setUp()
@@ -54,6 +48,16 @@ class DecoderTests: XCTestCase {
         testJSON = nil
         
         super.tearDown()
+    }
+    
+    func testJSONIsNotNil() {
+        XCTAssertTrue((testJSON != nil), "Test JSON should not be nil")
+    }
+    
+    func testInvalidValue() {
+        let result: String? = Decoder.decode("invalid")(testJSON!)
+        
+        XCTAssertTrue((result == nil), "Decode should return nil for invalid value");
     }
     
     func testDecodeBool() {
@@ -160,20 +164,20 @@ class DecoderTests: XCTestCase {
     }
     
     func testDecodeEnumValue() {
-        let result: TestEnumValue? = Decoder.decodeEnum("enumValue")(testJSON!)
+        let result: TestModel.EnumValue? = Decoder.decodeEnum("enumValue")(testJSON!)
         
-        XCTAssertTrue((result == TestEnumValue.A), "Decode enum value should return correct value")
+        XCTAssertTrue((result == TestModel.EnumValue.A), "Decode enum value should return correct value")
     }
     
     func testDecodeEnumArray() {
-        let result: [TestEnumValue]? = Decoder.decodeArray("enumValueArray")(testJSON!)
-        let element1: TestEnumValue = result![0]
-        let element2: TestEnumValue = result![1]
-        let element3: TestEnumValue = result![2]
+        let result: [TestModel.EnumValue]? = Decoder.decodeArray("enumValueArray")(testJSON!)
+        let element1: TestModel.EnumValue = result![0]
+        let element2: TestModel.EnumValue = result![1]
+        let element3: TestModel.EnumValue = result![2]
         
-        XCTAssertTrue((element1 == TestEnumValue.A), "Decode enum value array should return correct value")
-        XCTAssertTrue((element2 == TestEnumValue.B), "Decode enum value array should return correct value")
-        XCTAssertTrue((element3 == TestEnumValue.C), "Decode enum value array should return correct value")
+        XCTAssertTrue((element1 == TestModel.EnumValue.A), "Decode enum value array should return correct value")
+        XCTAssertTrue((element2 == TestModel.EnumValue.B), "Decode enum value array should return correct value")
+        XCTAssertTrue((element3 == TestModel.EnumValue.C), "Decode enum value array should return correct value")
     }
     
     func testDecodeDate() {
@@ -198,12 +202,6 @@ class DecoderTests: XCTestCase {
         let result: NSURL? = Decoder.decodeURL("url")(testJSON!)
         
         XCTAssertTrue((result?.absoluteString == "http://github.com"), "Decode NSURL should return correct value")
-    }
-    
-    func testInvalidValue() {
-        let result: String? = Decoder.decode("invalid")(testJSON!)
-        
-        XCTAssertTrue((result == nil), "Decode should return nil for invalid value");
     }
     
 }
