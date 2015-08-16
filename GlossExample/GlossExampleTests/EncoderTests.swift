@@ -167,8 +167,8 @@ class EncoderTests: XCTestCase {
     }
     
     func testEncodeDateISO8601() {
-        let dateISO8601: NSDate? = TestModel.dateFormatterISO8601.dateFromString("2015-08-08T21:57:13Z")
-        let result: JSON? = Encoder.encodeDateISO8601("dateISO8601", dateFormatter: TestModel.dateFormatterISO8601)(dateISO8601!)
+        let dateISO8601: NSDate? = NSDate(timeIntervalSince1970: 1439071033)
+        let result: JSON? = Encoder.encodeDateISO8601("dateISO8601")(dateISO8601!)
         
         XCTAssertTrue((result!["dateISO8601"] as! String == "2015-08-08T17:57:13-04:00"), "Encode ISO8601 NSDate should return correct value")
     }

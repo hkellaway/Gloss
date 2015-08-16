@@ -201,7 +201,7 @@ class DecoderTests: XCTestCase {
     }
     
     func testDecodeDateISO8601() {
-        let result: NSDate? = Decoder.decodeDateISO8601("dateISO8601", dateFormatter: TestModel.dateFormatterISO8601)(testJSON!)
+        let result: NSDate? = Decoder.decodeDateISO8601("dateISO8601")(testJSON!)
         
         let year: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Year, fromDate: result!).year
         let month: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Month, fromDate: result!).month
