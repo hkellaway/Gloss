@@ -42,6 +42,7 @@ struct TestModel: Glossy {
     let enumValue: EnumValue?
     let enumValueArray: [EnumValue]?
     let date: NSDate?
+    let dateISO8601: NSDate?
     let url: NSURL?
     
     enum EnumValue: String {
@@ -69,6 +70,7 @@ struct TestModel: Glossy {
             enumValue: "enum" <~~ json,
             enumValueArray: "enumValueArray" <~~ json,
             date: Decoder.decodeDate("date", dateFormatter: TestModel.dateFormatter)(json),
+            dateISO8601: Decoder.decodeDateISO8601("dateISO8601", dateFormatter: TestModel.dateFormatterISO8601)(json),
             url: "url" <~~ json
         )
     }
@@ -92,15 +94,23 @@ struct TestModel: Glossy {
             "enumValue" ~~> self.enumValue,
             "enumValueArray" ~~> self.enumValueArray,
             Encoder.encodeDate("date", dateFormatter: TestModel.dateFormatter)(self.date),
+            Encoder.encodeDate("dateISO8601", dateFormatter: TestModel.dateFormatterISO8601)(self.dateISO8601),
             "url" ~~> self.url
             ])
     }
     
     static var dateFormatter: NSDateFormatter = {
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         
         return dateFormatter
         }()
+    
+    static var dateFormatterISO8601: NSDateFormatter {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        
+        return dateFormatter
+    }
     
 }

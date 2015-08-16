@@ -160,17 +160,24 @@ class EncoderTests: XCTestCase {
     }
     
     func testEncodeDate() {
-        let date: NSDate? = TestModel.dateFormatter.dateFromString("2015-08-08T21:57:13Z")
+        let date: NSDate? = TestModel.dateFormatter.dateFromString("2015-08-16T20:51:46.600Z")
         let result: JSON? = Encoder.encodeDate("date", dateFormatter: TestModel.dateFormatter)(date)
         
-        XCTAssertTrue(result!["date"] as! String == "2015-08-08T21:57:13Z", "Encode NSDate should return correct value")
+        XCTAssertTrue(result!["date"] as! String == "2015-08-16T20:51:46.600Z", "Encode NSDate should return correct value")
+    }
+    
+    func testEncodeDateISO8601() {
+        let dateISO8601: NSDate? = TestModel.dateFormatterISO8601.dateFromString("2015-08-08T21:57:13Z")
+        let result: JSON? = Encoder.encodeDateISO8601("dateISO8601", dateFormatter: TestModel.dateFormatterISO8601)(dateISO8601!)
+        
+        XCTAssertTrue((result!["dateISO8601"] as! String == "2015-08-08T17:57:13-04:00"), "Encode ISO8601 NSDate should return correct value")
     }
     
     func testEncodeURL() {
         let url: NSURL? = NSURL(string: "http://github.com")
         let result: JSON? = Encoder.encodeURL("url")(url)
         
-        XCTAssertTrue(((result!["url"] as! NSURL).absoluteString == "http://github.com"), "Encode NSURL should return correct value")
+        XCTAssertTrue((result!["url"] as! String == "http://github.com"), "Encode NSURL should return correct value")
     }
 
 }

@@ -189,11 +189,31 @@ class DecoderTests: XCTestCase {
         let hour: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Hour, fromDate: result!).hour
         let minute: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Minute, fromDate: result!).minute
         let second: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Second, fromDate: result!).second
+        let nanosecond: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Nanosecond, fromDate: result!).nanosecond
+        
+        XCTAssertTrue((year == 2015), "Decode NSDate should return correct value")
+        XCTAssertTrue((month == 8), "Decode NSDate should return correct value")
+        XCTAssertTrue((day == 16), "Decode NSDate should return correct value")
+        XCTAssertTrue((hour == 20), "Decode NSDate should return correct value")
+        XCTAssertTrue((minute == 51), "Decode NSDate should return correct value")
+        XCTAssertTrue((second == 46), "Decode NSDate should return correct value")
+        XCTAssertTrue((nanosecond/1000000 == 599), "Decode NSDate should return correct value")
+    }
+    
+    func testDecodeDateISO8601() {
+        let result: NSDate? = Decoder.decodeDateISO8601("dateISO8601", dateFormatter: TestModel.dateFormatterISO8601)(testJSON!)
+        
+        let year: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Year, fromDate: result!).year
+        let month: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Month, fromDate: result!).month
+        let day: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Day, fromDate: result!).day
+        let hour: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Hour, fromDate: result!).hour
+        let minute: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Minute, fromDate: result!).minute
+        let second: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Second, fromDate: result!).second
         
         XCTAssertTrue((year == 2015), "Decode NSDate should return correct value")
         XCTAssertTrue((month == 8), "Decode NSDate should return correct value")
         XCTAssertTrue((day == 8), "Decode NSDate should return correct value")
-        XCTAssertTrue((hour == 21), "Decode NSDate should return correct value")
+        XCTAssertTrue((hour == 17), "Decode NSDate should return correct value")
         XCTAssertTrue((minute == 57), "Decode NSDate should return correct value")
         XCTAssertTrue((second == 13), "Decode NSDate should return correct value")
     }

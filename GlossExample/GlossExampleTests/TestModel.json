@@ -25,6 +25,7 @@
     ],
     "enumValue" : "A",
     "enumValueArray" : ["A", "B", "C"],
-    "date" : "2015-08-08T21:57:13Z",
+    "date" : "2015-08-16T20:51:46.600Z",
+    "dateISO8601" : "2015-08-08T21:57:13Z",
     "url" : "http://github.com"
 }
