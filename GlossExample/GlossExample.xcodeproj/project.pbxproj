@@ -19,6 +19,7 @@
 		DC935A3E1B813CA30047FCA3 /* EncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC935A3D1B813CA30047FCA3 /* EncoderTests.swift */; };
 		DC935A401B813FF30047FCA3 /* GlossTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC935A3F1B813FF30047FCA3 /* GlossTests.swift */; };
 		DC935A431B81439D0047FCA3 /* DictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC935A421B81439D0047FCA3 /* DictionaryTests.swift */; };
+		DC935A461B8148B90047FCA3 /* OperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC935A451B8148B90047FCA3 /* OperatorTests.swift */; };
 		DC9E42D51B8066D600D1792A /* DecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9E42D41B8066D600D1792A /* DecoderTests.swift */; };
 		DCEA3C201B80FD960022F666 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA3C1F1B80FD960022F666 /* TestModel.swift */; };
 		DCEA3C221B80FDE60022F666 /* TestNestedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA3C211B80FDE60022F666 /* TestNestedModel.swift */; };
@@ -54,6 +55,7 @@
 		DC935A3D1B813CA30047FCA3 /* EncoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncoderTests.swift; sourceTree = "<group>"; };
 		DC935A3F1B813FF30047FCA3 /* GlossTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlossTests.swift; sourceTree = "<group>"; };
 		DC935A421B81439D0047FCA3 /* DictionaryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryTests.swift; sourceTree = "<group>"; };
+		DC935A451B8148B90047FCA3 /* OperatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorTests.swift; sourceTree = "<group>"; };
 		DC9E42D41B8066D600D1792A /* DecoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoderTests.swift; sourceTree = "<group>"; };
 		DCEA3C1F1B80FD960022F666 /* TestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		DCEA3C211B80FDE60022F666 /* TestNestedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNestedModel.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				DC9E42D41B8066D600D1792A /* DecoderTests.swift */,
 				DC935A3D1B813CA30047FCA3 /* EncoderTests.swift */,
 				DC935A3F1B813FF30047FCA3 /* GlossTests.swift */,
+				DC935A451B8148B90047FCA3 /* OperatorTests.swift */,
 				DC08B5AD1B76B3ED0098D6C8 /* Products */,
 				DC08B5C51B76B3ED0098D6C8 /* Supporting Files */,
 			);
@@ -359,6 +362,7 @@
 				DC9E42D51B8066D600D1792A /* DecoderTests.swift in Sources */,
 				DCEA3C221B80FDE60022F666 /* TestNestedModel.swift in Sources */,
 				DC935A401B813FF30047FCA3 /* GlossTests.swift in Sources */,
+				DC935A461B8148B90047FCA3 /* OperatorTests.swift in Sources */,
 				DC935A431B81439D0047FCA3 /* DictionaryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
