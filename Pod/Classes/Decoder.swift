@@ -69,17 +69,26 @@ public struct Decoder {
     
     /**
     Returns function to decode JSON to array
+    of enum values
     
     - parameter key: JSON key used to set value
     
     - returns: Function decoding JSON to array
     */
-    public static func decodeArray<T>(key: String) -> JSON -> [ [String : T] ]? {
+    public static func decodeArray<T: RawRepresentable>(key: String) -> JSON -> [T]? {
         return {
             json in
             
-            if let models = json[key] as? [ [String : T] ] {
-                return models
+            if let rawValues = json[key] as? [T.RawValue] {
+                var enumValues: [T] = []
+                
+                for rawValue in rawValues {
+                    if let enumValue = T(rawValue: rawValue) {
+                        enumValues.append(enumValue)
+                    }
+                }
+                
+                return enumValues
             }
             
             return nil
