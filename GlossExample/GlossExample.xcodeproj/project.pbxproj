@@ -16,6 +16,9 @@
 		DC690D901B7AF1A1001338D0 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC690D8F1B7AF1A1001338D0 /* Repo.swift */; };
 		DC690D921B7AF20D001338D0 /* RepoOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC690D911B7AF20D001338D0 /* RepoOwner.swift */; };
 		DC690D951B7B1339001338D0 /* gloss_logo_tagline.png in Resources */ = {isa = PBXBuildFile; fileRef = DC690D941B7B1339001338D0 /* gloss_logo_tagline.png */; };
+		DC9E42D51B8066D600D1792A /* DecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9E42D41B8066D600D1792A /* DecoderTests.swift */; };
+		DCEA3C201B80FD960022F666 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA3C1F1B80FD960022F666 /* TestModel.swift */; };
+		DCEA3C221B80FDE60022F666 /* TestNestedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA3C211B80FDE60022F666 /* TestNestedModel.swift */; };
 		F0157B7C46CEF886BC8CFC43 /* Pods_GlossExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371978450C13B8BC0B320144 /* Pods_GlossExample.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -45,6 +48,9 @@
 		DC690D8F1B7AF1A1001338D0 /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		DC690D911B7AF20D001338D0 /* RepoOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoOwner.swift; sourceTree = "<group>"; };
 		DC690D941B7B1339001338D0 /* gloss_logo_tagline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gloss_logo_tagline.png; sourceTree = "<group>"; };
+		DC9E42D41B8066D600D1792A /* DecoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoderTests.swift; sourceTree = "<group>"; };
+		DCEA3C1F1B80FD960022F666 /* TestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
+		DCEA3C211B80FDE60022F666 /* TestNestedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNestedModel.swift; sourceTree = "<group>"; };
 		ED8E6DA407D0AE26300C907D /* Pods-GlossExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlossExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-GlossExample/Pods-GlossExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,7 +95,6 @@
 			children = (
 				DC08B5AE1B76B3ED0098D6C8 /* GlossExample */,
 				DC08B5C41B76B3ED0098D6C8 /* GlossExampleTests */,
-				DC08B5AD1B76B3ED0098D6C8 /* Products */,
 				36A8572C924B8EDFB71DDE70 /* Pods */,
 				63509F10EB2766219388D381 /* Frameworks */,
 			);
@@ -102,6 +107,7 @@
 				DC08B5C11B76B3ED0098D6C8 /* GlossExampleTests.xctest */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		DC08B5AE1B76B3ED0098D6C8 /* GlossExample */ = {
@@ -131,7 +137,11 @@
 		DC08B5C41B76B3ED0098D6C8 /* GlossExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				DC9E42D41B8066D600D1792A /* DecoderTests.swift */,
 				DC08B5C71B76B3ED0098D6C8 /* GlossExampleTests.swift */,
+				DCEA3C1F1B80FD960022F666 /* TestModel.swift */,
+				DCEA3C211B80FDE60022F666 /* TestNestedModel.swift */,
+				DC08B5AD1B76B3ED0098D6C8 /* Products */,
 				DC08B5C51B76B3ED0098D6C8 /* Supporting Files */,
 			);
 			path = GlossExampleTests;
@@ -318,6 +328,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCEA3C201B80FD960022F666 /* TestModel.swift in Sources */,
+				DC9E42D51B8066D600D1792A /* DecoderTests.swift in Sources */,
+				DCEA3C221B80FDE60022F666 /* TestNestedModel.swift in Sources */,
 				DC08B5C81B76B3ED0098D6C8 /* GlossExampleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,7 +474,6 @@
 		DC08B5CF1B76B3ED0098D6C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -481,7 +493,6 @@
 		DC08B5D01B76B3ED0098D6C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
