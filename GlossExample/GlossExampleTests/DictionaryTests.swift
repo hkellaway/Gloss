@@ -1,6 +1,6 @@
 //
-//  Dictionary.swift
-//  Gloss
+//  DictionaryTests.swift
+//  GlossExample
 //
 // Copyright (c) 2015 Harlan Kellaway
 //
@@ -23,17 +23,32 @@
 // THE SOFTWARE.
 //
 
-/**
-Adds entries from provided dictionary
+import Gloss
+import UIKit
+import XCTest
 
-- parameter other:    Dictionary to add entries from
-*/
-extension Dictionary {
+class DictionaryTests: XCTestCase {
     
-    public mutating func add(other: Dictionary) -> () {
-        for (key,value) in other {
-            self.updateValue(value, forKey:key)
-        }
+    override func setUp() {
+        super.setUp()
+        
+    }
+    
+    override func tearDown() {
+        
+        super.tearDown()
+    }
+    
+    func testAddCombinesTwoDictionaries() {
+        var jsonDict1: [String : String] = ["a" : "b", "c" : "d"]
+        let jsonDict2: [String : String] = ["e" : "f", "g" : "h"]
+        
+        jsonDict1.add(jsonDict2)
+        
+        XCTAssert((jsonDict1["a"] == "b"), "Dictionary extension add(_:) should combine two dictionaries")
+        XCTAssert((jsonDict1["c"] == "d"), "Dictionary extension add(_:) should combine two dictionaries")
+        XCTAssert((jsonDict1["e"] == "f"), "Dictionary extension add(_:) should combine two dictionaries")
+        XCTAssert((jsonDict1["g"] == "h"), "Dictionary extension add(_:) should combine two dictionaries")
     }
     
 }

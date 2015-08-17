@@ -1,6 +1,6 @@
 //
-//  Dictionary.swift
-//  Gloss
+//  TestNestedModel.swift
+//  GlossExample
 //
 // Copyright (c) 2015 Harlan Kellaway
 //
@@ -23,17 +23,29 @@
 // THE SOFTWARE.
 //
 
-/**
-Adds entries from provided dictionary
+import Gloss
 
-- parameter other:    Dictionary to add entries from
-*/
-extension Dictionary {
+struct TestNestedModel: Glossy {
     
-    public mutating func add(other: Dictionary) -> () {
-        for (key,value) in other {
-            self.updateValue(value, forKey:key)
-        }
+    let id: Int?
+    let name: String?
+    
+    // MARK: - Deserialization
+    
+    static func fromJSON(json: JSON) -> TestNestedModel {
+        return TestNestedModel(
+            id: "id" <~~ json,
+            name: "name" <~~ json
+        )
+    }
+    
+    // MARK: - Serialization
+    
+    func toJSON() -> JSON? {
+        return jsonify([
+            "id" ~~> self.id,
+            "name" ~~> self.name
+            ])
     }
     
 }
