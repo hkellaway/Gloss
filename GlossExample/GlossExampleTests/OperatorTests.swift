@@ -66,38 +66,74 @@ class OperatorTests: XCTestCase {
         XCTAssertTrue((resultInvalid == decoderResultInvalid), "<~~ for invalid value should return same as Decoder.decode")
     }
     
-    func testDecodeOperatorGenericReturnsDecoderDecode() {
+    func testDecodeOperatorGenericReturnsDecoderDecodeForBool() {
         let resultBool: Bool? = "bool" <~~ testJSON!
         let decoderResultBool: Bool? = Decoder.decode("bool")(testJSON!)
+        
+        XCTAssertTrue((resultBool == decoderResultBool), "<~~ for generic value should return same as Decoder.decode for Bool")
+    }
+    
+    func testDecodeOperatorGenericReturnsDecoderDecodeForBoolArray() {
         let resultBoolArray: [Bool]? = "boolArray" <~~ testJSON!
         let decoderResultBoolArray: [Bool]? = Decoder.decode("boolArray")(testJSON!)
+        
+        XCTAssertTrue((resultBoolArray! == decoderResultBoolArray!), "<~~ for generic value should return same as Decoder.decode for Bool array")
+    }
+    
+    func testDecodeOperatorGenericReturnsDecoderDecodeForInt() {
         let resultInt: Int? = "integer" <~~ testJSON!
         let decoderResultInt: Int? = Decoder.decode("integer")(testJSON!)
+        
+        XCTAssertTrue((resultInt == decoderResultInt), "<~~ for generic value should return same as Decoder.decode for Int")
+    }
+    
+    func testDecodeOperatorGenericReturnsDecoderDecodeForIntArray() {
         let resultIntArray: [Int]? = "integerArray" <~~ testJSON!
         let decoderResultIntArray: [Int]? = Decoder.decode("integerArray")(testJSON!)
+        
+        XCTAssertTrue((resultIntArray! == decoderResultIntArray!), "<~~ for generic value should return same as Decoder.decode for Int array")
+    }
+    
+    func testDecodeOperatorGenericReturnsDecoderDecodeForFloat() {
         let resultFloat: Float? = "float" <~~ testJSON!
         let decoderResultFloat: Float? = Decoder.decode("float")(testJSON!)
+        
+        XCTAssertTrue((resultFloat == decoderResultFloat), "<~~ for generic value should return same as Decoder.decode for Float")
+    }
+    
+    func testDecodeOperatorGenericReturnsDecoderDecodeForFloatArray() {
         let resultFloatArray: [Float]? = "floatArray" <~~ testJSON!
         let decoderResultFloatArray: [Float]? = Decoder.decode("floatArray")(testJSON!)
+        
+        XCTAssertTrue((resultFloatArray! == decoderResultFloatArray!), "<~~ for generic value should return same as Decoder.decode for Float array")
+    }
+    
+    func testDecodeOperatorGenericReturnsDecoderDecodeForDouble() {
         let resultDouble: Double? = "double" <~~ testJSON!
         let decoderResultDouble: Double? = Decoder.decode("double")(testJSON!)
+        
+        XCTAssertTrue((resultDouble == decoderResultDouble), "<~~ for generic value should return same as Decoder.decode for Double")
+    }
+    
+    func testDecodeOperatorGenericReturnsDecoderDecodeForDoubleArray() {
         let resultDoubleArray: [Double]? = "doubleArray" <~~ testJSON!
         let decoderResultDoubleArray: [Double]? = Decoder.decode("doubleArray")(testJSON!)
+        
+        XCTAssertTrue((resultDoubleArray! == decoderResultDoubleArray!), "<~~ for generic value should return same as Decoder.decode for Double array")
+    }
+    
+    func testDecodeOperatorGenericReturnsDecoderDecodeForString() {
         let resultString: String? = "string" <~~ testJSON!
         let decoderResultString: String? = Decoder.decode("string")(testJSON!)
+        
+        XCTAssertTrue((resultString == decoderResultString), "<~~ for generic value should return same as Decoder.decode for String")
+    }
+    
+    func testDecodeOperatorGenericReturnsDecoderDecodeForStringArray() {
         let resultStringArray: [String]? = "stringArray" <~~ testJSON!
         let decoderResultStringArray: [String]? = Decoder.decode("stringArray")(testJSON!)
         
-        XCTAssertTrue((resultBool == decoderResultBool), "<~~ for generic value should return same as Decoder.decode")
-        XCTAssertTrue((resultBoolArray! == decoderResultBoolArray!), "<~~ for generic value should return same as Decoder.decode")
-        XCTAssertTrue((resultInt == decoderResultInt), "<~~ for generic value should return same as Decoder.decode")
-        XCTAssertTrue((resultIntArray! == decoderResultIntArray!), "<~~ for generic value should return same as Decoder.decode")
-        XCTAssertTrue((resultFloat == decoderResultFloat), "<~~ for generic value should return same as Decoder.decode")
-        XCTAssertTrue((resultFloatArray! == decoderResultFloatArray!), "<~~ for generic value should return same as Decoder.decode")
-        XCTAssertTrue((resultDouble == decoderResultDouble), "<~~ for generic value should return same as Decoder.decode")
-        XCTAssertTrue((resultDoubleArray! == decoderResultDoubleArray!), "<~~ for generic value should return same as Decoder.decode")
-        XCTAssertTrue((resultString == decoderResultString), "<~~ for generic value should return same as Decoder.decode")
-        XCTAssertTrue((resultStringArray! == decoderResultStringArray!), "<~~ for generic value should return same as Decoder.decode")
+        XCTAssertTrue((resultStringArray! == decoderResultStringArray!), "<~~ for generic value should return same as Decoder.decode for String array")
     }
     
     func testDecodeOperatorDecodableReturnsDecoderDecode() {
