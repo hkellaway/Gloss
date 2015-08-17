@@ -35,7 +35,7 @@ public func <~~ <T: Decodable>(key: String, json: JSON) -> T? {
     return Decoder.decode(key)(json)
 }
 
-public func <~~ <T>(key: String, json: JSON) -> [ [String : T] ]? {
+public func <~~ <T: RawRepresentable>(key: String, json: JSON) -> [T]? {
     return Decoder.decodeArray(key)(json)
 }
 
@@ -64,6 +64,10 @@ public func ~~> <T: Encodable>(key: String, property: T?) -> JSON? {
 }
 
 public func ~~> <T>(key: String, property: [T]?) -> JSON? {
+    return Encoder.encodeArray(key)(property)
+}
+
+public func ~~> <T: RawRepresentable>(key: String, property: [T]?) -> JSON? {
     return Encoder.encodeArray(key)(property)
 }
 

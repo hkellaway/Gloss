@@ -3,7 +3,7 @@ platform :ios, '8.0'
 
 target 'GlossExample' do
 
-pod 'Gloss', :git => 'https://github.com/hkellaway/Gloss.git', :branch => 'feature/custom_operator'
+pod 'Gloss', :git => 'https://github.com/hkellaway/Gloss.git', :branch => 'fix/release_0.3.0'
 
 end
 

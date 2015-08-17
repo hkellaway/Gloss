@@ -87,6 +87,32 @@ public struct Encoder {
     
     /**
     Returns function to encode array as JSON
+    of enum raw values
+    
+    - parameter key: Key used to create JSON property
+    
+    - returns: Function encoding array as JSON
+    */
+    public static func encodeArray<T: RawRepresentable>(key: String) -> [T]? -> JSON? {
+        return {
+            enumValues in
+            
+            if let enumValues = enumValues {
+                var rawValues: [T.RawValue] = []
+                
+                for enumValue in enumValues {
+                    rawValues.append(enumValue.rawValue)
+                }
+                
+                return [key : rawValues as! AnyObject]
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
+    Returns function to encode array as JSON
     for objects the conform to the Encodable protocol
     
     - parameter key: Key used to create JSON property
@@ -142,7 +168,8 @@ public struct Encoder {
     
     - returns: Function encoding ISO8601 date as JSON
     */
-    public static func encodeDateISO8601(key: String, dateFormatter: NSDateFormatter) -> NSDate -> JSON? {
+    public static func encodeDateISO8601(key: String) -> NSDate? -> JSON? {
+        let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         
