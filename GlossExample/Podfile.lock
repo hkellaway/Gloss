@@ -4,16 +4,16 @@ PODS:
   - Gloss/Extensions (0.2.0)
 
 DEPENDENCIES:
-  - Gloss (from `https://github.com/hkellaway/Gloss.git`, branch `fix/release_0.3.0`)
+  - Gloss (from `https://github.com/hkellaway/Gloss.git`, branch `feature/tests`)
 
 EXTERNAL SOURCES:
   Gloss:
-    :branch: fix/release_0.3.0
+    :branch: feature/tests
     :git: https://github.com/hkellaway/Gloss.git
 
 CHECKOUT OPTIONS:
   Gloss:
-    :commit: e4d336ac848d266e75901d2341a40b944e70c635
+    :commit: e0a294ba30bed834cf40f2d93691e770c7b7badb
     :git: https://github.com/hkellaway/Gloss.git
 
 SPEC CHECKSUMS:
