@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Gloss"
-  s.version      = "0.2.0"
+  s.version      = "0.3.0"
   s.summary      = "A shiny JSON parsing library in Swift"
   s.homepage     = "https://github.com/hkellaway/Gloss"
   s.license      = { :type => "MIT", :file => "LICENSE" }
