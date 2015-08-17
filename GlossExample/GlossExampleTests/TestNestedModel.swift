@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TestNestedModel.swift
 //  GlossExample
 //
 // Copyright (c) 2015 Harlan Kellaway
@@ -23,36 +23,29 @@
 // THE SOFTWARE.
 //
 
-import UIKit
+import Gloss
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let repoJSON = [
-            "id" : 40102424,
-            "name": "Gloss",
-            "description" : "A shiny JSON parsing library in Swift",
-            "html_url" : "https://github.com/hkellaway/Gloss",
-            "owner" : [
-                "id" : 5456481,
-                "login" : "hkellaway"
-            ],
-            "language" : "Swift"
-            ]
-        
-        let repo = Repo.fromJSON(repoJSON)
-        
-        print(repo.repoId)
-        print(repo.name)
-        print(repo.desc)
-        print(repo.url)
-        print(repo.owner)
-        print(repo.primaryLanguage?.rawValue)
-        print("")
-        
-        print("JSON: \(repo.toJSON())")
+struct TestNestedModel: Glossy {
+    
+    let id: Int?
+    let name: String?
+    
+    // MARK: - Deserialization
+    
+    static func fromJSON(json: JSON) -> TestNestedModel {
+        return TestNestedModel(
+            id: "id" <~~ json,
+            name: "name" <~~ json
+        )
     }
+    
+    // MARK: - Serialization
+    
+    func toJSON() -> JSON? {
+        return jsonify([
+            "id" ~~> self.id,
+            "name" ~~> self.name
+            ])
+    }
+    
 }
-

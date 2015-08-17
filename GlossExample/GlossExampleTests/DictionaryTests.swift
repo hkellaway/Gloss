@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  DictionaryTests.swift
 //  GlossExample
 //
 // Copyright (c) 2015 Harlan Kellaway
@@ -23,36 +23,32 @@
 // THE SOFTWARE.
 //
 
+import Gloss
 import UIKit
+import XCTest
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+class DictionaryTests: XCTestCase {
+    
+    override func setUp() {
+        super.setUp()
         
-        let repoJSON = [
-            "id" : 40102424,
-            "name": "Gloss",
-            "description" : "A shiny JSON parsing library in Swift",
-            "html_url" : "https://github.com/hkellaway/Gloss",
-            "owner" : [
-                "id" : 5456481,
-                "login" : "hkellaway"
-            ],
-            "language" : "Swift"
-            ]
-        
-        let repo = Repo.fromJSON(repoJSON)
-        
-        print(repo.repoId)
-        print(repo.name)
-        print(repo.desc)
-        print(repo.url)
-        print(repo.owner)
-        print(repo.primaryLanguage?.rawValue)
-        print("")
-        
-        print("JSON: \(repo.toJSON())")
     }
+    
+    override func tearDown() {
+        
+        super.tearDown()
+    }
+    
+    func testAddCombinesTwoDictionaries() {
+        var jsonDict1: [String : String] = ["a" : "b", "c" : "d"]
+        let jsonDict2: [String : String] = ["e" : "f", "g" : "h"]
+        
+        jsonDict1.add(jsonDict2)
+        
+        XCTAssert((jsonDict1["a"] == "b"), "Dictionary extension add(_:) should combine two dictionaries")
+        XCTAssert((jsonDict1["c"] == "d"), "Dictionary extension add(_:) should combine two dictionaries")
+        XCTAssert((jsonDict1["e"] == "f"), "Dictionary extension add(_:) should combine two dictionaries")
+        XCTAssert((jsonDict1["g"] == "h"), "Dictionary extension add(_:) should combine two dictionaries")
+    }
+    
 }
-
