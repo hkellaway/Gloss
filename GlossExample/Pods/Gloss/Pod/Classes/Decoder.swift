@@ -56,8 +56,8 @@ public struct Decoder {
         return {
             json in
             
-            if let value = json[key] as? JSON {
-                return T.fromJSON(value)
+            if let subJSON = json[key] as? JSON {
+                return T.fromJSON(subJSON)
             }
             
             return nil
@@ -69,13 +69,30 @@ public struct Decoder {
     
     /**
     Returns function to decode JSON to array
+    of enum values
     
     - parameter key: JSON key used to set value
     
     - returns: Function decoding JSON to array
     */
-    public static func decodeArray<T>(key: String) -> JSON -> [ [String : T] ]? {
-        return { return $0[key] as? [ [String : T] ] }
+    public static func decodeArray<T: RawRepresentable>(key: String) -> JSON -> [T]? {
+        return {
+            json in
+            
+            if let rawValues = json[key] as? [T.RawValue] {
+                var enumValues: [T] = []
+                
+                for rawValue in rawValues {
+                    if let enumValue = T(rawValue: rawValue) {
+                        enumValues.append(enumValue)
+                    }
+                }
+                
+                return enumValues
+            }
+            
+            return nil
+        }
     }
     
     /**
@@ -132,7 +149,8 @@ public struct Decoder {
     
     - returns: Function decoding JSON to ISO8601 date
     */
-    public static func decodeDateISO8601(key: String, dateFormatter: NSDateFormatter) -> JSON -> NSDate? {
+    public static func decodeDateISO8601(key: String) -> JSON -> NSDate? {
+        let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         
