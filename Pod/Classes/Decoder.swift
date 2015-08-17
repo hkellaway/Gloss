@@ -23,6 +23,9 @@
 // THE SOFTWARE.
 //
 
+/**
+Set of functions used to decode JSON to objects
+*/
 public struct Decoder {
     
     /**

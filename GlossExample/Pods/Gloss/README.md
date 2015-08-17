@@ -366,6 +366,8 @@ The particular word "gloss" was chosen as it evokes both being lightweight and a
 
 Gloss was created by [Harlan Kellaway](http://harlankellaway.com).
 
+ Inspiration was gathered from other great JSON parsing libraries like [Argo](https://github.com/thoughtbot/Argo). Read more about why Gloss was made [here](http://harlankellaway.com/blog/2015/08/16/introducing-gloss-json-parsing-swift/).
+
 ## License
 
 Gloss is available under the MIT license. See the [LICENSE](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE) file for more info.

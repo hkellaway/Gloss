@@ -23,6 +23,9 @@
 // THE SOFTWARE.
 //
 
+/**
+Set of functions used to encode values to JSON
+*/
 public struct Encoder {
     
     /**
