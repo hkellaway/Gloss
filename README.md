@@ -1,11 +1,6 @@
 ![Gloss](http://hkellaway.github.io/Gloss/images/gloss_logo_tagline.png)
 
-![Swift](https://img.shields.io/badge/language-swift-orange.svg)
-[![CocoaPods](https://img.shields.io/cocoapods/v/Gloss.svg)](http://cocoapods.org/pods/Gloss)
-[![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE)
-[![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss)
-
-## Features :sparkles:
+## Features :sparkles: ![Swift](https://img.shields.io/badge/language-swift-orange.svg) [![CocoaPods](https://img.shields.io/cocoapods/v/Gloss.svg)](http://cocoapods.org/pods/Gloss) [![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE) [![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss)
 
 * Mapping JSON to objects
 * Mapping objects to JSON
@@ -141,7 +136,7 @@ Next, how would we allow models to be translated _to_ JSON? Let's take a look ag
 ``` swift
 import Gloss
 
-class RepoOwner: Glossy {
+struct RepoOwner: Glossy {
     
     let ownerId: Int?
     let username: String?
@@ -207,7 +202,7 @@ Let's imagine the `username` property on our `RepoOwner` model was to be an uppe
 ``` swift
 import Gloss
 
-class RepoOwner: Decodable {
+struct RepoOwner: Decodable {
     
     let ownerId: Int?
     let username: String?
@@ -256,7 +251,7 @@ Let's imagine the `username` property on our `RepoOwner` model was to be a lower
 ``` swift
 import Gloss
 
-class RepoOwner: Glossy {
+struct RepoOwner: Glossy {
     
     let ownerId: Int?
     let username: String?
@@ -331,7 +326,7 @@ The `~~>` operator is simply syntactic sugar for a set of `Encoder.encode` funct
 
 * Simple types (`Encoder.encode`)
 * `Encodable` models (`Encoder.encode`)
-* Simple arrays (`Encoder.encodeArray`)
+* Simple arrays (`Encoder.encode`)
 * Arrays of `Encodable` models (`Encoder.encodeArray`)
 * Enum types (`Encoder.encodeEnum`)
 * Enum arrays (`Encoder.encodeArray`)
