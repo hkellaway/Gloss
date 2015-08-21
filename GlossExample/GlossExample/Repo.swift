@@ -27,11 +27,11 @@ import Gloss
 
 struct Repo: Glossy {
     
-    let repoId: Int?
+    let repoId: Int
     let name: String?
-    let desc: String?
+    let desc: String
     let url: NSURL?
-    let owner: RepoOwner?
+    let owner: RepoOwner
     let primaryLanguage: Language?
     
     enum Language: String {
@@ -43,11 +43,11 @@ struct Repo: Glossy {
     
     static func fromJSON(json: JSON) -> Repo {
         return Repo (
-            repoId: "id" <~~ json,
+            repoId: "id" <~~! json,
             name: "name" <~~ json,
-            desc: "description" <~~ json,
+            desc: "description" <~~! json,
             url: "html_url" <~~ json,
-            owner: "owner" <~~ json,
+            owner: "owner" <~~! json,
             primaryLanguage: "language" <~~ json
         )
     }

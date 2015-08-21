@@ -4,19 +4,19 @@ PODS:
   - Gloss/Extensions (0.3.1)
 
 DEPENDENCIES:
-  - Gloss (from `https://github.com/hkellaway/Gloss.git`, tag `0.3.1`)
+  - Gloss (from `https://github.com/hkellaway/Gloss.git`, branch `feature/nonoptional_properties`)
 
 EXTERNAL SOURCES:
   Gloss:
+    :branch: feature/nonoptional_properties
     :git: https://github.com/hkellaway/Gloss.git
-    :tag: 0.3.1
 
 CHECKOUT OPTIONS:
   Gloss:
+    :commit: e829333d6f9ff50fa98337ef60cf08a90dd4851d
     :git: https://github.com/hkellaway/Gloss.git
-    :tag: 0.3.1
 
 SPEC CHECKSUMS:
   Gloss: 4393347bea46ac05f2516179da5eb895b485d7d5
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.37.2

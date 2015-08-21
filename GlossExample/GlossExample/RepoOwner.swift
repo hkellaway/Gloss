@@ -27,14 +27,14 @@ import Gloss
 
 struct RepoOwner: Glossy {
     
-    let ownerId: Int?
+    let ownerId: Int
     let username: String?
     
     // MARK: - Deserialization
     
     static func fromJSON(json: JSON) -> RepoOwner {
         return RepoOwner(
-            ownerId: "id" <~~ json,
+            ownerId: "id" <~~! json,
             username: "login" <~~ json
         )
     }
