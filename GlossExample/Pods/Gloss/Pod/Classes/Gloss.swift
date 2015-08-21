@@ -45,8 +45,8 @@ public protocol Decodable {
     
     - parameter json: JSON representation of object
     */
-    init(json: JSON)
-    
+    init?(json: JSON)
+
 }
 
 /**

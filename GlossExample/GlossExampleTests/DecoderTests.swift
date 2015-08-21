@@ -30,6 +30,17 @@ import XCTest
 class DecoderTests: XCTestCase {
     
     var testJSON: JSON? = [:]
+    
+    let validJSON: JSON = [
+        "identifier": "unique",
+        "value" : 99999,
+    ]
+    
+    let invalidJSON: JSON = [
+        "asdf": "dsafhkjdaf",
+        "asjdkfhl": 203183492749,
+        "asdfjhkhfsldjghi": 0.12390
+    ]
 
     override func setUp() {
         super.setUp()
@@ -48,6 +59,16 @@ class DecoderTests: XCTestCase {
         testJSON = nil
         
         super.tearDown()
+    }
+    
+    func testSerializingObjectsCanFai() {
+        let maybeModel = FailableModel(json: invalidJSON)
+        XCTAssertTrue(maybeModel == nil, "Expected initialization with bad data to fail, instead got \(maybeModel)")
+    }
+    
+    func testSerializingFailableObjectsCanSucceed() {
+        let maybeModel = FailableModel(json: validJSON)
+        XCTAssertTrue(maybeModel != nil, "Expected initialization with valid data to succeed, instead got \(maybeModel)")
     }
     
     func testJSONIsNotNil() {
@@ -204,7 +225,7 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((year == 2015), "Decode NSDate should return correct value")
         XCTAssertTrue((month == 8), "Decode NSDate should return correct value")
         XCTAssertTrue((day == 8), "Decode NSDate should return correct value")
-        XCTAssertTrue((hour == 17), "Decode NSDate should return correct value")
+        XCTAssertTrue((hour == 14), "Decode NSDate should return correct value")
         XCTAssertTrue((minute == 57), "Decode NSDate should return correct value")
         XCTAssertTrue((second == 13), "Decode NSDate should return correct value")
     }
@@ -368,7 +389,7 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((year == 2015), "Decode NSDate should return correct value")
         XCTAssertTrue((month == 8), "Decode NSDate should return correct value")
         XCTAssertTrue((day == 8), "Decode NSDate should return correct value")
-        XCTAssertTrue((hour == 17), "Decode NSDate should return correct value")
+        XCTAssertTrue((hour == 14), "Decode NSDate should return correct value")
         XCTAssertTrue((minute == 57), "Decode NSDate should return correct value")
         XCTAssertTrue((second == 13), "Decode NSDate should return correct value")
     }

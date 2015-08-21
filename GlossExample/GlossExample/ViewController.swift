@@ -44,15 +44,15 @@ class ViewController: UIViewController {
         
         let repo = Repo(json: repoJSON)
         
-        print(repo.repoId)
-        print(repo.name)
-        print(repo.desc)
-        print(repo.url)
-        print(repo.owner)
-        print(repo.primaryLanguage?.rawValue)
+        print(repo?.repoId)
+        print(repo?.name)
+        print(repo?.desc)
+        print(repo?.url)
+        print(repo?.owner)
+        print(repo?.primaryLanguage?.rawValue)
         print("")
         
-        print("JSON: \(repo.toJSON())")
+        print("JSON: \(repo?.toJSON())")
     }
 }
 
