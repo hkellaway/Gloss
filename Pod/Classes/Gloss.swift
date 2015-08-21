@@ -45,7 +45,7 @@ public protocol Decodable {
     
     - parameter json: JSON representation of object
     */
-    static func fromJSON(json: JSON) -> Self
+    init(json: JSON)
     
 }
 

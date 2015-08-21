@@ -39,17 +39,15 @@ struct Repo: Glossy {
         case ObjectiveC = "Objective-C"
     }
     
-    // MARK: - Serialization
+    // MARK: - Deserialization
     
-    static func fromJSON(json: JSON) -> Repo {
-        return Repo (
-            repoId: "id" <~~! json,
-            name: "name" <~~ json,
-            desc: "description" <~~! json,
-            url: "html_url" <~~ json,
-            owner: "owner" <~~! json,
-            primaryLanguage: "language" <~~ json
-        )
+    init(json: JSON) {
+        self.repoId = "id" <~~! json
+        self.name = "name" <~~ json
+        self.desc = "description" <~~! json
+        self.url = "html_url" <~~ json
+        self.owner = "owner" <~~! json
+        self.primaryLanguage = "language" <~~ json
     }
     
     // MARK: - Serialization
