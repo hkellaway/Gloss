@@ -28,15 +28,15 @@ import Gloss
 struct TestModel: Glossy {
     
     let bool: Bool?
-        let boolArray: [Bool]?
+    let boolArray: [Bool]?
     let integer: Int?
-        let integerArray: [Int]?
+    let integerArray: [Int]?
     let float: Float?
-        let floatArray: [Float]?
+    let floatArray: [Float]?
     let double: Double?
-        let doubleArray: [Double]?
+    let doubleArray: [Double]?
     let string: String?
-        let stringArray: [String]?
+    let stringArray: [String]?
     let nestedModel: TestNestedModel?
     let nestedModelArray: [TestNestedModel]?
     let enumValue: EnumValue?
@@ -66,7 +66,7 @@ struct TestModel: Glossy {
         self.stringArray = "stringArray" <~~ json
         self.nestedModel = "nestedModel" <~~ json
         self.nestedModelArray = "nestedModelArray" <~~ json
-        self.enumValue = "enum" <~~ json
+        self.enumValue = "enumValue" <~~ json
         self.enumValueArray = "enumValueArray" <~~ json
         self.date = Decoder.decodeDate("date", dateFormatter: TestModel.dateFormatter)(json)
         self.dateISO8601 = Decoder.decodeDateISO8601("dateISO8601")(json)
