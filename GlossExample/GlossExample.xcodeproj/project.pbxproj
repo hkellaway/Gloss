@@ -25,6 +25,7 @@
 		DCEA3C221B80FDE60022F666 /* TestNestedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA3C211B80FDE60022F666 /* TestNestedModel.swift */; };
 		DCF891401B86AF6B00888FB1 /* Pods_GlossExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF8913F1B86AF6B00888FB1 /* Pods_GlossExample.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DCF891421B87488200888FB1 /* FlowObjectCreationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF891411B87488200888FB1 /* FlowObjectCreationTests.swift */; };
+		DCF891441B8749CE00888FB1 /* FlowObjectToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF891431B8749CE00888FB1 /* FlowObjectToJSON.swift */; };
 		F0157B7C46CEF886BC8CFC43 /* Pods_GlossExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371978450C13B8BC0B320144 /* Pods_GlossExample.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		DCEA3C211B80FDE60022F666 /* TestNestedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNestedModel.swift; sourceTree = "<group>"; };
 		DCF8913F1B86AF6B00888FB1 /* Pods_GlossExample.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_GlossExample.framework; path = "Pods/../build/Debug-iphoneos/Pods_GlossExample.framework"; sourceTree = "<group>"; };
 		DCF891411B87488200888FB1 /* FlowObjectCreationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowObjectCreationTests.swift; sourceTree = "<group>"; };
+		DCF891431B8749CE00888FB1 /* FlowObjectToJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowObjectToJSON.swift; sourceTree = "<group>"; };
 		ED8E6DA407D0AE26300C907D /* Pods-GlossExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlossExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-GlossExample/Pods-GlossExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +160,7 @@
 				DC935A3F1B813FF30047FCA3 /* GlossTests.swift */,
 				DC935A451B8148B90047FCA3 /* OperatorTests.swift */,
 				DCF891411B87488200888FB1 /* FlowObjectCreationTests.swift */,
+				DCF891431B8749CE00888FB1 /* FlowObjectToJSON.swift */,
 				DC08B5AD1B76B3ED0098D6C8 /* Products */,
 				DC08B5C51B76B3ED0098D6C8 /* Supporting Files */,
 			);
@@ -372,6 +375,7 @@
 				DC935A461B8148B90047FCA3 /* OperatorTests.swift in Sources */,
 				DC935A431B81439D0047FCA3 /* DictionaryTests.swift in Sources */,
 				DCF891421B87488200888FB1 /* FlowObjectCreationTests.swift in Sources */,
+				DCF891441B8749CE00888FB1 /* FlowObjectToJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

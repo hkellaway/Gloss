@@ -28,15 +28,15 @@ import Gloss
 struct TestModel: Glossy {
     
     let bool: Bool?
-        let boolArray: [Bool]?
+    let boolArray: [Bool]?
     let integer: Int?
-        let integerArray: [Int]?
+    let integerArray: [Int]?
     let float: Float?
-        let floatArray: [Float]?
+    let floatArray: [Float]?
     let double: Double?
-        let doubleArray: [Double]?
+    let doubleArray: [Double]?
     let string: String?
-        let stringArray: [String]?
+    let stringArray: [String]?
     let nestedModel: TestNestedModel?
     let nestedModelArray: [TestNestedModel]?
     let enumValue: EnumValue?
