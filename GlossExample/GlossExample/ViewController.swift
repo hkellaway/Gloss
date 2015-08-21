@@ -42,7 +42,7 @@ class ViewController: UIViewController {
             "language" : "Swift"
             ]
         
-        let repo = Repo.fromJSON(repoJSON)
+        let repo = Repo(json: repoJSON)
         
         print(repo.repoId)
         print(repo.name)
