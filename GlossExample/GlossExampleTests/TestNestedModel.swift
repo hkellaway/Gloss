@@ -38,8 +38,8 @@ struct TestNestedModel: Glossy {
     // MARK: - Deserialization
     
     init(json: JSON) {
-        id = "id" <~~ json
-        name = "name" <~~ json
+        self.id = "id" <~~ json
+        self.name = "name" <~~ json
     }
     
     // MARK: - Serialization

@@ -28,12 +28,14 @@ Set of functions used to decode JSON to objects
 */
 public struct Decoder {
     
+    // MARK: - Decoders
+    
     /**
     Returns function to decode JSON to value type
     
     - parameter key: JSON key used to set value
     
-    - returns: Function decoding JSON to value type
+    - returns: Function decoding JSON to an optional value type
     */
     public static func decode<T>(key: String) -> JSON -> T? {
         return {
@@ -53,7 +55,7 @@ public struct Decoder {
     
     - parameter key: JSON key used to set value
     
-    - returns: Function decoding JSON to value type
+    - returns: Function decoding JSON to an optional value type
     */
     public static func decode<T: Decodable>(key: String) -> JSON -> T? {
         return {
@@ -68,15 +70,13 @@ public struct Decoder {
         }
     }
     
-    // MARK: - Custom Decoders
-    
     /**
     Returns function to decode JSON to array
     of enum values
     
     - parameter key: JSON key used to set value
     
-    - returns: Function decoding JSON to array
+    - returns: Function decoding JSON to an optional array
     */
     public static func decodeArray<T: RawRepresentable>(key: String) -> JSON -> [T]? {
         return {
@@ -104,7 +104,7 @@ public struct Decoder {
     
     - parameter key: JSON key used to set value
     
-    - returns: Function decoding JSON to array
+    - returns: Function decoding JSON to an optinal array
     */
     public static func decodeArray<T: Decodable>(key: String) -> JSON -> [T]? {
         return {
@@ -132,7 +132,7 @@ public struct Decoder {
     - parameter key:           JSON key used to set value
     - parameter dateFormatter: Formatter used to format date
     
-    - returns: Function decoding JSON to date
+    - returns: Function decoding JSON to an optional date
     */
     public static func decodeDate(key: String, dateFormatter: NSDateFormatter) -> JSON -> NSDate? {
         return {
@@ -152,7 +152,7 @@ public struct Decoder {
     - parameter key:           JSON key used to set value
     - parameter dateFormatter: Formatter with ISO8601 format
     
-    - returns: Function decoding JSON to ISO8601 date
+    - returns: Function decoding JSON to an optional ISO8601 date
     */
     public static func decodeDateISO8601(key: String) -> JSON -> NSDate? {
         let dateFormatter = NSDateFormatter()
@@ -167,7 +167,7 @@ public struct Decoder {
     
     - parameter key: JSON key used to set value
     
-    - returns: Function decoding JSON to enum value
+    - returns: Function decoding JSON to an optional enum value
     */
     public static func decodeEnum<T: RawRepresentable>(key: String) -> JSON -> T? {
         return {
@@ -186,7 +186,7 @@ public struct Decoder {
     
     - parameter key: JSON key used to set value
     
-    - returns: Function decoding JSON to URL
+    - returns: Function decoding JSON to an optional URL
     */
     public static func decodeURL(key: String) -> JSON -> NSURL? {
         return {
@@ -199,4 +199,104 @@ public struct Decoder {
             return nil
         }
     }
+    
+    // MARK: - Force Decoders
+    
+    /**
+    Returns function to decode JSON to value type
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to a value type
+    */
+    public static func forceDecode<T>(key: String) -> JSON -> T {
+        return { return decode(key)($0)! }
+    }
+    
+    /**
+    Returns function to decode JSON to value type
+    for objects that conform to the Glossy protocol
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to a value type
+    */
+    public static func forceDecode<T: Decodable>(key: String) -> JSON -> T {
+        return { return decode(key)($0)! }
+    }
+    
+    /**
+    Returns function to decode JSON to array
+    of enum values
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to a array
+    */
+    public static func forceDecodeArray<T: RawRepresentable>(key: String) -> JSON -> [T] {
+        return { return decodeArray(key)($0)! }
+    }
+    
+    /**
+    Returns function to decode JSON to array
+    for objects that conform to the Glossy protocol
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to a array
+    */
+    public static func forceDecodeArray<T: Decodable>(key: String) -> JSON -> [T] {
+        return { return decodeArray(key)($0)! }
+    }
+    
+    /**
+    Returns function to decode JSON to date
+    
+    - parameter key:           JSON key used to set value
+    - parameter dateFormatter: Formatter used to format date
+    
+    - returns: Function decoding JSON to a date
+    */
+    public static func forceDecodeDate(key: String, dateFormatter: NSDateFormatter) -> JSON -> NSDate {
+        return { return decodeDate(key, dateFormatter: dateFormatter)($0)! }
+    }
+    
+    /**
+    Returns function to decode JSON to ISO8601 date
+    
+    - parameter key:           JSON key used to set value
+    - parameter dateFormatter: Formatter with ISO8601 format
+    
+    - returns: Function decoding JSON to a ISO8601 date
+    */
+    public static func forceDecodeDateISO8601(key: String) -> JSON -> NSDate {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        
+        return Decoder.forceDecodeDate(key, dateFormatter: dateFormatter)
+    }
+    
+    /**
+    Returns function to decode JSON to enum value
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to an enum value
+    */
+    public static func forceDecodeEnum<T: RawRepresentable>(key: String) -> JSON -> T {
+        return { return decodeEnum(key)($0)! }
+    }
+    
+    /**
+    Returns function to decode JSON to URL
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to a URL
+    */
+    public static func forceDecodeURL(key: String) -> JSON -> NSURL {
+        return { return decodeURL(key)($0)! }
+    }
+    
 }

@@ -54,27 +54,27 @@ struct TestModel: Glossy {
     // MARK: - Deserialization
     
     init(json: JSON) {
-        bool = "bool" <~~ json
-        boolArray = "boolArray" <~~ json
-        integer = "integer" <~~ json
-        integerArray = "integerArray" <~~ json
-        float = "float" <~~ json
-        floatArray = "floatArray" <~~ json
-        double = "double" <~~ json
-        doubleArray = "doubleArray" <~~ json
-        string = "string" <~~ json
-        stringArray = "stringArray" <~~ json
-        nestedModel = "nestedModel" <~~ json
-        nestedModelArray = "nestedModelArray" <~~ json
-        enumValue = "enum" <~~ json
-        enumValueArray = "enumValueArray" <~~ json
-        date = Decoder.decodeDate("date", dateFormatter: TestModel.dateFormatter)(json)
-        dateISO8601 = Decoder.decodeDateISO8601("dateISO8601")(json)
-        url = "url" <~~ json
+        self.bool = "bool" <~~ json
+        self.boolArray = "boolArray" <~~ json
+        self.integer = "integer" <~~ json
+        self.integerArray = "integerArray" <~~ json
+        self.float = "float" <~~ json
+        self.floatArray = "floatArray" <~~ json
+        self.double = "double" <~~ json
+        self.doubleArray = "doubleArray" <~~ json
+        self.string = "string" <~~ json
+        self.stringArray = "stringArray" <~~ json
+        self.nestedModel = "nestedModel" <~~ json
+        self.nestedModelArray = "nestedModelArray" <~~ json
+        self.enumValue = "enum" <~~ json
+        self.enumValueArray = "enumValueArray" <~~ json
+        self.date = Decoder.decodeDate("date", dateFormatter: TestModel.dateFormatter)(json)
+        self.dateISO8601 = Decoder.decodeDateISO8601("dateISO8601")(json)
+        self.url = "url" <~~ json
     }
-    
+
     // MARK: - Serialization
-    
+
     func toJSON() -> JSON? {
         return jsonify([
             "bool" ~~> self.bool,

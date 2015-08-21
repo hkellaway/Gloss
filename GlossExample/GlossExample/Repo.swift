@@ -42,7 +42,7 @@ struct Repo: Glossy {
         case ObjectiveC = "Objective-C"
     }
     
-    // MARK: - Serialization
+    // MARK: - Deserialization
     
     // As is often the case with serializing objects from arbitrary data, partial serialization can result in garbage data,
     // which we'll want to ignore and just return nil instead.
