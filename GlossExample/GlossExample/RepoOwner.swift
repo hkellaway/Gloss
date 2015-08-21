@@ -32,9 +32,10 @@ struct RepoOwner: Glossy {
     
     // MARK: - Deserialization
     
-    init(json: JSON) {
-        ownerId = "id" <~~ json
-        username = "login" <~~ json
+    init?(json: JSON) {
+        guard let ownerId: Int = "id" <~~ json else { return nil }
+        self.ownerId = ownerId
+        self.username = "login" <~~ json
     }
     
     // MARK: - Serialization
