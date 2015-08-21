@@ -42,12 +42,12 @@ struct Repo: Glossy {
     // MARK: - Deserialization
     
     init(json: JSON) {
-        self.repoId = "id" <~~! json
-        self.name = "name" <~~ json
-        self.desc = "description" <~~! json
-        self.url = "html_url" <~~ json
-        self.owner = "owner" <~~! json
-        self.primaryLanguage = "language" <~~ json
+        repoId = "id" <~~ json
+        name = "name" <~~ json
+        desc = "description" <~~ json
+        url = "html_url" <~~ json
+        owner = "owner" <~~ json
+        primaryLanguage = "language" <~~ json
     }
     
     // MARK: - Serialization
