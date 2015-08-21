@@ -41,15 +41,13 @@ struct Repo: Glossy {
     
     // MARK: - Serialization
     
-    static func fromJSON(json: JSON) -> Repo {
-        return Repo (
-            repoId: "id" <~~ json,
-            name: "name" <~~ json,
-            desc: "description" <~~ json,
-            url: "html_url" <~~ json,
-            owner: "owner" <~~ json,
-            primaryLanguage: "language" <~~ json
-        )
+    init(json: JSON) {
+        repoId = "id" <~~ json
+        name = "name" <~~ json
+        desc = "description" <~~ json
+        url = "html_url" <~~ json
+        owner = "owner" <~~ json
+        primaryLanguage = "language" <~~ json
     }
     
     // MARK: - Serialization

@@ -32,11 +32,9 @@ struct RepoOwner: Glossy {
     
     // MARK: - Deserialization
     
-    static func fromJSON(json: JSON) -> RepoOwner {
-        return RepoOwner(
-            ownerId: "id" <~~ json,
-            username: "login" <~~ json
-        )
+    init(json: JSON) {
+        ownerId = "id" <~~ json
+        username = "login" <~~ json
     }
     
     // MARK: - Serialization

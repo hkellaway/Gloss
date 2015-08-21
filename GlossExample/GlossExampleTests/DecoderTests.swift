@@ -213,7 +213,7 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((year == 2015), "Decode NSDate should return correct value")
         XCTAssertTrue((month == 8), "Decode NSDate should return correct value")
         XCTAssertTrue((day == 8), "Decode NSDate should return correct value")
-        XCTAssertTrue((hour == 17), "Decode NSDate should return correct value")
+        XCTAssertTrue((hour == 14), "Decode NSDate should return correct value")
         XCTAssertTrue((minute == 57), "Decode NSDate should return correct value")
         XCTAssertTrue((second == 13), "Decode NSDate should return correct value")
     }
