@@ -45,8 +45,8 @@ class OperatorTests: XCTestCase {
             print(error)
         }
         
-        testNestedModel1 = TestNestedModel(id: 1, name: "nestedModel1")
-        testNestedModel2 = TestNestedModel(id: 2, name: "nestedModel2")
+        testNestedModel1 = TestNestedModel(json: [ "id" : 1, "name" : "nestedModel1" ])
+        testNestedModel2 = TestNestedModel(json: ["id" : 2, "name" : "nestedModel2"])
     }
     
     override func tearDown() {

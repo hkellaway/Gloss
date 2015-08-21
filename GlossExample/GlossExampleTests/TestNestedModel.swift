@@ -32,11 +32,9 @@ struct TestNestedModel: Glossy {
     
     // MARK: - Deserialization
     
-    static func fromJSON(json: JSON) -> TestNestedModel {
-        return TestNestedModel(
-            id: "id" <~~ json,
-            name: "name" <~~ json
-        )
+    init(json: JSON) {
+        self.id = "id" <~~ json
+        self.name = "name" <~~ json
     }
     
     // MARK: - Serialization
