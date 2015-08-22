@@ -28,9 +28,9 @@ import Gloss
 struct Repo: Glossy {
     
     let repoId: Int
-    let name: String?
-    let desc: String
-    let url: NSURL?
+    let desc: String?
+    let name: String
+    let url: NSURL
     let owner: RepoOwner
     let primaryLanguage: Language?
     
@@ -41,12 +41,17 @@ struct Repo: Glossy {
     
     // MARK: - Deserialization
     
-    init(json: JSON) {
-        self.repoId = "id" <~~! json
-        self.name = "name" <~~ json
-        self.desc = "description" <~~! json
-        self.url = "html_url" <~~ json
-        self.owner = "owner" <~~! json
+    init?(json: JSON) {
+        guard let repoId: Int = "id" <~~ json,
+            let name: String = "name" <~~ json,
+            let url: NSURL = "html_url" <~~ json,
+            let owner: RepoOwner = "owner" <~~ json else { return nil }
+        
+        self.repoId = repoId
+        self.name = name
+        self.desc = "description" <~~ json
+        self.url = url
+        self.owner = owner
         self.primaryLanguage = "language" <~~ json
     }
     

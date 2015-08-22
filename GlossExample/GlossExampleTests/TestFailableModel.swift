@@ -1,5 +1,5 @@
 //
-//  RepoOwner.swift
+//  TestFailableModel.swift
 //  GlossExample
 //
 // Copyright (c) 2015 Harlan Kellaway
@@ -25,26 +25,24 @@
 
 import Gloss
 
-struct RepoOwner: Glossy {
+struct TestFailableModel: Glossy {
     
-    let ownerId: Int
-    let username: String?
-    
-    // MARK: - Deserialization
+    let identifier: String
+    let value: Int
     
     init?(json: JSON) {
-        guard let ownerId: Int = "id" <~~ json else { return nil }
-        self.ownerId = ownerId
-        self.username = "login" <~~ json
+        guard let identifier: String = "identifier" <~~ json,
+            let value: Int = "value" <~~ json
+            else { return nil }
+        
+        self.identifier = identifier
+        self.value = value
     }
-    
-    // MARK: - Serialization
     
     func toJSON() -> JSON? {
-        return jsonify([
-            "id" ~~> self.ownerId,
-            "login" ~~> self.username
-        ])
+        return [
+            "identifier": self.identifier,
+            "value": self.value,
+        ]
     }
-    
 }

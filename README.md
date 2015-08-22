@@ -13,7 +13,7 @@
 
 
 ```ruby
-pod 'Gloss', '~> 0.4'
+pod 'Gloss', '~> 0.5'
 ```
 
 #### Swift 2 and Swift 1.2
@@ -52,7 +52,7 @@ struct RepoOwner: Decodable {
     
     // MARK: - Deserialization
     
-    init(json: JSON) {
+    init?(json: JSON) {
         self.ownerId = "id" <~~ json
         self.username = "login" <~~ json
     }
@@ -64,7 +64,43 @@ This model:
 
 * Imports `Gloss`
 * Adopts the `Decodable` protocol
-* Implements the `init(json:)` initializer
+* Implements the `init?(json:)` initializer
+
+See [On Not Using Gloss Operators](#on-not-using-gloss-operators) for how to express these models without the custom `<~~` operator.
+
+#### A Simple Model with Non-Optional Properties
+
+The prior example depicted the model with only Optional properties - i.e. all properties end with a `?`. If you are certain that the JSON being used to create your models will always have the values for your properties, you can represent those properties as non-Optional. 
+
+Non-Optional properties require additional use of the `guard` statement within `init?(json:)` to make sure the values are available at runtime. If values are unavailable, `nil` should be returned.
+
+Let's image we know that the value for our `RepOwner` property `ownerId` will always be availabe:
+
+``` swift
+import Gloss
+
+struct RepoOwner: Decodable {
+    
+    let ownerId: Int
+    let username: String?
+    
+    // MARK: - Deserialization
+    
+    init?(json: JSON) {
+        guard let ownerId: Int = "id" <~~ json
+            else { return nil }
+        
+        self.ownerId = ownerId
+        self.username = "login" <~~ json
+    }
+}
+  
+```
+
+This model has changed in two ways:
+
+* The `ownerId` property is no longer an Optional
+* The `init?(json:)` initializer now has a `guard` statement checking only non-Optional property(s)
 
 #### A More Complex Model
 
@@ -110,7 +146,7 @@ struct Repo: Decodable {
 
     // MARK: - Deserializaiton
     
-    init(json: JSON) {
+    init?(json: JSON) {
         self.repoId = "id" <~~ json
         self.name = "name" <~~ json
         self.desc = "description" <~~ json
@@ -123,8 +159,6 @@ struct Repo: Decodable {
 ```
 
 Despite being more complex, this model is just as simple to compose - common types such as an `NSURL`, an `enum` value, and another Gloss model, `RepoOwner`, are handled without extra overhead! :tada:
-
-See [On Not Using Gloss Operators](#on-not-using-gloss-operators) for how to express these models without the custom `<~~` operator.
 
 
 ### Serialization
@@ -191,49 +225,17 @@ Note: This requires implementing the `toJSON()` function (see: [Serialization](#
 
 ## Additional Topics
 
-### Models with Non-Optional Properties
-
-Examples thus far have depicted models with only Optional properties - i.e. all properties end with a `?`. This means that these properties should be handled as if they could be `nil`. If you are certain that there are properties in your JSON will _never_ be unavailable, you can represent these properties as non-Optionals.
-
-Let's image we know that retrieving the values for our `RepOwner` model will never fail. We would represent the model as follows:
-
-``` swift
-import Gloss
-
-struct RepoOwner: Decodable {
-    
-    let ownerId: Int
-    let username: String
-    
-    // MARK: - Deserialization
-    
-    init(json: JSON) {
-        self.ownerId = "id" <~~! json
-        self.username = "login" <~~! json
-    }
-  
-```
-
-This model has changed in two ways:
-
-* The properties are no longer Optionals
-* The `<~~!` operator is used in place of the `<~~` operator
-
 ### Gloss Operators
 
 #### On Not Using Gloss Operators
 
 Gloss offers custom operators as a way to make your models less visually cluttered. However, some choose not to use custom operators for good reason - custom operators do not always clearly communicate what they are doing (See [this discussion](http://programmers.stackexchange.com/questions/180948/why-arent-user-defined-operators-more-common)). 
 
-If you wish to not use the `<~~`, `<~~!`, or `~~>` operators, their `Decoder.decode`, `Decoder.forceDecode`, and `Encoder.encode` complements can be used instead. 
+If you wish to not use the `<~~` or `~~>` operators, their `Decoder.decode` and `Encoder.encode` complements can be used instead. 
 
 For example,
 
 `self.url = "html_url" <~~ json` would become `self.url = Decoder.decodeURL("html_url")(json)`
-
-and
-
-`self.url = "html_url" <~~! json` would become `self.url = Decoder.forceDecodeURL("html_url")(json)`
 
 and
 
@@ -252,12 +254,6 @@ The `<~~` operator is simply syntactic sugar for a set of `Decoder.decode` funct
 * Enum types (`Decoder.decodeEnum`)
 * Enum arrays (`Decoder.decodeArray`)
 * `NSURL` types (`Decoder.decodeURL`)
-
-##### The Force Decode Operator: `<~~!`
-
-The `<~~!` operator is syntactic sugar for the force unwrapped version of `<~~`. See [Models with Non-Optional Properties](#models-with-non-optional-properties) for when this operator is best used.
-
-Its function complements are same, except with `force` before the function name. For example, whereas `<~~` would use `Decoder.decodeURL`, `<~~!` would use `Decoder.forceDecodeURL`.
 
 ##### The Encode Operator: `~~>`
 
@@ -280,8 +276,6 @@ Gloss comes with a number of transformations built in for convenience. (See: [Gl
 One set of handy transformations not covered by the Gloss operators is `NSDate` transformations, as they require an additional `dateFormatter` parameter. Translating from and to JSON is handled via:
 
 `Decoder.decodeDate(key:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `NSDateFormatter` used to translate the date.
-
-`Decoder.forceDecodeDate(key:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `NSDateFormatter` used to translate the date.
 
 `Encoder.encodeDate(key:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `NSDateFormatter` used to translate the date.
 
@@ -408,7 +402,9 @@ The particular word "gloss" was chosen as it evokes both being lightweight and a
 
 Gloss was created by [Harlan Kellaway](http://harlankellaway.com).
 
- Inspiration was gathered from other great JSON parsing libraries like [Argo](https://github.com/thoughtbot/Argo). Read more about why Gloss was made [here](http://harlankellaway.com/blog/2015/08/16/introducing-gloss-json-parsing-swift/).
+Inspiration was gathered from other great JSON parsing libraries like [Argo](https://github.com/thoughtbot/Argo). Read more about why Gloss was made [here](http://harlankellaway.com/blog/2015/08/16/introducing-gloss-json-parsing-swift/).
+
+Special thanks to all [contributors](https://github.com/hkellaway/Gloss/contributors)! :sparkling_heart:
 
 ## License
 

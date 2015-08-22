@@ -1,22 +1,22 @@
 PODS:
-  - Gloss (0.4.0):
-    - Gloss/Extensions (= 0.4.0)
-  - Gloss/Extensions (0.4.0)
+  - Gloss (0.5.0):
+    - Gloss/Extensions (= 0.5.0)
+  - Gloss/Extensions (0.5.0)
 
 DEPENDENCIES:
-  - Gloss (from `https://github.com/hkellaway/Gloss.git`, tag `0.4.0`)
+  - Gloss (from `https://github.com/hkellaway/Gloss.git`, tag `0.5.0`)
 
 EXTERNAL SOURCES:
   Gloss:
     :git: https://github.com/hkellaway/Gloss.git
-    :tag: 0.4.0
+    :tag: 0.5.0
 
 CHECKOUT OPTIONS:
   Gloss:
     :git: https://github.com/hkellaway/Gloss.git
-    :tag: 0.4.0
+    :tag: 0.5.0
 
 SPEC CHECKSUMS:
-  Gloss: 8ade5e1f7cdd34103c26e77e39c4d7b604cb25c5
+  Gloss: 1d4c6dd8d1d767707fe671e95a119e04fdbb7207
 
 COCOAPODS: 0.37.2

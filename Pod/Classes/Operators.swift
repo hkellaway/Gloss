@@ -74,55 +74,6 @@ public func <~~ (key: String, json: JSON) -> NSURL? {
     return Decoder.decodeURL(key)(json)
 }
 
-// MARK: <~~! (Force decode)
-
-/**
-Force decode custom operator
-*/
-infix operator <~~! { associativity left precedence 150 }
-
-/**
-Convenience operator for decoding JSON to generic value
-*/
-public func <~~! <T>(key: String, json: JSON) -> T {
-    return Decoder.forceDecode(key)(json)
-}
-
-/**
-Convenience operator for decoding JSON to Decodable object
-*/
-public func <~~! <T: Decodable>(key: String, json: JSON) -> T {
-    return Decoder.forceDecode(key)(json)
-}
-
-/**
-Convenience operator for decoding JSON to array of enum values
-*/
-public func <~~! <T: RawRepresentable>(key: String, json: JSON) -> [T] {
-    return Decoder.forceDecodeArray(key)(json)
-}
-
-/**
-Convenience operator for decoding JSON to array of Decodable objects
-*/
-public func <~~! <T: Decodable>(key: String, json: JSON) -> [T] {
-    return Decoder.forceDecodeArray(key)(json)
-}
-
-/**
-Convenience operator for decoding JSON to NSURL
-*/
-public func <~~! (key: String, json: JSON) -> NSURL {
-    return Decoder.forceDecodeURL(key)(json)
-}
-
-/**
-Convenience operator for decoding JSON to enum value
-*/
-public func <~~! <T: RawRepresentable>(key: String, json: JSON) -> T {
-    return Decoder.forceDecodeEnum(key)(json)
-}
-
 // MARK: - Operator ~~> (Encode)
 
 /**
