@@ -23,6 +23,9 @@
 		DC9E42D51B8066D600D1792A /* DecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9E42D41B8066D600D1792A /* DecoderTests.swift */; };
 		DCEA3C201B80FD960022F666 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA3C1F1B80FD960022F666 /* TestModel.swift */; };
 		DCEA3C221B80FDE60022F666 /* TestNestedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA3C211B80FDE60022F666 /* TestNestedModel.swift */; };
+		DCF891401B86AF6B00888FB1 /* Pods_GlossExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF8913F1B86AF6B00888FB1 /* Pods_GlossExample.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		DCF891421B87488200888FB1 /* FlowObjectCreationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF891411B87488200888FB1 /* FlowObjectCreationTests.swift */; };
+		DCF891441B8749CE00888FB1 /* FlowObjectToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF891431B8749CE00888FB1 /* FlowObjectToJSON.swift */; };
 		F0157B7C46CEF886BC8CFC43 /* Pods_GlossExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371978450C13B8BC0B320144 /* Pods_GlossExample.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -59,6 +62,9 @@
 		DC9E42D41B8066D600D1792A /* DecoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoderTests.swift; sourceTree = "<group>"; };
 		DCEA3C1F1B80FD960022F666 /* TestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		DCEA3C211B80FDE60022F666 /* TestNestedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNestedModel.swift; sourceTree = "<group>"; };
+		DCF8913F1B86AF6B00888FB1 /* Pods_GlossExample.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_GlossExample.framework; path = "Pods/../build/Debug-iphoneos/Pods_GlossExample.framework"; sourceTree = "<group>"; };
+		DCF891411B87488200888FB1 /* FlowObjectCreationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowObjectCreationTests.swift; sourceTree = "<group>"; };
+		DCF891431B8749CE00888FB1 /* FlowObjectToJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowObjectToJSON.swift; sourceTree = "<group>"; };
 		ED8E6DA407D0AE26300C907D /* Pods-GlossExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlossExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-GlossExample/Pods-GlossExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCF891401B86AF6B00888FB1 /* Pods_GlossExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +100,7 @@
 		63509F10EB2766219388D381 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DCF8913F1B86AF6B00888FB1 /* Pods_GlossExample.framework */,
 				371978450C13B8BC0B320144 /* Pods_GlossExample.framework */,
 			);
 			name = Frameworks;
@@ -151,6 +159,8 @@
 				DC935A3D1B813CA30047FCA3 /* EncoderTests.swift */,
 				DC935A3F1B813FF30047FCA3 /* GlossTests.swift */,
 				DC935A451B8148B90047FCA3 /* OperatorTests.swift */,
+				DCF891411B87488200888FB1 /* FlowObjectCreationTests.swift */,
+				DCF891431B8749CE00888FB1 /* FlowObjectToJSON.swift */,
 				DC08B5AD1B76B3ED0098D6C8 /* Products */,
 				DC08B5C51B76B3ED0098D6C8 /* Supporting Files */,
 			);
@@ -364,6 +374,8 @@
 				DC935A401B813FF30047FCA3 /* GlossTests.swift in Sources */,
 				DC935A461B8148B90047FCA3 /* OperatorTests.swift in Sources */,
 				DC935A431B81439D0047FCA3 /* DictionaryTests.swift in Sources */,
+				DCF891421B87488200888FB1 /* FlowObjectCreationTests.swift in Sources */,
+				DCF891441B8749CE00888FB1 /* FlowObjectToJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,10 +517,12 @@
 		};
 		DC08B5CF1B76B3ED0098D6C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CF68443A5AEBB8235A16A54 /* Pods-GlossExample.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -524,10 +538,12 @@
 		};
 		DC08B5D01B76B3ED0098D6C8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CF68443A5AEBB8235A16A54 /* Pods-GlossExample.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = GlossExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

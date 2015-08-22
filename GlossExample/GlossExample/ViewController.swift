@@ -42,7 +42,7 @@ class ViewController: UIViewController {
             "language" : "Swift"
             ]
         
-        let repo = Repo.fromJSON(repoJSON)
+        let repo = Repo(json: repoJSON)
         
         print(repo.repoId)
         print(repo.name)
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         print(repo.url)
         print(repo.owner)
         print(repo.primaryLanguage?.rawValue)
-        print("")
+        print("", appendNewline: false)
         
         print("JSON: \(repo.toJSON())")
     }

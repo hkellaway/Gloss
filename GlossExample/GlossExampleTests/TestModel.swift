@@ -28,15 +28,15 @@ import Gloss
 struct TestModel: Glossy {
     
     let bool: Bool?
-        let boolArray: [Bool]?
+    let boolArray: [Bool]?
     let integer: Int?
-        let integerArray: [Int]?
+    let integerArray: [Int]?
     let float: Float?
-        let floatArray: [Float]?
+    let floatArray: [Float]?
     let double: Double?
-        let doubleArray: [Double]?
+    let doubleArray: [Double]?
     let string: String?
-        let stringArray: [String]?
+    let stringArray: [String]?
     let nestedModel: TestNestedModel?
     let nestedModelArray: [TestNestedModel]?
     let enumValue: EnumValue?
@@ -53,30 +53,28 @@ struct TestModel: Glossy {
     
     // MARK: - Deserialization
     
-    static func fromJSON(json: JSON) -> TestModel {
-        return TestModel(
-            bool: "bool" <~~ json,
-            boolArray: "boolArray" <~~ json,
-            integer: "integer" <~~ json,
-            integerArray: "integerArray" <~~ json,
-            float: "float" <~~ json,
-            floatArray: "floatArray" <~~ json,
-            double: "double" <~~ json,
-            doubleArray: "doubleArray" <~~ json,
-            string: "string" <~~ json,
-            stringArray: "stringArray" <~~ json,
-            nestedModel: "nestedModel" <~~ json,
-            nestedModelArray: "nestedModelArray" <~~ json,
-            enumValue: "enum" <~~ json,
-            enumValueArray: "enumValueArray" <~~ json,
-            date: Decoder.decodeDate("date", dateFormatter: TestModel.dateFormatter)(json),
-            dateISO8601: Decoder.decodeDateISO8601("dateISO8601")(json),
-            url: "url" <~~ json
-        )
+    init(json: JSON) {
+        self.bool = "bool" <~~ json
+        self.boolArray = "boolArray" <~~ json
+        self.integer = "integer" <~~ json
+        self.integerArray = "integerArray" <~~ json
+        self.float = "float" <~~ json
+        self.floatArray = "floatArray" <~~ json
+        self.double = "double" <~~ json
+        self.doubleArray = "doubleArray" <~~ json
+        self.string = "string" <~~ json
+        self.stringArray = "stringArray" <~~ json
+        self.nestedModel = "nestedModel" <~~ json
+        self.nestedModelArray = "nestedModelArray" <~~ json
+        self.enumValue = "enumValue" <~~ json
+        self.enumValueArray = "enumValueArray" <~~ json
+        self.date = Decoder.decodeDate("date", dateFormatter: TestModel.dateFormatter)(json)
+        self.dateISO8601 = Decoder.decodeDateISO8601("dateISO8601")(json)
+        self.url = "url" <~~ json
     }
-    
+
     // MARK: - Serialization
-    
+
     func toJSON() -> JSON? {
         return jsonify([
             "bool" ~~> self.bool,

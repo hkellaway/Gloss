@@ -1,6 +1,6 @@
 ![Gloss](http://hkellaway.github.io/Gloss/images/gloss_logo_tagline.png)
 
-## Features :sparkles:
+## Features :sparkles: ![Swift](https://img.shields.io/badge/language-swift-orange.svg) [![CocoaPods](https://img.shields.io/cocoapods/v/Gloss.svg)](http://cocoapods.org/pods/Gloss) [![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE) [![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss)
 
 * Mapping JSON to objects
 * Mapping objects to JSON
@@ -13,7 +13,7 @@
 
 
 ```ruby
-pod 'Gloss', '~> 0.3'
+pod 'Gloss', '~> 0.4'
 ```
 
 #### Swift 2 and Swift 1.2
@@ -52,11 +52,9 @@ struct RepoOwner: Decodable {
     
     // MARK: - Deserialization
     
-    static func fromJSON(json: JSON) -> RepoOwner {
-        return RepoOwner(
-            ownerId: "id" <~~ json,
-            username: "login" <~~ json
-        )
+    init(json: JSON) {
+        self.ownerId = "id" <~~ json
+        self.username = "login" <~~ json
     }
     
 }
@@ -66,7 +64,7 @@ This model:
 
 * Imports `Gloss`
 * Adopts the `Decodable` protocol
-* Implements the `fromJSON(_:)` function
+* Implements the `init(json:)` initializer
 
 #### A More Complex Model
 
@@ -112,21 +110,21 @@ struct Repo: Decodable {
 
     // MARK: - Deserializaiton
     
-    static func fromJSON(json: JSON) -> Repo {
-        return Repo (
-            repoId: "id" <~~ json,
-            name: "name" <~~ json,
-            desc: "description" <~~ json,
-            url: "html_url" <~~ json,
-            owner: "owner" <~~ json,
-            primaryLanguage: "language" <~~ json
-        )
+    init(json: JSON) {
+        self.repoId = "id" <~~ json
+        self.name = "name" <~~ json
+        self.desc = "description" <~~ json
+        self.url = "html_url" <~~ json
+        self.owner = "owner" <~~ json
+        self.primaryLanguage = "language" <~~ json
     }
     
 }
 ```
 
 Despite being more complex, this model is just as simple to compose - common types such as an `NSURL`, an `enum` value, and another Gloss model, `RepoOwner`, are handled without extra overhead! :tada:
+
+See [On Not Using Gloss Operators](#on-not-using-gloss-operators) for how to express these models without the custom `<~~` operator.
 
 
 ### Serialization
@@ -136,7 +134,7 @@ Next, how would we allow models to be translated _to_ JSON? Let's take a look ag
 ``` swift
 import Gloss
 
-class RepoOwner: Glossy {
+struct RepoOwner: Glossy {
     
     let ownerId: Int?
     let username: String?
@@ -160,11 +158,13 @@ This model now:
 
 * Adopts the `Glossy` protocol
 * Implements `toJSON()` which calls the `jsonify(_:)` function
+
+See [On Not Using Gloss Operators](#on-not-using-gloss-operators) for how to express this model without the custom `~~>` operator.
  
 
 ## Initializing Model Objects
 
-Instances of Gloss models are made by calling `fromJSON(_:)`.
+Instances of Gloss models are made by calling `init(json:)`.
 
 For example, we can create a `RepoOwner` as follows:
 
@@ -174,7 +174,7 @@ let repoOwnerJSON = [
 	"name": "hkellaway"
 ]
 
-let repoOwner = RepoOwner.fromJSON(repoOwnerJSON)
+let repoOwner = RepoOwner.init(json: repoOwnerJSON)
 
 ```
 
@@ -191,6 +191,102 @@ Note: This requires implementing the `toJSON()` function (see: [Serialization](#
 
 ## Additional Topics
 
+### Models with Non-Optional Properties
+
+Examples thus far have depicted models with only Optional properties - i.e. all properties end with a `?`. This means that these properties should be handled as if they could be `nil`. If you are certain that there are properties in your JSON will _never_ be unavailable, you can represent these properties as non-Optionals.
+
+Let's image we know that retrieving the values for our `RepOwner` model will never fail. We would represent the model as follows:
+
+``` swift
+import Gloss
+
+struct RepoOwner: Decodable {
+    
+    let ownerId: Int
+    let username: String
+    
+    // MARK: - Deserialization
+    
+    init(json: JSON) {
+        self.ownerId = "id" <~~! json
+        self.username = "login" <~~! json
+    }
+  
+```
+
+This model has changed in two ways:
+
+* The properties are no longer Optionals
+* The `<~~!` operator is used in place of the `<~~` operator
+
+### Gloss Operators
+
+#### On Not Using Gloss Operators
+
+Gloss offers custom operators as a way to make your models less visually cluttered. However, some choose not to use custom operators for good reason - custom operators do not always clearly communicate what they are doing (See [this discussion](http://programmers.stackexchange.com/questions/180948/why-arent-user-defined-operators-more-common)). 
+
+If you wish to not use the `<~~`, `<~~!`, or `~~>` operators, their `Decoder.decode`, `Decoder.forceDecode`, and `Encoder.encode` complements can be used instead. 
+
+For example,
+
+`self.url = "html_url" <~~ json` would become `self.url = Decoder.decodeURL("html_url")(json)`
+
+and
+
+`self.url = "html_url" <~~! json` would become `self.url = Decoder.forceDecodeURL("html_url")(json)`
+
+and
+
+`"html_url" ~~> self.url` would become `Encoder.encode("html_url")(self.url)`
+
+#### On Using Gloss Operators
+
+##### The Decode Operator: `<~~`
+
+The `<~~` operator is simply syntactic sugar for a set of `Decoder.decode` functions:
+
+* Simple types (`Decoder.decode`)
+* `Decodable` models (`Decoder.decode`)
+* Simple arrays (`Decoder.decode`)
+* Arrays of `Decodable` models (`Decoder.decodeArray`)
+* Enum types (`Decoder.decodeEnum`)
+* Enum arrays (`Decoder.decodeArray`)
+* `NSURL` types (`Decoder.decodeURL`)
+
+##### The Force Decode Operator: `<~~!`
+
+The `<~~!` operator is syntactic sugar for the force unwrapped version of `<~~`. See [Models with Non-Optional Properties](#models-with-non-optional-properties) for when this operator is best used.
+
+Its function complements are same, except with `force` before the function name. For example, whereas `<~~` would use `Decoder.decodeURL`, `<~~!` would use `Decoder.forceDecodeURL`.
+
+##### The Encode Operator: `~~>`
+
+The `~~>` operator is simply syntactic sugar for a set of `Encoder.encode` functions:
+
+* Simple types (`Encoder.encode`)
+* `Encodable` models (`Encoder.encode`)
+* Simple arrays (`Encoder.encode`)
+* Arrays of `Encodable` models (`Encoder.encodeArray`)
+* Enum types (`Encoder.encodeEnum`)
+* Enum arrays (`Encoder.encodeArray`)
+* `NSURL` types (`Encoder.encodeURL`)
+
+### Gloss Transformations
+
+Gloss comes with a number of transformations built in for convenience. (See: [Gloss Operators](#gloss-operators)).
+
+#### Transforming Dates
+
+One set of handy transformations not covered by the Gloss operators is `NSDate` transformations, as they require an additional `dateFormatter` parameter. Translating from and to JSON is handled via:
+
+`Decoder.decodeDate(key:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `NSDateFormatter` used to translate the date.
+
+`Decoder.forceDecodeDate(key:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `NSDateFormatter` used to translate the date.
+
+`Encoder.encodeDate(key:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `NSDateFormatter` used to translate the date.
+
+See [On Not Using Gloss Operators](#on-not-using-gloss-operators) for how the `Decoder.decode`/`Encoder.encode` syntax is used in place of `<~~`/`~~>`.
+
 ### Custom Transformations
 
 #### From JSON
@@ -202,7 +298,7 @@ Let's imagine the `username` property on our `RepoOwner` model was to be an uppe
 ``` swift
 import Gloss
 
-class RepoOwner: Decodable {
+struct RepoOwner: Decodable {
     
     let ownerId: Int?
     let username: String?
@@ -251,7 +347,7 @@ Let's imagine the `username` property on our `RepoOwner` model was to be a lower
 ``` swift
 import Gloss
 
-class RepoOwner: Glossy {
+struct RepoOwner: Glossy {
     
     let ownerId: Int?
     let username: String?
@@ -294,54 +390,6 @@ What's important to note is that the return type for `encodeStringLowercase` is 
 
 Though depicted here as being in the same file, good practice would have the `Encoder` extension in a separate `Encoder.swift` file for organizational purposes.
 
-### Gloss Transformations
-
-Gloss comes with a number of transformations built in for convenience. :confetti_ball:
-
-Most built-in Gloss transformations are covered by the `<~~` and `~~>` operators (See: [Gloss Operators](#gloss-operators)).
-
-#### Transforming Dates
-
-One set of handy transformations not covered by the Gloss operators is `NSDate` transformations, as they require an additional `dateFormatter` parameter. Translating from and to JSON is handled via:
-
-`Decoder.decodeDate(key:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `NSDateFormatter` used to translate the date.
-
-`Encoder.encodeDate(key:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `NSDateFormatter` used to translate the date.
-
-See [Not Using Gloss Operators](#not-using-gloss-operators) for how the `Decoder.decode`/`Encoder.encode` syntax is used in place of `<~~`/`~~>`.
-
-### Gloss Operators
-
-The `<~~` operator is simply syntactic sugar for a set of `Decoder.decode` functions:
-
-* Simple types (`Decoder.decode`)
-* `Decodable` models (`Decoder.decode`)
-* Simple arrays (`Decoder.decode`)
-* Arrays of `Decodable` models (`Decoder.decodeArray`)
-* Enum types (`Decoder.decodeEnum`)
-* Enum arrays (`Decoder.decodeArray`)
-* `NSURL` types (`Decoder.decodeURL`)
-
-The `~~>` operator is simply syntactic sugar for a set of `Encoder.encode` functions:
-
-* Simple types (`Encoder.encode`)
-* `Encodable` models (`Encoder.encode`)
-* Simple arrays (`Encoder.encodeArray`)
-* Arrays of `Encodable` models (`Encoder.encodeArray`)
-* Enum types (`Encoder.encodeEnum`)
-* Enum arrays (`Encoder.encodeArray`)
-* `NSURL` types (`Encoder.encodeURL`)
-
-#### Not Using Gloss Operators
-
-If you wish to not use the `<~~` and `~~>` operators, their `Decoder.decode` and `Encoder.encode` complements can be used instead. For example,
-
-`url: "html_url" <~~ json` would become `url: Decoder.decodeURL("html_url")(json)`
-
-and
-
-`"html_url" ~~> self.url` would become `Encoder.encode("html_url")(self.url)`
-
 ### Gloss Protocols
 
 Models that are to be created from JSON _must_ adopt the `Decodable` protocol.
@@ -349,12 +397,6 @@ Models that are to be created from JSON _must_ adopt the `Decodable` protocol.
 Models that are to be transofmed to JSON _must_ adopt the `Encodable` protocol.
 
 The `Glossy` protocol depicted in the examples is simply a convenience for defining models that can translated to _and_ from JSON. `Glossy` can be replaced by `Decodable, Encodable` for more preciseness, if desired.
-
-## What's Next
-
-- [x] Swift 1.2 compatibility on the `swift_1.2` branch
-- [x] Tests
-- [ ] Swift 2 style Errors
 
 ## Why "Gloss"?
 

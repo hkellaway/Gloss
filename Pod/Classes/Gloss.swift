@@ -43,9 +43,9 @@ public protocol Decodable {
     /**
     Returns new instance created from provided JSON
     
-    - parameter json: JSON representation of object
+    :parameter: json JSON representation of object
     */
-    static func fromJSON(json: JSON) -> Self
+    init(json: JSON)
     
 }
 
