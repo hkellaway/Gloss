@@ -32,10 +32,10 @@ public struct Decoder {
     
     /**
     Returns function to decode JSON to value type
-
-    :param: key JSON key used to set value
-
-    :returns: Function decoding JSON to an optional value type
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to an optional value type
     */
     public static func decode<T>(key: String) -> JSON -> T? {
         return {
@@ -52,10 +52,10 @@ public struct Decoder {
     /**
     Returns function to decode JSON to value type
     for objects that conform to the Glossy protocol
-
-    :param: key JSON key used to set value
-
-    :returns: Function decoding JSON to an optional value type
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to an optional value type
     */
     public static func decode<T: Decodable>(key: String) -> JSON -> T? {
         return {
@@ -73,10 +73,10 @@ public struct Decoder {
     /**
     Returns function to decode JSON to array
     of enum values
-
-    :param: key JSON key used to set value
-
-    :returns: Function decoding JSON to an optional array
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to an optional array
     */
     public static func decodeArray<T: RawRepresentable>(key: String) -> JSON -> [T]? {
         return {
@@ -101,10 +101,10 @@ public struct Decoder {
     /**
     Returns function to decode JSON to array
     for objects that conform to the Glossy protocol
-
-    :param: key JSON key used to set value
-
-    :returns: Function decoding JSON to an optional array
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to an optinal array
     */
     public static func decodeArray<T: Decodable>(key: String) -> JSON -> [T]? {
         return {
@@ -126,11 +126,11 @@ public struct Decoder {
     
     /**
     Returns function to decode JSON to date
-
-    :param: key           JSON key used to set value
-    :param: dateFormatter Formatter used to format date
-
-    :returns: Function decoding JSON to an optional date
+    
+    - parameter key:           JSON key used to set value
+    - parameter dateFormatter: Formatter used to format date
+    
+    - returns: Function decoding JSON to an optional date
     */
     public static func decodeDate(key: String, dateFormatter: NSDateFormatter) -> JSON -> NSDate? {
         return {
@@ -146,10 +146,11 @@ public struct Decoder {
     
     /**
     Returns function to decode JSON to ISO8601 date
-
-    :param: key JSON key used to set value
-
-    :returns: Function decoding JSON to an optional ISO8601 date
+    
+    - parameter key:           JSON key used to set value
+    - parameter dateFormatter: Formatter with ISO8601 format
+    
+    - returns: Function decoding JSON to an optional ISO8601 date
     */
     public static func decodeDateISO8601(key: String) -> JSON -> NSDate? {
         let dateFormatter = NSDateFormatter()
@@ -161,10 +162,10 @@ public struct Decoder {
     
     /**
     Returns function to decode JSON to enum value
-
-    :param: key JSON key used to set value
-
-    :returns: Function decoding JSON to an optional enum value
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to an optional enum value
     */
     public static func decodeEnum<T: RawRepresentable>(key: String) -> JSON -> T? {
         return {
@@ -180,10 +181,10 @@ public struct Decoder {
     
     /**
     Returns function to decode JSON to URL
-
-    :param: key JSON key used to set value
-
-    :returns: Function decoding JSON to an optional URL
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to an optional URL
     */
     public static func decodeURL(key: String) -> JSON -> NSURL? {
         return {
@@ -201,10 +202,10 @@ public struct Decoder {
     
     /**
     Returns function to decode JSON to value type
-
-    :param: key JSON key used to set value
-
-    :returns: Function decoding JSON to a value type
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to a value type
     */
     public static func forceDecode<T>(key: String) -> JSON -> T {
         return { return decode(key)($0)! }
@@ -213,10 +214,10 @@ public struct Decoder {
     /**
     Returns function to decode JSON to value type
     for objects that conform to the Glossy protocol
-
-    :param: key JSON key used to set value
-
-    :returns: Function decoding JSON to a value type
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to a value type
     */
     public static func forceDecode<T: Decodable>(key: String) -> JSON -> T {
         return { return decode(key)($0)! }
@@ -225,10 +226,10 @@ public struct Decoder {
     /**
     Returns function to decode JSON to array
     of enum values
-
-    :param: key JSON key used to set value
-
-    :returns: Function decoding JSON to a array
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to a array
     */
     public static func forceDecodeArray<T: RawRepresentable>(key: String) -> JSON -> [T] {
         return { return decodeArray(key)($0)! }
@@ -237,10 +238,10 @@ public struct Decoder {
     /**
     Returns function to decode JSON to array
     for objects that conform to the Glossy protocol
-
-    :param: key JSON key used to set value
-
-    :returns: Function decoding JSON to a array
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to a array
     */
     public static func forceDecodeArray<T: Decodable>(key: String) -> JSON -> [T] {
         return { return decodeArray(key)($0)! }
@@ -248,11 +249,11 @@ public struct Decoder {
     
     /**
     Returns function to decode JSON to date
-
-    :param: key           JSON key used to set value
-    :param: dateFormatter Formatter used to format date
-
-    :returns: Function decoding JSON to a date
+    
+    - parameter key:           JSON key used to set value
+    - parameter dateFormatter: Formatter used to format date
+    
+    - returns: Function decoding JSON to a date
     */
     public static func forceDecodeDate(key: String, dateFormatter: NSDateFormatter) -> JSON -> NSDate {
         return { return decodeDate(key, dateFormatter: dateFormatter)($0)! }
@@ -260,10 +261,11 @@ public struct Decoder {
     
     /**
     Returns function to decode JSON to ISO8601 date
-
-    :param: key JSON key used to set value
-
-    :returns: Function decoding JSON to a ISO8601 date
+    
+    - parameter key:           JSON key used to set value
+    - parameter dateFormatter: Formatter with ISO8601 format
+    
+    - returns: Function decoding JSON to a ISO8601 date
     */
     public static func forceDecodeDateISO8601(key: String) -> JSON -> NSDate {
         let dateFormatter = NSDateFormatter()
@@ -275,10 +277,10 @@ public struct Decoder {
     
     /**
     Returns function to decode JSON to enum value
-
-    :param: key JSON key used to set value
-
-    :returns: Function decoding JSON to an enum value
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to an enum value
     */
     public static func forceDecodeEnum<T: RawRepresentable>(key: String) -> JSON -> T {
         return { return decodeEnum(key)($0)! }
@@ -286,10 +288,10 @@ public struct Decoder {
     
     /**
     Returns function to decode JSON to URL
-
-    :param: key JSON key used to set value
-
-    :returns: Function decoding JSON to a URL
+    
+    - parameter key: JSON key used to set value
+    
+    - returns: Function decoding JSON to a URL
     */
     public static func forceDecodeURL(key: String) -> JSON -> NSURL {
         return { return decodeURL(key)($0)! }

@@ -29,7 +29,7 @@ extension Dictionary {
     /**
     Adds entries from provided dictionary
     
-    - parameter other:    Dictionary to add entries from
+    :parameter: other Dictionary to add entries from
     */
     public mutating func add(other: Dictionary) -> () {
         for (key,value) in other {
