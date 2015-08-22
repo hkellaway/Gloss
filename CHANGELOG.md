@@ -2,9 +2,29 @@
 All notable changes to this project will be documented in this file.
 `Gloss` adheres to [Semantic Versioning](http://semver.org/).
 
+- `0.4.x` Releases - [0.4.0](#040)
 - `0.3.x` Releases - [0.3.0](#030) | [0.3.1](#031) 
 - `0.2.x` Releases - [0.2.0](#020) 
 - `0.1.x` Releases - [0.1.0](#010) 
+
+
+---
+
+## [0.4.0](https://github.com/hkellaway/Gloss/releases/tag/0.4.0)
+Released on 2015-08-22. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A0.4.0).
+
+#### Added
+- Ability to force the decoding of a property from JSON [Issue [#25](https://github.com/hkellaway/Gloss/issues/25)]
+- Custom `<~~!` operator for force decoding [Issue [#25](https://github.com/hkellaway/Gloss/issues/25)]
+- `Decodable` protocol was updated to have JSON passed in via the `init(json:)` initializer [Issue [#25](https://github.com/hkellaway/Gloss/issues/25)]
+- Tests for object creation from JSON and JSON creation from object
+
+#### Updated
+- Pod docs now use reStructured text format [PR [#33](https://github.com/hkellaway/Gloss/pull/33), [#34](https://github.com/hkellaway/Gloss/pull/34)]
+
+#### Removed
+
+- The `fromJSON(json:)` method was removed from the `Decodable` protocol in place of the new `init(json:)` initializer [Issue [#25](https://github.com/hkellaway/Gloss/issues/25)]
 
 ---
 
