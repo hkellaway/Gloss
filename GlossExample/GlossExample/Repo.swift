@@ -27,11 +27,14 @@ import Gloss
 
 struct Repo: Glossy {
     
+    // Required fields
     let repoId: Int
-    let name: String?
-    let desc: String
-    let url: NSURL?
+    let name: String
+    let url: NSURL
     let owner: RepoOwner
+    
+    // Optional fields
+    let desc: String?
     let primaryLanguage: Language?
     
     enum Language: String {
@@ -41,12 +44,20 @@ struct Repo: Glossy {
     
     // MARK: - Deserialization
     
-    init(json: JSON) {
-        self.repoId = "id" <~~! json
-        self.name = "name" <~~ json
-        self.desc = "description" <~~! json
-        self.url = "html_url" <~~ json
-        self.owner = "owner" <~~! json
+    // As is often the case with serializing objects from arbitrary data, partial serialization can result in garbage data,
+    // which we'll want to ignore and just return nil instead.
+    init?(json: JSON) {
+        guard let repoId: Int = "id" <~~ json,
+            let name: String = "name" <~~ json,
+            let url: NSURL = "html_url" <~~ json,
+            let owner: RepoOwner = "owner" <~~ json else { return nil }
+        
+        self.repoId = repoId
+        self.name = name
+        self.url = url
+        self.owner = owner
+        
+        self.desc = "description" <~~ json
         self.primaryLanguage = "language" <~~ json
     }
     

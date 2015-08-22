@@ -25,6 +25,26 @@
 
 import Gloss
 
+struct FailableModel: Glossy {
+    let identifier: String
+    let value: Int
+    
+    init?(json: JSON) {
+        guard let identifier: String = "identifier" <~~ json,
+            let value: Int = "value" <~~ json else { return nil }
+        
+        self.identifier = identifier
+        self.value = value
+    }
+    
+    func toJSON() -> JSON? {
+        return [
+            "identifier": self.identifier,
+            "value": self.value,
+        ]
+    }
+}
+
 struct TestModel: Glossy {
     
     let bool: Bool?

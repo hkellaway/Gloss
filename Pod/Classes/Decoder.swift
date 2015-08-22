@@ -114,7 +114,9 @@ public struct Decoder {
                 var models: [T] = []
                 
                 for subJSON in jsonArray {
-                    models.append(T(json: subJSON))
+                    if let model = T(json: subJSON) {
+                        models.append(model)
+                    }
                 }
                 
                 return models

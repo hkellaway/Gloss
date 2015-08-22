@@ -4,17 +4,17 @@ PODS:
   - Gloss/Extensions (0.4.0)
 
 DEPENDENCIES:
-  - Gloss (from `https://github.com/hkellaway/Gloss.git`, tag `0.4.0`)
+  - Gloss (from `https://github.com/hkellaway/Gloss.git`, branch `feature/morganchen12/failable-initializers`)
 
 EXTERNAL SOURCES:
   Gloss:
+    :branch: feature/morganchen12/failable-initializers
     :git: https://github.com/hkellaway/Gloss.git
-    :tag: 0.4.0
 
 CHECKOUT OPTIONS:
   Gloss:
+    :commit: ef38ee28180df25e9afab1838d600091f4012dcb
     :git: https://github.com/hkellaway/Gloss.git
-    :tag: 0.4.0
 
 SPEC CHECKSUMS:
   Gloss: 8ade5e1f7cdd34103c26e77e39c4d7b604cb25c5
