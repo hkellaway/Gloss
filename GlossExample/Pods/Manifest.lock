@@ -4,16 +4,16 @@ PODS:
   - Gloss/Extensions (0.4.0)
 
 DEPENDENCIES:
-  - Gloss (from `https://github.com/hkellaway/Gloss.git`, branch `feature/morganchen12/failable-initializers`)
+  - Gloss (from `https://github.com/hkellaway/Gloss.git`, branch `fix/forced_decoding_cleanup`)
 
 EXTERNAL SOURCES:
   Gloss:
-    :branch: feature/morganchen12/failable-initializers
+    :branch: fix/forced_decoding_cleanup
     :git: https://github.com/hkellaway/Gloss.git
 
 CHECKOUT OPTIONS:
   Gloss:
-    :commit: ef38ee28180df25e9afab1838d600091f4012dcb
+    :commit: 05093f8ab7bbdb268293471a22acf99db97e1224
     :git: https://github.com/hkellaway/Gloss.git
 
 SPEC CHECKSUMS:
