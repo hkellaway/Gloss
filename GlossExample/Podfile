@@ -3,7 +3,7 @@ platform :ios, '8.0'
 
 target 'GlossExample' do
 
-pod 'Gloss', :git => 'https://github.com/hkellaway/Gloss.git', :branch => 'feature/morganchen12/failable-initializers'
+pod 'Gloss', :git => 'https://github.com/hkellaway/Gloss.git', :branch => 'fix/forced_decoding_cleanup'
 
 end
 
