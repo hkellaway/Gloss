@@ -30,26 +30,35 @@ import XCTest
 class DecoderTests: XCTestCase {
     
     var testJSON: JSON? = [:]
-    
-    let validJSON: JSON = [
-        "identifier": "unique",
-        "value" : 99999,
-    ]
-    
-    let invalidJSON: JSON = [
-        "asdf": "dsafhkjdaf",
-        "asjdkfhl": 203183492749,
-        "asdfjhkhfsldjghi": 0.12390
-    ]
+    var testFailableModelJSONValid: JSON? = [:]
+    var testFailableModelJSONInvalid: JSON? = [:]
 
     override func setUp() {
         super.setUp()
         
-        let testJSONPath: NSString = NSBundle(forClass: self.dynamicType).pathForResource("TestModel", ofType: "json")!
-        let testJSONData: NSData = NSData(contentsOfFile: testJSONPath as String)!
+        var testJSONPath: NSString = NSBundle(forClass: self.dynamicType).pathForResource("TestModel", ofType: "json")!
+        var testJSONData: NSData = NSData(contentsOfFile: testJSONPath as String)!
         
         do {
             try testJSON = NSJSONSerialization.JSONObjectWithData(testJSONData, options: NSJSONReadingOptions(rawValue: 0)) as? JSON
+        } catch {
+            print(error)
+        }
+        
+        testJSONPath  = NSBundle(forClass: self.dynamicType).pathForResource("TestFailableModelValid", ofType: "json")!
+        testJSONData = NSData(contentsOfFile: testJSONPath as String)!
+        
+        do {
+            try testFailableModelJSONValid = NSJSONSerialization.JSONObjectWithData(testJSONData, options: NSJSONReadingOptions(rawValue: 0)) as? JSON
+        } catch {
+            print(error)
+        }
+        
+        testJSONPath  = NSBundle(forClass: self.dynamicType).pathForResource("TestFailableModelInvalid", ofType: "json")!
+        testJSONData = NSData(contentsOfFile: testJSONPath as String)!
+        
+        do {
+            try testFailableModelJSONInvalid = NSJSONSerialization.JSONObjectWithData(testJSONData, options: NSJSONReadingOptions(rawValue: 0)) as? JSON
         } catch {
             print(error)
         }
@@ -57,22 +66,22 @@ class DecoderTests: XCTestCase {
     
     override func tearDown() {
         testJSON = nil
+        testFailableModelJSONValid = nil
+        testFailableModelJSONInvalid = nil
         
         super.tearDown()
     }
     
-    func testSerializingObjectsCanFai() {
-        let maybeModel = FailableModel(json: invalidJSON)
-        XCTAssertTrue(maybeModel == nil, "Expected initialization with bad data to fail, instead got \(maybeModel)")
+    func testInitializingFailableObjectsWithBadDataCanFail() {
+        let result = TestFailableModel(json: testFailableModelJSONInvalid!)
+        
+        XCTAssertTrue(result == nil, "Expected initialization with bad data to fail, instead got \(result)")
     }
     
-    func testSerializingFailableObjectsCanSucceed() {
-        let maybeModel = FailableModel(json: validJSON)
-        XCTAssertTrue(maybeModel != nil, "Expected initialization with valid data to succeed, instead got \(maybeModel)")
-    }
-    
-    func testJSONIsNotNil() {
-        XCTAssertTrue((testJSON != nil), "Test JSON should not be nil")
+    func testInitializingFailableObjectsWithValidDataCanSucceed() {
+        let result = TestFailableModel(json: testFailableModelJSONValid!)
+        
+        XCTAssertTrue(result != nil, "Expected initialization with valid data to succeed, instead got \(result)")
     }
     
     func testInvalidValue() {
