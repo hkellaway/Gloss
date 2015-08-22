@@ -388,7 +388,7 @@ Though depicted here as being in the same file, good practice would have the `En
 
 Models that are to be created from JSON _must_ adopt the `Decodable` protocol.
 
-Models that are to be transofmed to JSON _must_ adopt the `Encodable` protocol.
+Models that are to be transformed to JSON _must_ adopt the `Encodable` protocol.
 
 The `Glossy` protocol depicted in the examples is simply a convenience for defining models that can translated to _and_ from JSON. `Glossy` can be replaced by `Decodable, Encodable` for more preciseness, if desired.
 
