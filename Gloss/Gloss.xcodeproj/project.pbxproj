@@ -10,6 +10,11 @@
 		DC39BF651B8A7AD200088CE0 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC39BF641B8A7AD200088CE0 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC39BF6C1B8A7AD200088CE0 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC39BF611B8A7AD200088CE0 /* Gloss.framework */; };
 		DC39BF711B8A7AD200088CE0 /* GlossTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BF701B8A7AD200088CE0 /* GlossTests.swift */; };
+		DC39BF801B8A7C0400088CE0 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BF7B1B8A7C0400088CE0 /* Decoder.swift */; };
+		DC39BF811B8A7C0400088CE0 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BF7C1B8A7C0400088CE0 /* Dictionary.swift */; };
+		DC39BF821B8A7C0400088CE0 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BF7D1B8A7C0400088CE0 /* Encoder.swift */; };
+		DC39BF831B8A7C0400088CE0 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BF7E1B8A7C0400088CE0 /* Gloss.swift */; };
+		DC39BF841B8A7C0400088CE0 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BF7F1B8A7C0400088CE0 /* Operators.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +34,11 @@
 		DC39BF6B1B8A7AD200088CE0 /* GlossTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlossTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC39BF701B8A7AD200088CE0 /* GlossTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlossTests.swift; sourceTree = "<group>"; };
 		DC39BF721B8A7AD200088CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC39BF7B1B8A7C0400088CE0 /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		DC39BF7C1B8A7C0400088CE0 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		DC39BF7D1B8A7C0400088CE0 /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
+		DC39BF7E1B8A7C0400088CE0 /* Gloss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gloss.swift; sourceTree = "<group>"; };
+		DC39BF7F1B8A7C0400088CE0 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +81,11 @@
 		DC39BF631B8A7AD200088CE0 /* Gloss */ = {
 			isa = PBXGroup;
 			children = (
+				DC39BF7B1B8A7C0400088CE0 /* Decoder.swift */,
+				DC39BF7C1B8A7C0400088CE0 /* Dictionary.swift */,
+				DC39BF7D1B8A7C0400088CE0 /* Encoder.swift */,
+				DC39BF7E1B8A7C0400088CE0 /* Gloss.swift */,
+				DC39BF7F1B8A7C0400088CE0 /* Operators.swift */,
 				DC39BF641B8A7AD200088CE0 /* Gloss.h */,
 				DC39BF661B8A7AD200088CE0 /* Info.plist */,
 			);
@@ -142,6 +157,7 @@
 		DC39BF581B8A7AD200088CE0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Harlan Kellaway";
 				TargetAttributes = {
@@ -193,6 +209,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC39BF801B8A7C0400088CE0 /* Decoder.swift in Sources */,
+				DC39BF841B8A7C0400088CE0 /* Operators.swift in Sources */,
+				DC39BF811B8A7C0400088CE0 /* Dictionary.swift in Sources */,
+				DC39BF831B8A7C0400088CE0 /* Gloss.swift in Sources */,
+				DC39BF821B8A7C0400088CE0 /* Encoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +328,7 @@
 		DC39BF761B8A7AD200088CE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -317,12 +339,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		DC39BF771B8A7AD200088CE0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
