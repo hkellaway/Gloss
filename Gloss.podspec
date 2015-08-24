@@ -10,12 +10,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
   s.requires_arc = true
 
-  s.source_files  = 'Pod/Classes/*.{h,swift}'
-
-  s.subspec 'Extensions' do |ss|
-
-    ss.source_files = 'Pod/Classes/Extensions/*.{swift}'
-
-  end
+  s.source_files  = 'Source/*.{swift}'
 
 end

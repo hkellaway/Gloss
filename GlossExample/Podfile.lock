@@ -1,22 +1,20 @@
 PODS:
-  - Gloss (0.5.0):
-    - Gloss/Extensions (= 0.5.0)
-  - Gloss/Extensions (0.5.0)
+  - Gloss (0.5.0)
 
 DEPENDENCIES:
-  - Gloss (from `https://github.com/hkellaway/Gloss.git`, tag `0.5.0`)
+  - Gloss (from `https://github.com/hkellaway/Gloss.git`, branch `feature/carthage`)
 
 EXTERNAL SOURCES:
   Gloss:
+    :branch: feature/carthage
     :git: https://github.com/hkellaway/Gloss.git
-    :tag: 0.5.0
 
 CHECKOUT OPTIONS:
   Gloss:
+    :commit: 6dd452c9286560c4170c77ad64a1c67a7a822fc4
     :git: https://github.com/hkellaway/Gloss.git
-    :tag: 0.5.0
 
 SPEC CHECKSUMS:
-  Gloss: 1d4c6dd8d1d767707fe671e95a119e04fdbb7207
+  Gloss: f78e373f42ad83125c44926b00b0a5def52fd2cf
 
 COCOAPODS: 0.37.2
