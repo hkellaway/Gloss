@@ -1,4 +1,5 @@
-//  Gloss.h
+//
+//  Gloss.swift
 //  Gloss
 //
 // Copyright (c) 2015 Harlan Kellaway
@@ -22,10 +23,57 @@
 // THE SOFTWARE.
 //
 
-@import Foundation;
+// MARK: - Types
 
-//! Project version number for Gloss
-FOUNDATION_EXPORT double GlossVersionNumber;
+public typealias JSON = [String : AnyObject]
 
-//! Project version string for Gloss
-FOUNDATION_EXPORT const unsigned char GlossString[];
+// MARK: - Protocols
+
+/**
+Convenience protocol for objects that can be
+translated from and to JSON
+*/
+public protocol Glossy: Decodable, Encodable { }
+
+/**
+Enables an object to be decoded from JSON
+*/
+public protocol Decodable {
+    
+    /**
+    Returns new instance created from provided JSON
+    
+    :parameter: json JSON representation of object
+    */
+    init?(json: JSON)
+    
+}
+
+/**
+Enables an object to be encoded to JSON
+*/
+public protocol Encodable {
+    
+    /**
+    Array of encoded values as JSON
+    */
+    func toJSON() -> JSON?
+}
+
+// MARK: - Global functions
+
+/**
+Transforms an array of JSON optionals
+to a single optional JSON dictionary
+*/
+public func jsonify(array: [JSON?]) -> JSON? {
+    var json: JSON = [:]
+    
+    for j in array {
+        if(j != nil) {
+            json.add(j!)
+        }
+    }
+    
+    return json.isEmpty ? nil : json
+}

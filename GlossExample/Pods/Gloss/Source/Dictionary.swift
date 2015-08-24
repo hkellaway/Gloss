@@ -1,4 +1,5 @@
-//  Gloss.h
+//
+//  Dictionary.swift
 //  Gloss
 //
 // Copyright (c) 2015 Harlan Kellaway
@@ -22,10 +23,18 @@
 // THE SOFTWARE.
 //
 
-@import Foundation;
 
-//! Project version number for Gloss
-FOUNDATION_EXPORT double GlossVersionNumber;
-
-//! Project version string for Gloss
-FOUNDATION_EXPORT const unsigned char GlossString[];
+extension Dictionary {
+    
+    /**
+    Adds entries from provided dictionary
+    
+    :parameter: other Dictionary to add entries from
+    */
+    public mutating func add(other: Dictionary) -> () {
+        for (key,value) in other {
+            self.updateValue(value, forKey:key)
+        }
+    }
+    
+}

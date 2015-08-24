@@ -1,6 +1,6 @@
 ![Gloss](http://hkellaway.github.io/Gloss/images/gloss_logo_tagline.png)
 
-## Features :sparkles: ![Swift](https://img.shields.io/badge/language-swift-orange.svg) [![CocoaPods](https://img.shields.io/cocoapods/v/Gloss.svg)](http://cocoapods.org/pods/Gloss) [![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE) [![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss)
+## Features :sparkles: ![Swift](https://img.shields.io/badge/language-Swift-orange.svg) [![CocoaPods](https://img.shields.io/cocoapods/v/Gloss.svg)](http://cocoapods.org/pods/Gloss) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE) [![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss) 
 
 * Mapping JSON to objects
 * Mapping objects to JSON
@@ -16,11 +16,15 @@
 pod 'Gloss', '~> 0.5'
 ```
 
-#### Swift 2 and Swift 1.2
+### Carthage
 
-Gloss was written for use with Swift 2. If you are a Swift 1.2 user, you can install the version found on the `swift_1.2` branch using 
+```
+github "hkellaway/Gloss"
+```
 
-`pod 'Gloss', :git => 'https://github.com/hkellaway/Gloss.git', :branch => 'swift_1.2'`.
+### Swift 2 and Swift 1.2
+
+Gloss was written for use with Swift 2. If you are a Swift 1.2 user, you can install the version found on the `swift_1.2` branch.
 
 Note: The `swift_1.2` branch will not include improvements made using features specific to Swift 2.
 
@@ -196,7 +200,7 @@ This model now:
 See [On Not Using Gloss Operators](#on-not-using-gloss-operators) for how to express this model without the custom `~~>` operator.
  
 
-## Initializing Model Objects
+### Initializing Model Objects
 
 Instances of Gloss models are made by calling `init(json:)`.
 
@@ -208,11 +212,13 @@ let repoOwnerJSON = [
 	"name": "hkellaway"
 ]
 
-let repoOwner = RepoOwner.init(json: repoOwnerJSON)
+if let repoOwner = RepoOwner.init(json: repoOwnerJSON) {
+    // use repoOwner here
+}
 
 ```
 
-## Translating Model Objects to JSON
+### Translating Model Objects to JSON
 
 The JSON representation of an object is retrieved as such:
 
@@ -220,7 +226,7 @@ The JSON representation of an object is retrieved as such:
 repoOwner.toJSON()
 
 ```
-Note: This requires implementing the `toJSON()` function (see: [Serialization](#serialization)).
+Note: This requires implementing the `toJSON()` function (See: [Serialization](#serialization)).
 
 
 ## Additional Topics
@@ -239,7 +245,7 @@ For example,
 
 and
 
-`"html_url" ~~> self.url` would become `Encoder.encode("html_url")(self.url)`
+`"html_url" ~~> self.url` would become `Encoder.encodeURL("html_url")(self.url)`
 
 #### On Using Gloss Operators
 
@@ -269,7 +275,7 @@ The `~~>` operator is simply syntactic sugar for a set of `Encoder.encode` funct
 
 ### Gloss Transformations
 
-Gloss comes with a number of transformations built in for convenience. (See: [Gloss Operators](#gloss-operators)).
+Gloss comes with a number of transformations built in for convenience (See: [Gloss Operators](#gloss-operators)).
 
 #### Transforming Dates
 
@@ -299,11 +305,9 @@ struct RepoOwner: Decodable {
     
     // MARK: - Deserialization
     
-    static func fromJSON(json: JSON) -> RepoOwner {
-        return RepoOwner(
-            ownerId: "id" <~~ json,
-            username: Decoder.decodeStringUppercase("login")(json)
-        )
+    init?(json: JSON) {
+        self.ownerId = "id" <~~ json
+        self.username = Decoder.decodeStringUppercase("login")(json)
     }
     
 }
@@ -388,7 +392,7 @@ Though depicted here as being in the same file, good practice would have the `En
 
 Models that are to be created from JSON _must_ adopt the `Decodable` protocol.
 
-Models that are to be transofmed to JSON _must_ adopt the `Encodable` protocol.
+Models that are to be transformed to JSON _must_ adopt the `Encodable` protocol.
 
 The `Glossy` protocol depicted in the examples is simply a convenience for defining models that can translated to _and_ from JSON. `Glossy` can be replaced by `Decodable, Encodable` for more preciseness, if desired.
 
