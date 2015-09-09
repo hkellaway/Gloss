@@ -1,20 +1,20 @@
 PODS:
-  - Gloss (0.5.1)
+  - Gloss (0.5.2)
 
 DEPENDENCIES:
-  - Gloss (from `https://github.com/hkellaway/Gloss.git`, branch `fix/foundation-import`)
+  - Gloss (from `https://github.com/hkellaway/Gloss.git`, tag `0.5.2`)
 
 EXTERNAL SOURCES:
   Gloss:
-    :branch: fix/foundation-import
     :git: https://github.com/hkellaway/Gloss.git
+    :tag: 0.5.2
 
 CHECKOUT OPTIONS:
   Gloss:
-    :commit: f84fd8f7452236acab457f87eb77004a13ed5183
     :git: https://github.com/hkellaway/Gloss.git
+    :tag: 0.5.2
 
 SPEC CHECKSUMS:
-  Gloss: 66f3530e73d1018464e0d344a055898cba18c16f
+  Gloss: 922355519314e149cedbdfd23bc0a5d5861b93a8
 
 COCOAPODS: 0.38.2
