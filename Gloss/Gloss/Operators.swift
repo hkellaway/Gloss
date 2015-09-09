@@ -23,6 +23,8 @@
 // THE SOFTWARE.
 //
 
+import Foundation
+
 // MARK: - Decode operator
 
 // MARK: <~~

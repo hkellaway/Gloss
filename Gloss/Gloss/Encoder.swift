@@ -23,6 +23,8 @@
 // THE SOFTWARE.
 //
 
+import Foundation
+
 /**
 Set of functions used to encode values to JSON
 */
