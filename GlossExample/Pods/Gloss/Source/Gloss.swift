@@ -23,6 +23,8 @@
 // THE SOFTWARE.
 //
 
+import Foundation
+
 // MARK: - Types
 
 public typealias JSON = [String : AnyObject]

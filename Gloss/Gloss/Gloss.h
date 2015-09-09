@@ -6,6 +6,7 @@
 //  Copyright © 2015 Harlan Kellaway. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 //! Project version number for Gloss.
