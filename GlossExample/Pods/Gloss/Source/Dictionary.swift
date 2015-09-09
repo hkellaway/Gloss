@@ -23,6 +23,7 @@
 // THE SOFTWARE.
 //
 
+import Foundation
 
 extension Dictionary {
     

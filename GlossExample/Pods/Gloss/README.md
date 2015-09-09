@@ -78,7 +78,7 @@ The prior example depicted the model with only Optional properties - i.e. all pr
 
 Non-Optional properties require additional use of the `guard` statement within `init?(json:)` to make sure the values are available at runtime. If values are unavailable, `nil` should be returned.
 
-Let's image we know that the value for our `RepOwner` property `ownerId` will always be availabe:
+Let's imagine we know that the value for our `RepoOwner` property `ownerId` will always be available:
 
 ``` swift
 import Gloss
@@ -148,7 +148,7 @@ struct Repo: Decodable {
         case ObjectiveC = "Objective-C"
     }
 
-    // MARK: - Deserializaiton
+    // MARK: - Deserialization
     
     init?(json: JSON) {
         self.repoId = "id" <~~ json
@@ -212,7 +212,7 @@ let repoOwnerJSON = [
 	"name": "hkellaway"
 ]
 
-if let repoOwner = RepoOwner.init(json: repoOwnerJSON) {
+if let repoOwner = RepoOwner(json: repoOwnerJSON) {
     // use repoOwner here
 }
 
@@ -318,8 +318,8 @@ extension Decoder {
         return {
             json in
             
-            if let str = json[key] as? String {
-                return str.uppercaseString
+            if let string = json[key] as? String {
+                return string.uppercaseString
             }
             
             return nil
