@@ -172,7 +172,7 @@ Despite being more complex, this model is just as simple to compose - common typ
 
 ### Serialization
 
-Next, how would we allow models to be translated _to_ JSON? Let's take a look again at the `RepoOwner` class:
+Next, how would we allow models to be translated _to_ JSON? Let's take a look again at the `RepoOwner` struct:
 
 ``` swift
 import Gloss
