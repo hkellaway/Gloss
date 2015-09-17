@@ -20,20 +20,6 @@
                ReferencedContainer = "container:GlossExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DC08B5C01B76B3ED0098D6C8"
-               BuildableName = "GlossExampleTests.xctest"
-               BlueprintName = "GlossExampleTests"
-               ReferencedContainer = "container:GlossExample.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
