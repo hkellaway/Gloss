@@ -1,25 +1,33 @@
 ![Gloss](http://hkellaway.github.io/Gloss/images/gloss_logo_tagline.png)
 
-## Features :sparkles: ![Swift](https://img.shields.io/badge/language-Swift-orange.svg) [![CocoaPods](https://img.shields.io/cocoapods/v/Gloss.svg)](http://cocoapods.org/pods/Gloss) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE) [![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss) 
+## Features :sparkles: ![Swift](https://img.shields.io/badge/language-Swift-orange.svg) [![CocoaPods](https://img.shields.io/cocoapods/v/Gloss.svg)](http://cocoapods.org/pods/Gloss) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE) [![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss)
 
 * Mapping JSON to objects
 * Mapping objects to JSON
 * Nested objects
 * Custom transformations
 
-## Installation 
+## Getting Started
 
-### Cocoapods
+- [Download Gloss](https://github.com/hkellaway/Gloss/archive/master.zip) and do a `pod install` on the included `GlossExample` app to see Gloss in action
+- Check out the [documentation](http://cocoadocs.org/docsets/Gloss/) for a more comprehensive look at the classes available in Gloss
 
+### Installation with Cocoapods
 
 ```ruby
 pod 'Gloss', '~> 0.5'
 ```
 
-### Carthage
+### Installation with Carthage
 
 ```
 github "hkellaway/Gloss"
+```
+
+When installing using Carthage, make sure you limit the platform to iOS:
+
+```bash
+carthage update --platform iOS
 ```
 
 ### Swift 2 and Swift 1.2
@@ -27,7 +35,6 @@ github "hkellaway/Gloss"
 Gloss was written for use with Swift 2. If you are a Swift 1.2 user, you can install the version found on the `swift_1.2` branch.
 
 Note: The `swift_1.2` branch will not include improvements made using features specific to Swift 2.
-
 
 ## Usage
 
@@ -50,17 +57,17 @@ Our Gloss model would look as such:
 import Gloss
 
 struct RepoOwner: Decodable {
-    
+
     let ownerId: Int?
     let username: String?
-    
+
     // MARK: - Deserialization
-    
+
     init?(json: JSON) {
         self.ownerId = "id" <~~ json
         self.username = "login" <~~ json
     }
-    
+
 }
 ```
 
@@ -74,7 +81,7 @@ See [On Not Using Gloss Operators](#on-not-using-gloss-operators) for how to exp
 
 #### A Simple Model with Non-Optional Properties
 
-The prior example depicted the model with only Optional properties - i.e. all properties end with a `?`. If you are certain that the JSON being used to create your models will always have the values for your properties, you can represent those properties as non-Optional. 
+The prior example depicted the model with only Optional properties - i.e. all properties end with a `?`. If you are certain that the JSON being used to create your models will always have the values for your properties, you can represent those properties as non-Optional.
 
 Non-Optional properties require additional use of the `guard` statement within `init?(json:)` to make sure the values are available at runtime. If values are unavailable, `nil` should be returned.
 
@@ -84,21 +91,21 @@ Let's imagine we know that the value for our `RepoOwner` property `ownerId` will
 import Gloss
 
 struct RepoOwner: Decodable {
-    
+
     let ownerId: Int
     let username: String?
-    
+
     // MARK: - Deserialization
-    
+
     init?(json: JSON) {
         guard let ownerId: Int = "id" <~~ json
             else { return nil }
-        
+
         self.ownerId = ownerId
         self.username = "login" <~~ json
     }
 }
-  
+
 ```
 
 This model has changed in two ways:
@@ -135,21 +142,21 @@ Our Gloss model would look as such:
 import Gloss
 
 struct Repo: Decodable {
-    
+
     let repoId: Int?
     let name: String?
     let desc: String?
     let url: NSURL?
     let owner: RepoOwner?
     let primaryLanguage: Language?
-    
+
     enum Language: String {
         case Swift = "Swift"
         case ObjectiveC = "Objective-C"
     }
 
     // MARK: - Deserialization
-    
+
     init?(json: JSON) {
         self.repoId = "id" <~~ json
         self.name = "name" <~~ json
@@ -158,7 +165,7 @@ struct Repo: Decodable {
         self.owner = "owner" <~~ json
         self.primaryLanguage = "language" <~~ json
     }
-    
+
 }
 ```
 
@@ -167,28 +174,28 @@ Despite being more complex, this model is just as simple to compose - common typ
 
 ### Serialization
 
-Next, how would we allow models to be translated _to_ JSON? Let's take a look again at the `RepoOwner` class:
+Next, how would we allow models to be translated _to_ JSON? Let's take a look again at the `RepoOwner` struct:
 
 ``` swift
 import Gloss
 
 struct RepoOwner: Glossy {
-    
+
     let ownerId: Int?
     let username: String?
-    
+
     // MARK: - Deserialization
     // ...
-    
+
     // MARK: - Serialization
-    
+
     func toJSON() -> JSON? {
         return jsonify([
             "id" ~~> self.ownerId,
             "login" ~~> self.username
         ])
     }
-    
+
 }
 ```
 
@@ -198,7 +205,7 @@ This model now:
 * Implements `toJSON()` which calls the `jsonify(_:)` function
 
 See [On Not Using Gloss Operators](#on-not-using-gloss-operators) for how to express this model without the custom `~~>` operator.
- 
+
 
 ### Initializing Model Objects
 
@@ -235,9 +242,9 @@ Note: This requires implementing the `toJSON()` function (See: [Serialization](#
 
 #### On Not Using Gloss Operators
 
-Gloss offers custom operators as a way to make your models less visually cluttered. However, some choose not to use custom operators for good reason - custom operators do not always clearly communicate what they are doing (See [this discussion](http://programmers.stackexchange.com/questions/180948/why-arent-user-defined-operators-more-common)). 
+Gloss offers custom operators as a way to make your models less visually cluttered. However, some choose not to use custom operators for good reason - custom operators do not always clearly communicate what they are doing (See [this discussion](http://programmers.stackexchange.com/questions/180948/why-arent-user-defined-operators-more-common)).
 
-If you wish to not use the `<~~` or `~~>` operators, their `Decoder.decode` and `Encoder.encode` complements can be used instead. 
+If you wish to not use the `<~~` or `~~>` operators, their `Decoder.decode` and `Encoder.encode` complements can be used instead.
 
 For example,
 
@@ -299,37 +306,37 @@ Let's imagine the `username` property on our `RepoOwner` model was to be an uppe
 import Gloss
 
 struct RepoOwner: Decodable {
-    
+
     let ownerId: Int?
     let username: String?
-    
+
     // MARK: - Deserialization
-    
+
     init?(json: JSON) {
         self.ownerId = "id" <~~ json
         self.username = Decoder.decodeStringUppercase("login")(json)
     }
-    
+
 }
 
 extension Decoder {
-    
+
     static func decodeStringUppercase(key: String) -> JSON -> String? {
         return {
             json in
-            
+
             if let string = json[key] as? String {
                 return string.uppercaseString
             }
-            
+
             return nil
         }
     }
-    
+
 }
 ```
 
-We've created an extension on `Decoder` and written our own decode function, `decodeStringUppercase`. 
+We've created an extension on `Decoder` and written our own decode function, `decodeStringUppercase`.
 
 What's important to note is that the return type for `decodeStringUppercase` is a function that translates from `JSON` to the desired type -- in this case, `JSON -> String?`. The value you're working with will be accessible via `json[key]` and will need to be cast to the desired type using `as?`. Then, manipulation can be done - for example, uppercasing. The transformed value should be returned; in the case that the cast failed, `nil` should be returned.
 
@@ -346,12 +353,12 @@ Let's imagine the `username` property on our `RepoOwner` model was to be a lower
 import Gloss
 
 struct RepoOwner: Glossy {
-    
+
     let ownerId: Int?
     let username: String?
-    
+
     // MARK: - Deserialization
-    // ... 
+    // ...
 
    // MARK: - Serialization
 
@@ -362,29 +369,29 @@ struct RepoOwner: Glossy {
         ])
     }
 
-    
+
 }
 
 extension Encoder {
-    
+
     static func encodeStringLowercase(key: String) -> String? -> JSON? {
         return {
             string in
-            
+
             if let string = string {
                 return [key : string.lowercaseString]
             }
-            
+
             return nil
         }
     }
-    
+
 }
 ```
 
-We've created an extension on `Encoder` and written our own encode function, `encodeStringLowercase`. 
+We've created an extension on `Encoder` and written our own encode function, `encodeStringLowercase`.
 
-What's important to note is that the return type for `encodeStringLowercase` is a function that translates from the property's type to `JSON?` -- in this case, `String? -> JSON?`. The value you're working with will be accessible via the `if let` statement. Then, manipulation can be done - for example, lowercasing. What should be returned is a dictionary with `key` as the key and the manipulated value as its value. In the case that the `if let` failed, `nil` should be returned. 
+What's important to note is that the return type for `encodeStringLowercase` is a function that translates from the property's type to `JSON?` -- in this case, `String? -> JSON?`. The value you're working with will be accessible via the `if let` statement. Then, manipulation can be done - for example, lowercasing. What should be returned is a dictionary with `key` as the key and the manipulated value as its value. In the case that the `if let` failed, `nil` should be returned.
 
 Though depicted here as being in the same file, good practice would have the `Encoder` extension in a separate `Encoder.swift` file for organizational purposes.
 
@@ -398,7 +405,7 @@ The `Glossy` protocol depicted in the examples is simply a convenience for defin
 
 ## Why "Gloss"?
 
-The name for Gloss was inspired by the name for a popular Objective-C library, [Mantle](https://github.com/Mantle/Mantle) - both names are a play on the word "layer", in reference to their role in defining the model layer of the application. 
+The name for Gloss was inspired by the name for a popular Objective-C library, [Mantle](https://github.com/Mantle/Mantle) - both names are a play on the word "layer", in reference to their role in defining the model layer of the application.
 
 The particular word "gloss" was chosen as it evokes both being lightweight and adding beauty.
 
