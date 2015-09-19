@@ -1,6 +1,12 @@
 ![Gloss](http://hkellaway.github.io/Gloss/images/gloss_logo_tagline.png)
 
-## Features :sparkles: ![Swift](https://img.shields.io/badge/language-Swift-orange.svg) [![CocoaPods](https://img.shields.io/cocoapods/v/Gloss.svg)](http://cocoapods.org/pods/Gloss) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE) [![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss)
+## Features :sparkles: 
+![Swift](https://img.shields.io/badge/language-Swift-orange.svg) 
+[![CocoaPods](https://img.shields.io/cocoapods/v/Gloss.svg)](http://cocoapods.org/pods/Gloss) 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) 
+[![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE) 
+[![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss) 
+[![Build Status](https://travis-ci.org/hkellaway/Gloss.svg?branch=develop)](https://travis-ci.org/hkellaway/Gloss)
 
 * Mapping JSON to objects
 * Mapping objects to JSON
