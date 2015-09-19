@@ -7,15 +7,18 @@
 * Nested objects
 * Custom transformations
 
-## Installation
+## Getting Started
 
-### Cocoapods
+- [Download Gloss](https://github.com/hkellaway/Gloss/archive/master.zip) and do a `pod install` on the included `GlossExample` app to see Gloss in action
+- Check out the [documentation](http://cocoadocs.org/docsets/Gloss/) for a more comprehensive look at the classes available in Gloss
+
+### Installation with Cocoapods
 
 ```ruby
 pod 'Gloss', '~> 0.5'
 ```
 
-### Carthage
+### Installation with Carthage
 
 ```
 github "hkellaway/Gloss"
@@ -32,7 +35,6 @@ carthage update --platform iOS
 Gloss was written for use with Swift 2. If you are a Swift 1.2 user, you can install the version found on the `swift_1.2` branch.
 
 Note: The `swift_1.2` branch will not include improvements made using features specific to Swift 2.
-
 
 ## Usage
 
