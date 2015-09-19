@@ -216,19 +216,9 @@ class DecoderTests: XCTestCase {
     func testDecodeDateISO8601() {
         let result: NSDate? = Decoder.decodeDateISO8601("dateISO8601")(testJSON!)
         
-        let year: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Year, fromDate: result!).year
-        let month: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Month, fromDate: result!).month
-        let day: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Day, fromDate: result!).day
-        let hour: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Hour, fromDate: result!).hour
-        let minute: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Minute, fromDate: result!).minute
-        let second: Int = NSCalendar.currentCalendar().components(NSCalendarUnit.Second, fromDate: result!).second
+        let timeInterval = result!.timeIntervalSince1970
         
-        XCTAssertTrue((year == 2015), "Decode NSDate should return correct value")
-        XCTAssertTrue((month == 8), "Decode NSDate should return correct value")
-        XCTAssertTrue((day == 8), "Decode NSDate should return correct value")
-        XCTAssertTrue((hour == 17), "Decode NSDate should return correct value")
-        XCTAssertTrue((minute == 57), "Decode NSDate should return correct value")
-        XCTAssertTrue((second == 13), "Decode NSDate should return correct value")
+        XCTAssertTrue(timeInterval == 1439071033, "Decode NSDate should return correct value")
     }
     
     func testDecodeURL() {

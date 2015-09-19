@@ -170,8 +170,12 @@ class EncoderTests: XCTestCase {
         let dateISO8601: NSDate? = NSDate(timeIntervalSince1970: 1439071033)
         let result: JSON? = Encoder.encodeDateISO8601("dateISO8601")(dateISO8601!)
         
-        let expectation: String = result!["dateISO8601"] as! String
-        XCTAssertTrue((expectation == "2015-08-08T17:57:13-04:00"), "Encode ISO8601 NSDate should return correct value, got \(expectation)")
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        let resultDate = dateFormatter.dateFromString(result!["dateISO8601"] as! String)
+        
+        XCTAssertTrue(resultDate?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate should return correct value")
     }
     
     func testEncodeURL() {

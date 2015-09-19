@@ -89,7 +89,15 @@ class ObjectToJSONFlowTests: XCTestCase {
         XCTAssertTrue((result!["enumValue"] as! String == "A"), "JSON created from model should have correct values")
         XCTAssertTrue((result!["enumValueArray"] as! [String] == ["A", "B", "C"]), "JSON created from model should have correct values")
         XCTAssertTrue(((result!["date"] as! String) == "2015-08-16T20:51:46.600Z"), "JSON created from model should have correct values")
-        XCTAssertTrue((result!["dateISO8601"] as! String == "2015-08-08T17:57:13-04:00"), "JSON created from model should have correct values")
+        
+        let dateISO8601 = result!["dateISO8601"] as! String
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        let resultDate = dateFormatter.dateFromString(dateISO8601)
+        
+        XCTAssertTrue(resultDate?.timeIntervalSince1970 == 1439071033, "JSON created from model should have correct values")
+        
         XCTAssertTrue((result!["url"] as! String == "http://github.com"), "JSON created from model should have correct values")
         
         let nestedModel: JSON = result!["nestedModel"] as! JSON
