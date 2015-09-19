@@ -3,7 +3,7 @@ platform :ios, '8.0'
 
 target 'GlossExample' do
 
-pod 'Gloss', :git => 'https://github.com/hkellaway/Gloss.git', :tag => '0.5.2'
+pod 'Gloss', '~> 0.5'
 
 end
 
