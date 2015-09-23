@@ -6,7 +6,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) 
 [![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE) 
 [![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss) 
-[![Build Status](https://travis-ci.org/hkellaway/Gloss.svg?branch=develop)](https://travis-ci.org/hkellaway/Gloss)
+[![Build Status](https://travis-ci.org/hkellaway/Gloss.svg)](https://travis-ci.org/hkellaway/Gloss)
 
 * Mapping JSON to objects
 * Mapping objects to JSON
@@ -221,12 +221,23 @@ For example, we can create a `RepoOwner` as follows:
 
 ``` swift
 let repoOwnerJSON = [
-	"id" : 5456481,
-	"name": "hkellaway"
+        "id" : 5456481,
+        "name": "hkellaway"
 ]
 
+guard let repoOwner = RepoOwner(json: repoJSON)
+    else { /* handle nil object here */ }
+
+print(repoOwner.repoId)
+print(repoOwner.name)
+```
+
+Or, using `if let` syntax: 
+
+``` swift
 if let repoOwner = RepoOwner(json: repoOwnerJSON) {
-    // use repoOwner here
+    print(repoOwner.repoId)
+    print(repoOwner.name)
 }
 
 ```
@@ -346,7 +357,7 @@ We've created an extension on `Decoder` and written our own decode function, `de
 
 What's important to note is that the return type for `decodeStringUppercase` is a function that translates from `JSON` to the desired type -- in this case, `JSON -> String?`. The value you're working with will be accessible via `json[key]` and will need to be cast to the desired type using `as?`. Then, manipulation can be done - for example, uppercasing. The transformed value should be returned; in the case that the cast failed, `nil` should be returned.
 
-Though depicted here as being in the same file, good practice would have the `Decoder` extension in a separate `Decoder.swift` file for organizational purposes.
+Though depicted here as being in the same file, good practice would have the `Decoder` extension in a separate file for organizational purposes.
 
 
 #### To JSON
@@ -399,7 +410,7 @@ We've created an extension on `Encoder` and written our own encode function, `en
 
 What's important to note is that the return type for `encodeStringLowercase` is a function that translates from the property's type to `JSON?` -- in this case, `String? -> JSON?`. The value you're working with will be accessible via the `if let` statement. Then, manipulation can be done - for example, lowercasing. What should be returned is a dictionary with `key` as the key and the manipulated value as its value. In the case that the `if let` failed, `nil` should be returned.
 
-Though depicted here as being in the same file, good practice would have the `Encoder` extension in a separate `Encoder.swift` file for organizational purposes.
+Though depicted here as being in the same file, good practice would have the `Encoder` extension in a separate file for organizational purposes.
 
 ### Gloss Protocols
 
