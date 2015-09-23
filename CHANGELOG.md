@@ -2,11 +2,19 @@
 All notable changes to this project will be documented in this file.
 `Gloss` adheres to [Semantic Versioning](http://semver.org/).
 
-- `0.5.x` Releases - [0.5.0](#050) | [0.5.1](#051) | [0.5.2](#052) | [0.5.3](#053)
+- `0.5.x` Releases - [0.5.0](#050) | [0.5.1](#051) | [0.5.2](#052) | [0.5.3](#053) | [0.5.4](#054)
 - `0.4.x` Releases - [0.4.0](#040)
 - `0.3.x` Releases - [0.3.0](#030) | [0.3.1](#031) 
 - `0.2.x` Releases - [0.2.0](#020) 
 - `0.1.x` Releases - [0.1.0](#010) 
+
+---
+
+## [0.5.4](https://github.com/hkellaway/Gloss/releases/tag/0.5.4)
+Released on 2015-09-22. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A0.5.4).
+
+#### Added
+- tvOS platform to podspect [PR [#63](https://github.com/hkellaway/Gloss/pull/63)]
 
 ---
 
