@@ -49,6 +49,38 @@ public protocol Decodable {
     */
     init?(json: JSON)
     
+    /**
+    Returns array of new instances created from provided JSON array
+    
+    :parameter: jsonArray Array of JSON representations of object
+    */
+    static func modelsFromJSONArray(jsonArray: [JSON]) -> [Self]?
+    
+}
+
+/**
+Extension of Decodable protocol with default implementations
+*/
+public extension Decodable {
+    
+    /**
+    Returns array of new instances created from provided JSON array
+    
+    :parameter: jsonArray Array of JSON representations of object
+    */
+    static func modelsFromJSONArray(jsonArray: [JSON]) -> [Self]? {
+        var models: [Self] = []
+        
+        for json in jsonArray {
+            let model = Self(json: json)
+            if let model = model {
+                models.append(model)
+            }
+        }
+        
+        return (jsonArray.count == models.count) ? models : nil
+    }
+    
 }
 
 /**
