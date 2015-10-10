@@ -45,21 +45,7 @@ public func <~~ <T>(key: String, json: JSON) -> T? {
 Convenience operator for decoding JSON to Decodable object
 */
 public func <~~ <T: Decodable>(key: String, json: JSON) -> T? {
-    return Decoder.decode(key)(json)
-}
-
-/**
-Convenience operator for decoding JSON to array of enum values
-*/
-public func <~~ <T: RawRepresentable>(key: String, json: JSON) -> [T]? {
-    return Decoder.decodeArray(key)(json)
-}
-
-/**
-Convenience operator for decoding JSON to array of Decodable objects
-*/
-public func <~~ <T: Decodable>(key: String, json: JSON) -> [T]? {
-    return Decoder.decodeArray(key)(json)
+    return Decoder.decodeDecodable(key)(json)
 }
 
 /**
@@ -74,6 +60,20 @@ Convenience operator for decoding JSON to NSURL
 */
 public func <~~ (key: String, json: JSON) -> NSURL? {
     return Decoder.decodeURL(key)(json)
+}
+
+/**
+Convenience operator for decoding JSON to array of enum values
+*/
+public func <~~ <T: RawRepresentable>(key: String, json: JSON) -> [T]? {
+    return Decoder.decodeEnumArray(key)(json)
+}
+
+/**
+Convenience operator for decoding JSON to array of Decodable objects
+*/
+public func <~~ <T: Decodable>(key: String, json: JSON) -> [T]? {
+    return Decoder.decodeDecodableArray(key)(json)
 }
 
 // MARK: - Operator ~~> (Encode)
@@ -94,28 +94,7 @@ public func ~~> <T>(key: String, property: T?) -> JSON? {
 Convenience operator for encoding Encodable object to JSON
 */
 public func ~~> <T: Encodable>(key: String, property: T?) -> JSON? {
-    return Encoder.encode(key)(property)
-}
-
-/**
-Convenience operator for encoding array of generic objects to JSON
-*/
-public func ~~> <T>(key: String, property: [T]?) -> JSON? {
-    return Encoder.encodeArray(key)(property)
-}
-
-/**
-Convenience operator for encoding array of enum values to JSON
-*/
-public func ~~> <T: RawRepresentable>(key: String, property: [T]?) -> JSON? {
-    return Encoder.encodeArray(key)(property)
-}
-
-/**
-Convenience operator for encoding array of Encodable objects to JSON
-*/
-public func ~~> <T: Encodable>(key: String, property: [T]?) -> JSON? {
-    return Encoder.encodeArray(key)(property)
+    return Encoder.encodeEncodable(key)(property)
 }
 
 /**
@@ -130,4 +109,25 @@ Convenience operator for encoding NSURL to JSON
 */
 public func ~~> (key: String, property: NSURL?) -> JSON? {
     return Encoder.encodeURL(key)(property)
+}
+
+/**
+Convenience operator for encoding array of generic objects to JSON
+*/
+public func ~~> <T>(key: String, property: [T]?) -> JSON? {
+    return Encoder.encodeArray(key)(property)
+}
+
+/**
+Convenience operator for encoding array of Encodable objects to JSON
+*/
+public func ~~> <T: Encodable>(key: String, property: [T]?) -> JSON? {
+    return Encoder.encodeEncodableArray(key)(property)
+}
+
+/**
+Convenience operator for encoding array of enum values to JSON
+*/
+public func ~~> <T: RawRepresentable>(key: String, property: [T]?) -> JSON? {
+    return Encoder.encodeEnumArray(key)(property)
 }
