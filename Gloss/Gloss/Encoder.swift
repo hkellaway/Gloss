@@ -137,7 +137,7 @@ public struct Encoder {
                     }
                 }
                 
-                return encodedArray.isEmpty ? nil : [key : encodedArray]
+                return [key : encodedArray]
             }
             
             return nil
