@@ -89,9 +89,42 @@ Enables an object to be encoded to JSON
 public protocol Encodable {
     
     /**
-    Array of encoded values as JSON
+    Object encoded as JSON
     */
     func toJSON() -> JSON?
+    
+    /**
+    Returns an array of provided objects encoded as a JSON array
+    
+    :parameter: models Array of models to be encoded as JSON
+    */
+    static func toJSONArray(models:[Self]) -> [JSON]?
+}
+
+/**
+Extension of Encodable protocol with default implementations
+*/
+public extension Encodable {
+    
+    /**
+    Returns an array of provided objects encoded as a JSON array
+    
+    :parameter: models Array of models to be encoded as JSON
+    */
+    static func toJSONArray(models:[Self]) -> [JSON]? {
+        var jsonArray: [JSON] = []
+        
+        for model in models {
+            let json = model.toJSON()
+            
+            if let json = json {
+                jsonArray.append(json)
+            }
+        }
+        
+        return (models.count == jsonArray.count) ? jsonArray : nil
+    }
+    
 }
 
 // MARK: - Global functions
