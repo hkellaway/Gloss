@@ -124,7 +124,7 @@ class EncoderTests: XCTestCase {
     }
     
     func testEncodeNestedModel() {
-        let result: JSON? = Encoder.encode("nestedModel")(testNestedModel1)
+        let result: JSON? = Encoder.encodeEncodable("nestedModel")(testNestedModel1)
         let modelJSON: JSON = result!["nestedModel"] as! JSON
         
         XCTAssertTrue((modelJSON["id"] as! Int == 1), "Encode nested model should return correct value")
@@ -134,7 +134,7 @@ class EncoderTests: XCTestCase {
     func testEncodeNestedModelArray() {
         let model1: TestNestedModel = testNestedModel1!
         let model2: TestNestedModel = testNestedModel2!
-        let result: JSON? = Encoder.encodeArray("nestedModelArray")([model1, model2])
+        let result: JSON? = Encoder.encodeEncodableArray("nestedModelArray")([model1, model2])
         let modelsJSON: [JSON] = result!["nestedModelArray"] as! [JSON]
         let model1JSON: JSON = modelsJSON[0]
         let model2JSON: JSON = modelsJSON[1]
@@ -154,7 +154,7 @@ class EncoderTests: XCTestCase {
     
     func testEncodeEnumArray() {
         let enumArray: [TestModel.EnumValue]? = [TestModel.EnumValue.A, TestModel.EnumValue.B, TestModel.EnumValue.C]
-        let result: JSON? = Encoder.encodeArray("enumValueArray")(enumArray)
+        let result: JSON? = Encoder.encodeEnumArray("enumValueArray")(enumArray)
         
         XCTAssertTrue((result!["enumValueArray"] as! [TestModel.EnumValue.RawValue] == ["A", "B", "C"]), "Encode enum value array should return correct value")
     }
