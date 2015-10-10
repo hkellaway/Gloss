@@ -138,7 +138,7 @@ class OperatorTests: XCTestCase {
     
     func testDecodeOperatorDecodableReturnsDecoderDecode() {
         let resultNestedModel: TestNestedModel? = "nestedModel" <~~ testJSON!
-        let decoderResultNestedModel: TestNestedModel? = Decoder.decode("nestedModel")(testJSON!)
+        let decoderResultNestedModel: TestNestedModel? = Decoder.decodeDecodable("nestedModel")(testJSON!)
         
         XCTAssertTrue((resultNestedModel!.id == decoderResultNestedModel!.id), "<~~ for Decodable models should return same as Decoder.decode")
         XCTAssertTrue((resultNestedModel!.name == decoderResultNestedModel!.name), "<~~ for Decodable models should return same as Decoder.decode")
@@ -148,7 +148,7 @@ class OperatorTests: XCTestCase {
         let result: [TestNestedModel]? = "nestedModelArray" <~~ testJSON!
         let resultElement1: TestNestedModel = result![0]
         let resultElement2: TestNestedModel = result![1]
-        let decoderResult: [TestNestedModel]? = Decoder.decodeArray("nestedModelArray")(testJSON!)
+        let decoderResult: [TestNestedModel]? = Decoder.decodeDecodableArray("nestedModelArray")(testJSON!)
         let decoderResultElement1: TestNestedModel = decoderResult![0]
         let decoderResultElement2: TestNestedModel = decoderResult![1]
         
@@ -170,7 +170,7 @@ class OperatorTests: XCTestCase {
         let resultElement1: TestModel.EnumValue = result![0]
         let resultElement2: TestModel.EnumValue = result![1]
         let resultElement3: TestModel.EnumValue = result![2]
-        let decoderResult: [TestModel.EnumValue]? = Decoder.decodeArray("enumValueArray")(testJSON!)
+        let decoderResult: [TestModel.EnumValue]? = Decoder.decodeEnumArray("enumValueArray")(testJSON!)
         let decoderResultElement1: TestModel.EnumValue = decoderResult![0]
         let decoderResultElement2: TestModel.EnumValue = decoderResult![1]
         let decoderResultElement3: TestModel.EnumValue = decoderResult![2]
@@ -272,7 +272,7 @@ class OperatorTests: XCTestCase {
     func testEncodeOperatorEncodableReturnsEncoderEncode() {
         let result: JSON? = "nestedModel" ~~> testNestedModel1
         let modelJSON: JSON = result!["nestedModel"] as! JSON
-        let encoderResult: JSON? = Encoder.encode("nestedModel")(testNestedModel1)
+        let encoderResult: JSON? = Encoder.encodeEncodable("nestedModel")(testNestedModel1)
         let encoderModelJSON: JSON = encoderResult!["nestedModel"] as! JSON
         
         XCTAssertTrue((modelJSON["id"] as! Int == encoderModelJSON["id"] as! Int), "~~> for nested model should return same as Encoder.encode")
@@ -286,7 +286,7 @@ class OperatorTests: XCTestCase {
         let modelsJSON: [JSON] = result!["nestedModelArray"] as! [JSON]
         let model1JSON: JSON = modelsJSON[0]
         let model2JSON: JSON = modelsJSON[1]
-        let encoderResult: JSON? = Encoder.encodeArray("nestedModelArray")([model1, model2])
+        let encoderResult: JSON? = Encoder.encodeEncodableArray("nestedModelArray")([model1, model2])
         let encoderModelsJSON: [JSON] = encoderResult!["nestedModelArray"] as! [JSON]
         let encoderModel1JSON: JSON = encoderModelsJSON[0]
         let encoderModel2JSON: JSON = encoderModelsJSON[1]
@@ -308,7 +308,7 @@ class OperatorTests: XCTestCase {
     func testEncodeOperatorEnumArrayReturnsEncoderEncodeArray() {
         let enumArray: [TestModel.EnumValue]? = [TestModel.EnumValue.A, TestModel.EnumValue.B, TestModel.EnumValue.C]
         let result: JSON? = "enumValueArray" ~~> enumArray
-        let encoderResult: JSON? = Encoder.encodeArray("enumValueArray")(enumArray)
+        let encoderResult: JSON? = Encoder.encodeEnumArray("enumValueArray")(enumArray)
         
         XCTAssertTrue(((result!["enumValueArray"] as! [TestModel.EnumValue.RawValue]) == (encoderResult!["enumValueArray"] as! [TestModel.EnumValue.RawValue])), "~~> for enum value array should return same as Encoder.encodeArray")
     }
