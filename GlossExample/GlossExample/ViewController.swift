@@ -60,6 +60,9 @@ class ViewController: UIViewController {
             else { return }
         
         print("REPOS: \(repos)")
+        print("")
+        
+        print(Repo.toJSONArray(repos))
 
     }
 }
