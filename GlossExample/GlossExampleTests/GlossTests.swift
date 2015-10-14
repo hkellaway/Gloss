@@ -31,6 +31,7 @@ class GlossTests: XCTestCase {
     
     var testJSONArray: [JSON]? = []
     var testModels: [TestModel]? = nil
+    var testModelsJSON: JSON? = nil
     
     override func setUp() {
         super.setUp()
@@ -47,7 +48,7 @@ class GlossTests: XCTestCase {
         
         testJSONArray = [testJSON!, testJSON!]
         
-        let model = TestModel(json: [
+        testModelsJSON = [
             "bool" : true,
             "boolArray" : [true, false, true],
             "integer" : 1,
@@ -77,13 +78,16 @@ class GlossTests: XCTestCase {
             "date" : "2015-08-16T20:51:46.600Z",
             "dateISO8601" : "2015-08-08T21:57:13Z",
             "url" : "http://github.com"
-            ])
-        testModels = [model, model]
+            ]
+        
+        let model = TestModel(json: testModelsJSON!)
+        testModels = [model!, model!]
     }
     
     override func tearDown() {
         testJSONArray = nil
         testModels = nil
+        testModelsJSON = nil
         
         super.tearDown()
     }
@@ -161,6 +165,14 @@ class GlossTests: XCTestCase {
         XCTAssertTrue((nestedModel4.name == "nestedModel2"), "Model created from JSON should have correct property values")
         XCTAssertTrue((nestedModel5.id == 789), "Model created from JSON should have correct property values")
         XCTAssertTrue((nestedModel5.name == "nestedModel3"), "Model created from JSON should have correct property values")
+    }
+    
+    func testModelsFromJSONArrayOnlyIncludesValidModels() {
+        testJSONArray![0].removeValueForKey("bool")
+        
+        let result = TestModel.modelsFromJSONArray(testJSONArray!)
+        
+        XCTAssertTrue(result!.count == 1, "Model array from JSON array should only include valid models")
     }
     
     func testJSONArrayFromModelsProducesValidJSON() {
@@ -245,6 +257,16 @@ class GlossTests: XCTestCase {
         XCTAssertTrue((nestedModel5JSON["id"] as! Int == 789), "Encode nested model array should return correct value")
         XCTAssertTrue((nestedModel5JSON["name"] as! String == "nestedModel3"), "Encode nested model array should return correct value")
         
+    }
+    
+    func testJSONArrayFromModelsOnlyIncludesJSONFromValidModels() {
+        var invalidJSON = testModelsJSON!
+        invalidJSON.removeValueForKey("bool")
+        var jsonArray = testJSONArray!
+        jsonArray.append(invalidJSON)
+        let result = TestModel.modelsFromJSONArray(jsonArray)
+        
+        XCTAssertTrue(result!.count == 2, "Model array from JSON array should only include valid models")
     }
     
 }
