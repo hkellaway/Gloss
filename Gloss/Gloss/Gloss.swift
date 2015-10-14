@@ -66,6 +66,9 @@ public extension Decodable {
     /**
     Returns array of new instances created from provided JSON array
     
+    Note: The returned array will have only models that successfully
+    decoded
+    
     :parameter: jsonArray Array of JSON representations of object
     */
     static func modelsFromJSONArray(jsonArray: [JSON]) -> [Self]? {
@@ -78,7 +81,7 @@ public extension Decodable {
             }
         }
         
-        return (jsonArray.count == models.count) ? models : nil
+        return models
     }
     
 }
@@ -109,6 +112,9 @@ public extension Encodable {
     /**
     Returns an array of provided objects encoded as a JSON array
     
+    Note: The returned array will have only JSON that successfully
+    encoded
+    
     :parameter: models Array of models to be encoded as JSON
     */
     static func toJSONArray(models:[Self]) -> [JSON]? {
@@ -122,7 +128,7 @@ public extension Encodable {
             }
         }
         
-        return (models.count == jsonArray.count) ? jsonArray : nil
+        return jsonArray
     }
     
 }
