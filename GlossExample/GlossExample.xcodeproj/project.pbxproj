@@ -29,7 +29,7 @@
 		DCF891401B86AF6B00888FB1 /* Pods_GlossExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF8913F1B86AF6B00888FB1 /* Pods_GlossExample.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DCF891421B87488200888FB1 /* FlowObjectCreationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF891411B87488200888FB1 /* FlowObjectCreationTests.swift */; };
 		DCF891441B8749CE00888FB1 /* FlowObjectToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF891431B8749CE00888FB1 /* FlowObjectToJSON.swift */; };
-		F0157B7C46CEF886BC8CFC43 /* Pods_GlossExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371978450C13B8BC0B320144 /* Pods_GlossExample.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F0157B7C46CEF886BC8CFC43 /* Pods_GlossExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371978450C13B8BC0B320144 /* Pods_GlossExample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */

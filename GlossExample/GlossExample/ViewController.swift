@@ -62,7 +62,7 @@ class ViewController: UIViewController {
         print("REPOS: \(repos)")
         print("")
         
-        print(Repo.toJSONArray(repos))
+        print("JSON ARRAY: \(Repo.toJSONArray(repos))")
 
     }
 }
