@@ -22,7 +22,6 @@
 		DCF813021BDD298D00415B41 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812FB1BDD298D00415B41 /* Encoder.swift */; };
 		DCF813031BDD298D00415B41 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DCF812FC1BDD298D00415B41 /* Gloss.h */; };
 		DCF813041BDD298D00415B41 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812FD1BDD298D00415B41 /* Gloss.swift */; };
-		DCF813051BDD298D00415B41 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCF812FE1BDD298D00415B41 /* Info.plist */; };
 		DCF813061BDD298D00415B41 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812FF1BDD298D00415B41 /* Operators.swift */; };
 /* End PBXBuildFile section */
 
@@ -327,7 +326,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCF813051BDD298D00415B41 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
