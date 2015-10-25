@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.social_media_url = "http://twitter.com/HarlanKellaway"
   s.source           = { :git => "https://github.com/hkellaway/Gloss.git", :tag => s.version.to_s }
   
-  s.platforms     = { :ios => "8.0", :tvos => "9.0" }
+  s.platforms     = { :ios => "8.0", :osx => "10.9", :tvos => "9.0" }
   s.requires_arc = true
 
   s.source_files     = 'Gloss/Gloss/*.{swift}'
