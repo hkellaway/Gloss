@@ -17,7 +17,6 @@
 		DCF300A81BDCA4B6003FBF15 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A31BDCA4B6003FBF15 /* Encoder.swift */; };
 		DCF300A91BDCA4B6003FBF15 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A41BDCA4B6003FBF15 /* Gloss.swift */; };
 		DCF300AA1BDCA4B6003FBF15 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A51BDCA4B6003FBF15 /* Operators.swift */; };
-		DCF812DE1BDD23A400415B41 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DCF812DD1BDD23A400415B41 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DCF813001BDD298D00415B41 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812F91BDD298D00415B41 /* Decoder.swift */; };
 		DCF813011BDD298D00415B41 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812FA1BDD298D00415B41 /* Dictionary.swift */; };
 		DCF813021BDD298D00415B41 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812FB1BDD298D00415B41 /* Encoder.swift */; };
@@ -60,7 +59,6 @@
 		DCF300A31BDCA4B6003FBF15 /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
 		DCF300A41BDCA4B6003FBF15 /* Gloss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gloss.swift; sourceTree = "<group>"; };
 		DCF300A51BDCA4B6003FBF15 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
-		DCF812DD1BDD23A400415B41 /* Gloss.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Gloss.h; path = GlossMacOSX/Gloss.h; sourceTree = "<group>"; };
 		DCF812F91BDD298D00415B41 /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decoder.swift; path = Gloss/Decoder.swift; sourceTree = SOURCE_ROOT; };
 		DCF812FA1BDD298D00415B41 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = Gloss/Dictionary.swift; sourceTree = SOURCE_ROOT; };
 		DCF812FB1BDD298D00415B41 /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Encoder.swift; path = Gloss/Encoder.swift; sourceTree = SOURCE_ROOT; };
@@ -107,7 +105,6 @@
 		DC39BF571B8A7AD200088CE0 = {
 			isa = PBXGroup;
 			children = (
-				DCF812DD1BDD23A400415B41 /* Gloss.h */,
 				DC39BF631B8A7AD200088CE0 /* Gloss */,
 				DC39BF6F1B8A7AD200088CE0 /* GlossTests */,
 				DCF3008B1BDCA3FF003FBF15 /* GlossMacOSX */,
@@ -188,7 +185,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCF812DE1BDD23A400415B41 /* Gloss.h in Headers */,
 				DCF813031BDD298D00415B41 /* Gloss.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
