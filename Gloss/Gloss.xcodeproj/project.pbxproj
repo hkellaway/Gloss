@@ -15,6 +15,9 @@
 		DC39C08F1B8BD8F600088CE0 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39C08A1B8BD8F600088CE0 /* Encoder.swift */; };
 		DC39C0901B8BD8F600088CE0 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39C08B1B8BD8F600088CE0 /* Gloss.swift */; };
 		DC39C0911B8BD8F600088CE0 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39C08C1B8BD8F600088CE0 /* Operators.swift */; };
+		DCF3008D1BDCA3FF003FBF15 /* GlossMacOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = DCF3008C1BDCA3FF003FBF15 /* GlossMacOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DCF300941BDCA400003FBF15 /* GlossMacOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF3008A1BDCA3FF003FBF15 /* GlossMacOSX.framework */; settings = {ASSET_TAGS = (); }; };
+		DCF300991BDCA400003FBF15 /* GlossMacOSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300981BDCA400003FBF15 /* GlossMacOSXTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,6 +27,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = DC39BF601B8A7AD200088CE0;
 			remoteInfo = Gloss;
+		};
+		DCF300951BDCA400003FBF15 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DC39BF581B8A7AD200088CE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCF300891BDCA3FF003FBF15;
+			remoteInfo = GlossMacOSX;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -39,6 +49,12 @@
 		DC39C08A1B8BD8F600088CE0 /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Encoder.swift; path = ../../Source/Encoder.swift; sourceTree = "<group>"; };
 		DC39C08B1B8BD8F600088CE0 /* Gloss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gloss.swift; path = ../../Source/Gloss.swift; sourceTree = "<group>"; };
 		DC39C08C1B8BD8F600088CE0 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = ../../Source/Operators.swift; sourceTree = "<group>"; };
+		DCF3008A1BDCA3FF003FBF15 /* GlossMacOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GlossMacOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCF3008C1BDCA3FF003FBF15 /* GlossMacOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossMacOSX.h; sourceTree = "<group>"; };
+		DCF3008E1BDCA3FF003FBF15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCF300931BDCA400003FBF15 /* GlossMacOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlossMacOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCF300981BDCA400003FBF15 /* GlossMacOSXTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlossMacOSXTests.swift; sourceTree = "<group>"; };
+		DCF3009A1BDCA400003FBF15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +73,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DCF300861BDCA3FF003FBF15 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCF300901BDCA400003FBF15 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCF300941BDCA400003FBF15 /* GlossMacOSX.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -65,6 +96,8 @@
 			children = (
 				DC39BF631B8A7AD200088CE0 /* Gloss */,
 				DC39BF6F1B8A7AD200088CE0 /* GlossTests */,
+				DCF3008B1BDCA3FF003FBF15 /* GlossMacOSX */,
+				DCF300971BDCA400003FBF15 /* GlossMacOSXTests */,
 				DC39BF621B8A7AD200088CE0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,6 +107,8 @@
 			children = (
 				DC39BF611B8A7AD200088CE0 /* Gloss.framework */,
 				DC39BF6B1B8A7AD200088CE0 /* GlossTests.xctest */,
+				DCF3008A1BDCA3FF003FBF15 /* GlossMacOSX.framework */,
+				DCF300931BDCA400003FBF15 /* GlossMacOSXTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,6 +136,24 @@
 			path = GlossTests;
 			sourceTree = "<group>";
 		};
+		DCF3008B1BDCA3FF003FBF15 /* GlossMacOSX */ = {
+			isa = PBXGroup;
+			children = (
+				DCF3008C1BDCA3FF003FBF15 /* GlossMacOSX.h */,
+				DCF3008E1BDCA3FF003FBF15 /* Info.plist */,
+			);
+			path = GlossMacOSX;
+			sourceTree = "<group>";
+		};
+		DCF300971BDCA400003FBF15 /* GlossMacOSXTests */ = {
+			isa = PBXGroup;
+			children = (
+				DCF300981BDCA400003FBF15 /* GlossMacOSXTests.swift */,
+				DCF3009A1BDCA400003FBF15 /* Info.plist */,
+			);
+			path = GlossMacOSXTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -109,6 +162,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC39BF651B8A7AD200088CE0 /* Gloss.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCF300871BDCA3FF003FBF15 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCF3008D1BDCA3FF003FBF15 /* GlossMacOSX.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +212,42 @@
 			productReference = DC39BF6B1B8A7AD200088CE0 /* GlossTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		DCF300891BDCA3FF003FBF15 /* GlossMacOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DCF3009F1BDCA400003FBF15 /* Build configuration list for PBXNativeTarget "GlossMacOSX" */;
+			buildPhases = (
+				DCF300851BDCA3FF003FBF15 /* Sources */,
+				DCF300861BDCA3FF003FBF15 /* Frameworks */,
+				DCF300871BDCA3FF003FBF15 /* Headers */,
+				DCF300881BDCA3FF003FBF15 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GlossMacOSX;
+			productName = GlossMacOSX;
+			productReference = DCF3008A1BDCA3FF003FBF15 /* GlossMacOSX.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DCF300921BDCA400003FBF15 /* GlossMacOSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DCF300A01BDCA400003FBF15 /* Build configuration list for PBXNativeTarget "GlossMacOSXTests" */;
+			buildPhases = (
+				DCF3008F1BDCA400003FBF15 /* Sources */,
+				DCF300901BDCA400003FBF15 /* Frameworks */,
+				DCF300911BDCA400003FBF15 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DCF300961BDCA400003FBF15 /* PBXTargetDependency */,
+			);
+			name = GlossMacOSXTests;
+			productName = GlossMacOSXTests;
+			productReference = DCF300931BDCA400003FBF15 /* GlossMacOSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -165,6 +262,12 @@
 						CreatedOnToolsVersion = 7.0;
 					};
 					DC39BF6A1B8A7AD200088CE0 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					DCF300891BDCA3FF003FBF15 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					DCF300921BDCA400003FBF15 = {
 						CreatedOnToolsVersion = 7.0;
 					};
 				};
@@ -183,6 +286,8 @@
 			targets = (
 				DC39BF601B8A7AD200088CE0 /* Gloss */,
 				DC39BF6A1B8A7AD200088CE0 /* GlossTests */,
+				DCF300891BDCA3FF003FBF15 /* GlossMacOSX */,
+				DCF300921BDCA400003FBF15 /* GlossMacOSXTests */,
 			);
 		};
 /* End PBXProject section */
@@ -196,6 +301,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DC39BF691B8A7AD200088CE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCF300881BDCA3FF003FBF15 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCF300911BDCA400003FBF15 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -225,6 +344,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DCF300851BDCA3FF003FBF15 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCF3008F1BDCA400003FBF15 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCF300991BDCA400003FBF15 /* GlossMacOSXTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -232,6 +366,11 @@
 			isa = PBXTargetDependency;
 			target = DC39BF601B8A7AD200088CE0 /* Gloss */;
 			targetProxy = DC39BF6D1B8A7AD200088CE0 /* PBXContainerItemProxy */;
+		};
+		DCF300961BDCA400003FBF15 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DCF300891BDCA3FF003FBF15 /* GlossMacOSX */;
+			targetProxy = DCF300951BDCA400003FBF15 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -380,6 +519,72 @@
 			};
 			name = Release;
 		};
+		DCF3009B1BDCA400003FBF15 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = GlossMacOSX/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = harlankellaway.GlossMacOSX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		DCF3009C1BDCA400003FBF15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = GlossMacOSX/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = harlankellaway.GlossMacOSX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		DCF3009D1BDCA400003FBF15 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GlossMacOSXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = harlankellaway.GlossMacOSXTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		DCF3009E1BDCA400003FBF15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GlossMacOSXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = harlankellaway.GlossMacOSXTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -409,6 +614,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		DCF3009F1BDCA400003FBF15 /* Build configuration list for PBXNativeTarget "GlossMacOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCF3009B1BDCA400003FBF15 /* Debug */,
+				DCF3009C1BDCA400003FBF15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DCF300A01BDCA400003FBF15 /* Build configuration list for PBXNativeTarget "GlossMacOSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCF3009D1BDCA400003FBF15 /* Debug */,
+				DCF3009E1BDCA400003FBF15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
