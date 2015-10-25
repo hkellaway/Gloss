@@ -20,7 +20,7 @@
 		DCF813001BDD298D00415B41 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812F91BDD298D00415B41 /* Decoder.swift */; };
 		DCF813011BDD298D00415B41 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812FA1BDD298D00415B41 /* Dictionary.swift */; };
 		DCF813021BDD298D00415B41 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812FB1BDD298D00415B41 /* Encoder.swift */; };
-		DCF813031BDD298D00415B41 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DCF812FC1BDD298D00415B41 /* Gloss.h */; };
+		DCF813031BDD298D00415B41 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DCF812FC1BDD298D00415B41 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DCF813041BDD298D00415B41 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812FD1BDD298D00415B41 /* Gloss.swift */; };
 		DCF813061BDD298D00415B41 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812FF1BDD298D00415B41 /* Operators.swift */; };
 /* End PBXBuildFile section */
