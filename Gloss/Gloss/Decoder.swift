@@ -53,13 +53,13 @@ public struct Decoder {
     
     /**
     Returns function to decode JSON to value type
-    for objects that conform to the Glossy protocol
+    for objects that conform to the Decodable protocol
     
     :parameter: key JSON key used to set value
     
     :returns: Function decoding JSON to an optional value type
     */
-    public static func decode<T: Decodable>(key: String) -> JSON -> T? {
+    public static func decodeDecodable<T: Decodable>(key: String) -> JSON -> T? {
         return {
             json in
             
@@ -69,62 +69,6 @@ public struct Decoder {
             
             return nil
             
-        }
-    }
-    
-    /**
-    Returns function to decode JSON to array
-    of enum values
-    
-    :parameter: key JSON key used to set value
-    
-    :returns: Function decoding JSON to an optional array
-    */
-    public static func decodeArray<T: RawRepresentable>(key: String) -> JSON -> [T]? {
-        return {
-            json in
-            
-            if let rawValues = json[key] as? [T.RawValue] {
-                var enumValues: [T] = []
-                
-                for rawValue in rawValues {
-                    if let enumValue = T(rawValue: rawValue) {
-                        enumValues.append(enumValue)
-                    }
-                }
-                
-                return enumValues
-            }
-            
-            return nil
-        }
-    }
-    
-    /**
-    Returns function to decode JSON to array
-    for objects that conform to the Glossy protocol
-    
-    :parameter: key JSON key used to set value
-    
-    :returns: Function decoding JSON to an optinal array
-    */
-    public static func decodeArray<T: Decodable>(key: String) -> JSON -> [T]? {
-        return {
-            json in
-            
-            if let jsonArray = json[key] as? [JSON] {
-                var models: [T] = []
-                
-                for subJSON in jsonArray {
-                    if let model = T(json: subJSON) {
-                        models.append(model)
-                    }
-                }
-                
-                return models
-            }
-            
-            return nil
         }
     }
     
@@ -196,6 +140,62 @@ public struct Decoder {
             
             if let urlString = json[key] as? String {
                 return NSURL(string: urlString)
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
+    Returns function to decode JSON to array
+    for objects that conform to the Glossy protocol
+    
+    :parameter: key JSON key used to set value
+    
+    :returns: Function decoding JSON to an optinal array
+    */
+    public static func decodeDecodableArray<T: Decodable>(key: String) -> JSON -> [T]? {
+        return {
+            json in
+            
+            if let jsonArray = json[key] as? [JSON] {
+                var models: [T] = []
+                
+                for subJSON in jsonArray {
+                    if let model = T(json: subJSON) {
+                        models.append(model)
+                    }
+                }
+                
+                return models
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
+    Returns function to decode JSON to array
+    of enum values
+    
+    :parameter: key JSON key used to set value
+    
+    :returns: Function decoding JSON to an optional array
+    */
+    public static func decodeEnumArray<T: RawRepresentable>(key: String) -> JSON -> [T]? {
+        return {
+            json in
+            
+            if let rawValues = json[key] as? [T.RawValue] {
+                var enumValues: [T] = []
+                
+                for rawValue in rawValues {
+                    if let enumValue = T(rawValue: rawValue) {
+                        enumValues.append(enumValue)
+                    }
+                }
+                
+                return enumValues
             }
             
             return nil

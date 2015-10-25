@@ -170,7 +170,7 @@ class DecoderTests: XCTestCase {
     }
     
     func testDecodeNestedModel() {
-        let result: TestNestedModel? = Decoder.decode("nestedModel")(testJSON!)
+        let result: TestNestedModel? = Decoder.decodeDecodable("nestedModel")(testJSON!)
         
         XCTAssertTrue((result?.id == 123), "Decode nested model should return correct value")
         XCTAssertTrue((result?.name == "nestedModel1"), "Decode nested model should return correct value")
@@ -183,7 +183,7 @@ class DecoderTests: XCTestCase {
     }
     
     func testDecodeEnumArray() {
-        let result: [TestModel.EnumValue]? = Decoder.decodeArray("enumValueArray")(testJSON!)
+        let result: [TestModel.EnumValue]? = Decoder.decodeEnumArray("enumValueArray")(testJSON!)
         let element1: TestModel.EnumValue = result![0]
         let element2: TestModel.EnumValue = result![1]
         let element3: TestModel.EnumValue = result![2]

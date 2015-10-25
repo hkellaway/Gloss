@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 `Gloss` adheres to [Semantic Versioning](http://semver.org/).
 
+- `0.6.x` Releases - [0.6.0](#060)
 - `0.5.x` Releases - [0.5.0](#050) | [0.5.1](#051) | [0.5.2](#052) | [0.5.3](#053) | [0.5.4](#054)
 - `0.4.x` Releases - [0.4.0](#040)
 - `0.3.x` Releases - [0.3.0](#030) | [0.3.1](#031) 
@@ -10,11 +11,27 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [0.6.0](https://github.com/hkellaway/Gloss/releases/tag/0.6.0)
+Released on 2015-10-25. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A0.6.0).
+
+#### Added
+- Creation of model arrays from JSON arrays via `modelsFromJSONArray(:_)`
+- Creation of JSON arrays from model arrays via `toJSONArray(_:)`
+- Support for Mac OSX [Issue [#75](https://github.com/hkellaway/Gloss/issues/75)]
+
+#### Fixed
+- Encoder returning `nil` for encoded arrays that came out empty [Issue [#68](https://github.com/hkellaway/Gloss/issues/68)]
+
+#### Removed
+- Support for Swift 1.2 via the `swift_1.2` branch
+
+---
+
 ## [0.5.4](https://github.com/hkellaway/Gloss/releases/tag/0.5.4)
 Released on 2015-09-22. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A0.5.4).
 
 #### Added
-- tvOS platform to podspect [PR [#63](https://github.com/hkellaway/Gloss/pull/63)]
+- tvOS platform to podspec [PR [#63](https://github.com/hkellaway/Gloss/pull/63)]
 
 ---
 

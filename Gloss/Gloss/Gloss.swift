@@ -49,6 +49,41 @@ public protocol Decodable {
     */
     init?(json: JSON)
     
+    /**
+    Returns array of new instances created from provided JSON array
+    
+    :parameter: jsonArray Array of JSON representations of object
+    */
+    static func modelsFromJSONArray(jsonArray: [JSON]) -> [Self]?
+    
+}
+
+/**
+Extension of Decodable protocol with default implementations
+*/
+public extension Decodable {
+    
+    /**
+    Returns array of new instances created from provided JSON array
+    
+    Note: The returned array will have only models that successfully
+    decoded
+    
+    :parameter: jsonArray Array of JSON representations of object
+    */
+    static func modelsFromJSONArray(jsonArray: [JSON]) -> [Self]? {
+        var models: [Self] = []
+        
+        for json in jsonArray {
+            let model = Self(json: json)
+            if let model = model {
+                models.append(model)
+            }
+        }
+        
+        return models
+    }
+    
 }
 
 /**
@@ -57,9 +92,45 @@ Enables an object to be encoded to JSON
 public protocol Encodable {
     
     /**
-    Array of encoded values as JSON
+    Object encoded as JSON
     */
     func toJSON() -> JSON?
+    
+    /**
+    Returns an array of provided objects encoded as a JSON array
+    
+    :parameter: models Array of models to be encoded as JSON
+    */
+    static func toJSONArray(models:[Self]) -> [JSON]?
+}
+
+/**
+Extension of Encodable protocol with default implementations
+*/
+public extension Encodable {
+    
+    /**
+    Returns an array of provided objects encoded as a JSON array
+    
+    Note: The returned array will have only JSON that successfully
+    encoded
+    
+    :parameter: models Array of models to be encoded as JSON
+    */
+    static func toJSONArray(models:[Self]) -> [JSON]? {
+        var jsonArray: [JSON] = []
+        
+        for model in models {
+            let json = model.toJSON()
+            
+            if let json = json {
+                jsonArray.append(json)
+            }
+        }
+        
+        return jsonArray
+    }
+    
 }
 
 // MARK: - Global functions

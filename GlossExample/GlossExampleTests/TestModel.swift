@@ -27,7 +27,7 @@ import Gloss
 
 struct TestModel: Glossy {
     
-    let bool: Bool?
+    let bool: Bool
     let boolArray: [Bool]?
     let integer: Int?
     let integerArray: [Int]?
@@ -53,8 +53,12 @@ struct TestModel: Glossy {
     
     // MARK: - Deserialization
     
-    init(json: JSON) {
-        self.bool = "bool" <~~ json
+    init?(json: JSON) {
+        guard
+            let bool: Bool = "bool" <~~ json
+            else { return nil }
+        
+        self.bool = bool
         self.boolArray = "boolArray" <~~ json
         self.integer = "integer" <~~ json
         self.integerArray = "integerArray" <~~ json

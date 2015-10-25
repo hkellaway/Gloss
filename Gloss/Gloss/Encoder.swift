@@ -59,7 +59,7 @@ public struct Encoder {
     
     :returns: Function decoding value to optional JSON
     */
-    public static func encode<T: Encodable>(key: String) -> T? -> JSON? {
+    public static func encodeEncodable<T: Encodable>(key: String) -> T? -> JSON? {
         return {
             model in
             
@@ -70,80 +70,6 @@ public struct Encoder {
             return nil
         }
     }
-    
-    /**
-    Returns function to encode array as JSON
-    
-    :parameter: key Key used to create JSON property
-    
-    :returns: Function encoding array to optional JSON
-    */
-    public static func encodeArray<T>(key: String) -> [T]? -> JSON? {
-        return {
-            array in
-            
-            if let array = array as? AnyObject {
-                return [key : array]
-            }
-            
-            return nil
-        }
-    }
-    
-    /**
-    Returns function to encode array as JSON
-    of enum raw values
-    
-    :parameter: key Key used to create JSON property
-    
-    :returns: Function encoding array to optional JSON
-    */
-    public static func encodeArray<T: RawRepresentable>(key: String) -> [T]? -> JSON? {
-        return {
-            enumValues in
-            
-            if let enumValues = enumValues {
-                var rawValues: [T.RawValue] = []
-                
-                for enumValue in enumValues {
-                    rawValues.append(enumValue.rawValue)
-                }
-                
-                return [key : rawValues as! AnyObject]
-            }
-            
-            return nil
-        }
-    }
-    
-    /**
-    Returns function to encode array as JSON
-    for objects the conform to the Encodable protocol
-    
-    :parameter: key Key used to create JSON property
-    
-    :returns: Function encoding array to optional JSON
-    */
-    public static func encodeArray<T: Encodable>(key: String) -> [T]? -> JSON? {
-        return {
-            array in
-            
-            if let array = array {
-                var encodedArray: [JSON] = []
-                
-                for model in array {
-                    if let json = model.toJSON() {
-                        encodedArray.append(json)
-                    }
-                }
-                
-                return encodedArray.isEmpty ? nil : [key : encodedArray]
-            }
-            
-            return nil
-        }
-    }
-    
     
     /**
     Returns function to encode date as JSON
@@ -213,6 +139,79 @@ public struct Encoder {
             
             if let url = url {
                 return [key : url.absoluteString]
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
+    Returns function to encode array as JSON
+    
+    :parameter: key Key used to create JSON property
+    
+    :returns: Function encoding array to optional JSON
+    */
+    public static func encodeArray<T>(key: String) -> [T]? -> JSON? {
+        return {
+            array in
+            
+            if let array = array as? AnyObject {
+                return [key : array]
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
+    Returns function to encode array as JSON
+    for objects the conform to the Encodable protocol
+    
+    :parameter: key Key used to create JSON property
+    
+    :returns: Function encoding array to optional JSON
+    */
+    public static func encodeEncodableArray<T: Encodable>(key: String) -> [T]? -> JSON? {
+        return {
+            array in
+            
+            if let array = array {
+                var encodedArray: [JSON] = []
+                
+                for model in array {
+                    if let json = model.toJSON() {
+                        encodedArray.append(json)
+                    }
+                }
+                
+                return [key : encodedArray]
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
+    Returns function to encode array as JSON
+    of enum raw values
+    
+    :parameter: key Key used to create JSON property
+    
+    :returns: Function encoding array to optional JSON
+    */
+    public static func encodeEnumArray<T: RawRepresentable>(key: String) -> [T]? -> JSON? {
+        return {
+            enumValues in
+            
+            if let enumValues = enumValues {
+                var rawValues: [T.RawValue] = []
+                
+                for enumValue in enumValues {
+                    rawValues.append(enumValue.rawValue)
+                }
+                
+                return [key : rawValues as! AnyObject]
             }
             
             return nil

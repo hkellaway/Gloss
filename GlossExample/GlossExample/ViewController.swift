@@ -54,6 +54,15 @@ class ViewController: UIViewController {
         print("")
         
         print("JSON: \(repo.toJSON())")
+        print("")
+        
+        guard let repos = Repo.modelsFromJSONArray([repoJSON, repoJSON, repoJSON])
+            else { return }
+        
+        print("REPOS: \(repos)")
+        print("")
+        
+        print("JSON ARRAY: \(Repo.toJSONArray(repos))")
 
     }
 }
