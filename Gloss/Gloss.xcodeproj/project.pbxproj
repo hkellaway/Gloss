@@ -10,7 +10,6 @@
 		DC39BF651B8A7AD200088CE0 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC39BF641B8A7AD200088CE0 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC39BF6C1B8A7AD200088CE0 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC39BF611B8A7AD200088CE0 /* Gloss.framework */; };
 		DC39BF711B8A7AD200088CE0 /* GlossTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BF701B8A7AD200088CE0 /* GlossTests.swift */; };
-		DCF3008D1BDCA3FF003FBF15 /* GlossMacOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = DCF3008C1BDCA3FF003FBF15 /* GlossMacOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DCF300941BDCA400003FBF15 /* GlossMacOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF3008A1BDCA3FF003FBF15 /* GlossMacOSX.framework */; };
 		DCF300991BDCA400003FBF15 /* GlossMacOSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300981BDCA400003FBF15 /* GlossMacOSXTests.swift */; };
 		DCF300A61BDCA4B6003FBF15 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A11BDCA4B6003FBF15 /* Decoder.swift */; };
@@ -25,6 +24,7 @@
 		DCF812D61BDD212400415B41 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812CF1BDD212400415B41 /* Gloss.swift */; };
 		DCF812D71BDD212400415B41 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCF812D01BDD212400415B41 /* Info.plist */; };
 		DCF812D81BDD212400415B41 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812D11BDD212400415B41 /* Operators.swift */; };
+		DCF812DE1BDD23A400415B41 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DCF812DD1BDD23A400415B41 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,6 @@
 		DC39BF701B8A7AD200088CE0 /* GlossTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlossTests.swift; sourceTree = "<group>"; };
 		DC39BF721B8A7AD200088CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCF3008A1BDCA3FF003FBF15 /* GlossMacOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GlossMacOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DCF3008C1BDCA3FF003FBF15 /* GlossMacOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossMacOSX.h; sourceTree = "<group>"; };
 		DCF3008E1BDCA3FF003FBF15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCF300931BDCA400003FBF15 /* GlossMacOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlossMacOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF300981BDCA400003FBF15 /* GlossMacOSXTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlossMacOSXTests.swift; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 		DCF812CF1BDD212400415B41 /* Gloss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gloss.swift; path = Gloss/Gloss.swift; sourceTree = SOURCE_ROOT; };
 		DCF812D01BDD212400415B41 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Gloss/Info.plist; sourceTree = SOURCE_ROOT; };
 		DCF812D11BDD212400415B41 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Gloss/Operators.swift; sourceTree = SOURCE_ROOT; };
+		DCF812DD1BDD23A400415B41 /* Gloss.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Gloss.h; path = GlossMacOSX/Gloss.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +108,7 @@
 		DC39BF571B8A7AD200088CE0 = {
 			isa = PBXGroup;
 			children = (
+				DCF812DD1BDD23A400415B41 /* Gloss.h */,
 				DC39BF631B8A7AD200088CE0 /* Gloss */,
 				DC39BF6F1B8A7AD200088CE0 /* GlossTests */,
 				DCF3008B1BDCA3FF003FBF15 /* GlossMacOSX */,
@@ -160,7 +161,6 @@
 				DCF812CF1BDD212400415B41 /* Gloss.swift */,
 				DCF812D01BDD212400415B41 /* Info.plist */,
 				DCF812D11BDD212400415B41 /* Operators.swift */,
-				DCF3008C1BDCA3FF003FBF15 /* GlossMacOSX.h */,
 				DCF3008E1BDCA3FF003FBF15 /* Info.plist */,
 			);
 			path = GlossMacOSX;
@@ -190,7 +190,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCF3008D1BDCA3FF003FBF15 /* GlossMacOSX.h in Headers */,
+				DCF812DE1BDD23A400415B41 /* Gloss.h in Headers */,
 				DCF812D51BDD212400415B41 /* Gloss.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -561,7 +561,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = harlankellaway.GlossMacOSX;
+				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -583,7 +583,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = harlankellaway.GlossMacOSX;
+				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
