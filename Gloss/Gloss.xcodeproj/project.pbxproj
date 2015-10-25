@@ -22,7 +22,6 @@
 		DCF812D41BDD212400415B41 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812CD1BDD212400415B41 /* Encoder.swift */; };
 		DCF812D51BDD212400415B41 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DCF812CE1BDD212400415B41 /* Gloss.h */; };
 		DCF812D61BDD212400415B41 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812CF1BDD212400415B41 /* Gloss.swift */; };
-		DCF812D71BDD212400415B41 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCF812D01BDD212400415B41 /* Info.plist */; };
 		DCF812D81BDD212400415B41 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812D11BDD212400415B41 /* Operators.swift */; };
 		DCF812DE1BDD23A400415B41 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DCF812DD1BDD23A400415B41 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -66,7 +65,6 @@
 		DCF812CD1BDD212400415B41 /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Encoder.swift; path = Gloss/Encoder.swift; sourceTree = SOURCE_ROOT; };
 		DCF812CE1BDD212400415B41 /* Gloss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gloss.h; path = Gloss/Gloss.h; sourceTree = SOURCE_ROOT; };
 		DCF812CF1BDD212400415B41 /* Gloss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gloss.swift; path = Gloss/Gloss.swift; sourceTree = SOURCE_ROOT; };
-		DCF812D01BDD212400415B41 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Gloss/Info.plist; sourceTree = SOURCE_ROOT; };
 		DCF812D11BDD212400415B41 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Gloss/Operators.swift; sourceTree = SOURCE_ROOT; };
 		DCF812DD1BDD23A400415B41 /* Gloss.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Gloss.h; path = GlossMacOSX/Gloss.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,7 +157,6 @@
 				DCF812CD1BDD212400415B41 /* Encoder.swift */,
 				DCF812CE1BDD212400415B41 /* Gloss.h */,
 				DCF812CF1BDD212400415B41 /* Gloss.swift */,
-				DCF812D01BDD212400415B41 /* Info.plist */,
 				DCF812D11BDD212400415B41 /* Operators.swift */,
 				DCF3008E1BDCA3FF003FBF15 /* Info.plist */,
 			);
@@ -333,7 +330,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCF812D71BDD212400415B41 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
