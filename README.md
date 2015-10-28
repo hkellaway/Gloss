@@ -30,12 +30,6 @@ pod 'Gloss', '~> 0.6'
 github "hkellaway/Gloss"
 ```
 
-When installing using Carthage, make sure you limit the platform to iOS:
-
-```bash
-carthage update --platform iOS
-```
-
 ### Swift 2 and Swift 1.2
 
 Gloss was written for use with Swift 2. Support for Swift 1.2 via the `swift_1.2` branch was dropped as of version 0.6.0.
