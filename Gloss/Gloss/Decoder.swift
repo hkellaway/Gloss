@@ -202,4 +202,23 @@ public struct Decoder {
         }
     }
     
+    /**
+     Returns function to decode JSON to Double
+     
+     :parameter: key JSON key used to set value
+     
+     :returns: Function decoding JSON to a double value
+     */
+    public static func decodeStringToDouble(key: String) -> JSON -> Double? {
+        return {
+            json in
+            
+            if let value = json[key] as? String {
+                return NSNumberFormatter().numberFromString(value)?.doubleValue
+            }
+            
+            return nil
+        }
+    }
+    
 }

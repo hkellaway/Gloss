@@ -76,6 +76,14 @@ public func <~~ <T: Decodable>(key: String, json: JSON) -> [T]? {
     return Decoder.decodeDecodableArray(key)(json)
 }
 
+/**
+ Convenience operator for decoding JSON to double value
+ */
+public func <~~ (key: String, json: JSON) -> Double? {
+    return Decoder.decodeStringToDouble(key)(json)
+}
+
+
 // MARK: - Operator ~~> (Encode)
 
 /**
