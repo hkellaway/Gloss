@@ -175,12 +175,12 @@ public struct Decoder {
     }
     
     /**
-    Returns function to decode JSON to array
+    Returns function to decode JSON to enum array
     of enum values
     
     :parameter: key JSON key used to set value
     
-    :returns: Function decoding JSON to an optional array
+    :returns: Function decoding JSON to an optional enum array
     */
     public static func decodeEnumArray<T: RawRepresentable>(key: String) -> JSON -> [T]? {
         return {
@@ -196,6 +196,33 @@ public struct Decoder {
                 }
                 
                 return enumValues
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
+     Returns function to decode JSON to URL array
+     
+     :parameter: key JSON key used to set value
+     
+     :returns: Function decoding JSON to an optional URL array
+     */
+    public static func decodeURLArray(key: String) -> JSON -> [NSURL]? {
+        return {
+            json in
+            
+            if let urlStrings = json[key] as? [String] {
+                var urls: [NSURL] = []
+                
+                for urlString in urlStrings {
+                    if let url = NSURL(string: urlString) {
+                        urls.append(url)
+                    }
+                }
+                
+                return urls
             }
             
             return nil
