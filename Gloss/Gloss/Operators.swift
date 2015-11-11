@@ -76,6 +76,13 @@ public func <~~ <T: Decodable>(key: String, json: JSON) -> [T]? {
     return Decoder.decodeDecodableArray(key)(json)
 }
 
+/**
+ Convenience operator for decoding JSON to array of URLs
+ */
+public func <~~ (key: String, json: JSON) -> [NSURL]? {
+    return Decoder.decodeURLArray(key)(json)
+}
+
 // MARK: - Operator ~~> (Encode)
 
 /**
