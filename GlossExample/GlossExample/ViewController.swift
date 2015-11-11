@@ -42,8 +42,12 @@ class ViewController: UIViewController {
             "language" : "Swift"
             ]
         
-        guard let repo = Repo(json: repoJSON)
-            else { return }
+        guard let repo = Repo(json: repoJSON) else
+        {
+            print("Issue deserializing model")
+            
+            return
+        }
         
         print(repo.repoId)
         print(repo.name)
@@ -56,8 +60,12 @@ class ViewController: UIViewController {
         print("JSON: \(repo.toJSON())")
         print("")
         
-        guard let repos = Repo.modelsFromJSONArray([repoJSON, repoJSON, repoJSON])
-            else { return }
+        guard let repos = Repo.modelsFromJSONArray([repoJSON, repoJSON, repoJSON]) else
+        {
+            print("Issue deserializing model array")
+            
+            return
+        }
         
         print("REPOS: \(repos)")
         print("")
