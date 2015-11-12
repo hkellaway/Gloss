@@ -227,4 +227,15 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((result?.absoluteString == "http://github.com"), "Decode NSURL should return correct value")
     }
     
+    func testDecodeURLArray() {
+        let result: [NSURL]? = Decoder.decodeURLArray("urlArray")(testJSON!)
+        let element1: NSURL = result![0]
+        let element2: NSURL = result![1]
+        let element3: NSURL = result![2]
+        
+        XCTAssertTrue((element1.absoluteString == "http://github.com"), "Decode NSURL array should return correct value")
+        XCTAssertTrue((element2.absoluteString == "http://github.com"), "Decode NSURL array should return correct value")
+        XCTAssertTrue((element3.absoluteString == "http://github.com"), "Decode NSURL array should return correct value")
+    }
+    
 }
