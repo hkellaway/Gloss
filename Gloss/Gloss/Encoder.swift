@@ -218,4 +218,48 @@ public struct Encoder {
         }
     }
     
+    /**
+     Returns function to encode date array as JSON
+     
+     :parameter: key           Key used to create JSON property
+     :parameter: dateFormatter Formatter used to format date string
+     
+     :returns: Function encoding date array to optional JSON
+     */
+    public static func encodeDateArray(key: String, dateFormatter: NSDateFormatter) -> [NSDate]? -> JSON? {
+        return {
+            dates in
+            
+            if let dates = dates {
+                var dateStrings: [String] = []
+                
+                for date in dates {
+                    let dateString = dateFormatter.stringFromDate(date)
+                    
+                    dateStrings.append(dateString)
+                }
+                
+                return [key : dateStrings]
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
+     Returns function to encode ISO8601 date array as JSON
+     
+     :parameter: key           Key used to create JSON property
+     :parameter: dateFormatter Formatter used to format date string
+     
+     :returns: Function encoding ISO8601 date array to optional JSON
+     */
+    public static func encodeDateISO8601Array(key: String) -> [NSDate]? -> JSON? {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        
+        return Encoder.encodeDateArray(key, dateFormatter: dateFormatter)
+    }
+    
 }
