@@ -30,12 +30,6 @@ pod 'Gloss', '~> 0.6'
 github "hkellaway/Gloss"
 ```
 
-When installing using Carthage, make sure you limit the platform to iOS:
-
-```bash
-carthage update --platform iOS
-```
-
 ### Swift 2 and Swift 1.2
 
 Gloss was written for use with Swift 2. Support for Swift 1.2 via the `swift_1.2` branch was dropped as of version 0.6.0.
@@ -315,6 +309,7 @@ The `<~~` operator is simply syntactic sugar for a set of `Decoder.decode` funct
 * Enum types (`Decoder.decodeEnum`)
 * Enum arrays (`Decoder.decodeEnumArray`)
 * `NSURL` types (`Decoder.decodeURL`)
+* `NSURL` arrays (`Decode.decodeURLArray`)
 
 ##### The Encode Operator: `~~>`
 
@@ -336,9 +331,9 @@ Gloss comes with a number of transformations built in for convenience (See: [Glo
 
 One set of handy transformations not covered by the Gloss operators is `NSDate` transformations, as they require an additional `dateFormatter` parameter. Translating from and to JSON is handled via:
 
-`Decoder.decodeDate(key:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `NSDateFormatter` used to translate the date.
+`Decoder.decodeDate(key:, dateFormatter:)` and `Decode.decodeDateArray(key:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `NSDateFormatter` used to translate the date(s).
 
-`Encoder.encodeDate(key:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `NSDateFormatter` used to translate the date.
+`Encoder.encodeDate(key:, dateFormatter:)` and `Encode.encodeDate(key:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `NSDateFormatter` used to translate the date(s).
 
 See [On Not Using Gloss Operators](#on-not-using-gloss-operators) for how the `Decoder.decode`/`Encoder.encode` syntax is used in place of `<~~`/`~~>`.
 
@@ -388,7 +383,7 @@ We've created an extension on `Decoder` and written our own decode function, `de
 
 What's important to note is that the return type for `decodeStringUppercase` is a function that translates from `JSON` to the desired type -- in this case, `JSON -> String?`. The value you're working with will be accessible via `json[key]` and will need to be cast to the desired type using `as?`. Then, manipulation can be done - for example, uppercasing. The transformed value should be returned; in the case that the cast failed, `nil` should be returned.
 
-Though depicted here as being in the same file, good practice would have the `Decoder` extension in a separate file for organizational purposes.
+Though depicted here as being in the same file, good practice might have the `Decoder` extension in a separate file for organizational purposes.
 
 
 #### To JSON
@@ -441,7 +436,7 @@ We've created an extension on `Encoder` and written our own encode function, `en
 
 What's important to note is that the return type for `encodeStringLowercase` is a function that translates from the property's type to `JSON?` -- in this case, `String? -> JSON?`. The value you're working with will be accessible via the `if let` statement. Then, manipulation can be done - for example, lowercasing. What should be returned is a dictionary with `key` as the key and the manipulated value as its value. In the case that the `if let` failed, `nil` should be returned.
 
-Though depicted here as being in the same file, good practice would have the `Encoder` extension in a separate file for organizational purposes.
+Though depicted here as being in the same file, good practice might have the `Encoder` extension in a separate file for organizational purposes.
 
 ### Gloss Protocols
 

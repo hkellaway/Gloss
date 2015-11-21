@@ -187,6 +187,13 @@ class OperatorTests: XCTestCase {
         XCTAssertTrue((result == decoderResult), "<~~ for url should return same as Decoder.decodeURL")
     }
     
+    func testDecodeOperatorURLArrayReturnsDecoderDecodeURLArray() {
+        let result: [NSURL]? = "urlArray" <~~ testJSON!
+        let decoderResult: [NSURL]? = Decoder.decodeURLArray("urlArray")(testJSON!)
+        
+        XCTAssertTrue((result! == decoderResult!), "<~~ for url array should return same as Decoder.decodeURLArray")
+    }
+    
     // MARK: - Operator ~~>
     
     func testEncodeOperatorGenericReturnsEncoderEncodeForBool() {
@@ -319,6 +326,14 @@ class OperatorTests: XCTestCase {
         let encoderResult: JSON? = Encoder.encodeURL("url")(url)
         
         XCTAssertTrue(((result!["url"] as! String) == (encoderResult!["url"] as! String)), "~~> for url should return same as Encoder.encodeURL")
+    }
+    
+    func testEncodeOperatorURLArrayReturnsEncoderEncodeURLArray() {
+        let urls: [NSURL]? = [NSURL(string: "http://github.com")!, NSURL(string: "http://github.com")!]
+        let result: JSON? = "urlArray" ~~> urls
+        let encoderResult: JSON? = Encoder.encodeArray("urlArray")(urls)
+        
+        XCTAssertTrue(((result!["urlArray"] as! [NSURL]) == (encoderResult!["urlArray"] as! [NSURL])), "~~> for url array should return same as Encoder.encodeArray")
     }
     
 }

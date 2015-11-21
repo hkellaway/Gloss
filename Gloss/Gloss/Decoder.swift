@@ -175,12 +175,12 @@ public struct Decoder {
     }
     
     /**
-    Returns function to decode JSON to array
+    Returns function to decode JSON to enum array
     of enum values
     
     :parameter: key JSON key used to set value
     
-    :returns: Function decoding JSON to an optional array
+    :returns: Function decoding JSON to an optional enum array
     */
     public static func decodeEnumArray<T: RawRepresentable>(key: String) -> JSON -> [T]? {
         return {
@@ -196,6 +196,77 @@ public struct Decoder {
                 }
                 
                 return enumValues
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
+     Returns function to decode JSON to date array
+     
+     :parameter: key           JSON key used to set value
+     :parameter: dateFormatter Formatter used to format date
+     
+     :returns: Function decoding JSON to an optional date array
+     */
+    public static func decodeDateArray(key: String, dateFormatter: NSDateFormatter) -> JSON -> [NSDate]? {
+        return {
+            json in
+            
+            if let dateStrings = json[key] as? [String] {
+                var dates: [NSDate] = []
+                
+                for dateString in dateStrings {
+                    if let date = dateFormatter.dateFromString(dateString) {
+                        dates.append(date)
+                    }
+                }
+                
+                return dates
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
+     Returns function to decode JSON to ISO8601 date array
+     
+     :parameter: key           JSON key used to set value
+     :parameter: dateFormatter Formatter with ISO8601 format
+     
+     - returns: Function decoding JSON to an optional ISO8601 date array
+     */
+    public static func decodeDateISO8601Array(key: String) -> JSON -> [NSDate]? {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        
+        return Decoder.decodeDateArray(key, dateFormatter: dateFormatter)
+    }
+    
+    /**
+     Returns function to decode JSON to URL array
+     
+     :parameter: key JSON key used to set value
+     
+     :returns: Function decoding JSON to an optional URL array
+     */
+    public static func decodeURLArray(key: String) -> JSON -> [NSURL]? {
+        return {
+            json in
+            
+            if let urlStrings = json[key] as? [String] {
+                var urls: [NSURL] = []
+                
+                for urlString in urlStrings {
+                    if let url = NSURL(string: urlString) {
+                        urls.append(url)
+                    }
+                }
+                
+                return urls
             }
             
             return nil
