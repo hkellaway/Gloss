@@ -184,5 +184,14 @@ class EncoderTests: XCTestCase {
         
         XCTAssertTrue((result!["url"] as! String == "http://github.com"), "Encode NSURL should return correct value")
     }
+    
+    func testEncodeURLArray() {
+        let urls: [NSURL]? = [NSURL(string: "http://github.com")!, NSURL(string: "http://github.com")!]
+        let result: JSON? = Encoder.encodeArray("urlArray")(urls)
+        
+        let test = result!["urlArray"] as! [NSURL]
+        
+        XCTAssertTrue(test.map { url in url.absoluteString } == ["http://github.com", "http://github.com"], "Encode NSURL array should return correct value")
+    }
 
 }

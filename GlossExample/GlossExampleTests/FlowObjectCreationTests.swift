@@ -68,6 +68,7 @@ class FlowObjectCreationTests: XCTestCase {
         XCTAssertTrue((TestModel.dateFormatter.stringFromDate(result.date!) == "2015-08-16T20:51:46.600Z"), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.dateISO8601 == NSDate(timeIntervalSince1970: 1439071033)), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.url?.absoluteString == "http://github.com"), "Model created from JSON should have correct property values")
+        XCTAssertTrue((result.urlArray?.map { url in url.absoluteString })! == ["http://github.com", "http://github.com", "http://github.com"], "Model created from JSON should have correct property values")
         
         XCTAssertTrue((result.nestedModel?.id == 123), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.nestedModel?.name == "nestedModel1"), "Model created from JSON should have correct property values")

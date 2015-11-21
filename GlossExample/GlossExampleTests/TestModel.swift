@@ -46,7 +46,7 @@ struct TestModel: Glossy {
     let dateISO8601: NSDate?
     let dateISO8601Array: [NSDate]?
     let url: NSURL?
-    let urls: [NSURL]?
+    let urlArray: [NSURL]?
     
     enum EnumValue: String {
         case A = "A"
@@ -80,7 +80,7 @@ struct TestModel: Glossy {
         self.dateISO8601 = Decoder.decodeDateISO8601("dateISO8601")(json)
         self.dateISO8601Array = Decoder.decodeDateISO8601Array("dateISO8601Array")(json)
         self.url = "url" <~~ json
-        self.urls = "urls" <~~ json
+        self.urlArray = "urlArray" <~~ json
     }
 
     // MARK: - Serialization
@@ -106,7 +106,7 @@ struct TestModel: Glossy {
             Encoder.encodeDateISO8601("dateISO8601")(self.dateISO8601),
             Encoder.encodeDateISO8601Array("dateISO8601Array")(self.dateISO8601Array),
             "url" ~~> self.url,
-            "urls" ~~> self.urls
+            "urlArray" ~~> self.urlArray
             ])
     }
     
