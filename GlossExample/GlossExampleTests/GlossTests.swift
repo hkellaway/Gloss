@@ -269,4 +269,19 @@ class GlossTests: XCTestCase {
         XCTAssertTrue(result!.count == 2, "Model array from JSON array should only include valid models")
     }
     
+    func testJsonifyTurnsJSONOptionalArrayToSingleJSONOptional() {
+        let json1 = ["test1" : 1 ]
+        let json2 = ["test2" : 2 ]
+        let result = jsonify([json1, json2])
+        
+        XCTAssertTrue(result!["test1"] as! Int == 1, "Jsonify should turn JSON optional array to single JSON optional")
+        XCTAssertTrue(result!["test2"] as! Int == 2, "Jsonify should turn JSON optional array to single JSON optional")
+    }
+    
+    func testJsonifyReturnsEmptyJSONWhenGivenEmptyArray() {
+        let result = jsonify([])
+        
+        XCTAssertTrue(result!.isEmpty, "Jsonify should return empty JSON when given an empty array")
+    }
+    
 }
