@@ -166,6 +166,14 @@ class EncoderTests: XCTestCase {
         XCTAssertTrue(result!["date"] as! String == "2015-08-16T20:51:46.600Z", "Encode NSDate should return correct value")
     }
     
+    func testEncodeDateArray() {
+        let date: NSDate? = TestModel.dateFormatter.dateFromString("2015-08-16T20:51:46.600Z")
+        let dateArray: [NSDate]? = [date!, date!]
+        let result: JSON? = Encoder.encodeDateArray("dateArray", dateFormatter: TestModel.dateFormatter)(dateArray)
+        
+        XCTAssertTrue(result!["dateArray"] as! [String] == ["2015-08-16T20:51:46.600Z", "2015-08-16T20:51:46.600Z"], "Encode NSDate array should return correct value")
+    }
+    
     func testEncodeDateISO8601() {
         let dateISO8601: NSDate? = NSDate(timeIntervalSince1970: 1439071033)
         let result: JSON? = Encoder.encodeDateISO8601("dateISO8601")(dateISO8601!)
@@ -176,6 +184,21 @@ class EncoderTests: XCTestCase {
         let resultDate = dateFormatter.dateFromString(result!["dateISO8601"] as! String)
         
         XCTAssertTrue(resultDate?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate should return correct value")
+    }
+    
+    func testEncodeDateISO8601Array() {
+        let dateISO8601: NSDate? = NSDate(timeIntervalSince1970: 1439071033)
+        let dateISO8601Array: [NSDate]? = [dateISO8601!, dateISO8601!]
+        let result: JSON? = Encoder.encodeDateISO8601Array("dateISO8601Array")(dateISO8601Array!)
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        let resultDate1 = dateFormatter.dateFromString(result!["dateISO8601Array"]![0] as! String)
+        let resultDate2 = dateFormatter.dateFromString(result!["dateISO8601Array"]![1] as! String)
+        
+        XCTAssertTrue(resultDate1?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate array should return correct value")
+        XCTAssertTrue(resultDate2?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate array should return correct value")
     }
     
     func testEncodeURL() {

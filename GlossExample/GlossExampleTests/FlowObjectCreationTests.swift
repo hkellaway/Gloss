@@ -66,7 +66,9 @@ class FlowObjectCreationTests: XCTestCase {
         XCTAssertTrue((result.enumValue == TestModel.EnumValue.A), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.enumValueArray! == [TestModel.EnumValue.A, TestModel.EnumValue.B, TestModel.EnumValue.C]), "Model created from JSON should have correct property values")
         XCTAssertTrue((TestModel.dateFormatter.stringFromDate(result.date!) == "2015-08-16T20:51:46.600Z"), "Model created from JSON should have correct property values")
+        XCTAssertTrue((result.dateArray!.map { date in TestModel.dateFormatter.stringFromDate(date) }) == ["2015-08-16T20:51:46.600Z", "2015-08-16T20:51:46.600Z"], "Model created from JSON should have correct property values")
         XCTAssertTrue((result.dateISO8601 == NSDate(timeIntervalSince1970: 1439071033)), "Model created from JSON should have correct property values")
+        XCTAssertTrue((result.dateISO8601Array!.map { date in date.timeIntervalSince1970 }) == [1439071033, 1439071033], "Model created from JSON should have correct property values")
         XCTAssertTrue((result.url?.absoluteString == "http://github.com"), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.urlArray?.map { url in url.absoluteString })! == ["http://github.com", "http://github.com", "http://github.com"], "Model created from JSON should have correct property values")
         
