@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A04168EA1C0DF69A00269A6A /* Gloss tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A04168E91C0DF69A00269A6A /* Gloss tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A04168F11C0DF69A00269A6A /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04168E71C0DF69900269A6A /* Gloss.framework */; };
+		A04168F61C0DF69A00269A6A /* Gloss_tvOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04168F51C0DF69A00269A6A /* Gloss_tvOSTests.swift */; };
+		A04169031C0DF6C900269A6A /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04168FE1C0DF6C900269A6A /* Decoder.swift */; };
+		A04169041C0DF6C900269A6A /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04168FF1C0DF6C900269A6A /* Dictionary.swift */; };
+		A04169051C0DF6C900269A6A /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04169001C0DF6C900269A6A /* Encoder.swift */; };
+		A04169061C0DF6C900269A6A /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04169011C0DF6C900269A6A /* Gloss.swift */; };
+		A04169071C0DF6C900269A6A /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04169021C0DF6C900269A6A /* Operators.swift */; };
 		DC39BF651B8A7AD200088CE0 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC39BF641B8A7AD200088CE0 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC39BF6C1B8A7AD200088CE0 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC39BF611B8A7AD200088CE0 /* Gloss.framework */; };
 		DC39BF711B8A7AD200088CE0 /* GlossTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BF701B8A7AD200088CE0 /* GlossTests.swift */; };
@@ -26,6 +34,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A04168F21C0DF69A00269A6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DC39BF581B8A7AD200088CE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A04168E61C0DF69900269A6A;
+			remoteInfo = "Gloss tvOS";
+		};
 		DC39BF6D1B8A7AD200088CE0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DC39BF581B8A7AD200088CE0 /* Project object */;
@@ -43,6 +58,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A04168E71C0DF69900269A6A /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A04168E91C0DF69A00269A6A /* Gloss tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gloss tvOS.h"; sourceTree = "<group>"; };
+		A04168EB1C0DF69A00269A6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A04168F01C0DF69A00269A6A /* Gloss tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Gloss tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A04168F51C0DF69A00269A6A /* Gloss_tvOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gloss_tvOSTests.swift; sourceTree = "<group>"; };
+		A04168F71C0DF69A00269A6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A04168FE1C0DF6C900269A6A /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decoder.swift; path = Gloss/Decoder.swift; sourceTree = SOURCE_ROOT; };
+		A04168FF1C0DF6C900269A6A /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = Gloss/Dictionary.swift; sourceTree = SOURCE_ROOT; };
+		A04169001C0DF6C900269A6A /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Encoder.swift; path = Gloss/Encoder.swift; sourceTree = SOURCE_ROOT; };
+		A04169011C0DF6C900269A6A /* Gloss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gloss.swift; path = Gloss/Gloss.swift; sourceTree = SOURCE_ROOT; };
+		A04169021C0DF6C900269A6A /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Gloss/Operators.swift; sourceTree = SOURCE_ROOT; };
 		DC39BF611B8A7AD200088CE0 /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC39BF641B8A7AD200088CE0 /* Gloss.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gloss.h; sourceTree = "<group>"; };
 		DC39BF661B8A7AD200088CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,6 +94,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A04168E31C0DF69900269A6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A04168ED1C0DF69A00269A6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A04168F11C0DF69A00269A6A /* Gloss.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC39BF5D1B8A7AD200088CE0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -101,6 +142,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A04168E81C0DF69900269A6A /* Gloss tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				A04168FE1C0DF6C900269A6A /* Decoder.swift */,
+				A04168FF1C0DF6C900269A6A /* Dictionary.swift */,
+				A04169001C0DF6C900269A6A /* Encoder.swift */,
+				A04169011C0DF6C900269A6A /* Gloss.swift */,
+				A04169021C0DF6C900269A6A /* Operators.swift */,
+				A04168E91C0DF69A00269A6A /* Gloss tvOS.h */,
+				A04168EB1C0DF69A00269A6A /* Info.plist */,
+			);
+			path = "Gloss tvOS";
+			sourceTree = "<group>";
+		};
+		A04168F41C0DF69A00269A6A /* Gloss tvOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				A04168F51C0DF69A00269A6A /* Gloss_tvOSTests.swift */,
+				A04168F71C0DF69A00269A6A /* Info.plist */,
+			);
+			path = "Gloss tvOSTests";
+			sourceTree = "<group>";
+		};
 		DC39BF571B8A7AD200088CE0 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +172,8 @@
 				DC39BF6F1B8A7AD200088CE0 /* GlossTests */,
 				DCF3008B1BDCA3FF003FBF15 /* GlossMacOSX */,
 				DCF300971BDCA400003FBF15 /* GlossMacOSXTests */,
+				A04168E81C0DF69900269A6A /* Gloss tvOS */,
+				A04168F41C0DF69A00269A6A /* Gloss tvOSTests */,
 				DC39BF621B8A7AD200088CE0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -119,6 +185,8 @@
 				DC39BF6B1B8A7AD200088CE0 /* GlossTests.xctest */,
 				DCF3008A1BDCA3FF003FBF15 /* Gloss.framework */,
 				DCF300931BDCA400003FBF15 /* GlossMacOSXTests.xctest */,
+				A04168E71C0DF69900269A6A /* Gloss.framework */,
+				A04168F01C0DF69A00269A6A /* Gloss tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,6 +240,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		A04168E41C0DF69900269A6A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A04168EA1C0DF69A00269A6A /* Gloss tvOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC39BF5E1B8A7AD200088CE0 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -191,6 +267,42 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		A04168E61C0DF69900269A6A /* Gloss tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A04168FC1C0DF69A00269A6A /* Build configuration list for PBXNativeTarget "Gloss tvOS" */;
+			buildPhases = (
+				A04168E21C0DF69900269A6A /* Sources */,
+				A04168E31C0DF69900269A6A /* Frameworks */,
+				A04168E41C0DF69900269A6A /* Headers */,
+				A04168E51C0DF69900269A6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Gloss tvOS";
+			productName = "Gloss tvOS";
+			productReference = A04168E71C0DF69900269A6A /* Gloss.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A04168EF1C0DF69A00269A6A /* Gloss tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A04168FD1C0DF69A00269A6A /* Build configuration list for PBXNativeTarget "Gloss tvOSTests" */;
+			buildPhases = (
+				A04168EC1C0DF69A00269A6A /* Sources */,
+				A04168ED1C0DF69A00269A6A /* Frameworks */,
+				A04168EE1C0DF69A00269A6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A04168F31C0DF69A00269A6A /* PBXTargetDependency */,
+			);
+			name = "Gloss tvOSTests";
+			productName = "Gloss tvOSTests";
+			productReference = A04168F01C0DF69A00269A6A /* Gloss tvOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		DC39BF601B8A7AD200088CE0 /* Gloss */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC39BF751B8A7AD200088CE0 /* Build configuration list for PBXNativeTarget "Gloss" */;
@@ -273,6 +385,12 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Harlan Kellaway";
 				TargetAttributes = {
+					A04168E61C0DF69900269A6A = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					A04168EF1C0DF69A00269A6A = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
 					DC39BF601B8A7AD200088CE0 = {
 						CreatedOnToolsVersion = 7.0;
 					};
@@ -303,11 +421,27 @@
 				DC39BF6A1B8A7AD200088CE0 /* GlossTests */,
 				DCF300891BDCA3FF003FBF15 /* GlossMacOSX */,
 				DCF300921BDCA400003FBF15 /* GlossMacOSXTests */,
+				A04168E61C0DF69900269A6A /* Gloss tvOS */,
+				A04168EF1C0DF69A00269A6A /* Gloss tvOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A04168E51C0DF69900269A6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A04168EE1C0DF69A00269A6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC39BF5F1B8A7AD200088CE0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,6 +473,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A04168E21C0DF69900269A6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A04169031C0DF6C900269A6A /* Decoder.swift in Sources */,
+				A04169071C0DF6C900269A6A /* Operators.swift in Sources */,
+				A04169041C0DF6C900269A6A /* Dictionary.swift in Sources */,
+				A04169061C0DF6C900269A6A /* Gloss.swift in Sources */,
+				A04169051C0DF6C900269A6A /* Encoder.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A04168EC1C0DF69A00269A6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A04168F61C0DF69A00269A6A /* Gloss_tvOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC39BF5C1B8A7AD200088CE0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -382,6 +536,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A04168F31C0DF69A00269A6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A04168E61C0DF69900269A6A /* Gloss tvOS */;
+			targetProxy = A04168F21C0DF69A00269A6A /* PBXContainerItemProxy */;
+		};
 		DC39BF6E1B8A7AD200088CE0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DC39BF601B8A7AD200088CE0 /* Gloss */;
@@ -395,6 +554,71 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		A04168F81C0DF69A00269A6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Gloss tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
+				PRODUCT_NAME = Gloss;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		A04168F91C0DF69A00269A6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Gloss tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
+				PRODUCT_NAME = Gloss;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		A04168FA1C0DF69A00269A6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Gloss tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.harlankellaway.Gloss-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		A04168FB1C0DF69A00269A6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Gloss tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.harlankellaway.Gloss-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
 		DC39BF731B8A7AD200088CE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -611,6 +835,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A04168FC1C0DF69A00269A6A /* Build configuration list for PBXNativeTarget "Gloss tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A04168F81C0DF69A00269A6A /* Debug */,
+				A04168F91C0DF69A00269A6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A04168FD1C0DF69A00269A6A /* Build configuration list for PBXNativeTarget "Gloss tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A04168FA1C0DF69A00269A6A /* Debug */,
+				A04168FB1C0DF69A00269A6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DC39BF5B1B8A7AD200088CE0 /* Build configuration list for PBXProject "Gloss" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
