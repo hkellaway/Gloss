@@ -7,40 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A04168EA1C0DF69A00269A6A /* Gloss tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A04168E91C0DF69A00269A6A /* Gloss tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A04168F11C0DF69A00269A6A /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04168E71C0DF69900269A6A /* Gloss.framework */; };
-		A04168F61C0DF69A00269A6A /* Gloss_tvOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04168F51C0DF69A00269A6A /* Gloss_tvOSTests.swift */; };
-		A04169031C0DF6C900269A6A /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04168FE1C0DF6C900269A6A /* Decoder.swift */; };
-		A04169041C0DF6C900269A6A /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04168FF1C0DF6C900269A6A /* Dictionary.swift */; };
-		A04169051C0DF6C900269A6A /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04169001C0DF6C900269A6A /* Encoder.swift */; };
-		A04169061C0DF6C900269A6A /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04169011C0DF6C900269A6A /* Gloss.swift */; };
-		A04169071C0DF6C900269A6A /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04169021C0DF6C900269A6A /* Operators.swift */; };
+		A0E6A1721C119AB800A4DC1F /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A11BDCA4B6003FBF15 /* Decoder.swift */; };
+		A0E6A1731C119AB800A4DC1F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A21BDCA4B6003FBF15 /* Dictionary.swift */; };
+		A0E6A1741C119AB800A4DC1F /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A31BDCA4B6003FBF15 /* Encoder.swift */; };
+		A0E6A1751C119AB800A4DC1F /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A41BDCA4B6003FBF15 /* Gloss.swift */; };
+		A0E6A1761C119AB800A4DC1F /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A51BDCA4B6003FBF15 /* Operators.swift */; };
+		A0E6A1771C119ABD00A4DC1F /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A11BDCA4B6003FBF15 /* Decoder.swift */; };
+		A0E6A1781C119ABD00A4DC1F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A21BDCA4B6003FBF15 /* Dictionary.swift */; };
+		A0E6A1791C119ABD00A4DC1F /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A31BDCA4B6003FBF15 /* Encoder.swift */; };
+		A0E6A17A1C119ABD00A4DC1F /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A41BDCA4B6003FBF15 /* Gloss.swift */; };
+		A0E6A17B1C119ABD00A4DC1F /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A51BDCA4B6003FBF15 /* Operators.swift */; };
+		A0E6A17C1C119AC900A4DC1F /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC39BF641B8A7AD200088CE0 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A0E6A17D1C119AD100A4DC1F /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC39BF641B8A7AD200088CE0 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC39BF651B8A7AD200088CE0 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC39BF641B8A7AD200088CE0 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC39BF6C1B8A7AD200088CE0 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC39BF611B8A7AD200088CE0 /* Gloss.framework */; };
 		DC39BF711B8A7AD200088CE0 /* GlossTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BF701B8A7AD200088CE0 /* GlossTests.swift */; };
-		DCF300941BDCA400003FBF15 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF3008A1BDCA3FF003FBF15 /* Gloss.framework */; };
-		DCF300991BDCA400003FBF15 /* GlossMacOSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300981BDCA400003FBF15 /* GlossMacOSXTests.swift */; };
 		DCF300A61BDCA4B6003FBF15 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A11BDCA4B6003FBF15 /* Decoder.swift */; };
 		DCF300A71BDCA4B6003FBF15 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A21BDCA4B6003FBF15 /* Dictionary.swift */; };
 		DCF300A81BDCA4B6003FBF15 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A31BDCA4B6003FBF15 /* Encoder.swift */; };
 		DCF300A91BDCA4B6003FBF15 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A41BDCA4B6003FBF15 /* Gloss.swift */; };
 		DCF300AA1BDCA4B6003FBF15 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A51BDCA4B6003FBF15 /* Operators.swift */; };
-		DCF813001BDD298D00415B41 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812F91BDD298D00415B41 /* Decoder.swift */; };
-		DCF813011BDD298D00415B41 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812FA1BDD298D00415B41 /* Dictionary.swift */; };
-		DCF813021BDD298D00415B41 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812FB1BDD298D00415B41 /* Encoder.swift */; };
-		DCF813031BDD298D00415B41 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DCF812FC1BDD298D00415B41 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DCF813041BDD298D00415B41 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812FD1BDD298D00415B41 /* Gloss.swift */; };
-		DCF813061BDD298D00415B41 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF812FF1BDD298D00415B41 /* Operators.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A04168F21C0DF69A00269A6A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DC39BF581B8A7AD200088CE0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A04168E61C0DF69900269A6A;
-			remoteInfo = "Gloss tvOS";
-		};
 		DC39BF6D1B8A7AD200088CE0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DC39BF581B8A7AD200088CE0 /* Project object */;
@@ -48,27 +37,10 @@
 			remoteGlobalIDString = DC39BF601B8A7AD200088CE0;
 			remoteInfo = Gloss;
 		};
-		DCF300951BDCA400003FBF15 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DC39BF581B8A7AD200088CE0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DCF300891BDCA3FF003FBF15;
-			remoteInfo = GlossMacOSX;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A04168E71C0DF69900269A6A /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A04168E91C0DF69A00269A6A /* Gloss tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gloss tvOS.h"; sourceTree = "<group>"; };
-		A04168EB1C0DF69A00269A6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A04168F01C0DF69A00269A6A /* Gloss tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Gloss tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A04168F51C0DF69A00269A6A /* Gloss_tvOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gloss_tvOSTests.swift; sourceTree = "<group>"; };
-		A04168F71C0DF69A00269A6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A04168FE1C0DF6C900269A6A /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decoder.swift; path = Gloss/Decoder.swift; sourceTree = SOURCE_ROOT; };
-		A04168FF1C0DF6C900269A6A /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = Gloss/Dictionary.swift; sourceTree = SOURCE_ROOT; };
-		A04169001C0DF6C900269A6A /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Encoder.swift; path = Gloss/Encoder.swift; sourceTree = SOURCE_ROOT; };
-		A04169011C0DF6C900269A6A /* Gloss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gloss.swift; path = Gloss/Gloss.swift; sourceTree = SOURCE_ROOT; };
-		A04169021C0DF6C900269A6A /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Gloss/Operators.swift; sourceTree = SOURCE_ROOT; };
 		DC39BF611B8A7AD200088CE0 /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC39BF641B8A7AD200088CE0 /* Gloss.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gloss.h; sourceTree = "<group>"; };
 		DC39BF661B8A7AD200088CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,21 +48,11 @@
 		DC39BF701B8A7AD200088CE0 /* GlossTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlossTests.swift; sourceTree = "<group>"; };
 		DC39BF721B8A7AD200088CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCF3008A1BDCA3FF003FBF15 /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DCF300931BDCA400003FBF15 /* GlossMacOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlossMacOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DCF300981BDCA400003FBF15 /* GlossMacOSXTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlossMacOSXTests.swift; sourceTree = "<group>"; };
-		DCF3009A1BDCA400003FBF15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCF300A11BDCA4B6003FBF15 /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		DCF300A21BDCA4B6003FBF15 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		DCF300A31BDCA4B6003FBF15 /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
 		DCF300A41BDCA4B6003FBF15 /* Gloss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gloss.swift; sourceTree = "<group>"; };
 		DCF300A51BDCA4B6003FBF15 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
-		DCF812F91BDD298D00415B41 /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decoder.swift; path = Gloss/Decoder.swift; sourceTree = SOURCE_ROOT; };
-		DCF812FA1BDD298D00415B41 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = Gloss/Dictionary.swift; sourceTree = SOURCE_ROOT; };
-		DCF812FB1BDD298D00415B41 /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Encoder.swift; path = Gloss/Encoder.swift; sourceTree = SOURCE_ROOT; };
-		DCF812FC1BDD298D00415B41 /* Gloss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gloss.h; path = Gloss/Gloss.h; sourceTree = SOURCE_ROOT; };
-		DCF812FD1BDD298D00415B41 /* Gloss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gloss.swift; path = Gloss/Gloss.swift; sourceTree = SOURCE_ROOT; };
-		DCF812FE1BDD298D00415B41 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Gloss/Info.plist; sourceTree = SOURCE_ROOT; };
-		DCF812FF1BDD298D00415B41 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Gloss/Operators.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,14 +60,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A04168ED1C0DF69A00269A6A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A04168F11C0DF69A00269A6A /* Gloss.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,49 +85,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DCF300901BDCA400003FBF15 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DCF300941BDCA400003FBF15 /* Gloss.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A04168E81C0DF69900269A6A /* Gloss tvOS */ = {
-			isa = PBXGroup;
-			children = (
-				A04168FE1C0DF6C900269A6A /* Decoder.swift */,
-				A04168FF1C0DF6C900269A6A /* Dictionary.swift */,
-				A04169001C0DF6C900269A6A /* Encoder.swift */,
-				A04169011C0DF6C900269A6A /* Gloss.swift */,
-				A04169021C0DF6C900269A6A /* Operators.swift */,
-				A04168E91C0DF69A00269A6A /* Gloss tvOS.h */,
-				A04168EB1C0DF69A00269A6A /* Info.plist */,
-			);
-			path = "Gloss tvOS";
-			sourceTree = "<group>";
-		};
-		A04168F41C0DF69A00269A6A /* Gloss tvOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				A04168F51C0DF69A00269A6A /* Gloss_tvOSTests.swift */,
-				A04168F71C0DF69A00269A6A /* Info.plist */,
-			);
-			path = "Gloss tvOSTests";
-			sourceTree = "<group>";
-		};
 		DC39BF571B8A7AD200088CE0 = {
 			isa = PBXGroup;
 			children = (
 				DC39BF631B8A7AD200088CE0 /* Gloss */,
 				DC39BF6F1B8A7AD200088CE0 /* GlossTests */,
-				DCF3008B1BDCA3FF003FBF15 /* GlossMacOSX */,
-				DCF300971BDCA400003FBF15 /* GlossMacOSXTests */,
-				A04168E81C0DF69900269A6A /* Gloss tvOS */,
-				A04168F41C0DF69A00269A6A /* Gloss tvOSTests */,
 				DC39BF621B8A7AD200088CE0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -184,9 +103,7 @@
 				DC39BF611B8A7AD200088CE0 /* Gloss.framework */,
 				DC39BF6B1B8A7AD200088CE0 /* GlossTests.xctest */,
 				DCF3008A1BDCA3FF003FBF15 /* Gloss.framework */,
-				DCF300931BDCA400003FBF15 /* GlossMacOSXTests.xctest */,
 				A04168E71C0DF69900269A6A /* Gloss.framework */,
-				A04168F01C0DF69A00269A6A /* Gloss tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -214,29 +131,6 @@
 			path = GlossTests;
 			sourceTree = "<group>";
 		};
-		DCF3008B1BDCA3FF003FBF15 /* GlossMacOSX */ = {
-			isa = PBXGroup;
-			children = (
-				DCF812F91BDD298D00415B41 /* Decoder.swift */,
-				DCF812FA1BDD298D00415B41 /* Dictionary.swift */,
-				DCF812FB1BDD298D00415B41 /* Encoder.swift */,
-				DCF812FC1BDD298D00415B41 /* Gloss.h */,
-				DCF812FD1BDD298D00415B41 /* Gloss.swift */,
-				DCF812FE1BDD298D00415B41 /* Info.plist */,
-				DCF812FF1BDD298D00415B41 /* Operators.swift */,
-			);
-			path = GlossMacOSX;
-			sourceTree = "<group>";
-		};
-		DCF300971BDCA400003FBF15 /* GlossMacOSXTests */ = {
-			isa = PBXGroup;
-			children = (
-				DCF300981BDCA400003FBF15 /* GlossMacOSXTests.swift */,
-				DCF3009A1BDCA400003FBF15 /* Info.plist */,
-			);
-			path = GlossMacOSXTests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -244,7 +138,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A04168EA1C0DF69A00269A6A /* Gloss tvOS.h in Headers */,
+				A0E6A17D1C119AD100A4DC1F /* Gloss.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +154,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCF813031BDD298D00415B41 /* Gloss.h in Headers */,
+				A0E6A17C1C119AC900A4DC1F /* Gloss.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,24 +178,6 @@
 			productName = "Gloss tvOS";
 			productReference = A04168E71C0DF69900269A6A /* Gloss.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		A04168EF1C0DF69A00269A6A /* Gloss tvOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A04168FD1C0DF69A00269A6A /* Build configuration list for PBXNativeTarget "Gloss tvOSTests" */;
-			buildPhases = (
-				A04168EC1C0DF69A00269A6A /* Sources */,
-				A04168ED1C0DF69A00269A6A /* Frameworks */,
-				A04168EE1C0DF69A00269A6A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A04168F31C0DF69A00269A6A /* PBXTargetDependency */,
-			);
-			name = "Gloss tvOSTests";
-			productName = "Gloss tvOSTests";
-			productReference = A04168F01C0DF69A00269A6A /* Gloss tvOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		DC39BF601B8A7AD200088CE0 /* Gloss */ = {
 			isa = PBXNativeTarget;
@@ -357,24 +233,6 @@
 			productReference = DCF3008A1BDCA3FF003FBF15 /* Gloss.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		DCF300921BDCA400003FBF15 /* GlossMacOSXTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DCF300A01BDCA400003FBF15 /* Build configuration list for PBXNativeTarget "GlossMacOSXTests" */;
-			buildPhases = (
-				DCF3008F1BDCA400003FBF15 /* Sources */,
-				DCF300901BDCA400003FBF15 /* Frameworks */,
-				DCF300911BDCA400003FBF15 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DCF300961BDCA400003FBF15 /* PBXTargetDependency */,
-			);
-			name = GlossMacOSXTests;
-			productName = GlossMacOSXTests;
-			productReference = DCF300931BDCA400003FBF15 /* GlossMacOSXTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -388,9 +246,6 @@
 					A04168E61C0DF69900269A6A = {
 						CreatedOnToolsVersion = 7.1.1;
 					};
-					A04168EF1C0DF69A00269A6A = {
-						CreatedOnToolsVersion = 7.1.1;
-					};
 					DC39BF601B8A7AD200088CE0 = {
 						CreatedOnToolsVersion = 7.0;
 					};
@@ -398,9 +253,6 @@
 						CreatedOnToolsVersion = 7.0;
 					};
 					DCF300891BDCA3FF003FBF15 = {
-						CreatedOnToolsVersion = 7.0;
-					};
-					DCF300921BDCA400003FBF15 = {
 						CreatedOnToolsVersion = 7.0;
 					};
 				};
@@ -420,22 +272,13 @@
 				DC39BF601B8A7AD200088CE0 /* Gloss */,
 				DC39BF6A1B8A7AD200088CE0 /* GlossTests */,
 				DCF300891BDCA3FF003FBF15 /* GlossMacOSX */,
-				DCF300921BDCA400003FBF15 /* GlossMacOSXTests */,
 				A04168E61C0DF69900269A6A /* Gloss tvOS */,
-				A04168EF1C0DF69A00269A6A /* Gloss tvOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		A04168E51C0DF69900269A6A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A04168EE1C0DF69A00269A6A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -463,13 +306,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DCF300911BDCA400003FBF15 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -477,19 +313,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A04169031C0DF6C900269A6A /* Decoder.swift in Sources */,
-				A04169071C0DF6C900269A6A /* Operators.swift in Sources */,
-				A04169041C0DF6C900269A6A /* Dictionary.swift in Sources */,
-				A04169061C0DF6C900269A6A /* Gloss.swift in Sources */,
-				A04169051C0DF6C900269A6A /* Encoder.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A04168EC1C0DF69A00269A6A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A04168F61C0DF69A00269A6A /* Gloss_tvOSTests.swift in Sources */,
+				A0E6A1771C119ABD00A4DC1F /* Decoder.swift in Sources */,
+				A0E6A1781C119ABD00A4DC1F /* Dictionary.swift in Sources */,
+				A0E6A1791C119ABD00A4DC1F /* Encoder.swift in Sources */,
+				A0E6A17A1C119ABD00A4DC1F /* Gloss.swift in Sources */,
+				A0E6A17B1C119ABD00A4DC1F /* Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,39 +345,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCF813001BDD298D00415B41 /* Decoder.swift in Sources */,
-				DCF813061BDD298D00415B41 /* Operators.swift in Sources */,
-				DCF813011BDD298D00415B41 /* Dictionary.swift in Sources */,
-				DCF813041BDD298D00415B41 /* Gloss.swift in Sources */,
-				DCF813021BDD298D00415B41 /* Encoder.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DCF3008F1BDCA400003FBF15 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DCF300991BDCA400003FBF15 /* GlossMacOSXTests.swift in Sources */,
+				A0E6A1721C119AB800A4DC1F /* Decoder.swift in Sources */,
+				A0E6A1731C119AB800A4DC1F /* Dictionary.swift in Sources */,
+				A0E6A1741C119AB800A4DC1F /* Encoder.swift in Sources */,
+				A0E6A1751C119AB800A4DC1F /* Gloss.swift in Sources */,
+				A0E6A1761C119AB800A4DC1F /* Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A04168F31C0DF69A00269A6A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A04168E61C0DF69900269A6A /* Gloss tvOS */;
-			targetProxy = A04168F21C0DF69A00269A6A /* PBXContainerItemProxy */;
-		};
 		DC39BF6E1B8A7AD200088CE0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DC39BF601B8A7AD200088CE0 /* Gloss */;
 			targetProxy = DC39BF6D1B8A7AD200088CE0 /* PBXContainerItemProxy */;
-		};
-		DCF300961BDCA400003FBF15 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DCF300891BDCA3FF003FBF15 /* GlossMacOSX */;
-			targetProxy = DCF300951BDCA400003FBF15 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -562,7 +372,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Gloss tvOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Gloss/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
@@ -583,7 +393,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Gloss tvOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Gloss/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
@@ -591,30 +401,6 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Release;
-		};
-		A04168FA1C0DF69A00269A6A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = "Gloss tvOSTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.harlankellaway.Gloss-tvOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		A04168FB1C0DF69A00269A6A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = "Gloss tvOSTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.harlankellaway.Gloss-tvOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
@@ -806,32 +592,6 @@
 			};
 			name = Release;
 		};
-		DCF3009D1BDCA400003FBF15 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = GlossMacOSXTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = harlankellaway.GlossMacOSXTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Debug;
-		};
-		DCF3009E1BDCA400003FBF15 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = GlossMacOSXTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = harlankellaway.GlossMacOSXTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -840,15 +600,6 @@
 			buildConfigurations = (
 				A04168F81C0DF69A00269A6A /* Debug */,
 				A04168F91C0DF69A00269A6A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A04168FD1C0DF69A00269A6A /* Build configuration list for PBXNativeTarget "Gloss tvOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A04168FA1C0DF69A00269A6A /* Debug */,
-				A04168FB1C0DF69A00269A6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -885,15 +636,6 @@
 			buildConfigurations = (
 				DCF3009B1BDCA400003FBF15 /* Debug */,
 				DCF3009C1BDCA400003FBF15 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DCF300A01BDCA400003FBF15 /* Build configuration list for PBXNativeTarget "GlossMacOSXTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DCF3009D1BDCA400003FBF15 /* Debug */,
-				DCF3009E1BDCA400003FBF15 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
