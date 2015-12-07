@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A04168E61C0DF69900269A6A"
-               BuildableName = "Gloss_tvOS.framework"
+               BuildableName = "Gloss.framework"
                BlueprintName = "Gloss tvOS"
                ReferencedContainer = "container:Gloss.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A04168E61C0DF69900269A6A"
-            BuildableName = "Gloss_tvOS.framework"
+            BuildableName = "Gloss.framework"
             BlueprintName = "Gloss tvOS"
             ReferencedContainer = "container:Gloss.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A04168E61C0DF69900269A6A"
-            BuildableName = "Gloss_tvOS.framework"
+            BuildableName = "Gloss.framework"
             BlueprintName = "Gloss tvOS"
             ReferencedContainer = "container:Gloss.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A04168E61C0DF69900269A6A"
-            BuildableName = "Gloss_tvOS.framework"
+            BuildableName = "Gloss.framework"
             BlueprintName = "Gloss tvOS"
             ReferencedContainer = "container:Gloss.xcodeproj">
          </BuildableReference>
