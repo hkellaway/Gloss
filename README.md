@@ -4,6 +4,7 @@
 ![Swift](https://img.shields.io/badge/language-Swift-orange.svg) 
 [![CocoaPods](https://img.shields.io/cocoapods/v/Gloss.svg)](http://cocoapods.org/pods/Gloss) 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) 
+[![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE) 
 [![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss) 
 [![Build Status](https://travis-ci.org/hkellaway/Gloss.svg)](https://travis-ci.org/hkellaway/Gloss)
@@ -28,6 +29,21 @@ pod 'Gloss', '~> 0.6'
 
 ```
 github "hkellaway/Gloss"
+```
+
+### Installation with Swift Package Manager
+
+To use Gloss as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
+
+```Swift
+import PackageDescription
+
+let package = Package(
+    name: "HellowWorld",
+    dependencies: [
+        .Package(url: "https://github.com/hkellaway/Gloss.git", majorVersion: 0)
+    ]
+)
 ```
 
 ### Swift 2 and Swift 1.2
