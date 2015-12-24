@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 `Gloss` adheres to [Semantic Versioning](http://semver.org/).
 
-- `0.6.x` Releases - [0.6.0](#060) | [0.6.1](#061)
+- `0.6.x` Releases - [0.6.0](#060) | [0.6.1](#061) | [0.6.2](#062)
 - `0.5.x` Releases - [0.5.0](#050) | [0.5.1](#051) | [0.5.2](#052) | [0.5.3](#053) | [0.5.4](#054)
 - `0.4.x` Releases - [0.4.0](#040)
 - `0.3.x` Releases - [0.3.0](#030) | [0.3.1](#031) 
@@ -11,12 +11,22 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [0.6.2](https://github.com/hkellaway/Gloss/releases/tag/0.6.2)
+Released on 2015-12-24. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A0.6.2).
+
+#### Added
+- tvOS target [PR [#88](https://github.com/hkellaway/Gloss/pull/88)]
+- watchOS target
+- Swift Package Manager support
+
+---
+
 ## [0.6.1](https://github.com/hkellaway/Gloss/releases/tag/0.6.1)
 Released on 2015-11-20. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A0.6.1).
 
 #### Fixed
 - URL arrays not decoded automatically [Issue [#81](https://github.com/hkellaway/Gloss/issues/81)]
-- Date arrays not decoded or encoded automatically [#84](https://github.com/hkellaway/Gloss/issues/84)]
+- Date arrays not decoded or encoded automatically [Issue [#84](https://github.com/hkellaway/Gloss/issues/84)]
 - Empty JSON arrays encoded as `nil`
 
 ---
