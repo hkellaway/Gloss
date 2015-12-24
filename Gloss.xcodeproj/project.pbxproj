@@ -7,30 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DC683AF01C2C71730035EAC3 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AE91C2C71730035EAC3 /* Decoder.swift */; };
-		DC683AF11C2C71730035EAC3 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AE91C2C71730035EAC3 /* Decoder.swift */; };
-		DC683AF21C2C71730035EAC3 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AE91C2C71730035EAC3 /* Decoder.swift */; };
-		DC683AF31C2C71730035EAC3 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AE91C2C71730035EAC3 /* Decoder.swift */; };
-		DC683AF41C2C71730035EAC3 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AEA1C2C71730035EAC3 /* Dictionary.swift */; };
-		DC683AF51C2C71730035EAC3 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AEA1C2C71730035EAC3 /* Dictionary.swift */; };
-		DC683AF61C2C71730035EAC3 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AEA1C2C71730035EAC3 /* Dictionary.swift */; };
-		DC683AF71C2C71730035EAC3 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AEA1C2C71730035EAC3 /* Dictionary.swift */; };
-		DC683AF81C2C71730035EAC3 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AEB1C2C71730035EAC3 /* Encoder.swift */; };
-		DC683AF91C2C71730035EAC3 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AEB1C2C71730035EAC3 /* Encoder.swift */; };
-		DC683AFA1C2C71730035EAC3 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AEB1C2C71730035EAC3 /* Encoder.swift */; };
-		DC683AFB1C2C71730035EAC3 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AEB1C2C71730035EAC3 /* Encoder.swift */; };
-		DC683B001C2C71730035EAC3 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AED1C2C71730035EAC3 /* Gloss.swift */; };
-		DC683B011C2C71730035EAC3 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AED1C2C71730035EAC3 /* Gloss.swift */; };
-		DC683B021C2C71730035EAC3 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AED1C2C71730035EAC3 /* Gloss.swift */; };
-		DC683B031C2C71730035EAC3 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AED1C2C71730035EAC3 /* Gloss.swift */; };
-		DC683B081C2C71730035EAC3 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AEF1C2C71730035EAC3 /* Operators.swift */; };
-		DC683B091C2C71730035EAC3 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AEF1C2C71730035EAC3 /* Operators.swift */; };
-		DC683B0A1C2C71730035EAC3 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AEF1C2C71730035EAC3 /* Operators.swift */; };
-		DC683B0B1C2C71730035EAC3 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AEF1C2C71730035EAC3 /* Operators.swift */; };
-		DC683B0C1C2C71DF0035EAC3 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC683AEC1C2C71730035EAC3 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DC683B0D1C2C71EE0035EAC3 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC683AEC1C2C71730035EAC3 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DC683B0E1C2C71F60035EAC3 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC683AEC1C2C71730035EAC3 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DC683B0F1C2C71FD0035EAC3 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC683AEC1C2C71730035EAC3 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DC683B171C2C74A50035EAC3 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B101C2C74A50035EAC3 /* Decoder.swift */; };
+		DC683B181C2C74A50035EAC3 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B101C2C74A50035EAC3 /* Decoder.swift */; };
+		DC683B191C2C74A50035EAC3 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B101C2C74A50035EAC3 /* Decoder.swift */; };
+		DC683B1A1C2C74A50035EAC3 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B101C2C74A50035EAC3 /* Decoder.swift */; };
+		DC683B1B1C2C74A50035EAC3 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B111C2C74A50035EAC3 /* Dictionary.swift */; };
+		DC683B1C1C2C74A50035EAC3 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B111C2C74A50035EAC3 /* Dictionary.swift */; };
+		DC683B1D1C2C74A50035EAC3 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B111C2C74A50035EAC3 /* Dictionary.swift */; };
+		DC683B1E1C2C74A50035EAC3 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B111C2C74A50035EAC3 /* Dictionary.swift */; };
+		DC683B1F1C2C74A50035EAC3 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B121C2C74A50035EAC3 /* Encoder.swift */; };
+		DC683B201C2C74A50035EAC3 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B121C2C74A50035EAC3 /* Encoder.swift */; };
+		DC683B211C2C74A50035EAC3 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B121C2C74A50035EAC3 /* Encoder.swift */; };
+		DC683B221C2C74A50035EAC3 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B121C2C74A50035EAC3 /* Encoder.swift */; };
+		DC683B231C2C74A50035EAC3 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC683B131C2C74A50035EAC3 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DC683B241C2C74A50035EAC3 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC683B131C2C74A50035EAC3 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DC683B261C2C74A50035EAC3 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC683B131C2C74A50035EAC3 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DC683B271C2C74A50035EAC3 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B141C2C74A50035EAC3 /* Gloss.swift */; };
+		DC683B281C2C74A50035EAC3 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B141C2C74A50035EAC3 /* Gloss.swift */; };
+		DC683B291C2C74A50035EAC3 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B141C2C74A50035EAC3 /* Gloss.swift */; };
+		DC683B2A1C2C74A50035EAC3 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B141C2C74A50035EAC3 /* Gloss.swift */; };
+		DC683B2F1C2C74A50035EAC3 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B161C2C74A50035EAC3 /* Operators.swift */; };
+		DC683B301C2C74A50035EAC3 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B161C2C74A50035EAC3 /* Operators.swift */; };
+		DC683B311C2C74A50035EAC3 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B161C2C74A50035EAC3 /* Operators.swift */; };
+		DC683B321C2C74A50035EAC3 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683B161C2C74A50035EAC3 /* Operators.swift */; };
+		DC683B331C2C74EC0035EAC3 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC683B131C2C74A50035EAC3 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,13 +39,13 @@
 		DC39BF701B8A7AD200088CE0 /* GlossTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlossTests.swift; sourceTree = "<group>"; };
 		DC39BF721B8A7AD200088CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC683ADB1C2C615D0035EAC3 /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DC683AE91C2C71730035EAC3 /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decoder.swift; path = Sources/Gloss/Decoder.swift; sourceTree = SOURCE_ROOT; };
-		DC683AEA1C2C71730035EAC3 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = Sources/Gloss/Dictionary.swift; sourceTree = SOURCE_ROOT; };
-		DC683AEB1C2C71730035EAC3 /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Encoder.swift; path = Sources/Gloss/Encoder.swift; sourceTree = SOURCE_ROOT; };
-		DC683AEC1C2C71730035EAC3 /* Gloss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gloss.h; path = Sources/Gloss/Gloss.h; sourceTree = SOURCE_ROOT; };
-		DC683AED1C2C71730035EAC3 /* Gloss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gloss.swift; path = Sources/Gloss/Gloss.swift; sourceTree = SOURCE_ROOT; };
-		DC683AEE1C2C71730035EAC3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Gloss/Info.plist; sourceTree = SOURCE_ROOT; };
-		DC683AEF1C2C71730035EAC3 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Sources/Gloss/Operators.swift; sourceTree = SOURCE_ROOT; };
+		DC683B101C2C74A50035EAC3 /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decoder.swift; path = Sources/Decoder.swift; sourceTree = SOURCE_ROOT; };
+		DC683B111C2C74A50035EAC3 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = Sources/Dictionary.swift; sourceTree = SOURCE_ROOT; };
+		DC683B121C2C74A50035EAC3 /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Encoder.swift; path = Sources/Encoder.swift; sourceTree = SOURCE_ROOT; };
+		DC683B131C2C74A50035EAC3 /* Gloss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gloss.h; path = Sources/Gloss.h; sourceTree = SOURCE_ROOT; };
+		DC683B141C2C74A50035EAC3 /* Gloss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gloss.swift; path = Sources/Gloss.swift; sourceTree = SOURCE_ROOT; };
+		DC683B151C2C74A50035EAC3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = SOURCE_ROOT; };
+		DC683B161C2C74A50035EAC3 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Sources/Operators.swift; sourceTree = SOURCE_ROOT; };
 		DCF3008A1BDCA3FF003FBF15 /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -104,13 +104,13 @@
 		DC39BF631B8A7AD200088CE0 /* Gloss */ = {
 			isa = PBXGroup;
 			children = (
-				DC683AE91C2C71730035EAC3 /* Decoder.swift */,
-				DC683AEA1C2C71730035EAC3 /* Dictionary.swift */,
-				DC683AEB1C2C71730035EAC3 /* Encoder.swift */,
-				DC683AEC1C2C71730035EAC3 /* Gloss.h */,
-				DC683AED1C2C71730035EAC3 /* Gloss.swift */,
-				DC683AEE1C2C71730035EAC3 /* Info.plist */,
-				DC683AEF1C2C71730035EAC3 /* Operators.swift */,
+				DC683B101C2C74A50035EAC3 /* Decoder.swift */,
+				DC683B111C2C74A50035EAC3 /* Dictionary.swift */,
+				DC683B121C2C74A50035EAC3 /* Encoder.swift */,
+				DC683B131C2C74A50035EAC3 /* Gloss.h */,
+				DC683B141C2C74A50035EAC3 /* Gloss.swift */,
+				DC683B151C2C74A50035EAC3 /* Info.plist */,
+				DC683B161C2C74A50035EAC3 /* Operators.swift */,
 			);
 			path = Gloss;
 			sourceTree = "<group>";
@@ -131,7 +131,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC683B0E1C2C71F60035EAC3 /* Gloss.h in Headers */,
+				DC683B331C2C74EC0035EAC3 /* Gloss.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +139,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC683B0C1C2C71DF0035EAC3 /* Gloss.h in Headers */,
+				DC683B231C2C74A50035EAC3 /* Gloss.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +147,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC683B0D1C2C71EE0035EAC3 /* Gloss.h in Headers */,
+				DC683B261C2C74A50035EAC3 /* Gloss.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,7 +155,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC683B0F1C2C71FD0035EAC3 /* Gloss.h in Headers */,
+				DC683B241C2C74A50035EAC3 /* Gloss.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,11 +314,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC683AF21C2C71730035EAC3 /* Decoder.swift in Sources */,
-				DC683B0A1C2C71730035EAC3 /* Operators.swift in Sources */,
-				DC683AF61C2C71730035EAC3 /* Dictionary.swift in Sources */,
-				DC683B021C2C71730035EAC3 /* Gloss.swift in Sources */,
-				DC683AFA1C2C71730035EAC3 /* Encoder.swift in Sources */,
+				DC683B191C2C74A50035EAC3 /* Decoder.swift in Sources */,
+				DC683B311C2C74A50035EAC3 /* Operators.swift in Sources */,
+				DC683B1D1C2C74A50035EAC3 /* Dictionary.swift in Sources */,
+				DC683B291C2C74A50035EAC3 /* Gloss.swift in Sources */,
+				DC683B211C2C74A50035EAC3 /* Encoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,11 +326,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC683AF01C2C71730035EAC3 /* Decoder.swift in Sources */,
-				DC683B081C2C71730035EAC3 /* Operators.swift in Sources */,
-				DC683AF41C2C71730035EAC3 /* Dictionary.swift in Sources */,
-				DC683B001C2C71730035EAC3 /* Gloss.swift in Sources */,
-				DC683AF81C2C71730035EAC3 /* Encoder.swift in Sources */,
+				DC683B171C2C74A50035EAC3 /* Decoder.swift in Sources */,
+				DC683B2F1C2C74A50035EAC3 /* Operators.swift in Sources */,
+				DC683B1B1C2C74A50035EAC3 /* Dictionary.swift in Sources */,
+				DC683B271C2C74A50035EAC3 /* Gloss.swift in Sources */,
+				DC683B1F1C2C74A50035EAC3 /* Encoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,11 +338,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC683AF31C2C71730035EAC3 /* Decoder.swift in Sources */,
-				DC683B0B1C2C71730035EAC3 /* Operators.swift in Sources */,
-				DC683AF71C2C71730035EAC3 /* Dictionary.swift in Sources */,
-				DC683B031C2C71730035EAC3 /* Gloss.swift in Sources */,
-				DC683AFB1C2C71730035EAC3 /* Encoder.swift in Sources */,
+				DC683B1A1C2C74A50035EAC3 /* Decoder.swift in Sources */,
+				DC683B321C2C74A50035EAC3 /* Operators.swift in Sources */,
+				DC683B1E1C2C74A50035EAC3 /* Dictionary.swift in Sources */,
+				DC683B2A1C2C74A50035EAC3 /* Gloss.swift in Sources */,
+				DC683B221C2C74A50035EAC3 /* Encoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,11 +350,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC683AF11C2C71730035EAC3 /* Decoder.swift in Sources */,
-				DC683B091C2C71730035EAC3 /* Operators.swift in Sources */,
-				DC683AF51C2C71730035EAC3 /* Dictionary.swift in Sources */,
-				DC683B011C2C71730035EAC3 /* Gloss.swift in Sources */,
-				DC683AF91C2C71730035EAC3 /* Encoder.swift in Sources */,
+				DC683B181C2C74A50035EAC3 /* Decoder.swift in Sources */,
+				DC683B301C2C74A50035EAC3 /* Operators.swift in Sources */,
+				DC683B1C1C2C74A50035EAC3 /* Dictionary.swift in Sources */,
+				DC683B281C2C74A50035EAC3 /* Gloss.swift in Sources */,
+				DC683B201C2C74A50035EAC3 /* Encoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +370,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Gloss/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
@@ -392,7 +392,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Gloss/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
@@ -502,7 +502,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/Gloss/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
@@ -521,7 +521,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/Gloss/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
@@ -539,7 +539,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Gloss/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
@@ -561,7 +561,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Gloss/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
@@ -584,7 +584,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Gloss/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -607,7 +607,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Gloss/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
