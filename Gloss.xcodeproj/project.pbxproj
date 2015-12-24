@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DC39BF6C1B8A7AD200088CE0 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC39BF611B8A7AD200088CE0 /* Gloss.framework */; };
-		DC39BF711B8A7AD200088CE0 /* GlossTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BF701B8A7AD200088CE0 /* GlossTests.swift */; };
 		DC683AF01C2C71730035EAC3 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AE91C2C71730035EAC3 /* Decoder.swift */; };
 		DC683AF11C2C71730035EAC3 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AE91C2C71730035EAC3 /* Decoder.swift */; };
 		DC683AF21C2C71730035EAC3 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC683AE91C2C71730035EAC3 /* Decoder.swift */; };
@@ -35,20 +33,9 @@
 		DC683B0F1C2C71FD0035EAC3 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC683AEC1C2C71730035EAC3 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		DC39BF6D1B8A7AD200088CE0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DC39BF581B8A7AD200088CE0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DC39BF601B8A7AD200088CE0;
-			remoteInfo = Gloss;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		A04168E71C0DF69900269A6A /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC39BF611B8A7AD200088CE0 /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DC39BF6B1B8A7AD200088CE0 /* GlossTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlossTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC39BF701B8A7AD200088CE0 /* GlossTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlossTests.swift; sourceTree = "<group>"; };
 		DC39BF721B8A7AD200088CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC683ADB1C2C615D0035EAC3 /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,14 +61,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DC39BF681B8A7AD200088CE0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DC39BF6C1B8A7AD200088CE0 /* Gloss.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				DC39BF611B8A7AD200088CE0 /* Gloss.framework */,
-				DC39BF6B1B8A7AD200088CE0 /* GlossTests.xctest */,
 				DCF3008A1BDCA3FF003FBF15 /* Gloss.framework */,
 				A04168E71C0DF69900269A6A /* Gloss.framework */,
 				DC683ADB1C2C615D0035EAC3 /* Gloss.framework */,
@@ -220,24 +198,6 @@
 			productReference = DC39BF611B8A7AD200088CE0 /* Gloss.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		DC39BF6A1B8A7AD200088CE0 /* GlossTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DC39BF781B8A7AD200088CE0 /* Build configuration list for PBXNativeTarget "GlossTests" */;
-			buildPhases = (
-				DC39BF671B8A7AD200088CE0 /* Sources */,
-				DC39BF681B8A7AD200088CE0 /* Frameworks */,
-				DC39BF691B8A7AD200088CE0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DC39BF6E1B8A7AD200088CE0 /* PBXTargetDependency */,
-			);
-			name = GlossTests;
-			productName = GlossTests;
-			productReference = DC39BF6B1B8A7AD200088CE0 /* GlossTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		DC683ADA1C2C615D0035EAC3 /* Gloss watchOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC683AE21C2C615E0035EAC3 /* Build configuration list for PBXNativeTarget "Gloss watchOS" */;
@@ -290,9 +250,6 @@
 					DC39BF601B8A7AD200088CE0 = {
 						CreatedOnToolsVersion = 7.0;
 					};
-					DC39BF6A1B8A7AD200088CE0 = {
-						CreatedOnToolsVersion = 7.0;
-					};
 					DC683ADA1C2C615D0035EAC3 = {
 						CreatedOnToolsVersion = 7.1;
 					};
@@ -314,7 +271,6 @@
 			projectRoot = "";
 			targets = (
 				DC39BF601B8A7AD200088CE0 /* Gloss */,
-				DC39BF6A1B8A7AD200088CE0 /* GlossTests */,
 				DCF300891BDCA3FF003FBF15 /* GlossMacOSX */,
 				A04168E61C0DF69900269A6A /* Gloss tvOS */,
 				DC683ADA1C2C615D0035EAC3 /* Gloss watchOS */,
@@ -331,13 +287,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DC39BF5F1B8A7AD200088CE0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DC39BF691B8A7AD200088CE0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -385,14 +334,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DC39BF671B8A7AD200088CE0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DC39BF711B8A7AD200088CE0 /* GlossTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		DC683AD61C2C615D0035EAC3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -418,14 +359,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		DC39BF6E1B8A7AD200088CE0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DC39BF601B8A7AD200088CE0 /* Gloss */;
-			targetProxy = DC39BF6D1B8A7AD200088CE0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A04168F81C0DF69A00269A6A /* Debug */ = {
@@ -597,26 +530,6 @@
 			};
 			name = Release;
 		};
-		DC39BF791B8A7AD200088CE0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = GlossTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.GlossTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		DC39BF7A1B8A7AD200088CE0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = GlossTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.GlossTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		DC683AE01C2C615E0035EAC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -731,15 +644,6 @@
 			buildConfigurations = (
 				DC39BF761B8A7AD200088CE0 /* Debug */,
 				DC39BF771B8A7AD200088CE0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DC39BF781B8A7AD200088CE0 /* Build configuration list for PBXNativeTarget "GlossTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DC39BF791B8A7AD200088CE0 /* Debug */,
-				DC39BF7A1B8A7AD200088CE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
