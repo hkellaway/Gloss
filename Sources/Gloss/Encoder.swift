@@ -44,7 +44,9 @@ public struct Encoder {
             property in
             
             if let property = property as? AnyObject {
-                return [key : property]
+                var json: JSON = [:]
+                json.setValue(property, forKeyPath: key)
+                return json
             }
             
             return nil
