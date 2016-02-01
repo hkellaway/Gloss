@@ -34,9 +34,8 @@ extension Dictionary {
     */
     public mutating func add(other: Dictionary) -> () {
         for (key, value) in other {
-            if var previousValue = self[key] as? Dictionary, let currentValue = value as? Dictionary {
-                previousValue.add(currentValue)
-                self.updateValue(previousValue as! Value, forKey:key)
+            if let key = key as? String {
+                self.setValue(value, forKeyPath: key)
             } else {
                 self.updateValue(value, forKey:key)
             }
@@ -75,7 +74,7 @@ extension Dictionary {
      :parameter: val     value to set
      :parameter: keyPath keyPath of the value
      */
-    mutating public func setValue(val: AnyObject, forKeyPath keyPath: String) {
+    mutating public func setValue(val: Any, forKeyPath keyPath: String) {
         var keys = keyPath.componentsSeparatedByString(".")
         guard let first = keys.first as? Key else { print("Unable to use string as key on type: \(Key.self)"); return }
         keys.removeAtIndex(0)
