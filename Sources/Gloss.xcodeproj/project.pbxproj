@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35497DF41C5F8CEB00D1E20D /* KeyPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35497DF31C5F8CEB00D1E20D /* KeyPathTests.swift */; };
 		A0E6A1721C119AB800A4DC1F /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A11BDCA4B6003FBF15 /* Decoder.swift */; };
 		A0E6A1731C119AB800A4DC1F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A21BDCA4B6003FBF15 /* Dictionary.swift */; };
 		A0E6A1741C119AB800A4DC1F /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF300A31BDCA4B6003FBF15 /* Encoder.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		35497DF31C5F8CEB00D1E20D /* KeyPathTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPathTests.swift; sourceTree = "<group>"; };
 		A04168E71C0DF69900269A6A /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC39BF611B8A7AD200088CE0 /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC39BF641B8A7AD200088CE0 /* Gloss.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gloss.h; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				DC39BF701B8A7AD200088CE0 /* GlossTests.swift */,
+				35497DF31C5F8CEB00D1E20D /* KeyPathTests.swift */,
 				DC39BF721B8A7AD200088CE0 /* Info.plist */,
 			);
 			path = GlossTests;
@@ -389,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35497DF41C5F8CEB00D1E20D /* KeyPathTests.swift in Sources */,
 				DC39BF711B8A7AD200088CE0 /* GlossTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
