@@ -11,13 +11,18 @@ import XCTest
 
 class KeyPathTests: XCTestCase {
     
-    var nestedKeyPathParams: JSON { return [ "keyPath" : [
-        "id": "1",
-        "args": [
-            "name":"foo",
-            "email":"bar"
+    var nestedKeyPathParams: JSON { return
+        [
+            "keyPath" : [
+                "id": "1",
+                "args": [
+                    "name":"foo",
+                    "email":"bar",
+                    "flag" : true
+                ]
+            ]
         ]
-        ] ] }
+    }
     var nestedKeyPath: NestedKeyPath!
     
     override func setUp() {
@@ -36,14 +41,14 @@ class KeyPathTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
-        XCTAssert(nestedKeyPath.keyPath?.id == "1" && nestedKeyPath.keyPath?.name == "foo" && nestedKeyPath.keyPath?.email == "bar", "Passed")
+        XCTAssert(nestedKeyPath.keyPath?.id == "1" && nestedKeyPath.keyPath?.name == "foo" && nestedKeyPath.keyPath?.email == "bar" && nestedKeyPath.flag == true, "Passed")
     }
     
     func testNestedKeyPathToJSON() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
-        XCTAssert((nestedKeyPath?.toJSON())! == ["keyPath" : ["id": "1", "args": ["name":"foo", "email":"bar"]]], "Passed")
+        XCTAssert((nestedKeyPath?.toJSON())! == ["keyPath" : ["id": "1", "args": ["name":"foo", "email":"bar", "flag" : true]]], "Passed")
     }
     
     func testPerformanceExample() {
@@ -61,14 +66,17 @@ extension KeyPathTests {
     struct NestedKeyPath: Glossy {
         
         var keyPath: KeyPath?
+        var flag: Bool
         
         init?(json: JSON) {
             self.keyPath = "keyPath" <~~ json
+            self.flag = "keyPath.args.flag" <~~ json ?? false
         }
         
         func toJSON() -> JSON? {
             return jsonify([
-                "keyPath" ~~> self.keyPath
+                "keyPath" ~~> self.keyPath,
+                "keyPath.args.flag" ~~> self.flag
                 ])
         }
         
