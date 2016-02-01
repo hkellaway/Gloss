@@ -33,8 +33,13 @@ extension Dictionary {
     :parameter: other Dictionary to add entries from
     */
     public mutating func add(other: Dictionary) -> () {
-        for (key,value) in other {
-            self.updateValue(value, forKey:key)
+        for (key, value) in other {
+            if var previousValue = self[key] as? Dictionary, let currentValue = value as? Dictionary {
+                previousValue.add(currentValue)
+                self.updateValue(previousValue as! Value, forKey:key)
+            } else {
+                self.updateValue(value, forKey:key)
+            }
         }
     }
     
