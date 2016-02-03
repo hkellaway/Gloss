@@ -38,4 +38,24 @@ extension Dictionary {
         }
     }
     
+    /**
+    Creates a dictionary from a list of elements, this allows us to map, flatMap
+     and filter dictionaries.
+    
+    :parameter: elements to add to the new dictionary
+    */
+    init(elements:[Element]) {
+        self.init()
+        
+        for (key, value) in elements {
+            self[key] = value
+        }
+    }
+    
+    func flatMap<KeyPrime : Hashable, ValuePrime>(transform: (Key, Value) throws -> (KeyPrime, ValuePrime)?) rethrows -> [KeyPrime : ValuePrime] {
+        return Dictionary<KeyPrime,ValuePrime>(elements: try flatMap({ (key, value) in
+            return try transform(key, value)
+        }))
+    }
 }
+

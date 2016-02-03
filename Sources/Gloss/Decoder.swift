@@ -175,6 +175,31 @@ public struct Decoder {
     }
     
     /**
+     Returns function to decode JSON to dictionary of
+     objects that conform to the Glossy protocol
+     
+     :parameter: key JSON key used to set value
+     
+     :returns: Function decoding JSON to an optional dictionary
+     */
+    public static func decodeDecodableDictionary<T:Decodable>(key:String) -> JSON -> [String:T]? {
+        return {
+            json in
+            
+            guard let dict = json[key] as? [String:JSON] else {
+                return nil
+            }
+            
+            return dict.flatMap { (key, value) in
+                guard let decoded = T(json: value) else {
+                    return nil
+                }
+                return (key, decoded)
+            }
+        }
+    }
+
+    /**
     Returns function to decode JSON to enum array
     of enum values
     

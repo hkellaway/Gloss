@@ -193,6 +193,31 @@ public struct Encoder {
     }
     
     /**
+     Returns function to encode a [String:Encodable] into JSON
+     for objects the conform to the Encodable protocol
+     
+     :parameter: key Key used to create JSON property
+     
+     :returns: Function encoding dictionary to optional JSON
+     */
+    public static func encodeEncodableDictionary<T: Encodable>(key: String) -> [String:T]? -> JSON? {
+        return {
+            dict in
+            
+            guard let dict = dict else {
+                return nil
+            }
+            
+            return dict.flatMap { (key, value) in
+                guard let json = value.toJSON() else {
+                    return nil
+                }
+                return (key, json)
+            }
+        }
+    }
+
+    /**
     Returns function to encode array as JSON
     of enum raw values
     
