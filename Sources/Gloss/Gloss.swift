@@ -41,46 +41,47 @@ public protocol Glossy: Decodable, Encodable { }
 Enables an object to be decoded from JSON
 */
 public protocol Decodable {
-    
+
     /**
-    Returns new instance created from provided JSON
-    
-    :parameter: json JSON representation of object
-    */
+     Returns new instance created from provided JSON
+
+     :parameter: json JSON representation of object
+     */
     init?(json: JSON)
-    
+
     /**
-    Returns array of new instances created from provided JSON array
-    
-    :parameter: jsonArray Array of JSON representations of object
-    */
-    static func modelsFromJSONArray(jsonArray: [JSON]) -> [Self]?
-    
+     Returns array of new instances created from provided JSON array
+
+     :parameter: jsonArray Array of JSON representations of object
+     */
+    static func modelsFromJSONArray<T: Decodable>(jsonArray: [JSON]) -> [T]?
+
 }
 
 /**
-Extension of Decodable protocol with default implementations
-*/
+ Extension of Decodable protocol with default implementations
+ */
 public extension Decodable {
-    
+
     /**
-    Returns array of new instances created from provided JSON array
-    
-    Note: The returned array will have only models that successfully
-    decoded
-    
-    :parameter: jsonArray Array of JSON representations of object
-    */
-    static func modelsFromJSONArray(jsonArray: [JSON]) -> [Self]? {
-        var models: [Self] = []
-        
+     Returns array of new instances created from provided JSON array
+
+     Note: The returned array will have only models that successfully
+     decoded
+
+     :parameter: jsonArray Array of JSON representations of object
+     */
+    static func modelsFromJSONArray<T: Decodable>(jsonArray: [JSON]) -> [T]? {
+
+        var models: [T] = []
+
         for json in jsonArray {
-            let model = Self(json: json)
+            let model = T(json: json)
             if let model = model {
                 models.append(model)
             }
         }
-        
+
         return models
     }
     
