@@ -102,7 +102,7 @@ public protocol Encodable {
     
     :parameter: models Array of models to be encoded as JSON
     */
-    static func toJSONArray(models:[Self]) -> [JSON]?
+    static func toJSONArray<T: Encodable>(models:[T]) -> [JSON]?
 }
 
 /**
@@ -118,7 +118,7 @@ public extension Encodable {
     
     :parameter: models Array of models to be encoded as JSON
     */
-    static func toJSONArray(models:[Self]) -> [JSON]? {
+    static func toJSONArray<T: Encodable>(models:[T]) -> [JSON]? {
         var jsonArray: [JSON] = []
         
         for model in models {
