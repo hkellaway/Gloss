@@ -109,9 +109,9 @@ class GlossTests: XCTestCase {
     }
     
     func testModelsFromJSONArrayProducesValidModels() {
-        let result = TestModel.modelsFromJSONArray(testJSONArray!)
-        let model1: TestModel = result![0]
-        let model2: TestModel = result![1]
+        let result: [TestModel] = TestModel.modelsFromJSONArray(testJSONArray!)!
+        let model1: TestModel = result[0]
+        let model2: TestModel = result[1]
         
         XCTAssertTrue((model1.bool == true), "Model created from JSON should have correct property values")
         XCTAssertTrue((model1.boolArray! == [true, false, true]), "Model created from JSON should have correct property values")
@@ -170,9 +170,9 @@ class GlossTests: XCTestCase {
     func testModelsFromJSONArrayOnlyIncludesValidModels() {
         testJSONArray![0].removeValueForKey("bool")
         
-        let result = TestModel.modelsFromJSONArray(testJSONArray!)
+        let result: [TestModel] = TestModel.modelsFromJSONArray(testJSONArray!)!
         
-        XCTAssertTrue(result!.count == 1, "Model array from JSON array should only include valid models")
+        XCTAssertTrue(result.count == 1, "Model array from JSON array should only include valid models")
     }
     
     func testJSONArrayFromModelsProducesValidJSON() {
@@ -264,9 +264,9 @@ class GlossTests: XCTestCase {
         invalidJSON.removeValueForKey("bool")
         var jsonArray = testJSONArray!
         jsonArray.append(invalidJSON)
-        let result = TestModel.modelsFromJSONArray(jsonArray)
+        let result: [TestModel] = TestModel.modelsFromJSONArray(jsonArray)!
         
-        XCTAssertTrue(result!.count == 2, "Model array from JSON array should only include valid models")
+        XCTAssertTrue(result.count == 2, "Model array from JSON array should only include valid models")
     }
     
     func testJsonifyTurnsJSONOptionalArrayToSingleJSONOptional() {
