@@ -14,10 +14,10 @@ class KeyPathTests: XCTestCase {
     var nestedKeyPathJSON: JSON { return
         [
             "keyPath" : [
-                "id": "1",
+                "id": 1,
                 "args": [
                     "name":"foo",
-                    "email":"bar",
+                    "url":"http://url.com",
                     "flag" : true
                 ]
             ]
@@ -39,11 +39,11 @@ class KeyPathTests: XCTestCase {
     }
     
     func testNestedKeyPathFromJSON() {
-        XCTAssert(nestedKeyPathModel.keyPathModel?.id == "1" && nestedKeyPathModel.keyPathModel?.name == "foo" && nestedKeyPathModel.keyPathModel?.email == "bar" && nestedKeyPathModel.flag == true, "Passed")
+        XCTAssert(nestedKeyPathModel.keyPathModel?.id == 1 && nestedKeyPathModel.keyPathModel?.name == "foo" && nestedKeyPathModel.keyPathModel?.url?.absoluteString == "http://url.com" && nestedKeyPathModel.flag == true, "Passed")
     }
     
     func testNestedKeyPathToJSON() {
-        XCTAssert((nestedKeyPathModel?.toJSON())! == ["keyPath" : ["id": "1", "args": ["name":"foo", "email":"bar", "flag" : true]]], "Passed")
+        XCTAssert((nestedKeyPathModel?.toJSON())! == ["keyPath" : ["id": 1, "args": ["name":"foo", "url": "http://url.com", "flag" : true]]], "Passed")
     }
     
 }

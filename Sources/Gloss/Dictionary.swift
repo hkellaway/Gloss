@@ -89,7 +89,7 @@ extension Dictionary {
         
         keys.removeAtIndex(0)
         
-        if !keys.isEmpty, let subDict = value as? [String : AnyObject] {
+        if !keys.isEmpty, let subDict = value as? JSON {
             let rejoined = keys.joinWithSeparator(".")
             
             return subDict.valueForKeyPath(rejoined)

@@ -63,7 +63,7 @@ public struct Decoder {
         return {
             json in
             
-            if let subJSON = json[key] as? JSON {
+            if let subJSON = json.valueForKeyPath(key) as? JSON {
                 return T(json: subJSON)
             }
             
@@ -84,7 +84,7 @@ public struct Decoder {
         return {
             json in
             
-            if let dateString = json[key] as? String {
+            if let dateString = json.valueForKeyPath(key) as? String {
                 return dateFormatter.dateFromString(dateString)
             }
             
@@ -119,7 +119,7 @@ public struct Decoder {
         return {
             json in
             
-            if let rawValue = json[key] as? T.RawValue {
+            if let rawValue = json.valueForKeyPath(key) as? T.RawValue {
                 return T(rawValue: rawValue)
             }
             
@@ -138,7 +138,7 @@ public struct Decoder {
         return {
             json in
             
-            if let urlString = json[key] as? String {
+            if let urlString = json.valueForKeyPath(key) as? String {
                 return NSURL(string: urlString)
             }
             
@@ -158,7 +158,7 @@ public struct Decoder {
         return {
             json in
             
-            if let jsonArray = json[key] as? [JSON] {
+            if let jsonArray = json.valueForKeyPath(key) as? [JSON] {
                 var models: [T] = []
                 
                 for subJSON in jsonArray {
@@ -186,7 +186,7 @@ public struct Decoder {
         return {
             json in
             
-            guard let dictionary = json[key] as? [String : JSON] else {
+            guard let dictionary = json.valueForKeyPath(key) as? [String : JSON] else {
                 return nil
             }
             
@@ -212,7 +212,7 @@ public struct Decoder {
         return {
             json in
             
-            if let rawValues = json[key] as? [T.RawValue] {
+            if let rawValues = json.valueForKeyPath(key) as? [T.RawValue] {
                 var enumValues: [T] = []
                 
                 for rawValue in rawValues {
@@ -240,7 +240,7 @@ public struct Decoder {
         return {
             json in
             
-            if let dateStrings = json[key] as? [String] {
+            if let dateStrings = json.valueForKeyPath(key) as? [String] {
                 var dates: [NSDate] = []
                 
                 for dateString in dateStrings {
@@ -283,7 +283,7 @@ public struct Decoder {
         return {
             json in
             
-            if let urlStrings = json[key] as? [String] {
+            if let urlStrings = json.valueForKeyPath(key) as? [String] {
                 var urls: [NSURL] = []
                 
                 for urlString in urlStrings {

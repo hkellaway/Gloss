@@ -11,21 +11,21 @@ import Gloss
 
 struct TestKeyPathModel: Glossy {
     
-    let id: String?
+    let id: Int?
     let name: String?
-    let email: String?
+    let url: NSURL?
     
     init?(json: JSON) {
         self.id = "id" <~~ json
         self.name = "args.name" <~~ json
-        self.email = "args.email" <~~ json
+        self.url = "args.url" <~~ json
     }
     
     func toJSON() -> JSON? {
         return jsonify([
             "id" ~~> self.id,
             "args.name" ~~> self.name,
-            "args.email" ~~> self.email
+            "args.url" ~~> self.url
             ])
     }
     
