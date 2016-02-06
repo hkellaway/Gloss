@@ -61,6 +61,8 @@ class FlowObjectCreationTests: XCTestCase {
         XCTAssertTrue((result.floatArray! == [1.0, 2.0, 3.0]), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.double == 6.0), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.doubleArray! == [4.0, 5.0, 6.0]), "Model created from JSON should have correct property values")
+        XCTAssertTrue(result.dictionary!["otherModel"]!.id! == 789, "Model created from JSON should have correct property values")
+        XCTAssertTrue(result.dictionary!["otherModel"]!.name! == "otherModel1", "Model created from JSON should have correct property values")
         XCTAssertTrue((result.string == "abc"), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.stringArray! == ["def", "ghi", "jkl"]), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.enumValue == TestModel.EnumValue.A), "Model created from JSON should have correct property values")

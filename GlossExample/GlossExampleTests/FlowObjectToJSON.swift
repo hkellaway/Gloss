@@ -43,6 +43,12 @@ class ObjectToJSONFlowTests: XCTestCase {
             "floatArray" : [1.0, 2.0, 3.0],
             "double" : 6.0,
             "doubleArray" : [4.0, 5.0, 6.0],
+            "dictionary" : [
+                "otherModel" : [
+                    "id" : 1,
+                    "name" : "nestedModel1"
+                ]
+            ],
             "string" : "abc",
             "stringArray" : ["def", "ghi", "jkl"],
             "nestedModel" : [
@@ -109,6 +115,11 @@ class ObjectToJSONFlowTests: XCTestCase {
         
         XCTAssertTrue((result!["url"] as! String == "http://github.com"), "JSON created from model should have correct values")
         XCTAssertTrue(((result!["urlArray"] as! [NSURL]).map { url in url.absoluteString } == ["http://github.com", "http://github.com"]), "JSON created from model should have correct values")
+        
+        let dictionary = result!["otherModel"] as! [String : AnyObject]
+        
+        XCTAssertTrue(dictionary["id"] as! Int == 1, "Encode encodable dictionary should return correct value")
+        XCTAssertTrue(dictionary["name"] as! String == "nestedModel1", "Encode encodable dictionary should return correct value")
         
         let nestedModel: JSON = result!["nestedModel"] as! JSON
         

@@ -32,7 +32,7 @@ extension Dictionary {
     
     :parameter: other Dictionary to add entries from
     */
-    public mutating func add(other: Dictionary) -> () {
+    mutating func add(other: Dictionary) -> () {
         for (key,value) in other {
             self.updateValue(value, forKey:key)
         }
@@ -42,9 +42,9 @@ extension Dictionary {
     Creates a dictionary from a list of elements, this allows us to map, flatMap
      and filter dictionaries.
     
-    :parameter: elements to add to the new dictionary
+    :parameter: elements Elements to add to the new dictionary
     */
-    init(elements:[Element]) {
+    init(elements: [Element]) {
         self.init()
         
         for (key, value) in elements {
@@ -52,6 +52,11 @@ extension Dictionary {
         }
     }
     
+    /**
+     Flat map for dictionary.
+     
+     :parameter: transform Transform
+     */
     func flatMap<KeyPrime : Hashable, ValuePrime>(transform: (Key, Value) throws -> (KeyPrime, ValuePrime)?) rethrows -> [KeyPrime : ValuePrime] {
         return Dictionary<KeyPrime,ValuePrime>(elements: try flatMap({ (key, value) in
             return try transform(key, value)

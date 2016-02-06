@@ -108,6 +108,14 @@ class EncoderTests: XCTestCase {
         
         XCTAssertTrue((result!["doubleArray"] as! [Double] == [4.0, 5.0, 6.0]), "Encode Double array should return correct value")
     }
+    
+    func testEncodeEncodableDictionary() {
+        let dictionary = ["dictionary" : testNestedModel1!]
+        let result: JSON? = Encoder.encodeEncodableDictionary("dictionary")(dictionary)
+        
+        XCTAssertTrue(result!["dictionary"]!["id"] == 1, "Encode Dictionary should return correct value")
+        XCTAssertTrue(result!["dictionary"]!["name"] == "nestedModel1", "Encode Dictionary should return correct value")
+    }
 
     func testEncodeString() {
         let string: String? = "abc"
