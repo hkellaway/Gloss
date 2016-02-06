@@ -32,9 +32,13 @@ extension Dictionary {
     
     :parameter: other Dictionary to add entries from
     */
-    mutating func add(other: Dictionary) -> () {
-        for (key,value) in other {
-            self.updateValue(value, forKey:key)
+    public mutating func add(other: Dictionary) -> () {
+        for (key, value) in other {
+            if let key = key as? String {
+                self.setValue(value, forKeyPath: key)
+            } else {
+                self.updateValue(value, forKey:key)
+            }
         }
     }
     
@@ -62,5 +66,55 @@ extension Dictionary {
             return try transform(key, value)
         }))
     }
-}
 
+    /**
+     Creates a nested dictionary from the keyPath 
+     components separated with '.' and set the value
+     
+     :parameter: val     value to set
+     :parameter: keyPath keyPath of the value
+     */
+    mutating public func setValue(val: Any, forKeyPath keyPath: String) {
+        var keys = keyPath.componentsSeparatedByString(".")
+        guard let first = keys.first as? Key else { print("Unable to use string as key on type: \(Key.self)"); return }
+        keys.removeAtIndex(0)
+        if keys.isEmpty, let settable = val as? Value {
+            self[first] = settable
+        } else {
+            let rejoined = keys.joinWithSeparator(".")
+            var subdict: [NSObject : AnyObject] = [:]
+            if let sub = self[first] as? [NSObject : AnyObject] {
+                subdict = sub
+            }
+            subdict.setValue(val, forKeyPath: rejoined)
+            if let settable = subdict as? Value {
+                self[first] = settable
+            } else {
+                print("Unable to set value: \(subdict) to dictionary of type: \(self.dynamicType)")
+            }
+        }
+        
+    }
+    
+    
+    /**
+     Parse the nested dictionary from the keyPath 
+     components separated with '.' and get the value
+     
+     :parameter: keyPath keyPath with seperator '.'
+     
+     :returns: value from the nested dictionary
+     */
+    public func valueForKeyPath(keyPath: String) -> AnyObject? {
+        var keys = keyPath.componentsSeparatedByString(".")
+        guard let first = keys.first as? Key else { print("Unable to use string as key on type: \(Key.self)"); return nil }
+        guard let value = self[first] as? AnyObject else { return nil }
+        keys.removeAtIndex(0)
+        if !keys.isEmpty, let subDict = value as? [NSObject : AnyObject] {
+            let rejoined = keys.joinWithSeparator(".")
+            return subDict.valueForKeyPath(rejoined)
+        }
+        return value
+    }
+    
+}

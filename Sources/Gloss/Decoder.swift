@@ -43,7 +43,7 @@ public struct Decoder {
         return {
             json in
             
-            if let value = json[key] as? T {
+            if let value = json.valueForKeyPath(key) as? T {
                 return value
             }
             
