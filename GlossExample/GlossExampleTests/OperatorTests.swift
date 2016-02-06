@@ -122,6 +122,13 @@ class OperatorTests: XCTestCase {
         XCTAssertTrue((resultDoubleArray! == decoderResultDoubleArray!), "<~~ for generic value should return same as Decoder.decode for Double array")
     }
     
+    func testDecodeOperatorGenericReturnsDecoderDecodableDictionary() {
+        let resultDictionary: [String : TestNestedModel]? = "dictionary" <~~ testJSON!
+        let decoderDictionary: [String : TestNestedModel]? = Decoder.decodeDecodableDictionary("dictionary")(testJSON!)
+        
+        XCTAssertTrue(resultDictionary!["otherModel"]! == decoderDictionary!["otherModel"]!, "<~~ for generic value should result same as Decoder.decodeDecodableDictionary for dictionary")
+    }
+    
     func testDecodeOperatorGenericReturnsDecoderDecodeForString() {
         let resultString: String? = "string" <~~ testJSON!
         let decoderResultString: String? = Decoder.decode("string")(testJSON!)
@@ -258,6 +265,15 @@ class OperatorTests: XCTestCase {
         let encoderResultDoubleArray: JSON? = Encoder.encode("doubleArray")(doubleArray)
         
         XCTAssertTrue(((resultDoubleArray!["doubleArray"] as! [Double]) == (encoderResultDoubleArray!["doubleArray"] as! [Double])), "~~> for generic value should return same as Encoder.encode for Double array")
+    }
+    
+    func testEncodeOperatorGenericReturnsEncoderEncodeEncodableDictionary() {
+        let dictionary: [String : TestNestedModel]? = ["otherModel" : testNestedModel1!]
+        let result: JSON? = "dictionary" ~~> dictionary
+        let encoderResult: JSON? = Encoder.encodeEncodableDictionary("dictionary")(dictionary)
+        
+        XCTAssertTrue((result!["otherModel"]!["id"]) == (encoderResult!["otherModel"]!["id"]), "~~> for generic value should return same as Encoder.encodeEncodableDictionary for dictionary")
+        XCTAssertTrue((result!["otherModel"]!["name"]) == (encoderResult!["otherModel"]!["name"]), "~~> for generic value should return same as Encoder.encodeEncodableDictionary for dictionary")
     }
     
     func testEncodeOperatorGenericReturnsEncoderEncodeForString() {

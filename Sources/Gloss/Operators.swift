@@ -86,7 +86,7 @@ public func <~~ (key: String, json: JSON) -> [NSURL]? {
 /**
  Convenience operator for decoding JSON to Dictionary of String, Decodable objects
  */
-public func <~~ <T: Decodable>(key: String, json: JSON) -> [String:T]? {
+public func <~~ <T: Decodable>(key: String, json: JSON) -> [String : T]? {
     return Decoder.decodeDecodableDictionary(key)(json)
 }
 
@@ -149,6 +149,6 @@ public func ~~> <T: RawRepresentable>(key: String, property: [T]?) -> JSON? {
 /**
  Convenience operator for encoding dictionary of Encodable objects to JSON
  */
-public func ~~> <T: Encodable>(key: String, property: [String:T]?) -> JSON? {
+public func ~~> <T: Encodable>(key: String, property: [String : T]?) -> JSON? {
     return Encoder.encodeEncodableDictionary(key)(property)
 }

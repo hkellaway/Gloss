@@ -182,18 +182,19 @@ public struct Decoder {
      
      :returns: Function decoding JSON to an optional dictionary
      */
-    public static func decodeDecodableDictionary<T:Decodable>(key:String) -> JSON -> [String:T]? {
+    public static func decodeDecodableDictionary<T:Decodable>(key: String) -> JSON -> [String:T]? {
         return {
             json in
             
-            guard let dict = json[key] as? [String:JSON] else {
+            guard let dictionary = json[key] as? [String : JSON] else {
                 return nil
             }
             
-            return dict.flatMap { (key, value) in
+            return dictionary.flatMap { (key, value) in
                 guard let decoded = T(json: value) else {
                     return nil
                 }
+                
                 return (key, decoded)
             }
         }

@@ -47,3 +47,10 @@ struct TestNestedModel: Glossy {
     }
     
 }
+
+extension TestNestedModel: Equatable { }
+
+func == (lhs: TestNestedModel, rhs: TestNestedModel) -> Bool {
+    return lhs.id == rhs.id
+        && lhs.name == rhs.name
+}
