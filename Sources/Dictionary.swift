@@ -123,9 +123,9 @@ extension Dictionary {
             self[first] = settable
         } else {
             let rejoined = keys.joinWithSeparator(delimiter)
-            var subdict: [NSObject : AnyObject] = [:]
+            var subdict: JSON = [:]
             
-            if let sub = self[first] as? [NSObject : AnyObject] {
+            if let sub = self[first] as? JSON {
                 subdict = sub
             }
             

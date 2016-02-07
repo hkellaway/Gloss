@@ -78,7 +78,7 @@ class GlossTests: XCTestCase {
             "date" : "2015-08-16T20:51:46.600Z",
             "dateISO8601" : "2015-08-08T21:57:13Z",
             "url" : "http://github.com"
-            ]
+        ]
         
         let model = TestModel(json: testModelsJSON!)
         testModels = [model!, model!]
@@ -282,6 +282,10 @@ class GlossTests: XCTestCase {
         let result = jsonify([])
         
         XCTAssertTrue(result!.isEmpty, "Jsonify should return empty JSON when given an empty array")
+    }
+    
+    func testDefaultKeyPathDelimiterIsAPeriod() {
+        XCTAssertTrue(GlossKeyPathDelimiter() == ".", "Deafult key path delimiter should be a period")
     }
     
 }

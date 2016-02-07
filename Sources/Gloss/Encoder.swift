@@ -44,7 +44,7 @@ public struct Encoder {
             property in
             
             if let property = property as? AnyObject {
-                return [key: property]
+                return [key : property]
             }
             
             return nil

@@ -31,7 +31,8 @@ struct Repo: Glossy {
     let desc: String?
     let name: String
     let url: NSURL
-    let owner: RepoOwner
+    let owner: RepoOwner // nested model
+    let ownerUrl: NSURL // nested keypath
     let primaryLanguage: Language?
     
     enum Language: String {
@@ -45,13 +46,17 @@ struct Repo: Glossy {
         guard let repoId: Int = "id" <~~ json,
             let name: String = "name" <~~ json,
             let url: NSURL = "html_url" <~~ json,
-            let owner: RepoOwner = "owner" <~~ json else { return nil }
+            let owner: RepoOwner = "owner" <~~ json,
+            let ownerUrl: NSURL = "owner.html_url" <~~ json else {
+                return nil
+        }
         
         self.repoId = repoId
         self.name = name
         self.desc = "description" <~~ json
         self.url = url
         self.owner = owner
+        self.ownerUrl = ownerUrl
         self.primaryLanguage = "language" <~~ json
     }
     
@@ -64,6 +69,7 @@ struct Repo: Glossy {
             "description" ~~> self.desc,
             "html_url" ~~> self.url,
             "owner" ~~> self.owner,
+            "owner.html_url" ~~> self.ownerUrl,
             "language" ~~> self.primaryLanguage
             ])
     }

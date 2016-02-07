@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F3A83151C66B56200ECC4B8 /* KeyPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A83141C66B56200ECC4B8 /* KeyPathTests.swift */; };
+		2F3A83171C66B67200ECC4B8 /* TestKeyPathModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A83161C66B67200ECC4B8 /* TestKeyPathModel.swift */; };
+		2F3A83191C66B6A900ECC4B8 /* TestNestedKeyPathModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A83181C66B6A900ECC4B8 /* TestNestedKeyPathModel.swift */; };
 		DC08B5B21B76B3ED0098D6C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC08B5B11B76B3ED0098D6C8 /* AppDelegate.swift */; };
 		DC08B5B41B76B3ED0098D6C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC08B5B31B76B3ED0098D6C8 /* ViewController.swift */; };
 		DC08B5B71B76B3ED0098D6C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC08B5B51B76B3ED0098D6C8 /* Main.storyboard */; };
@@ -19,6 +22,7 @@
 		DC935A3E1B813CA30047FCA3 /* EncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC935A3D1B813CA30047FCA3 /* EncoderTests.swift */; };
 		DC935A401B813FF30047FCA3 /* GlossTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC935A3F1B813FF30047FCA3 /* GlossTests.swift */; };
 		DC935A461B8148B90047FCA3 /* OperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC935A451B8148B90047FCA3 /* OperatorTests.swift */; };
+		DC9935321C67A23000BDF230 /* TestKeyPathModelCustomDelimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9935311C67A23000BDF230 /* TestKeyPathModelCustomDelimiter.swift */; };
 		DC9E42D51B8066D600D1792A /* DecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9E42D41B8066D600D1792A /* DecoderTests.swift */; };
 		DCD5CC4F1B88D66700AFE99B /* TestFailableModelValid.json in Resources */ = {isa = PBXBuildFile; fileRef = DCD5CC4E1B88D66700AFE99B /* TestFailableModelValid.json */; };
 		DCD5CC511B88D67C00AFE99B /* TestFailableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD5CC501B88D67C00AFE99B /* TestFailableModel.swift */; };
@@ -43,6 +47,9 @@
 
 /* Begin PBXFileReference section */
 		1CF68443A5AEBB8235A16A54 /* Pods-GlossExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlossExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GlossExample/Pods-GlossExample.debug.xcconfig"; sourceTree = "<group>"; };
+		2F3A83141C66B56200ECC4B8 /* KeyPathTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPathTests.swift; sourceTree = "<group>"; };
+		2F3A83161C66B67200ECC4B8 /* TestKeyPathModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestKeyPathModel.swift; sourceTree = "<group>"; };
+		2F3A83181C66B6A900ECC4B8 /* TestNestedKeyPathModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNestedKeyPathModel.swift; sourceTree = "<group>"; };
 		371978450C13B8BC0B320144 /* Pods_GlossExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GlossExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC08B5AC1B76B3ED0098D6C8 /* GlossExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlossExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC08B5B01B76B3ED0098D6C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,6 +67,7 @@
 		DC935A3D1B813CA30047FCA3 /* EncoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncoderTests.swift; sourceTree = "<group>"; };
 		DC935A3F1B813FF30047FCA3 /* GlossTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlossTests.swift; sourceTree = "<group>"; };
 		DC935A451B8148B90047FCA3 /* OperatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorTests.swift; sourceTree = "<group>"; };
+		DC9935311C67A23000BDF230 /* TestKeyPathModelCustomDelimiter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestKeyPathModelCustomDelimiter.swift; sourceTree = "<group>"; };
 		DC9E42D41B8066D600D1792A /* DecoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoderTests.swift; sourceTree = "<group>"; };
 		DCD5CC4E1B88D66700AFE99B /* TestFailableModelValid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestFailableModelValid.json; sourceTree = "<group>"; };
 		DCD5CC501B88D67C00AFE99B /* TestFailableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFailableModel.swift; sourceTree = "<group>"; };
@@ -162,6 +170,7 @@
 				DC935A3D1B813CA30047FCA3 /* EncoderTests.swift */,
 				DC935A3F1B813FF30047FCA3 /* GlossTests.swift */,
 				DC935A451B8148B90047FCA3 /* OperatorTests.swift */,
+				2F3A83141C66B56200ECC4B8 /* KeyPathTests.swift */,
 				DCF891411B87488200888FB1 /* FlowObjectCreationTests.swift */,
 				DCF891431B8749CE00888FB1 /* FlowObjectToJSON.swift */,
 				DC08B5AD1B76B3ED0098D6C8 /* Products */,
@@ -195,6 +204,9 @@
 				DCEA3C1F1B80FD960022F666 /* TestModel.swift */,
 				DCD5CC501B88D67C00AFE99B /* TestFailableModel.swift */,
 				DCEA3C211B80FDE60022F666 /* TestNestedModel.swift */,
+				2F3A83161C66B67200ECC4B8 /* TestKeyPathModel.swift */,
+				2F3A83181C66B6A900ECC4B8 /* TestNestedKeyPathModel.swift */,
+				DC9935311C67A23000BDF230 /* TestKeyPathModelCustomDelimiter.swift */,
 			);
 			name = "Test Models";
 			sourceTree = "<group>";
@@ -368,10 +380,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC935A3E1B813CA30047FCA3 /* EncoderTests.swift in Sources */,
+				2F3A83191C66B6A900ECC4B8 /* TestNestedKeyPathModel.swift in Sources */,
+				2F3A83171C66B67200ECC4B8 /* TestKeyPathModel.swift in Sources */,
 				DCEA3C201B80FD960022F666 /* TestModel.swift in Sources */,
 				DC9E42D51B8066D600D1792A /* DecoderTests.swift in Sources */,
 				DCEA3C221B80FDE60022F666 /* TestNestedModel.swift in Sources */,
+				2F3A83151C66B56200ECC4B8 /* KeyPathTests.swift in Sources */,
 				DC935A401B813FF30047FCA3 /* GlossTests.swift in Sources */,
+				DC9935321C67A23000BDF230 /* TestKeyPathModelCustomDelimiter.swift in Sources */,
 				DCD5CC511B88D67C00AFE99B /* TestFailableModel.swift in Sources */,
 				DC935A461B8148B90047FCA3 /* OperatorTests.swift in Sources */,
 				DCF891421B87488200888FB1 /* FlowObjectCreationTests.swift in Sources */,

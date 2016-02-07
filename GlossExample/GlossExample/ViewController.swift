@@ -37,7 +37,8 @@ class ViewController: UIViewController {
             "html_url" : "https://github.com/hkellaway/Gloss",
             "owner" : [
                 "id" : 5456481,
-                "login" : "hkellaway"
+                "login" : "hkellaway",
+                "html_url" : "https://github.com/hkellaway"
             ],
             "language" : "Swift"
             ]
@@ -54,6 +55,7 @@ class ViewController: UIViewController {
         print(repo.desc)
         print(repo.url)
         print(repo.owner)
+        print(repo.ownerUrl)
         print(repo.primaryLanguage?.rawValue)
         print("")
         
