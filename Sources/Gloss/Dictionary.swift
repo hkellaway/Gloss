@@ -55,12 +55,13 @@ extension Dictionary {
     /**
      Adds entries from provided dictionary
      
-     :parameter: other Dictionary to add entries from
+     :parameter: other     Dictionary to add entries from
+     :parameter: delimiter Keypath delimiter
      */
-    mutating func add(other: Dictionary) -> () {
+    mutating func add(other: Dictionary, delimiter: String) -> () {
         for (key, value) in other {
             if let key = key as? String {
-                self.setValue(valueToSet: value, forKeyPath: key)
+                self.setValue(valueToSet: value, forKeyPath: key, withDelimiter: delimiter)
             } else {
                 self.updateValue(value, forKey:key)
             }
@@ -71,12 +72,13 @@ extension Dictionary {
      Parses the nested dictionary from the keyPath
      components separated with a delimiter and gets the value
      
-     :parameter: keyPath KeyPath with delimiter
+     :parameter: keyPath   KeyPath with delimiter
+     :parameter: delimiter Delimiter
      
      :returns: Value from the nested dictionary
      */
-    func valueForKeyPath(keyPath: String) -> AnyObject? {
-        var keys = keyPath.componentsSeparatedByString(".")
+    func valueForKeyPath(keyPath: String, withDelimiter delimiter: String) -> AnyObject? {
+        var keys = keyPath.componentsSeparatedByString(delimiter)
         
         guard let first = keys.first as? Key else {
             print("[Gloss] Unable to use string as key on type: \(Key.self)")
@@ -90,9 +92,9 @@ extension Dictionary {
         keys.removeAtIndex(0)
         
         if !keys.isEmpty, let subDict = value as? JSON {
-            let rejoined = keys.joinWithSeparator(".")
+            let rejoined = keys.joinWithSeparator(delimiter)
             
-            return subDict.valueForKeyPath(rejoined)
+            return subDict.valueForKeyPath(rejoined, withDelimiter: delimiter)
         }
         
         return value
@@ -107,8 +109,8 @@ extension Dictionary {
      :parameter: valueToSet Value to set
      :parameter: keyPath    KeyPath of the value
      */
-    private mutating func setValue(valueToSet val: Any, forKeyPath keyPath: String) {
-        var keys = keyPath.componentsSeparatedByString(".")
+    private mutating func setValue(valueToSet val: Any, forKeyPath keyPath: String, withDelimiter delimiter: String) {
+        var keys = keyPath.componentsSeparatedByString(delimiter)
         
         guard let first = keys.first as? Key else {
             print("[Gloss] Unable to use string as key on type: \(Key.self)")
@@ -120,14 +122,14 @@ extension Dictionary {
         if keys.isEmpty, let settable = val as? Value {
             self[first] = settable
         } else {
-            let rejoined = keys.joinWithSeparator(".")
+            let rejoined = keys.joinWithSeparator(delimiter)
             var subdict: [NSObject : AnyObject] = [:]
             
             if let sub = self[first] as? [NSObject : AnyObject] {
                 subdict = sub
             }
             
-            subdict.setValue(valueToSet: val, forKeyPath: rejoined)
+            subdict.setValue(valueToSet: val, forKeyPath: rejoined, withDelimiter: delimiter)
             
             if let settable = subdict as? Value {
                 self[first] = settable

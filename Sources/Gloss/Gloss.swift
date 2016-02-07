@@ -137,17 +137,47 @@ public extension Encodable {
 // MARK: - Global functions
 
 /**
+
+*/
+
+/**
 Transforms an array of JSON optionals
 to a single optional JSON dictionary
+
+:parameter: array Array of JSON to transform
+
+- returns: JSON
 */
 public func jsonify(array: [JSON?]) -> JSON? {
+    return jsonify(array, keyPathDelimiter: GlossKeyPathDelimiter())
+}
+
+/**
+ Transforms an array of JSON optionals
+ to a single optional JSON dictionary
+ 
+ :parameter: array            Array of JSON to transform
+ :parameter: keyPathDelimiter Delimiter used for nested keypath keys
+ 
+ - returns: JSON
+ */
+public func jsonify(array: [JSON?], keyPathDelimiter: String) -> JSON? {
     var json: JSON = [:]
     
     for j in array {
         if(j != nil) {
-            json.add(j!)
+            json.add(j!, delimiter: keyPathDelimiter)
         }
     }
     
     return json
+}
+
+/**
+Default delimiter used for nested key path keys
+ */
+public func GlossKeyPathDelimiter() -> String {
+    
+    return "."
+    
 }
