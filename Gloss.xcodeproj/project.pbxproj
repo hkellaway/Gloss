@@ -31,7 +31,34 @@
 		2F3A83451C66D11200ECC4B8 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A832C1C66CF3C00ECC4B8 /* Gloss.swift */; };
 		2F3A83461C66D11200ECC4B8 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A832E1C66CF3C00ECC4B8 /* Operators.swift */; };
 		2F3A83471C66D11600ECC4B8 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F3A832B1C66CF3C00ECC4B8 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35D271AE1C67B84D00634528 /* GlossTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D271AD1C67B84D00634528 /* GlossTests.swift */; };
+		35D271B01C67B84D00634528 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC39BF611B8A7AD200088CE0 /* Gloss.framework */; };
+		35D271C51C67B87100634528 /* DecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D271B61C67B87100634528 /* DecoderTests.swift */; };
+		35D271C61C67B87100634528 /* EncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D271B71C67B87100634528 /* EncoderTests.swift */; };
+		35D271C71C67B87100634528 /* FlowObjectCreationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D271B81C67B87100634528 /* FlowObjectCreationTests.swift */; };
+		35D271C81C67B87100634528 /* FlowObjectToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D271B91C67B87100634528 /* FlowObjectToJSON.swift */; };
+		35D271C91C67B87100634528 /* KeyPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D271BA1C67B87100634528 /* KeyPathTests.swift */; };
+		35D271CA1C67B87100634528 /* OperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D271BB1C67B87100634528 /* OperatorTests.swift */; };
+		35D271CB1C67B87100634528 /* TestFailableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D271BC1C67B87100634528 /* TestFailableModel.swift */; };
+		35D271CC1C67B87100634528 /* TestFailableModelInvalid.json in Resources */ = {isa = PBXBuildFile; fileRef = 35D271BD1C67B87100634528 /* TestFailableModelInvalid.json */; };
+		35D271CD1C67B87100634528 /* TestFailableModelValid.json in Resources */ = {isa = PBXBuildFile; fileRef = 35D271BE1C67B87100634528 /* TestFailableModelValid.json */; };
+		35D271CE1C67B87100634528 /* TestKeyPathModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D271BF1C67B87100634528 /* TestKeyPathModel.swift */; };
+		35D271CF1C67B87100634528 /* TestKeyPathModelCustomDelimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D271C01C67B87100634528 /* TestKeyPathModelCustomDelimiter.swift */; };
+		35D271D01C67B87100634528 /* TestModel.json in Resources */ = {isa = PBXBuildFile; fileRef = 35D271C11C67B87100634528 /* TestModel.json */; };
+		35D271D11C67B87100634528 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D271C21C67B87100634528 /* TestModel.swift */; };
+		35D271D21C67B87100634528 /* TestNestedKeyPathModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D271C31C67B87100634528 /* TestNestedKeyPathModel.swift */; };
+		35D271D31C67B87100634528 /* TestNestedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D271C41C67B87100634528 /* TestNestedModel.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		35D271B11C67B84D00634528 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DC39BF581B8A7AD200088CE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DC39BF601B8A7AD200088CE0;
+			remoteInfo = Gloss;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2F3A83281C66CF3C00ECC4B8 /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decoder.swift; path = Sources/Decoder.swift; sourceTree = SOURCE_ROOT; };
@@ -41,6 +68,24 @@
 		2F3A832C1C66CF3C00ECC4B8 /* Gloss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gloss.swift; path = Sources/Gloss.swift; sourceTree = SOURCE_ROOT; };
 		2F3A832D1C66CF3C00ECC4B8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = SOURCE_ROOT; };
 		2F3A832E1C66CF3C00ECC4B8 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Sources/Operators.swift; sourceTree = SOURCE_ROOT; };
+		35D271AB1C67B84D00634528 /* GlossTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlossTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		35D271AD1C67B84D00634528 /* GlossTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlossTests.swift; sourceTree = "<group>"; };
+		35D271AF1C67B84D00634528 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35D271B61C67B87100634528 /* DecoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoderTests.swift; sourceTree = "<group>"; };
+		35D271B71C67B87100634528 /* EncoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncoderTests.swift; sourceTree = "<group>"; };
+		35D271B81C67B87100634528 /* FlowObjectCreationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowObjectCreationTests.swift; sourceTree = "<group>"; };
+		35D271B91C67B87100634528 /* FlowObjectToJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowObjectToJSON.swift; sourceTree = "<group>"; };
+		35D271BA1C67B87100634528 /* KeyPathTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPathTests.swift; sourceTree = "<group>"; };
+		35D271BB1C67B87100634528 /* OperatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorTests.swift; sourceTree = "<group>"; };
+		35D271BC1C67B87100634528 /* TestFailableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFailableModel.swift; sourceTree = "<group>"; };
+		35D271BD1C67B87100634528 /* TestFailableModelInvalid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestFailableModelInvalid.json; sourceTree = "<group>"; };
+		35D271BE1C67B87100634528 /* TestFailableModelValid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestFailableModelValid.json; sourceTree = "<group>"; };
+		35D271BF1C67B87100634528 /* TestKeyPathModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestKeyPathModel.swift; sourceTree = "<group>"; };
+		35D271C01C67B87100634528 /* TestKeyPathModelCustomDelimiter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestKeyPathModelCustomDelimiter.swift; sourceTree = "<group>"; };
+		35D271C11C67B87100634528 /* TestModel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestModel.json; sourceTree = "<group>"; };
+		35D271C21C67B87100634528 /* TestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
+		35D271C31C67B87100634528 /* TestNestedKeyPathModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNestedKeyPathModel.swift; sourceTree = "<group>"; };
+		35D271C41C67B87100634528 /* TestNestedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNestedModel.swift; sourceTree = "<group>"; };
 		A04168E71C0DF69900269A6A /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC39BF611B8A7AD200088CE0 /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC683ADB1C2C615D0035EAC3 /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +93,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		35D271A81C67B84D00634528 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35D271B01C67B84D00634528 /* Gloss.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A04168E31C0DF69900269A6A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -79,10 +132,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35D271AC1C67B84D00634528 /* GlossTests */ = {
+			isa = PBXGroup;
+			children = (
+				35D271D41C67B87900634528 /* TestModels */,
+				35D271B61C67B87100634528 /* DecoderTests.swift */,
+				35D271B71C67B87100634528 /* EncoderTests.swift */,
+				35D271B81C67B87100634528 /* FlowObjectCreationTests.swift */,
+				35D271B91C67B87100634528 /* FlowObjectToJSON.swift */,
+				35D271AD1C67B84D00634528 /* GlossTests.swift */,
+				35D271AF1C67B84D00634528 /* Info.plist */,
+				35D271BA1C67B87100634528 /* KeyPathTests.swift */,
+				35D271BB1C67B87100634528 /* OperatorTests.swift */,
+			);
+			path = GlossTests;
+			sourceTree = "<group>";
+		};
+		35D271D41C67B87900634528 /* TestModels */ = {
+			isa = PBXGroup;
+			children = (
+				35D271C11C67B87100634528 /* TestModel.json */,
+				35D271BD1C67B87100634528 /* TestFailableModelInvalid.json */,
+				35D271BE1C67B87100634528 /* TestFailableModelValid.json */,
+				35D271BC1C67B87100634528 /* TestFailableModel.swift */,
+				35D271BF1C67B87100634528 /* TestKeyPathModel.swift */,
+				35D271C01C67B87100634528 /* TestKeyPathModelCustomDelimiter.swift */,
+				35D271C21C67B87100634528 /* TestModel.swift */,
+				35D271C31C67B87100634528 /* TestNestedKeyPathModel.swift */,
+				35D271C41C67B87100634528 /* TestNestedModel.swift */,
+			);
+			name = TestModels;
+			sourceTree = "<group>";
+		};
 		DC39BF571B8A7AD200088CE0 = {
 			isa = PBXGroup;
 			children = (
 				DC39BF631B8A7AD200088CE0 /* Gloss */,
+				35D271AC1C67B84D00634528 /* GlossTests */,
 				DC39BF621B8A7AD200088CE0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,6 +180,7 @@
 				DCF3008A1BDCA3FF003FBF15 /* Gloss.framework */,
 				A04168E71C0DF69900269A6A /* Gloss.framework */,
 				DC683ADB1C2C615D0035EAC3 /* Gloss.framework */,
+				35D271AB1C67B84D00634528 /* GlossTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,6 +237,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		35D271AA1C67B84D00634528 /* GlossTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35D271B51C67B84D00634528 /* Build configuration list for PBXNativeTarget "GlossTests" */;
+			buildPhases = (
+				35D271A71C67B84D00634528 /* Sources */,
+				35D271A81C67B84D00634528 /* Frameworks */,
+				35D271A91C67B84D00634528 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				35D271B21C67B84D00634528 /* PBXTargetDependency */,
+			);
+			name = GlossTests;
+			productName = GlossTests;
+			productReference = 35D271AB1C67B84D00634528 /* GlossTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		A04168E61C0DF69900269A6A /* Gloss tvOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A04168FC1C0DF69A00269A6A /* Build configuration list for PBXNativeTarget "Gloss tvOS" */;
@@ -232,6 +337,9 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Harlan Kellaway";
 				TargetAttributes = {
+					35D271AA1C67B84D00634528 = {
+						CreatedOnToolsVersion = 7.2;
+					};
 					A04168E61C0DF69900269A6A = {
 						CreatedOnToolsVersion = 7.1.1;
 					};
@@ -262,11 +370,22 @@
 				DCF300891BDCA3FF003FBF15 /* GlossMacOSX */,
 				A04168E61C0DF69900269A6A /* Gloss tvOS */,
 				DC683ADA1C2C615D0035EAC3 /* Gloss watchOS */,
+				35D271AA1C67B84D00634528 /* GlossTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		35D271A91C67B84D00634528 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35D271CD1C67B87100634528 /* TestFailableModelValid.json in Resources */,
+				35D271CC1C67B87100634528 /* TestFailableModelInvalid.json in Resources */,
+				35D271D01C67B87100634528 /* TestModel.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A04168E51C0DF69900269A6A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -298,6 +417,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		35D271A71C67B84D00634528 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35D271C61C67B87100634528 /* EncoderTests.swift in Sources */,
+				35D271D21C67B87100634528 /* TestNestedKeyPathModel.swift in Sources */,
+				35D271CF1C67B87100634528 /* TestKeyPathModelCustomDelimiter.swift in Sources */,
+				35D271C81C67B87100634528 /* FlowObjectToJSON.swift in Sources */,
+				35D271D11C67B87100634528 /* TestModel.swift in Sources */,
+				35D271C91C67B87100634528 /* KeyPathTests.swift in Sources */,
+				35D271CB1C67B87100634528 /* TestFailableModel.swift in Sources */,
+				35D271C51C67B87100634528 /* DecoderTests.swift in Sources */,
+				35D271CE1C67B87100634528 /* TestKeyPathModel.swift in Sources */,
+				35D271AE1C67B84D00634528 /* GlossTests.swift in Sources */,
+				35D271CA1C67B87100634528 /* OperatorTests.swift in Sources */,
+				35D271C71C67B87100634528 /* FlowObjectCreationTests.swift in Sources */,
+				35D271D31C67B87100634528 /* TestNestedModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A04168E21C0DF69900269A6A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -348,7 +487,37 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		35D271B21C67B84D00634528 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DC39BF601B8A7AD200088CE0 /* Gloss */;
+			targetProxy = 35D271B11C67B84D00634528 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		35D271B31C67B84D00634528 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GlossTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.GlossTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		35D271B41C67B84D00634528 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GlossTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.GlossTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		A04168F81C0DF69A00269A6A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -606,6 +775,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		35D271B51C67B84D00634528 /* Build configuration list for PBXNativeTarget "GlossTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35D271B31C67B84D00634528 /* Debug */,
+				35D271B41C67B84D00634528 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		A04168FC1C0DF69A00269A6A /* Build configuration list for PBXNativeTarget "Gloss tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

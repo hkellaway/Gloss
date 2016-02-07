@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F3A83151C66B56200ECC4B8 /* KeyPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A83141C66B56200ECC4B8 /* KeyPathTests.swift */; };
-		2F3A83171C66B67200ECC4B8 /* TestKeyPathModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A83161C66B67200ECC4B8 /* TestKeyPathModel.swift */; };
-		2F3A83191C66B6A900ECC4B8 /* TestNestedKeyPathModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A83181C66B6A900ECC4B8 /* TestNestedKeyPathModel.swift */; };
+		35D271D61C67B91000634528 /* GlossExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D271D51C67B91000634528 /* GlossExampleTests.swift */; };
 		DC08B5B21B76B3ED0098D6C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC08B5B11B76B3ED0098D6C8 /* AppDelegate.swift */; };
 		DC08B5B41B76B3ED0098D6C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC08B5B31B76B3ED0098D6C8 /* ViewController.swift */; };
 		DC08B5B71B76B3ED0098D6C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC08B5B51B76B3ED0098D6C8 /* Main.storyboard */; };
@@ -18,20 +16,7 @@
 		DC690D901B7AF1A1001338D0 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC690D8F1B7AF1A1001338D0 /* Repo.swift */; };
 		DC690D921B7AF20D001338D0 /* RepoOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC690D911B7AF20D001338D0 /* RepoOwner.swift */; };
 		DC690D951B7B1339001338D0 /* gloss_logo_tagline.png in Resources */ = {isa = PBXBuildFile; fileRef = DC690D941B7B1339001338D0 /* gloss_logo_tagline.png */; };
-		DC935A3A1B811A1F0047FCA3 /* TestModel.json in Resources */ = {isa = PBXBuildFile; fileRef = DC935A391B811A1F0047FCA3 /* TestModel.json */; };
-		DC935A3E1B813CA30047FCA3 /* EncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC935A3D1B813CA30047FCA3 /* EncoderTests.swift */; };
-		DC935A401B813FF30047FCA3 /* GlossTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC935A3F1B813FF30047FCA3 /* GlossTests.swift */; };
-		DC935A461B8148B90047FCA3 /* OperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC935A451B8148B90047FCA3 /* OperatorTests.swift */; };
-		DC9935321C67A23000BDF230 /* TestKeyPathModelCustomDelimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9935311C67A23000BDF230 /* TestKeyPathModelCustomDelimiter.swift */; };
-		DC9E42D51B8066D600D1792A /* DecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9E42D41B8066D600D1792A /* DecoderTests.swift */; };
-		DCD5CC4F1B88D66700AFE99B /* TestFailableModelValid.json in Resources */ = {isa = PBXBuildFile; fileRef = DCD5CC4E1B88D66700AFE99B /* TestFailableModelValid.json */; };
-		DCD5CC511B88D67C00AFE99B /* TestFailableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD5CC501B88D67C00AFE99B /* TestFailableModel.swift */; };
-		DCD5CC531B88D73200AFE99B /* TestFailableModelInvalid.json in Resources */ = {isa = PBXBuildFile; fileRef = DCD5CC521B88D73200AFE99B /* TestFailableModelInvalid.json */; };
-		DCEA3C201B80FD960022F666 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA3C1F1B80FD960022F666 /* TestModel.swift */; };
-		DCEA3C221B80FDE60022F666 /* TestNestedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA3C211B80FDE60022F666 /* TestNestedModel.swift */; };
 		DCF891401B86AF6B00888FB1 /* Pods_GlossExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF8913F1B86AF6B00888FB1 /* Pods_GlossExample.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		DCF891421B87488200888FB1 /* FlowObjectCreationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF891411B87488200888FB1 /* FlowObjectCreationTests.swift */; };
-		DCF891441B8749CE00888FB1 /* FlowObjectToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF891431B8749CE00888FB1 /* FlowObjectToJSON.swift */; };
 		F0157B7C46CEF886BC8CFC43 /* Pods_GlossExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371978450C13B8BC0B320144 /* Pods_GlossExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,9 +32,7 @@
 
 /* Begin PBXFileReference section */
 		1CF68443A5AEBB8235A16A54 /* Pods-GlossExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlossExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GlossExample/Pods-GlossExample.debug.xcconfig"; sourceTree = "<group>"; };
-		2F3A83141C66B56200ECC4B8 /* KeyPathTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPathTests.swift; sourceTree = "<group>"; };
-		2F3A83161C66B67200ECC4B8 /* TestKeyPathModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestKeyPathModel.swift; sourceTree = "<group>"; };
-		2F3A83181C66B6A900ECC4B8 /* TestNestedKeyPathModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNestedKeyPathModel.swift; sourceTree = "<group>"; };
+		35D271D51C67B91000634528 /* GlossExampleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlossExampleTests.swift; sourceTree = "<group>"; };
 		371978450C13B8BC0B320144 /* Pods_GlossExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GlossExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC08B5AC1B76B3ED0098D6C8 /* GlossExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlossExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC08B5B01B76B3ED0098D6C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,20 +46,7 @@
 		DC690D8F1B7AF1A1001338D0 /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		DC690D911B7AF20D001338D0 /* RepoOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoOwner.swift; sourceTree = "<group>"; };
 		DC690D941B7B1339001338D0 /* gloss_logo_tagline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gloss_logo_tagline.png; sourceTree = "<group>"; };
-		DC935A391B811A1F0047FCA3 /* TestModel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestModel.json; sourceTree = "<group>"; };
-		DC935A3D1B813CA30047FCA3 /* EncoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncoderTests.swift; sourceTree = "<group>"; };
-		DC935A3F1B813FF30047FCA3 /* GlossTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlossTests.swift; sourceTree = "<group>"; };
-		DC935A451B8148B90047FCA3 /* OperatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorTests.swift; sourceTree = "<group>"; };
-		DC9935311C67A23000BDF230 /* TestKeyPathModelCustomDelimiter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestKeyPathModelCustomDelimiter.swift; sourceTree = "<group>"; };
-		DC9E42D41B8066D600D1792A /* DecoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoderTests.swift; sourceTree = "<group>"; };
-		DCD5CC4E1B88D66700AFE99B /* TestFailableModelValid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestFailableModelValid.json; sourceTree = "<group>"; };
-		DCD5CC501B88D67C00AFE99B /* TestFailableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFailableModel.swift; sourceTree = "<group>"; };
-		DCD5CC521B88D73200AFE99B /* TestFailableModelInvalid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestFailableModelInvalid.json; sourceTree = "<group>"; };
-		DCEA3C1F1B80FD960022F666 /* TestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
-		DCEA3C211B80FDE60022F666 /* TestNestedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNestedModel.swift; sourceTree = "<group>"; };
 		DCF8913F1B86AF6B00888FB1 /* Pods_GlossExample.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_GlossExample.framework; path = "Pods/../build/Debug-iphoneos/Pods_GlossExample.framework"; sourceTree = "<group>"; };
-		DCF891411B87488200888FB1 /* FlowObjectCreationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowObjectCreationTests.swift; sourceTree = "<group>"; };
-		DCF891431B8749CE00888FB1 /* FlowObjectToJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowObjectToJSON.swift; sourceTree = "<group>"; };
 		ED8E6DA407D0AE26300C907D /* Pods-GlossExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlossExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-GlossExample/Pods-GlossExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +95,7 @@
 				DC08B5C41B76B3ED0098D6C8 /* GlossExampleTests */,
 				36A8572C924B8EDFB71DDE70 /* Pods */,
 				63509F10EB2766219388D381 /* Frameworks */,
+				DC08B5AD1B76B3ED0098D6C8 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,7 +106,6 @@
 				DC08B5C11B76B3ED0098D6C8 /* GlossExampleTests.xctest */,
 			);
 			name = Products;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		DC08B5AE1B76B3ED0098D6C8 /* GlossExample */ = {
@@ -165,15 +135,7 @@
 		DC08B5C41B76B3ED0098D6C8 /* GlossExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				DC935A441B8148690047FCA3 /* Test Models */,
-				DC9E42D41B8066D600D1792A /* DecoderTests.swift */,
-				DC935A3D1B813CA30047FCA3 /* EncoderTests.swift */,
-				DC935A3F1B813FF30047FCA3 /* GlossTests.swift */,
-				DC935A451B8148B90047FCA3 /* OperatorTests.swift */,
-				2F3A83141C66B56200ECC4B8 /* KeyPathTests.swift */,
-				DCF891411B87488200888FB1 /* FlowObjectCreationTests.swift */,
-				DCF891431B8749CE00888FB1 /* FlowObjectToJSON.swift */,
-				DC08B5AD1B76B3ED0098D6C8 /* Products */,
+				35D271D51C67B91000634528 /* GlossExampleTests.swift */,
 				DC08B5C51B76B3ED0098D6C8 /* Supporting Files */,
 			);
 			path = GlossExampleTests;
@@ -193,22 +155,6 @@
 				DC690D941B7B1339001338D0 /* gloss_logo_tagline.png */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		DC935A441B8148690047FCA3 /* Test Models */ = {
-			isa = PBXGroup;
-			children = (
-				DC935A391B811A1F0047FCA3 /* TestModel.json */,
-				DCD5CC4E1B88D66700AFE99B /* TestFailableModelValid.json */,
-				DCD5CC521B88D73200AFE99B /* TestFailableModelInvalid.json */,
-				DCEA3C1F1B80FD960022F666 /* TestModel.swift */,
-				DCD5CC501B88D67C00AFE99B /* TestFailableModel.swift */,
-				DCEA3C211B80FDE60022F666 /* TestNestedModel.swift */,
-				2F3A83161C66B67200ECC4B8 /* TestKeyPathModel.swift */,
-				2F3A83181C66B6A900ECC4B8 /* TestNestedKeyPathModel.swift */,
-				DC9935311C67A23000BDF230 /* TestKeyPathModelCustomDelimiter.swift */,
-			);
-			name = "Test Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +205,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Harlan Kellaway";
 				TargetAttributes = {
@@ -307,9 +253,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC935A3A1B811A1F0047FCA3 /* TestModel.json in Resources */,
-				DCD5CC4F1B88D66700AFE99B /* TestFailableModelValid.json in Resources */,
-				DCD5CC531B88D73200AFE99B /* TestFailableModelInvalid.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,19 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC935A3E1B813CA30047FCA3 /* EncoderTests.swift in Sources */,
-				2F3A83191C66B6A900ECC4B8 /* TestNestedKeyPathModel.swift in Sources */,
-				2F3A83171C66B67200ECC4B8 /* TestKeyPathModel.swift in Sources */,
-				DCEA3C201B80FD960022F666 /* TestModel.swift in Sources */,
-				DC9E42D51B8066D600D1792A /* DecoderTests.swift in Sources */,
-				DCEA3C221B80FDE60022F666 /* TestNestedModel.swift in Sources */,
-				2F3A83151C66B56200ECC4B8 /* KeyPathTests.swift in Sources */,
-				DC935A401B813FF30047FCA3 /* GlossTests.swift in Sources */,
-				DC9935321C67A23000BDF230 /* TestKeyPathModelCustomDelimiter.swift in Sources */,
-				DCD5CC511B88D67C00AFE99B /* TestFailableModel.swift in Sources */,
-				DC935A461B8148B90047FCA3 /* OperatorTests.swift in Sources */,
-				DCF891421B87488200888FB1 /* FlowObjectCreationTests.swift in Sources */,
-				DCF891441B8749CE00888FB1 /* FlowObjectToJSON.swift in Sources */,
+				35D271D61C67B91000634528 /* GlossExampleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +466,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1CF68443A5AEBB8235A16A54 /* Pods-GlossExample.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -548,6 +480,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.harlankellaway.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GlossExample.app/GlossExample";
 			};
 			name = Debug;
@@ -556,6 +489,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1CF68443A5AEBB8235A16A54 /* Pods-GlossExample.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
