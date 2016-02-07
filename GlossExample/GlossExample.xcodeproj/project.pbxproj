@@ -22,6 +22,7 @@
 		DC935A3E1B813CA30047FCA3 /* EncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC935A3D1B813CA30047FCA3 /* EncoderTests.swift */; };
 		DC935A401B813FF30047FCA3 /* GlossTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC935A3F1B813FF30047FCA3 /* GlossTests.swift */; };
 		DC935A461B8148B90047FCA3 /* OperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC935A451B8148B90047FCA3 /* OperatorTests.swift */; };
+		DC9935321C67A23000BDF230 /* TestKeyPathModelCustomDelimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9935311C67A23000BDF230 /* TestKeyPathModelCustomDelimiter.swift */; };
 		DC9E42D51B8066D600D1792A /* DecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9E42D41B8066D600D1792A /* DecoderTests.swift */; };
 		DCD5CC4F1B88D66700AFE99B /* TestFailableModelValid.json in Resources */ = {isa = PBXBuildFile; fileRef = DCD5CC4E1B88D66700AFE99B /* TestFailableModelValid.json */; };
 		DCD5CC511B88D67C00AFE99B /* TestFailableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD5CC501B88D67C00AFE99B /* TestFailableModel.swift */; };
@@ -66,6 +67,7 @@
 		DC935A3D1B813CA30047FCA3 /* EncoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncoderTests.swift; sourceTree = "<group>"; };
 		DC935A3F1B813FF30047FCA3 /* GlossTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlossTests.swift; sourceTree = "<group>"; };
 		DC935A451B8148B90047FCA3 /* OperatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorTests.swift; sourceTree = "<group>"; };
+		DC9935311C67A23000BDF230 /* TestKeyPathModelCustomDelimiter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestKeyPathModelCustomDelimiter.swift; sourceTree = "<group>"; };
 		DC9E42D41B8066D600D1792A /* DecoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoderTests.swift; sourceTree = "<group>"; };
 		DCD5CC4E1B88D66700AFE99B /* TestFailableModelValid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestFailableModelValid.json; sourceTree = "<group>"; };
 		DCD5CC501B88D67C00AFE99B /* TestFailableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFailableModel.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				DCEA3C211B80FDE60022F666 /* TestNestedModel.swift */,
 				2F3A83161C66B67200ECC4B8 /* TestKeyPathModel.swift */,
 				2F3A83181C66B6A900ECC4B8 /* TestNestedKeyPathModel.swift */,
+				DC9935311C67A23000BDF230 /* TestKeyPathModelCustomDelimiter.swift */,
 			);
 			name = "Test Models";
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				DCEA3C221B80FDE60022F666 /* TestNestedModel.swift in Sources */,
 				2F3A83151C66B56200ECC4B8 /* KeyPathTests.swift in Sources */,
 				DC935A401B813FF30047FCA3 /* GlossTests.swift in Sources */,
+				DC9935321C67A23000BDF230 /* TestKeyPathModelCustomDelimiter.swift in Sources */,
 				DCD5CC511B88D67C00AFE99B /* TestFailableModel.swift in Sources */,
 				DC935A461B8148B90047FCA3 /* OperatorTests.swift in Sources */,
 				DCF891421B87488200888FB1 /* FlowObjectCreationTests.swift in Sources */,
