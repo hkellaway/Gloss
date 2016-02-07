@@ -1,7 +1,6 @@
 ![Gloss](http://hkellaway.github.io/Gloss/images/gloss_logo_tagline.png)
 
-## Features :sparkles: 
-![Swift](https://img.shields.io/badge/language-Swift-orange.svg) 
+## Features :sparkles:  
 [![CocoaPods](https://img.shields.io/cocoapods/v/Gloss.svg)](http://cocoapods.org/pods/Gloss) 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) 
 [![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
@@ -22,7 +21,7 @@
 ### Installation with Cocoapods
 
 ```ruby
-pod 'Gloss', '~> 0.6'
+pod 'Gloss', '~> 0.7'
 ```
 
 ### Installation with Carthage
@@ -35,20 +34,16 @@ github "hkellaway/Gloss"
 
 To use Gloss as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
 
-```Swift
+``` swift
 import PackageDescription
 
 let package = Package(
-    name: "HellowWorld",
+    name: "HelloWorld",
     dependencies: [
         .Package(url: "https://github.com/hkellaway/Gloss.git", majorVersion: 0)
     ]
 )
 ```
-
-### Swift 2 and Swift 1.2
-
-Gloss was written for use with Swift 2. Support for Swift 1.2 via the `swift_1.2` branch was dropped as of version 0.6.0.
 
 ## Usage
 
@@ -91,7 +86,7 @@ This model:
 * Adopts the `Decodable` protocol
 * Implements the `init?(json:)` initializer
 
-See [On Not Using Gloss Operators](#on-not-using-gloss-operators) for how to express these models without the custom `<~~` operator.
+(Note: If using custom operators like `<~~` is not desired, see [On Not Using Gloss Operators](#on-not-using-gloss-operators).)
 
 #### A Simple Model with Non-Optional Properties
 
@@ -185,6 +180,8 @@ struct Repo: Decodable {
 
 Despite being more complex, this model is just as simple to compose - common types such as an `NSURL`, an `enum` value, and another Gloss model, `RepoOwner`, are handled without extra overhead! :tada:
 
+(Note: If nested models are present in JSON but not desired in your Gloss models, see [Retrieving Nested Model Values without Creating Extra Models](#retrieving-nested-model-values-without-creating-extra-models).)
+
 #### Model Arrays
 
 See [Model Objects from JSON Arrays](#model-objects-from-json-arrays) for how to create arrays of models from JSON arrays.
@@ -273,8 +270,8 @@ let repoOwnersJSON = [
 ```
 An array of `RepoOwner` objects could be obtained via the following:
 
-```
-guard let repoOwners = RepoOwner.modelsFromJSONArray(repoOwnersJSON)
+``` swift
+guard let repoOwners: [RepoOwner] = RepoOwner.modelsFromJSONArray(repoOwnersJSON)
     else { /* handle nil array here */ }
 
 print(repoOwners)
@@ -294,7 +291,38 @@ An array of JSON from an array of models is retrieved via `toJSONArray(_:)`:
 Repo.toJSONArray(repoOwners)
 ```
 
+### Retrieving Nested Model Values without Creating Extra Models
+
+We saw in earlier examples that `Repo` has a nested model `RepoOwner` - and that nested Gloss models are handled automatically. But what if the nested models represented in our JSON really don't need to be their own models? Gloss provides a way to indicate nested model values with simple `.` syntax - let's revisit the `owner` property on `Repo` and see what changes:
+
+``` swift
+struct Repo: Glossy {
+
+    let ownerId: Int?
+    let ownerUsername: String?
+
+    // MARK: - Deserialization
+
+    init?(json: JSON) {
+        self.ownerId = "owner.id" <~~ json
+        self.ownerUsername = "owner.login" <~~ json
+    }
+
+    // MARK: - Serialization
+
+        func toJSON() -> JSON? {
+        return jsonify([
+            "owner.id" ~~> self.ownerId,
+            "owner.login" ~~> self.ownerUsername
+            ])
+
+}
+
+```
+
 ## Additional Topics
+
+Now, instead of declaring a nested model `owner` of type `RepoOwner` with its own `id` and `username` properties, the desired values from `owner` are retrieved by specifying the key names in a string delimited by periods (i.e. `owner.id` and `owner.login`).
 
 ### Gloss Operators
 
@@ -322,6 +350,7 @@ The `<~~` operator is simply syntactic sugar for a set of `Decoder.decode` funct
 * `Decodable` models (`Decoder.decodeDecodable`)
 * Simple arrays (`Decoder.decode`)
 * Arrays of `Decodable` models (`Decoder.decodeDecodableArray`)
+* Dictionaries of `Decodable` models (`Decoder.decodeDecodableDictionary`)
 * Enum types (`Decoder.decodeEnum`)
 * Enum arrays (`Decoder.decodeEnumArray`)
 * `NSURL` types (`Decoder.decodeURL`)
@@ -335,6 +364,7 @@ The `~~>` operator is simply syntactic sugar for a set of `Encoder.encode` funct
 * `Encodable` models (`Encoder.encodeEncodable`)
 * Simple arrays (`Encoder.encodeArray`)
 * Arrays of `Encodable` models (`Encoder.encodeEncodableArray`)
+* Dictionaries of `Encodable` models (`Encoder.encodeEncodableDictionary`)
 * Enum types (`Encoder.encodeEnum`)
 * Enum arrays (`Encoder.encodeEnumArray`)
 * `NSURL` types (`Encoder.encodeURL`)
@@ -475,6 +505,20 @@ Gloss was created by [Harlan Kellaway](http://harlankellaway.com).
 Inspiration was gathered from other great JSON parsing libraries like [Argo](https://github.com/thoughtbot/Argo). Read more about why Gloss was made [here](http://harlankellaway.com/blog/2015/08/16/introducing-gloss-json-parsing-swift/).
 
 Special thanks to all [contributors](https://github.com/hkellaway/Gloss/contributors)! :sparkling_heart:
+
+### Featured
+
+Check out Gloss in these cool places:
+
+* [Ray Wenderlich | Swift Tutorial: Working with JSON](http://www.raywenderlich.com/120442/swift-json-tutorial)
+* [The iOS Times](http://theiostimes.com/year-01-issue-12.html)
+* [Swift Sandbox](http://swiftsandbox.io/issues/3#b1RJwo2)
+* [iOS Goodies](http://ios-goodies.com/post/127166753231/week-93)
+* [awesome-ios](https://github.com/vsouza/awesome-ios#json)
+* [awesome-swift](https://github.com/matteocrippa/awesome-swift#json)
+* [Reactofire library](https://github.com/RahulKatariya/Reactofire)
+
+Using Gloss in your app? [Let me know.](mailto:hello@harlankellaway.com?subject=Using Gloss in my app)
 
 ## License
 
