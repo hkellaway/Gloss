@@ -136,9 +136,24 @@ public extension Encodable {
 
 // MARK: - Global functions
 
-/**
+private var dateFormatterISO8601: NSDateFormatter?
 
-*/
+/**
+Date formatter used for ISO8601 dates.
+ 
+ - returns: Date formatter.
+ */
+public func GlossDateFormatterISO8601() -> NSDateFormatter {
+    if let _ = dateFormatterISO8601 {
+        return dateFormatterISO8601!
+    }
+    
+    dateFormatterISO8601 = NSDateFormatter()
+    dateFormatterISO8601!.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+    dateFormatterISO8601!.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+    
+    return dateFormatterISO8601!
+}
 
 /**
 Transforms an array of JSON optionals
