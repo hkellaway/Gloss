@@ -92,6 +92,13 @@ class GlossTests: XCTestCase {
         super.tearDown()
     }
     
+    func testDateFormatterISO8601HasCorrectSetup() {
+        let dateFormatterISO8601 = GlossDateFormatterISO8601()
+        
+        XCTAssertTrue(dateFormatterISO8601.locale.localeIdentifier == "en_US_POSIX", "Date formatter ISO8601 should have correct locale.")
+        XCTAssertTrue(dateFormatterISO8601.dateFormat == "yyyy-MM-dd'T'HH:mm:ssZZZZZ", "Date formatter ISO8601 should have correct date format.")
+    }
+    
     func testJsonifyTurnsArrayOfJsonDictsToSingleJsonDict() {
         let jsonDict1: JSON? = ["a" : true, "b" : false]
         let jsonDict2: JSON? = ["d" : "e", "f" : "g"]
