@@ -156,18 +156,6 @@ public func GlossDateFormatterISO8601() -> NSDateFormatter {
 }
 
 /**
-Transforms an array of JSON optionals
-to a single optional JSON dictionary
-
-:parameter: array Array of JSON to transform
-
-- returns: JSON
-*/
-public func jsonify(array: [JSON?]) -> JSON? {
-    return jsonify(array, keyPathDelimiter: GlossKeyPathDelimiter())
-}
-
-/**
  Transforms an array of JSON optionals
  to a single optional JSON dictionary
  
@@ -176,7 +164,7 @@ public func jsonify(array: [JSON?]) -> JSON? {
  
  - returns: JSON
  */
-public func jsonify(array: [JSON?], keyPathDelimiter: String) -> JSON? {
+public func jsonify(array: [JSON?], keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON? {
     var json: JSON = [:]
     
     for j in array {

@@ -31,17 +31,6 @@ Set of functions used to decode JSON to objects
 public struct Decoder {
     
     // MARK: - Decoders
-
-    /**
-    Returns function to decode JSON to value type
-    
-    :parameter: key JSON key used to set value
-    
-    :returns: Function decoding JSON to an optional value type
-    */
-    public static func decode<T>(key: String) -> JSON -> T? {
-        return self.decode(key, keyPathDelimiter: GlossKeyPathDelimiter())
-    }
     
     /**
     Returns function to decode JSON to value type
@@ -51,7 +40,7 @@ public struct Decoder {
     
     :returns: Function decoding JSON to an optional value type
     */
-    public static func decode<T>(key: String, keyPathDelimiter: String) -> JSON -> T? {
+    public static func decode<T>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> T? {
         return {
             json in
             
@@ -64,18 +53,6 @@ public struct Decoder {
     }
     
     /**
-     Returns function to decode JSON to value type
-     for objects that conform to the Decodable protocol
-     
-     :parameter: key JSON key used to set value
-     
-     :returns: Function decoding JSON to an optional value type
-     */
-    public static func decodeDecodable<T: Decodable>(key: String) -> JSON -> T? {
-        return self.decodeDecodable(key, keyPathDelimiter: GlossKeyPathDelimiter())
-    }
-    
-    /**
     Returns function to decode JSON to value type
     for objects that conform to the Decodable protocol
     
@@ -84,7 +61,7 @@ public struct Decoder {
     
     :returns: Function decoding JSON to an optional value type
     */
-    public static func decodeDecodable<T: Decodable>(key: String, keyPathDelimiter: String) -> JSON -> T? {
+    public static func decodeDecodable<T: Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> T? {
         return {
             json in
             
@@ -98,18 +75,6 @@ public struct Decoder {
     }
     
     /**
-     Returns function to decode JSON to date
-     
-     :parameter: key           JSON key used to set value
-     :parameter: dateFormatter Formatter used to format date
-     
-     :returns: Function decoding JSON to an optional date
-     */
-    public static func decodeDate(key: String, dateFormatter: NSDateFormatter) -> JSON -> NSDate? {
-        return self.decodeDate(key, dateFormatter: dateFormatter, keyPathDelimiter: GlossKeyPathDelimiter())
-    }
-    
-    /**
     Returns function to decode JSON to date
     
     :parameter: key           JSON key used to set value
@@ -118,7 +83,7 @@ public struct Decoder {
     
     :returns: Function decoding JSON to an optional date
     */
-    public static func decodeDate(key: String, dateFormatter: NSDateFormatter, keyPathDelimiter: String) -> JSON -> NSDate? {
+    public static func decodeDate(key: String, dateFormatter: NSDateFormatter, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> NSDate? {
         return {
             json in
             
@@ -131,18 +96,6 @@ public struct Decoder {
     }
     
     /**
-     Returns function to decode JSON to ISO8601 date
-     
-     :parameter: key           JSON key used to set value
-     :parameter: dateFormatter Formatter with ISO8601 format
-     
-     - returns: Function decoding JSON to an optional ISO8601 date
-     */
-    public static func decodeDateISO8601(key: String) -> JSON -> NSDate? {
-        return self.decodeDateISO8601(key, keyPathDelimiter: GlossKeyPathDelimiter())
-    }
-    
-    /**
     Returns function to decode JSON to ISO8601 date
     
     :parameter: key           JSON key used to set value
@@ -151,19 +104,12 @@ public struct Decoder {
     
     - returns: Function decoding JSON to an optional ISO8601 date
     */
-    public static func decodeDateISO8601(key: String, keyPathDelimiter: String) -> JSON -> NSDate? {
-        return Decoder.decodeDate(key, dateFormatter: GlossDateFormatterISO8601(), keyPathDelimiter: keyPathDelimiter)
-    }
-    
-    /**
-     Returns function to decode JSON to enum value
-     
-     :parameter: key JSON key used to set value
-     
-     :returns: Function decoding JSON to an optional enum value
-     */
-    public static func decodeEnum<T: RawRepresentable>(key: String) -> JSON -> T? {
-        return self.decodeEnum(key, keyPathDelimiter: GlossKeyPathDelimiter())
+    public static func decodeDateISO8601(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> NSDate? {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        
+        return Decoder.decodeDate(key, dateFormatter: dateFormatter, keyPathDelimiter: keyPathDelimiter)
     }
     
     /**
@@ -174,7 +120,7 @@ public struct Decoder {
     
     :returns: Function decoding JSON to an optional enum value
     */
-    public static func decodeEnum<T: RawRepresentable>(key: String, keyPathDelimiter: String) -> JSON -> T? {
+    public static func decodeEnum<T: RawRepresentable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> T? {
         return {
             json in
             
@@ -187,17 +133,6 @@ public struct Decoder {
     }
     
     /**
-     Returns function to decode JSON to URL
-     
-     :parameter: key JSON key used to set value
-     
-     :returns: Function decoding JSON to an optional URL
-     */
-    public static func decodeURL(key: String) -> JSON -> NSURL? {
-        return self.decodeURL(key, keyPathDelimiter: GlossKeyPathDelimiter())
-    }
-    
-    /**
     Returns function to decode JSON to URL
     
     :parameter: key JSON key used to set value
@@ -205,7 +140,7 @@ public struct Decoder {
     
     :returns: Function decoding JSON to an optional URL
     */
-    public static func decodeURL(key: String, keyPathDelimiter: String) -> JSON -> NSURL? {
+    public static func decodeURL(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> NSURL? {
         return {
             json in
             
@@ -218,18 +153,6 @@ public struct Decoder {
     }
     
     /**
-     Returns function to decode JSON to array
-     for objects that conform to the Glossy protocol
-     
-     :parameter: key JSON key used to set value
-     
-     :returns: Function decoding JSON to an optinal array
-     */
-    public static func decodeDecodableArray<T: Decodable>(key: String) -> JSON -> [T]? {
-        return decodeDecodableArray(key, keyPathDelimiter: GlossKeyPathDelimiter())
-    }
-    
-    /**
     Returns function to decode JSON to array
     for objects that conform to the Glossy protocol
     
@@ -238,7 +161,7 @@ public struct Decoder {
     
     :returns: Function decoding JSON to an optinal array
     */
-    public static func decodeDecodableArray<T: Decodable>(key: String, keyPathDelimiter: String) -> JSON -> [T]? {
+    public static func decodeDecodableArray<T: Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> [T]? {
         return {
             json in
             
@@ -263,23 +186,11 @@ public struct Decoder {
      objects that conform to the Glossy protocol
      
      :parameter: key JSON key used to set value
-     
-     :returns: Function decoding JSON to an optional dictionary
-     */
-    public static func decodeDecodableDictionary<T:Decodable>(key: String) -> JSON -> [String:T]? {
-        return decodeDecodableDictionary(key, keyPathDelimiter: GlossKeyPathDelimiter())
-    }
-    
-    /**
-     Returns function to decode JSON to dictionary of
-     objects that conform to the Glossy protocol
-     
-     :parameter: key JSON key used to set value
      :parameter: keyPathDelimiter Delimiter used for nested keypath keys
      
      :returns: Function decoding JSON to an optional dictionary
      */
-    public static func decodeDecodableDictionary<T:Decodable>(key: String, keyPathDelimiter: String) -> JSON -> [String:T]? {
+    public static func decodeDecodableDictionary<T:Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> [String:T]? {
         return {
             json in
             
@@ -296,18 +207,6 @@ public struct Decoder {
             }
         }
     }
-
-    /**
-     Returns function to decode JSON to enum array
-     of enum values
-     
-     :parameter: key JSON key used to set value
-     
-     :returns: Function decoding JSON to an optional enum array
-     */
-    public static func decodeEnumArray<T: RawRepresentable>(key: String) -> JSON -> [T]? {
-        return self.decodeEnumArray(key, keyPathDelimiter: GlossKeyPathDelimiter())
-    }
     
     /**
     Returns function to decode JSON to enum array
@@ -318,7 +217,7 @@ public struct Decoder {
     
     :returns: Function decoding JSON to an optional enum array
     */
-    public static func decodeEnumArray<T: RawRepresentable>(key: String, keyPathDelimiter: String) -> JSON -> [T]? {
+    public static func decodeEnumArray<T: RawRepresentable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> [T]? {
         return {
             json in
             
@@ -343,23 +242,11 @@ public struct Decoder {
      
      :parameter: key           JSON key used to set value
      :parameter: dateFormatter Formatter used to format date
-     
-     :returns: Function decoding JSON to an optional date array
-     */
-    public static func decodeDateArray(key: String, dateFormatter: NSDateFormatter) -> JSON -> [NSDate]? {
-        return self.decodeDateArray(key, dateFormatter: dateFormatter, keyPathDelimiter: GlossKeyPathDelimiter())
-    }
-    
-    /**
-     Returns function to decode JSON to date array
-     
-     :parameter: key           JSON key used to set value
-     :parameter: dateFormatter Formatter used to format date
      :parameter: keyPathDelimiter Delimiter used for nested keypath keys
      
      :returns: Function decoding JSON to an optional date array
      */
-    public static func decodeDateArray(key: String, dateFormatter: NSDateFormatter, keyPathDelimiter: String) -> JSON -> [NSDate]? {
+    public static func decodeDateArray(key: String, dateFormatter: NSDateFormatter, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> [NSDate]? {
         return {
             json in
             
@@ -384,23 +271,11 @@ public struct Decoder {
      
      :parameter: key           JSON key used to set value
      :parameter: dateFormatter Formatter with ISO8601 format
-     
-     - returns: Function decoding JSON to an optional ISO8601 date array
-     */
-    public static func decodeDateISO8601Array(key: String) -> JSON -> [NSDate]? {
-        return self.decodeDateISO8601Array(key, keyPathDelimiter: GlossKeyPathDelimiter())
-    }
-    
-    /**
-     Returns function to decode JSON to ISO8601 date array
-     
-     :parameter: key           JSON key used to set value
-     :parameter: dateFormatter Formatter with ISO8601 format
      :parameter: keyPathDelimiter Delimiter used for nested keypath keys
      
      - returns: Function decoding JSON to an optional ISO8601 date array
      */
-    public static func decodeDateISO8601Array(key: String, keyPathDelimiter: String) -> JSON -> [NSDate]? {
+    public static func decodeDateISO8601Array(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> [NSDate]? {
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
@@ -412,22 +287,11 @@ public struct Decoder {
      Returns function to decode JSON to URL array
      
      :parameter: key JSON key used to set value
-     
-     :returns: Function decoding JSON to an optional URL array
-     */
-    public static func decodeURLArray(key: String) -> JSON -> [NSURL]? {
-        return self.decodeURLArray(key, keyPathDelimiter: GlossKeyPathDelimiter())
-    }
-    
-    /**
-     Returns function to decode JSON to URL array
-     
-     :parameter: key JSON key used to set value
      :parameter: keyPathDelimiter Delimiter used for nested keypath keys
      
      :returns: Function decoding JSON to an optional URL array
      */
-    public static func decodeURLArray(key: String, keyPathDelimiter: String) -> JSON -> [NSURL]? {
+    public static func decodeURLArray(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> [NSURL]? {
         return {
             json in
             
