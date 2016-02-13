@@ -62,12 +62,12 @@ class ViewController: UIViewController {
         print("JSON: \(repo.toJSON())")
         print("")
         
-        let repos = [Repo](json: [repoJSON, repoJSON, repoJSON])
+        let repos = [Repo].fromJSONArray([repoJSON, repoJSON, repoJSON])
         
         print("REPOS: \(repos)")
         print("")
         
-        print("JSON ARRAY: \(repos.toJSON())")
+        print("JSON ARRAY: \(repos.toJSONArray())")
 
     }
 }
