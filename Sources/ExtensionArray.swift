@@ -54,7 +54,7 @@ public extension Array where Element: Decodable {
 public extension Array where Element: Encodable {
     
     /**
-     Object encoded as JSON Array
+     Objects encoded as JSON Array
      
      :returns: JSON array
      */

@@ -25,9 +25,7 @@
 
 import Foundation
 
-// MARK: - Decode operator
-
-// MARK: <~~
+// MARK: - Operator <~~ (Decode)
 
 /**
 Decode custom operator

@@ -85,6 +85,15 @@ public func GlossDateFormatterISO8601() -> NSDateFormatter {
 }
 
 /**
+ Default delimiter used for nested key path keys
+ */
+public func GlossKeyPathDelimiter() -> String {
+    
+    return "."
+    
+}
+
+/**
  Transforms an array of JSON optionals
  to a single optional JSON dictionary
  
@@ -103,13 +112,4 @@ public func jsonify(array: [JSON?], keyPathDelimiter: String = GlossKeyPathDelim
     }
     
     return json
-}
-
-/**
-Default delimiter used for nested key path keys
- */
-public func GlossKeyPathDelimiter() -> String {
-    
-    return "."
-    
 }
