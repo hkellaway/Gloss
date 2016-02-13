@@ -27,6 +27,42 @@ import Foundation
 
 extension Dictionary {
     
+    // MARK: - Public functions
+    
+    /**
+     Parses the nested dictionary from the keyPath
+     components separated with a delimiter and gets the value
+     
+     :parameter: keyPath   KeyPath with delimiter
+     :parameter: delimiter Delimiter
+     
+     :returns: Value from the nested dictionary
+     */
+    public func valueForKeyPath(keyPath: String, withDelimiter delimiter: String = GlossKeyPathDelimiter()) -> AnyObject? {
+        var keys = keyPath.componentsSeparatedByString(delimiter)
+        
+        guard let first = keys.first as? Key else {
+            print("[Gloss] Unable to use string as key on type: \(Key.self)")
+            return nil
+        }
+        
+        guard let value = self[first] as? AnyObject else {
+            return nil
+        }
+        
+        keys.removeAtIndex(0)
+        
+        if !keys.isEmpty, let subDict = value as? JSON {
+            let rejoined = keys.joinWithSeparator(delimiter)
+            
+            return subDict.valueForKeyPath(rejoined, withDelimiter: delimiter)
+        }
+        
+        return value
+    }
+    
+    // MARK: - Internal functions
+    
     /**
     Creates a dictionary from a list of elements, this allows us to map, flatMap
      and filter dictionaries.
@@ -58,7 +94,7 @@ extension Dictionary {
      :parameter: other     Dictionary to add entries from
      :parameter: delimiter Keypath delimiter
      */
-    mutating func add(other: Dictionary, delimiter: String) -> () {
+    mutating func add(other: Dictionary, delimiter: String = GlossKeyPathDelimiter()) -> () {
         for (key, value) in other {
             if let key = key as? String {
                 self.setValue(valueToSet: value, forKeyPath: key, withDelimiter: delimiter)
@@ -68,39 +104,7 @@ extension Dictionary {
         }
     }
     
-    /**
-     Parses the nested dictionary from the keyPath
-     components separated with a delimiter and gets the value
-     
-     :parameter: keyPath   KeyPath with delimiter
-     :parameter: delimiter Delimiter
-     
-     :returns: Value from the nested dictionary
-     */
-    func valueForKeyPath(keyPath: String, withDelimiter delimiter: String) -> AnyObject? {
-        var keys = keyPath.componentsSeparatedByString(delimiter)
-        
-        guard let first = keys.first as? Key else {
-            print("[Gloss] Unable to use string as key on type: \(Key.self)")
-            return nil
-        }
-        
-        guard let value = self[first] as? AnyObject else {
-            return nil
-        }
-        
-        keys.removeAtIndex(0)
-        
-        if !keys.isEmpty, let subDict = value as? JSON {
-            let rejoined = keys.joinWithSeparator(delimiter)
-            
-            return subDict.valueForKeyPath(rejoined, withDelimiter: delimiter)
-        }
-        
-        return value
-    }
-    
-    // MARK: - Private methods
+    // MARK: - Private functions
 
     /**
      Creates a nested dictionary from the keyPath 
@@ -109,7 +113,7 @@ extension Dictionary {
      :parameter: valueToSet Value to set
      :parameter: keyPath    KeyPath of the value
      */
-    private mutating func setValue(valueToSet val: Any, forKeyPath keyPath: String, withDelimiter delimiter: String) {
+    private mutating func setValue(valueToSet val: Any, forKeyPath keyPath: String, withDelimiter delimiter: String = GlossKeyPathDelimiter()) {
         var keys = keyPath.componentsSeparatedByString(delimiter)
         
         guard let first = keys.first as? Key else {
