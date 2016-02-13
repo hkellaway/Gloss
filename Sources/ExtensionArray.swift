@@ -35,19 +35,18 @@ public extension Array where Element: Decodable {
      
      :parameter: json Array of JSON representations of object
      */
-    init?(json: [JSON]) {
+    init(json: [JSON]) {
         var models: [Element] = []
+        
         for j in json {
             let model = Element(json: j)
+            
             if let model = model {
                 models.append(model)
             }
         }
-        if models.count > 0 {
-            self = models
-        } else {
-            return nil
-        }
+        
+        self = models
     }
     
 }
@@ -56,14 +55,18 @@ public extension Array where Element: Encodable {
     
     /**
      Object encoded as JSON Array
+     
+     :returns: JSON array
      */
     func toJSON() -> [JSON]? {
         var jsonArray: [JSON] = []
+        
         for json in self {
             if let json = json.toJSON() {
                 jsonArray.append(json)
             }
         }
+        
         return jsonArray
     }
 }
