@@ -62,7 +62,7 @@ class ViewController: UIViewController {
         print("JSON: \(repo.toJSON())")
         print("")
         
-        guard let repos: [Repo] = Repo.modelsFromJSONArray([repoJSON, repoJSON, repoJSON]) else
+        guard let repos = [Repo](json: [repoJSON, repoJSON, repoJSON]) else
         {
             print("Issue deserializing model array")
             
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
         print("REPOS: \(repos)")
         print("")
         
-        print("JSON ARRAY: \(Repo.toJSONArray(repos))")
+        print("JSON ARRAY: \(repos.toJSON())")
 
     }
 }
