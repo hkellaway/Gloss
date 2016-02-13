@@ -1,5 +1,5 @@
 //
-//  Dictionary.swift
+//  ExtensionDictionary.swift
 //  Gloss
 //
 // Copyright (c) 2015 Harlan Kellaway
@@ -25,7 +25,7 @@
 
 import Foundation
 
-extension Dictionary {
+public extension Dictionary {
     
     // MARK: - Public functions
     

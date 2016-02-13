@@ -51,33 +51,6 @@ public protocol Decodable {
 
 }
 
-public extension Array where Element: Decodable {
-
-    /**
-     Returns array of new instances created from provided JSON array
-     
-     Note: The returned array will have only models that successfully
-     decoded
-     
-     :parameter: json Array of JSON representations of object
-     */
-    init?(json: [JSON]) {
-        var models: [Element] = []
-        for j in json {
-            let model = Element(json: j)
-            if let model = model {
-                models.append(model)
-            }
-        }
-        if models.count > 0 {
-            self = models
-        } else {
-            return nil
-        }
-    }
-    
-}
-
 /**
 Enables an object to be encoded to JSON
 */
@@ -88,22 +61,6 @@ public protocol Encodable {
     */
     func toJSON() -> JSON?
     
-}
-
-public extension Array where Element: Encodable {
-    
-    /**
-     Object encoded as JSON Array
-     */
-    func toJSON() -> [JSON]? {
-        var jsonArray: [JSON] = []
-        for json in self {
-            if let json = json.toJSON() {
-                jsonArray.append(json)
-            }
-        }
-        return jsonArray
-    }
 }
 
 // MARK: - Global functions
@@ -128,6 +85,15 @@ public func GlossDateFormatterISO8601() -> NSDateFormatter {
 }
 
 /**
+ Default delimiter used for nested key path keys
+ */
+public func GlossKeyPathDelimiter() -> String {
+    
+    return "."
+    
+}
+
+/**
  Transforms an array of JSON optionals
  to a single optional JSON dictionary
  
@@ -146,13 +112,4 @@ public func jsonify(array: [JSON?], keyPathDelimiter: String = GlossKeyPathDelim
     }
     
     return json
-}
-
-/**
-Default delimiter used for nested key path keys
- */
-public func GlossKeyPathDelimiter() -> String {
-    
-    return "."
-    
 }
