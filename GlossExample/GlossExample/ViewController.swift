@@ -37,7 +37,8 @@ class ViewController: UIViewController {
             "html_url" : "https://github.com/hkellaway/Gloss",
             "owner" : [
                 "id" : 5456481,
-                "login" : "hkellaway"
+                "login" : "hkellaway",
+                "html_url" : "https://github.com/hkellaway"
             ],
             "language" : "Swift"
             ]
@@ -54,23 +55,19 @@ class ViewController: UIViewController {
         print(repo.desc)
         print(repo.url)
         print(repo.owner)
+        print(repo.ownerUrl)
         print(repo.primaryLanguage?.rawValue)
         print("")
         
         print("JSON: \(repo.toJSON())")
         print("")
         
-        guard let repos = Repo.modelsFromJSONArray([repoJSON, repoJSON, repoJSON]) else
-        {
-            print("Issue deserializing model array")
-            
-            return
-        }
+        let repos = [Repo].fromJSONArray([repoJSON, repoJSON, repoJSON])
         
         print("REPOS: \(repos)")
         print("")
         
-        print("JSON ARRAY: \(Repo.toJSONArray(repos))")
+        print("JSON ARRAY: \(repos.toJSONArray())")
 
     }
 }

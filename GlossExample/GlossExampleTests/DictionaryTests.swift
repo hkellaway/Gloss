@@ -2,25 +2,8 @@
 //  DictionaryTests.swift
 //  GlossExample
 //
-// Copyright (c) 2015 Harlan Kellaway
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
+//  Created by Harlan Kellaway on 2/12/16.
+//  Copyright © 2016 Harlan Kellaway. All rights reserved.
 //
 
 import Gloss
@@ -29,26 +12,38 @@ import XCTest
 
 class DictionaryTests: XCTestCase {
     
+    var testDictionary: JSON?
+    
     override func setUp() {
         super.setUp()
+        
+        testDictionary = [
+            "nested" : [
+                "model" : [
+                    "nestedModelId" : 123
+                ]
+            ],
+            "id" : 456
+        ]
         
     }
     
     override func tearDown() {
+        testDictionary = nil
         
         super.tearDown()
     }
     
-    func testAddCombinesTwoDictionaries() {
-        var jsonDict1: [String : String] = ["a" : "b", "c" : "d"]
-        let jsonDict2: [String : String] = ["e" : "f", "g" : "h"]
+    func testValueForKeyPathProducesCorrectValueForDelimited() {
+        let result = testDictionary?.valueForKeyPath("nested.model.nestedModelId")
         
-        jsonDict1.add(jsonDict2)
+        XCTAssertTrue((result as! Int) == 123, "Value for key path should product the correct value for delimited keypath.")
+    }
+    
+    func testValueForKeyPathProducesCorrectValueForNonDelimited() {
+        let result = testDictionary?.valueForKeyPath("id")
         
-        XCTAssert((jsonDict1["a"] == "b"), "Dictionary extension add(_:) should combine two dictionaries")
-        XCTAssert((jsonDict1["c"] == "d"), "Dictionary extension add(_:) should combine two dictionaries")
-        XCTAssert((jsonDict1["e"] == "f"), "Dictionary extension add(_:) should combine two dictionaries")
-        XCTAssert((jsonDict1["g"] == "h"), "Dictionary extension add(_:) should combine two dictionaries")
+        XCTAssertTrue((result as! Int) == 456, "Value for key path should product the correct value for non-delimited keypath.")
     }
     
 }

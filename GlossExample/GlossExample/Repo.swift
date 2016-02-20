@@ -31,7 +31,8 @@ struct Repo: Glossy {
     let desc: String?
     let name: String
     let url: NSURL
-    let owner: RepoOwner
+    let owner: RepoOwner // nested model
+    let ownerUrl: NSURL // nested keypath
     let primaryLanguage: Language?
     
     enum Language: String {
@@ -43,15 +44,19 @@ struct Repo: Glossy {
     
     init?(json: JSON) {
         guard let repoId: Int = "id" <~~ json,
-            let name: String = "name" <~~ json,
+            let name: String = Decoder.decodeStringUppercase("name", json: json),
             let url: NSURL = "html_url" <~~ json,
-            let owner: RepoOwner = "owner" <~~ json else { return nil }
+            let owner: RepoOwner = "owner" <~~ json,
+            let ownerUrl: NSURL = "owner.html_url" <~~ json else {
+                return nil
+        }
         
         self.repoId = repoId
         self.name = name
         self.desc = "description" <~~ json
         self.url = url
         self.owner = owner
+        self.ownerUrl = ownerUrl
         self.primaryLanguage = "language" <~~ json
     }
     
@@ -60,11 +65,38 @@ struct Repo: Glossy {
     func toJSON() -> JSON? {
         return jsonify([
             "id" ~~> self.repoId,
-            "name" ~~> self.name,
+            "name" ~~> Encoder.encodeStringCapitalized("name", value: self.name),
             "description" ~~> self.desc,
             "html_url" ~~> self.url,
             "owner" ~~> self.owner,
+            "owner.html_url" ~~> self.ownerUrl,
             "language" ~~> self.primaryLanguage
             ])
     }
+}
+
+// MARK: - Custom transformers
+
+extension Decoder {
+    
+    static func decodeStringUppercase(key: String, json: JSON) -> String? {
+        if let string = json.valueForKeyPath(key) as? String {
+            return string.uppercaseString
+        }
+        
+        return nil
+    }
+    
+}
+
+extension Encoder {
+    
+    static func encodeStringCapitalized(key: String, value: String?) -> JSON? {
+        if let value = value {
+            return [key : value.capitalizedString]
+        }
+        
+        return nil
+    }
+    
 }

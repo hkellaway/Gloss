@@ -152,6 +152,17 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((element3 == 6.0), "Decode Double array should return correct value")
     }
     
+    func testDecodeDictionary() {
+        let result: [String : TestNestedModel]? = Decoder.decodeDecodableDictionary("dictionary")(testJSON!)
+        let model: TestNestedModel? = result!["otherModel"]
+
+        let id = model!.id
+        let name = model!.name
+        
+        XCTAssertTrue((id == 789), "Decode Dictionary should return correct value")
+        XCTAssertTrue((name == "otherModel1"), "Decode Dictionar should return correct value")
+    }
+    
     func testDecodeString() {
         let result: String? = Decoder.decode("string")(testJSON!)
         

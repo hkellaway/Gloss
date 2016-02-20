@@ -78,7 +78,7 @@ class GlossTests: XCTestCase {
             "date" : "2015-08-16T20:51:46.600Z",
             "dateISO8601" : "2015-08-08T21:57:13Z",
             "url" : "http://github.com"
-            ]
+        ]
         
         let model = TestModel(json: testModelsJSON!)
         testModels = [model!, model!]
@@ -90,6 +90,13 @@ class GlossTests: XCTestCase {
         testModelsJSON = nil
         
         super.tearDown()
+    }
+    
+    func testDateFormatterISO8601HasCorrectSetup() {
+        let dateFormatterISO8601 = GlossDateFormatterISO8601()
+        
+        XCTAssertTrue(dateFormatterISO8601.locale.localeIdentifier == "en_US_POSIX", "Date formatter ISO8601 should have correct locale.")
+        XCTAssertTrue(dateFormatterISO8601.dateFormat == "yyyy-MM-dd'T'HH:mm:ssZZZZZ", "Date formatter ISO8601 should have correct date format.")
     }
     
     func testJsonifyTurnsArrayOfJsonDictsToSingleJsonDict() {
@@ -109,9 +116,9 @@ class GlossTests: XCTestCase {
     }
     
     func testModelsFromJSONArrayProducesValidModels() {
-        let result = TestModel.modelsFromJSONArray(testJSONArray!)
-        let model1: TestModel = result![0]
-        let model2: TestModel = result![1]
+        let result = [TestModel].fromJSONArray(testJSONArray!)
+        let model1: TestModel = result[0]
+        let model2: TestModel = result[1]
         
         XCTAssertTrue((model1.bool == true), "Model created from JSON should have correct property values")
         XCTAssertTrue((model1.boolArray! == [true, false, true]), "Model created from JSON should have correct property values")
@@ -170,13 +177,13 @@ class GlossTests: XCTestCase {
     func testModelsFromJSONArrayOnlyIncludesValidModels() {
         testJSONArray![0].removeValueForKey("bool")
         
-        let result = TestModel.modelsFromJSONArray(testJSONArray!)
+        let result = [TestModel].fromJSONArray(testJSONArray!)
         
-        XCTAssertTrue(result!.count == 1, "Model array from JSON array should only include valid models")
+        XCTAssertTrue(result.count == 1, "Model array from JSON array should only include valid models")
     }
     
     func testJSONArrayFromModelsProducesValidJSON() {
-        let result = TestModel.toJSONArray(testModels!)
+        let result = testModels!.toJSONArray()
         let json1 = result![0]
         let json2 = result![1]
         
@@ -264,9 +271,9 @@ class GlossTests: XCTestCase {
         invalidJSON.removeValueForKey("bool")
         var jsonArray = testJSONArray!
         jsonArray.append(invalidJSON)
-        let result = TestModel.modelsFromJSONArray(jsonArray)
+        let result = [TestModel].fromJSONArray(jsonArray)
         
-        XCTAssertTrue(result!.count == 2, "Model array from JSON array should only include valid models")
+        XCTAssertTrue(result.count == 2, "Model array from JSON array should only include valid models")
     }
     
     func testJsonifyTurnsJSONOptionalArrayToSingleJSONOptional() {
@@ -282,6 +289,10 @@ class GlossTests: XCTestCase {
         let result = jsonify([])
         
         XCTAssertTrue(result!.isEmpty, "Jsonify should return empty JSON when given an empty array")
+    }
+    
+    func testDefaultKeyPathDelimiterIsAPeriod() {
+        XCTAssertTrue(GlossKeyPathDelimiter() == ".", "Deafult key path delimiter should be a period")
     }
     
 }
