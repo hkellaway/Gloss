@@ -2,12 +2,30 @@
 All notable changes to this project will be documented in this file.
 `Gloss` adheres to [Semantic Versioning](http://semver.org/).
 
+- `0.7.x` Releases - [0.7.0](#070)
 - `0.6.x` Releases - [0.6.0](#060) | [0.6.1](#061) | [0.6.2](#062)
 - `0.5.x` Releases - [0.5.0](#050) | [0.5.1](#051) | [0.5.2](#052) | [0.5.3](#053) | [0.5.4](#054)
 - `0.4.x` Releases - [0.4.0](#040)
 - `0.3.x` Releases - [0.3.0](#030) | [0.3.1](#031) 
 - `0.2.x` Releases - [0.2.0](#020) 
 - `0.1.x` Releases - [0.1.0](#010) 
+
+---
+
+## [0.7.0](https://github.com/hkellaway/Gloss/releases/tag/0.7.0)
+Released on 2016-02-20. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A0.7.0).
+
+#### Added
+- Ability to de/encode dictionaries of de/encodable models [PR [#100](https://github.com/hkellaway/Gloss/pull/100)]
+- Ability to reference nested model properties via a period-delimited key [PR [#98](https://github.com/hkellaway/Gloss/pull/98)], [PR [#115](https://github.com/hkellaway/Gloss/pull/115)]
+
+#### Fixed
+- Not being able to subclass Gloss models [PR [#103](https://github.com/hkellaway/Gloss/pull/103)]
+
+#### Updated
+- Date formatter for ISO 8601 dates to be lazily instantiated [Issue [#110](https://github.com/hkellaway/Gloss/issues/110)]
+- Syntax for de/encoding models to/from JSON arrays [PR [#116](https://github.com/hkellaway/Gloss/pull/116)]
+- Decoder to sanitize strings used for creating NSURLs [PR [#119](https://github.com/hkellaway/Gloss/pull/119)]
 
 ---
 
