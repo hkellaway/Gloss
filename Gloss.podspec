@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Gloss"
-  s.version          = "0.6.2"
+  s.version          = "0.7.0"
   s.summary          = "A shiny JSON parsing library in Swift"
   s.description      = "A shiny JSON parsing library in Swift. Features include mapping JSON to objects, mapping objects to JSON, handling of nested objects and custom transformations."
   s.homepage         = "https://github.com/hkellaway/Gloss"
