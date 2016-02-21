@@ -8,34 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		2F3A832F1C66CF3C00ECC4B8 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A83281C66CF3C00ECC4B8 /* Decoder.swift */; };
-		2F3A83301C66CF3C00ECC4B8 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A83291C66CF3C00ECC4B8 /* Dictionary.swift */; };
 		2F3A83311C66CF3C00ECC4B8 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A832A1C66CF3C00ECC4B8 /* Encoder.swift */; };
 		2F3A83321C66CF3C00ECC4B8 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F3A832B1C66CF3C00ECC4B8 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F3A83331C66CF3C00ECC4B8 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A832C1C66CF3C00ECC4B8 /* Gloss.swift */; };
 		2F3A83351C66CF3C00ECC4B8 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A832E1C66CF3C00ECC4B8 /* Operators.swift */; };
 		2F3A83361C66D0ED00ECC4B8 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A83281C66CF3C00ECC4B8 /* Decoder.swift */; };
-		2F3A83371C66D0ED00ECC4B8 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A83291C66CF3C00ECC4B8 /* Dictionary.swift */; };
 		2F3A83381C66D0ED00ECC4B8 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A832A1C66CF3C00ECC4B8 /* Encoder.swift */; };
 		2F3A83391C66D0ED00ECC4B8 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A832C1C66CF3C00ECC4B8 /* Gloss.swift */; };
 		2F3A833A1C66D0ED00ECC4B8 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A832E1C66CF3C00ECC4B8 /* Operators.swift */; };
 		2F3A833B1C66D0F400ECC4B8 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F3A832B1C66CF3C00ECC4B8 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F3A833C1C66D0FF00ECC4B8 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A83281C66CF3C00ECC4B8 /* Decoder.swift */; };
-		2F3A833D1C66D0FF00ECC4B8 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A83291C66CF3C00ECC4B8 /* Dictionary.swift */; };
 		2F3A833E1C66D0FF00ECC4B8 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A832A1C66CF3C00ECC4B8 /* Encoder.swift */; };
 		2F3A833F1C66D0FF00ECC4B8 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A832C1C66CF3C00ECC4B8 /* Gloss.swift */; };
 		2F3A83401C66D0FF00ECC4B8 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A832E1C66CF3C00ECC4B8 /* Operators.swift */; };
 		2F3A83411C66D10500ECC4B8 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F3A832B1C66CF3C00ECC4B8 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F3A83421C66D11200ECC4B8 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A83281C66CF3C00ECC4B8 /* Decoder.swift */; };
-		2F3A83431C66D11200ECC4B8 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A83291C66CF3C00ECC4B8 /* Dictionary.swift */; };
 		2F3A83441C66D11200ECC4B8 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A832A1C66CF3C00ECC4B8 /* Encoder.swift */; };
 		2F3A83451C66D11200ECC4B8 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A832C1C66CF3C00ECC4B8 /* Gloss.swift */; };
 		2F3A83461C66D11200ECC4B8 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A832E1C66CF3C00ECC4B8 /* Operators.swift */; };
 		2F3A83471C66D11600ECC4B8 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F3A832B1C66CF3C00ECC4B8 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DCD40A601C7A7B11007EE251 /* ExtensionArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD40A5E1C7A7B11007EE251 /* ExtensionArray.swift */; };
+		DCD40A611C7A7B11007EE251 /* ExtensionDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD40A5F1C7A7B11007EE251 /* ExtensionDictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2F3A83281C66CF3C00ECC4B8 /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decoder.swift; path = Sources/Decoder.swift; sourceTree = SOURCE_ROOT; };
-		2F3A83291C66CF3C00ECC4B8 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = Sources/Dictionary.swift; sourceTree = SOURCE_ROOT; };
 		2F3A832A1C66CF3C00ECC4B8 /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Encoder.swift; path = Sources/Encoder.swift; sourceTree = SOURCE_ROOT; };
 		2F3A832B1C66CF3C00ECC4B8 /* Gloss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gloss.h; path = Sources/Gloss.h; sourceTree = SOURCE_ROOT; };
 		2F3A832C1C66CF3C00ECC4B8 /* Gloss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gloss.swift; path = Sources/Gloss.swift; sourceTree = SOURCE_ROOT; };
@@ -44,6 +41,8 @@
 		A04168E71C0DF69900269A6A /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC39BF611B8A7AD200088CE0 /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC683ADB1C2C615D0035EAC3 /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCD40A5E1C7A7B11007EE251 /* ExtensionArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtensionArray.swift; path = Sources/ExtensionArray.swift; sourceTree = SOURCE_ROOT; };
+		DCD40A5F1C7A7B11007EE251 /* ExtensionDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtensionDictionary.swift; path = Sources/ExtensionDictionary.swift; sourceTree = SOURCE_ROOT; };
 		DCF3008A1BDCA3FF003FBF15 /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -102,8 +101,9 @@
 			isa = PBXGroup;
 			children = (
 				2F3A83281C66CF3C00ECC4B8 /* Decoder.swift */,
-				2F3A83291C66CF3C00ECC4B8 /* Dictionary.swift */,
 				2F3A832A1C66CF3C00ECC4B8 /* Encoder.swift */,
+				DCD40A5E1C7A7B11007EE251 /* ExtensionArray.swift */,
+				DCD40A5F1C7A7B11007EE251 /* ExtensionDictionary.swift */,
 				2F3A832B1C66CF3C00ECC4B8 /* Gloss.h */,
 				2F3A832C1C66CF3C00ECC4B8 /* Gloss.swift */,
 				2F3A832D1C66CF3C00ECC4B8 /* Info.plist */,
@@ -303,7 +303,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F3A833C1C66D0FF00ECC4B8 /* Decoder.swift in Sources */,
-				2F3A833D1C66D0FF00ECC4B8 /* Dictionary.swift in Sources */,
 				2F3A833E1C66D0FF00ECC4B8 /* Encoder.swift in Sources */,
 				2F3A833F1C66D0FF00ECC4B8 /* Gloss.swift in Sources */,
 				2F3A83401C66D0FF00ECC4B8 /* Operators.swift in Sources */,
@@ -316,9 +315,10 @@
 			files = (
 				2F3A832F1C66CF3C00ECC4B8 /* Decoder.swift in Sources */,
 				2F3A83351C66CF3C00ECC4B8 /* Operators.swift in Sources */,
-				2F3A83301C66CF3C00ECC4B8 /* Dictionary.swift in Sources */,
 				2F3A83331C66CF3C00ECC4B8 /* Gloss.swift in Sources */,
+				DCD40A601C7A7B11007EE251 /* ExtensionArray.swift in Sources */,
 				2F3A83311C66CF3C00ECC4B8 /* Encoder.swift in Sources */,
+				DCD40A611C7A7B11007EE251 /* ExtensionDictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,7 +327,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F3A83421C66D11200ECC4B8 /* Decoder.swift in Sources */,
-				2F3A83431C66D11200ECC4B8 /* Dictionary.swift in Sources */,
 				2F3A83441C66D11200ECC4B8 /* Encoder.swift in Sources */,
 				2F3A83451C66D11200ECC4B8 /* Gloss.swift in Sources */,
 				2F3A83461C66D11200ECC4B8 /* Operators.swift in Sources */,
@@ -339,7 +338,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F3A83361C66D0ED00ECC4B8 /* Decoder.swift in Sources */,
-				2F3A83371C66D0ED00ECC4B8 /* Dictionary.swift in Sources */,
 				2F3A83381C66D0ED00ECC4B8 /* Encoder.swift in Sources */,
 				2F3A83391C66D0ED00ECC4B8 /* Gloss.swift in Sources */,
 				2F3A833A1C66D0ED00ECC4B8 /* Operators.swift in Sources */,
