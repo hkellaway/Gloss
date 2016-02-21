@@ -219,7 +219,7 @@ This model now:
 
 ### Initializing Model Objects and Arrays
 
-Instances of `Decodable` Gloss models are made by calling `init(json:)`.
+Instances of `Decodable` Gloss models are made by calling `init?(json:)`.
 
 For example, we can create a `RepoOwner` as follows:
 
