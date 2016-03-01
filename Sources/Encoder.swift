@@ -208,13 +208,15 @@ public struct Encoder {
                 return nil
             }
             
-            return dictionary.flatMap { (key, value) in
+            let encoded : [String:JSON] = dictionary.flatMap { (key, value) in
                 guard let json = value.toJSON() else {
                     return nil
                 }
                 
                 return (key, json)
             }
+            
+            return [key : encoded]
         }
     }
 
