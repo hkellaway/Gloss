@@ -272,8 +272,11 @@ class OperatorTests: XCTestCase {
         let result: JSON? = "dictionary" ~~> dictionary
         let encoderResult: JSON? = Encoder.encodeEncodableDictionary("dictionary")(dictionary)
         
-        XCTAssertTrue((result!["otherModel"]!["id"]) == (encoderResult!["otherModel"]!["id"]), "~~> for generic value should return same as Encoder.encodeEncodableDictionary for dictionary")
-        XCTAssertTrue((result!["otherModel"]!["name"]) == (encoderResult!["otherModel"]!["name"]), "~~> for generic value should return same as Encoder.encodeEncodableDictionary for dictionary")
+        let dict = (result!["dictionary"] as! JSON)["otherModel"] as! JSON
+        let encDict = (encoderResult!["dictionary"] as! JSON)["otherModel"] as! JSON
+        
+        XCTAssertTrue(dict["id"] as! Int == encDict["id"] as! Int, "~~> for [String:Encodable] value should return same as Encoder.encodeEncodableDictionary for dictionary")
+        XCTAssertTrue(dict["name"] as! String == encDict["name"] as! String, "~~> for [String:Encodable] value should return same as Encoder.encodeEncodableDictionary for dictionary")
     }
     
     func testEncodeOperatorGenericReturnsEncoderEncodeForString() {
