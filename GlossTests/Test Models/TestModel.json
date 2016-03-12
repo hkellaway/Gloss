@@ -1,0 +1,40 @@
+{
+    "bool" : true,
+    "boolArray" : [true, false, true],
+    "integer" : 1,
+    "integerArray" : [1, 2, 3],
+    "float" : 2.0,
+    "floatArray" : [1.0, 2.0, 3.0],
+    "double" : 6.0,
+    "doubleArray" : [4.0, 5.0, 6.0],
+    "dictionary" : {
+        "otherModel" : {
+            "id" : 789,
+            "name" : "otherModel1"
+        }
+    },
+    "string" : "abc",
+    "stringArray" : ["def", "ghi", "jkl"],
+    "nestedModel" : {
+        "id" : 123,
+        "name" : "nestedModel1"
+    },
+    "nestedModelArray" : [
+                          {
+                          "id" : 456,
+                          "name" : "nestedModel2"
+                          },
+                          {
+                          "id" : 789,
+                          "name" : "nestedModel3"
+                          }
+    ],
+    "enumValue" : "A",
+    "enumValueArray" : ["A", "B", "C"],
+    "date" : "2015-08-16T20:51:46.600Z",
+    "dateArray" : ["2015-08-16T20:51:46.600Z", "2015-08-16T20:51:46.600Z"],
+    "dateISO8601" : "2015-08-08T21:57:13Z",
+    "dateISO8601Array" : ["2015-08-08T21:57:13Z", "2015-08-08T21:57:13Z"],
+    "url" : "http://github.com",
+    "urlArray" : ["http://github.com", "http://github.com", "http://github.com"]
+}
