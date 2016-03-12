@@ -7,7 +7,3 @@ pod 'Gloss', :path => '../'
 
 end
 
-target 'GlossExampleTests' do
-
-end
-
