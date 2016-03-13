@@ -418,8 +418,8 @@ extension Encoder {
 
     static func encodeStringLowercase(key: String, value: String?) -> JSON? {
             
-        if let string = string {
-            return [key : string.lowercaseString]
+        if let value = value {
+            return [key : value.lowercaseString]
         }
 
         return nil
