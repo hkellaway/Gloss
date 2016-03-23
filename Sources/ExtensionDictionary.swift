@@ -50,11 +50,9 @@ public extension Dictionary {
             return nil
         }
         
-        keys.removeAtIndex(0)
-        
         if !keys.isEmpty, let subDict = value as? JSON {
+            keys.removeAtIndex(0)
             let rejoined = keys.joinWithSeparator(delimiter)
-            
             return subDict.valueForKeyPath(rejoined, withDelimiter: delimiter)
         }
         
