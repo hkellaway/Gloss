@@ -100,11 +100,7 @@ public struct Encoder {
     :returns: Function encoding ISO8601 date to optional JSON
     */
     public static func encodeDateISO8601(key: String) -> NSDate? -> JSON? {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        
-        return Encoder.encodeDate(key, dateFormatter: dateFormatter)
+        return Encoder.encodeDate(key, dateFormatter: GlossDateFormatterISO8601())
     }
     
     /**

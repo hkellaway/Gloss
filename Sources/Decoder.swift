@@ -105,11 +105,7 @@ public struct Decoder {
     - returns: Function decoding JSON to an optional ISO8601 date
     */
     public static func decodeDateISO8601(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> NSDate? {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        
-        return Decoder.decodeDate(key, dateFormatter: dateFormatter, keyPathDelimiter: keyPathDelimiter)
+        return Decoder.decodeDate(key, dateFormatter: GlossDateFormatterISO8601(), keyPathDelimiter: keyPathDelimiter)
     }
     
     /**
@@ -277,11 +273,7 @@ public struct Decoder {
      - returns: Function decoding JSON to an optional ISO8601 date array
      */
     public static func decodeDateISO8601Array(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> [NSDate]? {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        
-        return Decoder.decodeDateArray(key, dateFormatter: dateFormatter, keyPathDelimiter: keyPathDelimiter)
+        return Decoder.decodeDateArray(key, dateFormatter: GlossDateFormatterISO8601(), keyPathDelimiter: keyPathDelimiter)
     }
     
     /**
