@@ -39,7 +39,7 @@ public extension Dictionary {
      :returns: Value from the nested dictionary
      */
     public func valueForKeyPath(keyPath: String, withDelimiter delimiter: String = GlossKeyPathDelimiter()) -> AnyObject? {
-        var keys = keyPath.componentsSeparatedByString(delimiter)
+        let keys = keyPath.componentsSeparatedByString(delimiter)
         
         guard let first = keys.first as? Key else {
             print("[Gloss] Unable to use string as key on type: \(Key.self)")
@@ -50,11 +50,9 @@ public extension Dictionary {
             return nil
         }
         
-        keys.removeAtIndex(0)
+        if keys.count > 1, let subDict = value as? JSON {
+            let rejoined = keys[1..<keys.endIndex].joinWithSeparator(delimiter)
         
-        if !keys.isEmpty, let subDict = value as? JSON {
-            let rejoined = keys.joinWithSeparator(delimiter)
-            
             return subDict.valueForKeyPath(rejoined, withDelimiter: delimiter)
         }
         
