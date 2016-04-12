@@ -267,8 +267,7 @@ let repoOwnersJSON = [
 An array of `RepoOwner` objects could be obtained via the following:
 
 ``` swift
-guard let repoOwners = [RepoOwner].fromJSONArray(repoOwnersJSON)
-    else { /* handle nil array here */ }
+let repoOwners = [RepoOwner].fromJSONArray(repoOwnersJSON)
 
 print(repoOwners)
 ```
