@@ -502,7 +502,9 @@ Special thanks to all [contributors](https://github.com/hkellaway/Gloss/contribu
 
 ### Featured
 
-Check out Gloss in these cool places:
+Check out Gloss in these cool places!
+
+#### Posts
 
 * [Ray Wenderlich | Swift Tutorial: Working with JSON](http://www.raywenderlich.com/120442/swift-json-tutorial)
 * [The iOS Times](http://theiostimes.com/year-01-issue-12.html)
@@ -510,7 +512,10 @@ Check out Gloss in these cool places:
 * [iOS Goodies](http://ios-goodies.com/post/127166753231/week-93)
 * [awesome-ios](https://github.com/vsouza/awesome-ios#json)
 * [awesome-swift](https://github.com/matteocrippa/awesome-swift#json)
-* [Reactofire library](https://github.com/RahulKatariya/Reactofire)
+
+#### Libraries
+
+* [Moya-Gloss](https://github.com/spxrogers/Moya-Gloss)
 
 Using Gloss in your app? [Let me know.](mailto:hello@harlankellaway.com?subject=Using Gloss in my app)
 
