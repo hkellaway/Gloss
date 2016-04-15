@@ -2,13 +2,27 @@
 All notable changes to this project will be documented in this file.
 `Gloss` adheres to [Semantic Versioning](http://semver.org/).
 
-- `0.7.x` Releases - [0.7.0](#070) | [0.7.1](#071)
+- `0.7.x` Releases - [0.7.0](#070) | [0.7.1](#071) | [0.7.2](#072)
 - `0.6.x` Releases - [0.6.0](#060) | [0.6.1](#061) | [0.6.2](#062)
 - `0.5.x` Releases - [0.5.0](#050) | [0.5.1](#051) | [0.5.2](#052) | [0.5.3](#053) | [0.5.4](#054)
 - `0.4.x` Releases - [0.4.0](#040)
-- `0.3.x` Releases - [0.3.0](#030) | [0.3.1](#031) 
-- `0.2.x` Releases - [0.2.0](#020) 
-- `0.1.x` Releases - [0.1.0](#010) 
+- `0.3.x` Releases - [0.3.0](#030) | [0.3.1](#031)
+- `0.2.x` Releases - [0.2.0](#020)
+- `0.1.x` Releases - [0.1.0](#010)
+
+---
+
+## [0.7.2](https://github.com/hkellaway/Gloss/releases/tag/0.7.2)
+Released on 2016-04-15. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A0.7.2)
+
+#### Fixed
+- Issue with encoding Encodable dictonaries that resulted in top-level translation being lost [PR [#126](https://github.com/hkellaway/Gloss/pull/126)]
+- Date parsing failure if non-Gregorian calendar set on device [PR [#129](https://github.com/hkellaway/Gloss/pull/129)]
+- Incorrect decoding of for nested keypaths in Release builds using Swift 2.2 [Issue [#135](https://github.com/hkellaway/Gloss/issues/135)]
+- Usage of lazy NSDateFormatter for ISO 8601 dates [PR [#138](https://github.com/hkellaway/Gloss/pull/138)]
+
+#### Updated
+- Moved tests from Example project to framework project [[PR #131](https://github.com/hkellaway/Gloss/pull/131)]
 
 ---
 
