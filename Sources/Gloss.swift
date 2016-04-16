@@ -78,9 +78,17 @@ public func GlossDateFormatterISO8601() -> NSDateFormatter {
     }
     
     dateFormatterISO8601 = NSDateFormatter()
+    
+    // WORKAROUND to ignore device configuration regarding AM/PM http://openradar.appspot.com/radar?id=1110403
     dateFormatterISO8601!.locale = NSLocale(localeIdentifier: "en_US_POSIX")
     dateFormatterISO8601!.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+
+    // translate to Gregorian calendar if other calendar is selected in system settings
+    let gregorian = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
     
+    gregorian.timeZone = NSTimeZone(abbreviation: "GMT")!
+    dateFormatterISO8601!.calendar = gregorian
+
     return dateFormatterISO8601!
 }
 

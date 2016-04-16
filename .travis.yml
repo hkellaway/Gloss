@@ -1,11 +1,11 @@
 language: objective-c
 osx_image: xcode7
-xcode_project: GlossExample/GlossExample.xcworkspace
-xcode_scheme: GlossExample
+xcode_project: Gloss.xcodeproj
+xcode_scheme: GlossTests
 podfile: GlossExample/Podfile
 
 before_install: gem install cocoapods -v '= 0.39.0'
 
 script:
-   - xcodebuild test -workspace GlossExample/GlossExample.xcworkspace -scheme GlossExample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+   - xcodebuild test -project Gloss.xcodeproj -scheme GlossTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
    - pod lib lint --quick

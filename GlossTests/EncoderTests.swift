@@ -110,11 +110,11 @@ class EncoderTests: XCTestCase {
     }
     
     func testEncodeEncodableDictionary() {
-        let dictionary = ["dictionary" : testNestedModel1!]
-        let result: JSON? = Encoder.encodeEncodableDictionary("dictionary")(dictionary)
-        
-        XCTAssertTrue(result!["dictionary"]!["id"] == 1, "Encode Dictionary should return correct value")
-        XCTAssertTrue(result!["dictionary"]!["name"] == "nestedModel1", "Encode Dictionary should return correct value")
+        let result: JSON? = Encoder.encodeEncodableDictionary("dictionary")(["model1":testNestedModel1!])
+     
+        let dictionary = result!["dictionary"] as! [String:[String:AnyObject]]
+        XCTAssertTrue(dictionary["model1"]!["id"] as! Int == 1, "Encode Dictionary should return correct value")
+        XCTAssertTrue(dictionary["model1"]!["name"] as! String == "nestedModel1", "Encode Dictionary should return correct value")
     }
 
     func testEncodeString() {
