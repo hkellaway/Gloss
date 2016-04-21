@@ -151,7 +151,7 @@ public struct Decoder {
     
     /**
     Returns function to decode JSON to array
-    for objects that conform to the Glossy protocol
+    for objects that conform to the Decodable protocol
     
     :parameter: key JSON key used to set value
     :parameter: keyPathDelimiter Delimiter used for nested keypath keys
@@ -180,14 +180,14 @@ public struct Decoder {
     
     /**
      Returns function to decode JSON to dictionary of
-     objects that conform to the Glossy protocol
+     objects that conform to the Decodable protocol
      
      :parameter: key JSON key used to set value
      :parameter: keyPathDelimiter Delimiter used for nested keypath keys
      
      :returns: Function decoding JSON to an optional dictionary
      */
-    public static func decodeDecodableDictionary<T:Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> [String:T]? {
+    public static func decodeDecodableDictionary<T:Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> [String : T]? {
         return {
             json in
             
@@ -195,10 +195,39 @@ public struct Decoder {
                 return nil
             }
             
-            return dictionary.flatMap { (key, value) in
+            return dictionary.flatMap {
+                (key, value) in
+                
                 guard let decoded = T(json: value) else {
                     return nil
                 }
+                
+                return (key, decoded)
+            }
+        }
+    }
+    
+    /**
+     Returns function to decode JSON to dictionary of
+     objects that conform to the Decodable protocol
+     
+     :parameter: key JSON key used to set value
+     :parameter: keyPathDelimiter Delimiter used for nested keypath keys
+     
+     :returns: Function decoding JSON to an optional dictionary
+     */
+    public static func decodeDecodableDictionary<T:Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> [String : [T]]? {
+        return {
+            json in
+            
+            guard let dictionary = json.valueForKeyPath(key, withDelimiter: keyPathDelimiter) as? [String : [JSON]] else {
+                return nil
+            }
+            
+            return dictionary.flatMap {
+                (key, value) in
+                
+                let decoded = [T].fromJSONArray(value)
                 
                 return (key, decoded)
             }

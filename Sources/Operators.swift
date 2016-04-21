@@ -75,17 +75,24 @@ public func <~~ <T: Decodable>(key: String, json: JSON) -> [T]? {
 }
 
 /**
+ Convenience operator for decoding JSON to Dictionary of String to Decodable objects
+ */
+public func <~~ <T: Decodable>(key: String, json: JSON) -> [String : T]? {
+    return Decoder.decodeDecodableDictionary(key)(json)
+}
+
+/**
+ Convenience operator for decoding JSON to Dictionary of String to array of Decodable objects
+ */
+public func <~~ <T: Decodable>(key: String, json: JSON) -> [String : [T]]? {
+    return Decoder.decodeDecodableDictionary(key)(json)
+}
+
+/**
  Convenience operator for decoding JSON to array of URLs
  */
 public func <~~ (key: String, json: JSON) -> [NSURL]? {
     return Decoder.decodeURLArray(key)(json)
-}
-
-/**
- Convenience operator for decoding JSON to Dictionary of String, Decodable objects
- */
-public func <~~ <T: Decodable>(key: String, json: JSON) -> [String : T]? {
-    return Decoder.decodeDecodableDictionary(key)(json)
 }
 
 // MARK: - Operator ~~> (Encode)
