@@ -145,15 +145,22 @@ public func ~~> <T: Encodable>(key: String, property: [T]?) -> JSON? {
 }
 
 /**
-Convenience operator for encoding array of enum values to JSON
-*/
-public func ~~> <T: RawRepresentable>(key: String, property: [T]?) -> JSON? {
-    return Encoder.encodeEnumArray(key)(property)
-}
-
-/**
  Convenience operator for encoding dictionary of Encodable objects to JSON
  */
 public func ~~> <T: Encodable>(key: String, property: [String : T]?) -> JSON? {
     return Encoder.encodeEncodableDictionary(key)(property)
+}
+
+/**
+ Convenience operator for encoding dictionary of array of Encodable objects to JSON
+ */
+public func ~~> <T: Encodable>(key: String, property: [String : [T]]?) -> JSON? {
+    return Encoder.encodeEncodableDictionary(key)(property)
+}
+
+/**
+Convenience operator for encoding array of enum values to JSON
+*/
+public func ~~> <T: RawRepresentable>(key: String, property: [T]?) -> JSON? {
+    return Encoder.encodeEnumArray(key)(property)
 }

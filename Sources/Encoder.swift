@@ -204,12 +204,42 @@ public struct Encoder {
                 return nil
             }
             
-            let encoded : [String:JSON] = dictionary.flatMap { (key, value) in
+            let encoded : [String : JSON] = dictionary.flatMap { (key, value) in
                 guard let json = value.toJSON() else {
                     return nil
                 }
                 
                 return (key, json)
+            }
+            
+            return [key : encoded]
+        }
+    }
+    
+    /**
+     Returns function to encode a [String : [Encodable]] into JSON
+     for objects the conform to the Encodable protocol
+     
+     :parameter: key Key used to create JSON property
+     
+     :returns: Function encoding dictionary to optional JSON
+     */
+    public static func encodeEncodableDictionary<T: Encodable>(key: String) -> [String : [T]]? -> JSON? {
+        return {
+            dictionary in
+            
+            guard let dictionary = dictionary else {
+                return nil
+            }
+            
+            let encoded : [String : [JSON]] = dictionary.flatMap {
+                (key, value) in
+                
+                guard let jsonArray = value.toJSONArray() else {
+                    return nil
+                }
+                
+                return (key, jsonArray)
             }
             
             return [key : encoded]
