@@ -129,6 +129,13 @@ class OperatorTests: XCTestCase {
         XCTAssertTrue(resultDictionary!["otherModel"]! == decoderDictionary!["otherModel"]!, "<~~ for generic value should result same as Decoder.decodeDecodableDictionary for dictionary")
     }
     
+    func testDecodeOperatorGenericReturnsDecoderDecodableDictionaryWithArray() {
+        let resultDictionary: [String : [TestNestedModel]]? = "dictionaryWithArray" <~~ testJSON!
+        let decoderDictionary: [String : [TestNestedModel]]? = Decoder.decodeDecodableDictionary("dictionaryWithArray")(testJSON!)
+        
+        XCTAssertTrue(resultDictionary!["otherModels"]! == decoderDictionary!["otherModels"]!, "<~~ for generic value should result same as Decoder.decodeDecodableDictionary for dictionary")
+    }
+    
     func testDecodeOperatorGenericReturnsDecoderDecodeForString() {
         let resultString: String? = "string" <~~ testJSON!
         let decoderResultString: String? = Decoder.decode("string")(testJSON!)
@@ -277,6 +284,19 @@ class OperatorTests: XCTestCase {
         
         XCTAssertTrue(dict["id"] as! Int == encDict["id"] as! Int, "~~> for [String:Encodable] value should return same as Encoder.encodeEncodableDictionary for dictionary")
         XCTAssertTrue(dict["name"] as! String == encDict["name"] as! String, "~~> for [String:Encodable] value should return same as Encoder.encodeEncodableDictionary for dictionary")
+    }
+    
+    func testEncodeOperatorGenericReturnsEncoderEncodeEncodableDictionaryWithArray() {
+        let dictionaryWithArray: [String : [TestNestedModel]]? = ["otherModels" : [testNestedModel1!, testNestedModel2!]]
+        let result: JSON? = "dictionaryWithArray" ~~> dictionaryWithArray
+        let encoderResult: JSON? = Encoder.encodeEncodableDictionary("dictionaryWithArray")(dictionaryWithArray)
+        let dictArray = (result!["dictionaryWithArray"] as! JSON)["otherModels"] as! [JSON]
+        let encDictArray = (encoderResult!["dictionaryWithArray"] as! JSON)["otherModels"] as! [JSON]
+        
+        XCTAssertTrue(dictArray[0]["id"] as! Int == encDictArray[0]["id"] as! Int, "~~> for [String:Encodable] value should return same as Encoder.encodeEncodableDictionary for dictionary")
+        XCTAssertTrue(dictArray[0]["name"] as! String == encDictArray[0]["name"] as! String, "~~> for [String:Encodable] value should return same as Encoder.encodeEncodableDictionary for dictionary")
+        XCTAssertTrue(dictArray[1]["id"] as! Int == encDictArray[1]["id"] as! Int, "~~> for [String:Encodable] value should return same as Encoder.encodeEncodableDictionary for dictionary")
+        XCTAssertTrue(dictArray[1]["name"] as! String == encDictArray[1]["name"] as! String, "~~> for [String:Encodable] value should return same as Encoder.encodeEncodableDictionary for dictionary")
     }
     
     func testEncodeOperatorGenericReturnsEncoderEncodeForString() {

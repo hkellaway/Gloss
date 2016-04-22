@@ -34,6 +34,7 @@ struct TestModel: Glossy {
     let float: Float?
     let floatArray: [Float]?
     let dictionary: [String : TestNestedModel]?
+    let dictionaryWithArray: [String : [TestNestedModel]]?
     let double: Double?
     let doubleArray: [Double]?
     let string: String?
@@ -71,6 +72,7 @@ struct TestModel: Glossy {
         self.double = "double" <~~ json
         self.doubleArray = "doubleArray" <~~ json
         self.dictionary = "dictionary" <~~ json
+        self.dictionaryWithArray = "dictionaryWithArray" <~~ json
         self.string = "string" <~~ json
         self.stringArray = "stringArray" <~~ json
         self.nestedModel = "nestedModel" <~~ json
@@ -98,6 +100,7 @@ struct TestModel: Glossy {
             "double" ~~> self.double,
             "doubleArray" ~~> self.doubleArray,
             "dictionary" ~~> self.dictionary,
+            "dictionaryWithArray" ~~> self.dictionaryWithArray,
             "string" ~~> self.string,
             "stringArray" ~~> self.stringArray,
             "nestedModel" ~~> self.nestedModel,
