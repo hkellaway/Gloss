@@ -49,6 +49,18 @@ class ObjectToJSONFlowTests: XCTestCase {
                     "name" : "nestedModel1"
                 ]
             ],
+            "dictionaryWithArray" : [
+                "otherModels" : [
+                    [
+                        "id" : 123,
+                        "name" : "otherModel1"
+                    ],
+                    [
+                        "id" : 456,
+                        "name" : "otherModel2"
+                    ]
+                ]
+            ],
             "string" : "abc",
             "stringArray" : ["def", "ghi", "jkl"],
             "nestedModel" : [
@@ -116,10 +128,18 @@ class ObjectToJSONFlowTests: XCTestCase {
         XCTAssertTrue((result!["url"] as! String == "http://github.com"), "JSON created from model should have correct values")
         XCTAssertTrue(((result!["urlArray"] as! [NSURL]).map { url in url.absoluteString } == ["http://github.com", "http://github.com"]), "JSON created from model should have correct values")
         
-        let otherModel = (result!["dictionary"] as! [String:JSON])["otherModel"]!
+        let otherModel = (result!["dictionary"] as! [String : JSON])["otherModel"]!
         
         XCTAssertTrue(otherModel["id"] as! Int == 1, "Encode encodable dictionary should return correct value")
         XCTAssertTrue(otherModel["name"] as! String == "nestedModel1", "Encode encodable dictionary should return correct value")
+        
+        let anotherModel1 = (result!["dictionaryWithArray"] as! [String : [JSON]])["otherModels"]![0]
+        let anotherModel2 = (result!["dictionaryWithArray"] as! [String : [JSON]])["otherModels"]![1]
+        
+        XCTAssertTrue(anotherModel1["id"] as! Int == 123, "Encode encodable dictionary should return correct value")
+        XCTAssertTrue(anotherModel1["name"] as! String == "otherModel1", "Encode encodable dictionary should return correct value")
+        XCTAssertTrue(anotherModel2["id"] as! Int == 456, "Encode encodable dictionary should return correct value")
+        XCTAssertTrue(anotherModel2["name"] as! String == "otherModel2", "Encode encodable dictionary should return correct value")
         
         let nestedModel: JSON = result!["nestedModel"] as! JSON
         

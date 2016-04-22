@@ -75,17 +75,24 @@ public func <~~ <T: Decodable>(key: String, json: JSON) -> [T]? {
 }
 
 /**
+ Convenience operator for decoding JSON to Dictionary of String to Decodable objects
+ */
+public func <~~ <T: Decodable>(key: String, json: JSON) -> [String : T]? {
+    return Decoder.decodeDecodableDictionary(key)(json)
+}
+
+/**
+ Convenience operator for decoding JSON to Dictionary of String to array of Decodable objects
+ */
+public func <~~ <T: Decodable>(key: String, json: JSON) -> [String : [T]]? {
+    return Decoder.decodeDecodableDictionary(key)(json)
+}
+
+/**
  Convenience operator for decoding JSON to array of URLs
  */
 public func <~~ (key: String, json: JSON) -> [NSURL]? {
     return Decoder.decodeURLArray(key)(json)
-}
-
-/**
- Convenience operator for decoding JSON to Dictionary of String, Decodable objects
- */
-public func <~~ <T: Decodable>(key: String, json: JSON) -> [String : T]? {
-    return Decoder.decodeDecodableDictionary(key)(json)
 }
 
 // MARK: - Operator ~~> (Encode)
@@ -138,15 +145,22 @@ public func ~~> <T: Encodable>(key: String, property: [T]?) -> JSON? {
 }
 
 /**
-Convenience operator for encoding array of enum values to JSON
-*/
-public func ~~> <T: RawRepresentable>(key: String, property: [T]?) -> JSON? {
-    return Encoder.encodeEnumArray(key)(property)
-}
-
-/**
  Convenience operator for encoding dictionary of Encodable objects to JSON
  */
 public func ~~> <T: Encodable>(key: String, property: [String : T]?) -> JSON? {
     return Encoder.encodeEncodableDictionary(key)(property)
+}
+
+/**
+ Convenience operator for encoding dictionary of array of Encodable objects to JSON
+ */
+public func ~~> <T: Encodable>(key: String, property: [String : [T]]?) -> JSON? {
+    return Encoder.encodeEncodableDictionary(key)(property)
+}
+
+/**
+Convenience operator for encoding array of enum values to JSON
+*/
+public func ~~> <T: RawRepresentable>(key: String, property: [T]?) -> JSON? {
+    return Encoder.encodeEnumArray(key)(property)
 }

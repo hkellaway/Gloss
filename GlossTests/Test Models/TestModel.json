@@ -13,6 +13,18 @@
             "name" : "otherModel1"
         }
     },
+    "dictionaryWithArray" : {
+        "otherModels" : [
+                         {
+                         "id" : 123,
+                         "name" : "otherModel1"
+                         },
+                         {
+                         "id" : 456,
+                         "name" : "otherModel2"
+                         }
+                         ]
+    },
     "string" : "abc",
     "stringArray" : ["def", "ghi", "jkl"],
     "nestedModel" : {

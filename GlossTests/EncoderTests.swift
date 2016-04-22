@@ -110,11 +110,23 @@ class EncoderTests: XCTestCase {
     }
     
     func testEncodeEncodableDictionary() {
-        let result: JSON? = Encoder.encodeEncodableDictionary("dictionary")(["model1":testNestedModel1!])
-     
-        let dictionary = result!["dictionary"] as! [String:[String:AnyObject]]
+        let result: JSON? = Encoder.encodeEncodableDictionary("dictionary")(["model1" : testNestedModel1!])
+        let dictionary = result!["dictionary"] as! [String : [String : AnyObject]]
+        
         XCTAssertTrue(dictionary["model1"]!["id"] as! Int == 1, "Encode Dictionary should return correct value")
         XCTAssertTrue(dictionary["model1"]!["name"] as! String == "nestedModel1", "Encode Dictionary should return correct value")
+    }
+    
+    func testEncodeEncodableDictionaryWithArray() {
+        let result: JSON? = Encoder.encodeEncodableDictionary("dictionaryWithArray")(["models" : [testNestedModel1!, testNestedModel2!]])
+        let dictionary = result!["dictionaryWithArray"] as! [String : [AnyObject]]
+        let json1 = dictionary["models"]![0] as! JSON
+        let json2 = dictionary["models"]![1] as! JSON
+        
+        XCTAssertTrue(json1["id"] as! Int == 1, "Encode Dictionary should return correct value")
+        XCTAssertTrue(json1["name"] as! String == "nestedModel1", "Encode Dictionary should return correct value")
+        XCTAssertTrue(json2["id"] as! Int == 2, "Encode Dictionary should return correct value")
+        XCTAssertTrue(json2["name"] as! String == "nestedModel2", "Encode Dictionary should return correct value")
     }
 
     func testEncodeString() {
