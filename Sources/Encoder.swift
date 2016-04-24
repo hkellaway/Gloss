@@ -100,7 +100,7 @@ public struct Encoder {
     :returns: Function encoding ISO8601 date to optional JSON
     */
     public static func encodeDateISO8601(key: String) -> NSDate? -> JSON? {
-        return Encoder.encodeDate(key, dateFormatter: GlossDateFormatterISO8601())
+        return Encoder.encodeDate(key, dateFormatter: GlossDateFormatterISO8601)
     }
     
     /**
@@ -309,7 +309,7 @@ public struct Encoder {
      :returns: Function encoding ISO8601 date array to optional JSON
      */
     public static func encodeDateISO8601Array(key: String) -> [NSDate]? -> JSON? {
-        return Encoder.encodeDateArray(key, dateFormatter: GlossDateFormatterISO8601())
+        return Encoder.encodeDateArray(key, dateFormatter: GlossDateFormatterISO8601)
     }
     
 }
