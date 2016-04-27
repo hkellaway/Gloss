@@ -67,7 +67,7 @@ public extension Dictionary {
     
     :parameter: elements Elements to add to the new dictionary
     */
-    init(elements: [Element]) {
+    internal init(elements: [Element]) {
         self.init()
         
         for (key, value) in elements {
@@ -80,7 +80,7 @@ public extension Dictionary {
      
      :parameter: transform Transform
      */
-    func flatMap<KeyPrime : Hashable, ValuePrime>(transform: (Key, Value) throws -> (KeyPrime, ValuePrime)?) rethrows -> [KeyPrime : ValuePrime] {
+    internal func flatMap<KeyPrime : Hashable, ValuePrime>(transform: (Key, Value) throws -> (KeyPrime, ValuePrime)?) rethrows -> [KeyPrime : ValuePrime] {
         return Dictionary<KeyPrime,ValuePrime>(elements: try flatMap({ (key, value) in
             return try transform(key, value)
         }))
@@ -92,7 +92,7 @@ public extension Dictionary {
      :parameter: other     Dictionary to add entries from
      :parameter: delimiter Keypath delimiter
      */
-    mutating func add(other: Dictionary, delimiter: String = GlossKeyPathDelimiter()) -> () {
+    internal mutating func add(other: Dictionary, delimiter: String = GlossKeyPathDelimiter()) -> () {
         for (key, value) in other {
             if let key = key as? String {
                 self.setValue(valueToSet: value, forKeyPath: key, withDelimiter: delimiter)
