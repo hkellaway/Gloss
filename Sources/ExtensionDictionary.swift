@@ -38,7 +38,7 @@ public extension Dictionary {
      
      :returns: Value from the nested dictionary
      */
-    public func valueForKeyPath(keyPath: String, withDelimiter delimiter: String = GlossKeyPathDelimiter()) -> AnyObject? {
+    public func valueForKeyPath(keyPath: String, withDelimiter delimiter: String = GlossKeyPathDelimiter) -> AnyObject? {
         let keys = keyPath.componentsSeparatedByString(delimiter)
         
         guard let first = keys.first as? Key else {
@@ -92,7 +92,7 @@ public extension Dictionary {
      :parameter: other     Dictionary to add entries from
      :parameter: delimiter Keypath delimiter
      */
-    internal mutating func add(other: Dictionary, delimiter: String = GlossKeyPathDelimiter()) -> () {
+    internal mutating func add(other: Dictionary, delimiter: String = GlossKeyPathDelimiter) -> () {
         for (key, value) in other {
             if let key = key as? String {
                 self.setValue(valueToSet: value, forKeyPath: key, withDelimiter: delimiter)
@@ -111,7 +111,7 @@ public extension Dictionary {
      :parameter: valueToSet Value to set
      :parameter: keyPath    KeyPath of the value
      */
-    private mutating func setValue(valueToSet val: Any, forKeyPath keyPath: String, withDelimiter delimiter: String = GlossKeyPathDelimiter()) {
+    private mutating func setValue(valueToSet val: Any, forKeyPath keyPath: String, withDelimiter delimiter: String = GlossKeyPathDelimiter) {
         var keys = keyPath.componentsSeparatedByString(delimiter)
         
         guard let first = keys.first as? Key else {

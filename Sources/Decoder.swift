@@ -40,7 +40,7 @@ public struct Decoder {
     
     :returns: Function decoding JSON to an optional value type
     */
-    public static func decode<T>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> T? {
+    public static func decode<T>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> T? {
         return {
             json in
             
@@ -61,7 +61,7 @@ public struct Decoder {
     
     :returns: Function decoding JSON to an optional value type
     */
-    public static func decodeDecodable<T: Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> T? {
+    public static func decodeDecodable<T: Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> T? {
         return {
             json in
             
@@ -83,7 +83,7 @@ public struct Decoder {
     
     :returns: Function decoding JSON to an optional date
     */
-    public static func decodeDate(key: String, dateFormatter: NSDateFormatter, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> NSDate? {
+    public static func decodeDate(key: String, dateFormatter: NSDateFormatter, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> NSDate? {
         return {
             json in
             
@@ -104,8 +104,8 @@ public struct Decoder {
     
     - returns: Function decoding JSON to an optional ISO8601 date
     */
-    public static func decodeDateISO8601(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> NSDate? {
-        return Decoder.decodeDate(key, dateFormatter: GlossDateFormatterISO8601(), keyPathDelimiter: keyPathDelimiter)
+    public static func decodeDateISO8601(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> NSDate? {
+        return Decoder.decodeDate(key, dateFormatter: GlossDateFormatterISO8601, keyPathDelimiter: keyPathDelimiter)
     }
     
     /**
@@ -116,7 +116,7 @@ public struct Decoder {
     
     :returns: Function decoding JSON to an optional enum value
     */
-    public static func decodeEnum<T: RawRepresentable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> T? {
+    public static func decodeEnum<T: RawRepresentable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> T? {
         return {
             json in
             
@@ -136,7 +136,7 @@ public struct Decoder {
     
     :returns: Function decoding JSON to an optional URL
     */
-    public static func decodeURL(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> NSURL? {
+    public static func decodeURL(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> NSURL? {
         return {
             json in
             
@@ -158,7 +158,7 @@ public struct Decoder {
     
     :returns: Function decoding JSON to an optinal array
     */
-    public static func decodeDecodableArray<T: Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> [T]? {
+    public static func decodeDecodableArray<T: Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [T]? {
         return {
             json in
             
@@ -187,7 +187,7 @@ public struct Decoder {
      
      :returns: Function decoding JSON to an optional dictionary
      */
-    public static func decodeDecodableDictionary<T:Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> [String : T]? {
+    public static func decodeDecodableDictionary<T:Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [String : T]? {
         return {
             json in
             
@@ -216,7 +216,7 @@ public struct Decoder {
      
      :returns: Function decoding JSON to an optional dictionary
      */
-    public static func decodeDecodableDictionary<T:Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> [String : [T]]? {
+    public static func decodeDecodableDictionary<T:Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [String : [T]]? {
         return {
             json in
             
@@ -243,7 +243,7 @@ public struct Decoder {
     
     :returns: Function decoding JSON to an optional enum array
     */
-    public static func decodeEnumArray<T: RawRepresentable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> [T]? {
+    public static func decodeEnumArray<T: RawRepresentable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [T]? {
         return {
             json in
             
@@ -272,7 +272,7 @@ public struct Decoder {
      
      :returns: Function decoding JSON to an optional date array
      */
-    public static func decodeDateArray(key: String, dateFormatter: NSDateFormatter, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> [NSDate]? {
+    public static func decodeDateArray(key: String, dateFormatter: NSDateFormatter, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [NSDate]? {
         return {
             json in
             
@@ -301,8 +301,8 @@ public struct Decoder {
      
      - returns: Function decoding JSON to an optional ISO8601 date array
      */
-    public static func decodeDateISO8601Array(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> [NSDate]? {
-        return Decoder.decodeDateArray(key, dateFormatter: GlossDateFormatterISO8601(), keyPathDelimiter: keyPathDelimiter)
+    public static func decodeDateISO8601Array(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [NSDate]? {
+        return Decoder.decodeDateArray(key, dateFormatter: GlossDateFormatterISO8601, keyPathDelimiter: keyPathDelimiter)
     }
     
     /**
@@ -313,7 +313,7 @@ public struct Decoder {
      
      :returns: Function decoding JSON to an optional URL array
      */
-    public static func decodeURLArray(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON -> [NSURL]? {
+    public static func decodeURLArray(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [NSURL]? {
         return {
             json in
             
