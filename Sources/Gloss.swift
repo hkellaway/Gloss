@@ -63,43 +63,37 @@ public protocol Encodable {
     
 }
 
-// MARK: - Global functions
-
-private var dateFormatterISO8601: NSDateFormatter?
+// MARK: - Global
 
 /**
 Date formatter used for ISO8601 dates.
  
  - returns: Date formatter.
  */
-public func GlossDateFormatterISO8601() -> NSDateFormatter {
-    if let _ = dateFormatterISO8601 {
-        return dateFormatterISO8601!
-    }
-    
-    dateFormatterISO8601 = NSDateFormatter()
+public private(set) var GlossDateFormatterISO8601: NSDateFormatter = {
+    let dateFormatterISO8601 = NSDateFormatter()
     
     // WORKAROUND to ignore device configuration regarding AM/PM http://openradar.appspot.com/radar?id=1110403
-    dateFormatterISO8601!.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-    dateFormatterISO8601!.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+    dateFormatterISO8601.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+    dateFormatterISO8601.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
 
     // translate to Gregorian calendar if other calendar is selected in system settings
     let gregorian = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
     
     gregorian.timeZone = NSTimeZone(abbreviation: "GMT")!
-    dateFormatterISO8601!.calendar = gregorian
+    dateFormatterISO8601.calendar = gregorian
 
-    return dateFormatterISO8601!
-}
+    return dateFormatterISO8601
+}()
 
 /**
  Default delimiter used for nested key path keys
+ 
+ - returns: Default delimiter.
  */
-public func GlossKeyPathDelimiter() -> String {
-    
+public private(set) var GlossKeyPathDelimiter: String = {
     return "."
-    
-}
+}()
 
 /**
  Transforms an array of JSON optionals
@@ -110,7 +104,7 @@ public func GlossKeyPathDelimiter() -> String {
  
  - returns: JSON
  */
-public func jsonify(array: [JSON?], keyPathDelimiter: String = GlossKeyPathDelimiter()) -> JSON? {
+public func jsonify(array: [JSON?], keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON? {
     var json: JSON = [:]
     
     for j in array {

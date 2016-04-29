@@ -304,7 +304,7 @@ class GlossTests: XCTestCase {
     }
     
     func testDefaultKeyPathDelimiterIsAPeriod() {
-        XCTAssertTrue(GlossKeyPathDelimiter() == ".", "Deafult key path delimiter should be a period")
+        XCTAssertTrue(GlossKeyPathDelimiter == ".", "Deafult key path delimiter should be a period")
     }
     
 }
