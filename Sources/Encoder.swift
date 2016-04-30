@@ -52,19 +52,18 @@ public struct Encoder {
     }
     
     /**
-    Returns function to encode value to JSON
-    for objects the conform to the Encodable protocol
-    
-    :parameter: key Key used to create JSON property
-    
-    :returns: Function decoding value to optional JSON
-    */
-    public static func encodeEncodable<T: Encodable>(key: String) -> T? -> JSON? {
+     Returns function to encode array as JSON
+     
+     :parameter: key Key used to create JSON property
+     
+     :returns: Function encoding array to optional JSON
+     */
+    public static func encodeArray<T>(key: String) -> [T]? -> JSON? {
         return {
-            model in
+            array in
             
-            if let model = model, json = model.toJSON() {
-                return [key : json]
+            if let array = array as? AnyObject {
+                return [key : array]
             }
             
             return nil
@@ -92,6 +91,34 @@ public struct Encoder {
     }
     
     /**
+     Returns function to encode date array as JSON
+     
+     :parameter: key           Key used to create JSON property
+     :parameter: dateFormatter Formatter used to format date string
+     
+     :returns: Function encoding date array to optional JSON
+     */
+    public static func encodeDateArray(key: String, dateFormatter: NSDateFormatter) -> [NSDate]? -> JSON? {
+        return {
+            dates in
+            
+            if let dates = dates {
+                var dateStrings: [String] = []
+                
+                for date in dates {
+                    let dateString = dateFormatter.stringFromDate(date)
+                    
+                    dateStrings.append(dateString)
+                }
+                
+                return [key : dateStrings]
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
     Returns function to encode ISO8601 date as JSON
     
     :parameter: key           Key used to create JSON property
@@ -104,18 +131,31 @@ public struct Encoder {
     }
     
     /**
-    Returns function to encode enum value as JSON
+     Returns function to encode ISO8601 date array as JSON
+     
+     :parameter: key           Key used to create JSON property
+     :parameter: dateFormatter Formatter used to format date string
+     
+     :returns: Function encoding ISO8601 date array to optional JSON
+     */
+    public static func encodeDateISO8601Array(key: String) -> [NSDate]? -> JSON? {
+        return Encoder.encodeDateArray(key, dateFormatter: GlossDateFormatterISO8601)
+    }
     
-    :parameter: key Key used to create JSON property
-    
-    :returns: Function encoding enum value to optional JSON
-    */
-    public static func encodeEnum<T: RawRepresentable>(key: String) -> T? -> JSON? {
+    /**
+     Returns function to encode value to JSON
+     for objects the conform to the Encodable protocol
+     
+     :parameter: key Key used to create JSON property
+     
+     :returns: Function decoding value to optional JSON
+     */
+    public static func encodeEncodable<T: Encodable>(key: String) -> T? -> JSON? {
         return {
-            enumValue in
+            model in
             
-            if let enumValue = enumValue {
-                return [key : enumValue.rawValue as! AnyObject]
+            if let model = model, json = model.toJSON() {
+                return [key : json]
             }
             
             return nil
@@ -123,51 +163,13 @@ public struct Encoder {
     }
     
     /**
-    Returns function to encode URL as JSON
-    
-    :parameter: key Key used to create JSON property
-    
-    :returns: Function encoding URL to optional JSON
-    */
-    public static func encodeURL(key: String) -> NSURL? -> JSON? {
-        return {
-            url in
-            
-            if let url = url {
-                return [key : url.absoluteString]
-            }
-            
-            return nil
-        }
-    }
-    
-    /**
-    Returns function to encode array as JSON
-    
-    :parameter: key Key used to create JSON property
-    
-    :returns: Function encoding array to optional JSON
-    */
-    public static func encodeArray<T>(key: String) -> [T]? -> JSON? {
-        return {
-            array in
-            
-            if let array = array as? AnyObject {
-                return [key : array]
-            }
-            
-            return nil
-        }
-    }
-    
-    /**
-    Returns function to encode array as JSON
-    for objects the conform to the Encodable protocol
-    
-    :parameter: key Key used to create JSON property
-    
-    :returns: Function encoding array to optional JSON
-    */
+     Returns function to encode array as JSON
+     for objects the conform to the Encodable protocol
+     
+     :parameter: key Key used to create JSON property
+     
+     :returns: Function encoding array to optional JSON
+     */
     public static func encodeEncodableArray<T: Encodable>(key: String) -> [T]? -> JSON? {
         return {
             array in
@@ -245,15 +247,34 @@ public struct Encoder {
             return [key : encoded]
         }
     }
-
+    
     /**
-    Returns function to encode array as JSON
-    of enum raw values
+    Returns function to encode enum value as JSON
     
     :parameter: key Key used to create JSON property
     
-    :returns: Function encoding array to optional JSON
+    :returns: Function encoding enum value to optional JSON
     */
+    public static func encodeEnum<T: RawRepresentable>(key: String) -> T? -> JSON? {
+        return {
+            enumValue in
+            
+            if let enumValue = enumValue {
+                return [key : enumValue.rawValue as! AnyObject]
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
+     Returns function to encode array as JSON
+     of enum raw values
+     
+     :parameter: key Key used to create JSON property
+     
+     :returns: Function encoding array to optional JSON
+     */
     public static func encodeEnumArray<T: RawRepresentable>(key: String) -> [T]? -> JSON? {
         return {
             enumValues in
@@ -273,43 +294,22 @@ public struct Encoder {
     }
     
     /**
-     Returns function to encode date array as JSON
-     
-     :parameter: key           Key used to create JSON property
-     :parameter: dateFormatter Formatter used to format date string
-     
-     :returns: Function encoding date array to optional JSON
-     */
-    public static func encodeDateArray(key: String, dateFormatter: NSDateFormatter) -> [NSDate]? -> JSON? {
+    Returns function to encode URL as JSON
+    
+    :parameter: key Key used to create JSON property
+    
+    :returns: Function encoding URL to optional JSON
+    */
+    public static func encodeURL(key: String) -> NSURL? -> JSON? {
         return {
-            dates in
+            url in
             
-            if let dates = dates {
-                var dateStrings: [String] = []
-                
-                for date in dates {
-                    let dateString = dateFormatter.stringFromDate(date)
-                    
-                    dateStrings.append(dateString)
-                }
-                
-                return [key : dateStrings]
+            if let url = url {
+                return [key : url.absoluteString]
             }
             
             return nil
         }
-    }
-    
-    /**
-     Returns function to encode ISO8601 date array as JSON
-     
-     :parameter: key           Key used to create JSON property
-     :parameter: dateFormatter Formatter used to format date string
-     
-     :returns: Function encoding ISO8601 date array to optional JSON
-     */
-    public static func encodeDateISO8601Array(key: String) -> [NSDate]? -> JSON? {
-        return Encoder.encodeDateArray(key, dateFormatter: GlossDateFormatterISO8601)
     }
     
 }
