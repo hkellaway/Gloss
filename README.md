@@ -2,10 +2,11 @@
 
 ## Features :sparkles:  
 [![CocoaPods](https://img.shields.io/cocoapods/v/Gloss.svg)](http://cocoapods.org/pods/Gloss) 
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) 
-[![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage) 
+[![SPM](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE) 
-[![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss) 
+[![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss)
+[![Reference Status](https://www.versioneye.com/objective-c/gloss/reference_badge.svg)](https://www.versioneye.com/objective-c/gloss/references)
 [![Build Status](https://travis-ci.org/hkellaway/Gloss.svg)](https://travis-ci.org/hkellaway/Gloss)
 
 * Mapping JSON to objects
@@ -513,9 +514,15 @@ Check out Gloss in these cool places!
 * [awesome-ios](https://github.com/vsouza/awesome-ios#json)
 * [awesome-swift](https://github.com/matteocrippa/awesome-swift#json)
 
+#### Products
+
+* [Drift](http://www.drift.com) ([iOS SDK](https://github.com/Driftt/drift-sdk-ios))
+* [Skiplagged](http://skiplagged.com) ([iOS SDK](https://github.com/bulusoy/Skiplagged))
+
 #### Libraries
 
 * [Moya-Gloss](https://github.com/spxrogers/Moya-Gloss)
+* [Restofire-Gloss](https://github.com/Restofire/Restofire-Gloss)
 
 Using Gloss in your app? [Let me know.](mailto:hello@harlankellaway.com?subject=Using Gloss in my app)
 
