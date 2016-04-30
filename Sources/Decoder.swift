@@ -285,6 +285,26 @@ public struct Decoder {
     }
     
     /**
+     Returns function to decode JSON to Int64
+     
+     :parameter: key JSON key used to set value
+     :parameter: keyPathDelimiter Delimiter used for nested keypath keys
+     
+     :returns: Function decoding JSON to an optional enum array
+     */
+    public static func decodeInt64(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> Int64? {
+        return {
+            json in
+            
+            if let number = json[key] as? NSNumber {
+                return number.longLongValue
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
      Returns function to decode JSON to URL
      
      :parameter: key JSON key used to set value

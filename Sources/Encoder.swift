@@ -294,6 +294,25 @@ public struct Encoder {
     }
     
     /**
+     Returns function to encode Int64 as JSON
+     
+     :parameter: key Key used to create JSON property
+     
+     :returns: Function encoding Int64 to optional JSON
+     */
+    public static func encodeInt64(key: String) -> Int64? -> JSON? {
+        return {
+            int64 in
+            
+            if let int64 = int64 {
+                return [key : NSNumber(longLong: int64)]
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
     Returns function to encode URL as JSON
     
     :parameter: key Key used to create JSON property

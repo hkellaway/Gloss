@@ -82,6 +82,13 @@ public func <~~ <T: RawRepresentable>(key: String, json: JSON) -> [T]? {
 }
 
 /**
+ Convenience operator for decoding JSON to Int64
+ */
+public func <~~ (key: String, json: JSON) -> Int64? {
+    return Decoder.decodeInt64(key)(json)
+}
+
+/**
 Convenience operator for decoding JSON to NSURL
 */
 public func <~~ (key: String, json: JSON) -> NSURL? {
@@ -156,6 +163,13 @@ public func ~~> <T: RawRepresentable>(key: String, property: T?) -> JSON? {
  */
 public func ~~> <T: RawRepresentable>(key: String, property: [T]?) -> JSON? {
     return Encoder.encodeEnumArray(key)(property)
+}
+
+/**
+ Convenience operator for encoding Int64 to JSON
+ */
+public func ~~> (key: String, property: Int64?) -> JSON? {
+    return Encoder.encodeInt64(key)(property)
 }
 
 /**
