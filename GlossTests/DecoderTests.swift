@@ -299,13 +299,13 @@ class DecoderTests: XCTestCase {
     func testDecodeInt32() {
         let result: Int32? = Decoder.decodeInt32("int32")(testJSON!)
         
-        XCTAssertTrue((result == 1000000000), "Decode Int32 should return correct value")
+        XCTAssertTrue((result == 100000000), "Decode Int32 should return correct value")
     }
     
     func testDecodeInt64() {
         let result: Int64? = Decoder.decodeInt64("int64")(testJSON!)
         
-        XCTAssertTrue((result == 3000000000), "Decode Int64 should return correct value")
+        XCTAssertTrue((result == 300000000), "Decode Int64 should return correct value")
     }
     
     func testDecodeURL() {

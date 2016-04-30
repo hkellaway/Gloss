@@ -374,7 +374,7 @@ class OperatorTests: XCTestCase {
     }
     
     func testEncodeOperatorInt32ReturnsEncoderEncodeInt32() {
-        let int32: Int32? = 1000000000
+        let int32: Int32? = 10000000
         let result: JSON? = "int32" ~~> int32
         let encoderResult: JSON? = Encoder.encodeInt32("int32")(int32)
         
@@ -382,7 +382,7 @@ class OperatorTests: XCTestCase {
     }
     
     func testEncodeOperatorInt64ReturnsEncoderEncodeInt64() {
-        let int64: Int64? = 3000000000
+        let int64: Int64? = 30000000
         let result: JSON? = "int64" ~~> int64
         let encoderResult: JSON? = Encoder.encodeInt64("int64")(int64)
         

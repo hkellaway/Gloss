@@ -222,17 +222,17 @@ class EncoderTests: XCTestCase {
     }
     
     func testEncodeInt32() {
-        let int32: Int32? =  1000000000
+        let int32: Int32? =  100000000
         let result: JSON? = Encoder.encodeInt32("int32")(int32)
         
-        XCTAssertTrue(((result!["int32"] as! NSNumber).intValue == 1000000000), "Encode Int32 should return correct value")
+        XCTAssertTrue(((result!["int32"] as! NSNumber).intValue == 100000000), "Encode Int32 should return correct value")
     }
     
     func testEncodeInt64() {
-        let int64: Int64? =  3000000000
+        let int64: Int64? =  300000000
         let result: JSON? = Encoder.encodeInt64("int64")(int64)
         
-        XCTAssertTrue(((result!["int64"] as! NSNumber).longLongValue == 3000000000), "Encode Int64 should return correct value")
+        XCTAssertTrue(((result!["int64"] as! NSNumber).longLongValue == 300000000), "Encode Int64 should return correct value")
     }
     
     func testEncodeURL() {
