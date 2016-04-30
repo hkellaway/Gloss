@@ -194,6 +194,20 @@ class OperatorTests: XCTestCase {
         XCTAssertTrue((resultElement3 == decoderResultElement3), "<~~ for enum value array should return same as Decoder.decodeArray")
     }
     
+    func testDecodeOperatorInt32ReturnsDecoderInt32() {
+        let result: Int32? = "int32" <~~ testJSON!
+        let decoderResult: Int32? = Decoder.decodeInt32("int32")(testJSON!)
+        
+        XCTAssertTrue((result == decoderResult), "<~~ for url should return same as Decoder.decodeInt32")
+    }
+    
+    func testDecodeOperatorInt64ReturnsDecoderInt64() {
+        let result: Int64? = "int64" <~~ testJSON!
+        let decoderResult: Int64? = Decoder.decodeInt64("int64")(testJSON!)
+        
+        XCTAssertTrue((result == decoderResult), "<~~ for url should return same as Decoder.decodeInt64")
+    }
+    
     func testDecodeOperatorURLReturnsDecoderDecodeURL() {
         let result: NSURL? = "url" <~~ testJSON!
         let decoderResult: NSURL? = Decoder.decodeURL("url")(testJSON!)
@@ -357,6 +371,22 @@ class OperatorTests: XCTestCase {
         let encoderResult: JSON? = Encoder.encodeEnumArray("enumValueArray")(enumArray)
         
         XCTAssertTrue(((result!["enumValueArray"] as! [TestModel.EnumValue.RawValue]) == (encoderResult!["enumValueArray"] as! [TestModel.EnumValue.RawValue])), "~~> for enum value array should return same as Encoder.encodeArray")
+    }
+    
+    func testEncodeOperatorInt32ReturnsEncoderEncodeInt32() {
+        let int32: Int32? = 10000000
+        let result: JSON? = "int32" ~~> int32
+        let encoderResult: JSON? = Encoder.encodeInt32("int32")(int32)
+        
+        XCTAssertTrue((((result!["int32"] as! NSNumber)).intValue == ((encoderResult!["int32"] as! NSNumber)).intValue), "~~> for url should return same as Encoder.encodeInt32")
+    }
+    
+    func testEncodeOperatorInt64ReturnsEncoderEncodeInt64() {
+        let int64: Int64? = 30000000
+        let result: JSON? = "int64" ~~> int64
+        let encoderResult: JSON? = Encoder.encodeInt64("int64")(int64)
+        
+        XCTAssertTrue((((result!["int64"] as! NSNumber)).longLongValue == ((encoderResult!["int64"] as! NSNumber)).longLongValue), "~~> for url should return same as Encoder.encodeInt64")
     }
     
     func testEncodeOperatorURLReturnsEncoderEncodeURL() {
