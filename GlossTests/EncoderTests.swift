@@ -221,6 +221,20 @@ class EncoderTests: XCTestCase {
         XCTAssertTrue(resultDate2?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate array should return correct value")
     }
     
+    func testEncodeInt32() {
+        let int32: Int32? =  1000000000
+        let result: JSON? = Encoder.encodeInt32("int32")(int32)
+        
+        XCTAssertTrue(((result!["int32"] as! NSNumber).intValue == 1000000000), "Encode Int32 should return correct value")
+    }
+    
+    func testEncodeInt64() {
+        let int64: Int64? =  3000000000
+        let result: JSON? = Encoder.encodeInt64("int64")(int64)
+        
+        XCTAssertTrue(((result!["int64"] as! NSNumber).longLongValue == 3000000000), "Encode Int64 should return correct value")
+    }
+    
     func testEncodeURL() {
         let url: NSURL? = NSURL(string: "http://github.com")
         let result: JSON? = Encoder.encodeURL("url")(url)
