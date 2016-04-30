@@ -294,6 +294,25 @@ public struct Encoder {
     }
     
     /**
+     Returns function to encode Int32 as JSON
+     
+     :parameter: key Key used to create JSON property
+     
+     :returns: Function encoding Int32 to optional JSON
+     */
+    public static func encodeInt32(key: String) -> Int32? -> JSON? {
+        return {
+            int32 in
+            
+            if let int32 = int32 {
+                return [key : NSNumber(int: int32)]
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
      Returns function to encode Int64 as JSON
      
      :parameter: key Key used to create JSON property
