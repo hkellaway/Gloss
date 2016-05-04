@@ -32,32 +32,33 @@ public typealias JSON = [String : AnyObject]
 // MARK: - Protocols
 
 /**
-Convenience protocol for objects that can be
-translated from and to JSON
+Convenience protocol for objects that can be translated from and to JSON.
 */
 public protocol Glossy: Decodable, Encodable { }
 
 /**
-Enables an object to be decoded from JSON
+Enables an object to be decoded from JSON.
 */
 public protocol Decodable {
 
     /**
-     Returns new instance created from provided JSON
+     Returns new instance created from provided JSON.
 
-     :parameter: json JSON representation of object
+     - parameter: json: JSON representation of object.
      */
     init?(json: JSON)
 
 }
 
 /**
-Enables an object to be encoded to JSON
+Enables an object to be encoded to JSON.
 */
 public protocol Encodable {
     
     /**
-    Object encoded as JSON
+    Encodes and object as JSON.
+     
+     - returns: JSON when encoding was successful, nil otherwise.
     */
     func toJSON() -> JSON?
     
@@ -87,22 +88,21 @@ public private(set) var GlossDateFormatterISO8601: NSDateFormatter = {
 }()
 
 /**
- Default delimiter used for nested key path keys
+ Default delimiter used for nested key paths.
  
- - returns: Default delimiter.
+ - returns: Default key path delimiter.
  */
 public private(set) var GlossKeyPathDelimiter: String = {
     return "."
 }()
 
 /**
- Transforms an array of JSON optionals
- to a single optional JSON dictionary
+ Transforms an array of JSON optionals to a single optional JSON dictionary.
  
- :parameter: array            Array of JSON to transform
- :parameter: keyPathDelimiter Delimiter used for nested keypath keys
+ - parameter array:            Array of JSON to transform.
+ - parameter keyPathDelimiter: Delimiter used for nested key paths.
  
- - returns: JSON
+ - returns: JSON when successful, nil otherwise.
  */
 public func jsonify(array: [JSON?], keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON? {
     var json: JSON = [:]
