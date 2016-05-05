@@ -26,19 +26,17 @@
 import Foundation
 
 /**
-Set of functions used to encode values to JSON
+Encodes objects to JSON.
 */
 public struct Encoder {
     
-    // MARK: - Encoders
-    
     /**
-    Returns function to encode value to JSON
-    
-    :parameter: key Key used to create JSON property
-    
-    :returns: Function decoding value to optional JSON
-    */
+     Encodes a generic value to JSON.
+     
+     - parameter key: Key used in JSON for decoded value.
+     
+     - returns: JSON encoded from value.
+     */
     public static func encode<T>(key: String) -> T? -> JSON? {
         return {
             property in
@@ -52,11 +50,11 @@ public struct Encoder {
     }
     
     /**
-     Returns function to encode array as JSON
+     Encodes a generic value array to JSON.
      
-     :parameter: key Key used to create JSON property
+     - parameter key: Key used in JSON for decoded value.
      
-     :returns: Function encoding array to optional JSON
+     - returns: JSON encoded from value.
      */
     public static func encodeArray<T>(key: String) -> [T]? -> JSON? {
         return {
@@ -71,13 +69,13 @@ public struct Encoder {
     }
     
     /**
-    Returns function to encode date as JSON
-    
-    :parameter: key           Key used to create JSON property
-    :parameter: dateFormatter Formatter used to format date string
-    
-    :returns: Function encoding date to optional JSON
-    */
+     Encodes a date to JSON.
+     
+     - parameter key:           Key used in JSON for decoded value.
+     - parameter dateFormatter: Date formatter used to encode date.
+     
+     - returns: JSON encoded from value.
+     */
     public static func encodeDate(key: String, dateFormatter: NSDateFormatter) -> NSDate? -> JSON? {
         return {
             date in
@@ -91,12 +89,12 @@ public struct Encoder {
     }
     
     /**
-     Returns function to encode date array as JSON
+     Encodes a date array to JSON.
      
-     :parameter: key           Key used to create JSON property
-     :parameter: dateFormatter Formatter used to format date string
+     - parameter key:           Key used in JSON for decoded value.
+     - parameter dateFormatter: Date formatter used to encode date.
      
-     :returns: Function encoding date array to optional JSON
+     - returns: JSON encoded from value.
      */
     public static func encodeDateArray(key: String, dateFormatter: NSDateFormatter) -> [NSDate]? -> JSON? {
         return {
@@ -119,36 +117,33 @@ public struct Encoder {
     }
     
     /**
-    Returns function to encode ISO8601 date as JSON
-    
-    :parameter: key           Key used to create JSON property
-    :parameter: dateFormatter Formatter used to format date string
-    
-    :returns: Function encoding ISO8601 date to optional JSON
-    */
+     Encodes an ISO8601 date to JSON.
+     
+     - parameter key: Key used in JSON for decoded value.
+     
+     - returns: JSON encoded from value.
+     */
     public static func encodeDateISO8601(key: String) -> NSDate? -> JSON? {
         return Encoder.encodeDate(key, dateFormatter: GlossDateFormatterISO8601)
     }
     
     /**
-     Returns function to encode ISO8601 date array as JSON
+     Encodes an ISO8601 date array to JSON.
      
-     :parameter: key           Key used to create JSON property
-     :parameter: dateFormatter Formatter used to format date string
+     - parameter key: Key used in JSON for decoded value.
      
-     :returns: Function encoding ISO8601 date array to optional JSON
+     - returns: JSON encoded from value.
      */
     public static func encodeDateISO8601Array(key: String) -> [NSDate]? -> JSON? {
         return Encoder.encodeDateArray(key, dateFormatter: GlossDateFormatterISO8601)
     }
     
     /**
-     Returns function to encode value to JSON
-     for objects the conform to the Encodable protocol
+     Encodes an Encodable object to JSON.
      
-     :parameter: key Key used to create JSON property
+     - parameter key: Key used in JSON for decoded value.
      
-     :returns: Function decoding value to optional JSON
+     - returns: JSON encoded from value.
      */
     public static func encodeEncodable<T: Encodable>(key: String) -> T? -> JSON? {
         return {
@@ -163,12 +158,11 @@ public struct Encoder {
     }
     
     /**
-     Returns function to encode array as JSON
-     for objects the conform to the Encodable protocol
+     Encodes an Encodable array to JSON.
      
-     :parameter: key Key used to create JSON property
+     - parameter key: Key used in JSON for decoded value.
      
-     :returns: Function encoding array to optional JSON
+     - returns: JSON encoded from value.
      */
     public static func encodeEncodableArray<T: Encodable>(key: String) -> [T]? -> JSON? {
         return {
@@ -191,12 +185,11 @@ public struct Encoder {
     }
     
     /**
-     Returns function to encode a [String : Encodable] into JSON
-     for objects the conform to the Encodable protocol
+     Encodes a dictionary of String to Encodable to JSON.
      
-     :parameter: key Key used to create JSON property
+     - parameter key: Key used in JSON for decoded value.
      
-     :returns: Function encoding dictionary to optional JSON
+     - returns: JSON encoded from value.
      */
     public static func encodeEncodableDictionary<T: Encodable>(key: String) -> [String : T]? -> JSON? {
         return {
@@ -219,12 +212,11 @@ public struct Encoder {
     }
     
     /**
-     Returns function to encode a [String : [Encodable]] into JSON
-     for objects the conform to the Encodable protocol
+     Encodes a dictionary of String to Encodable array to JSON.
      
-     :parameter: key Key used to create JSON property
+     - parameter key: Key used in JSON for decoded value.
      
-     :returns: Function encoding dictionary to optional JSON
+     - returns: JSON encoded from value.
      */
     public static func encodeEncodableDictionary<T: Encodable>(key: String) -> [String : [T]]? -> JSON? {
         return {
@@ -249,12 +241,12 @@ public struct Encoder {
     }
     
     /**
-    Returns function to encode enum value as JSON
-    
-    :parameter: key Key used to create JSON property
-    
-    :returns: Function encoding enum value to optional JSON
-    */
+     Encodes an enum value to JSON.
+     
+     - parameter key: Key used in JSON for decoded value.
+     
+     - returns: JSON encoded from value.
+     */
     public static func encodeEnum<T: RawRepresentable>(key: String) -> T? -> JSON? {
         return {
             enumValue in
@@ -268,12 +260,11 @@ public struct Encoder {
     }
     
     /**
-     Returns function to encode array as JSON
-     of enum raw values
+     Encodes an enum value array to JSON.
      
-     :parameter: key Key used to create JSON property
+     - parameter key: Key used in JSON for decoded value.
      
-     :returns: Function encoding array to optional JSON
+     - returns: JSON encoded from value.
      */
     public static func encodeEnumArray<T: RawRepresentable>(key: String) -> [T]? -> JSON? {
         return {
@@ -294,11 +285,11 @@ public struct Encoder {
     }
     
     /**
-     Returns function to encode Int32 as JSON
+     Encodes an Int32 to JSON.
      
-     :parameter: key Key used to create JSON property
+     - parameter key: Key used in JSON for decoded value.
      
-     :returns: Function encoding Int32 to optional JSON
+     - returns: JSON encoded from value.
      */
     public static func encodeInt32(key: String) -> Int32? -> JSON? {
         return {
@@ -313,11 +304,11 @@ public struct Encoder {
     }
     
     /**
-     Returns function to encode Int64 as JSON
+     Encodes an Int64 to JSON.
      
-     :parameter: key Key used to create JSON property
+     - parameter key: Key used in JSON for decoded value.
      
-     :returns: Function encoding Int64 to optional JSON
+     - returns: JSON encoded from value.
      */
     public static func encodeInt64(key: String) -> Int64? -> JSON? {
         return {
@@ -332,12 +323,12 @@ public struct Encoder {
     }
     
     /**
-    Returns function to encode URL as JSON
-    
-    :parameter: key Key used to create JSON property
-    
-    :returns: Function encoding URL to optional JSON
-    */
+     Encodes a URL to JSON.
+     
+     - parameter key: Key used in JSON for decoded value.
+     
+     - returns: JSON encoded from value.
+     */
     public static func encodeURL(key: String) -> NSURL? -> JSON? {
         return {
             url in
