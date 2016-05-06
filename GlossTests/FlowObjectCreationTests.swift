@@ -51,7 +51,7 @@ class FlowObjectCreationTests: XCTestCase {
     }
     
     func testObjectDecodedFromJSONHasCorrectProperties() {
-        let result = TestModel.init(json: testJSON!)!
+        let result = TestModel(json: testJSON!)!
         
         XCTAssertTrue((result.bool == true), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.boolArray! == [true, false, true]), "Model created from JSON should have correct property values")
@@ -63,6 +63,10 @@ class FlowObjectCreationTests: XCTestCase {
         XCTAssertTrue((result.doubleArray! == [4.0, 5.0, 6.0]), "Model created from JSON should have correct property values")
         XCTAssertTrue(result.dictionary!["otherModel"]!.id! == 789, "Model created from JSON should have correct property values")
         XCTAssertTrue(result.dictionary!["otherModel"]!.name! == "otherModel1", "Model created from JSON should have correct property values")
+        XCTAssertTrue(result.dictionaryWithArray!["otherModels"]![0].id! == 123, "Model created from JSON should have correct property values")
+        XCTAssertTrue(result.dictionaryWithArray!["otherModels"]![0].name! == "otherModel1", "Model created from JSON should have correct property values")
+        XCTAssertTrue(result.dictionaryWithArray!["otherModels"]![1].id! == 456, "Model created from JSON should have correct property values")
+        XCTAssertTrue(result.dictionaryWithArray!["otherModels"]![1].name! == "otherModel2", "Model created from JSON should have correct property values")
         XCTAssertTrue((result.string == "abc"), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.stringArray! == ["def", "ghi", "jkl"]), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.enumValue == TestModel.EnumValue.A), "Model created from JSON should have correct property values")
@@ -70,6 +74,8 @@ class FlowObjectCreationTests: XCTestCase {
         XCTAssertTrue((TestModel.dateFormatter.stringFromDate(result.date!) == "2015-08-16T20:51:46.600Z"), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.dateArray!.map { date in TestModel.dateFormatter.stringFromDate(date) }) == ["2015-08-16T20:51:46.600Z", "2015-08-16T20:51:46.600Z"], "Model created from JSON should have correct property values")
         XCTAssertTrue((result.dateISO8601 == NSDate(timeIntervalSince1970: 1439071033)), "Model created from JSON should have correct property values")
+        XCTAssertTrue((result.int32 == 100000000), "Model created from JSON should have correct property values")
+        XCTAssertTrue((result.int64 == 300000000), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.dateISO8601Array!.map { date in date.timeIntervalSince1970 }) == [1439071033, 1439071033], "Model created from JSON should have correct property values")
         XCTAssertTrue((result.url?.absoluteString == "http://github.com"), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.urlArray?.map { url in url.absoluteString })! == ["http://github.com", "http://github.com", "http://github.com"], "Model created from JSON should have correct property values")

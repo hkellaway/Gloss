@@ -160,7 +160,23 @@ class DecoderTests: XCTestCase {
         let name = model!.name
         
         XCTAssertTrue((id == 789), "Decode Dictionary should return correct value")
-        XCTAssertTrue((name == "otherModel1"), "Decode Dictionar should return correct value")
+        XCTAssertTrue((name == "otherModel1"), "Decode Dictionary should return correct value")
+    }
+    
+    func testDecodeDictionaryWithArray() {
+        let result: [String : [TestNestedModel]]? = Decoder.decodeDecodableDictionary("dictionaryWithArray")(testJSON!)
+        let model1: TestNestedModel? = result!["otherModels"]![0]
+        let model2: TestNestedModel? = result!["otherModels"]![1]
+        
+        let id1 = model1!.id
+        let name1 = model1!.name
+        let id2 = model2!.id
+        let name2 = model2!.name
+        
+        XCTAssertTrue((id1 == 123), "Decode Dictionary should return correct value")
+        XCTAssertTrue((name1 == "otherModel1"), "Decode Dictionary should return correct value")
+        XCTAssertTrue((id2 == 456), "Decode Dictionary should return correct value")
+        XCTAssertTrue((name2 == "otherModel2"), "Decode Dictionary should return correct value")
     }
     
     func testDecodeString() {
@@ -278,6 +294,18 @@ class DecoderTests: XCTestCase {
         
         XCTAssertTrue(timeInterval1 == 1439071033, "Decode NSDate array should return correct value")
         XCTAssertTrue(timeInterval2 == 1439071033, "Decode NSDate array should return correct value")
+    }
+
+    func testDecodeInt32() {
+        let result: Int32? = Decoder.decodeInt32("int32")(testJSON!)
+        
+        XCTAssertTrue((result == 100000000), "Decode Int32 should return correct value")
+    }
+    
+    func testDecodeInt64() {
+        let result: Int64? = Decoder.decodeInt64("int64")(testJSON!)
+        
+        XCTAssertTrue((result == 300000000), "Decode Int64 should return correct value")
     }
     
     func testDecodeURL() {

@@ -110,11 +110,23 @@ class EncoderTests: XCTestCase {
     }
     
     func testEncodeEncodableDictionary() {
-        let result: JSON? = Encoder.encodeEncodableDictionary("dictionary")(["model1":testNestedModel1!])
-     
-        let dictionary = result!["dictionary"] as! [String:[String:AnyObject]]
+        let result: JSON? = Encoder.encodeEncodableDictionary("dictionary")(["model1" : testNestedModel1!])
+        let dictionary = result!["dictionary"] as! [String : [String : AnyObject]]
+        
         XCTAssertTrue(dictionary["model1"]!["id"] as! Int == 1, "Encode Dictionary should return correct value")
         XCTAssertTrue(dictionary["model1"]!["name"] as! String == "nestedModel1", "Encode Dictionary should return correct value")
+    }
+    
+    func testEncodeEncodableDictionaryWithArray() {
+        let result: JSON? = Encoder.encodeEncodableDictionary("dictionaryWithArray")(["models" : [testNestedModel1!, testNestedModel2!]])
+        let dictionary = result!["dictionaryWithArray"] as! [String : [AnyObject]]
+        let json1 = dictionary["models"]![0] as! JSON
+        let json2 = dictionary["models"]![1] as! JSON
+        
+        XCTAssertTrue(json1["id"] as! Int == 1, "Encode Dictionary should return correct value")
+        XCTAssertTrue(json1["name"] as! String == "nestedModel1", "Encode Dictionary should return correct value")
+        XCTAssertTrue(json2["id"] as! Int == 2, "Encode Dictionary should return correct value")
+        XCTAssertTrue(json2["name"] as! String == "nestedModel2", "Encode Dictionary should return correct value")
     }
 
     func testEncodeString() {
@@ -207,6 +219,20 @@ class EncoderTests: XCTestCase {
         
         XCTAssertTrue(resultDate1?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate array should return correct value")
         XCTAssertTrue(resultDate2?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate array should return correct value")
+    }
+    
+    func testEncodeInt32() {
+        let int32: Int32? =  100000000
+        let result: JSON? = Encoder.encodeInt32("int32")(int32)
+        
+        XCTAssertTrue(((result!["int32"] as! NSNumber).intValue == 100000000), "Encode Int32 should return correct value")
+    }
+    
+    func testEncodeInt64() {
+        let int64: Int64? =  300000000
+        let result: JSON? = Encoder.encodeInt64("int64")(int64)
+        
+        XCTAssertTrue(((result!["int64"] as! NSNumber).longLongValue == 300000000), "Encode Int64 should return correct value")
     }
     
     func testEncodeURL() {

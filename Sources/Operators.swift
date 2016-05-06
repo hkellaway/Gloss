@@ -28,125 +28,281 @@ import Foundation
 // MARK: - Operator <~~ (Decode)
 
 /**
-Decode custom operator
+Decode custom operator.
 */
 infix operator <~~ { associativity left precedence 150 }
 
 /**
-Convenience operator for decoding JSON to generic value
-*/
+Convenience operator for decoding JSON to generic value.
+ 
+ - parameter key:  JSON key for value to decode.
+ - parameter json: JSON.
+ 
+ - returns: Decoded value when successful, nil otherwise.
+ */
 public func <~~ <T>(key: String, json: JSON) -> T? {
     return Decoder.decode(key)(json)
 }
 
 /**
-Convenience operator for decoding JSON to Decodable object
-*/
+ Convenience operator for decoding JSON to Decodable object.
+ 
+ - parameter key:  JSON key for value to decode.
+ - parameter json: JSON.
+ 
+ - returns: Decoded value when successful, nil otherwise.
+ */
 public func <~~ <T: Decodable>(key: String, json: JSON) -> T? {
     return Decoder.decodeDecodable(key)(json)
 }
 
 /**
-Convenience operator for decoding JSON to enum value
-*/
-public func <~~ <T: RawRepresentable>(key: String, json: JSON) -> T? {
-    return Decoder.decodeEnum(key)(json)
-}
-
-/**
-Convenience operator for decoding JSON to NSURL
-*/
-public func <~~ (key: String, json: JSON) -> NSURL? {
-    return Decoder.decodeURL(key)(json)
-}
-
-/**
-Convenience operator for decoding JSON to array of enum values
-*/
-public func <~~ <T: RawRepresentable>(key: String, json: JSON) -> [T]? {
-    return Decoder.decodeEnumArray(key)(json)
-}
-
-/**
-Convenience operator for decoding JSON to array of Decodable objects
-*/
+ Convenience operator for decoding JSON to array of Decodable objects.
+ 
+ - parameter key:  JSON key for value to decode.
+ - parameter json: JSON.
+ 
+ - returns: Decoded value when successful, nil otherwise.
+ */
 public func <~~ <T: Decodable>(key: String, json: JSON) -> [T]? {
     return Decoder.decodeDecodableArray(key)(json)
 }
 
 /**
- Convenience operator for decoding JSON to array of URLs
- */
-public func <~~ (key: String, json: JSON) -> [NSURL]? {
-    return Decoder.decodeURLArray(key)(json)
-}
-
-/**
- Convenience operator for decoding JSON to Dictionary of String, Decodable objects
+ Convenience operator for decoding JSON to dictionary of String to Decodable.
+ 
+ - parameter key:  JSON key for value to decode.
+ - parameter json: JSON.
+ 
+ - returns: Decoded value when successful, nil otherwise.
  */
 public func <~~ <T: Decodable>(key: String, json: JSON) -> [String : T]? {
     return Decoder.decodeDecodableDictionary(key)(json)
 }
 
+/**
+ Convenience operator for decoding JSON to dictionary of String to Decodable array.
+ 
+ - parameter key:  JSON key for value to decode.
+ - parameter json: JSON.
+ 
+ - returns: Decoded value when successful, nil otherwise.
+ */
+public func <~~ <T: Decodable>(key: String, json: JSON) -> [String : [T]]? {
+    return Decoder.decodeDecodableDictionary(key)(json)
+}
+
+/**
+ Convenience operator for decoding JSON to enum value.
+ 
+ - parameter key:  JSON key for value to decode.
+ - parameter json: JSON.
+ 
+ - returns: Decoded value when successful, nil otherwise.
+ */
+public func <~~ <T: RawRepresentable>(key: String, json: JSON) -> T? {
+    return Decoder.decodeEnum(key)(json)
+}
+
+/**
+ Convenience operator for decoding JSON to array of enum values.
+ 
+ - parameter key:  JSON key for value to decode.
+ - parameter json: JSON.
+ 
+ - returns: Decoded value when successful, nil otherwise.
+ */
+public func <~~ <T: RawRepresentable>(key: String, json: JSON) -> [T]? {
+    return Decoder.decodeEnumArray(key)(json)
+}
+
+/**
+ Convenience operator for decoding JSON to Int32.
+ 
+ - parameter key:  JSON key for value to decode.
+ - parameter json: JSON.
+ 
+ - returns: Decoded value when successful, nil otherwise.
+ */
+public func <~~ (key: String, json: JSON) -> Int32? {
+    return Decoder.decodeInt32(key)(json)
+}
+
+/**
+ Convenience operator for decoding JSON to Int64.
+ 
+ - parameter key:  JSON key for value to decode.
+ - parameter json: JSON.
+ 
+ - returns: Decoded value when successful, nil otherwise.
+ */
+public func <~~ (key: String, json: JSON) -> Int64? {
+    return Decoder.decodeInt64(key)(json)
+}
+
+/**
+ Convenience operator for decoding JSON to URL.
+ 
+ - parameter key:  JSON key for value to decode.
+ - parameter json: JSON.
+ 
+ - returns: Decoded value when successful, nil otherwise.
+ */
+public func <~~ (key: String, json: JSON) -> NSURL? {
+    return Decoder.decodeURL(key)(json)
+}
+
+/**
+ Convenience operator for decoding JSON to array of URLs.
+ 
+ - parameter key:  JSON key for value to decode.
+ - parameter json: JSON.
+ 
+ - returns: Decoded value when successful, nil otherwise.
+ */
+public func <~~ (key: String, json: JSON) -> [NSURL]? {
+    return Decoder.decodeURLArray(key)(json)
+}
+
 // MARK: - Operator ~~> (Encode)
 
 /**
-Encode custom operator
+Encode custom operator.
 */
 infix operator ~~> { associativity left precedence 150 }
 
 /**
 Convenience operator for encoding generic value to JSON
 */
+
+/**
+ Convenience operator for encoding a generic value to JSON.
+ 
+ - parameter key:      JSON key for value to encode.
+ - parameter property: Object to encode to JSON.
+ 
+ - returns: JSON when successful, nil otherwise.
+ */
 public func ~~> <T>(key: String, property: T?) -> JSON? {
     return Encoder.encode(key)(property)
 }
 
 /**
-Convenience operator for encoding Encodable object to JSON
-*/
-public func ~~> <T: Encodable>(key: String, property: T?) -> JSON? {
-    return Encoder.encodeEncodable(key)(property)
-}
-
-/**
-Convenience operator for encoding enum value to JSON
-*/
-public func ~~> <T: RawRepresentable>(key: String, property: T?) -> JSON? {
-    return Encoder.encodeEnum(key)(property)
-}
-
-/**
-Convenience operator for encoding NSURL to JSON
-*/
-public func ~~> (key: String, property: NSURL?) -> JSON? {
-    return Encoder.encodeURL(key)(property)
-}
-
-/**
-Convenience operator for encoding array of generic objects to JSON
-*/
+ Convenience operator for encoding an array of generic values to JSON.
+ 
+ - parameter key:      JSON key for value to encode.
+ - parameter property: Object to encode to JSON.
+ 
+ - returns: JSON when successful, nil otherwise.
+ */
 public func ~~> <T>(key: String, property: [T]?) -> JSON? {
     return Encoder.encodeArray(key)(property)
 }
 
 /**
-Convenience operator for encoding array of Encodable objects to JSON
-*/
+ Convenience operator for encoding an Encodable object to JSON.
+ 
+ - parameter key:      JSON key for value to encode.
+ - parameter property: Object to encode to JSON.
+ 
+ - returns: JSON when successful, nil otherwise.
+ */
+public func ~~> <T: Encodable>(key: String, property: T?) -> JSON? {
+    return Encoder.encodeEncodable(key)(property)
+}
+
+/**
+ Convenience operator for encoding an array of Encodable objects to JSON.
+ 
+ - parameter key:      JSON key for value to encode.
+ - parameter property: Object to encode to JSON.
+ 
+ - returns: JSON when successful, nil otherwise.
+ */
 public func ~~> <T: Encodable>(key: String, property: [T]?) -> JSON? {
     return Encoder.encodeEncodableArray(key)(property)
 }
 
 /**
-Convenience operator for encoding array of enum values to JSON
-*/
+ Convenience operator for encoding a dictionary of String to Encodable to JSON.
+ 
+ - parameter key:      JSON key for value to encode.
+ - parameter property: Object to encode to JSON.
+ 
+ - returns: JSON when successful, nil otherwise.
+ */
+public func ~~> <T: Encodable>(key: String, property: [String : T]?) -> JSON? {
+    return Encoder.encodeEncodableDictionary(key)(property)
+}
+
+/**
+ Convenience operator for encoding a dictionary of String to Encodable array to JSON.
+ 
+ - parameter key:      JSON key for value to encode.
+ - parameter property: Object to encode to JSON.
+ 
+ - returns: JSON when successful, nil otherwise.
+ */
+public func ~~> <T: Encodable>(key: String, property: [String : [T]]?) -> JSON? {
+    return Encoder.encodeEncodableDictionary(key)(property)
+}
+
+/**
+ Convenience operator for encoding an enum value to JSON.
+ 
+ - parameter key:      JSON key for value to encode.
+ - parameter property: Object to encode to JSON.
+ 
+ - returns: JSON when successful, nil otherwise.
+ */
+public func ~~> <T: RawRepresentable>(key: String, property: T?) -> JSON? {
+    return Encoder.encodeEnum(key)(property)
+}
+
+/**
+ Convenience operator for encoding an array of enum values to JSON.
+ 
+ - parameter key:      JSON key for value to encode.
+ - parameter property: Object to encode to JSON.
+ 
+ - returns: JSON when successful, nil otherwise.
+ */
 public func ~~> <T: RawRepresentable>(key: String, property: [T]?) -> JSON? {
     return Encoder.encodeEnumArray(key)(property)
 }
 
 /**
- Convenience operator for encoding dictionary of Encodable objects to JSON
+ Convenience operator for encoding an Int32 to JSON.
+ 
+ - parameter key:      JSON key for value to encode.
+ - parameter property: Object to encode to JSON.
+ 
+ - returns: JSON when successful, nil otherwise.
  */
-public func ~~> <T: Encodable>(key: String, property: [String : T]?) -> JSON? {
-    return Encoder.encodeEncodableDictionary(key)(property)
+public func ~~> (key: String, property: Int32?) -> JSON? {
+    return Encoder.encodeInt32(key)(property)
+}
+
+/**
+ Convenience operator for encoding an Int64 to JSON.
+ 
+ - parameter key:      JSON key for value to encode.
+ - parameter property: Object to encode to JSON.
+ 
+ - returns: JSON when successful, nil otherwise.
+ */
+public func ~~> (key: String, property: Int64?) -> JSON? {
+    return Encoder.encodeInt64(key)(property)
+}
+
+/**
+ Convenience operator for encoding a URL to JSON.
+ 
+ - parameter key:      JSON key for value to encode.
+ - parameter property: Object to encode to JSON.
+ 
+ - returns: JSON when successful, nil otherwise.
+ */
+public func ~~> (key: String, property: NSURL?) -> JSON? {
+    return Encoder.encodeURL(key)(property)
 }
