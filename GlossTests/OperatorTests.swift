@@ -381,12 +381,32 @@ class OperatorTests: XCTestCase {
         XCTAssertTrue((((result!["int32"] as! NSNumber)).intValue == ((encoderResult!["int32"] as! NSNumber)).intValue), "~~> for url should return same as Encoder.encodeInt32")
     }
     
+    func testEncodeOperatorInt32ArrayReturnsEncoderEncodeInt32Array() {
+        let int32Array: [Int32]? = [10000000, 10000000, 10000000]
+        let result: JSON? = "int32Array" ~~> int32Array
+        let encoderResult: JSON? = Encoder.encodeInt32Array("int32Array")(int32Array)
+        let resultValue = result!["int32Array"] as! [NSNumber]
+        let encoderResultValue = encoderResult!["int32Array"] as! [NSNumber]
+        
+        XCTAssertTrue(resultValue == encoderResultValue, "~~> for url should return same as Encoder.encodeInt32Array")
+    }
+    
     func testEncodeOperatorInt64ReturnsEncoderEncodeInt64() {
         let int64: Int64? = 30000000
         let result: JSON? = "int64" ~~> int64
         let encoderResult: JSON? = Encoder.encodeInt64("int64")(int64)
         
         XCTAssertTrue((((result!["int64"] as! NSNumber)).longLongValue == ((encoderResult!["int64"] as! NSNumber)).longLongValue), "~~> for url should return same as Encoder.encodeInt64")
+    }
+    
+    func testEncodeOperatorInt64ArrayReturnsEncoderEncodeInt64Array() {
+        let int64Array: [Int64]? = [30000000, 30000000, 30000000]
+        let result: JSON? = "int64Array" ~~> int64Array
+        let encoderResult: JSON? = Encoder.encodeInt64Array("int64Array")(int64Array)
+        let resultValue = result!["int64Array"] as! [NSNumber]
+        let encoderResultValue = encoderResult!["int64Array"] as! [NSNumber]
+        
+        XCTAssertTrue(resultValue == encoderResultValue, "~~> for url should return same as Encoder.encodeInt64Array")
     }
     
     func testEncodeOperatorURLReturnsEncoderEncodeURL() {

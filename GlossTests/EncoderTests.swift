@@ -228,11 +228,25 @@ class EncoderTests: XCTestCase {
         XCTAssertTrue(((result!["int32"] as! NSNumber).intValue == 100000000), "Encode Int32 should return correct value")
     }
     
+    func testEncodeInt32Array() {
+        let int32Array: [Int32]? =  [100000000, 100000000, 100000000]
+        let result: JSON? = Encoder.encodeInt32Array("int32Array")(int32Array)
+        
+        XCTAssertTrue(((result!["int32Array"] as! [NSNumber]).map { $0.intValue } == [100000000, 100000000, 100000000]), "Encode Int32 array should return correct value")
+    }
+    
     func testEncodeInt64() {
         let int64: Int64? =  300000000
         let result: JSON? = Encoder.encodeInt64("int64")(int64)
         
         XCTAssertTrue(((result!["int64"] as! NSNumber).longLongValue == 300000000), "Encode Int64 should return correct value")
+    }
+    
+    func testEncodeInt64Array() {
+        let int64Array: [Int64]? =  [300000000, 300000000, 300000000]
+        let result: JSON? = Encoder.encodeInt64Array("int64Array")(int64Array)
+        
+        XCTAssertTrue(((result!["int64Array"] as! [NSNumber]).map { $0.longLongValue } == [300000000, 300000000, 300000000]), "Encode Int64 array should return correct value")
     }
     
     func testEncodeURL() {
