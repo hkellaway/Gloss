@@ -463,6 +463,10 @@ The `<~~` operator is simply syntactic sugar for a set of `Decoder.decode` funct
 * Dictionaries of `Decodable` models (`Decoder.decodeDecodableDictionary`)
 * Enum types (`Decoder.decodeEnum`)
 * Enum arrays (`Decoder.decodeEnumArray`)
+* Int32 types (`Decoder.decodeInt32`)
+* Int32 arrays (`Decoder.decodeInt32Array`)
+* Int64 types (`Decoder.decodeInt64`)
+* Int64 array (`Decoder.decodeInt64Array`)
 * `NSURL` types (`Decoder.decodeURL`)
 * `NSURL` arrays (`Decode.decodeURLArray`)
 
@@ -477,6 +481,10 @@ The `~~>` operator is simply syntactic sugar for a set of `Encoder.encode` funct
 * Dictionaries of `Encodable` models (`Encoder.encodeEncodableDictionary`)
 * Enum types (`Encoder.encodeEnum`)
 * Enum arrays (`Encoder.encodeEnumArray`)
+* Int32 types (`Encoder.encodeInt32`)
+* Int32 arrays (`Encoder.encodeInt32Array`)
+* Int64 types (`Encoder.encodeInt64`)
+* Int64 arrays (`Encoder.encodeInt64Array`)
 * `NSURL` types (`Encoder.encodeURL`)
 
 ### Gloss Protocols
@@ -489,7 +497,7 @@ The `Glossy` protocol depicted in the examples is simply a convenience for defin
 
 ## Why "Gloss"?
 
-The name for Gloss was inspired by the name for a popular Objective-C library, [Mantle](https://github.com/Mantle/Mantle) - both names are a play on the word "layer", in reference to their role in defining the model layer of the application.
+The name for Gloss was inspired by the name for a popular Objective-C library, [Mantle](https://github.com/Mantle/Mantle) - both names are a play on the word "layer", in reference to their role in supporting the model layer of the application.
 
 The particular word "gloss" was chosen as it evokes both being lightweight and adding beauty.
 
