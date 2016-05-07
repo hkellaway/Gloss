@@ -129,6 +129,18 @@ public func <~~ (key: String, json: JSON) -> Int32? {
 }
 
 /**
+ Convenience operator for decoding JSON to Int32 array.
+ 
+ - parameter key:  JSON key for value to decode.
+ - parameter json: JSON.
+ 
+ - returns: Decoded value when successful, nil otherwise.
+ */
+public func <~~ (key: String, json: JSON) -> [Int32]? {
+    return Decoder.decodeInt32Array(key)(json)
+}
+
+/**
  Convenience operator for decoding JSON to Int64.
  
  - parameter key:  JSON key for value to decode.
@@ -138,6 +150,18 @@ public func <~~ (key: String, json: JSON) -> Int32? {
  */
 public func <~~ (key: String, json: JSON) -> Int64? {
     return Decoder.decodeInt64(key)(json)
+}
+
+/**
+ Convenience operator for decoding JSON to Int64 array.
+ 
+ - parameter key:  JSON key for value to decode.
+ - parameter json: JSON.
+ 
+ - returns: Decoded value when successful, nil otherwise.
+ */
+public func <~~ (key: String, json: JSON) -> [Int64]? {
+    return Decoder.decodeInt64Array(key)(json)
 }
 
 /**
@@ -284,6 +308,18 @@ public func ~~> (key: String, property: Int32?) -> JSON? {
 }
 
 /**
+ Convenience operator for encoding an Int32 array to JSON.
+ 
+ - parameter key:      JSON key for value to encode.
+ - parameter property: Object to encode to JSON.
+ 
+ - returns: JSON when successful, nil otherwise.
+ */
+public func ~~> (key: String, property: [Int32]?) -> JSON? {
+    return Encoder.encodeInt32Array(key)(property)
+}
+
+/**
  Convenience operator for encoding an Int64 to JSON.
  
  - parameter key:      JSON key for value to encode.
@@ -293,6 +329,18 @@ public func ~~> (key: String, property: Int32?) -> JSON? {
  */
 public func ~~> (key: String, property: Int64?) -> JSON? {
     return Encoder.encodeInt64(key)(property)
+}
+
+/**
+ Convenience operator for encoding an Int64 array to JSON.
+ 
+ - parameter key:      JSON key for value to encode.
+ - parameter property: Object to encode to JSON.
+ 
+ - returns: JSON when successful, nil otherwise.
+ */
+public func ~~> (key: String, property: [Int64]?) -> JSON? {
+    return Encoder.encodeInt64Array(key)(property)
 }
 
 /**
