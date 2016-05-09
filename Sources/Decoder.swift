@@ -296,6 +296,28 @@ public struct Decoder {
     }
     
     /**
+     Decodes JSON to an Int32 array.
+     
+     - parameter              key: Key used in JSON for decoded value.
+     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     
+     - returns: Value decoded from JSON.
+     */
+    public static func decodeInt32Array(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [Int32]? {
+        return {
+            json in
+            
+            if let numbers = json[key] as? [NSNumber] {
+                let ints: [Int32] = numbers.map { $0.intValue }
+                
+                return ints
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
      Decodes JSON to an Int64.
      
      - parameter              key: Key used in JSON for decoded value.
@@ -309,6 +331,28 @@ public struct Decoder {
             
             if let number = json[key] as? NSNumber {
                 return number.longLongValue
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
+     Decodes JSON to an Int64 array.
+     
+     - parameter              key: Key used in JSON for decoded value.
+     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     
+     - returns: Value decoded from JSON.
+     */
+    public static func decodeInt64Array(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [Int64]? {
+        return {
+            json in
+            
+            if let numbers = json[key] as? [NSNumber] {
+                let ints: [Int64] = numbers.map { $0.longLongValue }
+                
+                return ints
             }
             
             return nil

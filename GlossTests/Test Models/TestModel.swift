@@ -48,7 +48,9 @@ struct TestModel: Glossy {
     let dateISO8601: NSDate?
     let dateISO8601Array: [NSDate]?
     let int32: Int32?
+    let int32Array: [Int32]?
     let int64: Int64?
+    let int64Array: [Int64]?
     let url: NSURL?
     let urlArray: [NSURL]?
     
@@ -86,7 +88,9 @@ struct TestModel: Glossy {
         self.dateISO8601 = Decoder.decodeDateISO8601("dateISO8601")(json)
         self.dateISO8601Array = Decoder.decodeDateISO8601Array("dateISO8601Array")(json)
         self.int32 = "int32" <~~ json
+        self.int32Array = "int32Array" <~~ json
         self.int64 = "int64" <~~ json
+        self.int64Array = "int64Array" <~~ json
         self.url = "url" <~~ json
         self.urlArray = "urlArray" <~~ json
     }
@@ -116,7 +120,9 @@ struct TestModel: Glossy {
             Encoder.encodeDateISO8601("dateISO8601")(self.dateISO8601),
             Encoder.encodeDateISO8601Array("dateISO8601Array")(self.dateISO8601Array),
             "int32" ~~> self.int32,
+            "int32Array" ~~> self.int32Array,
             "int64" ~~> self.int64,
+            "int64Array" ~~> self.int64Array,
             "url" ~~> self.url,
             "urlArray" ~~> self.urlArray
             ])

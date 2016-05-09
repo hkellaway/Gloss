@@ -304,6 +304,27 @@ public struct Encoder {
     }
     
     /**
+     Encodes an Int32 array to JSON.
+     
+     - parameter key: Key used in JSON for decoded value.
+     
+     - returns: JSON encoded from value.
+     */
+    public static func encodeInt32Array(key: String) -> [Int32]? -> JSON? {
+        return {
+            int32Array in
+            
+            if let int32Array = int32Array {
+                let numbers: [NSNumber] = int32Array.map { NSNumber(int: $0) }
+                
+                return [key : numbers]
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
      Encodes an Int64 to JSON.
      
      - parameter key: Key used in JSON for decoded value.
@@ -316,6 +337,27 @@ public struct Encoder {
             
             if let int64 = int64 {
                 return [key : NSNumber(longLong: int64)]
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
+     Encodes an Int64 array to JSON.
+     
+     - parameter key: Key used in JSON for decoded value.
+     
+     - returns: JSON encoded from value.
+     */
+    public static func encodeInt64Array(key: String) -> [Int64]? -> JSON? {
+        return {
+            int64Array in
+            
+            if let int64Array = int64Array {
+                let numbers: [NSNumber] = int64Array.map { NSNumber(longLong: $0) }
+                
+                return [key : numbers]
             }
             
             return nil
