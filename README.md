@@ -516,21 +516,28 @@ Check out Gloss in these cool places!
 #### Posts
 
 * [Ray Wenderlich | Swift Tutorial: Working with JSON](http://www.raywenderlich.com/120442/swift-json-tutorial)
-* [The iOS Times](http://theiostimes.com/year-01-issue-12.html)
-* [Swift Sandbox](http://swiftsandbox.io/issues/3#b1RJwo2)
-* [iOS Goodies](http://ios-goodies.com/post/127166753231/week-93)
-* [awesome-ios](https://github.com/vsouza/awesome-ios#json)
-* [awesome-swift](https://github.com/matteocrippa/awesome-swift#json)
-
-#### Products
-
-* [Drift](http://www.drift.com) ([iOS SDK](https://github.com/Driftt/drift-sdk-ios))
-* [Skiplagged](http://skiplagged.com) ([iOS SDK](https://github.com/bulusoy/Skiplagged))
 
 #### Libraries
 
 * [Moya-Gloss](https://github.com/spxrogers/Moya-Gloss)
 * [Restofire-Gloss](https://github.com/Restofire/Restofire-Gloss)
+
+#### Newsletters
+
+* [The iOS Times](http://theiostimes.com/year-01-issue-12.html)
+* [Swift Sandbox](http://swiftsandbox.io/issues/3#b1RJwo2)
+* [iOS Goodies](http://ios-goodies.com/post/127166753231/week-93)
+
+#### SDKs/Products
+
+* [AniList](http://anilist.co) ([iOS SDK](https://github.com/CodeEagle/AniList))
+* [Drift](http://www.drift.com) ([iOS SDK](https://github.com/Driftt/drift-sdk-ios))
+* [Phillips Hue](http://www2.meethue.com/en-US) ([iOS SDK](https://github.com/Spriter/SwiftyHue))
+* [Skiplagged](http://skiplagged.com) ([iOS SDK] (https://github.com/bulusoy/Skiplagged))
+
+#### Tools
+
+* [JSON Export](https://github.com/Ahmed-Ali/JSONExport) - generate Gloss models from JSON
 
 Using Gloss in your app? [Let me know.](mailto:hello@harlankellaway.com?subject=Using Gloss in my app)
 
