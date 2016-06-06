@@ -316,13 +316,55 @@ public struct Decoder {
             return nil
         }
     }
-    
+
+	/**
+	Decodes JSON to an UInt32.
+
+	- parameter              key: Key used in JSON for decoded value.
+	- parameter keyPathDelimiter: Delimiter used for nested key path.
+
+	- returns: Value decoded from JSON.
+	*/
+	public static func decodeUInt32(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> UInt32? {
+		return {
+			json in
+
+			if let number = json[key] as? NSNumber {
+				return number.unsignedIntValue
+			}
+
+			return nil
+		}
+	}
+
+	/**
+	Decodes JSON to an UInt32 array.
+
+	- parameter              key: Key used in JSON for decoded value.
+	- parameter keyPathDelimiter: Delimiter used for nested key path.
+
+	- returns: Value decoded from JSON.
+	*/
+	public static func decodeUInt32Array(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [UInt32]? {
+		return {
+			json in
+
+			if let numbers = json[key] as? [NSNumber] {
+				let uints: [UInt32] = numbers.map { $0.unsignedIntValue }
+
+				return uints
+			}
+
+			return nil
+		}
+	}
+
     /**
      Decodes JSON to an Int64.
-     
+
      - parameter              key: Key used in JSON for decoded value.
      - parameter keyPathDelimiter: Delimiter used for nested key path.
-     
+
      - returns: Value decoded from JSON.
      */
     public static func decodeInt64(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> Int64? {
@@ -358,13 +400,55 @@ public struct Decoder {
             return nil
         }
     }
-    
+
+	/**
+	Decodes JSON to an UInt64.
+
+	- parameter              key: Key used in JSON for decoded value.
+	- parameter keyPathDelimiter: Delimiter used for nested key path.
+
+	- returns: Value decoded from JSON.
+	*/
+	public static func decodeUInt64(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> UInt64? {
+		return {
+			json in
+
+			if let number = json[key] as? NSNumber {
+				return number.unsignedLongLongValue
+			}
+
+			return nil
+		}
+	}
+
+	/**
+	Decodes JSON to an UInt64 array.
+
+	- parameter              key: Key used in JSON for decoded value.
+	- parameter keyPathDelimiter: Delimiter used for nested key path.
+
+	- returns: Value decoded from JSON.
+	*/
+	public static func decodeUInt64Array(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [UInt64]? {
+		return {
+			json in
+
+			if let numbers = json[key] as? [NSNumber] {
+				let uints: [UInt64] = numbers.map { $0.unsignedLongLongValue }
+
+				return uints
+			}
+
+			return nil
+		}
+	}
+
     /**
      Decodes JSON to a URL.
-     
+
      - parameter              key: Key used in JSON for decoded value.
      - parameter keyPathDelimiter: Delimiter used for nested key path.
-     
+
      - returns: Value decoded from JSON.
      */
     public static func decodeURL(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> NSURL? {

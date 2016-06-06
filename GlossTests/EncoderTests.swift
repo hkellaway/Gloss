@@ -229,12 +229,26 @@ class EncoderTests: XCTestCase {
     }
     
     func testEncodeInt32Array() {
-        let int32Array: [Int32]? =  [100000000, 100000000, 100000000]
+        let int32Array: [Int32]? =  [100000000, -2147483648, 2147483647]
         let result: JSON? = Encoder.encodeInt32Array("int32Array")(int32Array)
         
-        XCTAssertTrue(((result!["int32Array"] as! [NSNumber]).map { $0.intValue } == [100000000, 100000000, 100000000]), "Encode Int32 array should return correct value")
+        XCTAssertTrue(((result!["int32Array"] as! [NSNumber]).map { $0.intValue } == [100000000, -2147483648, 2147483647]), "Encode Int32 array should return correct value")
     }
-    
+
+	func testEncodeUInt32() {
+		let uInt32: UInt32? =  4294967295
+		let result: JSON? = Encoder.encodeUInt32("uInt32")(uInt32)
+
+		XCTAssertTrue(((result!["uInt32"] as! NSNumber).unsignedIntValue == 4294967295), "Encode UInt32 should return correct value")
+	}
+
+	func testEncodeUInt32Array() {
+		let uInt32Array: [UInt32]? =  [100000000, 2147483648, 4294967295]
+		let result: JSON? = Encoder.encodeUInt32Array("uInt32Array")(uInt32Array)
+
+		XCTAssertTrue(((result!["uInt32Array"] as! [NSNumber]).map { $0.unsignedIntValue } == [100000000, 2147483648, 4294967295]), "Encode UInt32 array should return correct value")
+	}
+
     func testEncodeInt64() {
         let int64: Int64? =  300000000
         let result: JSON? = Encoder.encodeInt64("int64")(int64)
@@ -243,12 +257,26 @@ class EncoderTests: XCTestCase {
     }
     
     func testEncodeInt64Array() {
-        let int64Array: [Int64]? =  [300000000, 300000000, 300000000]
+        let int64Array: [Int64]? =  [300000000, -9223372036854775808, 9223372036854775807]
         let result: JSON? = Encoder.encodeInt64Array("int64Array")(int64Array)
         
-        XCTAssertTrue(((result!["int64Array"] as! [NSNumber]).map { $0.longLongValue } == [300000000, 300000000, 300000000]), "Encode Int64 array should return correct value")
+        XCTAssertTrue(((result!["int64Array"] as! [NSNumber]).map { $0.longLongValue } == [300000000, -9223372036854775808, 9223372036854775807]), "Encode Int64 array should return correct value")
     }
-    
+
+	func testEncodeUInt64() {
+		let uInt64: UInt64? =  18446744073709551615
+		let result: JSON? = Encoder.encodeUInt64("uInt64")(uInt64)
+
+		XCTAssertTrue(((result!["uInt64"] as! NSNumber).unsignedLongLongValue == 18446744073709551615), "Encode UInt64 should return correct value")
+	}
+
+	func testEncodeUInt64Array() {
+		let uInt64Array: [UInt64]? =  [300000000, 9223372036854775808, 18446744073709551615]
+		let result: JSON? = Encoder.encodeUInt64Array("uInt64Array")(uInt64Array)
+
+		XCTAssertTrue(((result!["uInt64Array"] as! [NSNumber]).map { $0.unsignedLongLongValue } == [300000000, 9223372036854775808, 18446744073709551615]), "Encode UInt64 array should return correct value")
+	}
+
     func testEncodeURL() {
         let url: NSURL? = NSURL(string: "http://github.com")
         let result: JSON? = Encoder.encodeURL("url")(url)

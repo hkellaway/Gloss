@@ -141,6 +141,30 @@ public func <~~ (key: String, json: JSON) -> [Int32]? {
 }
 
 /**
+Convenience operator for decoding JSON to UInt32.
+
+- parameter key:  JSON key for value to decode.
+- parameter json: JSON.
+
+- returns: Decoded value when successful, nil otherwise.
+*/
+public func <~~ (key: String, json: JSON) -> UInt32? {
+	return Decoder.decodeUInt32(key)(json)
+}
+
+/**
+Convenience operator for decoding JSON to UInt32 array.
+
+- parameter key:  JSON key for value to decode.
+- parameter json: JSON.
+
+- returns: Decoded value when successful, nil otherwise.
+*/
+public func <~~ (key: String, json: JSON) -> [UInt32]? {
+	return Decoder.decodeUInt32Array(key)(json)
+}
+
+/**
  Convenience operator for decoding JSON to Int64.
  
  - parameter key:  JSON key for value to decode.
@@ -162,6 +186,30 @@ public func <~~ (key: String, json: JSON) -> Int64? {
  */
 public func <~~ (key: String, json: JSON) -> [Int64]? {
     return Decoder.decodeInt64Array(key)(json)
+}
+
+/**
+Convenience operator for decoding JSON to UInt64.
+
+- parameter key:  JSON key for value to decode.
+- parameter json: JSON.
+
+- returns: Decoded value when successful, nil otherwise.
+*/
+public func <~~ (key: String, json: JSON) -> UInt64? {
+	return Decoder.decodeUInt64(key)(json)
+}
+
+/**
+Convenience operator for decoding JSON to UInt64 array.
+
+- parameter key:  JSON key for value to decode.
+- parameter json: JSON.
+
+- returns: Decoded value when successful, nil otherwise.
+*/
+public func <~~ (key: String, json: JSON) -> [UInt64]? {
+	return Decoder.decodeUInt64Array(key)(json)
 }
 
 /**
@@ -320,6 +368,30 @@ public func ~~> (key: String, property: [Int32]?) -> JSON? {
 }
 
 /**
+Convenience operator for encoding an UInt32 to JSON.
+
+- parameter key:      JSON key for value to encode.
+- parameter property: Object to encode to JSON.
+
+- returns: JSON when successful, nil otherwise.
+*/
+public func ~~> (key: String, property: UInt32?) -> JSON? {
+	return Encoder.encodeUInt32(key)(property)
+}
+
+/**
+Convenience operator for encoding an UInt32 array to JSON.
+
+- parameter key:      JSON key for value to encode.
+- parameter property: Object to encode to JSON.
+
+- returns: JSON when successful, nil otherwise.
+*/
+public func ~~> (key: String, property: [UInt32]?) -> JSON? {
+	return Encoder.encodeUInt32Array(key)(property)
+}
+
+/**
  Convenience operator for encoding an Int64 to JSON.
  
  - parameter key:      JSON key for value to encode.
@@ -341,6 +413,30 @@ public func ~~> (key: String, property: Int64?) -> JSON? {
  */
 public func ~~> (key: String, property: [Int64]?) -> JSON? {
     return Encoder.encodeInt64Array(key)(property)
+}
+
+/**
+Convenience operator for encoding an UInt64 to JSON.
+
+- parameter key:      JSON key for value to encode.
+- parameter property: Object to encode to JSON.
+
+- returns: JSON when successful, nil otherwise.
+*/
+public func ~~> (key: String, property: UInt64?) -> JSON? {
+	return Encoder.encodeUInt64(key)(property)
+}
+
+/**
+Convenience operator for encoding an UInt64 array to JSON.
+
+- parameter key:      JSON key for value to encode.
+- parameter property: Object to encode to JSON.
+
+- returns: JSON when successful, nil otherwise.
+*/
+public func ~~> (key: String, property: [UInt64]?) -> JSON? {
+	return Encoder.encodeUInt64Array(key)(property)
 }
 
 /**
