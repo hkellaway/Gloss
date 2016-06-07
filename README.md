@@ -465,8 +465,12 @@ The `<~~` operator is simply syntactic sugar for a set of `Decoder.decode` funct
 * Enum arrays (`Decoder.decodeEnumArray`)
 * Int32 types (`Decoder.decodeInt32`)
 * Int32 arrays (`Decoder.decodeInt32Array`)
+* UInt32 types (`Decoder.decodeUInt32`)
+* UInt32 arrays (`Decoder.decodeUInt32Array`)
 * Int64 types (`Decoder.decodeInt64`)
 * Int64 array (`Decoder.decodeInt64Array`)
+* UInt64 types (`Decoder.decodeUInt64`)
+* UInt64 array (`Decoder.decodeUInt64Array`)
 * `NSURL` types (`Decoder.decodeURL`)
 * `NSURL` arrays (`Decode.decodeURLArray`)
 
@@ -483,8 +487,12 @@ The `~~>` operator is simply syntactic sugar for a set of `Encoder.encode` funct
 * Enum arrays (`Encoder.encodeEnumArray`)
 * Int32 types (`Encoder.encodeInt32`)
 * Int32 arrays (`Encoder.encodeInt32Array`)
+* UInt32 types (`Encoder.encodeUInt32`)
+* UInt32 arrays (`Encoder.encodeUInt32Array`)
 * Int64 types (`Encoder.encodeInt64`)
 * Int64 arrays (`Encoder.encodeInt64Array`)
+* UInt64 types (`Encoder.encodeUInt64`)
+* UInt64 arrays (`Encoder.encodeUInt64Array`)
 * `NSURL` types (`Encoder.encodeURL`)
 
 ### Gloss Protocols
