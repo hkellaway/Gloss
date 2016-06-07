@@ -323,12 +323,52 @@ public struct Encoder {
             return nil
         }
     }
-    
+
+	/**
+	Encodes an UInt32 to JSON.
+
+	- parameter key: Key used in JSON for decoded value.
+
+	- returns: JSON encoded from value.
+	*/
+	public static func encodeUInt32(key: String) -> UInt32? -> JSON? {
+		return {
+			uint32 in
+
+			if let uint32 = uint32 {
+				return [key : NSNumber(unsignedInt: uint32)]
+			}
+
+			return nil
+		}
+	}
+
+	/**
+	Encodes an UInt32 array to JSON.
+
+	- parameter key: Key used in JSON for decoded value.
+
+	- returns: JSON encoded from value.
+	*/
+	public static func encodeUInt32Array(key: String) -> [UInt32]? -> JSON? {
+		return {
+			uInt32Array in
+
+			if let uInt32Array = uInt32Array {
+				let numbers: [NSNumber] = uInt32Array.map { NSNumber(unsignedInt: $0) }
+
+				return [key : numbers]
+			}
+
+			return nil
+		}
+	}
+
     /**
      Encodes an Int64 to JSON.
-     
+
      - parameter key: Key used in JSON for decoded value.
-     
+
      - returns: JSON encoded from value.
      */
     public static func encodeInt64(key: String) -> Int64? -> JSON? {
@@ -363,12 +403,52 @@ public struct Encoder {
             return nil
         }
     }
-    
+
+	/**
+	Encodes an UInt64 to JSON.
+
+	- parameter key: Key used in JSON for decoded value.
+
+	- returns: JSON encoded from value.
+	*/
+	public static func encodeUInt64(key: String) -> UInt64? -> JSON? {
+		return {
+			uInt64 in
+
+			if let uInt64 = uInt64 {
+				return [key : NSNumber(unsignedLongLong: uInt64)]
+			}
+
+			return nil
+		}
+	}
+
+	/**
+	Encodes an UInt64 array to JSON.
+
+	- parameter key: Key used in JSON for decoded value.
+
+	- returns: JSON encoded from value.
+	*/
+	public static func encodeUInt64Array(key: String) -> [UInt64]? -> JSON? {
+		return {
+			uInt64Array in
+
+			if let uInt64Array = uInt64Array {
+				let numbers: [NSNumber] = uInt64Array.map { NSNumber(unsignedLongLong: $0) }
+
+				return [key : numbers]
+			}
+
+			return nil
+		}
+	}
+
     /**
      Encodes a URL to JSON.
-     
+
      - parameter key: Key used in JSON for decoded value.
-     
+
      - returns: JSON encoded from value.
      */
     public static func encodeURL(key: String) -> NSURL? -> JSON? {

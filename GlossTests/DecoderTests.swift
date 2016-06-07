@@ -305,9 +305,21 @@ class DecoderTests: XCTestCase {
     func testDecodeInt32Array() {
         let result: [Int32]? = Decoder.decodeInt32Array("int32Array")(testJSON!)
         
-        XCTAssertTrue((result! == [100000000, 100000000, 100000000]), "Decode Int32 array should return correct value")
+        XCTAssertTrue((result! == [100000000, -2147483648, 2147483647]), "Decode Int32 array should return correct value")
     }
-    
+
+	func testDecodeUInt32() {
+		let result: UInt32? = Decoder.decodeUInt32("uInt32")(testJSON!)
+
+		XCTAssertTrue((result == 4294967295), "Decode UInt32 should return correct value")
+	}
+
+	func testDecodeUInt32Array() {
+		let result: [UInt32]? = Decoder.decodeUInt32Array("uInt32Array")(testJSON!)
+
+		XCTAssertTrue((result! == [100000000, 2147483648, 4294967295]), "Decode UInt32 array should return correct value")
+	}
+
     func testDecodeInt64() {
         let result: Int64? = Decoder.decodeInt64("int64")(testJSON!)
         
@@ -317,9 +329,21 @@ class DecoderTests: XCTestCase {
     func testDecodeInt64Array() {
         let result: [Int64]? = Decoder.decodeInt64Array("int64Array")(testJSON!)
         
-        XCTAssertTrue((result! == [300000000, 300000000, 300000000]), "Decode Int64 array should return correct value")
+        XCTAssertTrue((result! == [300000000, -9223372036854775808, 9223372036854775807]), "Decode Int64 array should return correct value")
     }
-    
+
+	func testDecodeUInt64() {
+		let result: UInt64? = Decoder.decodeUInt64("uInt64")(testJSON!)
+
+		XCTAssertTrue((result == 18446744073709551615), "Decode UInt64 should return correct value")
+	}
+
+	func testDecodeUInt64Array() {
+		let result: [UInt64]? = Decoder.decodeUInt64Array("uInt64Array")(testJSON!)
+
+		XCTAssertTrue((result! == [300000000, 9223372036854775808, 18446744073709551615]), "Decode UInt64 array should return correct value")
+	}
+
     func testDecodeURL() {
         let result: NSURL? = Decoder.decodeURL("url")(testJSON!)
         
