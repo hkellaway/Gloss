@@ -39,7 +39,7 @@ To use Gloss as a [Swift Package Manager](https://swift.org/package-manager/) pa
 import PackageDescription
 
 let package = Package(
-    name: "HelloWorld",
+    name: "Gloss",
     dependencies: [
         .Package(url: "https://github.com/hkellaway/Gloss.git", majorVersion: 0)
     ]
