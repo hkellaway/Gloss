@@ -47,7 +47,7 @@ class EncoderTests: XCTestCase {
     }
     
     func testInvalidValue() {
-        let notAnyObject: NSURL? = NSURL()
+        let notAnyObject: URL? = nil
         let result: JSON? = Encoder.encode("invalid")(notAnyObject)
         
         XCTAssertTrue((result == nil), "Encode should return nil for invalid value");
@@ -180,42 +180,42 @@ class EncoderTests: XCTestCase {
     }
     
     func testEncodeDate() {
-        let date: NSDate? = TestModel.dateFormatter.dateFromString("2015-08-16T20:51:46.600Z")
+        let date: Date? = TestModel.dateFormatter.date(from: "2015-08-16T20:51:46.600Z")
         let result: JSON? = Encoder.encodeDate("date", dateFormatter: TestModel.dateFormatter)(date)
         
         XCTAssertTrue(result!["date"] as! String == "2015-08-16T20:51:46.600Z", "Encode NSDate should return correct value")
     }
     
     func testEncodeDateArray() {
-        let date: NSDate? = TestModel.dateFormatter.dateFromString("2015-08-16T20:51:46.600Z")
-        let dateArray: [NSDate]? = [date!, date!]
+        let date: Date? = TestModel.dateFormatter.date(from: "2015-08-16T20:51:46.600Z")
+        let dateArray: [Date]? = [date!, date!]
         let result: JSON? = Encoder.encodeDateArray("dateArray", dateFormatter: TestModel.dateFormatter)(dateArray)
         
         XCTAssertTrue(result!["dateArray"] as! [String] == ["2015-08-16T20:51:46.600Z", "2015-08-16T20:51:46.600Z"], "Encode NSDate array should return correct value")
     }
     
     func testEncodeDateISO8601() {
-        let dateISO8601: NSDate? = NSDate(timeIntervalSince1970: 1439071033)
+        let dateISO8601: Date? = Date(timeIntervalSince1970: 1439071033)
         let result: JSON? = Encoder.encodeDateISO8601("dateISO8601")(dateISO8601!)
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(localeIdentifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        let resultDate = dateFormatter.dateFromString(result!["dateISO8601"] as! String)
+        let resultDate = dateFormatter.date(from: result!["dateISO8601"] as! String)
         
         XCTAssertTrue(resultDate?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate should return correct value")
     }
     
     func testEncodeDateISO8601Array() {
-        let dateISO8601: NSDate? = NSDate(timeIntervalSince1970: 1439071033)
-        let dateISO8601Array: [NSDate]? = [dateISO8601!, dateISO8601!]
+        let dateISO8601: Date? = Date(timeIntervalSince1970: 1439071033)
+        let dateISO8601Array: [Date]? = [dateISO8601!, dateISO8601!]
         let result: JSON? = Encoder.encodeDateISO8601Array("dateISO8601Array")(dateISO8601Array!)
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(localeIdentifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        let resultDate1 = dateFormatter.dateFromString(result!["dateISO8601Array"]![0] as! String)
-        let resultDate2 = dateFormatter.dateFromString(result!["dateISO8601Array"]![1] as! String)
+        let resultDate1 = dateFormatter.date(from: result!["dateISO8601Array"]![0] as! String)
+        let resultDate2 = dateFormatter.date(from: result!["dateISO8601Array"]![1] as! String)
         
         XCTAssertTrue(resultDate1?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate array should return correct value")
         XCTAssertTrue(resultDate2?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate array should return correct value")
@@ -239,58 +239,58 @@ class EncoderTests: XCTestCase {
 		let uInt32: UInt32? =  4294967295
 		let result: JSON? = Encoder.encodeUInt32("uInt32")(uInt32)
 
-		XCTAssertTrue(((result!["uInt32"] as! NSNumber).unsignedIntValue == 4294967295), "Encode UInt32 should return correct value")
+		XCTAssertTrue(((result!["uInt32"] as! NSNumber).uint32Value == 4294967295), "Encode UInt32 should return correct value")
 	}
 
 	func testEncodeUInt32Array() {
 		let uInt32Array: [UInt32]? =  [100000000, 2147483648, 4294967295]
 		let result: JSON? = Encoder.encodeUInt32Array("uInt32Array")(uInt32Array)
 
-		XCTAssertTrue(((result!["uInt32Array"] as! [NSNumber]).map { $0.unsignedIntValue } == [100000000, 2147483648, 4294967295]), "Encode UInt32 array should return correct value")
+		XCTAssertTrue(((result!["uInt32Array"] as! [NSNumber]).map { $0.uint32Value } == [100000000, 2147483648, 4294967295]), "Encode UInt32 array should return correct value")
 	}
 
     func testEncodeInt64() {
         let int64: Int64? =  300000000
         let result: JSON? = Encoder.encodeInt64("int64")(int64)
         
-        XCTAssertTrue(((result!["int64"] as! NSNumber).longLongValue == 300000000), "Encode Int64 should return correct value")
+        XCTAssertTrue(((result!["int64"] as! NSNumber).int64Value == 300000000), "Encode Int64 should return correct value")
     }
     
     func testEncodeInt64Array() {
         let int64Array: [Int64]? =  [300000000, -9223372036854775808, 9223372036854775807]
         let result: JSON? = Encoder.encodeInt64Array("int64Array")(int64Array)
         
-        XCTAssertTrue(((result!["int64Array"] as! [NSNumber]).map { $0.longLongValue } == [300000000, -9223372036854775808, 9223372036854775807]), "Encode Int64 array should return correct value")
+        XCTAssertTrue(((result!["int64Array"] as! [NSNumber]).map { $0.int64Value } == [300000000, -9223372036854775808, 9223372036854775807]), "Encode Int64 array should return correct value")
     }
 
 	func testEncodeUInt64() {
 		let uInt64: UInt64? =  18446744073709551615
 		let result: JSON? = Encoder.encodeUInt64("uInt64")(uInt64)
 
-		XCTAssertTrue(((result!["uInt64"] as! NSNumber).unsignedLongLongValue == 18446744073709551615), "Encode UInt64 should return correct value")
+		XCTAssertTrue(((result!["uInt64"] as! NSNumber).uint64Value == 18446744073709551615), "Encode UInt64 should return correct value")
 	}
 
 	func testEncodeUInt64Array() {
 		let uInt64Array: [UInt64]? =  [300000000, 9223372036854775808, 18446744073709551615]
 		let result: JSON? = Encoder.encodeUInt64Array("uInt64Array")(uInt64Array)
 
-		XCTAssertTrue(((result!["uInt64Array"] as! [NSNumber]).map { $0.unsignedLongLongValue } == [300000000, 9223372036854775808, 18446744073709551615]), "Encode UInt64 array should return correct value")
+		XCTAssertTrue(((result!["uInt64Array"] as! [NSNumber]).map { $0.uint64Value } == [300000000, 9223372036854775808, 18446744073709551615]), "Encode UInt64 array should return correct value")
 	}
 
     func testEncodeURL() {
-        let url: NSURL? = NSURL(string: "http://github.com")
+        let url: URL? = URL(string: "http://github.com")
         let result: JSON? = Encoder.encodeURL("url")(url)
         
         XCTAssertTrue((result!["url"] as! String == "http://github.com"), "Encode NSURL should return correct value")
     }
     
     func testEncodeURLArray() {
-        let urls: [NSURL]? = [NSURL(string: "http://github.com")!, NSURL(string: "http://github.com")!]
+        let urls: [URL]? = [URL(string: "http://github.com")!, URL(string: "http://github.com")!]
         let result: JSON? = Encoder.encodeArray("urlArray")(urls)
         
-        let test = result!["urlArray"] as! [NSURL]
+        let test = result!["urlArray"] as! [URL]
         
-        XCTAssertTrue(test.map { url in url.absoluteString } == ["http://github.com", "http://github.com"], "Encode NSURL array should return correct value")
+        XCTAssertTrue(test.map { url in url.absoluteString! } == ["http://github.com", "http://github.com"], "Encode NSURL array should return correct value")
     }
 
 }

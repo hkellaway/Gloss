@@ -220,7 +220,7 @@ public func <~~ (key: String, json: JSON) -> [UInt64]? {
  
  - returns: Decoded value when successful, nil otherwise.
  */
-public func <~~ (key: String, json: JSON) -> NSURL? {
+public func <~~ (key: String, json: JSON) -> URL? {
     return Decoder.decodeURL(key)(json)
 }
 
@@ -232,7 +232,7 @@ public func <~~ (key: String, json: JSON) -> NSURL? {
  
  - returns: Decoded value when successful, nil otherwise.
  */
-public func <~~ (key: String, json: JSON) -> [NSURL]? {
+public func <~~ (key: String, json: JSON) -> [URL]? {
     return Decoder.decodeURLArray(key)(json)
 }
 
@@ -447,6 +447,6 @@ public func ~~> (key: String, property: [UInt64]?) -> JSON? {
  
  - returns: JSON when successful, nil otherwise.
  */
-public func ~~> (key: String, property: NSURL?) -> JSON? {
+public func ~~> (key: String, property: URL?) -> JSON? {
     return Encoder.encodeURL(key)(property)
 }

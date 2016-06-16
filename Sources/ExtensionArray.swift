@@ -41,7 +41,7 @@ public extension Array where Element: Decodable {
      
      - returns: Array of objects created from JSON.
      */
-    static func fromJSONArray(jsonArray: [JSON]) -> [Element] {
+    static func fromJSONArray(_ jsonArray: [JSON]) -> [Element] {
         var models: [Element] = []
         
         for json in jsonArray {
