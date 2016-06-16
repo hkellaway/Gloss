@@ -13,7 +13,7 @@ struct TestKeyPathModel: Glossy {
     
     let id: Int?
     let name: String?
-    let url: NSURL?
+    let url: URL?
     
     init?(json: JSON) {
         self.id = "id" <~~ json
