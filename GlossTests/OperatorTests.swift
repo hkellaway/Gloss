@@ -36,11 +36,11 @@ class OperatorTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let testJSONPath: NSString = NSBundle(forClass: self.dynamicType).pathForResource("TestModel", ofType: "json")!
-        let testJSONData: NSData = NSData(contentsOfFile: testJSONPath as String)!
+        let testJSONPath: NSString = Bundle(for: self.dynamicType).pathForResource("TestModel", ofType: "json")!
+        let testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
         
         do {
-            try testJSON = NSJSONSerialization.JSONObjectWithData(testJSONData, options: NSJSONReadingOptions(rawValue: 0)) as? JSON
+            try testJSON = JSONSerialization.jsonObject(with: testJSONData, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? JSON
         } catch {
             print(error)
         }
@@ -251,15 +251,15 @@ class OperatorTests: XCTestCase {
 	}
 
     func testDecodeOperatorURLReturnsDecoderDecodeURL() {
-        let result: NSURL? = "url" <~~ testJSON!
-        let decoderResult: NSURL? = Decoder.decodeURL("url")(testJSON!)
+        let result: URL? = "url" <~~ testJSON!
+        let decoderResult: URL? = Decoder.decodeURL("url")(testJSON!)
         
         XCTAssertTrue((result == decoderResult), "<~~ for url should return same as Decoder.decodeURL")
     }
     
     func testDecodeOperatorURLArrayReturnsDecoderDecodeURLArray() {
-        let result: [NSURL]? = "urlArray" <~~ testJSON!
-        let decoderResult: [NSURL]? = Decoder.decodeURLArray("urlArray")(testJSON!)
+        let result: [URL]? = "urlArray" <~~ testJSON!
+        let decoderResult: [URL]? = Decoder.decodeURLArray("urlArray")(testJSON!)
         
         XCTAssertTrue((result! == decoderResult!), "<~~ for url array should return same as Decoder.decodeURLArray")
     }
@@ -438,7 +438,7 @@ class OperatorTests: XCTestCase {
 		let result: JSON? = "uInt32" ~~> uInt32
 		let encoderResult: JSON? = Encoder.encodeUInt32("uInt32")(uInt32)
 
-		XCTAssertTrue((((result!["uInt32"] as! NSNumber)).unsignedIntValue == ((encoderResult!["uInt32"] as! NSNumber)).unsignedIntValue), "~~> for UInt32 should return same as Encoder.encodeUInt32")
+		XCTAssertTrue((((result!["uInt32"] as! NSNumber)).uint32Value == ((encoderResult!["uInt32"] as! NSNumber)).uint32Value), "~~> for UInt32 should return same as Encoder.encodeUInt32")
 	}
 
 	func testEncodeOperatorUInt32ArrayReturnsEncoderEncodeUInt32Array() {
@@ -456,7 +456,7 @@ class OperatorTests: XCTestCase {
         let result: JSON? = "int64" ~~> int64
         let encoderResult: JSON? = Encoder.encodeInt64("int64")(int64)
         
-        XCTAssertTrue((((result!["int64"] as! NSNumber)).longLongValue == ((encoderResult!["int64"] as! NSNumber)).longLongValue), "~~> for Int64 should return same as Encoder.encodeInt64")
+        XCTAssertTrue((((result!["int64"] as! NSNumber)).int64Value == ((encoderResult!["int64"] as! NSNumber)).int64Value), "~~> for Int64 should return same as Encoder.encodeInt64")
     }
     
     func testEncodeOperatorInt64ArrayReturnsEncoderEncodeInt64Array() {
@@ -474,7 +474,7 @@ class OperatorTests: XCTestCase {
 		let result: JSON? = "uInt64" ~~> uInt64
 		let encoderResult: JSON? = Encoder.encodeUInt64("uInt64")(uInt64)
 
-		XCTAssertTrue((((result!["uInt64"] as! NSNumber)).unsignedLongLongValue == ((encoderResult!["uInt64"] as! NSNumber)).unsignedLongLongValue), "~~> for UInt64 should return same as Encoder.encodeUInt64")
+		XCTAssertTrue((((result!["uInt64"] as! NSNumber)).uint64Value == ((encoderResult!["uInt64"] as! NSNumber)).uint64Value), "~~> for UInt64 should return same as Encoder.encodeUInt64")
 	}
 
 	func testEncodeOperatorUInt64ArrayReturnsEncoderEncodeUInt64Array() {
@@ -488,7 +488,7 @@ class OperatorTests: XCTestCase {
 	}
 
     func testEncodeOperatorURLReturnsEncoderEncodeURL() {
-        let url: NSURL? = NSURL(string: "http://github.com")
+        let url: URL? = URL(string: "http://github.com")
         let result: JSON? = "url" ~~> url
         let encoderResult: JSON? = Encoder.encodeURL("url")(url)
         
@@ -496,11 +496,11 @@ class OperatorTests: XCTestCase {
     }
     
     func testEncodeOperatorURLArrayReturnsEncoderEncodeURLArray() {
-        let urls: [NSURL]? = [NSURL(string: "http://github.com")!, NSURL(string: "http://github.com")!]
+        let urls: [URL]? = [URL(string: "http://github.com")!, URL(string: "http://github.com")!]
         let result: JSON? = "urlArray" ~~> urls
         let encoderResult: JSON? = Encoder.encodeArray("urlArray")(urls)
         
-        XCTAssertTrue(((result!["urlArray"] as! [NSURL]) == (encoderResult!["urlArray"] as! [NSURL])), "~~> for url array should return same as Encoder.encodeArray")
+        XCTAssertTrue(((result!["urlArray"] as! [URL]) == (encoderResult!["urlArray"] as! [URL])), "~~> for url array should return same as Encoder.encodeArray")
     }
     
 }
