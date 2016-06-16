@@ -47,7 +47,7 @@ class EncoderTests: XCTestCase {
     }
     
     func testInvalidValue() {
-        let notAnyObject: NSURL? = NSURL()
+        let notAnyObject: NSURL? = NSURL(string: "garbage {}\';")
         let result: JSON? = Encoder.encode("invalid")(notAnyObject)
         
         XCTAssertTrue((result == nil), "Encode should return nil for invalid value");
@@ -290,7 +290,7 @@ class EncoderTests: XCTestCase {
         
         let test = result!["urlArray"] as! [NSURL]
         
-        XCTAssertTrue(test.map { url in url.absoluteString } == ["http://github.com", "http://github.com"], "Encode NSURL array should return correct value")
+        XCTAssertTrue(test.map { url in url.absoluteString! } == ["http://github.com", "http://github.com"], "Encode NSURL array should return correct value")
     }
 
 }

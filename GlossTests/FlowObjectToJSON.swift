@@ -134,7 +134,7 @@ class ObjectToJSONFlowTests: XCTestCase {
         XCTAssertTrue(resultDate8601Array == [1439071033, 1439071033], "JSON created from model should have correct values")
         
         XCTAssertTrue((result!["url"] as! String == "http://github.com"), "JSON created from model should have correct values")
-        XCTAssertTrue(((result!["urlArray"] as! [NSURL]).map { url in url.absoluteString } == ["http://github.com", "http://github.com"]), "JSON created from model should have correct values")
+        XCTAssertTrue(((result!["urlArray"] as! [NSURL]).map { url in url.absoluteString! } == ["http://github.com", "http://github.com"]), "JSON created from model should have correct values")
         
         let otherModel = (result!["dictionary"] as! [String : JSON])["otherModel"]!
         
