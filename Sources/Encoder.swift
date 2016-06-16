@@ -455,8 +455,8 @@ public struct Encoder {
         return {
             url in
             
-            if let url = url {
-                return [key : url.absoluteString]
+            if let absoluteURLString = url?.absoluteString {
+                return [key : absoluteURLString]
             }
             
             return nil
