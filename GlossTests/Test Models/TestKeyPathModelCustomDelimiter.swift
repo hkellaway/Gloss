@@ -12,7 +12,7 @@ import Gloss
 struct TestKeyPathModelCustomDelimiter: Glossy {
     
     let id: Int?
-    let url: NSURL?
+    let url: URL?
     
     init?(json: JSON) {
         self.id = Decoder.decode("nested*id", keyPathDelimiter: "*")(json)
