@@ -44,7 +44,7 @@ struct Repo: Glossy {
     
     init?(json: JSON) {
         guard let repoId: Int = "id" <~~ json,
-            let name: String = Decoder.decodeStringUppercase("name", json: json),
+            let name: String = Decoder.decodeStringUppercase(key: "name", json: json),
             let url: NSURL = "html_url" <~~ json,
             let owner: RepoOwner = "owner" <~~ json,
             let ownerUrl: NSURL = "owner.html_url" <~~ json else {
@@ -65,7 +65,7 @@ struct Repo: Glossy {
     func toJSON() -> JSON? {
         return jsonify([
             "id" ~~> self.repoId,
-            "name" ~~> Encoder.encodeStringCapitalized("name", value: self.name),
+            "name" ~~> Encoder.encodeStringCapitalized(key: "name", value: self.name),
             "description" ~~> self.desc,
             "html_url" ~~> self.url,
             "owner" ~~> self.owner,
@@ -80,8 +80,8 @@ struct Repo: Glossy {
 extension Decoder {
     
     static func decodeStringUppercase(key: String, json: JSON) -> String? {
-        if let string = json.valueForKeyPath(key) as? String {
-            return string.uppercaseString
+        if let string = json.value(forKeyPath: key) as? String {
+            return string.uppercased()
         }
         
         return nil
@@ -93,7 +93,7 @@ extension Encoder {
     
     static func encodeStringCapitalized(key: String, value: String?) -> JSON? {
         if let value = value {
-            return [key : value.capitalizedString]
+            return [key : value.capitalized]
         }
         
         return nil
