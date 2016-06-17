@@ -34,7 +34,7 @@ public extension Dictionary {
      provided delimiter to indicate a nested value.
      
      For example, a dictionary with [ "outer" : [ "inner" : "value" ] ]
-     could retrive 'value' via  path "outer.inner", given a
+     could retrieve 'value' via  path "outer.inner", given a
      delimiter of ''.
      
      - parameter keyPath:   Key path delimited by delimiter.
