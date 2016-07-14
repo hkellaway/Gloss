@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE) 
 [![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss)
 [![Reference Status](https://www.versioneye.com/objective-c/gloss/reference_badge.svg)](https://www.versioneye.com/objective-c/gloss/references)
-[![Build Status](https://travis-ci.org/hkellaway/Gloss.svg)](https://travis-ci.org/hkellaway/Gloss)
+[![Build Status](https://travis-ci.org/hkellaway/Gloss.svg?branch=develop)](https://travis-ci.org/hkellaway/Gloss)
 
 * Mapping JSON to objects
 * Mapping objects to JSON
@@ -18,6 +18,12 @@
 
 - [Download Gloss](https://github.com/hkellaway/Gloss/archive/master.zip) and do a `pod install` on the included `GlossExample` app to see Gloss in action
 - Check out the [documentation](http://cocoadocs.org/docsets/Gloss/) for a more comprehensive look at the classes available in Gloss
+
+### Swift 2.3 and Swift 3.0
+
+Use the `swift_2.3` and `swift_3.0` branches for compatible versions of Gloss plus Example projec that are compatible with Swift 2.3 and Swift 3.0 respectively.
+
+The Gloss source currently available on CocoaPods and Carthage is compatible with Swift 2.3.
 
 ### Installation with CocoaPods
 
@@ -471,8 +477,8 @@ The `<~~` operator is simply syntactic sugar for a set of `Decoder.decode` funct
 * Int64 array (`Decoder.decodeInt64Array`)
 * UInt64 types (`Decoder.decodeUInt64`)
 * UInt64 array (`Decoder.decodeUInt64Array`)
-* `NSURL` types (`Decoder.decodeURL`)
-* `NSURL` arrays (`Decode.decodeURLArray`)
+* NSURL types (`Decoder.decodeURL`)
+* NSURL arrays (`Decode.decodeURLArray`)
 
 ##### The Encode Operator: `~~>`
 
@@ -493,7 +499,7 @@ The `~~>` operator is simply syntactic sugar for a set of `Encoder.encode` funct
 * Int64 arrays (`Encoder.encodeInt64Array`)
 * UInt64 types (`Encoder.encodeUInt64`)
 * UInt64 arrays (`Encoder.encodeUInt64Array`)
-* `NSURL` types (`Encoder.encodeURL`)
+* NSURL types (`Encoder.encodeURL`)
 
 ### Gloss Protocols
 
@@ -527,14 +533,9 @@ Check out Gloss in these cool places!
 
 #### Libraries
 
+* [Alamofire-Gloss](https://github.com/spxrogers/Alamofire-Gloss)
 * [Moya-Gloss](https://github.com/spxrogers/Moya-Gloss)
 * [Restofire-Gloss](https://github.com/Restofire/Restofire-Gloss)
-
-#### Newsletters
-
-* [The iOS Times](http://theiostimes.com/year-01-issue-12.html)
-* [Swift Sandbox](http://swiftsandbox.io/issues/3#b1RJwo2)
-* [iOS Goodies](http://ios-goodies.com/post/127166753231/week-93)
 
 #### SDKs/Products
 
@@ -546,6 +547,12 @@ Check out Gloss in these cool places!
 #### Tools
 
 * [JSON Export](https://github.com/Ahmed-Ali/JSONExport) - generate Gloss models from JSON
+
+#### Newsletters
+
+* [The iOS Times](http://theiostimes.com/year-01-issue-12.html)
+* [Swift Sandbox](http://swiftsandbox.io/issues/3#b1RJwo2)
+* [iOS Goodies](http://ios-goodies.com/post/127166753231/week-93)
 
 Using Gloss in your app? [Let me know.](mailto:hello@harlankellaway.com?subject=Using Gloss in my app)
 
