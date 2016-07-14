@@ -21,7 +21,7 @@
 
 ### Swift 2.3 and Swift 3.0
 
-Use the `swift_2.3` and `swift_3.0` branches for compatible versions of Gloss plus Example projec that are compatible with Swift 2.3 and Swift 3.0 respectively.
+Use the `swift_2.3` and `swift_3.0` branches for compatible versions of Gloss plus Example project that are compatible with Swift 2.3 and Swift 3.0 respectively.
 
 The Gloss source currently available on CocoaPods and Carthage is compatible with Swift 2.3.
 
