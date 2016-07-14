@@ -198,16 +198,58 @@ class OperatorTests: XCTestCase {
         let result: Int32? = "int32" <~~ testJSON!
         let decoderResult: Int32? = Decoder.decodeInt32("int32")(testJSON!)
         
-        XCTAssertTrue((result == decoderResult), "<~~ for url should return same as Decoder.decodeInt32")
+        XCTAssertTrue((result == decoderResult), "<~~ for Int32 should return same as Decoder.decodeInt32")
     }
-    
+
+	func testDecodeOperatorInt32ArrayReturnsDecoderInt32Array() {
+		let result: [Int32]? = "int32Array" <~~ testJSON!
+		let decoderResult: [Int32]? = Decoder.decodeInt32Array("int32Array")(testJSON!)
+
+		XCTAssertTrue((result! == decoderResult!), "<~~ for [Int32] should return same as Decoder.decodeInt32Array")
+	}
+
+	func testDecodeOperatorUInt32ReturnsDecoderUInt32() {
+		let result: UInt32? = "uInt32" <~~ testJSON!
+		let decoderResult: UInt32? = Decoder.decodeUInt32("uInt32")(testJSON!)
+
+		XCTAssertTrue((result == decoderResult), "<~~ for UInt32 should return same as Decoder.decodeUInt32")
+	}
+
+	func testDecodeOperatorUInt32ArrayReturnsDecoderUInt32Array() {
+		let result: [UInt32]? = "uInt32Array" <~~ testJSON!
+		let decoderResult: [UInt32]? = Decoder.decodeUInt32Array("uInt32Array")(testJSON!)
+
+		XCTAssertTrue((result! == decoderResult!), "<~~ for [UInt32] should return same as Decoder.decodeUInt32Array")
+	}
+
     func testDecodeOperatorInt64ReturnsDecoderInt64() {
         let result: Int64? = "int64" <~~ testJSON!
         let decoderResult: Int64? = Decoder.decodeInt64("int64")(testJSON!)
         
-        XCTAssertTrue((result == decoderResult), "<~~ for url should return same as Decoder.decodeInt64")
+        XCTAssertTrue((result == decoderResult), "<~~ for Int64 should return same as Decoder.decodeInt64")
     }
-    
+
+	func testDecodeOperatorInt64ArrayReturnsDecoderInt64Array() {
+		let result: [Int64]? = "int64Array" <~~ testJSON!
+		let decoderResult: [Int64]? = Decoder.decodeInt64Array("int64Array")(testJSON!)
+
+		XCTAssertTrue((result! == decoderResult!), "<~~ for [Int64] should return same as Decoder.decodeInt64Array")
+	}
+
+	func testDecodeOperatorUInt64ReturnsDecoderUInt64() {
+		let result: UInt64? = "uInt64" <~~ testJSON!
+		let decoderResult: UInt64? = Decoder.decodeUInt64("uInt64")(testJSON!)
+
+		XCTAssertTrue((result == decoderResult), "<~~ for UInt64 should return same as Decoder.decodeUInt64")
+	}
+
+	func testDecodeOperatorUInt64ArrayReturnsDecoderUInt64Array() {
+		let result: [UInt64]? = "uInt64Array" <~~ testJSON!
+		let decoderResult: [UInt64]? = Decoder.decodeUInt64Array("uInt64Array")(testJSON!)
+
+		XCTAssertTrue((result! == decoderResult!), "<~~ for [UInt64] should return same as Decoder.decodeUInt64Array")
+	}
+
     func testDecodeOperatorURLReturnsDecoderDecodeURL() {
         let result: NSURL? = "url" <~~ testJSON!
         let decoderResult: NSURL? = Decoder.decodeURL("url")(testJSON!)
@@ -378,17 +420,73 @@ class OperatorTests: XCTestCase {
         let result: JSON? = "int32" ~~> int32
         let encoderResult: JSON? = Encoder.encodeInt32("int32")(int32)
         
-        XCTAssertTrue((((result!["int32"] as! NSNumber)).intValue == ((encoderResult!["int32"] as! NSNumber)).intValue), "~~> for url should return same as Encoder.encodeInt32")
+        XCTAssertTrue((((result!["int32"] as! NSNumber)).intValue == ((encoderResult!["int32"] as! NSNumber)).intValue), "~~> for Int32 should return same as Encoder.encodeInt32")
     }
     
+    func testEncodeOperatorInt32ArrayReturnsEncoderEncodeInt32Array() {
+        let int32Array: [Int32]? = [10000000, -2147483648, 2147483647]
+        let result: JSON? = "int32Array" ~~> int32Array
+        let encoderResult: JSON? = Encoder.encodeInt32Array("int32Array")(int32Array)
+        let resultValue = result!["int32Array"] as! [NSNumber]
+        let encoderResultValue = encoderResult!["int32Array"] as! [NSNumber]
+        
+        XCTAssertTrue(resultValue == encoderResultValue, "~~> for [Int32] should return same as Encoder.encodeInt32Array")
+    }
+
+	func testEncodeOperatorUInt32ReturnsEncoderEncodeUInt32() {
+		let uInt32: UInt32? = 4294967295
+		let result: JSON? = "uInt32" ~~> uInt32
+		let encoderResult: JSON? = Encoder.encodeUInt32("uInt32")(uInt32)
+
+		XCTAssertTrue((((result!["uInt32"] as! NSNumber)).unsignedIntValue == ((encoderResult!["uInt32"] as! NSNumber)).unsignedIntValue), "~~> for UInt32 should return same as Encoder.encodeUInt32")
+	}
+
+	func testEncodeOperatorUInt32ArrayReturnsEncoderEncodeUInt32Array() {
+		let uInt32Array: [UInt32]? = [10000000, 2147483648, 4294967295]
+		let result: JSON? = "uInt32Array" ~~> uInt32Array
+		let encoderResult: JSON? = Encoder.encodeUInt32Array("uInt32Array")(uInt32Array)
+		let resultValue = result!["uInt32Array"] as! [NSNumber]
+		let encoderResultValue = encoderResult!["uInt32Array"] as! [NSNumber]
+
+		XCTAssertTrue(resultValue == encoderResultValue, "~~> for [UInt32] should return same as Encoder.encodeUInt32Array")
+	}
+
     func testEncodeOperatorInt64ReturnsEncoderEncodeInt64() {
         let int64: Int64? = 30000000
         let result: JSON? = "int64" ~~> int64
         let encoderResult: JSON? = Encoder.encodeInt64("int64")(int64)
         
-        XCTAssertTrue((((result!["int64"] as! NSNumber)).longLongValue == ((encoderResult!["int64"] as! NSNumber)).longLongValue), "~~> for url should return same as Encoder.encodeInt64")
+        XCTAssertTrue((((result!["int64"] as! NSNumber)).longLongValue == ((encoderResult!["int64"] as! NSNumber)).longLongValue), "~~> for Int64 should return same as Encoder.encodeInt64")
     }
     
+    func testEncodeOperatorInt64ArrayReturnsEncoderEncodeInt64Array() {
+        let int64Array: [Int64]? = [30000000, -9223372036854775808, 9223372036854775807]
+        let result: JSON? = "int64Array" ~~> int64Array
+        let encoderResult: JSON? = Encoder.encodeInt64Array("int64Array")(int64Array)
+        let resultValue = result!["int64Array"] as! [NSNumber]
+        let encoderResultValue = encoderResult!["int64Array"] as! [NSNumber]
+        
+        XCTAssertTrue(resultValue == encoderResultValue, "~~> for [Int64] should return same as Encoder.encodeInt64Array")
+    }
+
+	func testEncodeOperatorUInt64ReturnsEncoderEncodeUInt64() {
+		let uInt64: UInt64? = 18446744073709551615
+		let result: JSON? = "uInt64" ~~> uInt64
+		let encoderResult: JSON? = Encoder.encodeUInt64("uInt64")(uInt64)
+
+		XCTAssertTrue((((result!["uInt64"] as! NSNumber)).unsignedLongLongValue == ((encoderResult!["uInt64"] as! NSNumber)).unsignedLongLongValue), "~~> for UInt64 should return same as Encoder.encodeUInt64")
+	}
+
+	func testEncodeOperatorUInt64ArrayReturnsEncoderEncodeUInt64Array() {
+		let uInt64Array: [UInt64]? = [30000000, 9223372036854775808, 18446744073709551615]
+		let result: JSON? = "uInt64Array" ~~> uInt64Array
+		let encoderResult: JSON? = Encoder.encodeUInt64Array("uInt64Array")(uInt64Array)
+		let resultValue = result!["uInt64Array"] as! [NSNumber]
+		let encoderResultValue = encoderResult!["uInt64Array"] as! [NSNumber]
+
+		XCTAssertTrue(resultValue == encoderResultValue, "~~> for [UInt64] should return same as Encoder.encodeUInt64Array")
+	}
+
     func testEncodeOperatorURLReturnsEncoderEncodeURL() {
         let url: NSURL? = NSURL(string: "http://github.com")
         let result: JSON? = "url" ~~> url

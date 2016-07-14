@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE) 
 [![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss)
 [![Reference Status](https://www.versioneye.com/objective-c/gloss/reference_badge.svg)](https://www.versioneye.com/objective-c/gloss/references)
-[![Build Status](https://travis-ci.org/hkellaway/Gloss.svg)](https://travis-ci.org/hkellaway/Gloss)
+[![Build Status](https://travis-ci.org/hkellaway/Gloss.svg?branch=develop)](https://travis-ci.org/hkellaway/Gloss)
 
 * Mapping JSON to objects
 * Mapping objects to JSON
@@ -18,6 +18,12 @@
 
 - [Download Gloss](https://github.com/hkellaway/Gloss/archive/master.zip) and do a `pod install` on the included `GlossExample` app to see Gloss in action
 - Check out the [documentation](http://cocoadocs.org/docsets/Gloss/) for a more comprehensive look at the classes available in Gloss
+
+### Swift 2.3 and Swift 3.0
+
+Use the `swift_2.3` and `swift_3.0` branches for compatible versions of Gloss plus Example project that are compatible with Swift 2.3 and Swift 3.0 respectively.
+
+The Gloss source currently available on CocoaPods and Carthage is compatible with Swift 2.3.
 
 ### Installation with CocoaPods
 
@@ -463,8 +469,16 @@ The `<~~` operator is simply syntactic sugar for a set of `Decoder.decode` funct
 * Dictionaries of `Decodable` models (`Decoder.decodeDecodableDictionary`)
 * Enum types (`Decoder.decodeEnum`)
 * Enum arrays (`Decoder.decodeEnumArray`)
-* `NSURL` types (`Decoder.decodeURL`)
-* `NSURL` arrays (`Decode.decodeURLArray`)
+* Int32 types (`Decoder.decodeInt32`)
+* Int32 arrays (`Decoder.decodeInt32Array`)
+* UInt32 types (`Decoder.decodeUInt32`)
+* UInt32 arrays (`Decoder.decodeUInt32Array`)
+* Int64 types (`Decoder.decodeInt64`)
+* Int64 array (`Decoder.decodeInt64Array`)
+* UInt64 types (`Decoder.decodeUInt64`)
+* UInt64 array (`Decoder.decodeUInt64Array`)
+* NSURL types (`Decoder.decodeURL`)
+* NSURL arrays (`Decode.decodeURLArray`)
 
 ##### The Encode Operator: `~~>`
 
@@ -477,7 +491,15 @@ The `~~>` operator is simply syntactic sugar for a set of `Encoder.encode` funct
 * Dictionaries of `Encodable` models (`Encoder.encodeEncodableDictionary`)
 * Enum types (`Encoder.encodeEnum`)
 * Enum arrays (`Encoder.encodeEnumArray`)
-* `NSURL` types (`Encoder.encodeURL`)
+* Int32 types (`Encoder.encodeInt32`)
+* Int32 arrays (`Encoder.encodeInt32Array`)
+* UInt32 types (`Encoder.encodeUInt32`)
+* UInt32 arrays (`Encoder.encodeUInt32Array`)
+* Int64 types (`Encoder.encodeInt64`)
+* Int64 arrays (`Encoder.encodeInt64Array`)
+* UInt64 types (`Encoder.encodeUInt64`)
+* UInt64 arrays (`Encoder.encodeUInt64Array`)
+* NSURL types (`Encoder.encodeURL`)
 
 ### Gloss Protocols
 
@@ -489,7 +511,7 @@ The `Glossy` protocol depicted in the examples is simply a convenience for defin
 
 ## Why "Gloss"?
 
-The name for Gloss was inspired by the name for a popular Objective-C library, [Mantle](https://github.com/Mantle/Mantle) - both names are a play on the word "layer", in reference to their role in defining the model layer of the application.
+The name for Gloss was inspired by the name for a popular Objective-C library, [Mantle](https://github.com/Mantle/Mantle) - both names are a play on the word "layer", in reference to their role in supporting the model layer of the application.
 
 The particular word "gloss" was chosen as it evokes both being lightweight and adding beauty.
 
@@ -497,7 +519,7 @@ The particular word "gloss" was chosen as it evokes both being lightweight and a
 
 Gloss was created by [Harlan Kellaway](http://harlankellaway.com).
 
-Inspiration was gathered from other great JSON parsing libraries like [Argo](https://github.com/thoughtbot/Argo). Read more about why Gloss was made [here](http://harlankellaway.com/blog/2015/08/16/introducing-gloss-json-parsing-swift/).
+Inspiration was gathered from other great JSON parsing libraries like [Argo](https://github.com/thoughtbot/Argo). Read more about why Gloss was made [here](http://harlankellaway.com/blog/2015/08/16/introducing-gloss-json-parsing-swift).
 
 Special thanks to all [contributors](https://github.com/hkellaway/Gloss/contributors)! :sparkling_heart:
 
@@ -508,21 +530,29 @@ Check out Gloss in these cool places!
 #### Posts
 
 * [Ray Wenderlich | Swift Tutorial: Working with JSON](http://www.raywenderlich.com/120442/swift-json-tutorial)
-* [The iOS Times](http://theiostimes.com/year-01-issue-12.html)
-* [Swift Sandbox](http://swiftsandbox.io/issues/3#b1RJwo2)
-* [iOS Goodies](http://ios-goodies.com/post/127166753231/week-93)
-* [awesome-ios](https://github.com/vsouza/awesome-ios#json)
-* [awesome-swift](https://github.com/matteocrippa/awesome-swift#json)
-
-#### Products
-
-* [Drift](http://www.drift.com) ([iOS SDK](https://github.com/Driftt/drift-sdk-ios))
-* [Skiplagged](http://skiplagged.com) ([iOS SDK](https://github.com/bulusoy/Skiplagged))
 
 #### Libraries
 
+* [Alamofire-Gloss](https://github.com/spxrogers/Alamofire-Gloss)
 * [Moya-Gloss](https://github.com/spxrogers/Moya-Gloss)
 * [Restofire-Gloss](https://github.com/Restofire/Restofire-Gloss)
+
+#### SDKs/Products
+
+* [AniList](http://anilist.co) ([iOS SDK](https://github.com/CodeEagle/AniList))
+* [Drift](http://www.drift.com) ([iOS SDK](https://github.com/Driftt/drift-sdk-ios))
+* [Phillips Hue](http://www2.meethue.com/en-US) ([iOS SDK](https://github.com/Spriter/SwiftyHue))
+* [Skiplagged](http://skiplagged.com) ([iOS SDK] (https://github.com/bulusoy/Skiplagged))
+
+#### Tools
+
+* [JSON Export](https://github.com/Ahmed-Ali/JSONExport) - generate Gloss models from JSON
+
+#### Newsletters
+
+* [The iOS Times](http://theiostimes.com/year-01-issue-12.html)
+* [Swift Sandbox](http://swiftsandbox.io/issues/3#b1RJwo2)
+* [iOS Goodies](http://ios-goodies.com/post/127166753231/week-93)
 
 Using Gloss in your app? [Let me know.](mailto:hello@harlankellaway.com?subject=Using Gloss in my app)
 

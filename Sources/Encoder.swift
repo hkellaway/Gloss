@@ -304,10 +304,71 @@ public struct Encoder {
     }
     
     /**
-     Encodes an Int64 to JSON.
+     Encodes an Int32 array to JSON.
      
      - parameter key: Key used in JSON for decoded value.
      
+     - returns: JSON encoded from value.
+     */
+    public static func encodeInt32Array(key: String) -> [Int32]? -> JSON? {
+        return {
+            int32Array in
+            
+            if let int32Array = int32Array {
+                let numbers: [NSNumber] = int32Array.map { NSNumber(int: $0) }
+                
+                return [key : numbers]
+            }
+            
+            return nil
+        }
+    }
+
+	/**
+	Encodes an UInt32 to JSON.
+
+	- parameter key: Key used in JSON for decoded value.
+
+	- returns: JSON encoded from value.
+	*/
+	public static func encodeUInt32(key: String) -> UInt32? -> JSON? {
+		return {
+			uint32 in
+
+			if let uint32 = uint32 {
+				return [key : NSNumber(unsignedInt: uint32)]
+			}
+
+			return nil
+		}
+	}
+
+	/**
+	Encodes an UInt32 array to JSON.
+
+	- parameter key: Key used in JSON for decoded value.
+
+	- returns: JSON encoded from value.
+	*/
+	public static func encodeUInt32Array(key: String) -> [UInt32]? -> JSON? {
+		return {
+			uInt32Array in
+
+			if let uInt32Array = uInt32Array {
+				let numbers: [NSNumber] = uInt32Array.map { NSNumber(unsignedInt: $0) }
+
+				return [key : numbers]
+			}
+
+			return nil
+		}
+	}
+
+    /**
+     Encodes an Int64 to JSON.
+
+     - parameter key: Key used in JSON for decoded value.
+
      - returns: JSON encoded from value.
      */
     public static func encodeInt64(key: String) -> Int64? -> JSON? {
@@ -323,18 +384,79 @@ public struct Encoder {
     }
     
     /**
-     Encodes a URL to JSON.
+     Encodes an Int64 array to JSON.
      
      - parameter key: Key used in JSON for decoded value.
      
+     - returns: JSON encoded from value.
+     */
+    public static func encodeInt64Array(key: String) -> [Int64]? -> JSON? {
+        return {
+            int64Array in
+            
+            if let int64Array = int64Array {
+                let numbers: [NSNumber] = int64Array.map { NSNumber(longLong: $0) }
+                
+                return [key : numbers]
+            }
+            
+            return nil
+        }
+    }
+
+	/**
+	Encodes an UInt64 to JSON.
+
+	- parameter key: Key used in JSON for decoded value.
+
+	- returns: JSON encoded from value.
+	*/
+	public static func encodeUInt64(key: String) -> UInt64? -> JSON? {
+		return {
+			uInt64 in
+
+			if let uInt64 = uInt64 {
+				return [key : NSNumber(unsignedLongLong: uInt64)]
+			}
+
+			return nil
+		}
+	}
+
+	/**
+	Encodes an UInt64 array to JSON.
+
+	- parameter key: Key used in JSON for decoded value.
+
+	- returns: JSON encoded from value.
+	*/
+	public static func encodeUInt64Array(key: String) -> [UInt64]? -> JSON? {
+		return {
+			uInt64Array in
+
+			if let uInt64Array = uInt64Array {
+				let numbers: [NSNumber] = uInt64Array.map { NSNumber(unsignedLongLong: $0) }
+
+				return [key : numbers]
+			}
+
+			return nil
+		}
+	}
+
+    /**
+     Encodes a URL to JSON.
+
+     - parameter key: Key used in JSON for decoded value.
+
      - returns: JSON encoded from value.
      */
     public static func encodeURL(key: String) -> NSURL? -> JSON? {
         return {
             url in
             
-            if let url = url {
-                return [key : url.absoluteString]
+            if let absoluteURLString = url?.absoluteString {
+                return [key : absoluteURLString]
             }
             
             return nil
