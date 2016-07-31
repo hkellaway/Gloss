@@ -534,6 +534,7 @@ Check out Gloss in these cool places!
 #### Libraries
 
 * [Alamofire-Gloss](https://github.com/spxrogers/Alamofire-Gloss)
+* [CRUD](https://github.com/MetalheadSanya/CRUD)
 * [Moya-Gloss](https://github.com/spxrogers/Moya-Gloss)
 * [Restofire-Gloss](https://github.com/Restofire/Restofire-Gloss)
 
@@ -543,6 +544,10 @@ Check out Gloss in these cool places!
 * [Drift](http://www.drift.com) ([iOS SDK](https://github.com/Driftt/drift-sdk-ios))
 * [Phillips Hue](http://www2.meethue.com/en-US) ([iOS SDK](https://github.com/Spriter/SwiftyHue))
 * [Skiplagged](http://skiplagged.com) ([iOS SDK] (https://github.com/bulusoy/Skiplagged))
+
+#### Apps
+
+* [Ether Tracker](https://itunes.apple.com/us/app/ether-tracker/id1118248702?mt=8)
 
 #### Tools
 
