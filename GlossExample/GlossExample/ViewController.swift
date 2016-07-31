@@ -67,7 +67,12 @@ class ViewController: UIViewController {
         print("REPOS: \(repos)")
         print("")
         
-        print("JSON ARRAY: \(repos.toJSONArray())")
+        guard let jsonArray = repos?.toJSONArray() else {
+            print("ENCODING FAILURE :(")
+            return
+        }
+        
+        print("JSON ARRAY: \(jsonArray)")
 
     }
 }
