@@ -33,15 +33,13 @@ public extension Array where Element: Decodable {
     
     /**
      Returns array of new objects created from provided JSON array.
-     
-     Note: The returned array will have only objects that successfully
-     decoded.
+     If any decodings fail, nil is returned.
      
      - parameter jsonArray: Array of JSON representations of objects.
      
      - returns: Array of objects created from JSON.
      */
-    static func fromJSONArray(jsonArray: [JSON]) -> [Element] {
+    static func fromJSONArray(jsonArray: [JSON]) -> [Element]? {
         var models: [Element] = []
         
         for json in jsonArray {
@@ -49,6 +47,8 @@ public extension Array where Element: Decodable {
             
             if let model = model {
                 models.append(model)
+            } else {
+                return nil
             }
         }
         
@@ -65,9 +65,7 @@ public extension Array where Element: Encodable {
     
     /**
      Encodes array of objects as JSON array.
-     
-     Note: The returned array will have only JSON from objects
-     that were successfully encoded.
+     If any encodings fail, nil is returned.
      
      - returns: Array of JSON created from objects.
      */
@@ -77,6 +75,8 @@ public extension Array where Element: Encodable {
         for json in self {
             if let json = json.toJSON() {
                 jsonArray.append(json)
+            } else {
+                return nil
             }
         }
         

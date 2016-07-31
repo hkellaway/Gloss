@@ -220,7 +220,9 @@ public struct Decoder {
             return dictionary.flatMap {
                 (key, value) in
                 
-                let decoded = [T].fromJSONArray(value)
+                guard let decoded = [T].fromJSONArray(value) else {
+                    return nil
+                }
                 
                 return (key, decoded)
             }
