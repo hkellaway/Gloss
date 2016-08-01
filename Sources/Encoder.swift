@@ -149,7 +149,7 @@ public struct Encoder {
         return {
             model in
             
-            if let model = model, json = model.toJSON() {
+            if let model = model, let json = model.toJSON() {
                 return [key : json]
             }
             
