@@ -67,6 +67,13 @@ class EncoderTests: XCTestCase {
         XCTAssertTrue((result!["boolArray"] as! [Bool] == [true, false, true]), "Encode Bool array should return correct value")
     }
     
+    func testEncodeBoolLArrayReturnsNilIfModelInvalid() {
+        let invalidModel = ["1", "2", "3"]
+        let result: JSON? = Encoder.encode("array")(invalidModel)
+        
+        XCTAssertNil(result?["array"] as? [Bool], "Encode bool array should return nil if model is invalid")
+    }
+    
     func testEncodeInt() {
         let integer: Int? = 1
         let result: JSON? = Encoder.encode("integer")(integer)
@@ -81,6 +88,13 @@ class EncoderTests: XCTestCase {
         XCTAssertTrue((result!["integerArray"] as! [Int] == [1, 2, 3]), "Encode Int array should return correct value")
     }
 
+    func testEncodeIntLArrayReturnsNilIfModelInvalid() {
+        let invalidModel = ["1", "2", "3"]
+        let result: JSON? = Encoder.encode("array")(invalidModel)
+        
+        XCTAssertNil(result?["array"] as? [Int], "Encode int array should return nil if model is invalid")
+    }
+    
     func testEncodeFloat() {
         let float: Float? = 1.0
         let result: JSON? = Encoder.encode("float")(float)
@@ -95,6 +109,13 @@ class EncoderTests: XCTestCase {
         XCTAssertTrue((result!["floatArray"] as! [Float] == [1.0, 2.0, 3.0]), "Encode Float array should return correct value")
     }
     
+    func testEncodeFloatLArrayReturnsNilIfModelInvalid() {
+        let invalidModel = ["1", "2", "3"]
+        let result: JSON? = Encoder.encode("array")(invalidModel)
+        
+        XCTAssertNil(result?["array"] as? [Float], "Encode float array should return nil if model is invalid")
+    }
+    
     func testEncodeDouble() {
         let double: Double? = 4.0
         let result: JSON? = Encoder.encode("double")(double)
@@ -107,6 +128,13 @@ class EncoderTests: XCTestCase {
         let result: JSON? = Encoder.encode("doubleArray")(doubleArray)
         
         XCTAssertTrue((result!["doubleArray"] as! [Double] == [4.0, 5.0, 6.0]), "Encode Double array should return correct value")
+    }
+    
+    func testEncodeDoubleLArrayReturnsNilIfModelInvalid() {
+        let invalidModel = ["1", "2", "3"]
+        let result: JSON? = Encoder.encode("array")(invalidModel)
+        
+        XCTAssertNil(result?["array"] as? [Double], "Encode double array should return nil if model is invalid")
     }
     
     func testEncodeEncodableDictionary() {
@@ -141,6 +169,13 @@ class EncoderTests: XCTestCase {
         let result: JSON? = Encoder.encode("stringArray")(stringArray)
         
         XCTAssertTrue((result!["stringArray"] as! [String] == ["def", "ghi", "jkl"]), "String array should return correct value")
+    }
+    
+    func testEncodeStringLArrayReturnsNilIfModelInvalid() {
+        let invalidModel = [1, 2, 3]
+        let result: JSON? = Encoder.encode("array")(invalidModel)
+        
+        XCTAssertNil(result?["array"] as? [String], "Encode string array should return nil if model is invalid")
     }
     
     func testEncodeNestedModel() {
@@ -179,6 +214,13 @@ class EncoderTests: XCTestCase {
         XCTAssertTrue((result!["enumValueArray"] as! [TestModel.EnumValue.RawValue] == ["A", "B", "C"]), "Encode enum value array should return correct value")
     }
     
+    func testEncodeEnumArrayReturnsNilIfModelInvalid() {
+        let invalidModel = ["1", "2", "3"]
+        let result: JSON? = Encoder.encode("array")(invalidModel)
+        
+        XCTAssertNil(result?["array"] as? [TestModel.EnumValue], "Encode enum array should return nil if model is invalid")
+    }
+    
     func testEncodeDate() {
         let date: NSDate? = TestModel.dateFormatter.dateFromString("2015-08-16T20:51:46.600Z")
         let result: JSON? = Encoder.encodeDate("date", dateFormatter: TestModel.dateFormatter)(date)
@@ -192,6 +234,13 @@ class EncoderTests: XCTestCase {
         let result: JSON? = Encoder.encodeDateArray("dateArray", dateFormatter: TestModel.dateFormatter)(dateArray)
         
         XCTAssertTrue(result!["dateArray"] as! [String] == ["2015-08-16T20:51:46.600Z", "2015-08-16T20:51:46.600Z"], "Encode NSDate array should return correct value")
+    }
+    
+    func testEncodeDateArrayReturnsNilIfModelInvalid() {
+        let invalidModel = [NSDate(timeIntervalSince1970: 1), NSDate(timeIntervalSince1970: 2), NSDate(timeIntervalSince1970: 3)]
+        let result: JSON? = Encoder.encodeDateArray("array", dateFormatter: TestModel.dateFormatter)(invalidModel)
+        
+        XCTAssertNil(result?["array"] as? [NSDate], "Encode date array should return nil if model is invalid")
     }
     
     func testEncodeDateISO8601() {
@@ -219,6 +268,13 @@ class EncoderTests: XCTestCase {
         
         XCTAssertTrue(resultDate1?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate array should return correct value")
         XCTAssertTrue(resultDate2?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate array should return correct value")
+    }
+    
+    func testEncodeDateISO8601ArrayReturnsNilIfModelInvalid() {
+        let invalidModel = [NSDate(timeIntervalSince1970: 1), NSDate(timeIntervalSince1970: 2), NSDate(timeIntervalSince1970: 3)]
+        let result: JSON? = Encoder.encodeDateISO8601Array("array")(invalidModel)
+        
+        XCTAssertNil(result?["array"] as? [NSDate], "Encode date array should return nil if model is invalid")
     }
     
     func testEncodeInt32() {
@@ -291,6 +347,13 @@ class EncoderTests: XCTestCase {
         let test = result!["urlArray"] as! [NSURL]
         
         XCTAssertTrue(test.map { url in url.absoluteString } == ["http://github.com", "http://github.com"], "Encode NSURL array should return correct value")
+    }
+    
+    func testEncodeURLArrayReturnsNilIfModelInvalid() {
+        let invalidModel = ["1", "2", "3"]
+        let result: JSON? = Encoder.encodeArray("array")(invalidModel)
+        
+        XCTAssertNil(result?["array"] as? [NSURL], "Encode url array should return nil if model is invalid")
     }
 
 }
