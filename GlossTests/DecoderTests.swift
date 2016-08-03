@@ -101,6 +101,13 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((element3 == true), "Decode Bool array should return correct value")
     }
     
+    func testDecodeBoolArrayReturnsNilIfJSONInvalid() {
+        let invalidJSON = [ "array" : ["1", "2", "3"] ]
+        let result: [Bool]? = Decoder.decode("array")(invalidJSON)
+        
+        XCTAssertNil(result, "Decode bool array should return nil if JSON is invalid")
+    }
+    
     func testDecodeInt() {
         let result: Int? = Decoder.decode("integer")(testJSON!)
         
@@ -116,6 +123,13 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((element1 == 1), "Decode Int array should return correct value")
         XCTAssertTrue((element2 == 2), "Decode Int array should return correct value")
         XCTAssertTrue((element3 == 3), "Decode Int array should return correct value")
+    }
+    
+    func testDecodeIntArrayReturnsNilIfJSONInvalid() {
+        let invalidJSON = [ "array" : ["1", "2", "3"] ]
+        let result: [Int]? = Decoder.decode("array")(invalidJSON)
+        
+        XCTAssertNil(result, "Decode int array should return nil if JSON is invalid")
     }
     
     func testDecodeFloat() {
@@ -135,6 +149,13 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((element3 == 3.0), "Decode Float array should return correct value")
     }
     
+    func testDecodeFloatArrayReturnsNilIfJSONInvalid() {
+        let invalidJSON = [ "array" : ["1", "2", "3"] ]
+        let result: [Float]? = Decoder.decode("array")(invalidJSON)
+        
+        XCTAssertNil(result, "Decode float array should return nil if JSON is invalid")
+    }
+    
     func testDecodeDouble() {
         let result: Double? = Decoder.decode("double")(testJSON!)
         
@@ -150,6 +171,13 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((element1 == 4.0), "Decode Double array should return correct value")
         XCTAssertTrue((element2 == 5.0), "Decode Double array should return correct value")
         XCTAssertTrue((element3 == 6.0), "Decode Double array should return correct value")
+    }
+    
+    func testDecodeDoubleArrayReturnsNilIfJSONInvalid() {
+        let invalidJSON = [ "array" : ["1", "2", "3"] ]
+        let result: [Double]? = Decoder.decode("array")(invalidJSON)
+        
+        XCTAssertNil(result, "Decode double array should return nil if JSON is invalid")
     }
     
     func testDecodeDictionary() {
@@ -196,6 +224,13 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((element3 == "jkl"), "Decode String array should return correct value")
     }
     
+    func testDecodeStringArrayReturnsNilIfJSONInvalid() {
+        let invalidJSON = [ "array" : [1, 2, 3] ]
+        let result: [String]? = Decoder.decode("array")(invalidJSON)
+        
+        XCTAssertNil(result, "Decode string array should return nil if JSON is invalid")
+    }
+    
     func testDecodeNestedModel() {
         let result: TestNestedModel? = Decoder.decodeDecodable("nestedModel")(testJSON!)
         
@@ -218,6 +253,13 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((element1 == TestModel.EnumValue.A), "Decode enum value array should return correct value")
         XCTAssertTrue((element2 == TestModel.EnumValue.B), "Decode enum value array should return correct value")
         XCTAssertTrue((element3 == TestModel.EnumValue.C), "Decode enum value array should return correct value")
+    }
+    
+    func testDecodeEnumArrayReturnsNilIfJSONInvalid() {
+        let invalidJSON = [ "array" : ["1", "2", "3"] ]
+        let result: [TestModel.EnumValue]? = Decoder.decodeEnumArray("array")(invalidJSON)
+        
+        XCTAssertNil(result, "Decode enum array should return nil if JSON is invalid")
     }
     
     func testDecodeDate() {
@@ -278,6 +320,13 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((nanosecond2/1000000 == 599), "Decode NSDate array should return correct value")
     }
     
+    func testDecodeDateArrayReturnsNilIfJSONInvalid() {
+        let invalidJSON = [ "array" : ["1", "2", "3"] ]
+        let result: [NSDate]? = Decoder.decodeDateArray("array", dateFormatter: TestModel.dateFormatter)(invalidJSON)
+        
+        XCTAssertNil(result, "Decode date array should return nil if JSON is invalid")
+    }
+    
     func testDecodeDateISO8601() {
         let result: NSDate? = Decoder.decodeDateISO8601("dateISO8601")(testJSON!)
         
@@ -296,6 +345,13 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue(timeInterval2 == 1439071033, "Decode NSDate array should return correct value")
     }
 
+    func testDecodeDateISO8601ArrayArrayReturnsNilIfJSONInvalid() {
+        let invalidJSON = [ "array" : ["1", "2", "3"] ]
+        let result: [NSDate]? = Decoder.decodeDateISO8601Array("array")(invalidJSON)
+        
+        XCTAssertNil(result, "Decode NSDate array should return nil if JSON is invalid")
+    }
+    
     func testDecodeInt32() {
         let result: Int32? = Decoder.decodeInt32("int32")(testJSON!)
         
@@ -306,6 +362,13 @@ class DecoderTests: XCTestCase {
         let result: [Int32]? = Decoder.decodeInt32Array("int32Array")(testJSON!)
         
         XCTAssertTrue((result! == [100000000, -2147483648, 2147483647]), "Decode Int32 array should return correct value")
+    }
+    
+    func testDecodeInt32ArrayReturnsNilIfJSONInvalid() {
+        let invalidJSON = [ "array" : ["1", "2", "3"] ]
+        let result: [Int32]? = Decoder.decodeInt32Array("array")(invalidJSON)
+        
+        XCTAssertNil(result, "Decode Int32 array should return nil if JSON is invalid")
     }
 
 	func testDecodeUInt32() {
@@ -319,6 +382,13 @@ class DecoderTests: XCTestCase {
 
 		XCTAssertTrue((result! == [100000000, 2147483648, 4294967295]), "Decode UInt32 array should return correct value")
 	}
+    
+    func testDecodeUInt32ArrayReturnsNilIfJSONInvalid() {
+        let invalidJSON = [ "array" : ["1", "2", "3"] ]
+        let result: [UInt32]? = Decoder.decodeUInt32Array("array")(invalidJSON)
+        
+        XCTAssertNil(result, "Decode UInt32 array should return nil if JSON is invalid")
+    }
 
     func testDecodeInt64() {
         let result: Int64? = Decoder.decodeInt64("int64")(testJSON!)
@@ -330,6 +400,13 @@ class DecoderTests: XCTestCase {
         let result: [Int64]? = Decoder.decodeInt64Array("int64Array")(testJSON!)
         
         XCTAssertTrue((result! == [300000000, -9223372036854775808, 9223372036854775807]), "Decode Int64 array should return correct value")
+    }
+    
+    func testDecodeInt64ArrayReturnsNilIfJSONInvalid() {
+        let invalidJSON = [ "array" : ["1", "2", "3"] ]
+        let result: [Int64]? = Decoder.decodeInt64Array("array")(invalidJSON)
+        
+        XCTAssertNil(result, "Decode Int64 array should return nil if JSON is invalid")
     }
 
 	func testDecodeUInt64() {
@@ -343,6 +420,13 @@ class DecoderTests: XCTestCase {
 
 		XCTAssertTrue((result! == [300000000, 9223372036854775808, 18446744073709551615]), "Decode UInt64 array should return correct value")
 	}
+    
+    func testDecodeUInt64ArrayReturnsNilIfJSONInvalid() {
+        let invalidJSON = [ "array" : ["1", "2", "3"] ]
+        let result: [UInt64]? = Decoder.decodeUInt64Array("array")(invalidJSON)
+        
+        XCTAssertNil(result, "Decode UInt64 array should return nil if JSON is invalid")
+    }
 
     func testDecodeURL() {
         let result: NSURL? = Decoder.decodeURL("url")(testJSON!)
@@ -359,6 +443,13 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((element1.absoluteString == "http://github.com"), "Decode NSURL array should return correct value")
         XCTAssertTrue((element2.absoluteString == "http://github.com"), "Decode NSURL array should return correct value")
         XCTAssertTrue((element3.absoluteString == "http://github.com"), "Decode NSURL array should return correct value")
+    }
+    
+    func testDecodeURLArrayReturnsNilIfJSONInvalid() {
+        let invalidJSON = [ "array" : [1, 1, 1] ]
+        let result: [NSURL]? = Decoder.decodeURLArray("array")(invalidJSON)
+        
+        XCTAssertNil(result, "Decode url array should return nil if JSON is invalid")
     }
     
 }
