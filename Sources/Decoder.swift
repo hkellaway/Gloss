@@ -88,9 +88,11 @@ public struct Decoder {
                 var dates: [NSDate] = []
                 
                 for dateString in dateStrings {
-                    if let date = dateFormatter.dateFromString(dateString) {
-                        dates.append(date)
+                    guard let date = dateFormatter.dateFromString(dateString) else {
+                        return nil
                     }
+                    
+                    dates.append(date)
                 }
                 
                 return dates
@@ -161,9 +163,11 @@ public struct Decoder {
                 var models: [T] = []
                 
                 for subJSON in jsonArray {
-                    if let model = T(json: subJSON) {
-                        models.append(model)
+                    guard let model = T(json: subJSON) else {
+                        return nil
                     }
+                    
+                    models.append(model)
                 }
                 
                 return models
@@ -265,9 +269,11 @@ public struct Decoder {
                 var enumValues: [T] = []
                 
                 for rawValue in rawValues {
-                    if let enumValue = T(rawValue: rawValue) {
-                        enumValues.append(enumValue)
+                    guard let enumValue = T(rawValue: rawValue) else {
+                        return nil
                     }
+                    
+                    enumValues.append(enumValue)
                 }
                 
                 return enumValues
@@ -482,9 +488,11 @@ public struct Decoder {
                 var urls: [NSURL] = []
                 
                 for urlString in urlStrings {
-                    if let url = NSURL(string: urlString) {
-                        urls.append(url)
+                    guard let url = NSURL(string: urlString) else {
+                        return nil
                     }
+                    
+                    urls.append(url)
                 }
                 
                 return urls

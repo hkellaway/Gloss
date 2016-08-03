@@ -172,9 +172,11 @@ public struct Encoder {
                 var encodedArray: [JSON] = []
                 
                 for model in array {
-                    if let json = model.toJSON() {
-                        encodedArray.append(json)
+                    guard let json = model.toJSON() else {
+                        return nil
                     }
+                    
+                    encodedArray.append(json)
                 }
                 
                 return [key : encodedArray]
