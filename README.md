@@ -272,7 +272,9 @@ let repoOwnersJSON = [
 An array of `RepoOwner` objects could be obtained via the following:
 
 ``` swift
-let repoOwners = [RepoOwner].fromJSONArray(repoOwnersJSON)
+guard let repoOwners = [RepoOwner].fromJSONArray(repoOwnersJSON) else {
+    // handle decoding failure here
+}
 
 print(repoOwners)
 ```
@@ -290,7 +292,11 @@ repoOwner.toJSON()
 An array of JSON from an array of `Encodable` models is retrieved via `toJSONArray()`:
 
 ``` swift
-repoOwners.toJSONArray()
+guard let jsonArray = repoOwners.toJSONArray() else {
+    // handle encoding failure here
+}
+
+print(jsonArray)
 ```
 
 ## Additonal Topics
