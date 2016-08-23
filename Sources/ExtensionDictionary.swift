@@ -121,7 +121,7 @@ public extension Dictionary {
      - parameter keyPath:       Key path.
      - parameter withDelimiter: Delimiter for key path.
      */
-    private mutating func setValue(valueToSet value: Any, forKeyPath keyPath: String, withDelimiter delimiter: String = GlossKeyPathDelimiter) {
+    fileprivate mutating func setValue(valueToSet value: Any, forKeyPath keyPath: String, withDelimiter delimiter: String = GlossKeyPathDelimiter) {
         var keys = keyPath.components(separatedBy: delimiter)
         
         guard let first = keys.first as? Key else {
@@ -146,7 +146,7 @@ public extension Dictionary {
             if let settable = subdict as? Value {
                 self[first] = settable
             } else {
-                print("[Gloss] Unable to set value: \(subdict) to dictionary of type: \(self.dynamicType)")
+                print("[Gloss] Unable to set value: \(subdict) to dictionary of type: \(type(of: self))")
             }
         }
         
