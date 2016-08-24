@@ -50,7 +50,7 @@ public extension Dictionary {
             return nil
         }
         
-        guard let value = self[first] as? AnyObject else {
+        guard let value = self[first] else {
             return nil
         }
         
@@ -60,7 +60,7 @@ public extension Dictionary {
             return subDict.value(forKeyPath: rejoined, withDelimiter: delimiter)
         }
         
-        return value
+        return value as AnyObject
     }
     
     // MARK: - Internal functions
@@ -146,7 +146,7 @@ public extension Dictionary {
             if let settable = subdict as? Value {
                 self[first] = settable
             } else {
-                print("[Gloss] Unable to set value: \(subdict) to dictionary of type: \(self.dynamicType)")
+                print("[Gloss] Unable to set value: \(subdict) to dictionary of type: \(type(of: self))")
             }
         }
         

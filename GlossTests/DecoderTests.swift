@@ -36,8 +36,8 @@ class DecoderTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        var testJSONPath: NSString = Bundle(for: self.dynamicType).pathForResource("TestModel", ofType: "json")!
-        var testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
+        var testJSONPath: String = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")!
+        var testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath))
         
         do {
             try testJSON = JSONSerialization.jsonObject(with: testJSONData, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? JSON
@@ -45,7 +45,7 @@ class DecoderTests: XCTestCase {
             print(error)
         }
         
-        testJSONPath  = Bundle(for: self.dynamicType).pathForResource("TestFailableModelValid", ofType: "json")!
+        testJSONPath = Bundle(for: type(of: self)).path(forResource: "TestFailableModelValid", ofType: "json")!
         testJSONData = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
         
         do {
@@ -54,7 +54,7 @@ class DecoderTests: XCTestCase {
             print(error)
         }
         
-        testJSONPath  = Bundle(for: self.dynamicType).pathForResource("TestFailableModelInvalid", ofType: "json")!
+        testJSONPath = Bundle(for: type(of: self)).path(forResource: "TestFailableModelInvalid", ofType: "json")!
         testJSONData = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
         
         do {
@@ -223,13 +223,13 @@ class DecoderTests: XCTestCase {
     func testDecodeDate() {
         let result: Date? = Decoder.decodeDate("date", dateFormatter: TestModel.dateFormatter)(testJSON!)
         
-        let year: Int = Calendar.current().components(Calendar.Unit.year, from: result!).year!
-        let month: Int = Calendar.current().components(Calendar.Unit.month, from: result!).month!
-        let day: Int = Calendar.current().components(Calendar.Unit.day, from: result!).day!
-        let hour: Int = Calendar.current().components(Calendar.Unit.hour, from: result!).hour!
-        let minute: Int = Calendar.current().components(Calendar.Unit.minute, from: result!).minute!
-        let second: Int = Calendar.current().components(Calendar.Unit.second, from: result!).second!
-        let nanosecond: Int = Calendar.current().components(Calendar.Unit.nanosecond, from: result!).nanosecond!
+        let year: Int = Calendar.current.component(.year, from: result!)
+        let month: Int = Calendar.current.component(.month, from: result!)
+        let day: Int = Calendar.current.component(.day, from: result!)
+        let hour: Int = Calendar.current.component(.hour, from: result!)
+        let minute: Int = Calendar.current.component(.minute, from: result!)
+        let second: Int = Calendar.current.component(.second, from: result!)
+        let nanosecond: Int = Calendar.current.component(.nanosecond, from: result!)
         
         XCTAssertTrue((year == 2015), "Decode NSDate should return correct value")
         XCTAssertTrue((month == 8), "Decode NSDate should return correct value")
@@ -245,21 +245,21 @@ class DecoderTests: XCTestCase {
         let element1: Date = result![0]
         let element2: Date = result![1]
         
-        let year1: Int = Calendar.current().components(Calendar.Unit.year, from: element1).year!
-        let month1: Int = Calendar.current().components(Calendar.Unit.month, from: element1).month!
-        let day1: Int = Calendar.current().components(Calendar.Unit.day, from: element1).day!
-        let hour1: Int = Calendar.current().components(Calendar.Unit.hour, from: element1).hour!
-        let minute1: Int = Calendar.current().components(Calendar.Unit.minute, from: element1).minute!
-        let second1: Int = Calendar.current().components(Calendar.Unit.second, from: element1).second!
-        let nanosecond1: Int = Calendar.current().components(Calendar.Unit.nanosecond, from: element1).nanosecond!
+        let year1: Int = Calendar.current.component(.year, from: element1)
+        let month1: Int = Calendar.current.component(.month, from: element1)
+        let day1: Int = Calendar.current.component(.day, from: element1)
+        let hour1: Int = Calendar.current.component(.hour, from: element1)
+        let minute1: Int = Calendar.current.component(.minute, from: element1)
+        let second1: Int = Calendar.current.component(.second, from: element1)
+        let nanosecond1: Int = Calendar.current.component(.nanosecond, from: element1)
         
-        let year2: Int = Calendar.current().components(Calendar.Unit.year, from: element2).year!
-        let month2: Int = Calendar.current().components(Calendar.Unit.month, from: element2).month!
-        let day2: Int = Calendar.current().components(Calendar.Unit.day, from: element2).day!
-        let hour2: Int = Calendar.current().components(Calendar.Unit.hour, from: element2).hour!
-        let minute2: Int = Calendar.current().components(Calendar.Unit.minute, from: element2).minute!
-        let second2: Int = Calendar.current().components(Calendar.Unit.second, from: element2).second!
-        let nanosecond2: Int = Calendar.current().components(Calendar.Unit.nanosecond, from: element2).nanosecond!
+        let year2: Int = Calendar.current.component(.year, from: element2)
+        let month2: Int = Calendar.current.component(.month, from: element2)
+        let day2: Int = Calendar.current.component(.day, from: element2)
+        let hour2: Int = Calendar.current.component(.hour, from: element2)
+        let minute2: Int = Calendar.current.component(.minute, from: element2)
+        let second2: Int = Calendar.current.component(.second, from: element2)
+        let nanosecond2: Int = Calendar.current.component(.nanosecond, from: element2)
         
         XCTAssertTrue((year1 == 2015), "Decode NSDate array should return correct value")
         XCTAssertTrue((month1 == 8), "Decode NSDate array should return correct value")

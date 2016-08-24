@@ -27,7 +27,7 @@ import Foundation
 
 // MARK: - Types
 
-public typealias JSON = [String : AnyObject]
+public typealias JSON = [String : Any]
 
 // MARK: - Protocols
 

@@ -55,7 +55,16 @@ class KeyPathTests: XCTestCase {
     }
     
     func testNestedKeyPathToJSON() {
-        XCTAssert((nestedKeyPathModel?.toJSON())! == ["keyPath" : ["id": 1, "args": ["name":"foo", "url": "http://url.com", "flag" : true]]], "Should encode with nested key path")
+        let nestedKeyPathJson = nestedKeyPathModel!.toJSON()! as! [String: [String: Any]]
+        let referenceJson = ["keyPath" : ["id": 1 as AnyObject, "args": ["name":"foo", "url": "http://url.com", "flag" : true]]]
+        
+        XCTAssert(nestedKeyPathJson["keyPath"]!["id"] as! Int == referenceJson["keyPath"]!["id"] as! Int, "Should encode with nested key path")
+        
+        let args = nestedKeyPathJson["keyPath"]!["args"] as! JSON
+        let referenceArgs = referenceJson["keyPath"]!["args"] as! JSON
+        XCTAssert(args["name"] as! String == referenceArgs["name"] as! String, "Should encode with nested key path")
+        XCTAssert(args["url"] as! String == referenceArgs["url"] as! String, "Should encode with nested key path")
+        XCTAssert(args["flag"] as! Bool == referenceArgs["flag"] as! Bool, "Should encode with nested key path")
     }
     
     func testNonDefaultKeyPathDecode() {
@@ -65,8 +74,9 @@ class KeyPathTests: XCTestCase {
     
     func testNonDefaultKeyPathEncode() {
         let result = keyPathModelWithCustomDelimiter.toJSON()
-        let id = result!["nested"]!["id"]
-        let url = result!["nested"]!["url"]
+        let nested = result!["nested"] as! JSON
+        let id = nested["id"] as? Int
+        let url = nested["url"] as? String
         
         XCTAssertTrue(id == 123, "Should encode model with custom key path delimiter")
         XCTAssertTrue(url == "http://url.com", "Should encode model with custom key path delimiter")

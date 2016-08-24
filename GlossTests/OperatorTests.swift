@@ -36,8 +36,8 @@ class OperatorTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let testJSONPath: NSString = Bundle(for: self.dynamicType).pathForResource("TestModel", ofType: "json")!
-        let testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
+        let testJSONPath = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")!
+        let testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath))
         
         do {
             try testJSON = JSONSerialization.jsonObject(with: testJSONData, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? JSON

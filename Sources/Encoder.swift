@@ -41,7 +41,7 @@ public struct Encoder {
         return {
             property in
             
-            if let property = property as? AnyObject {
+            if let property = property {
                 return [key : property]
             }
             
@@ -60,7 +60,7 @@ public struct Encoder {
         return {
             array in
             
-            if let array = array as? AnyObject {
+            if let array = array {
                 return [key : array]
             }
             
@@ -252,7 +252,7 @@ public struct Encoder {
             enumValue in
             
             if let enumValue = enumValue {
-                return [key : enumValue.rawValue as! AnyObject]
+                return [key : enumValue.rawValue]
             }
             
             return nil
@@ -277,7 +277,7 @@ public struct Encoder {
                     rawValues.append(enumValue.rawValue)
                 }
                 
-                return [key : rawValues as! AnyObject]
+                return [key : rawValues]
             }
             
             return nil

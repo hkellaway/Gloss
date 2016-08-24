@@ -37,8 +37,8 @@ class GlossTests: XCTestCase {
         super.setUp()
         
         var testJSON: JSON? = [:]
-        let testJSONPath: NSString = Bundle(for: self.dynamicType).pathForResource("TestModel", ofType: "json")!
-        let testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
+        let testJSONPath: String = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")!
+        let testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath))
         
         do {
             try testJSON = JSONSerialization.jsonObject(with: testJSONData, options:JSONSerialization.ReadingOptions(rawValue: 0)) as? JSON
@@ -95,7 +95,7 @@ class GlossTests: XCTestCase {
     func testDateFormatterISO8601HasCorrectLocale() {
         let dateFormatterISO8601 = GlossDateFormatterISO8601
         
-        XCTAssertTrue(dateFormatterISO8601.locale.localeIdentifier == "en_US_POSIX", "Date formatter ISO8601 should have correct locale.")
+        XCTAssertTrue(dateFormatterISO8601.locale.identifier == "en_US_POSIX", "Date formatter ISO8601 should have correct locale.")
     }
     
     func testDateFormatterISO8601HasCorrectDateFormat() {
@@ -106,9 +106,9 @@ class GlossTests: XCTestCase {
     
     func testDateFormatterISO8601ForcesGregorianCalendar() {
         let dateFormatterISO8601 = GlossDateFormatterISO8601
-        
-        XCTAssertTrue(dateFormatterISO8601.calendar.calendarIdentifier == Calendar.Identifier.gregorian, "Date formatter ISO8601 should force use of Gregorian calendar.")
-         XCTAssertTrue(dateFormatterISO8601.calendar.timeZone.abbreviation == "GMT", "Date formatter ISO8601 Gregorian calendar should use GMT timezone.")
+
+        XCTAssertTrue(dateFormatterISO8601.calendar.identifier == Calendar.Identifier.gregorian, "Date formatter ISO8601 should force use of Gregorian calendar.")
+        XCTAssertTrue(dateFormatterISO8601.calendar.timeZone.abbreviation() == "GMT", "Date formatter ISO8601 Gregorian calendar should use GMT timezone.")
     }
     
     func testJsonifyTurnsArrayOfJsonDictsToSingleJsonDict() {
@@ -187,7 +187,7 @@ class GlossTests: XCTestCase {
     }
     
     func testModelsFromJSONArrayReturnsNilIfDecodingFails() {
-        testJSONArray![0].removeValueForKey("bool")
+        testJSONArray![0].removeValue(forKey: "bool")
         
         let result = [TestModel].fromJSONArray(testJSONArray!)
 
@@ -215,7 +215,7 @@ class GlossTests: XCTestCase {
         
         let dateISO8601 = json1["dateISO8601"] as! String
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(localeIdentifier: "en_US_POSIX")
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         let resultDate = dateFormatter.date(from: dateISO8601)
         
@@ -254,7 +254,7 @@ class GlossTests: XCTestCase {
         
         let date2ISO8601 = json2["dateISO8601"] as! String
         let date2Formatter = DateFormatter()
-        date2Formatter.locale = Locale(localeIdentifier: "en_US_POSIX")
+        date2Formatter.locale = Locale(identifier: "en_US_POSIX")
         date2Formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         let resultDate2 = dateFormatter.date(from: date2ISO8601)
         

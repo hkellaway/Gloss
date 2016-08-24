@@ -122,7 +122,7 @@ class ObjectToJSONFlowTests: XCTestCase {
         
         let dateISO8601 = result!["dateISO8601"] as! String
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(localeIdentifier: "en_US_POSIX")
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         let resultDate = dateFormatter.date(from: dateISO8601)
         
@@ -134,7 +134,7 @@ class ObjectToJSONFlowTests: XCTestCase {
         XCTAssertTrue(resultDate8601Array == [1439071033, 1439071033], "JSON created from model should have correct values")
         
         XCTAssertTrue((result!["url"] as! String == "http://github.com"), "JSON created from model should have correct values")
-        XCTAssertTrue(((result!["urlArray"] as! [URL]).map { url in url.absoluteString! } == ["http://github.com", "http://github.com"]), "JSON created from model should have correct values")
+        XCTAssertTrue(((result!["urlArray"] as! [URL]).map { url in url.absoluteString } == ["http://github.com", "http://github.com"]), "JSON created from model should have correct values")
         
         let otherModel = (result!["dictionary"] as! [String : JSON])["otherModel"]!
         

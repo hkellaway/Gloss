@@ -34,7 +34,7 @@ class FlowObjectCreationTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let testJSONPath: NSString = Bundle(for: self.dynamicType).pathForResource("TestModel", ofType: "json")!
+        let testJSONPath: String = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")!
         let testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
         
         do {
@@ -84,7 +84,7 @@ class FlowObjectCreationTests: XCTestCase {
 		XCTAssertTrue(result.uInt64Array! == [300000000, 9223372036854775808, 18446744073709551615], "Model created from JSON should have correct property values")
 		XCTAssertTrue((result.dateISO8601Array!.map { date in date.timeIntervalSince1970 }) == [1439071033, 1439071033], "Model created from JSON should have correct property values")
         XCTAssertTrue((result.url?.absoluteString == "http://github.com"), "Model created from JSON should have correct property values")
-        XCTAssertTrue((result.urlArray?.map { url in url.absoluteString! })! == ["http://github.com", "http://github.com", "http://github.com"], "Model created from JSON should have correct property values")
+        XCTAssertTrue((result.urlArray?.map { url in url.absoluteString })! == ["http://github.com", "http://github.com", "http://github.com"], "Model created from JSON should have correct property values")
         
         XCTAssertTrue((result.nestedModel?.id == 123), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.nestedModel?.name == "nestedModel1"), "Model created from JSON should have correct property values")

@@ -199,7 +199,7 @@ class EncoderTests: XCTestCase {
         let result: JSON? = Encoder.encodeDateISO8601("dateISO8601")(dateISO8601!)
         
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(localeIdentifier: "en_US_POSIX")
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         let resultDate = dateFormatter.date(from: result!["dateISO8601"] as! String)
         
@@ -212,10 +212,12 @@ class EncoderTests: XCTestCase {
         let result: JSON? = Encoder.encodeDateISO8601Array("dateISO8601Array")(dateISO8601Array!)
         
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(localeIdentifier: "en_US_POSIX")
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        let resultDate1 = dateFormatter.date(from: result!["dateISO8601Array"]![0] as! String)
-        let resultDate2 = dateFormatter.date(from: result!["dateISO8601Array"]![1] as! String)
+        
+        let resultArray: [String] = result!["dateISO8601Array"] as! [String]
+        let resultDate1 = dateFormatter.date(from: resultArray[0])
+        let resultDate2 = dateFormatter.date(from: resultArray[1])
         
         XCTAssertTrue(resultDate1?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate array should return correct value")
         XCTAssertTrue(resultDate2?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate array should return correct value")
@@ -290,7 +292,7 @@ class EncoderTests: XCTestCase {
         
         let test = result!["urlArray"] as! [URL]
         
-        XCTAssertTrue(test.map { url in url.absoluteString! } == ["http://github.com", "http://github.com"], "Encode NSURL array should return correct value")
+        XCTAssertTrue(test.map { url in url.absoluteString } == ["http://github.com", "http://github.com"], "Encode NSURL array should return correct value")
     }
 
 }

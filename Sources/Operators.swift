@@ -27,10 +27,15 @@ import Foundation
 
 // MARK: - Operator <~~ (Decode)
 
+precedencegroup DecodingPrecedence {
+    associativity: left
+    higherThan: CastingPrecedence
+}
+
 /**
 Decode custom operator.
 */
-infix operator <~~ { associativity left precedence 150 }
+infix operator <~~ : DecodingPrecedence
 
 /**
 Convenience operator for decoding JSON to generic value.
@@ -238,10 +243,15 @@ public func <~~ (key: String, json: JSON) -> [URL]? {
 
 // MARK: - Operator ~~> (Encode)
 
+precedencegroup EncodingPrecedence {
+    associativity: left
+    higherThan: CastingPrecedence
+}
+
 /**
 Encode custom operator.
 */
-infix operator ~~> { associativity left precedence 150 }
+infix operator ~~> : EncodingPrecedence
 
 /**
 Convenience operator for encoding generic value to JSON
