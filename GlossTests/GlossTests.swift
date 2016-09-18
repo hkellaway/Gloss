@@ -49,20 +49,20 @@ class GlossTests: XCTestCase {
         testJSONArray = [testJSON!, testJSON!]
         
         testModelsJSON = [
-            "bool" : true,
-            "boolArray" : [true, false, true],
-            "integer" : 1,
-            "integerArray" : [1, 2, 3],
-            "float" : 2.0,
-            "floatArray" : [1.0, 2.0, 3.0],
-            "double" : 6.0,
-            "doubleArray" : [4.0, 5.0, 6.0],
-            "string" : "abc",
-            "stringArray" : ["def", "ghi", "jkl"],
+            "bool" : true as AnyObject,
+            "boolArray" : [true, false, true] as AnyObject,
+            "integer" : 1 as AnyObject,
+            "integerArray" : [1, 2, 3] as AnyObject,
+            "float" : 2.0 as AnyObject,
+            "floatArray" : [1.0, 2.0, 3.0] as AnyObject,
+            "double" : 6.0 as AnyObject,
+            "doubleArray" : [4.0, 5.0, 6.0] as AnyObject,
+            "string" : "abc" as AnyObject,
+            "stringArray" : ["def", "ghi", "jkl"] as AnyObject,
             "nestedModel" : [
                 "id" : 123,
                 "name" : "nestedModel1"
-            ],
+            ] as AnyObject,
             "nestedModelArray" : [
                 [
                     "id" : 456,
@@ -72,12 +72,12 @@ class GlossTests: XCTestCase {
                     "id" : 789,
                     "name" : "nestedModel3"
                 ]
-            ],
-            "enumValue" : "A",
-            "enumValueArray" : ["A", "B", "C"],
-            "date" : "2015-08-16T20:51:46.600Z",
-            "dateISO8601" : "2015-08-08T21:57:13Z",
-            "url" : "http://github.com"
+            ] as AnyObject,
+            "enumValue" : "A" as AnyObject,
+            "enumValueArray" : ["A", "B", "C"] as AnyObject,
+            "date" : "2015-08-16T20:51:46.600Z" as AnyObject,
+            "dateISO8601" : "2015-08-08T21:57:13Z" as AnyObject,
+            "url" : "http://github.com" as AnyObject
         ]
         
         let model = TestModel(json: testModelsJSON!)
@@ -95,7 +95,7 @@ class GlossTests: XCTestCase {
     func testDateFormatterISO8601HasCorrectLocale() {
         let dateFormatterISO8601 = GlossDateFormatterISO8601
         
-        XCTAssertTrue(dateFormatterISO8601.locale.localeIdentifier == "en_US_POSIX", "Date formatter ISO8601 should have correct locale.")
+        XCTAssertTrue(dateFormatterISO8601.locale.identifier == "en_US_POSIX", "Date formatter ISO8601 should have correct locale.")
     }
     
     func testDateFormatterISO8601HasCorrectDateFormat() {
@@ -112,9 +112,9 @@ class GlossTests: XCTestCase {
     }
     
     func testJsonifyTurnsArrayOfJsonDictsToSingleJsonDict() {
-        let jsonDict1: JSON? = ["a" : true, "b" : false]
-        let jsonDict2: JSON? = ["d" : "e", "f" : "g"]
-        let jsonDict3: JSON? = ["j" : 1, "k" : 2]
+        let jsonDict1: JSON? = ["a" : true as AnyObject, "b" : false as AnyObject]
+        let jsonDict2: JSON? = ["d" : "e" as AnyObject, "f" : "g" as AnyObject]
+        let jsonDict3: JSON? = ["j" : 1 as AnyObject, "k" : 2 as AnyObject]
         
         let result = jsonify([jsonDict1, jsonDict2, jsonDict3])
         
@@ -290,7 +290,7 @@ class GlossTests: XCTestCase {
     func testJsonifyTurnsJSONOptionalArrayToSingleJSONOptional() {
         let json1 = ["test1" : 1 ]
         let json2 = ["test2" : 2 ]
-        let result = jsonify([json1, json2])
+        let result = jsonify([json1 as Optional<Dictionary<String, AnyObject>>, json2 as Optional<Dictionary<String, AnyObject>>])
         
         XCTAssertTrue(result!["test1"] as! Int == 1, "Jsonify should turn JSON optional array to single JSON optional")
         XCTAssertTrue(result!["test2"] as! Int == 2, "Jsonify should turn JSON optional array to single JSON optional")

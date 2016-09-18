@@ -34,21 +34,21 @@ class ObjectToJSONFlowTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        testModel = TestModel(json: [
-            "bool" : true,
-            "boolArray" : [true, false, true],
-            "integer" : 1,
-            "integerArray" : [1, 2, 3],
-            "float" : 2.0,
-            "floatArray" : [1.0, 2.0, 3.0],
-            "double" : 6.0,
-            "doubleArray" : [4.0, 5.0, 6.0],
+        let json = [
+            "bool" : true as AnyObject,
+            "boolArray" : [true, false, true] as AnyObject,
+            "integer" : 1 as AnyObject,
+            "integerArray" : [1, 2, 3] as AnyObject,
+            "float" : 2.0 as AnyObject,
+            "floatArray" : [1.0, 2.0, 3.0] as AnyObject,
+            "double" : 6.0 as AnyObject,
+            "doubleArray" : [4.0, 5.0, 6.0] as AnyObject,
             "dictionary" : [
                 "otherModel" : [
                     "id" : 1,
                     "name" : "nestedModel1"
                 ]
-            ],
+            ] as AnyObject,
             "dictionaryWithArray" : [
                 "otherModels" : [
                     [
@@ -60,36 +60,38 @@ class ObjectToJSONFlowTests: XCTestCase {
                         "name" : "otherModel2"
                     ]
                 ]
-            ],
-            "string" : "abc",
-            "stringArray" : ["def", "ghi", "jkl"],
+            ] as AnyObject,
+            "string" : "abc" as AnyObject,
+            "stringArray" : ["def", "ghi", "jkl"] as AnyObject,
             "nestedModel" : [
                 "id" : 123,
                 "name" : "nestedModel1"
-            ],
+            ] as AnyObject,
             "nestedModelArray" : [
                 [
                     "id" : 456,
                     "name" : "nestedModel2"
-            ],
-            [
-                "id" : 789,
-                "name" : "nestedModel3"
-            ]
-            ],
-            "enumValue" : "A",
-            "enumValueArray" : ["A", "B", "C"],
-            "date" : "2015-08-16T20:51:46.600Z",
-            "dateArray" : ["2015-08-16T20:51:46.600Z", "2015-08-16T20:51:46.600Z"],
-            "dateISO8601" : "2015-08-08T21:57:13Z",
-            "dateISO8601Array" : ["2015-08-08T21:57:13Z", "2015-08-08T21:57:13Z"],
-            "int32" : 100000000,
-            "int32Array" : [100000000, 100000000, 100000000],
-            "int64" : 300000000,
-            "int64Array" : [300000000, 300000000, 300000000],
-            "url" : "http://github.com",
-            "urlArray" : ["http://github.com", "http://github.com"]
-        ])
+                ],
+                [
+                    "id" : 789,
+                    "name" : "nestedModel3"
+                ]
+            ] as AnyObject,
+            "enumValue" : "A" as AnyObject,
+            "enumValueArray" : ["A", "B", "C"] as AnyObject,
+            "date" : "2015-08-16T20:51:46.600Z" as AnyObject,
+            "dateArray" : ["2015-08-16T20:51:46.600Z", "2015-08-16T20:51:46.600Z"] as AnyObject,
+            "dateISO8601" : "2015-08-08T21:57:13Z" as AnyObject,
+            "dateISO8601Array" : ["2015-08-08T21:57:13Z", "2015-08-08T21:57:13Z"] as AnyObject,
+            "int32" : 100000000 as AnyObject,
+            "int32Array" : [100000000, 100000000, 100000000] as AnyObject,
+            "int64" : 300000000 as AnyObject,
+            "int64Array" : [300000000, 300000000, 300000000] as AnyObject,
+            "url" : "http://github.com" as AnyObject,
+            "urlArray" : ["http://github.com", "http://github.com"] as AnyObject
+        ]
+        
+        testModel = TestModel(json: json)
     }
     
     override func tearDown() {
@@ -134,7 +136,7 @@ class ObjectToJSONFlowTests: XCTestCase {
         XCTAssertTrue(resultDate8601Array == [1439071033, 1439071033], "JSON created from model should have correct values")
         
         XCTAssertTrue((result!["url"] as! String == "http://github.com"), "JSON created from model should have correct values")
-        XCTAssertTrue(((result!["urlArray"] as! [URL]).map { url in url.absoluteString! } == ["http://github.com", "http://github.com"]), "JSON created from model should have correct values")
+        XCTAssertTrue(((result!["urlArray"] as! [URL]).map { url in url.absoluteString } == ["http://github.com", "http://github.com"]), "JSON created from model should have correct values")
         
         let otherModel = (result!["dictionary"] as! [String : JSON])["otherModel"]!
         

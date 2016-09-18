@@ -35,8 +35,8 @@ class EncoderTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        testNestedModel1 = TestNestedModel(json: [ "id" : 1, "name" : "nestedModel1" ])
-        testNestedModel2 = TestNestedModel(json: ["id" : 2, "name" : "nestedModel2"])
+        testNestedModel1 = TestNestedModel(json: [ "id" : 1 as AnyObject, "name" : "nestedModel1" as AnyObject ])
+        testNestedModel2 = TestNestedModel(json: ["id" : 2 as AnyObject, "name" : "nestedModel2" as AnyObject])
     }
     
     override func tearDown() {
@@ -346,7 +346,7 @@ class EncoderTests: XCTestCase {
         
         let test = result!["urlArray"] as! [URL]
         
-        XCTAssertTrue(test.map { url in url.absoluteString! } == ["http://github.com", "http://github.com"], "Encode NSURL array should return correct value")
+        XCTAssertTrue(test.map { url in url.absoluteString } == ["http://github.com", "http://github.com"], "Encode NSURL array should return correct value")
     }
     
     func testEncodeURLArrayReturnsNilIfModelInvalid() {

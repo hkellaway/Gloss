@@ -103,7 +103,7 @@ class DecoderTests: XCTestCase {
     
     func testDecodeBoolArrayReturnsNilIfJSONInvalid() {
         let invalidJSON = [ "array" : ["1", "2", "3"] ]
-        let result: [Bool]? = Decoder.decode("array")(invalidJSON)
+        let result: [Bool]? = Decoder.decode("array")(invalidJSON as JSON)
         
         XCTAssertNil(result, "Decode bool array should return nil if JSON is invalid")
     }
@@ -127,7 +127,7 @@ class DecoderTests: XCTestCase {
     
     func testDecodeIntArrayReturnsNilIfJSONInvalid() {
         let invalidJSON = [ "array" : ["1", "2", "3"] ]
-        let result: [Int]? = Decoder.decode("array")(invalidJSON)
+        let result: [Int]? = Decoder.decode("array")(invalidJSON as JSON)
         
         XCTAssertNil(result, "Decode int array should return nil if JSON is invalid")
     }
@@ -151,7 +151,7 @@ class DecoderTests: XCTestCase {
     
     func testDecodeFloatArrayReturnsNilIfJSONInvalid() {
         let invalidJSON = [ "array" : ["1", "2", "3"] ]
-        let result: [Float]? = Decoder.decode("array")(invalidJSON)
+        let result: [Float]? = Decoder.decode("array")(invalidJSON as JSON)
         
         XCTAssertNil(result, "Decode float array should return nil if JSON is invalid")
     }
@@ -175,7 +175,7 @@ class DecoderTests: XCTestCase {
     
     func testDecodeDoubleArrayReturnsNilIfJSONInvalid() {
         let invalidJSON = [ "array" : ["1", "2", "3"] ]
-        let result: [Double]? = Decoder.decode("array")(invalidJSON)
+        let result: [Double]? = Decoder.decode("array")(invalidJSON as JSON)
         
         XCTAssertNil(result, "Decode double array should return nil if JSON is invalid")
     }
@@ -226,7 +226,7 @@ class DecoderTests: XCTestCase {
     
     func testDecodeStringArrayReturnsNilIfJSONInvalid() {
         let invalidJSON = [ "array" : [1, 2, 3] ]
-        let result: [String]? = Decoder.decode("array")(invalidJSON)
+        let result: [String]? = Decoder.decode("array")(invalidJSON as JSON)
         
         XCTAssertNil(result, "Decode string array should return nil if JSON is invalid")
     }
@@ -257,7 +257,7 @@ class DecoderTests: XCTestCase {
     
     func testDecodeEnumArrayReturnsNilIfJSONInvalid() {
         let invalidJSON = [ "array" : ["1", "2", "3"] ]
-        let result: [TestModel.EnumValue]? = Decoder.decodeEnumArray("array")(invalidJSON)
+        let result: [TestModel.EnumValue]? = Decoder.decodeEnumArray("array")(invalidJSON as JSON)
         
         XCTAssertNil(result, "Decode enum array should return nil if JSON is invalid")
     }
@@ -322,7 +322,7 @@ class DecoderTests: XCTestCase {
     
     func testDecodeDateArrayReturnsNilIfJSONInvalid() {
         let invalidJSON = [ "array" : ["1", "2", "3"] ]
-        let result: [Date]? = Decoder.decodeDateArray("array", dateFormatter: TestModel.dateFormatter)(invalidJSON)
+        let result: [Date]? = Decoder.decodeDateArray("array", dateFormatter: TestModel.dateFormatter)(invalidJSON as JSON)
         
         XCTAssertNil(result, "Decode date array should return nil if JSON is invalid")
     }
@@ -347,7 +347,7 @@ class DecoderTests: XCTestCase {
 
     func testDecodeDateISO8601ArrayArrayReturnsNilIfJSONInvalid() {
         let invalidJSON = [ "array" : ["1", "2", "3"] ]
-        let result: [Date]? = Decoder.decodeDateISO8601Array("array")(invalidJSON)
+        let result: [Date]? = Decoder.decodeDateISO8601Array("array")(invalidJSON as JSON)
         
         XCTAssertNil(result, "Decode NSDate array should return nil if JSON is invalid")
     }
@@ -366,7 +366,7 @@ class DecoderTests: XCTestCase {
     
     func testDecodeInt32ArrayReturnsNilIfJSONInvalid() {
         let invalidJSON = [ "array" : ["1", "2", "3"] ]
-        let result: [Int32]? = Decoder.decodeInt32Array("array")(invalidJSON)
+        let result: [Int32]? = Decoder.decodeInt32Array("array")(invalidJSON as JSON)
         
         XCTAssertNil(result, "Decode Int32 array should return nil if JSON is invalid")
     }
@@ -385,7 +385,7 @@ class DecoderTests: XCTestCase {
     
     func testDecodeUInt32ArrayReturnsNilIfJSONInvalid() {
         let invalidJSON = [ "array" : ["1", "2", "3"] ]
-        let result: [UInt32]? = Decoder.decodeUInt32Array("array")(invalidJSON)
+        let result: [UInt32]? = Decoder.decodeUInt32Array("array")(invalidJSON as JSON)
         
         XCTAssertNil(result, "Decode UInt32 array should return nil if JSON is invalid")
     }
@@ -404,7 +404,7 @@ class DecoderTests: XCTestCase {
     
     func testDecodeInt64ArrayReturnsNilIfJSONInvalid() {
         let invalidJSON = [ "array" : ["1", "2", "3"] ]
-        let result: [Int64]? = Decoder.decodeInt64Array("array")(invalidJSON)
+        let result: [Int64]? = Decoder.decodeInt64Array("array")(invalidJSON as JSON)
         
         XCTAssertNil(result, "Decode Int64 array should return nil if JSON is invalid")
     }
@@ -423,7 +423,7 @@ class DecoderTests: XCTestCase {
     
     func testDecodeUInt64ArrayReturnsNilIfJSONInvalid() {
         let invalidJSON = [ "array" : ["1", "2", "3"] ]
-        let result: [UInt64]? = Decoder.decodeUInt64Array("array")(invalidJSON)
+        let result: [UInt64]? = Decoder.decodeUInt64Array("array")(invalidJSON as JSON)
         
         XCTAssertNil(result, "Decode UInt64 array should return nil if JSON is invalid")
     }
@@ -447,7 +447,7 @@ class DecoderTests: XCTestCase {
     
     func testDecodeURLArrayReturnsNilIfJSONInvalid() {
         let invalidJSON = [ "array" : [1, 1, 1] ]
-        let result: [URL]? = Decoder.decodeURLArray("array")(invalidJSON)
+        let result: [URL]? = Decoder.decodeURLArray("array")(invalidJSON as JSON)
         
         XCTAssertNil(result, "Decode url array should return nil if JSON is invalid")
     }

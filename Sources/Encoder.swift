@@ -41,8 +41,8 @@ public struct Encoder {
         return {
             property in
             
-            if let property = property as? AnyObject {
-                return [key : property]
+            if let property = property {
+                return [key : property as AnyObject]
             }
             
             return nil
@@ -60,8 +60,8 @@ public struct Encoder {
         return {
             array in
             
-            if let array = array as? AnyObject {
-                return [key : array]
+            if let array = array {
+                return [key : array as AnyObject]
             }
             
             return nil
