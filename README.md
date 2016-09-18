@@ -19,16 +19,16 @@
 - [Download Gloss](https://github.com/hkellaway/Gloss/archive/master.zip) and do a `pod install` on the included `GlossExample` app to see Gloss in action
 - Check out the [documentation](http://cocoadocs.org/docsets/Gloss/) for a more comprehensive look at the classes available in Gloss
 
-### Swift 2.3 and Swift 3.0
+### Swift 3.0
 
-Use the `swift_2.3` and `swift_3.0` branches for compatible versions of Gloss plus Example project that are compatible with Swift 2.3 and Swift 3.0 respectively.
+Use the `swift_3.0` branch for a compatible version of Gloss plus Example project.
 
 The Gloss source currently available on CocoaPods and Carthage is compatible with Swift 2.3.
 
 ### Installation with CocoaPods
 
 ```ruby
-pod 'Gloss', '~> 0.7'
+pod 'Gloss', '~> 0.8'
 ```
 
 ### Installation with Carthage
@@ -51,6 +51,10 @@ let package = Package(
     ]
 )
 ```
+
+## Deprecations
+
+:warning: "Nested keypaths" have been deprecated as of version `0.8.0` ([Read more](#nested-keypaths-deprecation))
 
 ## Usage
 
@@ -234,8 +238,9 @@ let repoOwnerJSON = [
         "name": "hkellaway"
 ]
 
-guard let repoOwner = RepoOwner(json: repoOwnerJSON)
-    else { /* handle nil object here */ }
+guard let repoOwner = RepoOwner(json: repoOwnerJSON) else { 
+    // handle decoding failure here
+}
 
 print(repoOwner.repoId)
 print(repoOwner.name)
@@ -344,7 +349,7 @@ extension Decoder {
 
     static func decodeStringUppercase(key: String, json: JSON) -> String? {
             
-        if let string = json.valueForKeyPath(key) as? String {
+        if let string = json[key] as? String {
             return string.uppercaseString
         }
 
@@ -356,7 +361,7 @@ extension Decoder {
 
 We've created an extension on `Decoder` and written our own decode function, `decodeStringUppercase`.
 
-What's important to note is that the return type for `decodeStringUppercase` is the desired type -- in this case, `String?`. The value you're working with will be accessible via `json.valueForKeyPath(_:)` and will need to be cast to the desired type using `as?`. Then, manipulation can be done - for example, uppercasing. The transformed value should be returned; in the case that the cast failed, `nil` should be returned.
+What's important to note is that the return type for `decodeStringUppercase` is the desired type -- in this case, `String?`. The value you're working with will be accessible via `json[key]` and will need to be cast to the desired type using `as?`. Then, manipulation can be done - for example, uppercasing. The transformed value should be returned; in the case that the cast failed, `nil` should be returned.
 
 Though depicted here as being in the same file,  the `Decoder` extension is not required to be. Additionally, representing the custom decoding function as a member of `Decoder` is not required, but simply stays true to the semantics of Gloss.
 
@@ -478,6 +483,29 @@ Models that are to be transformed to JSON _must_ adopt the `Encodable` protocol.
 
 The `Glossy` protocol depicted in the examples is simply a convenience for defining models that can translated to _and_ from JSON. `Glossy` can be replaced by `Decodable, Encodable` for more preciseness, if desired.
 
+## Deprecation Details
+
+### Nested Keypaths Deprecation
+
+This feature has been removed as of version `0.8.0`.
+
+Version `0.7.0` introduced "nested keypaths" - this allowed values nested deep in a JSON structure to be accessed via a period-delimited key. For example, given a JSON structure:
+
+```
+[ "outer" : [
+        "inner" : 123
+    ]
+]
+```
+
+the value of `123` could be accessed via the key `outer.inner`.
+
+While this was a handy feature, it caused a runtime crash when using a Release configuration (see [Issue #135](https://github.com/hkellaway/Gloss/issues/135)).
+
+For those using nested keypaths or those who have deeply nested values, these can be handled by creating nested models or creating [Custom Transformations](#custom-transformations). See the Example project for illustrations of each.
+
+The tag `deprecation-nested-keypaths` marks the last merge that included nested keypaths and can be pointed to while models are updated.
+
 ## Why "Gloss"?
 
 The name for Gloss was inspired by the name for a popular Objective-C library, [Mantle](https://github.com/Mantle/Mantle) - both names are a play on the word "layer", in reference to their role in supporting the model layer of the application.
@@ -528,7 +556,7 @@ Check out Gloss in these cool places!
 * [Swift Sandbox](http://swiftsandbox.io/issues/3#b1RJwo2)
 * [iOS Goodies](http://ios-goodies.com/post/127166753231/week-93)
 
-Using Gloss in your app? [Let me know.](mailto:hello@harlankellaway.com?subject=Using Gloss in my app)
+Using Gloss in your app? [Let me know.](mailto:hello@harlankellaway.com?subject=Using Gloss in my project)
 
 ## License
 
