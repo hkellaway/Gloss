@@ -33,16 +33,15 @@ public struct Decoder {
     /**
      Decodes JSON to a generic value.
     
-    - parameter              key: Key used in JSON for decoded value.
-    - parameter keyPathDelimiter: Delimiter used for nested key path.
+    - parameter key: Key used in JSON for decoded value.
     
     - returns: Value decoded from JSON.
     */
-    public static func decode<T>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> T? {
+    public static func decode<T>(key: String) -> JSON -> T? {
         return {
             json in
             
-            if let value = json.valueForKeyPath(key, withDelimiter: keyPathDelimiter) as? T {
+            if let value = json[key] as? T {
                 return value
             }
             
@@ -53,17 +52,16 @@ public struct Decoder {
     /**
      Decodes JSON to a date.
      
-     - parameter              key: Key used in JSON for decoded value.
-     - parameter    dateFormatter: Date formatter used to create date.
-     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     - parameter key:           Key used in JSON for decoded value.
+     - parameter dateFormatter: Date formatter used to create date.
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDate(key: String, dateFormatter: NSDateFormatter, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> NSDate? {
+    public static func decodeDate(key: String, dateFormatter: NSDateFormatter) -> JSON -> NSDate? {
         return {
             json in
             
-            if let dateString = json.valueForKeyPath(key, withDelimiter: keyPathDelimiter) as? String {
+            if let dateString = json[key] as? String {
                 return dateFormatter.dateFromString(dateString)
             }
             
@@ -74,17 +72,16 @@ public struct Decoder {
     /**
      Decodes JSON to a date array.
      
-     - parameter              key: Key used in JSON for decoded value.
-     - parameter    dateFormatter: Date formatter used to create date.
-     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     - parameter key:           Key used in JSON for decoded value.
+     - parameter dateFormatter: Date formatter used to create date.
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDateArray(key: String, dateFormatter: NSDateFormatter, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [NSDate]? {
+    public static func decodeDateArray(key: String, dateFormatter: NSDateFormatter) -> JSON -> [NSDate]? {
         return {
             json in
             
-            if let dateStrings = json.valueForKeyPath(key, withDelimiter: keyPathDelimiter) as? [String] {
+            if let dateStrings = json[key] as? [String] {
                 var dates: [NSDate] = []
                 
                 for dateString in dateStrings {
@@ -105,40 +102,37 @@ public struct Decoder {
     /**
      Decodes JSON to an ISO8601 date.
      
-     - parameter              key: Key used in JSON for decoded value.
-     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     - parameter key: Key used in JSON for decoded value.
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDateISO8601(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> NSDate? {
-        return Decoder.decodeDate(key, dateFormatter: GlossDateFormatterISO8601, keyPathDelimiter: keyPathDelimiter)
+    public static func decodeDateISO8601(key: String) -> JSON -> NSDate? {
+        return Decoder.decodeDate(key, dateFormatter: GlossDateFormatterISO8601)
     }
     
     /**
      Decodes JSON to an ISO8601 date array.
      
-     - parameter              key: Key used in JSON for decoded value.
-     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     - parameter key: Key used in JSON for decoded value.
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDateISO8601Array(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [NSDate]? {
-        return Decoder.decodeDateArray(key, dateFormatter: GlossDateFormatterISO8601, keyPathDelimiter: keyPathDelimiter)
+    public static func decodeDateISO8601Array(key: String) -> JSON -> [NSDate]? {
+        return Decoder.decodeDateArray(key, dateFormatter: GlossDateFormatterISO8601)
     }
     
     /**
      Decodes JSON to a Decodable object.
      
-     - parameter              key: Key used in JSON for decoded value.
-     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     - parameter key: Key used in JSON for decoded value.
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDecodable<T: Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> T? {
+    public static func decodeDecodable<T: Decodable>(key: String) -> JSON -> T? {
         return {
             json in
             
-            if let subJSON = json.valueForKeyPath(key, withDelimiter: keyPathDelimiter) as? JSON {
+            if let subJSON = json[key] as? JSON {
                 return T(json: subJSON)
             }
             
@@ -150,16 +144,15 @@ public struct Decoder {
     /**
      Decodes JSON to a Decodable object array.
      
-     - parameter              key: Key used in JSON for decoded value.
-     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     - parameter key: Key used in JSON for decoded value.
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDecodableArray<T: Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [T]? {
+    public static func decodeDecodableArray<T: Decodable>(key: String) -> JSON -> [T]? {
         return {
             json in
             
-            if let jsonArray = json.valueForKeyPath(key, withDelimiter: keyPathDelimiter) as? [JSON] {
+            if let jsonArray = json[key] as? [JSON] {
                 var models: [T] = []
                 
                 for subJSON in jsonArray {
@@ -180,16 +173,15 @@ public struct Decoder {
     /**
      Decodes JSON to a dictionary of String to Decodable.
      
-     - parameter              key: Key used in JSON for decoded value.
-     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     - parameter key: Key used in JSON for decoded value.
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDecodableDictionary<T:Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [String : T]? {
+    public static func decodeDecodableDictionary<T:Decodable>(key: String) -> JSON -> [String : T]? {
         return {
             json in
             
-            guard let dictionary = json.valueForKeyPath(key, withDelimiter: keyPathDelimiter) as? [String : JSON] else {
+            guard let dictionary = json[key] as? [String : JSON] else {
                 return nil
             }
             
@@ -208,16 +200,15 @@ public struct Decoder {
     /**
      Decodes JSON to a dictionary of String to Decodable array.
      
-     - parameter              key: Key used in JSON for decoded value.
-     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     - parameter key: Key used in JSON for decoded value.
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDecodableDictionary<T:Decodable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [String : [T]]? {
+    public static func decodeDecodableDictionary<T:Decodable>(key: String) -> JSON -> [String : [T]]? {
         return {
             json in
             
-            guard let dictionary = json.valueForKeyPath(key, withDelimiter: keyPathDelimiter) as? [String : [JSON]] else {
+            guard let dictionary = json[key] as? [String : [JSON]] else {
                 return nil
             }
             
@@ -236,16 +227,15 @@ public struct Decoder {
     /**
      Decodes JSON to an enum value.
      
-     - parameter              key: Key used in JSON for decoded value.
-     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     - parameter key: Key used in JSON for decoded value.
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeEnum<T: RawRepresentable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> T? {
+    public static func decodeEnum<T: RawRepresentable>(key: String) -> JSON -> T? {
         return {
             json in
             
-            if let rawValue = json.valueForKeyPath(key, withDelimiter: keyPathDelimiter) as? T.RawValue {
+            if let rawValue = json[key] as? T.RawValue {
                 return T(rawValue: rawValue)
             }
             
@@ -256,16 +246,15 @@ public struct Decoder {
     /**
      Decodes JSON to an enum value array.
      
-     - parameter              key: Key used in JSON for decoded value.
-     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     - parameter key: Key used in JSON for decoded value.
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeEnumArray<T: RawRepresentable>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [T]? {
+    public static func decodeEnumArray<T: RawRepresentable>(key: String) -> JSON -> [T]? {
         return {
             json in
             
-            if let rawValues = json.valueForKeyPath(key, withDelimiter: keyPathDelimiter) as? [T.RawValue] {
+            if let rawValues = json[key] as? [T.RawValue] {
                 var enumValues: [T] = []
                 
                 for rawValue in rawValues {
@@ -286,12 +275,11 @@ public struct Decoder {
     /**
      Decodes JSON to an Int32.
      
-     - parameter              key: Key used in JSON for decoded value.
-     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     - parameter key: Key used in JSON for decoded value.
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeInt32(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> Int32? {
+    public static func decodeInt32(key: String) -> JSON -> Int32? {
         return {
             json in
             
@@ -306,12 +294,11 @@ public struct Decoder {
     /**
      Decodes JSON to an Int32 array.
      
-     - parameter              key: Key used in JSON for decoded value.
-     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     - parameter key: Key used in JSON for decoded value.
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeInt32Array(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [Int32]? {
+    public static func decodeInt32Array(key: String) -> JSON -> [Int32]? {
         return {
             json in
             
@@ -328,12 +315,11 @@ public struct Decoder {
 	/**
 	Decodes JSON to an UInt32.
 
-	- parameter              key: Key used in JSON for decoded value.
-	- parameter keyPathDelimiter: Delimiter used for nested key path.
+	- parameter key: Key used in JSON for decoded value.
 
 	- returns: Value decoded from JSON.
 	*/
-	public static func decodeUInt32(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> UInt32? {
+	public static func decodeUInt32(key: String) -> JSON -> UInt32? {
 		return {
 			json in
 
@@ -348,12 +334,11 @@ public struct Decoder {
 	/**
 	Decodes JSON to an UInt32 array.
 
-	- parameter              key: Key used in JSON for decoded value.
-	- parameter keyPathDelimiter: Delimiter used for nested key path.
+	- parameter key: Key used in JSON for decoded value.
 
 	- returns: Value decoded from JSON.
 	*/
-	public static func decodeUInt32Array(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [UInt32]? {
+	public static func decodeUInt32Array(key: String) -> JSON -> [UInt32]? {
 		return {
 			json in
 
@@ -370,12 +355,11 @@ public struct Decoder {
     /**
      Decodes JSON to an Int64.
 
-     - parameter              key: Key used in JSON for decoded value.
-     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     - parameter key: Key used in JSON for decoded value.
 
      - returns: Value decoded from JSON.
      */
-    public static func decodeInt64(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> Int64? {
+    public static func decodeInt64(key: String) -> JSON -> Int64? {
         return {
             json in
             
@@ -390,12 +374,11 @@ public struct Decoder {
     /**
      Decodes JSON to an Int64 array.
      
-     - parameter              key: Key used in JSON for decoded value.
-     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     - parameter key: Key used in JSON for decoded value.
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeInt64Array(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [Int64]? {
+    public static func decodeInt64Array(key: String) -> JSON -> [Int64]? {
         return {
             json in
             
@@ -412,12 +395,11 @@ public struct Decoder {
 	/**
 	Decodes JSON to an UInt64.
 
-	- parameter              key: Key used in JSON for decoded value.
-	- parameter keyPathDelimiter: Delimiter used for nested key path.
+	- parameter key: Key used in JSON for decoded value.
 
 	- returns: Value decoded from JSON.
 	*/
-	public static func decodeUInt64(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> UInt64? {
+	public static func decodeUInt64(key: String) -> JSON -> UInt64? {
 		return {
 			json in
 
@@ -432,12 +414,11 @@ public struct Decoder {
 	/**
 	Decodes JSON to an UInt64 array.
 
-	- parameter              key: Key used in JSON for decoded value.
-	- parameter keyPathDelimiter: Delimiter used for nested key path.
+	- parameter key: Key used in JSON for decoded value.
 
 	- returns: Value decoded from JSON.
 	*/
-	public static func decodeUInt64Array(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [UInt64]? {
+	public static func decodeUInt64Array(key: String) -> JSON -> [UInt64]? {
 		return {
 			json in
 
@@ -454,16 +435,15 @@ public struct Decoder {
     /**
      Decodes JSON to a URL.
 
-     - parameter              key: Key used in JSON for decoded value.
-     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     - parameter key: Key used in JSON for decoded value.
 
      - returns: Value decoded from JSON.
      */
-    public static func decodeURL(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> NSURL? {
+    public static func decodeURL(key: String) -> JSON -> NSURL? {
         return {
             json in
             
-            if let urlString = json.valueForKeyPath(key, withDelimiter: keyPathDelimiter) as? String,
+            if let urlString = json[key] as? String,
                 let encodedString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
                 return NSURL(string: encodedString)
             }
@@ -475,16 +455,15 @@ public struct Decoder {
     /**
      Decodes JSON to a URL array.
      
-     - parameter              key: Key used in JSON for decoded value.
-     - parameter keyPathDelimiter: Delimiter used for nested key path.
+     - parameter key: Key used in JSON for decoded value.
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeURLArray(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON -> [NSURL]? {
+    public static func decodeURLArray(key: String) -> JSON -> [NSURL]? {
         return {
             json in
             
-            if let urlStrings = json.valueForKeyPath(key, withDelimiter: keyPathDelimiter) as? [String] {
+            if let urlStrings = json[key] as? [String] {
                 var urls: [NSURL] = []
                 
                 for urlString in urlStrings {

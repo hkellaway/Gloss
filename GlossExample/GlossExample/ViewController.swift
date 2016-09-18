@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         print(repo.desc)
         print(repo.url)
         print(repo.owner)
-        print(repo.ownerUrl)
+        print(repo.ownerURL)
         print(repo.primaryLanguage?.rawValue)
         print("")
         
