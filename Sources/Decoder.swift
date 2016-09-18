@@ -464,7 +464,7 @@ public struct Decoder {
             json in
             
             if let urlString = json.valueForKeyPath(key, withDelimiter: keyPathDelimiter) as? String,
-                encodedString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
+                let encodedString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
                 return NSURL(string: encodedString)
             }
             
