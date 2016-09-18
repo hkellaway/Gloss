@@ -302,8 +302,4 @@ class GlossTests: XCTestCase {
         XCTAssertTrue(result!.isEmpty, "Jsonify should return empty JSON when given an empty array")
     }
     
-    func testDefaultKeyPathDelimiterIsAPeriod() {
-        XCTAssertTrue(GlossKeyPathDelimiter == ".", "Deafult key path delimiter should be a period")
-    }
-    
 }
