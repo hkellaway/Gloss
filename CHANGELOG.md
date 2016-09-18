@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 `Gloss` adheres to [Semantic Versioning](http://semver.org/).
 
+- `0.8.x` Releases - [0.8.0](#080)
 - `0.7.x` Releases - [0.7.0](#070) | [0.7.1](#071) | [0.7.2](#072) | [0.7.3](#073) | [0.7.4](#074)
 - `0.6.x` Releases - [0.6.0](#060) | [0.6.1](#061) | [0.6.2](#062)
 - `0.5.x` Releases - [0.5.0](#050) | [0.5.1](#051) | [0.5.2](#052) | [0.5.3](#053) | [0.5.4](#054)
@@ -9,6 +10,26 @@ All notable changes to this project will be documented in this file.
 - `0.3.x` Releases - [0.3.0](#030) | [0.3.1](#031)
 - `0.2.x` Releases - [0.2.0](#020)
 - `0.1.x` Releases - [0.1.0](#010)
+
+---
+
+## [0.8.0](https://github.com/hkellaway/Gloss/releases/tag/0.8.0)
+Released on 2016-09-18. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A0.8.0)
+
+#### Deprecated
+- The "nested keypaths" feature has been removed as it caused a runtime crash for the Release configuration (Issue [#135](https://github.com/hkellaway/Gloss/issues/135))
+
+#### Updated
+- Array decoding now returns `nil` if any decodings fail instead of a partial array of decoded values (Issue [#189](https://github.com/hkellaway/Gloss/issues/189))
+- Support for Swift 2.3 [PR [#209](https://github.com/hkellaway/Gloss/pull/209)]
+
+#### Upgrade Notes
+
+This version marks the deprecation of a feature called "nested keypaths". This allowed deeply nested JSON values to be accessed via a period-delimited key. However, it caused a runtime crash when using the Release configuration. Users who rely on nested keypaths should update their models before switching to `0.8.0`. See [Nested Keypaths Deprecation](https://github.com/hkellaway/Gloss#nested-keypaths-deprecation) for more information.
+
+While it's understood that this is inconvenient, the decision was made to remove in favor of avoiding runtime crashes.
+
+Also note: this version marks the last that will use Swift 2.x syntax. Version `1.0.0` will support Swift 3.0 and any improvements to Gloss thereafter will use Swift 3.0 syntax.
 
 ---
 
