@@ -65,7 +65,7 @@ struct Repo: Glossy {
     func toJSON() -> JSON? {
         return jsonify([
             "id" ~~> self.repoId,
-            "name" ~~> Encoder.encodeStringCapitalized("name", value: self.name),
+            Encoder.encodeStringCapitalized("name", value: self.name),
             "description" ~~> self.desc,
             "html_url" ~~> self.url,
             "owner" ~~> self.owner,
