@@ -265,13 +265,13 @@ class DecoderTests: XCTestCase {
     func testDecodeDate() {
         let result: Date? = Decoder.decodeDate("date", dateFormatter: TestModel.dateFormatter)(testJSON!)
         
-        let year: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.year, from: result!).year!
-        let month: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.month, from: result!).month!
-        let day: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.day, from: result!).day!
-        let hour: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.hour, from: result!).hour!
-        let minute: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.minute, from: result!).minute!
-        let second: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.second, from: result!).second!
-        let nanosecond: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.nanosecond, from: result!).nanosecond!
+        let year: Int = (Calendar.current as NSCalendar).components(.year, from: result!).year!
+        let month: Int = (Calendar.current as NSCalendar).components(.month, from: result!).month!
+        let day: Int = (Calendar.current as NSCalendar).components(.day, from: result!).day!
+        let hour: Int = (Calendar.current as NSCalendar).components(.hour, from: result!).hour!
+        let minute: Int = (Calendar.current as NSCalendar).components(.minute, from: result!).minute!
+        let second: Int = (Calendar.current as NSCalendar).components(.second, from: result!).second!
+        let nanosecond: Int = (Calendar.current as NSCalendar).components(.nanosecond, from: result!).nanosecond!
         
         XCTAssertTrue((year == 2015), "Decode NSDate should return correct value")
         XCTAssertTrue((month == 8), "Decode NSDate should return correct value")
@@ -287,21 +287,21 @@ class DecoderTests: XCTestCase {
         let element1: Date = result![0]
         let element2: Date = result![1]
         
-        let year1: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.year, from: element1).year!
-        let month1: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.month, from: element1).month!
-        let day1: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.day, from: element1).day!
-        let hour1: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.hour, from: element1).hour!
-        let minute1: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.minute, from: element1).minute!
-        let second1: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.second, from: element1).second!
-        let nanosecond1: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.nanosecond, from: element1).nanosecond!
+        let year1: Int = (Calendar.current as NSCalendar).components(.year, from: element1).year!
+        let month1: Int = (Calendar.current as NSCalendar).components(.month, from: element1).month!
+        let day1: Int = (Calendar.current as NSCalendar).components(.day, from: element1).day!
+        let hour1: Int = (Calendar.current as NSCalendar).components(.hour, from: element1).hour!
+        let minute1: Int = (Calendar.current as NSCalendar).components(.minute, from: element1).minute!
+        let second1: Int = (Calendar.current as NSCalendar).components(.second, from: element1).second!
+        let nanosecond1: Int = (Calendar.current as NSCalendar).components(.nanosecond, from: element1).nanosecond!
         
-        let year2: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.year, from: element2).year!
-        let month2: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.month, from: element2).month!
-        let day2: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.day, from: element2).day!
-        let hour2: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.hour, from: element2).hour!
-        let minute2: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.minute, from: element2).minute!
-        let second2: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.second, from: element2).second!
-        let nanosecond2: Int = (Calendar.current as NSCalendar).components(NSCalendar.Unit.nanosecond, from: element2).nanosecond!
+        let year2: Int = (Calendar.current as NSCalendar).components(.year, from: element2).year!
+        let month2: Int = (Calendar.current as NSCalendar).components(.month, from: element2).month!
+        let day2: Int = (Calendar.current as NSCalendar).components(.day, from: element2).day!
+        let hour2: Int = (Calendar.current as NSCalendar).components(.hour, from: element2).hour!
+        let minute2: Int = (Calendar.current as NSCalendar).components(.minute, from: element2).minute!
+        let second2: Int = (Calendar.current as NSCalendar).components(.second, from: element2).second!
+        let nanosecond2: Int = (Calendar.current as NSCalendar).components(.nanosecond, from: element2).nanosecond!
         
         XCTAssertTrue((year1 == 2015), "Decode NSDate array should return correct value")
         XCTAssertTrue((month1 == 8), "Decode NSDate array should return correct value")
