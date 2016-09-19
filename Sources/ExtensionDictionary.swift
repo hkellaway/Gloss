@@ -66,7 +66,7 @@ internal extension Dictionary {
      - parameter other:     Dictionary to add entries from
      - parameter delimiter: Key path delimiter
      */
-    mutating func add(_ other: Dictionary) -> () {
+    mutating func add(other: Dictionary) -> () {
         for (key, value) in other {
             self.updateValue(value, forKey:key)
         }

@@ -215,7 +215,7 @@ public struct Decoder {
             return dictionary.flatMap {
                 (key, value) in
                 
-                guard let decoded = [T].fromJSONArray(value) else {
+                guard let decoded = [T].from(jsonArray: value) else {
                     return nil
                 }
                 
