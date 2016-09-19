@@ -30,9 +30,9 @@ struct Repo: Glossy {
     let repoId: Int
     let desc: String?
     let name: String
-    let url: NSURL
+    let url: URL
     let owner: RepoOwner // nested model
-    let ownerURL: NSURL
+    let ownerURL: URL
     let primaryLanguage: Language?
     
     enum Language: String {
@@ -45,9 +45,9 @@ struct Repo: Glossy {
     init?(json: JSON) {
         guard let repoId: Int = "id" <~~ json,
             let name: String = Decoder.decodeStringUppercase("name", json: json),
-            let url: NSURL = "html_url" <~~ json,
+            let url: URL = "html_url" <~~ json,
             let owner: RepoOwner = "owner" <~~ json,
-            let ownerURL: NSURL = Decoder.decodeNestedOwnerURL(json) else {
+            let ownerURL: URL = Decoder.decodeNestedOwnerURL(json) else {
                 return nil
         }
         
@@ -79,9 +79,9 @@ struct Repo: Glossy {
 
 extension Decoder {
     
-    static func decodeStringUppercase(key: String, json: JSON) -> String? {
+    static func decodeStringUppercase(_ key: String, json: JSON) -> String? {
         if let string = json[key] as? String {
-            return string.uppercaseString
+            return string.uppercased()
         }
         
         return nil
@@ -91,11 +91,11 @@ extension Decoder {
 
 extension Decoder {
     
-    static func decodeNestedOwnerURL(json: JSON) -> NSURL? {
+    static func decodeNestedOwnerURL(_ json: JSON) -> URL? {
         if
             let ownerJSON = json["owner"] as? JSON,
             let urlString = ownerJSON["html_url"] as? String,
-            let ownerURL = NSURL(string: urlString) {
+            let ownerURL = URL(string: urlString) {
             return ownerURL
         }
         
@@ -106,9 +106,9 @@ extension Decoder {
 
 extension Encoder {
     
-    static func encodeStringCapitalized(key: String, value: String?) -> JSON? {
+    static func encodeStringCapitalized(_ key: String, value: String?) -> JSON? {
         if let value = value {
-            return [key : value.capitalizedString]
+            return [key : value.capitalized as AnyObject]
         }
         
         return nil
@@ -118,12 +118,12 @@ extension Encoder {
 
 extension Encoder {
     
-    static func encodeNestedOwnerURL(value: NSURL) -> JSON {
-        let url = value.absoluteString as! AnyObject
+    static func encodeNestedOwnerURL(_ value: URL) -> JSON {
+        let url = value.absoluteString
         
         return [ "owner" : [
-            "html_url" : url
-            ]
+            "html_url" : url as AnyObject
+            ] as AnyObject
         ]
     }
     
