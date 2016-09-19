@@ -44,10 +44,10 @@ struct Repo: Glossy {
     
     init?(json: JSON) {
         guard let repoId: Int = "id" <~~ json,
-            let name: String = Decoder.decodeStringUppercase("name", json: json),
+            let name: String = Decoder.decodeStringUppercase(key: "name", json: json),
             let url: URL = "html_url" <~~ json,
             let owner: RepoOwner = "owner" <~~ json,
-            let ownerURL: URL = Decoder.decodeNestedOwnerURL(json) else {
+            let ownerURL: URL = Decoder.decode(nestedOwnerURLFromJSON: json) else {
                 return nil
         }
         
@@ -65,11 +65,11 @@ struct Repo: Glossy {
     func toJSON() -> JSON? {
         return jsonify([
             "id" ~~> self.repoId,
-            Encoder.encodeStringCapitalized("name", value: self.name),
+            Encoder.encodeStringCapitalized(key: "name", value: self.name),
             "description" ~~> self.desc,
             "html_url" ~~> self.url,
             "owner" ~~> self.owner,
-            Encoder.encodeNestedOwnerURL(self.ownerURL),
+            Encoder.encode(nestedOwnerURL: self.ownerURL),
             "language" ~~> self.primaryLanguage
             ])
     }
@@ -79,7 +79,7 @@ struct Repo: Glossy {
 
 extension Decoder {
     
-    static func decodeStringUppercase(_ key: String, json: JSON) -> String? {
+    static func decodeStringUppercase(key: String, json: JSON) -> String? {
         if let string = json[key] as? String {
             return string.uppercased()
         }
@@ -91,7 +91,7 @@ extension Decoder {
 
 extension Decoder {
     
-    static func decodeNestedOwnerURL(_ json: JSON) -> URL? {
+    static func decode(nestedOwnerURLFromJSON json: JSON) -> URL? {
         if
             let ownerJSON = json["owner"] as? JSON,
             let urlString = ownerJSON["html_url"] as? String,
@@ -106,7 +106,7 @@ extension Decoder {
 
 extension Encoder {
     
-    static func encodeStringCapitalized(_ key: String, value: String?) -> JSON? {
+    static func encodeStringCapitalized(key: String, value: String?) -> JSON? {
         if let value = value {
             return [key : value.capitalized as AnyObject]
         }
@@ -118,7 +118,7 @@ extension Encoder {
 
 extension Encoder {
     
-    static func encodeNestedOwnerURL(_ value: URL) -> JSON {
+    static func encode(nestedOwnerURL value: URL) -> JSON {
         let url = value.absoluteString
         
         return [ "owner" : [
