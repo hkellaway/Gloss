@@ -263,8 +263,11 @@ class EncoderTests: XCTestCase {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        let resultDate1 = dateFormatter.date(from: result!["dateISO8601Array"]![0] as! String)
-        let resultDate2 = dateFormatter.date(from: result!["dateISO8601Array"]![1] as! String)
+        
+        let resultDateArray1 = result!["dateISO8601Array"]! as! [String]
+        let resultDate1 = dateFormatter.date(from: resultDateArray1[0])
+        let resultDateArray2 = result!["dateISO8601Array"]! as! [String]
+        let resultDate2 = dateFormatter.date(from: resultDateArray2[1])
         
         XCTAssertTrue(resultDate1?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate array should return correct value")
         XCTAssertTrue(resultDate2?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate array should return correct value")

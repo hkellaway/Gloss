@@ -42,7 +42,7 @@ public struct Encoder {
             property in
             
             if let property = property {
-                return [key : property as AnyObject]
+                return [key : property]
             }
             
             return nil
@@ -61,7 +61,7 @@ public struct Encoder {
             array in
             
             if let array = array {
-                return [key : array as AnyObject]
+                return [key : array]
             }
             
             return nil
@@ -81,7 +81,7 @@ public struct Encoder {
             date in
             
             if let date = date {
-                return [key : dateFormatter.string(from: date) as AnyObject]
+                return [key : dateFormatter.string(from: date)]
             }
             
             return nil
@@ -109,7 +109,7 @@ public struct Encoder {
                     dateStrings.append(dateString)
                 }
                 
-                return [key : dateStrings as AnyObject]
+                return [key : dateStrings]
             }
             
             return nil
@@ -150,7 +150,7 @@ public struct Encoder {
             model in
             
             if let model = model, let json = model.toJSON() {
-                return [key : json as AnyObject]
+                return [key : json]
             }
             
             return nil
@@ -179,7 +179,7 @@ public struct Encoder {
                     encodedArray.append(json)
                 }
                 
-                return [key : encodedArray as AnyObject]
+                return [key : encodedArray]
             }
             
             return nil
@@ -209,7 +209,7 @@ public struct Encoder {
                 return (key, json)
             }
             
-            return [key : encoded as AnyObject]
+            return [key : encoded]
         }
     }
     
@@ -238,7 +238,7 @@ public struct Encoder {
                 return (key, jsonArray)
             }
             
-            return [key : encoded as AnyObject]
+            return [key : encoded]
         }
     }
     
@@ -254,7 +254,7 @@ public struct Encoder {
             enumValue in
             
             if let enumValue = enumValue {
-                return [key : enumValue.rawValue as AnyObject]
+                return [key : enumValue.rawValue]
             }
             
             return nil
@@ -279,7 +279,7 @@ public struct Encoder {
                     rawValues.append(enumValue.rawValue)
                 }
                 
-                return [key : rawValues as AnyObject]
+                return [key : rawValues]
             }
             
             return nil
@@ -319,7 +319,7 @@ public struct Encoder {
             if let int32Array = int32Array {
                 let numbers: [NSNumber] = int32Array.map { NSNumber(value: $0 as Int32) }
                 
-                return [key : numbers as AnyObject]
+                return [key : numbers]
             }
             
             return nil
@@ -359,7 +359,7 @@ public struct Encoder {
 			if let uInt32Array = uInt32Array {
 				let numbers: [NSNumber] = uInt32Array.map { NSNumber(value: $0 as UInt32) }
 
-				return [key : numbers as AnyObject]
+				return [key : numbers]
 			}
 
 			return nil
@@ -399,7 +399,7 @@ public struct Encoder {
             if let int64Array = int64Array {
                 let numbers: [NSNumber] = int64Array.map { NSNumber(value: $0 as Int64) }
                 
-                return [key : numbers as AnyObject]
+                return [key : numbers]
             }
             
             return nil
@@ -439,7 +439,7 @@ public struct Encoder {
 			if let uInt64Array = uInt64Array {
 				let numbers: [NSNumber] = uInt64Array.map { NSNumber(value: $0 as UInt64) }
 
-				return [key : numbers as AnyObject]
+				return [key : numbers]
 			}
 
 			return nil
@@ -458,7 +458,7 @@ public struct Encoder {
             url in
             
             if let absoluteURLString = url?.absoluteString {
-                return [key : absoluteURLString as AnyObject]
+                return [key : absoluteURLString]
             }
             
             return nil
