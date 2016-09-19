@@ -47,7 +47,7 @@ Convenience operator for decoding JSON to generic value.
  - returns: Decoded value when successful, nil otherwise.
  */
 public func <~~ <T>(key: String, json: JSON) -> T? {
-    return Decoder.decode(key)(json)
+    return Decoder.decode(key: key)(json)
 }
 
 /**
@@ -59,7 +59,7 @@ public func <~~ <T>(key: String, json: JSON) -> T? {
  - returns: Decoded value when successful, nil otherwise.
  */
 public func <~~ <T: Decodable>(key: String, json: JSON) -> T? {
-    return Decoder.decodeDecodable(key)(json)
+    return Decoder.decode(decodableForKey: key)(json)
 }
 
 /**
@@ -71,7 +71,7 @@ public func <~~ <T: Decodable>(key: String, json: JSON) -> T? {
  - returns: Decoded value when successful, nil otherwise.
  */
 public func <~~ <T: Decodable>(key: String, json: JSON) -> [T]? {
-    return Decoder.decodeDecodableArray(key)(json)
+    return Decoder.decode(decodableArrayForKey: key)(json)
 }
 
 /**
@@ -83,7 +83,7 @@ public func <~~ <T: Decodable>(key: String, json: JSON) -> [T]? {
  - returns: Decoded value when successful, nil otherwise.
  */
 public func <~~ <T: Decodable>(key: String, json: JSON) -> [String : T]? {
-    return Decoder.decodeDecodableDictionary(key)(json)
+    return Decoder.decode(decodableDictionaryForKey: key)(json)
 }
 
 /**
@@ -95,7 +95,7 @@ public func <~~ <T: Decodable>(key: String, json: JSON) -> [String : T]? {
  - returns: Decoded value when successful, nil otherwise.
  */
 public func <~~ <T: Decodable>(key: String, json: JSON) -> [String : [T]]? {
-    return Decoder.decodeDecodableDictionary(key)(json)
+    return Decoder.decode(decodableDictionaryForKey: key)(json)
 }
 
 /**
@@ -107,7 +107,7 @@ public func <~~ <T: Decodable>(key: String, json: JSON) -> [String : [T]]? {
  - returns: Decoded value when successful, nil otherwise.
  */
 public func <~~ <T: RawRepresentable>(key: String, json: JSON) -> T? {
-    return Decoder.decodeEnum(key)(json)
+    return Decoder.decode(enumForKey: key)(json)
 }
 
 /**
@@ -119,7 +119,7 @@ public func <~~ <T: RawRepresentable>(key: String, json: JSON) -> T? {
  - returns: Decoded value when successful, nil otherwise.
  */
 public func <~~ <T: RawRepresentable>(key: String, json: JSON) -> [T]? {
-    return Decoder.decodeEnumArray(key)(json)
+    return Decoder.decode(enumArrayForKey: key)(json)
 }
 
 /**
@@ -131,7 +131,7 @@ public func <~~ <T: RawRepresentable>(key: String, json: JSON) -> [T]? {
  - returns: Decoded value when successful, nil otherwise.
  */
 public func <~~ (key: String, json: JSON) -> Int32? {
-    return Decoder.decodeInt32(key)(json)
+    return Decoder.decode(int32ForKey: key)(json)
 }
 
 /**
@@ -143,7 +143,7 @@ public func <~~ (key: String, json: JSON) -> Int32? {
  - returns: Decoded value when successful, nil otherwise.
  */
 public func <~~ (key: String, json: JSON) -> [Int32]? {
-    return Decoder.decodeInt32Array(key)(json)
+    return Decoder.decode(int32ArrayForKey: key)(json)
 }
 
 /**
@@ -155,7 +155,7 @@ Convenience operator for decoding JSON to UInt32.
 - returns: Decoded value when successful, nil otherwise.
 */
 public func <~~ (key: String, json: JSON) -> UInt32? {
-	return Decoder.decodeUInt32(key)(json)
+    return Decoder.decode(uint32ForKey: key)(json)
 }
 
 /**
@@ -167,7 +167,7 @@ Convenience operator for decoding JSON to UInt32 array.
 - returns: Decoded value when successful, nil otherwise.
 */
 public func <~~ (key: String, json: JSON) -> [UInt32]? {
-	return Decoder.decodeUInt32Array(key)(json)
+    return Decoder.decode(uint32ArrayForKey: key)(json)
 }
 
 /**
@@ -179,7 +179,7 @@ public func <~~ (key: String, json: JSON) -> [UInt32]? {
  - returns: Decoded value when successful, nil otherwise.
  */
 public func <~~ (key: String, json: JSON) -> Int64? {
-    return Decoder.decodeInt64(key)(json)
+    return Decoder.decode(int64ForKey: key)(json)
 }
 
 /**
@@ -191,7 +191,7 @@ public func <~~ (key: String, json: JSON) -> Int64? {
  - returns: Decoded value when successful, nil otherwise.
  */
 public func <~~ (key: String, json: JSON) -> [Int64]? {
-    return Decoder.decodeInt64Array(key)(json)
+    return Decoder.decode(int64ArrayForKey: key)(json)
 }
 
 /**
@@ -203,7 +203,7 @@ Convenience operator for decoding JSON to UInt64.
 - returns: Decoded value when successful, nil otherwise.
 */
 public func <~~ (key: String, json: JSON) -> UInt64? {
-	return Decoder.decodeUInt64(key)(json)
+    return Decoder.decode(uint64ForKey: key)(json)
 }
 
 /**
@@ -215,7 +215,7 @@ Convenience operator for decoding JSON to UInt64 array.
 - returns: Decoded value when successful, nil otherwise.
 */
 public func <~~ (key: String, json: JSON) -> [UInt64]? {
-	return Decoder.decodeUInt64Array(key)(json)
+    return Decoder.decode(uint64ArrayForKey: key)(json)
 }
 
 /**
@@ -227,7 +227,7 @@ public func <~~ (key: String, json: JSON) -> [UInt64]? {
  - returns: Decoded value when successful, nil otherwise.
  */
 public func <~~ (key: String, json: JSON) -> URL? {
-    return Decoder.decodeURL(key)(json)
+    return Decoder.decode(urlForKey: key)(json)
 }
 
 /**
@@ -239,7 +239,7 @@ public func <~~ (key: String, json: JSON) -> URL? {
  - returns: Decoded value when successful, nil otherwise.
  */
 public func <~~ (key: String, json: JSON) -> [URL]? {
-    return Decoder.decodeURLArray(key)(json)
+    return Decoder.decode(urlArrayForKey: key)(json)
 }
 
 // MARK: - Operator ~~> (Encode)
