@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DCF300891BDCA3FF003FBF15"
                BuildableName = "Gloss.framework"
-               BlueprintName = "GlossMacOSX"
+               BlueprintName = "Gloss MacOS"
                ReferencedContainer = "container:Gloss.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DCF300921BDCA400003FBF15"
-               BuildableName = "GlossMacOSXTests.xctest"
-               BlueprintName = "GlossMacOSXTests"
-               ReferencedContainer = "container:Gloss.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DCF300891BDCA3FF003FBF15"
-            BuildableName = "Gloss.framework"
-            BlueprintName = "GlossMacOSX"
-            ReferencedContainer = "container:Gloss.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -66,7 +47,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCF300891BDCA3FF003FBF15"
             BuildableName = "Gloss.framework"
-            BlueprintName = "GlossMacOSX"
+            BlueprintName = "Gloss MacOS"
             ReferencedContainer = "container:Gloss.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -84,7 +65,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCF300891BDCA3FF003FBF15"
             BuildableName = "Gloss.framework"
-            BlueprintName = "GlossMacOSX"
+            BlueprintName = "Gloss MacOS"
             ReferencedContainer = "container:Gloss.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

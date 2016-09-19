@@ -303,9 +303,9 @@
 			productReference = DC683ADB1C2C615D0035EAC3 /* Gloss.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		DCF300891BDCA3FF003FBF15 /* GlossMacOSX */ = {
+		DCF300891BDCA3FF003FBF15 /* Gloss MacOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DCF3009F1BDCA400003FBF15 /* Build configuration list for PBXNativeTarget "GlossMacOSX" */;
+			buildConfigurationList = DCF3009F1BDCA400003FBF15 /* Build configuration list for PBXNativeTarget "Gloss MacOS" */;
 			buildPhases = (
 				DCF300851BDCA3FF003FBF15 /* Sources */,
 				DCF300861BDCA3FF003FBF15 /* Frameworks */,
@@ -316,7 +316,7 @@
 			);
 			dependencies = (
 			);
-			name = GlossMacOSX;
+			name = "Gloss MacOS";
 			productName = GlossMacOSX;
 			productReference = DCF3008A1BDCA3FF003FBF15 /* Gloss.framework */;
 			productType = "com.apple.product-type.framework";
@@ -366,7 +366,7 @@
 			projectRoot = "";
 			targets = (
 				DC39BF601B8A7AD200088CE0 /* Gloss */,
-				DCF300891BDCA3FF003FBF15 /* GlossMacOSX */,
+				DCF300891BDCA3FF003FBF15 /* Gloss MacOS */,
 				A04168E61C0DF69900269A6A /* Gloss tvOS */,
 				DC683ADA1C2C615D0035EAC3 /* Gloss watchOS */,
 				2FA4CE991C947E3000EB8AB8 /* GlossTests */,
@@ -834,7 +834,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DCF3009F1BDCA400003FBF15 /* Build configuration list for PBXNativeTarget "GlossMacOSX" */ = {
+		DCF3009F1BDCA400003FBF15 /* Build configuration list for PBXNativeTarget "Gloss MacOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DCF3009B1BDCA400003FBF15 /* Debug */,
