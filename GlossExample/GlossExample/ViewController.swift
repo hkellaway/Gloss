@@ -32,20 +32,19 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let repoJSON: JSON = [
-            "id" : 40102424 as AnyObject,
-            "name": "Gloss" as AnyObject,
-            "description" : "A shiny JSON parsing library in Swift" as AnyObject,
-            "html_url" : "https://github.com/hkellaway/Gloss" as AnyObject,
+            "id" : 40102424,
+            "name": "Gloss",
+            "description" : "A shiny JSON parsing library in Swift",
+            "html_url" : "https://github.com/hkellaway/Gloss",
             "owner" : [
                 "id" : 5456481,
                 "login" : "hkellaway",
                 "html_url" : "https://github.com/hkellaway"
-            ] as AnyObject,
-            "language" : "Swift" as AnyObject
+            ],
+            "language" : "Swift"
             ]
         
-        guard let repo = Repo(json: repoJSON) else
-        {
+        guard let repo = Repo(json: repoJSON) else {
             print("Issue deserializing model")
             
             return
