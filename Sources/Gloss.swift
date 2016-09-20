@@ -99,7 +99,7 @@ public func jsonify(_ array: [JSON?]) -> JSON? {
     
     for j in array {
         if(j != nil) {
-            json.add(j!)
+            json.add(other: j!)
         }
     }
     

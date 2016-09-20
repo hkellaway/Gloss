@@ -37,7 +37,7 @@ public struct Encoder {
      
      - returns: JSON encoded from value.
      */
-    public static func encode<T>(_ key: String) -> (T?) -> JSON? {
+    public static func encode<T>(key: String) -> (T?) -> JSON? {
         return {
             property in
             
@@ -56,7 +56,7 @@ public struct Encoder {
      
      - returns: JSON encoded from value.
      */
-    public static func encodeArray<T>(_ key: String) -> ([T]?) -> JSON? {
+    public static func encode<T>(arrayForKey key: String) -> ([T]?) -> JSON? {
         return {
             array in
             
@@ -76,7 +76,7 @@ public struct Encoder {
      
      - returns: JSON encoded from value.
      */
-    public static func encodeDate(_ key: String, dateFormatter: DateFormatter) -> (Date?) -> JSON? {
+    public static func encode(dateForKey key: String, dateFormatter: DateFormatter) -> (Date?) -> JSON? {
         return {
             date in
             
@@ -96,7 +96,7 @@ public struct Encoder {
      
      - returns: JSON encoded from value.
      */
-    public static func encodeDateArray(_ key: String, dateFormatter: DateFormatter) -> ([Date]?) -> JSON? {
+    public static func encode(dateArrayForKey key: String, dateFormatter: DateFormatter) -> ([Date]?) -> JSON? {
         return {
             dates in
             
@@ -123,8 +123,8 @@ public struct Encoder {
      
      - returns: JSON encoded from value.
      */
-    public static func encodeDateISO8601(_ key: String) -> (Date?) -> JSON? {
-        return Encoder.encodeDate(key, dateFormatter: GlossDateFormatterISO8601)
+    public static func encode(dateISO8601ForKey key: String) -> (Date?) -> JSON? {
+        return Encoder.encode(dateForKey: key, dateFormatter: GlossDateFormatterISO8601)
     }
     
     /**
@@ -134,8 +134,8 @@ public struct Encoder {
      
      - returns: JSON encoded from value.
      */
-    public static func encodeDateISO8601Array(_ key: String) -> ([Date]?) -> JSON? {
-        return Encoder.encodeDateArray(key, dateFormatter: GlossDateFormatterISO8601)
+    public static func encode(dateISO8601ArrayForKey key: String) -> ([Date]?) -> JSON? {
+        return Encoder.encode(dateArrayForKey: key, dateFormatter: GlossDateFormatterISO8601)
     }
     
     /**
@@ -145,7 +145,7 @@ public struct Encoder {
      
      - returns: JSON encoded from value.
      */
-    public static func encodeEncodable<T: Encodable>(_ key: String) -> (T?) -> JSON? {
+    public static func encode<T: Encodable>(encodableForKey key: String) -> (T?) -> JSON? {
         return {
             model in
             
@@ -164,7 +164,7 @@ public struct Encoder {
      
      - returns: JSON encoded from value.
      */
-    public static func encodeEncodableArray<T: Encodable>(_ key: String) -> ([T]?) -> JSON? {
+    public static func encode<T: Encodable>(encodableArrayForKey key: String) -> ([T]?) -> JSON? {
         return {
             array in
             
@@ -193,7 +193,7 @@ public struct Encoder {
      
      - returns: JSON encoded from value.
      */
-    public static func encodeEncodableDictionary<T: Encodable>(_ key: String) -> ([String : T]?) -> JSON? {
+    public static func encode<T: Encodable>(encodableDictionaryForKey key: String) -> ([String : T]?) -> JSON? {
         return {
             dictionary in
             
@@ -220,7 +220,7 @@ public struct Encoder {
      
      - returns: JSON encoded from value.
      */
-    public static func encodeEncodableDictionary<T: Encodable>(_ key: String) -> ([String : [T]]?) -> JSON? {
+    public static func encode<T: Encodable>(encodableDictionaryForKey key: String) -> ([String : [T]]?) -> JSON? {
         return {
             dictionary in
             
@@ -249,7 +249,7 @@ public struct Encoder {
      
      - returns: JSON encoded from value.
      */
-    public static func encodeEnum<T: RawRepresentable>(_ key: String) -> (T?) -> JSON? {
+    public static func encode<T: RawRepresentable>(enumForKey key: String) -> (T?) -> JSON? {
         return {
             enumValue in
             
@@ -268,7 +268,7 @@ public struct Encoder {
      
      - returns: JSON encoded from value.
      */
-    public static func encodeEnumArray<T: RawRepresentable>(_ key: String) -> ([T]?) -> JSON? {
+    public static func encode<T: RawRepresentable>(enumArrayForKey key: String) -> ([T]?) -> JSON? {
         return {
             enumValues in
             
@@ -293,7 +293,7 @@ public struct Encoder {
      
      - returns: JSON encoded from value.
      */
-    public static func encodeInt32(_ key: String) -> (Int32?) -> JSON? {
+    public static func encode(int32ForKey key: String) -> (Int32?) -> JSON? {
         return {
             int32 in
             
@@ -312,7 +312,7 @@ public struct Encoder {
      
      - returns: JSON encoded from value.
      */
-    public static func encodeInt32Array(_ key: String) -> ([Int32]?) -> JSON? {
+    public static func encode(int32ArrayForKey key: String) -> ([Int32]?) -> JSON? {
         return {
             int32Array in
             
@@ -333,7 +333,7 @@ public struct Encoder {
 
 	- returns: JSON encoded from value.
 	*/
-	public static func encodeUInt32(_ key: String) -> (UInt32?) -> JSON? {
+	public static func encode(uint32ForKey key: String) -> (UInt32?) -> JSON? {
 		return {
 			uint32 in
 
@@ -352,7 +352,7 @@ public struct Encoder {
 
 	- returns: JSON encoded from value.
 	*/
-	public static func encodeUInt32Array(_ key: String) -> ([UInt32]?) -> JSON? {
+	public static func encode(uint32ArrayForKey key: String) -> ([UInt32]?) -> JSON? {
 		return {
 			uInt32Array in
 
@@ -373,7 +373,7 @@ public struct Encoder {
 
      - returns: JSON encoded from value.
      */
-    public static func encodeInt64(_ key: String) -> (Int64?) -> JSON? {
+    public static func encode(int64ForKey key: String) -> (Int64?) -> JSON? {
         return {
             int64 in
             
@@ -392,7 +392,7 @@ public struct Encoder {
      
      - returns: JSON encoded from value.
      */
-    public static func encodeInt64Array(_ key: String) -> ([Int64]?) -> JSON? {
+    public static func encode(int64ArrayForKey key: String) -> ([Int64]?) -> JSON? {
         return {
             int64Array in
             
@@ -413,7 +413,7 @@ public struct Encoder {
 
 	- returns: JSON encoded from value.
 	*/
-	public static func encodeUInt64(_ key: String) -> (UInt64?) -> JSON? {
+	public static func encode(uint64ForKey key: String) -> (UInt64?) -> JSON? {
 		return {
 			uInt64 in
 
@@ -432,7 +432,7 @@ public struct Encoder {
 
 	- returns: JSON encoded from value.
 	*/
-	public static func encodeUInt64Array(_ key: String) -> ([UInt64]?) -> JSON? {
+	public static func encode(uint64ArrayForKey key: String) -> ([UInt64]?) -> JSON? {
 		return {
 			uInt64Array in
 
@@ -453,7 +453,7 @@ public struct Encoder {
 
      - returns: JSON encoded from value.
      */
-    public static func encodeURL(_ key: String) -> (URL?) -> JSON? {
+    public static func encode(urlForKey key: String) -> (URL?) -> JSON? {
         return {
             url in
             

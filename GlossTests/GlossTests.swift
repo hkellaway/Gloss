@@ -128,7 +128,7 @@ class GlossTests: XCTestCase {
     }
     
     func testModelsFromJSONArrayProducesValidModels() {
-        let result = [TestModel].fromJSONArray(testJSONArray!)
+        let result = [TestModel].from(jsonArray: testJSONArray!)
         let model1: TestModel = result![0]
         let model2: TestModel = result![1]
         
@@ -189,7 +189,7 @@ class GlossTests: XCTestCase {
     func testModelsFromJSONArrayReturnsNilIfDecodingFails() {
         testJSONArray![0].removeValue(forKey: "bool")
         
-        let result = [TestModel].fromJSONArray(testJSONArray!)
+        let result = [TestModel].from(jsonArray: testJSONArray!)
 
         XCTAssertNil(result, "Model array from JSON array should be nil is any decoding fails.")
     }
@@ -282,7 +282,7 @@ class GlossTests: XCTestCase {
         invalidJSON.removeValue(forKey: "bool")
         var jsonArray = testJSONArray!
         jsonArray.append(invalidJSON)
-        let result = [TestModel].fromJSONArray(jsonArray)
+        let result = [TestModel].from(jsonArray: jsonArray)
 
         XCTAssertNil(result, "JSON array from model array should be nil is any encoding fails.")
     }

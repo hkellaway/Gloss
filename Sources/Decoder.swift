@@ -37,7 +37,7 @@ public struct Decoder {
     
     - returns: Value decoded from JSON.
     */
-    public static func decode<T>(_ key: String) -> (JSON) -> T? {
+    public static func decode<T>(key: String) -> (JSON) -> T? {
         return {
             json in
             
@@ -57,7 +57,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDate(_ key: String, dateFormatter: DateFormatter) -> (JSON) -> Date? {
+    public static func decode(dateForKey key: String, dateFormatter: DateFormatter) -> (JSON) -> Date? {
         return {
             json in
             
@@ -77,7 +77,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDateArray(_ key: String, dateFormatter: DateFormatter) -> (JSON) -> [Date]? {
+    public static func decode(dateArrayForKey key: String, dateFormatter: DateFormatter) -> (JSON) -> [Date]? {
         return {
             json in
             
@@ -106,8 +106,8 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDateISO8601(_ key: String) -> (JSON) -> Date? {
-        return Decoder.decodeDate(key, dateFormatter: GlossDateFormatterISO8601)
+    public static func decode(dateISO8601ForKey key: String) -> (JSON) -> Date? {
+        return Decoder.decode(dateForKey: key, dateFormatter: GlossDateFormatterISO8601)
     }
     
     /**
@@ -117,8 +117,8 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDateISO8601Array(_ key: String) -> (JSON) -> [Date]? {
-        return Decoder.decodeDateArray(key, dateFormatter: GlossDateFormatterISO8601)
+    public static func decode(dateISO8601ArrayForKey key: String) -> (JSON) -> [Date]? {
+        return Decoder.decode(dateArrayForKey: key, dateFormatter: GlossDateFormatterISO8601)
     }
     
     /**
@@ -128,7 +128,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDecodable<T: Decodable>(_ key: String) -> (JSON) -> T? {
+    public static func decode<T: Decodable>(decodableForKey key: String) -> (JSON) -> T? {
         return {
             json in
             
@@ -148,7 +148,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDecodableArray<T: Decodable>(_ key: String) -> (JSON) -> [T]? {
+    public static func decode<T: Decodable>(decodableArrayForKey key: String) -> (JSON) -> [T]? {
         return {
             json in
             
@@ -177,7 +177,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDecodableDictionary<T:Decodable>(_ key: String) -> (JSON) -> [String : T]? {
+    public static func decode<T:Decodable>(decodableDictionaryForKey key: String) -> (JSON) -> [String : T]? {
         return {
             json in
             
@@ -204,7 +204,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDecodableDictionary<T:Decodable>(_ key: String) -> (JSON) -> [String : [T]]? {
+    public static func decode<T:Decodable>(decodableDictionaryForKey key: String) -> (JSON) -> [String : [T]]? {
         return {
             json in
             
@@ -215,7 +215,7 @@ public struct Decoder {
             return dictionary.flatMap {
                 (key, value) in
                 
-                guard let decoded = [T].fromJSONArray(value) else {
+                guard let decoded = [T].from(jsonArray: value) else {
                     return nil
                 }
                 
@@ -231,7 +231,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeEnum<T: RawRepresentable>(_ key: String) -> (JSON) -> T? {
+    public static func decode<T: RawRepresentable>(enumForKey key: String) -> (JSON) -> T? {
         return {
             json in
             
@@ -250,7 +250,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeEnumArray<T: RawRepresentable>(_ key: String) -> (JSON) -> [T]? {
+    public static func decode<T: RawRepresentable>(enumArrayForKey key: String) -> (JSON) -> [T]? {
         return {
             json in
             
@@ -279,7 +279,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeInt32(_ key: String) -> (JSON) -> Int32? {
+    public static func decode(int32ForKey key: String) -> (JSON) -> Int32? {
         return {
             json in
             
@@ -298,7 +298,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeInt32Array(_ key: String) -> (JSON) -> [Int32]? {
+    public static func decode(int32ArrayForKey key: String) -> (JSON) -> [Int32]? {
         return {
             json in
             
@@ -319,7 +319,7 @@ public struct Decoder {
 
 	- returns: Value decoded from JSON.
 	*/
-	public static func decodeUInt32(_ key: String) -> (JSON) -> UInt32? {
+	public static func decode(uint32ForKey key: String) -> (JSON) -> UInt32? {
 		return {
 			json in
 
@@ -338,7 +338,7 @@ public struct Decoder {
 
 	- returns: Value decoded from JSON.
 	*/
-	public static func decodeUInt32Array(_ key: String) -> (JSON) -> [UInt32]? {
+	public static func decode(uint32ArrayForKey key: String) -> (JSON) -> [UInt32]? {
 		return {
 			json in
 
@@ -359,7 +359,7 @@ public struct Decoder {
 
      - returns: Value decoded from JSON.
      */
-    public static func decodeInt64(_ key: String) -> (JSON) -> Int64? {
+    public static func decode(int64ForKey key: String) -> (JSON) -> Int64? {
         return {
             json in
             
@@ -378,7 +378,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeInt64Array(_ key: String) -> (JSON) -> [Int64]? {
+    public static func decode(int64ArrayForKey key: String) -> (JSON) -> [Int64]? {
         return {
             json in
             
@@ -399,7 +399,7 @@ public struct Decoder {
 
 	- returns: Value decoded from JSON.
 	*/
-	public static func decodeUInt64(_ key: String) -> (JSON) -> UInt64? {
+	public static func decode(uint64ForKey key: String) -> (JSON) -> UInt64? {
 		return {
 			json in
 
@@ -418,7 +418,7 @@ public struct Decoder {
 
 	- returns: Value decoded from JSON.
 	*/
-	public static func decodeUInt64Array(_ key: String) -> (JSON) -> [UInt64]? {
+	public static func decode(uint64ArrayForKey key: String) -> (JSON) -> [UInt64]? {
 		return {
 			json in
 
@@ -439,7 +439,7 @@ public struct Decoder {
 
      - returns: Value decoded from JSON.
      */
-    public static func decodeURL(_ key: String) -> (JSON) -> URL? {
+    public static func decode(urlForKey key: String) -> (JSON) -> URL? {
         return {
             json in
             
@@ -459,7 +459,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeURLArray(_ key: String) -> (JSON) -> [URL]? {
+    public static func decode(urlArrayForKey key: String) -> (JSON) -> [URL]? {
         return {
             json in
             
