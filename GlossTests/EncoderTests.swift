@@ -35,8 +35,8 @@ class EncoderTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        testNestedModel1 = TestNestedModel(json: [ "id" : 1 as AnyObject, "name" : "nestedModel1" as AnyObject ])
-        testNestedModel2 = TestNestedModel(json: ["id" : 2 as AnyObject, "name" : "nestedModel2" as AnyObject])
+        testNestedModel1 = TestNestedModel(json: [ "id" : 1, "name" : "nestedModel1"])
+        testNestedModel2 = TestNestedModel(json: ["id" : 2, "name" : "nestedModel2"])
     }
     
     override func tearDown() {

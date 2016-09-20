@@ -41,8 +41,8 @@ struct TestFailableModel: Glossy {
     
     func toJSON() -> JSON? {
         return [
-            "identifier": self.identifier as AnyObject,
-            "value": self.value as AnyObject,
+            "identifier": self.identifier,
+            "value": self.value,
         ]
     }
 }
