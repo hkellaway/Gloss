@@ -27,10 +27,16 @@ import Foundation
 
 // MARK: - Operator <~~ (Decode)
 
+precedencegroup DecodingPrecedence {
+    associativity: left
+    higherThan: CastingPrecedence
+}
+
 /**
 Decode custom operator.
 */
-infix operator <~~ { associativity left precedence 150 }
+
+infix operator <~~ : DecodingPrecedence
 
 /**
 Convenience operator for decoding JSON to generic value.
@@ -220,7 +226,7 @@ public func <~~ (key: String, json: JSON) -> [UInt64]? {
  
  - returns: Decoded value when successful, nil otherwise.
  */
-public func <~~ (key: String, json: JSON) -> NSURL? {
+public func <~~ (key: String, json: JSON) -> URL? {
     return Decoder.decodeURL(key)(json)
 }
 
@@ -232,16 +238,21 @@ public func <~~ (key: String, json: JSON) -> NSURL? {
  
  - returns: Decoded value when successful, nil otherwise.
  */
-public func <~~ (key: String, json: JSON) -> [NSURL]? {
+public func <~~ (key: String, json: JSON) -> [URL]? {
     return Decoder.decodeURLArray(key)(json)
 }
 
 // MARK: - Operator ~~> (Encode)
 
+precedencegroup EncodingPrecedence {
+    associativity: left
+    higherThan: CastingPrecedence
+}
+
 /**
 Encode custom operator.
 */
-infix operator ~~> { associativity left precedence 150 }
+infix operator ~~> : EncodingPrecedence
 
 /**
 Convenience operator for encoding generic value to JSON
@@ -447,6 +458,6 @@ public func ~~> (key: String, property: [UInt64]?) -> JSON? {
  
  - returns: JSON when successful, nil otherwise.
  */
-public func ~~> (key: String, property: NSURL?) -> JSON? {
+public func ~~> (key: String, property: URL?) -> JSON? {
     return Encoder.encodeURL(key)(property)
 }

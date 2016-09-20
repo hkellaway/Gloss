@@ -23,6 +23,7 @@
 // THE SOFTWARE.
 //
 
+import Gloss
 import UIKit
 
 class ViewController: UIViewController {
@@ -30,17 +31,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let repoJSON = [
-            "id" : 40102424,
-            "name": "Gloss",
-            "description" : "A shiny JSON parsing library in Swift",
-            "html_url" : "https://github.com/hkellaway/Gloss",
+        let repoJSON: JSON = [
+            "id" : 40102424 as AnyObject,
+            "name": "Gloss" as AnyObject,
+            "description" : "A shiny JSON parsing library in Swift" as AnyObject,
+            "html_url" : "https://github.com/hkellaway/Gloss" as AnyObject,
             "owner" : [
                 "id" : 5456481,
                 "login" : "hkellaway",
                 "html_url" : "https://github.com/hkellaway"
-            ],
-            "language" : "Swift"
+            ] as AnyObject,
+            "language" : "Swift" as AnyObject
             ]
         
         guard let repo = Repo(json: repoJSON) else

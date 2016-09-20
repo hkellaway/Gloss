@@ -51,7 +51,7 @@ internal extension Dictionary {
      
      - returns: New dictionary of transformed values.
      */
-    func flatMap<KeyPrime : Hashable, ValuePrime>(transform: (Key, Value) throws -> (KeyPrime, ValuePrime)?) rethrows -> [KeyPrime : ValuePrime] {
+    func flatMap<KeyPrime : Hashable, ValuePrime>(_ transform: (Key, Value) throws -> (KeyPrime, ValuePrime)?) rethrows -> [KeyPrime : ValuePrime] {
         return Dictionary<KeyPrime,ValuePrime>(elements: try flatMap({ (key, value) in
             return try transform(key, value)
         }))
@@ -66,7 +66,7 @@ internal extension Dictionary {
      - parameter other:     Dictionary to add entries from
      - parameter delimiter: Key path delimiter
      */
-    mutating func add(other: Dictionary) -> () {
+    mutating func add(_ other: Dictionary) -> () {
         for (key, value) in other {
             self.updateValue(value, forKey:key)
         }

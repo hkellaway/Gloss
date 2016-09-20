@@ -71,17 +71,17 @@ Date formatter used for ISO8601 dates.
  
  - returns: Date formatter.
  */
-public private(set) var GlossDateFormatterISO8601: NSDateFormatter = {
-    let dateFormatterISO8601 = NSDateFormatter()
+public private(set) var GlossDateFormatterISO8601: DateFormatter = {
+    let dateFormatterISO8601 = DateFormatter()
     
     // WORKAROUND to ignore device configuration regarding AM/PM http://openradar.appspot.com/radar?id=1110403
-    dateFormatterISO8601.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+    dateFormatterISO8601.locale = Locale(identifier: "en_US_POSIX")
     dateFormatterISO8601.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
 
     // translate to Gregorian calendar if other calendar is selected in system settings
-    let gregorian = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+    var gregorian = Calendar(identifier: Calendar.Identifier.gregorian)
     
-    gregorian.timeZone = NSTimeZone(abbreviation: "GMT")!
+    gregorian.timeZone = TimeZone(abbreviation: "GMT")!
     dateFormatterISO8601.calendar = gregorian
 
     return dateFormatterISO8601
@@ -94,7 +94,7 @@ public private(set) var GlossDateFormatterISO8601: NSDateFormatter = {
  
  - returns: JSON when successful, nil otherwise.
  */
-public func jsonify(array: [JSON?]) -> JSON? {
+public func jsonify(_ array: [JSON?]) -> JSON? {
     var json: JSON = [:]
     
     for j in array {
