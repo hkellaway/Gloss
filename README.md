@@ -19,16 +19,16 @@
 - [Download Gloss](https://github.com/hkellaway/Gloss/archive/master.zip) and do a `pod install` on the included `GlossExample` app to see Gloss in action
 - Check out the [documentation](http://cocoadocs.org/docsets/Gloss/) for a more comprehensive look at the classes available in Gloss
 
-### Swift 2.3 and Swift 3.0
+### Swift 3.0
 
-Use the `swift_2.3` and `swift_3.0` branches for compatible versions of Gloss plus Example project that are compatible with Swift 2.3 and Swift 3.0 respectively.
+Use the `swift_3.0` branch for a compatible version of Gloss plus Example project.
 
 The Gloss source currently available on CocoaPods and Carthage is compatible with Swift 2.3.
 
 ### Installation with CocoaPods
 
 ```ruby
-pod 'Gloss', '~> 0.7'
+pod 'Gloss', '~> 0.8'
 ```
 
 ### Installation with Carthage
@@ -51,6 +51,10 @@ let package = Package(
     ]
 )
 ```
+
+## Deprecations
+
+:warning: "Nested keypaths" have been deprecated as of version `0.8.0` ([Read more](#nested-keypaths-deprecation))
 
 ## Usage
 
@@ -187,8 +191,6 @@ struct Repo: Decodable {
 
 Despite being more complex, this model is just as simple to compose - common types such as an `NSURL`, an `enum` value, and another Gloss model, `RepoOwner`, are handled without extra overhead! :tada:
 
-(Note: If nested models are present in JSON but not desired in your Gloss models, see [Retrieving Nested Model Values without Creating Extra Models](#retrieving-nested-model-values-without-creating-extra-models).)
-
 ### Serialization
 
 Next, how would we allow models to be translated _to_ JSON? Let's take a look again at the `RepoOwner` model:
@@ -236,8 +238,9 @@ let repoOwnerJSON = [
         "name": "hkellaway"
 ]
 
-guard let repoOwner = RepoOwner(json: repoOwnerJSON)
-    else { /* handle nil object here */ }
+guard let repoOwner = RepoOwner(json: repoOwnerJSON) else { 
+    // handle decoding failure here
+}
 
 print(repoOwner.repoId)
 print(repoOwner.name)
@@ -274,7 +277,9 @@ let repoOwnersJSON = [
 An array of `RepoOwner` objects could be obtained via the following:
 
 ``` swift
-let repoOwners = [RepoOwner].fromJSONArray(repoOwnersJSON)
+guard let repoOwners = [RepoOwner].fromJSONArray(repoOwnersJSON) else {
+    // handle decoding failure here
+}
 
 print(repoOwners)
 ```
@@ -292,43 +297,12 @@ repoOwner.toJSON()
 An array of JSON from an array of `Encodable` models is retrieved via `toJSONArray()`:
 
 ``` swift
-repoOwners.toJSONArray()
-```
-
-### Retrieving Nested Model Values without Creating Extra Models
-
-We saw in earlier examples that `Repo` has a nested model `RepoOwner` - and that nested Gloss models are handled automatically. But what if the nested models represented in our JSON really don't need to be their own models? 
-
-Gloss provides a way to indicate nested model values with simple `.` syntax - let's revisit the `owner` values for `Repo` and see what changes:
-
-``` swift
-import Gloss
-
-struct Repo: Glossy {
-
-    let ownerId: Int?
-    let ownerUsername: String?
-
-    // MARK: - Deserialization
-
-    init?(json: JSON) {
-        self.ownerId = "owner.id" <~~ json
-        self.ownerUsername = "owner.login" <~~ json
-    }
-
-    // MARK: - Serialization
-
-        func toJSON() -> JSON? {
-        return jsonify([
-            "owner.id" ~~> self.ownerId,
-            "owner.login" ~~> self.ownerUsername
-            ])
-
+guard let jsonArray = repoOwners.toJSONArray() else {
+    // handle encoding failure here
 }
 
+print(jsonArray)
 ```
-
-Now, instead of declaring a nested model `owner` of type `RepoOwner` with its own `id` and `username` properties, the desired values from `owner` are retrieved by specifying the key names in a string delimited by periods (i.e. `owner.id` and `owner.login`).
 
 ## Additonal Topics
 
@@ -375,7 +349,7 @@ extension Decoder {
 
     static func decodeStringUppercase(key: String, json: JSON) -> String? {
             
-        if let string = json.valueForKeyPath(key) as? String {
+        if let string = json[key] as? String {
             return string.uppercaseString
         }
 
@@ -387,7 +361,7 @@ extension Decoder {
 
 We've created an extension on `Decoder` and written our own decode function, `decodeStringUppercase`.
 
-What's important to note is that the return type for `decodeStringUppercase` is the desired type -- in this case, `String?`. The value you're working with will be accessible via `json.valueForKeyPath(_:)` and will need to be cast to the desired type using `as?`. Then, manipulation can be done - for example, uppercasing. The transformed value should be returned; in the case that the cast failed, `nil` should be returned.
+What's important to note is that the return type for `decodeStringUppercase` is the desired type -- in this case, `String?`. The value you're working with will be accessible via `json[key]` and will need to be cast to the desired type using `as?`. Then, manipulation can be done - for example, uppercasing. The transformed value should be returned; in the case that the cast failed, `nil` should be returned.
 
 Though depicted here as being in the same file,  the `Decoder` extension is not required to be. Additionally, representing the custom decoding function as a member of `Decoder` is not required, but simply stays true to the semantics of Gloss.
 
@@ -509,6 +483,29 @@ Models that are to be transformed to JSON _must_ adopt the `Encodable` protocol.
 
 The `Glossy` protocol depicted in the examples is simply a convenience for defining models that can translated to _and_ from JSON. `Glossy` can be replaced by `Decodable, Encodable` for more preciseness, if desired.
 
+## Deprecation Details
+
+### Nested Keypaths Deprecation
+
+This feature has been removed as of version `0.8.0`.
+
+Version `0.7.0` introduced "nested keypaths" - this allowed values nested deep in a JSON structure to be accessed via a period-delimited key. For example, given a JSON structure:
+
+```
+[ "outer" : [
+        "inner" : 123
+    ]
+]
+```
+
+the value of `123` could be accessed via the key `outer.inner`.
+
+While this was a handy feature, it caused a runtime crash when using a Release configuration (see [Issue #135](https://github.com/hkellaway/Gloss/issues/135)).
+
+For those using nested keypaths or those who have deeply nested values, these can be handled by creating nested models or creating [Custom Transformations](#custom-transformations). See the Example project for illustrations of each.
+
+The tag `deprecation-nested-keypaths` marks the last merge that included nested keypaths and can be pointed to while models are updated.
+
 ## Why "Gloss"?
 
 The name for Gloss was inspired by the name for a popular Objective-C library, [Mantle](https://github.com/Mantle/Mantle) - both names are a play on the word "layer", in reference to their role in supporting the model layer of the application.
@@ -534,6 +531,7 @@ Check out Gloss in these cool places!
 #### Libraries
 
 * [Alamofire-Gloss](https://github.com/spxrogers/Alamofire-Gloss)
+* [CRUD](https://github.com/MetalheadSanya/CRUD)
 * [Moya-Gloss](https://github.com/spxrogers/Moya-Gloss)
 * [Restofire-Gloss](https://github.com/Restofire/Restofire-Gloss)
 
@@ -543,6 +541,10 @@ Check out Gloss in these cool places!
 * [Drift](http://www.drift.com) ([iOS SDK](https://github.com/Driftt/drift-sdk-ios))
 * [Phillips Hue](http://www2.meethue.com/en-US) ([iOS SDK](https://github.com/Spriter/SwiftyHue))
 * [Skiplagged](http://skiplagged.com) ([iOS SDK] (https://github.com/bulusoy/Skiplagged))
+
+#### Apps
+
+* [Ether Tracker](https://itunes.apple.com/us/app/ether-tracker/id1118248702?mt=8)
 
 #### Tools
 
@@ -554,7 +556,7 @@ Check out Gloss in these cool places!
 * [Swift Sandbox](http://swiftsandbox.io/issues/3#b1RJwo2)
 * [iOS Goodies](http://ios-goodies.com/post/127166753231/week-93)
 
-Using Gloss in your app? [Let me know.](mailto:hello@harlankellaway.com?subject=Using Gloss in my app)
+Using Gloss in your app? [Let me know.](mailto:hello@harlankellaway.com?subject=Using Gloss in my project)
 
 ## License
 

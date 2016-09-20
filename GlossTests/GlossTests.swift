@@ -129,8 +129,8 @@ class GlossTests: XCTestCase {
     
     func testModelsFromJSONArrayProducesValidModels() {
         let result = [TestModel].fromJSONArray(testJSONArray!)
-        let model1: TestModel = result[0]
-        let model2: TestModel = result[1]
+        let model1: TestModel = result![0]
+        let model2: TestModel = result![1]
         
         XCTAssertTrue((model1.bool == true), "Model created from JSON should have correct property values")
         XCTAssertTrue((model1.boolArray! == [true, false, true]), "Model created from JSON should have correct property values")
@@ -186,12 +186,12 @@ class GlossTests: XCTestCase {
         XCTAssertTrue((nestedModel5.name == "nestedModel3"), "Model created from JSON should have correct property values")
     }
     
-    func testModelsFromJSONArrayOnlyIncludesValidModels() {
+    func testModelsFromJSONArrayReturnsNilIfDecodingFails() {
         testJSONArray![0].removeValueForKey("bool")
         
         let result = [TestModel].fromJSONArray(testJSONArray!)
-        
-        XCTAssertTrue(result.count == 1, "Model array from JSON array should only include valid models")
+
+        XCTAssertNil(result, "Model array from JSON array should be nil is any decoding fails.")
     }
     
     func testJSONArrayFromModelsProducesValidJSON() {
@@ -275,17 +275,16 @@ class GlossTests: XCTestCase {
         XCTAssertTrue((nestedModel4JSON["name"] as! String == "nestedModel2"), "Encode nested model array should return correct value")
         XCTAssertTrue((nestedModel5JSON["id"] as! Int == 789), "Encode nested model array should return correct value")
         XCTAssertTrue((nestedModel5JSON["name"] as! String == "nestedModel3"), "Encode nested model array should return correct value")
-        
     }
     
-    func testJSONArrayFromModelsOnlyIncludesJSONFromValidModels() {
+    func testJSONArrayFromModelsReturnsNilIfEncodingFails() {
         var invalidJSON = testModelsJSON!
         invalidJSON.removeValueForKey("bool")
         var jsonArray = testJSONArray!
         jsonArray.append(invalidJSON)
         let result = [TestModel].fromJSONArray(jsonArray)
-        
-        XCTAssertTrue(result.count == 2, "Model array from JSON array should only include valid models")
+
+        XCTAssertNil(result, "JSON array from model array should be nil is any encoding fails.")
     }
     
     func testJsonifyTurnsJSONOptionalArrayToSingleJSONOptional() {
@@ -301,10 +300,6 @@ class GlossTests: XCTestCase {
         let result = jsonify([])
         
         XCTAssertTrue(result!.isEmpty, "Jsonify should return empty JSON when given an empty array")
-    }
-    
-    func testDefaultKeyPathDelimiterIsAPeriod() {
-        XCTAssertTrue(GlossKeyPathDelimiter == ".", "Deafult key path delimiter should be a period")
     }
     
 }
