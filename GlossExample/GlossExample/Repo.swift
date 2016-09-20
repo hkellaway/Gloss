@@ -108,7 +108,7 @@ extension Encoder {
     
     static func encodeStringCapitalized(key: String, value: String?) -> JSON? {
         if let value = value {
-            return [key : value.capitalized as AnyObject]
+            return [key : value.capitalized]
         }
         
         return nil
@@ -122,8 +122,8 @@ extension Encoder {
         let url = value.absoluteString
         
         return [ "owner" : [
-            "html_url" : url as AnyObject
-            ] as AnyObject
+            "html_url" : url
+            ]
         ]
     }
     
