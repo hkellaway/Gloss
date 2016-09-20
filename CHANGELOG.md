@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 `Gloss` adheres to [Semantic Versioning](http://semver.org/).
 
+- `1.0.x` Releases - [1.0.0](#100)
 - `0.8.x` Releases - [0.8.0](#080)
 - `0.7.x` Releases - [0.7.0](#070) | [0.7.1](#071) | [0.7.2](#072) | [0.7.3](#073) | [0.7.4](#074)
 - `0.6.x` Releases - [0.6.0](#060) | [0.6.1](#061) | [0.6.2](#062)
@@ -13,8 +14,24 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [1.0.0](https://github.com/hkellaway/Gloss/releases/tag/1.0.0)
+Released on 2016-09-20. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A1.0.0)
+
+#### Updated
+- Support for Swift 3.0 [PR [#212](https://github.com/hkellaway/Gloss/pull/212)]
+- Syntax now reflects Swift 3.0 standards [PR [#216](https://github.com/hkellaway/Gloss/pull/216)]
+- JSON typealias now uses Any instead of AnyObject
+
+#### Upgrade Notes
+
+This version marks the first version using Swift 3.0 syntax. Users should update client projects to Swift 3.0 before switching to `1.0.0`
+
+Also note: Version `0.8.0` marked the deprecation of a feature called "nested keypaths". This allowed deeply nested JSON values to be accessed via a period-delimited key. However, it caused a runtime crash when using the Release configuration. Users who rely on nested keypaths should update their models before switching to `0.8.0` or `1.0.0`. See [Nested Keypaths Deprecation](https://github.com/hkellaway/Gloss#nested-keypaths-deprecation) for more information.
+
+---
+
 ## [0.8.0](https://github.com/hkellaway/Gloss/releases/tag/0.8.0)
-Released on 2016-09-18. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A0.8.0)
+Released on 2016-09-20. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A0.8.0)
 
 #### Deprecated
 - The "nested keypaths" feature has been removed as it caused a runtime crash for the Release configuration (Issue [#135](https://github.com/hkellaway/Gloss/issues/135))

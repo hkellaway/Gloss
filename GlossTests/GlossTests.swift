@@ -37,11 +37,11 @@ class GlossTests: XCTestCase {
         super.setUp()
         
         var testJSON: JSON? = [:]
-        let testJSONPath: NSString = NSBundle(forClass: self.dynamicType).pathForResource("TestModel", ofType: "json")!
-        let testJSONData: NSData = NSData(contentsOfFile: testJSONPath as String)!
+        let testJSONPath: NSString = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")! as NSString
+        let testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
         
         do {
-            try testJSON = NSJSONSerialization.JSONObjectWithData(testJSONData, options: NSJSONReadingOptions(rawValue: 0)) as? JSON
+            try testJSON = JSONSerialization.jsonObject(with: testJSONData, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? JSON
         } catch {
             print(error)
         }
@@ -53,8 +53,8 @@ class GlossTests: XCTestCase {
             "boolArray" : [true, false, true],
             "integer" : 1,
             "integerArray" : [1, 2, 3],
-            "float" : 2.0,
-            "floatArray" : [1.0, 2.0, 3.0],
+            "float" : Float(2.0),
+            "floatArray" : [Float(1.0), Float(2.0), Float(3.0)],
             "double" : 6.0,
             "doubleArray" : [4.0, 5.0, 6.0],
             "string" : "abc",
@@ -95,7 +95,7 @@ class GlossTests: XCTestCase {
     func testDateFormatterISO8601HasCorrectLocale() {
         let dateFormatterISO8601 = GlossDateFormatterISO8601
         
-        XCTAssertTrue(dateFormatterISO8601.locale.localeIdentifier == "en_US_POSIX", "Date formatter ISO8601 should have correct locale.")
+        XCTAssertTrue(dateFormatterISO8601.locale.identifier == "en_US_POSIX", "Date formatter ISO8601 should have correct locale.")
     }
     
     func testDateFormatterISO8601HasCorrectDateFormat() {
@@ -107,8 +107,8 @@ class GlossTests: XCTestCase {
     func testDateFormatterISO8601ForcesGregorianCalendar() {
         let dateFormatterISO8601 = GlossDateFormatterISO8601
         
-        XCTAssertTrue(dateFormatterISO8601.calendar.calendarIdentifier == NSCalendarIdentifierGregorian, "Date formatter ISO8601 should force use of Gregorian calendar.")
-         XCTAssertTrue(dateFormatterISO8601.calendar.timeZone.abbreviation == "GMT", "Date formatter ISO8601 Gregorian calendar should use GMT timezone.")
+        XCTAssertTrue(dateFormatterISO8601.calendar.identifier == Calendar.Identifier.gregorian, "Date formatter ISO8601 should force use of Gregorian calendar.")
+         XCTAssertTrue(dateFormatterISO8601.calendar.timeZone.abbreviation() == "GMT", "Date formatter ISO8601 Gregorian calendar should use GMT timezone.")
     }
     
     func testJsonifyTurnsArrayOfJsonDictsToSingleJsonDict() {
@@ -128,7 +128,7 @@ class GlossTests: XCTestCase {
     }
     
     func testModelsFromJSONArrayProducesValidModels() {
-        let result = [TestModel].fromJSONArray(testJSONArray!)
+        let result = [TestModel].from(jsonArray: testJSONArray!)
         let model1: TestModel = result![0]
         let model2: TestModel = result![1]
         
@@ -144,8 +144,8 @@ class GlossTests: XCTestCase {
         XCTAssertTrue((model1.stringArray! == ["def", "ghi", "jkl"]), "Model created from JSON should have correct property values")
         XCTAssertTrue((model1.enumValue == TestModel.EnumValue.A), "Model created from JSON should have correct property values")
         XCTAssertTrue((model1.enumValueArray! == [TestModel.EnumValue.A, TestModel.EnumValue.B, TestModel.EnumValue.C]), "Model created from JSON should have correct property values")
-        XCTAssertTrue((TestModel.dateFormatter.stringFromDate(model1.date!) == "2015-08-16T20:51:46.600Z"), "Model created from JSON should have correct property values")
-        XCTAssertTrue((model1.dateISO8601 == NSDate(timeIntervalSince1970: 1439071033)), "Model created from JSON should have correct property values")
+        XCTAssertTrue((TestModel.dateFormatter.string(from: model1.date!) == "2015-08-16T20:51:46.600Z"), "Model created from JSON should have correct property values")
+        XCTAssertTrue((model1.dateISO8601 == Date(timeIntervalSince1970: 1439071033)), "Model created from JSON should have correct property values")
         XCTAssertTrue((model1.url?.absoluteString == "http://github.com"), "Model created from JSON should have correct property values")
         
         XCTAssertTrue((model1.nestedModel?.id == 123), "Model created from JSON should have correct property values")
@@ -171,8 +171,8 @@ class GlossTests: XCTestCase {
         XCTAssertTrue((model2.stringArray! == ["def", "ghi", "jkl"]), "Model created from JSON should have correct property values")
         XCTAssertTrue((model2.enumValue == TestModel.EnumValue.A), "Model created from JSON should have correct property values")
         XCTAssertTrue((model2.enumValueArray! == [TestModel.EnumValue.A, TestModel.EnumValue.B, TestModel.EnumValue.C]), "Model created from JSON should have correct property values")
-        XCTAssertTrue((TestModel.dateFormatter.stringFromDate(model1.date!) == "2015-08-16T20:51:46.600Z"), "Model created from JSON should have correct property values")
-        XCTAssertTrue((model2.dateISO8601 == NSDate(timeIntervalSince1970: 1439071033)), "Model created from JSON should have correct property values")
+        XCTAssertTrue((TestModel.dateFormatter.string(from: model1.date!) == "2015-08-16T20:51:46.600Z"), "Model created from JSON should have correct property values")
+        XCTAssertTrue((model2.dateISO8601 == Date(timeIntervalSince1970: 1439071033)), "Model created from JSON should have correct property values")
         XCTAssertTrue((model2.url?.absoluteString == "http://github.com"), "Model created from JSON should have correct property values")
         
         XCTAssertTrue((model2.nestedModel?.id == 123), "Model created from JSON should have correct property values")
@@ -187,9 +187,9 @@ class GlossTests: XCTestCase {
     }
     
     func testModelsFromJSONArrayReturnsNilIfDecodingFails() {
-        testJSONArray![0].removeValueForKey("bool")
+        testJSONArray![0].removeValue(forKey: "bool")
         
-        let result = [TestModel].fromJSONArray(testJSONArray!)
+        let result = [TestModel].from(jsonArray: testJSONArray!)
 
         XCTAssertNil(result, "Model array from JSON array should be nil is any decoding fails.")
     }
@@ -214,10 +214,10 @@ class GlossTests: XCTestCase {
         XCTAssertTrue(((json1["date"] as! String) == "2015-08-16T20:51:46.600Z"), "JSON created from model should have correct values")
         
         let dateISO8601 = json1["dateISO8601"] as! String
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        let resultDate = dateFormatter.dateFromString(dateISO8601)
+        let resultDate = dateFormatter.date(from: dateISO8601)
         
         XCTAssertTrue(resultDate?.timeIntervalSince1970 == 1439071033, "JSON created from model should have correct values")
         
@@ -253,10 +253,10 @@ class GlossTests: XCTestCase {
         XCTAssertTrue(((json2["date"] as! String) == "2015-08-16T20:51:46.600Z"), "JSON created from model should have correct values")
         
         let date2ISO8601 = json2["dateISO8601"] as! String
-        let date2Formatter = NSDateFormatter()
-        date2Formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        let date2Formatter = DateFormatter()
+        date2Formatter.locale = Locale(identifier: "en_US_POSIX")
         date2Formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        let resultDate2 = dateFormatter.dateFromString(date2ISO8601)
+        let resultDate2 = dateFormatter.date(from: date2ISO8601)
         
         XCTAssertTrue(resultDate2?.timeIntervalSince1970 == 1439071033, "JSON created from model should have correct values")
         
@@ -279,10 +279,10 @@ class GlossTests: XCTestCase {
     
     func testJSONArrayFromModelsReturnsNilIfEncodingFails() {
         var invalidJSON = testModelsJSON!
-        invalidJSON.removeValueForKey("bool")
+        invalidJSON.removeValue(forKey: "bool")
         var jsonArray = testJSONArray!
         jsonArray.append(invalidJSON)
-        let result = [TestModel].fromJSONArray(jsonArray)
+        let result = [TestModel].from(jsonArray: jsonArray)
 
         XCTAssertNil(result, "JSON array from model array should be nil is any encoding fails.")
     }
@@ -290,7 +290,7 @@ class GlossTests: XCTestCase {
     func testJsonifyTurnsJSONOptionalArrayToSingleJSONOptional() {
         let json1 = ["test1" : 1 ]
         let json2 = ["test2" : 2 ]
-        let result = jsonify([json1, json2])
+        let result = jsonify([json1 as Optional<Dictionary<String, AnyObject>>, json2 as Optional<Dictionary<String, AnyObject>>])
         
         XCTAssertTrue(result!["test1"] as! Int == 1, "Jsonify should turn JSON optional array to single JSON optional")
         XCTAssertTrue(result!["test2"] as! Int == 2, "Jsonify should turn JSON optional array to single JSON optional")

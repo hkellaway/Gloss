@@ -34,13 +34,13 @@ class ObjectToJSONFlowTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        testModel = TestModel(json: [
+        let json: JSON = [
             "bool" : true,
             "boolArray" : [true, false, true],
             "integer" : 1,
             "integerArray" : [1, 2, 3],
-            "float" : 2.0,
-            "floatArray" : [1.0, 2.0, 3.0],
+            "float" : Float(2.0),
+            "floatArray" : [Float(1.0), Float(2.0), Float(3.0)],
             "double" : 6.0,
             "doubleArray" : [4.0, 5.0, 6.0],
             "dictionary" : [
@@ -71,11 +71,11 @@ class ObjectToJSONFlowTests: XCTestCase {
                 [
                     "id" : 456,
                     "name" : "nestedModel2"
-            ],
-            [
-                "id" : 789,
-                "name" : "nestedModel3"
-            ]
+                ],
+                [
+                    "id" : 789,
+                    "name" : "nestedModel3"
+                ]
             ],
             "enumValue" : "A",
             "enumValueArray" : ["A", "B", "C"],
@@ -89,7 +89,9 @@ class ObjectToJSONFlowTests: XCTestCase {
             "int64Array" : [300000000, 300000000, 300000000],
             "url" : "http://github.com",
             "urlArray" : ["http://github.com", "http://github.com"]
-        ])
+        ]
+        
+        testModel = TestModel(json: json)
     }
     
     override func tearDown() {
@@ -114,27 +116,27 @@ class ObjectToJSONFlowTests: XCTestCase {
         XCTAssertTrue((result!["enumValue"] as! String == "A"), "JSON created from model should have correct values")
         XCTAssertTrue((result!["enumValueArray"] as! [String] == ["A", "B", "C"]), "JSON created from model should have correct values")
         XCTAssertTrue(((result!["int32Array"] as! [NSNumber]) == [100000000, 100000000, 100000000]), "JSON created from model should have correct values")
-        XCTAssertTrue(((result!["int32"] as! NSNumber).intValue == 100000000), "JSON created from model should have correct values")
-        XCTAssertTrue(((result!["int64"] as! NSNumber).longLongValue == 300000000), "JSON created from model should have correct values")
+        XCTAssertTrue(((result!["int32"] as! NSNumber).int32Value == 100000000), "JSON created from model should have correct values")
+        XCTAssertTrue(((result!["int64"] as! NSNumber).int64Value == 300000000), "JSON created from model should have correct values")
         XCTAssertTrue(((result!["int64Array"] as! [NSNumber]) == [300000000, 300000000, 300000000]), "JSON created from model should have correct values")
         XCTAssertTrue(((result!["date"] as! String) == "2015-08-16T20:51:46.600Z"), "JSON created from model should have correct values")
         XCTAssertTrue(result!["dateArray"] as! [String] == ["2015-08-16T20:51:46.600Z", "2015-08-16T20:51:46.600Z"], "JSON created from model should have correct values")
         
         let dateISO8601 = result!["dateISO8601"] as! String
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        let resultDate = dateFormatter.dateFromString(dateISO8601)
+        let resultDate = dateFormatter.date(from: dateISO8601)
         
         XCTAssertTrue(resultDate?.timeIntervalSince1970 == 1439071033, "JSON created from model should have correct values")
         
         let dateISO8601Array = result!["dateISO8601Array"] as! [String]
-        let resultDate8601Array = dateISO8601Array.map { date in dateFormatter.dateFromString(date)!.timeIntervalSince1970 }
+        let resultDate8601Array = dateISO8601Array.map { date in dateFormatter.date(from: date)!.timeIntervalSince1970 }
         
         XCTAssertTrue(resultDate8601Array == [1439071033, 1439071033], "JSON created from model should have correct values")
         
         XCTAssertTrue((result!["url"] as! String == "http://github.com"), "JSON created from model should have correct values")
-        XCTAssertTrue(((result!["urlArray"] as! [NSURL]).map { url in url.absoluteString! } == ["http://github.com", "http://github.com"]), "JSON created from model should have correct values")
+        XCTAssertTrue(((result!["urlArray"] as! [URL]).map { url in url.absoluteString } == ["http://github.com", "http://github.com"]), "JSON created from model should have correct values")
         
         let otherModel = (result!["dictionary"] as! [String : JSON])["otherModel"]!
         

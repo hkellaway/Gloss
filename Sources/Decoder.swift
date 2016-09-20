@@ -37,7 +37,7 @@ public struct Decoder {
     
     - returns: Value decoded from JSON.
     */
-    public static func decode<T>(key: String) -> JSON -> T? {
+    public static func decode<T>(key: String) -> (JSON) -> T? {
         return {
             json in
             
@@ -57,12 +57,12 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDate(key: String, dateFormatter: NSDateFormatter) -> JSON -> NSDate? {
+    public static func decode(dateForKey key: String, dateFormatter: DateFormatter) -> (JSON) -> Date? {
         return {
             json in
             
             if let dateString = json[key] as? String {
-                return dateFormatter.dateFromString(dateString)
+                return dateFormatter.date(from: dateString)
             }
             
             return nil
@@ -77,15 +77,15 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDateArray(key: String, dateFormatter: NSDateFormatter) -> JSON -> [NSDate]? {
+    public static func decode(dateArrayForKey key: String, dateFormatter: DateFormatter) -> (JSON) -> [Date]? {
         return {
             json in
             
             if let dateStrings = json[key] as? [String] {
-                var dates: [NSDate] = []
+                var dates: [Date] = []
                 
                 for dateString in dateStrings {
-                    guard let date = dateFormatter.dateFromString(dateString) else {
+                    guard let date = dateFormatter.date(from: dateString) else {
                         return nil
                     }
                     
@@ -106,8 +106,8 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDateISO8601(key: String) -> JSON -> NSDate? {
-        return Decoder.decodeDate(key, dateFormatter: GlossDateFormatterISO8601)
+    public static func decode(dateISO8601ForKey key: String) -> (JSON) -> Date? {
+        return Decoder.decode(dateForKey: key, dateFormatter: GlossDateFormatterISO8601)
     }
     
     /**
@@ -117,8 +117,8 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDateISO8601Array(key: String) -> JSON -> [NSDate]? {
-        return Decoder.decodeDateArray(key, dateFormatter: GlossDateFormatterISO8601)
+    public static func decode(dateISO8601ArrayForKey key: String) -> (JSON) -> [Date]? {
+        return Decoder.decode(dateArrayForKey: key, dateFormatter: GlossDateFormatterISO8601)
     }
     
     /**
@@ -128,7 +128,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDecodable<T: Decodable>(key: String) -> JSON -> T? {
+    public static func decode<T: Decodable>(decodableForKey key: String) -> (JSON) -> T? {
         return {
             json in
             
@@ -148,7 +148,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDecodableArray<T: Decodable>(key: String) -> JSON -> [T]? {
+    public static func decode<T: Decodable>(decodableArrayForKey key: String) -> (JSON) -> [T]? {
         return {
             json in
             
@@ -177,7 +177,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDecodableDictionary<T:Decodable>(key: String) -> JSON -> [String : T]? {
+    public static func decode<T:Decodable>(decodableDictionaryForKey key: String) -> (JSON) -> [String : T]? {
         return {
             json in
             
@@ -204,7 +204,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeDecodableDictionary<T:Decodable>(key: String) -> JSON -> [String : [T]]? {
+    public static func decode<T:Decodable>(decodableDictionaryForKey key: String) -> (JSON) -> [String : [T]]? {
         return {
             json in
             
@@ -215,7 +215,7 @@ public struct Decoder {
             return dictionary.flatMap {
                 (key, value) in
                 
-                guard let decoded = [T].fromJSONArray(value) else {
+                guard let decoded = [T].from(jsonArray: value) else {
                     return nil
                 }
                 
@@ -231,7 +231,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeEnum<T: RawRepresentable>(key: String) -> JSON -> T? {
+    public static func decode<T: RawRepresentable>(enumForKey key: String) -> (JSON) -> T? {
         return {
             json in
             
@@ -250,7 +250,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeEnumArray<T: RawRepresentable>(key: String) -> JSON -> [T]? {
+    public static func decode<T: RawRepresentable>(enumArrayForKey key: String) -> (JSON) -> [T]? {
         return {
             json in
             
@@ -279,12 +279,12 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeInt32(key: String) -> JSON -> Int32? {
+    public static func decode(int32ForKey key: String) -> (JSON) -> Int32? {
         return {
             json in
             
             if let number = json[key] as? NSNumber {
-                return number.intValue
+                return number.int32Value
             }
             
             return nil
@@ -298,12 +298,12 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeInt32Array(key: String) -> JSON -> [Int32]? {
+    public static func decode(int32ArrayForKey key: String) -> (JSON) -> [Int32]? {
         return {
             json in
             
             if let numbers = json[key] as? [NSNumber] {
-                let ints: [Int32] = numbers.map { $0.intValue }
+                let ints: [Int32] = numbers.map { $0.int32Value }
                 
                 return ints
             }
@@ -319,12 +319,12 @@ public struct Decoder {
 
 	- returns: Value decoded from JSON.
 	*/
-	public static func decodeUInt32(key: String) -> JSON -> UInt32? {
+	public static func decode(uint32ForKey key: String) -> (JSON) -> UInt32? {
 		return {
 			json in
 
 			if let number = json[key] as? NSNumber {
-				return number.unsignedIntValue
+				return number.uint32Value
 			}
 
 			return nil
@@ -338,12 +338,12 @@ public struct Decoder {
 
 	- returns: Value decoded from JSON.
 	*/
-	public static func decodeUInt32Array(key: String) -> JSON -> [UInt32]? {
+	public static func decode(uint32ArrayForKey key: String) -> (JSON) -> [UInt32]? {
 		return {
 			json in
 
 			if let numbers = json[key] as? [NSNumber] {
-				let uints: [UInt32] = numbers.map { $0.unsignedIntValue }
+				let uints: [UInt32] = numbers.map { $0.uint32Value }
 
 				return uints
 			}
@@ -359,12 +359,12 @@ public struct Decoder {
 
      - returns: Value decoded from JSON.
      */
-    public static func decodeInt64(key: String) -> JSON -> Int64? {
+    public static func decode(int64ForKey key: String) -> (JSON) -> Int64? {
         return {
             json in
             
             if let number = json[key] as? NSNumber {
-                return number.longLongValue
+                return number.int64Value
             }
             
             return nil
@@ -378,12 +378,12 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeInt64Array(key: String) -> JSON -> [Int64]? {
+    public static func decode(int64ArrayForKey key: String) -> (JSON) -> [Int64]? {
         return {
             json in
             
             if let numbers = json[key] as? [NSNumber] {
-                let ints: [Int64] = numbers.map { $0.longLongValue }
+                let ints: [Int64] = numbers.map { $0.int64Value }
                 
                 return ints
             }
@@ -399,12 +399,12 @@ public struct Decoder {
 
 	- returns: Value decoded from JSON.
 	*/
-	public static func decodeUInt64(key: String) -> JSON -> UInt64? {
+	public static func decode(uint64ForKey key: String) -> (JSON) -> UInt64? {
 		return {
 			json in
 
 			if let number = json[key] as? NSNumber {
-				return number.unsignedLongLongValue
+				return number.uint64Value
 			}
 
 			return nil
@@ -418,12 +418,12 @@ public struct Decoder {
 
 	- returns: Value decoded from JSON.
 	*/
-	public static func decodeUInt64Array(key: String) -> JSON -> [UInt64]? {
+	public static func decode(uint64ArrayForKey key: String) -> (JSON) -> [UInt64]? {
 		return {
 			json in
 
 			if let numbers = json[key] as? [NSNumber] {
-				let uints: [UInt64] = numbers.map { $0.unsignedLongLongValue }
+				let uints: [UInt64] = numbers.map { $0.uint64Value }
 
 				return uints
 			}
@@ -439,13 +439,13 @@ public struct Decoder {
 
      - returns: Value decoded from JSON.
      */
-    public static func decodeURL(key: String) -> JSON -> NSURL? {
+    public static func decode(urlForKey key: String) -> (JSON) -> URL? {
         return {
             json in
             
             if let urlString = json[key] as? String,
-                let encodedString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
-                return NSURL(string: encodedString)
+                let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
+                return URL(string: encodedString)
             }
             
             return nil
@@ -459,15 +459,15 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decodeURLArray(key: String) -> JSON -> [NSURL]? {
+    public static func decode(urlArrayForKey key: String) -> (JSON) -> [URL]? {
         return {
             json in
             
             if let urlStrings = json[key] as? [String] {
-                var urls: [NSURL] = []
+                var urls: [URL] = []
                 
                 for urlString in urlStrings {
-                    guard let url = NSURL(string: urlString) else {
+                    guard let url = URL(string: urlString) else {
                         return nil
                     }
                     

@@ -19,16 +19,20 @@
 - [Download Gloss](https://github.com/hkellaway/Gloss/archive/master.zip) and do a `pod install` on the included `GlossExample` app to see Gloss in action
 - Check out the [documentation](http://cocoadocs.org/docsets/Gloss/) for a more comprehensive look at the classes available in Gloss
 
-### Swift 3.0
+### Swift 2.x
 
-Use the `swift_3.0` branch for a compatible version of Gloss plus Example project.
+Use the `swift_2.3` branch for a compatible version of Gloss plus Example project.
 
-The Gloss source currently available on CocoaPods and Carthage is compatible with Swift 2.3.
+The Gloss source currently available via CocoaPods and Carthage is compatible with Swift 3.0.
+
+### Deprecations
+
+:warning: "Nested keypaths" have been deprecated as of version `0.8.0` ([Read more](#nested-keypaths-deprecation))
 
 ### Installation with CocoaPods
 
 ```ruby
-pod 'Gloss', '~> 0.8'
+pod 'Gloss', '~> 1.0'
 ```
 
 ### Installation with Carthage
@@ -47,14 +51,10 @@ import PackageDescription
 let package = Package(
     name: "HelloWorld",
     dependencies: [
-        .Package(url: "https://github.com/hkellaway/Gloss.git", majorVersion: 0)
+        .Package(url: "https://github.com/hkellaway/Gloss.git", majorVersion: 1)
     ]
 )
 ```
-
-## Deprecations
-
-:warning: "Nested keypaths" have been deprecated as of version `0.8.0` ([Read more](#nested-keypaths-deprecation))
 
 ## Usage
 
@@ -118,8 +118,9 @@ struct RepoOwner: Decodable {
     // MARK: - Deserialization
 
     init?(json: JSON) {
-        guard let ownerId: Int = "id" <~~ json
-            else { return nil }
+        guard let ownerId: Int = "id" <~~ json else { 
+            return nil 
+        }
 
         self.ownerId = ownerId
         self.username = "login" <~~ json
@@ -258,7 +259,7 @@ if let repoOwner = RepoOwner(json: repoOwnerJSON) {
 
 #### Model Objects from JSON Arrays
 
-Gloss also supports creating models from JSON arrays. The `fromJSONArray(_:)` function can be called on a Gloss model array type to produce an array of objects of that type from a JSON array passed in.
+Gloss also supports creating models from JSON arrays. The `from(jsonArray:)` function can be called on a Gloss model array type to produce an array of objects of that type from a JSON array passed in.
 
 For example, let's consider the following array of JSON representing repo owners:
 
@@ -277,7 +278,7 @@ let repoOwnersJSON = [
 An array of `RepoOwner` objects could be obtained via the following:
 
 ``` swift
-guard let repoOwners = [RepoOwner].fromJSONArray(repoOwnersJSON) else {
+guard let repoOwners = [RepoOwner].from(jsonArray: repoOwnersJSON) else {
     // handle decoding failure here
 }
 
@@ -316,9 +317,9 @@ Gloss comes with a number of transformations built in for convenience (See: [Glo
 
 Translating from and to JSON is handled via:
 
-`Decoder.decodeDate(key:, dateFormatter:)` and `Decode.decodeDateArray(key:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `NSDateFormatter` used to translate the date(s). e.g. `self.date = Decoder.decodateDate("dateKey", dateFormatter: myDateFormatter)(json)`
+`Decoder.decode(dateFromKey:, dateFormatter:)` and `Decode.decode(dateArrayFromKey:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `DateFormatter` used to translate the date(s). e.g. `self.date = Decoder.decode(dateFromKey: "dateKey", dateFormatter: myDateFormatter)(json)`
 
-`Encoder.encodeDate(key:, dateFormatter:)` and `Encode.encodeDate(key:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `NSDateFormatter` used to translate the date(s). e.g. `Encoder.encodeDate("dateKey", dateFormatter: myDateFormatter)(self.date)`
+`Encoder.encode(dateFromKey:, dateFormatter:)` and `Encode.encode(dateFromKey:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `DateFormatter` used to translate the date(s). e.g. `Encoder.encode(dateFromKey: "dateKey", dateFormatter: myDateFormatter)(self.date)`
 
 #### Custom Transformations
 
@@ -340,7 +341,7 @@ struct RepoOwner: Decodable {
 
     init?(json: JSON) {
         self.ownerId = "id" <~~ json
-        self.username = Decoder.decodeStringUppercase("login", json: json)
+        self.username = Decoder.decodeStringUppercase(key: "login", json: json)
     }
 
 }
@@ -387,7 +388,7 @@ struct RepoOwner: Glossy {
     func toJSON() -> JSON? {
         return jsonify([
             "id" ~~> self.ownerId,
-            Encoder.encodeStringLowercase("login", value: self.username)
+            Encoder.encodeStringLowercase(key: "login", value: self.username)
         ])
     }
 
@@ -399,7 +400,7 @@ extension Encoder {
     static func encodeStringLowercase(key: String, value: String?) -> JSON? {
             
         if let value = value {
-            return [key : value.lowercaseString]
+            return [key : value.lowercaseString as AnyObject]
         }
 
         return nil
@@ -436,44 +437,44 @@ and
 
 The `<~~` operator is simply syntactic sugar for a set of `Decoder.decode` functions:
 
-* Simple types (`Decoder.decode`)
-* `Decodable` models (`Decoder.decodeDecodable`)
-* Simple arrays (`Decoder.decode`)
-* Arrays of `Decodable` models (`Decoder.decodeDecodableArray`)
-* Dictionaries of `Decodable` models (`Decoder.decodeDecodableDictionary`)
-* Enum types (`Decoder.decodeEnum`)
-* Enum arrays (`Decoder.decodeEnumArray`)
-* Int32 types (`Decoder.decodeInt32`)
-* Int32 arrays (`Decoder.decodeInt32Array`)
-* UInt32 types (`Decoder.decodeUInt32`)
-* UInt32 arrays (`Decoder.decodeUInt32Array`)
-* Int64 types (`Decoder.decodeInt64`)
-* Int64 array (`Decoder.decodeInt64Array`)
-* UInt64 types (`Decoder.decodeUInt64`)
-* UInt64 array (`Decoder.decodeUInt64Array`)
-* NSURL types (`Decoder.decodeURL`)
-* NSURL arrays (`Decode.decodeURLArray`)
+* Simple types (`Decoder.decode(key:)`)
+* `Decodable` models (`Decoder.decode(decodableForKey:)`)
+* Simple arrays (`Decoder.decode(key:)`)
+* Arrays of `Decodable` models (`Decoder.decode(decodableArray:)`)
+* Dictionaries of `Decodable` models (`Decoder.decode(decodableDictionary:)`)
+* Enum types (`Decoder.decode(enum:)`)
+* Enum arrays (`Decoder.decode(enumArray:)`)
+* Int32 types (`Decoder.decode(int32:)`)
+* Int32 arrays (`Decoder.decode(int32Array:)`)
+* UInt32 types (`Decoder.decode(uint32:)`)
+* UInt32 arrays (`Decoder.decode(uint32Array:)`)
+* Int64 types (`Decoder.decode(int64:)`)
+* Int64 array (`Decoder.decode(int64Array:)`)
+* UInt64 types (`Decoder.decode(uint64:)`)
+* UInt64 array (`Decoder.decode(uint64Array:)`)
+* NSURL types (`Decoder.decode(url:)`)
+* NSURL arrays (`Decode.decode(urlArray:)`)
 
 ##### The Encode Operator: `~~>`
 
 The `~~>` operator is simply syntactic sugar for a set of `Encoder.encode` functions:
 
-* Simple types (`Encoder.encode`)
-* `Encodable` models (`Encoder.encodeEncodable`)
-* Simple arrays (`Encoder.encodeArray`)
-* Arrays of `Encodable` models (`Encoder.encodeEncodableArray`)
-* Dictionaries of `Encodable` models (`Encoder.encodeEncodableDictionary`)
-* Enum types (`Encoder.encodeEnum`)
-* Enum arrays (`Encoder.encodeEnumArray`)
-* Int32 types (`Encoder.encodeInt32`)
-* Int32 arrays (`Encoder.encodeInt32Array`)
-* UInt32 types (`Encoder.encodeUInt32`)
-* UInt32 arrays (`Encoder.encodeUInt32Array`)
-* Int64 types (`Encoder.encodeInt64`)
-* Int64 arrays (`Encoder.encodeInt64Array`)
-* UInt64 types (`Encoder.encodeUInt64`)
-* UInt64 arrays (`Encoder.encodeUInt64Array`)
-* NSURL types (`Encoder.encodeURL`)
+* Simple types (`Encoder.encode(key:)`)
+* `Encodable` models (`Encoder.encode(encodable:)`)
+* Simple arrays (`Encoder.encode(array:)`)
+* Arrays of `Encodable` models (`Encoder.encode(encodableArray:)`)
+* Dictionaries of `Encodable` models (`Encoder.encode(encodableDictionary:)`)
+* Enum types (`Encoder.encode(enum:)`)
+* Enum arrays (`Encoder.encode(enumArray:)`)
+* Int32 types (`Encoder.encode(int32:)`)
+* Int32 arrays (`Encoder.encode(int32Array:)`)
+* UInt32 types (`Encoder.encode(uint32:)`)
+* UInt32 arrays (`Encoder.encode(uint32Array:)`)
+* Int64 types (`Encoder.encode(int64:)`)
+* Int64 arrays (`Encoder.encode(int64Array:)`)
+* UInt64 types (`Encoder.encode(uint64:)`)
+* UInt64 arrays (`Encoder.encode(uint64Array:)`)
+* NSURL types (`Encoder.encode(url:)`)
 
 ### Gloss Protocols
 
