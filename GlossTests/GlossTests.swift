@@ -37,7 +37,7 @@ class GlossTests: XCTestCase {
         super.setUp()
         
         var testJSON: JSON? = [:]
-        let testJSONPath: NSString = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")! as NSString
+        let testJSONPath: String = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")!
         let testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
         
         do {
@@ -290,7 +290,7 @@ class GlossTests: XCTestCase {
     func testJsonifyTurnsJSONOptionalArrayToSingleJSONOptional() {
         let json1 = ["test1" : 1 ]
         let json2 = ["test2" : 2 ]
-        let result = jsonify([json1 as Optional<Dictionary<String, AnyObject>>, json2 as Optional<Dictionary<String, AnyObject>>])
+        let result = jsonify([json1 as Optional<Dictionary<String, Any>>, json2 as Optional<Dictionary<String, Any>>])
         
         XCTAssertTrue(result!["test1"] as! Int == 1, "Jsonify should turn JSON optional array to single JSON optional")
         XCTAssertTrue(result!["test2"] as! Int == 2, "Jsonify should turn JSON optional array to single JSON optional")

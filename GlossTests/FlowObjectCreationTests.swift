@@ -34,7 +34,7 @@ class FlowObjectCreationTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let testJSONPath: NSString = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")! as NSString
+        let testJSONPath: String = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")!
         let testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
         
         do {
