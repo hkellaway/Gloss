@@ -481,4 +481,52 @@ public struct Decoder {
         }
     }
     
+    /**
+     Decodes JSON to a UUID.
+     
+     - parameter key: Key used in JSON for decoded value.
+     
+     - returns: Value decoded from JSON.
+     */
+    public static func decode(uuidForKey key: String) -> (JSON) -> UUID? {
+        return {
+            json in
+            
+            if let uuidString = json[key] as? String {
+                return UUID(uuidString: uuidString)
+            }
+             
+            return nil
+        }
+    }
+    
+    /**
+     Decodes JSON to a UUID array.
+     
+     - parameter key: Key used in JSON for decoded value.
+     
+     - returns: Value decoded from JSON.
+     */
+    public static func decode(uuidArrayForKey key: String) -> (JSON) -> [UUID]? {
+        return {
+            json in
+            
+            if let uuidStrings = json[key] as? [String] {
+                var uuids: [UUID] = []
+                
+                for uuidString in uuidStrings {
+                    guard let uuid = UUID(uuidString: uuidString) else {
+                        return nil
+                    }
+                    
+                    uuids.append(uuid)
+                }
+                
+                return uuids
+            }
+            
+            return nil
+        }
+    }
+    
 }

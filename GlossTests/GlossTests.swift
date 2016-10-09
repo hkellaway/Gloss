@@ -77,7 +77,8 @@ class GlossTests: XCTestCase {
             "enumValueArray" : ["A", "B", "C"],
             "date" : "2015-08-16T20:51:46.600Z",
             "dateISO8601" : "2015-08-08T21:57:13Z",
-            "url" : "http://github.com"
+            "url" : "http://github.com",
+            "uuid" : "964F2FE2-0F78-4C2D-A291-03058C0B98AB"
         ]
         
         let model = TestModel(json: testModelsJSON!)
@@ -147,6 +148,7 @@ class GlossTests: XCTestCase {
         XCTAssertTrue((TestModel.dateFormatter.string(from: model1.date!) == "2015-08-16T20:51:46.600Z"), "Model created from JSON should have correct property values")
         XCTAssertTrue((model1.dateISO8601 == Date(timeIntervalSince1970: 1439071033)), "Model created from JSON should have correct property values")
         XCTAssertTrue((model1.url?.absoluteString == "http://github.com"), "Model created from JSON should have correct property values")
+        XCTAssertTrue((model1.uuid?.uuidString == "964F2FE2-0F78-4C2D-A291-03058C0B98AB"), "Model created from JSON should have correct property values")
         
         XCTAssertTrue((model1.nestedModel?.id == 123), "Model created from JSON should have correct property values")
         XCTAssertTrue((model1.nestedModel?.name == "nestedModel1"), "Model created from JSON should have correct property values")
@@ -174,6 +176,7 @@ class GlossTests: XCTestCase {
         XCTAssertTrue((TestModel.dateFormatter.string(from: model1.date!) == "2015-08-16T20:51:46.600Z"), "Model created from JSON should have correct property values")
         XCTAssertTrue((model2.dateISO8601 == Date(timeIntervalSince1970: 1439071033)), "Model created from JSON should have correct property values")
         XCTAssertTrue((model2.url?.absoluteString == "http://github.com"), "Model created from JSON should have correct property values")
+        XCTAssertTrue((model2.uuid?.uuidString == "964F2FE2-0F78-4C2D-A291-03058C0B98AB"), "Model created from JSON should have correct property values")
         
         XCTAssertTrue((model2.nestedModel?.id == 123), "Model created from JSON should have correct property values")
         XCTAssertTrue((model2.nestedModel?.name == "nestedModel1"), "Model created from JSON should have correct property values")
@@ -223,6 +226,8 @@ class GlossTests: XCTestCase {
         
         XCTAssertTrue((json1["url"] as! String == "http://github.com"), "JSON created from model should have correct values")
         
+        XCTAssertTrue((json1["uuid"] as! String == "964F2FE2-0F78-4C2D-A291-03058C0B98AB"), "JSON created from model should have correct values")
+        
         let nestedModel: JSON = json1["nestedModel"] as! JSON
         
         XCTAssertTrue((nestedModel["id"] as! Int == 123), "Encode nested model should return correct value")
@@ -261,6 +266,8 @@ class GlossTests: XCTestCase {
         XCTAssertTrue(resultDate2?.timeIntervalSince1970 == 1439071033, "JSON created from model should have correct values")
         
         XCTAssertTrue((json2["url"] as! String == "http://github.com"), "JSON created from model should have correct values")
+        
+        XCTAssertTrue((json2["uuid"] as! String == "964F2FE2-0F78-4C2D-A291-03058C0B98AB"), "JSON created from model should have correct values")
         
         let nestedModel2: JSON = json2["nestedModel"] as! JSON
         

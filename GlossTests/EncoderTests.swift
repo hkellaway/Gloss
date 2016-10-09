@@ -351,12 +351,34 @@ class EncoderTests: XCTestCase {
         
         XCTAssertTrue(test.map { url in url.absoluteString } == ["http://github.com", "http://github.com"], "Encode URL array should return correct value")
     }
-    
+
     func testEncodeURLArrayReturnsNilIfModelInvalid() {
         let invalidModel = ["1", "2", "3"]
         let result: JSON? = Encoder.encode(arrayForKey: "array")(invalidModel)
-        
+
         XCTAssertNil(result?["array"] as? [URL], "Encode url array should return nil if model is invalid")
     }
 
+    func testEncodeUUID() {
+        let uuid: UUID? = UUID(uuidString: "5D8C7570-F700-4CDD-A6F5-A2DBE0D59647")
+        let result: JSON? = Encoder.encode(uuidForKey: "uuid")(uuid)
+
+        XCTAssertTrue((result!["uuid"] as! String == "5D8C7570-F700-4CDD-A6F5-A2DBE0D59647"), "Encode UUID should return correct value")
+    }
+
+    func testEncodeUUIDArray() {
+        let uuids: [UUID]? = [UUID(uuidString: "CC7DA36D-51E5-42A1-BCA3-E9D8E567B051")!, UUID(uuidString: "21F300CB-47F5-4DDF-8C76-9C8D0241FB96")!]
+        let result: JSON? = Encoder.encode(arrayForKey: "uuidArray")(uuids)
+
+        let test = result!["uuidArray"] as! [UUID]
+
+        XCTAssertTrue(test.map { uuid in uuid.uuidString } == ["CC7DA36D-51E5-42A1-BCA3-E9D8E567B051", "21F300CB-47F5-4DDF-8C76-9C8D0241FB96"], "Encode UUID array should return correct value")
+    }
+
+    func testEncodeUUIDArrayReturnsNilIfModelInvalid() {
+        let invalidModel = ["1", "2", "3"]
+        let result: JSON? = Encoder.encode(arrayForKey: "array")(invalidModel)
+
+        XCTAssertNil(result?["array"] as? [UUID], "Encode uuid array should return nil if model is invalid")
+    }
 }

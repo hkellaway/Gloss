@@ -57,6 +57,8 @@ struct TestModel: Glossy {
 	let uInt64Array: [UInt64]?
 	let url: URL?
     let urlArray: [URL]?
+    let uuid: UUID?
+    let uuidArray: [UUID]?
     
     enum EnumValue: String {
         case A = "A"
@@ -101,6 +103,8 @@ struct TestModel: Glossy {
 		self.uInt64Array = "uInt64Array" <~~ json
         self.url = "url" <~~ json
         self.urlArray = "urlArray" <~~ json
+        self.uuid = "uuid" <~~ json
+        self.uuidArray = "uuidArray" <~~ json
     }
 
     // MARK: - Serialization
@@ -136,7 +140,9 @@ struct TestModel: Glossy {
 			"uInt64" ~~> self.uInt64,
 			"uInt64Array" ~~> self.uInt64Array,
 			"url" ~~> self.url,
-            "urlArray" ~~> self.urlArray
+            "urlArray" ~~> self.urlArray,
+            "uuid" ~~> self.uuid,
+            "uuidArray" ~~> self.uuidArray
             ])
     }
     

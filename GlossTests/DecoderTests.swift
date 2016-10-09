@@ -433,7 +433,7 @@ class DecoderTests: XCTestCase {
         
         XCTAssertTrue((result?.absoluteString == "http://github.com"), "Decode URL should return correct value")
     }
-    
+
     func testDecodeURLArray() {
         let result: [URL]? = Decoder.decode(urlArrayForKey: "urlArray")(testJSON!)
         let element1: URL = result![0]
@@ -444,12 +444,35 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((element2.absoluteString == "http://github.com"), "Decode URL array should return correct value")
         XCTAssertTrue((element3.absoluteString == "http://github.com"), "Decode URL array should return correct value")
     }
-    
+
     func testDecodeURLArrayReturnsNilIfJSONInvalid() {
         let invalidJSON = [ "array" : [1, 1, 1] ]
         let result: [URL]? = Decoder.decode(urlArrayForKey: "array")(invalidJSON as JSON)
-        
+
         XCTAssertNil(result, "Decode url array should return nil if JSON is invalid")
     }
-    
+
+    func testDecodeUUID() {
+        let result: UUID? = Decoder.decode(uuidForKey: "uuid")(testJSON!)
+
+        XCTAssertTrue((result?.uuidString == "964F2FE2-0F78-4C2D-A291-03058C0B98AB"), "Decode UUID should return correct value")
+    }
+
+    func testDecodeUUIDArray() {
+        let result: [UUID]? = Decoder.decode(uuidArrayForKey: "uuidArray")(testJSON!)
+        let element1: UUID = result![0]
+        let element2: UUID = result![1]
+        let element3: UUID = result![2]
+
+        XCTAssertTrue((element1.uuidString == "572099C2-B9AA-42AA-8A25-66E3F3056271"), "Decode UUID array should return correct value")
+        XCTAssertTrue((element2.uuidString == "54DB8DCF-F68D-4B55-A3FC-EB8CF4C36B06"), "Decode UUID array should return correct value")
+        XCTAssertTrue((element3.uuidString == "982CED72-743A-45F8-87CF-278386D32EBF"), "Decode UUID array should return correct value")
+    }
+
+    func testDecodeUUIDArrayReturnsNilIfJSONInvalid() {
+        let invalidJSON = [ "array" : [1, 1, 1] ]
+        let result: [UUID]? = Decoder.decode(uuidArrayForKey: "array")(invalidJSON as JSON)
+
+        XCTAssertNil(result, "Decode UUID array should return nil if JSON is invalid")
+    }
 }

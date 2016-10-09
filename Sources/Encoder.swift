@@ -465,4 +465,22 @@ public struct Encoder {
         }
     }
     
+    /**
+     Encodes a UUID to JSON.
+     
+     - parameter key: Key used in JSON for decoded value.
+     
+     - returns: JSON encoded from value.
+     */
+    public static func encode(uuidForKey key: String) -> (UUID?) -> JSON? {
+        return {
+            uuid in
+            
+            if let uuidString = uuid?.uuidString {
+                return [key : uuidString]
+            }
+            
+            return nil
+        }
+    }
 }

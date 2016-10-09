@@ -503,4 +503,20 @@ class OperatorTests: XCTestCase {
         XCTAssertTrue(((result!["urlArray"] as! [URL]) == (encoderResult!["urlArray"] as! [URL])), "~~> for url array should return same as Encoder.encodeArray")
     }
     
+    func testEncodeOperatorUUIDReturnsEncoderEncodeUUID() {
+        let uuid: UUID? = UUID(uuidString: "964F2FE2-0F78-4C2D-A291-03058C0B98AB")
+        let result: JSON? = "uuid" ~~> uuid
+        let encoderResult: JSON? = Encoder.encode(uuidForKey: "uuid")(uuid)
+        
+        XCTAssertTrue(((result!["uuid"] as! String) == (encoderResult!["uuid"] as! String)), "~~> for uuid should return same as Encoder.encodeURL")
+    }
+    
+    func testEncodeOperatorUUIDArrayReturnsEncoderEncodeUUIDArray() {
+        let uuids: [UUID]? = [UUID(uuidString: "572099C2-B9AA-42AA-8A25-66E3F3056271")!, UUID(uuidString: "54DB8DCF-F68D-4B55-A3FC-EB8CF4C36B06")!]
+        let result: JSON? = "uuidArray" ~~> uuids
+        let encoderResult: JSON? = Encoder.encode(arrayForKey: "uuidArray")(uuids)
+        
+        XCTAssertTrue(((result!["uuidArray"] as! [UUID]) == (encoderResult!["uuidArray"] as! [UUID])), "~~> for uuid array should return same as Encoder.encodeArray")
+    }
+    
 }
