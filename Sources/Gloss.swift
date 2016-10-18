@@ -88,18 +88,29 @@ public private(set) var GlossDateFormatterISO8601: DateFormatter = {
 }()
 
 /**
+ Default delimiter used for nested key paths.
+ 
+ - returns: Default key path delimiter.
+ */
+public private(set) var GlossKeyPathDelimiter: String = {
+    return "."
+}()
+
+/**
  Transforms an array of JSON optionals to a single optional JSON dictionary.
  
  - parameter array:            Array of JSON to transform.
  
  - returns: JSON when successful, nil otherwise.
  */
-public func jsonify(_ array: [JSON?]) -> JSON? {
+public func jsonify(_ array: [JSON?], keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON? {
     var json: JSON = [:]
     
     for j in array {
         if(j != nil) {
-            json.add(other: j!)
+            for (key,value) in j! {
+                Encoder.setValue(dict: &json, value: value as AnyObject, forKeyPath: key, withDelimiter: keyPathDelimiter)
+            }
         }
     }
     
