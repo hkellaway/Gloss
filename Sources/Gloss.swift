@@ -88,20 +88,64 @@ public private(set) var GlossDateFormatterISO8601: DateFormatter = {
 }()
 
 /**
+ Default delimiter used for nested key paths.
+ 
+ - returns: Default key path delimiter.
+ */
+public private(set) var GlossKeyPathDelimiter: String = {
+    return "."
+}()
+
+/**
  Transforms an array of JSON optionals to a single optional JSON dictionary.
  
  - parameter array:            Array of JSON to transform.
  
  - returns: JSON when successful, nil otherwise.
  */
-public func jsonify(_ array: [JSON?]) -> JSON? {
+public func jsonify(_ array: [JSON?], keyPathDelimiter: String = GlossKeyPathDelimiter) -> JSON? {
     var json: JSON = [:]
     
     for j in array {
         if(j != nil) {
-            json.add(other: j!)
+            for (key,value) in j! {
+                setValue(inDictionary: &json, value: value, forKeyPath: key, withDelimiter: keyPathDelimiter)
+            }
         }
     }
     
     return json
+}
+
+/**
+ Sets value for provided key path delimited by provided delimiter.
+ 
+ - parameter valueToSet:    Value to set
+ - parameter keyPath:       Key path.
+ - parameter withDelimiter: Delimiter for key path.
+ */
+public func setValue(inDictionary dict: inout JSON, value: Any, forKeyPath: String, withDelimiter: String = GlossKeyPathDelimiter) {
+    
+    var keyComponents = forKeyPath.components(separatedBy:withDelimiter)
+    
+    guard let firstKey = keyComponents.first else {
+        return
+    }
+    
+    keyComponents.remove(at: 0)
+    
+    if keyComponents.isEmpty {
+        dict[firstKey] = value
+    } else {
+        let rejoined = keyComponents.joined(separator: withDelimiter)
+        var subdict : JSON = [:]
+        
+        if let existingSubDict = dict[firstKey] as? JSON {
+            subdict = existingSubDict
+        }
+        
+        setValue(inDictionary: &subdict, value:value, forKeyPath: rejoined, withDelimiter: withDelimiter)
+        dict[firstKey] = subdict
+        
+    }
 }
