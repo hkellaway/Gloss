@@ -1,1 +1,3 @@
-gem 'cocoapods', '1.1.0.rc.2'
+source 'https://rubygems.org'
+
+gem 'cocoapods', :git => 'https://github.com/CocoaPods/CocoaPods.git', :tag => '1-1-stable'
