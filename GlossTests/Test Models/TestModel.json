@@ -56,5 +56,7 @@
 	"uInt64" : 18446744073709551615,
 	"uInt64Array" : [300000000, 9223372036854775808, 18446744073709551615],
 	"url" : "http://github.com",
-    "urlArray" : ["http://github.com", "http://github.com", "http://github.com"]
+    "urlArray" : ["http://github.com", "http://github.com", "http://github.com"],
+    "uuid" : "964F2FE2-0F78-4C2D-A291-03058C0B98AB",
+    "uuidArray" : ["572099C2-B9AA-42AA-8A25-66E3F3056271", "54DB8DCF-F68D-4B55-A3FC-EB8CF4C36B06", "982CED72-743A-45F8-87CF-278386D32EBF"]
 }

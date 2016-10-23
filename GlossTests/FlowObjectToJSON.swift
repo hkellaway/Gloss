@@ -88,7 +88,9 @@ class ObjectToJSONFlowTests: XCTestCase {
             "int64" : 300000000,
             "int64Array" : [300000000, 300000000, 300000000],
             "url" : "http://github.com",
-            "urlArray" : ["http://github.com", "http://github.com"]
+            "urlArray" : ["http://github.com", "http://github.com"],
+            "uuid" : "964F2FE2-0F78-4C2D-A291-03058C0B98AB",
+            "uuidArray" : ["572099C2-B9AA-42AA-8A25-66E3F3056271", "54DB8DCF-F68D-4B55-A3FC-EB8CF4C36B06", "982CED72-743A-45F8-87CF-278386D32EBF"]
         ]
         
         testModel = TestModel(json: json)
@@ -138,6 +140,9 @@ class ObjectToJSONFlowTests: XCTestCase {
         XCTAssertTrue((result!["url"] as! String == "http://github.com"), "JSON created from model should have correct values")
         XCTAssertTrue(((result!["urlArray"] as! [URL]).map { url in url.absoluteString } == ["http://github.com", "http://github.com"]), "JSON created from model should have correct values")
         
+        XCTAssertTrue((result!["uuid"] as! String == "964F2FE2-0F78-4C2D-A291-03058C0B98AB"), "JSON created from model should have correct values")
+        XCTAssertTrue(((result!["uuidArray"] as! [UUID]).map { uuid in uuid.uuidString } == ["572099C2-B9AA-42AA-8A25-66E3F3056271", "54DB8DCF-F68D-4B55-A3FC-EB8CF4C36B06", "982CED72-743A-45F8-87CF-278386D32EBF"]), "JSON created from model should have correct values")
+
         let otherModel = (result!["dictionary"] as! [String : JSON])["otherModel"]!
         
         XCTAssertTrue(otherModel["id"] as! Int == 1, "Encode encodable dictionary should return correct value")
