@@ -464,38 +464,4 @@ public struct Encoder {
             return nil
         }
     }
-    
-    /**
-     Sets value for provided key path delimited by provided delimiter.
-     
-     - parameter valueToSet:    Value to set
-     - parameter keyPath:       Key path.
-     - parameter withDelimiter: Delimiter for key path.
-     */
-    public static func setValue(dict: inout JSON, value: AnyObject, forKeyPath: String, withDelimiter: String = GlossKeyPathDelimiter) {
-        
-        var keyComponents = forKeyPath.components(separatedBy:withDelimiter)
-        
-        guard let firstKey = keyComponents.first else {
-            return
-        }
-        
-        keyComponents.remove(at: 0)
-        
-        if keyComponents.isEmpty {
-            dict[firstKey] = value
-        } else {
-            let rejoined = keyComponents.joined(separator: withDelimiter)
-            var subdict : JSON = [:]
-            
-            if let existingSubDict = dict[firstKey] as? JSON {
-                subdict = existingSubDict
-            }
-            
-            Encoder.setValue(dict: &subdict, value:value, forKeyPath: rejoined, withDelimiter: withDelimiter)
-            dict[firstKey] = subdict
-            
-        }
-    }
-    
 }

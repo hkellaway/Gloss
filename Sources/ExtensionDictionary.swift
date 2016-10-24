@@ -50,6 +50,36 @@ public extension Dictionary {
         return self.findValue(keys: keys)
     }
     
+    // MARK: - Internal functions
+    
+    /**
+    Creates a dictionary from a list of elements. 
+     
+     This allows use of map, flatMap and filter.
+    
+    - parameter elements: Elements to add to the new dictionary.
+    */
+    internal init(elements: [Element]) {
+        self.init()
+        
+        for (key, value) in elements {
+            self[key] = value
+        }
+    }
+    
+    /**
+     Flat map for dictionary.
+     
+     - parameter transform: Transform function.
+     
+     - returns: New dictionary of transformed values.
+     */
+    internal func flatMap<KeyPrime : Hashable, ValuePrime>(_ transform: (Key, Value) throws -> (KeyPrime, ValuePrime)?) rethrows -> [KeyPrime : ValuePrime] {
+        return Dictionary<KeyPrime,ValuePrime>(elements: try flatMap({ (key, value) in
+            return try transform(key, value)
+        }))
+    }
+    
     /**
      Retrieves value from dictionary given a key path delimited with
      provided delimiter by going down the dictionary stack tree
@@ -67,35 +97,5 @@ public extension Dictionary {
             }
         }
         return nil
-    }
-    
-    // MARK: - Internal functions
-    
-    /**
-    Creates a dictionary from a list of elements. 
-     
-     This allows use of map, flatMap and filter.
-    
-    - parameter elements: Elements to add to the new dictionary.
-    */
-    init(elements: [Element]) {
-        self.init()
-        
-        for (key, value) in elements {
-            self[key] = value
-        }
-    }
-    
-    /**
-     Flat map for dictionary.
-     
-     - parameter transform: Transform function.
-     
-     - returns: New dictionary of transformed values.
-     */
-    func flatMap<KeyPrime : Hashable, ValuePrime>(_ transform: (Key, Value) throws -> (KeyPrime, ValuePrime)?) rethrows -> [KeyPrime : ValuePrime] {
-        return Dictionary<KeyPrime,ValuePrime>(elements: try flatMap({ (key, value) in
-            return try transform(key, value)
-        }))
     }
 }
