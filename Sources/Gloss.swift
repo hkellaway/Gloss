@@ -109,7 +109,7 @@ public func jsonify(_ array: [JSON?], keyPathDelimiter: String = GlossKeyPathDel
     for j in array {
         if(j != nil) {
             for (key,value) in j! {
-                setValue(inDictionary: &json, value: value, forKeyPath: key, withDelimiter: keyPathDelimiter)
+                setValue(inJSON: &json, value: value, forKeyPath: key, withDelimiter: keyPathDelimiter)
             }
         }
     }
@@ -117,16 +117,20 @@ public func jsonify(_ array: [JSON?], keyPathDelimiter: String = GlossKeyPathDel
     return json
 }
 
+// MARK: Private
+
 /**
  Sets value for provided key path delimited by provided delimiter.
+ 
+ Keypath can be delimited to represent a value present in nested JSON -
+ e.g. given a delimiter of '.', a valid keypath might be "owner.profile.id"
  
  - parameter valueToSet:    Value to set
  - parameter keyPath:       Key path.
  - parameter withDelimiter: Delimiter for key path.
  */
-public func setValue(inDictionary dict: inout JSON, value: Any, forKeyPath: String, withDelimiter: String = GlossKeyPathDelimiter) {
-    
-    var keyComponents = forKeyPath.components(separatedBy:withDelimiter)
+private func setValue(inJSON json: inout JSON, value: Any, forKeyPath keyPath: String, withDelimiter delimiter: String = GlossKeyPathDelimiter) {
+    var keyComponents = keyPath.components(separatedBy:delimiter)
     
     guard let firstKey = keyComponents.first else {
         return
@@ -135,17 +139,16 @@ public func setValue(inDictionary dict: inout JSON, value: Any, forKeyPath: Stri
     keyComponents.remove(at: 0)
     
     if keyComponents.isEmpty {
-        dict[firstKey] = value
+        json[firstKey] = value
     } else {
-        let rejoined = keyComponents.joined(separator: withDelimiter)
-        var subdict : JSON = [:]
+        let rejoined = keyComponents.joined(separator: delimiter)
+        var subJSON: JSON = [:]
         
-        if let existingSubDict = dict[firstKey] as? JSON {
-            subdict = existingSubDict
+        if let existingSubJSON = json[firstKey] as? JSON {
+            subJSON = existingSubJSON
         }
         
-        setValue(inDictionary: &subdict, value:value, forKeyPath: rejoined, withDelimiter: withDelimiter)
-        dict[firstKey] = subdict
-        
+        setValue(inJSON: &subJSON, value:value, forKeyPath: rejoined, withDelimiter: delimiter)
+        json[firstKey] = subJSON
     }
 }

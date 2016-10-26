@@ -24,8 +24,11 @@
 //
 
 import Foundation
-public extension Dictionary {
+
+extension Dictionary {
+    
     // MARK: - Public Functions
+    
     /**
      Retrieves value from dictionary given a key path delimited with
      provided delimiter to indicate a nested value.
@@ -79,6 +82,8 @@ public extension Dictionary {
             return try transform(key, value)
         }))
     }
+    
+    // MARK: - Private functions
     
     /**
      Retrieves value from dictionary given a key path delimited with
