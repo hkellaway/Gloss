@@ -464,7 +464,7 @@ public struct Encoder {
             return nil
         }
     }
-    
+
     /**
      Encodes a UUID to JSON.
      
