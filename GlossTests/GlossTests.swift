@@ -37,7 +37,7 @@ class GlossTests: XCTestCase {
         super.setUp()
         
         var testJSON: JSON? = [:]
-        let testJSONPath: NSString = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")! as NSString
+        let testJSONPath: String = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")!
         let testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
         
         do {
@@ -77,7 +77,8 @@ class GlossTests: XCTestCase {
             "enumValueArray" : ["A", "B", "C"],
             "date" : "2015-08-16T20:51:46.600Z",
             "dateISO8601" : "2015-08-08T21:57:13Z",
-            "url" : "http://github.com"
+            "url" : "http://github.com",
+            "uuid" : "964F2FE2-0F78-4C2D-A291-03058C0B98AB"
         ]
         
         let model = TestModel(json: testModelsJSON!)
@@ -147,6 +148,7 @@ class GlossTests: XCTestCase {
         XCTAssertTrue((TestModel.dateFormatter.string(from: model1.date!) == "2015-08-16T20:51:46.600Z"), "Model created from JSON should have correct property values")
         XCTAssertTrue((model1.dateISO8601 == Date(timeIntervalSince1970: 1439071033)), "Model created from JSON should have correct property values")
         XCTAssertTrue((model1.url?.absoluteString == "http://github.com"), "Model created from JSON should have correct property values")
+        XCTAssertTrue((model1.uuid?.uuidString == "964F2FE2-0F78-4C2D-A291-03058C0B98AB"), "Model created from JSON should have correct property values")
         
         XCTAssertTrue((model1.nestedModel?.id == 123), "Model created from JSON should have correct property values")
         XCTAssertTrue((model1.nestedModel?.name == "nestedModel1"), "Model created from JSON should have correct property values")
@@ -174,6 +176,7 @@ class GlossTests: XCTestCase {
         XCTAssertTrue((TestModel.dateFormatter.string(from: model1.date!) == "2015-08-16T20:51:46.600Z"), "Model created from JSON should have correct property values")
         XCTAssertTrue((model2.dateISO8601 == Date(timeIntervalSince1970: 1439071033)), "Model created from JSON should have correct property values")
         XCTAssertTrue((model2.url?.absoluteString == "http://github.com"), "Model created from JSON should have correct property values")
+        XCTAssertTrue((model2.uuid?.uuidString == "964F2FE2-0F78-4C2D-A291-03058C0B98AB"), "Model created from JSON should have correct property values")
         
         XCTAssertTrue((model2.nestedModel?.id == 123), "Model created from JSON should have correct property values")
         XCTAssertTrue((model2.nestedModel?.name == "nestedModel1"), "Model created from JSON should have correct property values")
@@ -223,6 +226,8 @@ class GlossTests: XCTestCase {
         
         XCTAssertTrue((json1["url"] as! String == "http://github.com"), "JSON created from model should have correct values")
         
+        XCTAssertTrue((json1["uuid"] as! String == "964F2FE2-0F78-4C2D-A291-03058C0B98AB"), "JSON created from model should have correct values")
+        
         let nestedModel: JSON = json1["nestedModel"] as! JSON
         
         XCTAssertTrue((nestedModel["id"] as! Int == 123), "Encode nested model should return correct value")
@@ -262,6 +267,8 @@ class GlossTests: XCTestCase {
         
         XCTAssertTrue((json2["url"] as! String == "http://github.com"), "JSON created from model should have correct values")
         
+        XCTAssertTrue((json2["uuid"] as! String == "964F2FE2-0F78-4C2D-A291-03058C0B98AB"), "JSON created from model should have correct values")
+        
         let nestedModel2: JSON = json2["nestedModel"] as! JSON
         
         XCTAssertTrue((nestedModel2["id"] as! Int == 123), "Encode nested model should return correct value")
@@ -290,7 +297,7 @@ class GlossTests: XCTestCase {
     func testJsonifyTurnsJSONOptionalArrayToSingleJSONOptional() {
         let json1 = ["test1" : 1 ]
         let json2 = ["test2" : 2 ]
-        let result = jsonify([json1 as Optional<Dictionary<String, AnyObject>>, json2 as Optional<Dictionary<String, AnyObject>>])
+        let result = jsonify([json1 as Optional<Dictionary<String, Any>>, json2 as Optional<Dictionary<String, Any>>])
         
         XCTAssertTrue(result!["test1"] as! Int == 1, "Jsonify should turn JSON optional array to single JSON optional")
         XCTAssertTrue(result!["test2"] as! Int == 2, "Jsonify should turn JSON optional array to single JSON optional")

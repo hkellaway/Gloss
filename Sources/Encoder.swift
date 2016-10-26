@@ -298,7 +298,7 @@ public struct Encoder {
             int32 in
             
             if let int32 = int32 {
-                return [key : NSNumber(value: int32 as Int32)]
+                return [key : NSNumber(value: int32)]
             }
             
             return nil
@@ -317,7 +317,7 @@ public struct Encoder {
             int32Array in
             
             if let int32Array = int32Array {
-                let numbers: [NSNumber] = int32Array.map { NSNumber(value: $0 as Int32) }
+                let numbers: [NSNumber] = int32Array.map { NSNumber(value: $0) }
                 
                 return [key : numbers]
             }
@@ -338,7 +338,7 @@ public struct Encoder {
 			uint32 in
 
 			if let uint32 = uint32 {
-				return [key : NSNumber(value: uint32 as UInt32)]
+				return [key : NSNumber(value: uint32)]
 			}
 
 			return nil
@@ -357,7 +357,7 @@ public struct Encoder {
 			uInt32Array in
 
 			if let uInt32Array = uInt32Array {
-				let numbers: [NSNumber] = uInt32Array.map { NSNumber(value: $0 as UInt32) }
+				let numbers: [NSNumber] = uInt32Array.map { NSNumber(value: $0) }
 
 				return [key : numbers]
 			}
@@ -378,7 +378,7 @@ public struct Encoder {
             int64 in
             
             if let int64 = int64 {
-                return [key : NSNumber(value: int64 as Int64)]
+                return [key : NSNumber(value: int64)]
             }
             
             return nil
@@ -397,7 +397,7 @@ public struct Encoder {
             int64Array in
             
             if let int64Array = int64Array {
-                let numbers: [NSNumber] = int64Array.map { NSNumber(value: $0 as Int64) }
+                let numbers: [NSNumber] = int64Array.map { NSNumber(value: $0) }
                 
                 return [key : numbers]
             }
@@ -418,7 +418,7 @@ public struct Encoder {
 			uInt64 in
 
 			if let uInt64 = uInt64 {
-				return [key : NSNumber(value: uInt64 as UInt64)]
+				return [key : NSNumber(value: uInt64)]
 			}
 
 			return nil
@@ -437,7 +437,7 @@ public struct Encoder {
 			uInt64Array in
 
 			if let uInt64Array = uInt64Array {
-				let numbers: [NSNumber] = uInt64Array.map { NSNumber(value: $0 as UInt64) }
+				let numbers: [NSNumber] = uInt64Array.map { NSNumber(value: $0) }
 
 				return [key : numbers]
 			}
@@ -464,5 +464,23 @@ public struct Encoder {
             return nil
         }
     }
-    
+
+    /**
+     Encodes a UUID to JSON.
+     
+     - parameter key: Key used in JSON for decoded value.
+     
+     - returns: JSON encoded from value.
+     */
+    public static func encode(uuidForKey key: String) -> (UUID?) -> JSON? {
+        return {
+            uuid in
+            
+            if let uuidString = uuid?.uuidString {
+                return [key : uuidString]
+            }
+            
+            return nil
+        }
+    }
 }

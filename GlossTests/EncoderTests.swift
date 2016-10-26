@@ -139,7 +139,7 @@ class EncoderTests: XCTestCase {
     
     func testEncodeEncodableDictionary() {
         let result: JSON? = Encoder.encode(encodableDictionaryForKey: "dictionary")(["model1" : testNestedModel1!])
-        let dictionary = result!["dictionary"] as! [String : [String : AnyObject]]
+        let dictionary = result!["dictionary"] as! [String : [String : Any]]
         
         XCTAssertTrue(dictionary["model1"]!["id"] as! Int == 1, "Encode Dictionary should return correct value")
         XCTAssertTrue(dictionary["model1"]!["name"] as! String == "nestedModel1", "Encode Dictionary should return correct value")
@@ -147,7 +147,7 @@ class EncoderTests: XCTestCase {
     
     func testEncodeEncodableDictionaryWithArray() {
         let result: JSON? = Encoder.encode(encodableDictionaryForKey: "dictionaryWithArray")(["models" : [testNestedModel1!, testNestedModel2!]])
-        let dictionary = result!["dictionaryWithArray"] as! [String : [AnyObject]]
+        let dictionary = result!["dictionaryWithArray"] as! [String : [Any]]
         let json1 = dictionary["models"]![0] as! JSON
         let json2 = dictionary["models"]![1] as! JSON
         
@@ -225,7 +225,7 @@ class EncoderTests: XCTestCase {
         let date: Date? = TestModel.dateFormatter.date(from: "2015-08-16T20:51:46.600Z")
         let result: JSON? = Encoder.encode(dateForKey: "date", dateFormatter: TestModel.dateFormatter)(date)
         
-        XCTAssertTrue(result!["date"] as! String == "2015-08-16T20:51:46.600Z", "Encode NSDate should return correct value")
+        XCTAssertTrue(result!["date"] as! String == "2015-08-16T20:51:46.600Z", "Encode Date should return correct value")
     }
     
     func testEncodeDateArray() {
@@ -233,7 +233,7 @@ class EncoderTests: XCTestCase {
         let dateArray: [Date]? = [date!, date!]
         let result: JSON? = Encoder.encode(dateArrayForKey: "dateArray", dateFormatter: TestModel.dateFormatter)(dateArray)
         
-        XCTAssertTrue(result!["dateArray"] as! [String] == ["2015-08-16T20:51:46.600Z", "2015-08-16T20:51:46.600Z"], "Encode NSDate array should return correct value")
+        XCTAssertTrue(result!["dateArray"] as! [String] == ["2015-08-16T20:51:46.600Z", "2015-08-16T20:51:46.600Z"], "Encode Date array should return correct value")
     }
     
     func testEncodeDateArrayReturnsNilIfModelInvalid() {
@@ -252,7 +252,7 @@ class EncoderTests: XCTestCase {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         let resultDate = dateFormatter.date(from: result!["dateISO8601"] as! String)
         
-        XCTAssertTrue(resultDate?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate should return correct value")
+        XCTAssertTrue(resultDate?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 Date should return correct value")
     }
     
     func testEncodeDateISO8601Array() {
@@ -269,8 +269,8 @@ class EncoderTests: XCTestCase {
         let resultDateArray2 = result!["dateISO8601Array"]! as! [String]
         let resultDate2 = dateFormatter.date(from: resultDateArray2[1])
         
-        XCTAssertTrue(resultDate1?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate array should return correct value")
-        XCTAssertTrue(resultDate2?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 NSDate array should return correct value")
+        XCTAssertTrue(resultDate1?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 Date array should return correct value")
+        XCTAssertTrue(resultDate2?.timeIntervalSince1970 == 1439071033, "Encode ISO8601 Date array should return correct value")
     }
     
     func testEncodeDateISO8601ArrayReturnsNilIfModelInvalid() {
@@ -340,7 +340,7 @@ class EncoderTests: XCTestCase {
         let url: URL? = URL(string: "http://github.com")
         let result: JSON? = Encoder.encode(urlForKey: "url")(url)
         
-        XCTAssertTrue((result!["url"] as! String == "http://github.com"), "Encode NSURL should return correct value")
+        XCTAssertTrue((result!["url"] as! String == "http://github.com"), "Encode URL should return correct value")
     }
     
     func testEncodeURLArray() {
@@ -349,14 +349,36 @@ class EncoderTests: XCTestCase {
         
         let test = result!["urlArray"] as! [URL]
         
-        XCTAssertTrue(test.map { url in url.absoluteString } == ["http://github.com", "http://github.com"], "Encode NSURL array should return correct value")
+        XCTAssertTrue(test.map { url in url.absoluteString } == ["http://github.com", "http://github.com"], "Encode URL array should return correct value")
     }
-    
+
     func testEncodeURLArrayReturnsNilIfModelInvalid() {
         let invalidModel = ["1", "2", "3"]
         let result: JSON? = Encoder.encode(arrayForKey: "array")(invalidModel)
-        
+
         XCTAssertNil(result?["array"] as? [URL], "Encode url array should return nil if model is invalid")
     }
 
+    func testEncodeUUID() {
+        let uuid: UUID? = UUID(uuidString: "5D8C7570-F700-4CDD-A6F5-A2DBE0D59647")
+        let result: JSON? = Encoder.encode(uuidForKey: "uuid")(uuid)
+
+        XCTAssertTrue((result!["uuid"] as! String == "5D8C7570-F700-4CDD-A6F5-A2DBE0D59647"), "Encode UUID should return correct value")
+    }
+
+    func testEncodeUUIDArray() {
+        let uuids: [UUID]? = [UUID(uuidString: "CC7DA36D-51E5-42A1-BCA3-E9D8E567B051")!, UUID(uuidString: "21F300CB-47F5-4DDF-8C76-9C8D0241FB96")!]
+        let result: JSON? = Encoder.encode(arrayForKey: "uuidArray")(uuids)
+
+        let test = result!["uuidArray"] as! [UUID]
+
+        XCTAssertTrue(test.map { uuid in uuid.uuidString } == ["CC7DA36D-51E5-42A1-BCA3-E9D8E567B051", "21F300CB-47F5-4DDF-8C76-9C8D0241FB96"], "Encode UUID array should return correct value")
+    }
+
+    func testEncodeUUIDArrayReturnsNilIfModelInvalid() {
+        let invalidModel = ["1", "2", "3"]
+        let result: JSON? = Encoder.encode(arrayForKey: "array")(invalidModel)
+
+        XCTAssertNil(result?["array"] as? [UUID], "Encode uuid array should return nil if model is invalid")
+    }
 }

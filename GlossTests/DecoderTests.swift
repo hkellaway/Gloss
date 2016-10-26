@@ -36,8 +36,8 @@ class DecoderTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        var testJSONPath: NSString = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")! as NSString
-        var testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
+        var testJSONPath: String = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")!
+        var testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath))
         
         do {
             try testJSON = JSONSerialization.jsonObject(with: testJSONData, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? JSON
@@ -45,8 +45,8 @@ class DecoderTests: XCTestCase {
             print(error)
         }
         
-        testJSONPath  = Bundle(for: type(of: self)).path(forResource: "TestFailableModelValid", ofType: "json")! as NSString
-        testJSONData = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
+        testJSONPath  = Bundle(for: type(of: self)).path(forResource: "TestFailableModelValid", ofType: "json")!
+        testJSONData = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath))
         
         do {
             try testFailableModelJSONValid = JSONSerialization.jsonObject(with: testJSONData, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? JSON
@@ -54,8 +54,8 @@ class DecoderTests: XCTestCase {
             print(error)
         }
         
-        testJSONPath  = Bundle(for: type(of: self)).path(forResource: "TestFailableModelInvalid", ofType: "json")! as NSString
-        testJSONData = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
+        testJSONPath  = Bundle(for: type(of: self)).path(forResource: "TestFailableModelInvalid", ofType: "json")!
+        testJSONData = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath))
         
         do {
             try testFailableModelJSONInvalid = JSONSerialization.jsonObject(with: testJSONData, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? JSON
@@ -265,21 +265,21 @@ class DecoderTests: XCTestCase {
     func testDecodeDate() {
         let result: Date? = Decoder.decode(dateForKey: "date", dateFormatter: TestModel.dateFormatter)(testJSON!)
         
-        let year: Int = (Calendar.current as NSCalendar).components(.year, from: result!).year!
-        let month: Int = (Calendar.current as NSCalendar).components(.month, from: result!).month!
-        let day: Int = (Calendar.current as NSCalendar).components(.day, from: result!).day!
-        let hour: Int = (Calendar.current as NSCalendar).components(.hour, from: result!).hour!
-        let minute: Int = (Calendar.current as NSCalendar).components(.minute, from: result!).minute!
-        let second: Int = (Calendar.current as NSCalendar).components(.second, from: result!).second!
-        let nanosecond: Int = (Calendar.current as NSCalendar).components(.nanosecond, from: result!).nanosecond!
+        let year: Int = Calendar.current.dateComponents([.year], from: result!).year!
+        let month: Int = Calendar.current.dateComponents([.month], from: result!).month!
+        let day: Int = Calendar.current.dateComponents([.day], from: result!).day!
+        let hour: Int = Calendar.current.dateComponents([.hour], from: result!).hour!
+        let minute: Int = Calendar.current.dateComponents([.minute], from: result!).minute!
+        let second: Int = Calendar.current.dateComponents([.second], from: result!).second!
+        let nanosecond: Int = Calendar.current.dateComponents([.nanosecond], from: result!).nanosecond!
         
-        XCTAssertTrue((year == 2015), "Decode NSDate should return correct value")
-        XCTAssertTrue((month == 8), "Decode NSDate should return correct value")
-        XCTAssertTrue((day == 16), "Decode NSDate should return correct value")
-        XCTAssertTrue((hour == 20), "Decode NSDate should return correct value")
-        XCTAssertTrue((minute == 51), "Decode NSDate should return correct value")
-        XCTAssertTrue((second == 46), "Decode NSDate should return correct value")
-        XCTAssertTrue((nanosecond/1000000 == 599), "Decode NSDate should return correct value")
+        XCTAssertTrue((year == 2015), "Decode Date should return correct value")
+        XCTAssertTrue((month == 8), "Decode Date should return correct value")
+        XCTAssertTrue((day == 16), "Decode Date should return correct value")
+        XCTAssertTrue((hour == 20), "Decode Date should return correct value")
+        XCTAssertTrue((minute == 51), "Decode Date should return correct value")
+        XCTAssertTrue((second == 46), "Decode Date should return correct value")
+        XCTAssertTrue((nanosecond/1000000 == 599), "Decode Date should return correct value")
     }
     
     func testDecodeDateArray() {
@@ -287,37 +287,37 @@ class DecoderTests: XCTestCase {
         let element1: Date = result![0]
         let element2: Date = result![1]
         
-        let year1: Int = (Calendar.current as NSCalendar).components(.year, from: element1).year!
-        let month1: Int = (Calendar.current as NSCalendar).components(.month, from: element1).month!
-        let day1: Int = (Calendar.current as NSCalendar).components(.day, from: element1).day!
-        let hour1: Int = (Calendar.current as NSCalendar).components(.hour, from: element1).hour!
-        let minute1: Int = (Calendar.current as NSCalendar).components(.minute, from: element1).minute!
-        let second1: Int = (Calendar.current as NSCalendar).components(.second, from: element1).second!
-        let nanosecond1: Int = (Calendar.current as NSCalendar).components(.nanosecond, from: element1).nanosecond!
+        let year1: Int = Calendar.current.dateComponents([.year], from: element1).year!
+        let month1: Int = Calendar.current.dateComponents([.month], from: element1).month!
+        let day1: Int = Calendar.current.dateComponents([.day], from: element1).day!
+        let hour1: Int = Calendar.current.dateComponents([.hour], from: element1).hour!
+        let minute1: Int = Calendar.current.dateComponents([.minute], from: element1).minute!
+        let second1: Int = Calendar.current.dateComponents([.second], from: element1).second!
+        let nanosecond1: Int = Calendar.current.dateComponents([.nanosecond], from: element1).nanosecond!
+      
+        let year2: Int = Calendar.current.dateComponents([.year], from: element2).year!
+        let month2: Int = Calendar.current.dateComponents([.month], from: element2).month!
+        let day2: Int = Calendar.current.dateComponents([.day], from: element2).day!
+        let hour2: Int = Calendar.current.dateComponents([.hour], from: element2).hour!
+        let minute2: Int = Calendar.current.dateComponents([.minute], from: element2).minute!
+        let second2: Int = Calendar.current.dateComponents([.second], from: element2).second!
+        let nanosecond2: Int = Calendar.current.dateComponents([.nanosecond], from: element2).nanosecond!
         
-        let year2: Int = (Calendar.current as NSCalendar).components(.year, from: element2).year!
-        let month2: Int = (Calendar.current as NSCalendar).components(.month, from: element2).month!
-        let day2: Int = (Calendar.current as NSCalendar).components(.day, from: element2).day!
-        let hour2: Int = (Calendar.current as NSCalendar).components(.hour, from: element2).hour!
-        let minute2: Int = (Calendar.current as NSCalendar).components(.minute, from: element2).minute!
-        let second2: Int = (Calendar.current as NSCalendar).components(.second, from: element2).second!
-        let nanosecond2: Int = (Calendar.current as NSCalendar).components(.nanosecond, from: element2).nanosecond!
+        XCTAssertTrue((year1 == 2015), "Decode Date array should return correct value")
+        XCTAssertTrue((month1 == 8), "Decode Date array should return correct value")
+        XCTAssertTrue((day1 == 16), "Decode Date array should return correct value")
+        XCTAssertTrue((hour1 == 20), "Decode Date array should return correct value")
+        XCTAssertTrue((minute1 == 51), "Decode Date array should return correct value")
+        XCTAssertTrue((second1 == 46), "Decode Date array should return correct value")
+        XCTAssertTrue((nanosecond1/1000000 == 599), "Decode Date array should return correct value")
         
-        XCTAssertTrue((year1 == 2015), "Decode NSDate array should return correct value")
-        XCTAssertTrue((month1 == 8), "Decode NSDate array should return correct value")
-        XCTAssertTrue((day1 == 16), "Decode NSDate array should return correct value")
-        XCTAssertTrue((hour1 == 20), "Decode NSDate array should return correct value")
-        XCTAssertTrue((minute1 == 51), "Decode NSDate array should return correct value")
-        XCTAssertTrue((second1 == 46), "Decode NSDate array should return correct value")
-        XCTAssertTrue((nanosecond1/1000000 == 599), "Decode NSDate array should return correct value")
-        
-        XCTAssertTrue((year2 == 2015), "Decode NSDate array should return correct value")
-        XCTAssertTrue((month2 == 8), "Decode NSDate array should return correct value")
-        XCTAssertTrue((day2 == 16), "Decode NSDate array should return correct value")
-        XCTAssertTrue((hour2 == 20), "Decode NSDate array should return correct value")
-        XCTAssertTrue((minute2 == 51), "Decode NSDate array should return correct value")
-        XCTAssertTrue((second2 == 46), "Decode NSDate array should return correct value")
-        XCTAssertTrue((nanosecond2/1000000 == 599), "Decode NSDate array should return correct value")
+        XCTAssertTrue((year2 == 2015), "Decode Date array should return correct value")
+        XCTAssertTrue((month2 == 8), "Decode Date array should return correct value")
+        XCTAssertTrue((day2 == 16), "Decode Date array should return correct value")
+        XCTAssertTrue((hour2 == 20), "Decode Date array should return correct value")
+        XCTAssertTrue((minute2 == 51), "Decode Date array should return correct value")
+        XCTAssertTrue((second2 == 46), "Decode Date array should return correct value")
+        XCTAssertTrue((nanosecond2/1000000 == 599), "Decode Date array should return correct value")
     }
     
     func testDecodeDateArrayReturnsNilIfJSONInvalid() {
@@ -332,7 +332,7 @@ class DecoderTests: XCTestCase {
         
         let timeInterval = result!.timeIntervalSince1970
         
-        XCTAssertTrue(timeInterval == 1439071033, "Decode NSDate should return correct value")
+        XCTAssertTrue(timeInterval == 1439071033, "Decode Date should return correct value")
     }
     
     func testDecodeDateISO8601Array() {
@@ -341,15 +341,15 @@ class DecoderTests: XCTestCase {
         let timeInterval1 = result![0].timeIntervalSince1970
         let timeInterval2 = result![1].timeIntervalSince1970
         
-        XCTAssertTrue(timeInterval1 == 1439071033, "Decode NSDate array should return correct value")
-        XCTAssertTrue(timeInterval2 == 1439071033, "Decode NSDate array should return correct value")
+        XCTAssertTrue(timeInterval1 == 1439071033, "Decode Date array should return correct value")
+        XCTAssertTrue(timeInterval2 == 1439071033, "Decode Date array should return correct value")
     }
 
     func testDecodeDateISO8601ArrayArrayReturnsNilIfJSONInvalid() {
         let invalidJSON = [ "array" : ["1", "2", "3"] ]
         let result: [Date]? = Decoder.decode(dateISO8601ArrayForKey: "array")(invalidJSON as JSON)
         
-        XCTAssertNil(result, "Decode NSDate array should return nil if JSON is invalid")
+        XCTAssertNil(result, "Decode Date array should return nil if JSON is invalid")
     }
     
     func testDecodeInt32() {
@@ -431,25 +431,48 @@ class DecoderTests: XCTestCase {
     func testDecodeURL() {
         let result: URL? = Decoder.decode(urlForKey: "url")(testJSON!)
         
-        XCTAssertTrue((result?.absoluteString == "http://github.com"), "Decode NSURL should return correct value")
+        XCTAssertTrue((result?.absoluteString == "http://github.com"), "Decode URL should return correct value")
     }
-    
+
     func testDecodeURLArray() {
         let result: [URL]? = Decoder.decode(urlArrayForKey: "urlArray")(testJSON!)
         let element1: URL = result![0]
         let element2: URL = result![1]
         let element3: URL = result![2]
         
-        XCTAssertTrue((element1.absoluteString == "http://github.com"), "Decode NSURL array should return correct value")
-        XCTAssertTrue((element2.absoluteString == "http://github.com"), "Decode NSURL array should return correct value")
-        XCTAssertTrue((element3.absoluteString == "http://github.com"), "Decode NSURL array should return correct value")
+        XCTAssertTrue((element1.absoluteString == "http://github.com"), "Decode URL array should return correct value")
+        XCTAssertTrue((element2.absoluteString == "http://github.com"), "Decode URL array should return correct value")
+        XCTAssertTrue((element3.absoluteString == "http://github.com"), "Decode URL array should return correct value")
     }
-    
+
     func testDecodeURLArrayReturnsNilIfJSONInvalid() {
         let invalidJSON = [ "array" : [1, 1, 1] ]
         let result: [URL]? = Decoder.decode(urlArrayForKey: "array")(invalidJSON as JSON)
-        
+
         XCTAssertNil(result, "Decode url array should return nil if JSON is invalid")
     }
-    
+
+    func testDecodeUUID() {
+        let result: UUID? = Decoder.decode(uuidForKey: "uuid")(testJSON!)
+
+        XCTAssertTrue((result?.uuidString == "964F2FE2-0F78-4C2D-A291-03058C0B98AB"), "Decode UUID should return correct value")
+    }
+
+    func testDecodeUUIDArray() {
+        let result: [UUID]? = Decoder.decode(uuidArrayForKey: "uuidArray")(testJSON!)
+        let element1: UUID = result![0]
+        let element2: UUID = result![1]
+        let element3: UUID = result![2]
+
+        XCTAssertTrue((element1.uuidString == "572099C2-B9AA-42AA-8A25-66E3F3056271"), "Decode UUID array should return correct value")
+        XCTAssertTrue((element2.uuidString == "54DB8DCF-F68D-4B55-A3FC-EB8CF4C36B06"), "Decode UUID array should return correct value")
+        XCTAssertTrue((element3.uuidString == "982CED72-743A-45F8-87CF-278386D32EBF"), "Decode UUID array should return correct value")
+    }
+
+    func testDecodeUUIDArrayReturnsNilIfJSONInvalid() {
+        let invalidJSON = [ "array" : [1, 1, 1] ]
+        let result: [UUID]? = Decoder.decode(uuidArrayForKey: "array")(invalidJSON as JSON)
+
+        XCTAssertNil(result, "Decode UUID array should return nil if JSON is invalid")
+    }
 }

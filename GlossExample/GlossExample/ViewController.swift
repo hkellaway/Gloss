@@ -45,8 +45,7 @@ class ViewController: UIViewController {
             ]
         
         guard let repo = Repo(json: repoJSON) else {
-            print("Issue deserializing model")
-            
+            print("DECODING FAILURE :(")
             return
         }
         
