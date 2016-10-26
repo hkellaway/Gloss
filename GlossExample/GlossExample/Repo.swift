@@ -47,7 +47,7 @@ struct Repo: Glossy {
             let name: String = Decoder.decodeStringUppercase(key: "name", json: json),
             let url: URL = "html_url" <~~ json,
             let owner: RepoOwner = "owner" <~~ json,
-            let ownerURL: URL = Decoder.decode(nestedOwnerURLFromJSON: json) else {
+            let ownerURL: URL = "owner.html_url" <~~ json else {
                 return nil
         }
         
@@ -69,7 +69,7 @@ struct Repo: Glossy {
             "description" ~~> self.desc,
             "html_url" ~~> self.url,
             "owner" ~~> self.owner,
-            Encoder.encode(nestedOwnerURL: self.ownerURL),
+            "owner.html_url" ~~> self.ownerURL,
             "language" ~~> self.primaryLanguage
             ])
     }
@@ -89,21 +89,6 @@ extension Decoder {
     
 }
 
-extension Decoder {
-    
-    static func decode(nestedOwnerURLFromJSON json: JSON) -> URL? {
-        if
-            let ownerJSON = json["owner"] as? JSON,
-            let urlString = ownerJSON["html_url"] as? String,
-            let ownerURL = URL(string: urlString) {
-            return ownerURL
-        }
-        
-        return nil
-    }
-    
-}
-
 extension Encoder {
     
     static func encodeStringCapitalized(key: String, value: String?) -> JSON? {
@@ -112,19 +97,6 @@ extension Encoder {
         }
         
         return nil
-    }
-    
-}
-
-extension Encoder {
-    
-    static func encode(nestedOwnerURL value: URL) -> JSON {
-        let url = value.absoluteString
-        
-        return [ "owner" : [
-            "html_url" : url
-            ]
-        ]
     }
     
 }
