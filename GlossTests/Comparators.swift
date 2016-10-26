@@ -9,6 +9,6 @@
 import Foundation
 import Gloss
 
-public func ==(lhs: JSON, rhs: JSON ) -> Bool {
+func ==(lhs: JSON, rhs: JSON ) -> Bool {
     return NSDictionary(dictionary: lhs).isEqual(to: rhs)
 }
