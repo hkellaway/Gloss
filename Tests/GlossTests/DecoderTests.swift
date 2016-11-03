@@ -151,10 +151,6 @@ class DecoderTests: XCTestCase {
     func testDecodeFloatArray() {
         let result: [Float]? = Decoder.decode(key: "floatArray")(testJSON!)
         
-        print("TEST JSON")
-        
-        print(testJSON!)
-        
         let element1: Float = result![0]
         let element2: Float = result![1]
         let element3: Float = result![2]
