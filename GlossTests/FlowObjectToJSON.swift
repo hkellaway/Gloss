@@ -24,7 +24,6 @@
 //
 
 import Gloss
-import UIKit
 import XCTest
 
 class ObjectToJSONFlowTests: XCTestCase {
