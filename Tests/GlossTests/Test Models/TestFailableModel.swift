@@ -53,16 +53,16 @@ extension TestFailableModel {
     
     static var testInvalidJSON: JSON {
         return [
-            "identifier" : "unique",
-            "value" : 99999
+            "asdf": "dsafhkjdaf",
+            "asjdkfhl": 203183492749,
+            "asdfjhkhfsldjghi": 0.12390
         ]
     }
     
     static var testValidJSON: JSON {
         return [
-            "asdf": "dsafhkjdaf",
-            "asjdkfhl": 203183492749,
-            "asdfjhkhfsldjghi": 0.12390
+            "identifier" : "unique",
+            "value" : 99999
         ]
     }
 }
