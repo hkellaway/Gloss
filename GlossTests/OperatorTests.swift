@@ -36,6 +36,11 @@ class OperatorTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
+        #if SWIFT_PACKAGE
+            
+        testJSON = TestModel.testJSON
+            
+        #else
         let testJSONPath: String = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")!
         let testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
         
@@ -44,6 +49,7 @@ class OperatorTests: XCTestCase {
         } catch {
             print(error)
         }
+        #endif
         
         testNestedModel1 = TestNestedModel(json: [ "id" : 1, "name" : "nestedModel1"])
         testNestedModel2 = TestNestedModel(json: ["id" : 2, "name" : "nestedModel2"])

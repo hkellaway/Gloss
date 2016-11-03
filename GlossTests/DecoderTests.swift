@@ -36,8 +36,17 @@ class DecoderTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
+        #if SWIFT_PACKAGE
+            
+        testJSON = TestModel.testJSON
+        testFailableModelJSONValid = TestFailableModel.testValidJSON
+        testFailableModelJSONInvalid = TestFailableModel.testInvalidJSON
+            
+        #else
+        
         var testJSONPath: String = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")!
         var testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath))
+        
         
         do {
             try testJSON = JSONSerialization.jsonObject(with: testJSONData, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? JSON
@@ -62,6 +71,7 @@ class DecoderTests: XCTestCase {
         } catch {
             print(error)
         }
+        #endif
     }
     
     override func tearDown() {
@@ -140,6 +150,11 @@ class DecoderTests: XCTestCase {
     
     func testDecodeFloatArray() {
         let result: [Float]? = Decoder.decode(key: "floatArray")(testJSON!)
+        
+        print("TEST JSON")
+        
+        print(testJSON!)
+        
         let element1: Float = result![0]
         let element2: Float = result![1]
         let element3: Float = result![2]
