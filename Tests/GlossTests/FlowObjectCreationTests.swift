@@ -23,8 +23,8 @@
 // THE SOFTWARE.
 //
 
+import Foundation
 import Gloss
-import UIKit
 import XCTest
 
 class FlowObjectCreationTests: XCTestCase {
@@ -34,6 +34,9 @@ class FlowObjectCreationTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
+        #if SWIFT_PACKAGE
+        testJSON = TestModel.testJSON
+        #else
         let testJSONPath: String = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")!
         let testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
         
@@ -42,6 +45,7 @@ class FlowObjectCreationTests: XCTestCase {
         } catch {
             print(error)
         }
+        #endif
     }
     
     override func tearDown() {

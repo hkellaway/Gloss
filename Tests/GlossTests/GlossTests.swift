@@ -23,8 +23,8 @@
 // THE SOFTWARE.
 //
 
+import Foundation
 import Gloss
-import UIKit
 import XCTest
 
 class GlossTests: XCTestCase {
@@ -37,6 +37,13 @@ class GlossTests: XCTestCase {
         super.setUp()
         
         var testJSON: JSON? = [:]
+        
+        #if SWIFT_PACKAGE
+        
+        testJSON = TestModel.testJSON
+        
+        #else
+        
         let testJSONPath: String = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")!
         let testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
         
@@ -45,6 +52,8 @@ class GlossTests: XCTestCase {
         } catch {
             print(error)
         }
+        
+        #endif
         
         testJSONArray = [testJSON!, testJSON!]
         
