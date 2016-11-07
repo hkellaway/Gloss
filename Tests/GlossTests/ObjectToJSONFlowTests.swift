@@ -1,5 +1,5 @@
 //
-//  FlowObjectToJSON.swift
+//  ObjectToJSONFlowTests.swift
 //  GlossExample
 //
 // Copyright (c) 2015 Harlan Kellaway
