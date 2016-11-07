@@ -28,6 +28,54 @@ import Gloss
 import XCTest
 
 class EncoderTests: XCTestCase {
+
+    static var allTests : [(String, (EncoderTests) -> () throws -> Void)] {
+        return [
+            ("testInvalidValue", testInvalidValue),
+            ("testEncodeBool", testEncodeBool),
+            ("testEncodeBoolArray", testEncodeBoolArray),
+            ("testEncodeBoolLArrayReturnsNilIfModelInvalid", testEncodeBoolLArrayReturnsNilIfModelInvalid),
+            ("testEncodeInt", testEncodeInt),
+            ("testEncodeIntArray", testEncodeIntArray),
+            ("testEncodeIntLArrayReturnsNilIfModelInvalid", testEncodeIntLArrayReturnsNilIfModelInvalid),
+            ("testEncodeFloat", testEncodeFloat),
+            ("testEncodeFloatArray", testEncodeFloatArray),
+            ("testEncodeFloatLArrayReturnsNilIfModelInvalid", testEncodeFloatLArrayReturnsNilIfModelInvalid),
+            ("testEncodeDouble", testEncodeDouble),
+            ("testEncodeDoubleArray", testEncodeDoubleArray),
+            ("testEncodeDoubleLArrayReturnsNilIfModelInvalid", testEncodeDoubleLArrayReturnsNilIfModelInvalid),
+            ("testEncodeEncodableDictionary", testEncodeEncodableDictionary),
+            ("testEncodeEncodableDictionaryWithArray", testEncodeEncodableDictionaryWithArray),
+            ("testEncodeString", testEncodeString),
+            ("testEncodeStringArray", testEncodeStringArray),
+            ("testEncodeStringLArrayReturnsNilIfModelInvalid", testEncodeStringLArrayReturnsNilIfModelInvalid),
+            ("testEncodeNestedModel", testEncodeNestedModel),
+            ("testEncodeNestedModelArray", testEncodeNestedModelArray),
+            ("testEncodeEnumValue", testEncodeEnumValue),
+            ("testEncodeEnumArray", testEncodeEnumArray),
+            ("testEncodeEnumArrayReturnsNilIfModelInvalid", testEncodeEnumArrayReturnsNilIfModelInvalid),
+            ("testEncodeDate", testEncodeDate),
+            ("testEncodeDateArray", testEncodeDateArray),
+            ("testEncodeDateArrayReturnsNilIfModelInvalid", testEncodeDateArrayReturnsNilIfModelInvalid),
+            ("testEncodeDateISO8601", testEncodeDateISO8601),
+            ("testEncodeDateISO8601Array", testEncodeDateISO8601Array),
+            ("testEncodeDateISO8601ArrayReturnsNilIfModelInvalid", testEncodeDateISO8601ArrayReturnsNilIfModelInvalid),
+            ("testEncodeInt32", testEncodeInt32),
+            ("testEncodeInt32Array", testEncodeInt32Array),
+            ("testEncodeUInt32", testEncodeUInt32),
+            ("testEncodeUInt32Array", testEncodeUInt32Array),
+            ("testEncodeInt64", testEncodeInt64),
+            ("testEncodeInt64Array", testEncodeInt64Array),
+            ("testEncodeUInt64", testEncodeUInt64),
+            ("testEncodeUInt64Array", testEncodeUInt64Array),
+            ("testEncodeURL", testEncodeURL),
+            ("testEncodeURLArray", testEncodeURLArray),
+            ("testEncodeURLArrayReturnsNilIfModelInvalid", testEncodeURLArrayReturnsNilIfModelInvalid),
+            ("testEncodeUUID", testEncodeUUID),
+            ("testEncodeUUIDArray", testEncodeUUIDArray),
+            ("testEncodeUUIDArrayReturnsNilIfModelInvalid", testEncodeUUIDArrayReturnsNilIfModelInvalid)
+        ]
+	}
     
     var testNestedModel1: TestNestedModel? = nil
     var testNestedModel2: TestNestedModel? = nil

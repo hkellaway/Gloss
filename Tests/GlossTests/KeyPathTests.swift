@@ -11,6 +11,15 @@ import Gloss
 import XCTest
 
 class KeyPathTests: XCTestCase {
+
+    static var allTests : [(String, (KeyPathTests) -> () throws -> Void)] {
+        return [
+            ("testNestedKeyPathFromJSON", testNestedKeyPathFromJSON),
+            ("testNestedKeyPathToJSON", testNestedKeyPathToJSON),
+            ("testNonDefaultKeyPathDecode", testNonDefaultKeyPathDecode),
+            ("testNonDefaultKeyPathEncode", testNonDefaultKeyPathEncode)
+        ]
+    }
     
     var nestedKeyPathJSON: JSON { return
         [
