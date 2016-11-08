@@ -327,7 +327,13 @@ class DecoderTests: XCTestCase {
     
     func testDecodeDate() {
         let result: Date? = Decoder.decode(dateForKey: "date", dateFormatter: TestModel.dateFormatter)(testJSON!)
-        
+
+/*		print(result)
+
+		let datetimeFormatter = DateFormatter()
+		datetimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS ZZZ"
+		print(datetimeFormatter.string(from: result!))
+*/      
         let year: Int = Calendar.current.dateComponents([.year], from: result!).year!
         let month: Int = Calendar.current.dateComponents([.month], from: result!).month!
         let day: Int = Calendar.current.dateComponents([.day], from: result!).day!
@@ -335,6 +341,13 @@ class DecoderTests: XCTestCase {
         let minute: Int = Calendar.current.dateComponents([.minute], from: result!).minute!
         let second: Int = Calendar.current.dateComponents([.second], from: result!).second!
         let nanosecond: Int = Calendar.current.dateComponents([.nanosecond], from: result!).nanosecond!
+/*		print("Year = \(year)")
+		print("Month = \(month)")
+		print("Day = \(day)")
+		print("Hour = \(hour)")
+		print("Minute = \(minute)")
+		print("Second = \(second)")
+*/		print("Nanosecond = \(nanosecond)")
         
         XCTAssertTrue((year == 2015), "Decode Date should return correct value")
         XCTAssertTrue((month == 8), "Decode Date should return correct value")
