@@ -488,11 +488,11 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decode(uuidForKey key: String) -> (JSON) -> UUID? {
+    public static func decode(uuidForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> UUID? {
         return {
             json in
             
-            if let uuidString = json[key] as? String {
+            if let uuidString = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? String {
                 return UUID(uuidString: uuidString)
             }
              
@@ -507,11 +507,11 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decode(uuidArrayForKey key: String) -> (JSON) -> [UUID]? {
+    public static func decode(uuidArrayForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> [UUID]? {
         return {
             json in
             
-            if let uuidStrings = json[key] as? [String] {
+            if let uuidStrings = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? [String] {
                 var uuids: [UUID] = []
                 
                 for uuidString in uuidStrings {
