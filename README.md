@@ -350,9 +350,9 @@ Gloss comes with a number of transformations built in for convenience (See: [Glo
 
 Translating from and to JSON is handled via:
 
-`Decoder.decode(dateFromKey:, dateFormatter:)` and `Decode.decode(dateArrayFromKey:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `DateFormatter` used to translate the date(s). e.g. `self.date = Decoder.decode(dateFromKey: "dateKey", dateFormatter: myDateFormatter)(json)`
+`Decoder.decode(dateForKey:, dateFormatter:)` and `Decode.decode(dateArrayFromKey:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `DateFormatter` used to translate the date(s). e.g. `self.date = Decoder.decode(dateForKey: "dateKey", dateFormatter: myDateFormatter)(json)`
 
-`Encoder.encode(dateFromKey:, dateFormatter:)` and `Encode.encode(dateFromKey:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `DateFormatter` used to translate the date(s). e.g. `Encoder.encode(dateFromKey: "dateKey", dateFormatter: myDateFormatter)(self.date)`
+`Encoder.encode(dateForKey:, dateFormatter:)` and `Encode.encode(dateForKey:, dateFormatter:)` where `key` is the JSON key and `dateFormatter` is the `DateFormatter` used to translate the date(s). e.g. `Encoder.encode(dateForKey: "dateKey", dateFormatter: myDateFormatter)(self.date)`
 
 #### Custom Transformations
 
