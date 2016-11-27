@@ -548,6 +548,7 @@ Check out Gloss in these cool places!
 * [CRUD](https://github.com/MetalheadSanya/CRUD)
 * [Moya-Gloss](https://github.com/spxrogers/Moya-Gloss)
 * [Restofire-Gloss](https://github.com/Restofire/Restofire-Gloss)
+* [OctoAPI](http://github.com/ferusinfo/OctoAPI)
 
 #### SDKs/Products
 
