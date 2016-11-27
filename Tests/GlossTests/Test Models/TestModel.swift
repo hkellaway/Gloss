@@ -191,7 +191,9 @@ extension TestModel {
             "stringArray" : ["def", "ghi", "jkl"],
             "nestedModel" : [
                 "id" : 123,
-                "name" : "nestedModel1"
+                "name" : "nestedModel1",
+                "uuid" : "BA34F5F0-E5AA-4ECE-B25C-90195D7AF0D0",
+                "url" : "http://github.com"
             ],
             "nestedModelArray" : [
             [
