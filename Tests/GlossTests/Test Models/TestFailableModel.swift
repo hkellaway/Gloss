@@ -46,3 +46,24 @@ struct TestFailableModel: Glossy {
         ]
     }
 }
+
+// Since Swift Package Manager doesn't support fixtures (i.e. stored JSON), we have to access the JSON using this method rather than reading file from Bundle.
+#if SWIFT_PACKAGE
+extension TestFailableModel {
+    
+    static var testInvalidJSON: JSON {
+        return [
+            "asdf": "dsafhkjdaf",
+            "asjdkfhl": 203183492749,
+            "asdfjhkhfsldjghi": 0.12390
+        ]
+    }
+    
+    static var testValidJSON: JSON {
+        return [
+            "identifier" : "unique",
+            "value" : 99999
+        ]
+    }
+}
+#endif

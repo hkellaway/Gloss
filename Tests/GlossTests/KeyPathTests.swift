@@ -6,6 +6,7 @@
 //  Copyright © 2016 Harlan Kellaway. All rights reserved.
 //
 
+import Foundation
 import Gloss
 import XCTest
 

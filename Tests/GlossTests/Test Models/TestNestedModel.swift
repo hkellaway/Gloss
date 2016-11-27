@@ -29,12 +29,16 @@ struct TestNestedModel: Glossy {
     
     let id: Int?
     let name: String?
+    let uuid: UUID?
+    let url: URL?
     
     // MARK: - Deserialization
     
     init(json: JSON) {
         self.id = "id" <~~ json
         self.name = "name" <~~ json
+        self.uuid = "uuid" <~~ json
+        self.url = "url" <~~ json
     }
     
     // MARK: - Serialization
@@ -42,7 +46,9 @@ struct TestNestedModel: Glossy {
     func toJSON() -> JSON? {
         return jsonify([
             "id" ~~> self.id,
-            "name" ~~> self.name
+            "name" ~~> self.name,
+            "uuid" ~~> self.uuid,
+            "url" ~~> self.url
             ])
     }
     
@@ -53,4 +59,6 @@ extension TestNestedModel: Equatable { }
 func == (lhs: TestNestedModel, rhs: TestNestedModel) -> Bool {
     return lhs.id == rhs.id
         && lhs.name == rhs.name
+        && lhs.uuid == rhs.uuid
+        && lhs.url == rhs.url
 }

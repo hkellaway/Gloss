@@ -23,6 +23,7 @@
 // THE SOFTWARE.
 //
 
+import Foundation
 import Gloss
 
 struct TestModel: Glossy {
@@ -154,3 +155,75 @@ struct TestModel: Glossy {
         }()
     
 }
+
+// Since Swift Package Manager doesn't support fixtures (i.e. stored JSON), we have to access the JSON using this method rather than reading file from Bundle.
+#if SWIFT_PACKAGE
+extension TestModel {
+    static var testJSON: JSON {
+        return [
+            "bool" : true,
+            "boolArray" : [true, false, true],
+            "integer" : 1,
+            "integerArray" : [1, 2, 3],
+            "float" : Float(2.0),
+            "floatArray" : [Float(1.0), Float(2.0), Float(3.0)],
+            "double" : Double(6.0),
+            "doubleArray" : [Double(4.0), Double(5.0), Double(6.0)],
+            "dictionary" : [
+                "otherModel" : [
+                    "id" : 789,
+                    "name" : "otherModel1"
+                ]
+            ],
+            "dictionaryWithArray" : [
+                "otherModels" : [
+                [
+                "id" : 123,
+                "name" : "otherModel1"
+                ],
+                [
+                "id" : 456,
+                "name" : "otherModel2"
+                ]
+                ]
+            ],
+            "string" : "abc",
+            "stringArray" : ["def", "ghi", "jkl"],
+            "nestedModel" : [
+                "id" : 123,
+                "name" : "nestedModel1",
+                "uuid" : "BA34F5F0-E5AA-4ECE-B25C-90195D7AF0D0",
+                "url" : "http://github.com"
+            ],
+            "nestedModelArray" : [
+            [
+            "id" : 456,
+            "name" : "nestedModel2"
+            ],
+            [
+            "id" : 789,
+            "name" : "nestedModel3"
+            ]
+            ],
+            "enumValue" : "A",
+            "enumValueArray" : ["A", "B", "C"],
+            "date" : "2015-08-16T20:51:46.600Z",
+            "dateArray" : ["2015-08-16T20:51:46.600Z", "2015-08-16T20:51:46.600Z"],
+            "dateISO8601" : "2015-08-08T21:57:13Z",
+            "dateISO8601Array" : ["2015-08-08T21:57:13Z", "2015-08-08T21:57:13Z"],
+            "int32" : 100000000,
+            "int32Array" : [100000000, -2147483648, 2147483647],
+            "uInt32" : 4294967295,
+            "uInt32Array" : [100000000, 2147483648, 4294967295],
+            "int64" : 300000000,
+            "int64Array" : [300000000, -9223372036854775808, 9223372036854775807],
+            "uInt64" : 18446744073709551615 as UInt64,
+            "uInt64Array" : [300000000, 9223372036854775808 as UInt64, 18446744073709551615 as UInt64],
+            "url" : "http://github.com",
+            "urlArray" : ["http://github.com", "http://github.com", "http://github.com"],
+            "uuid" : "964F2FE2-0F78-4C2D-A291-03058C0B98AB",
+            "uuidArray" : ["572099C2-B9AA-42AA-8A25-66E3F3056271", "54DB8DCF-F68D-4B55-A3FC-EB8CF4C36B06", "982CED72-743A-45F8-87CF-278386D32EBF"]
+        ]
+    }
+}
+#endif

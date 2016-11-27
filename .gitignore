@@ -75,3 +75,7 @@ Carthage/Build
 ####
 # Jazzy
 docs
+
+### 
+# Swift Package Manager
+.build
