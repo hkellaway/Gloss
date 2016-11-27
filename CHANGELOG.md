@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 `Gloss` adheres to [Semantic Versioning](http://semver.org/).
 
-- `1.1.x` Releases - [1.1.0](#110)
+- `1.1.x` Releases - [1.1.0](#110) | [1.1.1](#111)
 - `1.0.x` Releases - [1.0.0](#100)
 - `0.8.x` Releases - [0.8.0](#080)
 - `0.7.x` Releases - [0.7.0](#070) | [0.7.1](#071) | [0.7.2](#072) | [0.7.3](#073) | [0.7.4](#074)
@@ -12,6 +12,17 @@ All notable changes to this project will be documented in this file.
 - `0.3.x` Releases - [0.3.0](#030) | [0.3.1](#031)
 - `0.2.x` Releases - [0.2.0](#020)
 - `0.1.x` Releases - [0.1.0](#010)
+
+---
+
+## [1.1.1](https://github.com/hkellaway/Gloss/releases/tag/1.1.1)
+Released on 2016-11-27. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A1.1.1)
+
+#### Fixed
+- Nexted UUID values not being decoded properly [PR [#233](https://github.com/hkellaway/Gloss/pull/233)]
+
+#### Updated
+- Tests to be run using `swift test` when loading as a Swift Package [PR [#228](https://github.com/hkellaway/Gloss/pull/228)]
 
 ---
 
