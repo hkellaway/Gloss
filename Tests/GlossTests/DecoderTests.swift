@@ -247,19 +247,8 @@ class DecoderTests: XCTestCase {
         
         XCTAssertTrue((result?.id == 123), "Decode nested model should return correct value")
         XCTAssertTrue((result?.name == "nestedModel1"), "Decode nested model should return correct value")
-    }
-
-    func testNestedDecode() {
-        let id: Int? = Decoder.decode(key: "nestedModel.id")(testJSON!)
-        let name: String? = Decoder.decode(key: "nestedModel.name")(testJSON!)
-
-        let uuid: UUID? = Decoder.decode(uuidForKey: "nestedModel.uuid")(testJSON!)
-        let url: URL? = Decoder.decode(urlForKey: "nestedModel.url")(testJSON!)
-
-        XCTAssertTrue((id == 123), "Decode using nested key should return correct value")
-        XCTAssertTrue((name == "nestedModel1"), "Decode using nested key should return correct value")
-        XCTAssertTrue((uuid?.uuidString == "BA34F5F0-E5AA-4ECE-B25C-90195D7AF0D0"), "Decode using nested key should return correct value")
-        XCTAssertTrue((url?.absoluteString == "http://github.com"), "Decode using nested key should return correct value")
+        XCTAssertTrue((result?.uuid?.uuidString == "BA34F5F0-E5AA-4ECE-B25C-90195D7AF0D0"), "Decode nested model should return correct value")
+        XCTAssertTrue((result?.url?.absoluteString == "http://github.com"), "Decode nested model should return correct value")
     }
     
     func testDecodeEnumValue() {
