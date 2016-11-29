@@ -259,7 +259,7 @@ public struct Decoder {
                 
                 for rawValue in rawValues {
                     guard let enumValue = T(rawValue: rawValue) else {
-                        return nil
+                        continue
                     }
                     
                     enumValues.append(enumValue)
