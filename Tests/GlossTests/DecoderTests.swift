@@ -488,4 +488,23 @@ class DecoderTests: XCTestCase {
 
         XCTAssertNil(result, "Decode UUID array should return nil if JSON is invalid")
     }
+    
+    func testDecodeDecimal() {
+        let result: Decimal? = Decoder.decode(decimalForKey: "decimal")(testJSON!)
+        
+        XCTAssertTrue((result == 3.14159), "Decode Decimal should return correct value")
+    }
+    
+    func testDecodeDecimalArray() {
+        let result: [Decimal]? = Decoder.decode(decimalArrayForKey: "decimalArray")(testJSON!)
+        
+        XCTAssertTrue(result! == [3.14159, 1.618, -2.7182], "Decode Decimal array should return correct value")
+    }
+    
+    func testDecodeDecimalArrayReturnsNilIfJSONInvalid() {
+        let invalidJSON = [ "array" : [3.14159, "Z", -2.7182] ]
+        let result: [Decimal]? = Decoder.decode(decimalArrayForKey: "decimalArray")(invalidJSON as JSON)
+        
+        XCTAssertNil(result, "Decode Decimal array should return nil if JSON is invalid")
+    }
 }

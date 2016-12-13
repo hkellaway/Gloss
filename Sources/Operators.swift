@@ -266,6 +266,30 @@ public func <~~ (key: String, json: JSON) -> [UUID]? {
     return Decoder.decode(uuidArrayForKey: key)(json)
 }
 
+/**
+ Convenience operator for decoding JSON to Decimal.
+ 
+ - parameter key:  JSON key for value to decode.
+ - parameter json: JSON.
+ 
+ - returns: Decoded value when successful, nil otherwise.
+ */
+public func <~~ (key: String, json: JSON) -> Decimal? {
+    return Decoder.decode(decimalForKey: key)(json)
+}
+
+/**
+ Convenience operator for decoding JSON to Decimal array.
+ 
+ - parameter key:  JSON key for value to decode.
+ - parameter json: JSON.
+ 
+ - returns: Decoded value when successful, nil otherwise.
+ */
+public func <~~ (key: String, json: JSON) -> [Decimal]? {
+    return Decoder.decode(decimalArrayForKey: key)(json)
+}
+
 // MARK: - Operator ~~> (Encode)
 
 precedencegroup EncodingPrecedence {
@@ -496,4 +520,28 @@ public func ~~> (key: String, property: URL?) -> JSON? {
  */
 public func ~~> (key: String, property: UUID?) -> JSON? {
     return Encoder.encode(uuidForKey: key)(property)
+}
+
+/**
+ Convenience operator for encoding a Decimal to JSON.
+ 
+ - parameter key:      JSON key for value to encode.
+ - parameter property: Object to encode to JSON.
+ 
+ - returns: JSON when successful, nil otherwise.
+ */
+public func ~~> (key: String, property: Decimal?) -> JSON? {
+    return Encoder.encode(decimalForKey: key)(property)
+}
+
+/**
+ Convenience operator for encoding a Decimal array to JSON.
+ 
+ - parameter key:      JSON key for value to encode.
+ - parameter property: Object to encode to JSON.
+ 
+ - returns: JSON when successful, nil otherwise.
+ */
+public func ~~> (key: String, property: [Decimal]?) -> JSON? {
+    return Encoder.encode(decimalArrayForKey: key)(property)
 }

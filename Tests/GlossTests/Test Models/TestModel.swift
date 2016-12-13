@@ -60,6 +60,8 @@ struct TestModel: Glossy {
     let urlArray: [URL]?
     let uuid: UUID?
     let uuidArray: [UUID]?
+    let decimal: Decimal?
+    let decimalArray: [Decimal]?
     
     enum EnumValue: String {
         case A = "A"
@@ -106,6 +108,8 @@ struct TestModel: Glossy {
         self.urlArray = "urlArray" <~~ json
         self.uuid = "uuid" <~~ json
         self.uuidArray = "uuidArray" <~~ json
+        self.decimal = "decimal" <~~ json
+        self.decimalArray = "decimalArray" <~~ json
     }
 
     // MARK: - Serialization
@@ -143,7 +147,9 @@ struct TestModel: Glossy {
 			"url" ~~> self.url,
             "urlArray" ~~> self.urlArray,
             "uuid" ~~> self.uuid,
-            "uuidArray" ~~> self.uuidArray
+            "uuidArray" ~~> self.uuidArray,
+            "decimal" ~~> self.decimal,
+            "decimalArray" ~~> self.decimalArray
             ])
     }
     
@@ -222,7 +228,9 @@ extension TestModel {
             "url" : "http://github.com",
             "urlArray" : ["http://github.com", "http://github.com", "http://github.com"],
             "uuid" : "964F2FE2-0F78-4C2D-A291-03058C0B98AB",
-            "uuidArray" : ["572099C2-B9AA-42AA-8A25-66E3F3056271", "54DB8DCF-F68D-4B55-A3FC-EB8CF4C36B06", "982CED72-743A-45F8-87CF-278386D32EBF"]
+            "uuidArray" : ["572099C2-B9AA-42AA-8A25-66E3F3056271", "54DB8DCF-F68D-4B55-A3FC-EB8CF4C36B06", "982CED72-743A-45F8-87CF-278386D32EBF"],
+            "decimal": 3.14159,
+            "decimalArray": [3.14159, 1.618, -2.7182]
         ]
     }
 }
