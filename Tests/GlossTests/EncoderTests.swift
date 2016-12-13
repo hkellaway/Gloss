@@ -381,4 +381,18 @@ class EncoderTests: XCTestCase {
 
         XCTAssertNil(result?["array"] as? [UUID], "Encode uuid array should return nil if model is invalid")
     }
+    
+    func testEncodeDecimal() {
+        let decimal: Decimal? =  3.14159
+        let result: JSON? = Encoder.encode(decimalForKey: "decimal")(decimal)
+        
+        XCTAssertTrue(((result!["decimal"] as! NSNumber).decimalValue == 3.14159), "Encode Decimal should return correct value")
+    }
+    
+    func testEncodeDecimalArray() {
+        let decimalArray: [Decimal]? =  [3.14159, 1.618, -2.7182]
+        let result: JSON? = Encoder.encode(decimalArrayForKey: "decimalArray")(decimalArray)
+        
+        XCTAssertTrue(((result!["decimalArray"] as! [NSNumber]).map { $0.decimalValue } == [3.14159, 1.618, -2.7182]), "Encode Decimal array should return correct value")
+    }
 }

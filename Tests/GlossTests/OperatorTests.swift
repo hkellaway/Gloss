@@ -270,6 +270,20 @@ class OperatorTests: XCTestCase {
         XCTAssertTrue((result! == decoderResult!), "<~~ for url array should return same as Decoder.decodeURLArray")
     }
     
+    func testDecodeOperatorDecimalReturnsDecoderDecimal() {
+        let result: Decimal? = "decimal" <~~ testJSON!
+        let decoderResult: Decimal? = Decoder.decode(decimalForKey: "decimal")(testJSON!)
+        
+        XCTAssertTrue((result == decoderResult), "<~~ for Decimal should return same as Decoder.decodeDecimal")
+    }
+    
+    func testDecodeOperatorDecimalArrayReturnsDecoderDecimalArray() {
+        let result: [Decimal]? = "decimalArray" <~~ testJSON!
+        let decoderResult: [Decimal]? = Decoder.decode(decimalArrayForKey: "decimalArray")(testJSON!)
+        
+        XCTAssertTrue((result! == decoderResult!), "<~~ for [Decimal] should return same as Decoder.decodeDecimalArray")
+    }
+    
     // MARK: - Operator ~~>
     
     func testEncodeOperatorGenericReturnsEncoderEncodeForBool() {
@@ -523,6 +537,24 @@ class OperatorTests: XCTestCase {
         let encoderResult: JSON? = Encoder.encode(arrayForKey: "uuidArray")(uuids)
         
         XCTAssertTrue(((result!["uuidArray"] as! [UUID]) == (encoderResult!["uuidArray"] as! [UUID])), "~~> for uuid array should return same as Encoder.encodeArray")
+    }
+    
+    func testEncodeOperatorDecimalReturnsEncoderEncodeDecimal() {
+        let decimal: Decimal? = 3.14159
+        let result: JSON? = "decimal" ~~> decimal
+        let encoderResult: JSON? = Encoder.encode(decimalForKey: "decimal")(decimal)
+        
+        XCTAssertTrue((((result!["decimal"] as! NSNumber)).decimalValue == ((encoderResult!["decimal"] as! NSNumber)).decimalValue), "~~> for Decimal should return same as Encoder.encodeDecimal")
+    }
+    
+    func testEncodeOperatorDecimalReturnsEncoderEncodeDecimalArray() {
+        let decimalArray: [Decimal]? = [3.14159, 1.618, -2.7182]
+        let result: JSON? = "decimalArray" ~~> decimalArray
+        let encoderResult: JSON? = Encoder.encode(decimalArrayForKey: "decimalArray")(decimalArray)
+        let resultValue = result!["decimalArray"] as! [NSNumber]
+        let encoderResultValue = encoderResult!["decimalArray"] as! [NSNumber]
+        
+        XCTAssertTrue(resultValue == encoderResultValue, "~~> for [Decimal] should return same as Encoder.encodeDecimalArray")
     }
     
 }
