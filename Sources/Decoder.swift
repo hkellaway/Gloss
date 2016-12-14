@@ -157,6 +157,9 @@ public struct Decoder {
                 
                 for subJSON in jsonArray {
                     guard let model = T(json: subJSON) else {
+                        if T.self is ArrayPartiallyDecodable.Type {
+                            continue
+                        }
                         return nil
                     }
                     
@@ -259,6 +262,9 @@ public struct Decoder {
                 
                 for rawValue in rawValues {
                     guard let enumValue = T(rawValue: rawValue) else {
+                        if T.self is ArrayPartiallyDecodable.Type {
+                            continue
+                        }
                         return nil
                     }
                     

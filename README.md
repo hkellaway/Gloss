@@ -520,6 +520,10 @@ Models that are to be transformed to JSON _must_ adopt the `Encodable` protocol.
 
 The `Glossy` protocol depicted in the examples is simply a convenience for defining models that can translated to _and_ from JSON. `Glossy` can be replaced by `Decodable, Encodable` for more preciseness, if desired.
 
+#### Partial Array operations 
+
+If for any reason your data array is not homogeneous, but you would like to get back any successfully decoded object instead of nil, you can adopt `ArrayPartiallyDecodable` protocol.
+
 ## Why "Gloss"?
 
 The name for Gloss was inspired by the name for a popular Objective-C library, [Mantle](https://github.com/Mantle/Mantle) - both names are a play on the word "layer", in reference to their role in supporting the model layer of the application.

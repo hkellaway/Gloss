@@ -69,6 +69,12 @@ struct TestModel: Glossy {
         case C = "C"
     }
     
+    enum EnumValuePartiallyDecodable: String, ArrayPartiallyDecodable {
+        case A = "A"
+        case B = "B"
+        case C = "C"
+    }
+    
     // MARK: - Deserialization
     
     init?(json: JSON) {
