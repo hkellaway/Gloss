@@ -529,4 +529,21 @@ public struct Decoder {
         }
     }
     
+    /**
+     Decodes JSON to a Double.
+     
+     - parameter key: Key used in JSON for decoded value.
+     
+     - returns: Value decoded from JSON.
+     */
+    public static func decode(doubleForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> Double? {
+            return {
+                json in
+                
+                if let doubleString = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? String, let doubleNum = Double(doubleString) {
+                    return doubleNum
+                }
+                return nil
+            }
+    }
 }
