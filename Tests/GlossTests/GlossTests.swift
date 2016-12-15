@@ -28,6 +28,21 @@ import Gloss
 import XCTest
 
 class GlossTests: XCTestCase {
+
+    static var allTests : [(String, (GlossTests) -> () throws -> Void)] {
+        return [
+            ("testDateFormatterISO8601HasCorrectLocale", testDateFormatterISO8601HasCorrectLocale),
+            ("testDateFormatterISO8601HasCorrectDateFormat", testDateFormatterISO8601HasCorrectDateFormat),
+			("testDateFormatterISO8601ForcesGregorianCalendar", testDateFormatterISO8601ForcesGregorianCalendar),
+			("testJsonifyTurnsArrayOfJsonDictsToSingleJsonDict", testJsonifyTurnsArrayOfJsonDictsToSingleJsonDict),
+			("testModelsFromJSONArrayProducesValidModels", testModelsFromJSONArrayProducesValidModels),
+			("testModelsFromJSONArrayReturnsNilIfDecodingFails", testModelsFromJSONArrayReturnsNilIfDecodingFails),
+			("testJSONArrayFromModelsProducesValidJSON", testJSONArrayFromModelsProducesValidJSON),
+			("testJSONArrayFromModelsReturnsNilIfEncodingFails", testJSONArrayFromModelsReturnsNilIfEncodingFails),
+			("testJsonifyTurnsJSONOptionalArrayToSingleJSONOptional", testJsonifyTurnsJSONOptionalArrayToSingleJSONOptional),
+			("testJsonifyReturnsEmptyJSONWhenGivenEmptyArray", testJsonifyReturnsEmptyJSONWhenGivenEmptyArray)
+        ]
+    }
     
     var testJSONArray: [JSON]? = []
     var testModels: [TestModel]? = nil

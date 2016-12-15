@@ -28,6 +28,58 @@ import Gloss
 import XCTest
 
 class DecoderTests: XCTestCase {
+
+    static var allTests : [(String, (DecoderTests) -> () throws -> Void)] {
+        return [
+            ("testInitializingFailableObjectsWithBadDataCanFail", testInitializingFailableObjectsWithBadDataCanFail),
+            ("testInitializingFailableObjectsWithValidDataCanSucceed", testInitializingFailableObjectsWithValidDataCanSucceed),
+            ("testInvalidValue", testInvalidValue),
+            ("testDecodeBoolArray", testDecodeBoolArray),
+            ("testDecodeBoolArrayReturnsNilIfJSONInvalid", testDecodeBoolArrayReturnsNilIfJSONInvalid),
+            ("testDecodeInt", testDecodeInt),
+            ("testDecodeIntArray", testDecodeIntArray),
+            ("testDecodeIntArrayReturnsNilIfJSONInvalid", testDecodeIntArrayReturnsNilIfJSONInvalid),
+            ("testDecodeFloat", testDecodeFloat),
+            ("testDecodeFloatArray", testDecodeFloatArray),
+            ("testDecodeFloatArrayReturnsNilIfJSONInvalid", testDecodeFloatArrayReturnsNilIfJSONInvalid),
+            ("testDecodeDouble", testDecodeDouble),
+            ("testDecodeDoubleArray", testDecodeDoubleArray),
+            ("testDecodeDoubleArrayReturnsNilIfJSONInvalid", testDecodeDoubleArrayReturnsNilIfJSONInvalid),
+            ("testDecodeDictionary", testDecodeDictionary),
+            ("testDecodeDictionaryWithArray", testDecodeDictionaryWithArray),
+            ("testDecodeString", testDecodeString),
+            ("testDecodeStringArray", testDecodeStringArray),
+            ("testDecodeStringArrayReturnsNilIfJSONInvalid", testDecodeStringArrayReturnsNilIfJSONInvalid),
+            ("testDecodeNestedModel", testDecodeNestedModel),
+            ("testDecodeEnumValue", testDecodeEnumValue),
+            ("testDecodeEnumArray", testDecodeEnumArray),
+            ("testDecodeEnumArrayReturnsNilIfJSONInvalid", testDecodeEnumArrayReturnsNilIfJSONInvalid),
+            ("testDecodeDate", testDecodeDate),
+            ("testDecodeDateArray", testDecodeDateArray),
+            ("testDecodeDateArrayReturnsNilIfJSONInvalid", testDecodeDateArrayReturnsNilIfJSONInvalid),
+            ("testDecodeDateISO8601", testDecodeDateISO8601),
+            ("testDecodeDateISO8601Array", testDecodeDateISO8601Array),
+            ("testDecodeDateISO8601ArrayArrayReturnsNilIfJSONInvalid", testDecodeDateISO8601ArrayArrayReturnsNilIfJSONInvalid),
+            ("testDecodeInt32", testDecodeInt32),
+            ("testDecodeInt32Array", testDecodeInt32Array),
+            ("testDecodeInt32ArrayReturnsNilIfJSONInvalid", testDecodeInt32ArrayReturnsNilIfJSONInvalid),
+            ("testDecodeUInt32", testDecodeUInt32),
+            ("testDecodeUInt32Array", testDecodeUInt32Array),
+            ("testDecodeUInt32ArrayReturnsNilIfJSONInvalid", testDecodeUInt32ArrayReturnsNilIfJSONInvalid),
+            ("testDecodeInt64", testDecodeInt64),
+            ("testDecodeInt64Array", testDecodeInt64Array),
+            ("testDecodeInt64ArrayReturnsNilIfJSONInvalid", testDecodeInt64ArrayReturnsNilIfJSONInvalid),
+            ("testDecodeUInt64", testDecodeUInt64),
+            ("testDecodeUInt64Array", testDecodeUInt64Array),
+            ("testDecodeUInt64ArrayReturnsNilIfJSONInvalid", testDecodeUInt64ArrayReturnsNilIfJSONInvalid),
+            ("testDecodeURL", testDecodeURL),
+            ("testDecodeURLArray", testDecodeURLArray),
+            ("testDecodeURLArrayReturnsNilIfJSONInvalid", testDecodeURLArrayReturnsNilIfJSONInvalid),
+            ("testDecodeUUID", testDecodeUUID),
+            ("testDecodeUUIDArray", testDecodeUUIDArray),
+            ("testDecodeUUIDArrayReturnsNilIfJSONInvalid", testDecodeUUIDArrayReturnsNilIfJSONInvalid)
+        ]
+	}
     
     var testJSON: JSON? = [:]
     var testFailableModelJSONValid: JSON? = [:]
@@ -85,13 +137,13 @@ class DecoderTests: XCTestCase {
     func testInitializingFailableObjectsWithBadDataCanFail() {
         let result = TestFailableModel(json: testFailableModelJSONInvalid!)
         
-        XCTAssertTrue(result == nil, "Expected initialization with bad data to fail, instead got \(result)")
+        XCTAssertTrue(result == nil, "Expected initialization with bad data to fail, instead got \(String(describing: result))")
     }
     
     func testInitializingFailableObjectsWithValidDataCanSucceed() {
         let result = TestFailableModel(json: testFailableModelJSONValid!)
         
-        XCTAssertTrue(result != nil, "Expected initialization with valid data to succeed, instead got \(result)")
+        XCTAssertTrue(result != nil, "Expected initialization with valid data to succeed, instead got \(String(describing: result))")
     }
     
     func testInvalidValue() {
@@ -247,6 +299,8 @@ class DecoderTests: XCTestCase {
         
         XCTAssertTrue((result?.id == 123), "Decode nested model should return correct value")
         XCTAssertTrue((result?.name == "nestedModel1"), "Decode nested model should return correct value")
+        XCTAssertTrue((result?.uuid?.uuidString == "BA34F5F0-E5AA-4ECE-B25C-90195D7AF0D0"), "Decode nested model should return correct value")
+        XCTAssertTrue((result?.url?.absoluteString == "http://github.com"), "Decode nested model should return correct value")
     }
     
     func testDecodeEnumValue() {
@@ -275,7 +329,7 @@ class DecoderTests: XCTestCase {
     
     func testDecodeDate() {
         let result: Date? = Decoder.decode(dateForKey: "date", dateFormatter: TestModel.dateFormatter)(testJSON!)
-        
+
         let year: Int = Calendar.current.dateComponents([.year], from: result!).year!
         let month: Int = Calendar.current.dateComponents([.month], from: result!).month!
         let day: Int = Calendar.current.dateComponents([.day], from: result!).day!
@@ -290,7 +344,11 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((hour == 20), "Decode Date should return correct value")
         XCTAssertTrue((minute == 51), "Decode Date should return correct value")
         XCTAssertTrue((second == 46), "Decode Date should return correct value")
-        XCTAssertTrue((nanosecond/1000000 == 599), "Decode Date should return correct value")
+		#if !os(Linux)
+	        XCTAssertTrue((nanosecond/1000000 == 599), "Decode Date should return correct value")
+		#else
+			XCTAssertTrue((nanosecond == 16843009), "Decode Date should return correct value")
+		#endif
     }
     
     func testDecodeDateArray() {
@@ -320,7 +378,11 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((hour1 == 20), "Decode Date array should return correct value")
         XCTAssertTrue((minute1 == 51), "Decode Date array should return correct value")
         XCTAssertTrue((second1 == 46), "Decode Date array should return correct value")
-        XCTAssertTrue((nanosecond1/1000000 == 599), "Decode Date array should return correct value")
+		#if !os(Linux)
+	        XCTAssertTrue((nanosecond1/1000000 == 599), "Decode Date should return correct value")
+		#else
+			XCTAssertTrue((nanosecond1 == 16843009), "Decode Date should return correct value")
+		#endif
         
         XCTAssertTrue((year2 == 2015), "Decode Date array should return correct value")
         XCTAssertTrue((month2 == 8), "Decode Date array should return correct value")
@@ -328,7 +390,11 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((hour2 == 20), "Decode Date array should return correct value")
         XCTAssertTrue((minute2 == 51), "Decode Date array should return correct value")
         XCTAssertTrue((second2 == 46), "Decode Date array should return correct value")
-        XCTAssertTrue((nanosecond2/1000000 == 599), "Decode Date array should return correct value")
+		#if !os(Linux)
+	        XCTAssertTrue((nanosecond2/1000000 == 599), "Decode Date should return correct value")
+		#else
+			XCTAssertTrue((nanosecond2 == 16843009), "Decode Date should return correct value")
+		#endif
     }
     
     func testDecodeDateArrayReturnsNilIfJSONInvalid() {
@@ -365,7 +431,7 @@ class DecoderTests: XCTestCase {
     
     func testDecodeInt32() {
         let result: Int32? = Decoder.decode(int32ForKey: "int32")(testJSON!)
-        
+
         XCTAssertTrue((result == 100000000), "Decode Int32 should return correct value")
     }
     
@@ -485,5 +551,24 @@ class DecoderTests: XCTestCase {
         let result: [UUID]? = Decoder.decode(uuidArrayForKey: "array")(invalidJSON as JSON)
 
         XCTAssertNil(result, "Decode UUID array should return nil if JSON is invalid")
+    }
+    
+    func testDecodeDecimal() {
+        let result: Decimal? = Decoder.decode(decimalForKey: "decimal")(testJSON!)
+        
+        XCTAssertTrue((result == 3.14159), "Decode Decimal should return correct value")
+    }
+    
+    func testDecodeDecimalArray() {
+        let result: [Decimal]? = Decoder.decode(decimalArrayForKey: "decimalArray")(testJSON!)
+        
+        XCTAssertTrue(result! == [3.14159, 1.618, -2.7182], "Decode Decimal array should return correct value")
+    }
+    
+    func testDecodeDecimalArrayReturnsNilIfJSONInvalid() {
+        let invalidJSON = [ "array" : [3.14159, "Z", -2.7182] ]
+        let result: [Decimal]? = Decoder.decode(decimalArrayForKey: "decimalArray")(invalidJSON as JSON)
+        
+        XCTAssertNil(result, "Decode Decimal array should return nil if JSON is invalid")
     }
 }

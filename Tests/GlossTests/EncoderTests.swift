@@ -28,6 +28,54 @@ import Gloss
 import XCTest
 
 class EncoderTests: XCTestCase {
+
+    static var allTests : [(String, (EncoderTests) -> () throws -> Void)] {
+        return [
+            ("testInvalidValue", testInvalidValue),
+            ("testEncodeBool", testEncodeBool),
+            ("testEncodeBoolArray", testEncodeBoolArray),
+            ("testEncodeBoolLArrayReturnsNilIfModelInvalid", testEncodeBoolLArrayReturnsNilIfModelInvalid),
+            ("testEncodeInt", testEncodeInt),
+            ("testEncodeIntArray", testEncodeIntArray),
+            ("testEncodeIntLArrayReturnsNilIfModelInvalid", testEncodeIntLArrayReturnsNilIfModelInvalid),
+            ("testEncodeFloat", testEncodeFloat),
+            ("testEncodeFloatArray", testEncodeFloatArray),
+            ("testEncodeFloatLArrayReturnsNilIfModelInvalid", testEncodeFloatLArrayReturnsNilIfModelInvalid),
+            ("testEncodeDouble", testEncodeDouble),
+            ("testEncodeDoubleArray", testEncodeDoubleArray),
+            ("testEncodeDoubleLArrayReturnsNilIfModelInvalid", testEncodeDoubleLArrayReturnsNilIfModelInvalid),
+            ("testEncodeEncodableDictionary", testEncodeEncodableDictionary),
+            ("testEncodeEncodableDictionaryWithArray", testEncodeEncodableDictionaryWithArray),
+            ("testEncodeString", testEncodeString),
+            ("testEncodeStringArray", testEncodeStringArray),
+            ("testEncodeStringLArrayReturnsNilIfModelInvalid", testEncodeStringLArrayReturnsNilIfModelInvalid),
+            ("testEncodeNestedModel", testEncodeNestedModel),
+            ("testEncodeNestedModelArray", testEncodeNestedModelArray),
+            ("testEncodeEnumValue", testEncodeEnumValue),
+            ("testEncodeEnumArray", testEncodeEnumArray),
+            ("testEncodeEnumArrayReturnsNilIfModelInvalid", testEncodeEnumArrayReturnsNilIfModelInvalid),
+            ("testEncodeDate", testEncodeDate),
+            ("testEncodeDateArray", testEncodeDateArray),
+            ("testEncodeDateArrayReturnsNilIfModelInvalid", testEncodeDateArrayReturnsNilIfModelInvalid),
+            ("testEncodeDateISO8601", testEncodeDateISO8601),
+            ("testEncodeDateISO8601Array", testEncodeDateISO8601Array),
+            ("testEncodeDateISO8601ArrayReturnsNilIfModelInvalid", testEncodeDateISO8601ArrayReturnsNilIfModelInvalid),
+            ("testEncodeInt32", testEncodeInt32),
+            ("testEncodeInt32Array", testEncodeInt32Array),
+            ("testEncodeUInt32", testEncodeUInt32),
+            ("testEncodeUInt32Array", testEncodeUInt32Array),
+            ("testEncodeInt64", testEncodeInt64),
+            ("testEncodeInt64Array", testEncodeInt64Array),
+            ("testEncodeUInt64", testEncodeUInt64),
+            ("testEncodeUInt64Array", testEncodeUInt64Array),
+            ("testEncodeURL", testEncodeURL),
+            ("testEncodeURLArray", testEncodeURLArray),
+            ("testEncodeURLArrayReturnsNilIfModelInvalid", testEncodeURLArrayReturnsNilIfModelInvalid),
+            ("testEncodeUUID", testEncodeUUID),
+            ("testEncodeUUIDArray", testEncodeUUIDArray),
+            ("testEncodeUUIDArrayReturnsNilIfModelInvalid", testEncodeUUIDArrayReturnsNilIfModelInvalid)
+        ]
+	}
     
     var testNestedModel1: TestNestedModel? = nil
     var testNestedModel2: TestNestedModel? = nil
@@ -380,5 +428,19 @@ class EncoderTests: XCTestCase {
         let result: JSON? = Encoder.encode(arrayForKey: "array")(invalidModel)
 
         XCTAssertNil(result?["array"] as? [UUID], "Encode uuid array should return nil if model is invalid")
+    }
+    
+    func testEncodeDecimal() {
+        let decimal: Decimal? =  3.14159
+        let result: JSON? = Encoder.encode(decimalForKey: "decimal")(decimal)
+        
+        XCTAssertTrue(((result!["decimal"] as! NSNumber).decimalValue == 3.14159), "Encode Decimal should return correct value")
+    }
+    
+    func testEncodeDecimalArray() {
+        let decimalArray: [Decimal]? =  [3.14159, 1.618, -2.7182]
+        let result: JSON? = Encoder.encode(decimalArrayForKey: "decimalArray")(decimalArray)
+        
+        XCTAssertTrue(((result!["decimalArray"] as! [NSNumber]).map { $0.decimalValue } == [3.14159, 1.618, -2.7182]), "Encode Decimal array should return correct value")
     }
 }
