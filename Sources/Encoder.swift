@@ -76,7 +76,7 @@ public struct Encoder {
      
      - returns: JSON encoded from value.
      */
-    public static func encode(dateForKey key: String, dateFormatter: DateFormatter) -> (Date?) -> JSON? {
+    public static func encode(dateForKey key: String, dateFormatter: GlossDateFormatter) -> (Date?) -> JSON? {
         return {
             date in
             
@@ -96,7 +96,7 @@ public struct Encoder {
      
      - returns: JSON encoded from value.
      */
-    public static func encode(dateArrayForKey key: String, dateFormatter: DateFormatter) -> ([Date]?) -> JSON? {
+    public static func encode(dateArrayForKey key: String, dateFormatter: GlossDateFormatter) -> ([Date]?) -> JSON? {
         return {
             dates in
             
