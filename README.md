@@ -522,7 +522,27 @@ The `Glossy` protocol depicted in the examples is simply a convenience for defin
 
 #### Partial Array operations 
 
-If for any reason your data array is not homogeneous, but you would like to get back any successfully decoded object instead of nil, you can adopt `ArrayPartiallyDecodable` protocol.
+By default any Decoding operation over arrays will return nil if the array is not homogeneous, this means all the objects within the array must be of the same type.
+
+If for any reason your data array is not homogeneous, but you would like to get back any successfully decoded object instead of nil, you can adopt `ArrayPartiallyDecodable` protocol this way:
+
+``` swift
+import Gloss
+
+struct RepoOwner: Glossy, ArrayPartiallyDecodable {
+
+    let ownerId: Int?
+    let username: String?
+
+    // MARK: - Deserialization
+    // ...
+
+    // MARK: - Serialization
+
+}
+```
+
+This way any Deserialization operation over arrays of `RepoOwner` will try to return any matching model, even if the array contains objects of different types in the JSON.
 
 ## Why "Gloss"?
 
