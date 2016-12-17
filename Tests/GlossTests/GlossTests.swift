@@ -125,11 +125,7 @@ class GlossTests: XCTestCase {
 
     @available(iOS 10.0, *)
     func testDateFormatterReturnsFoundationVersion() {
-        guard let _ = GlossDateFormatterISO8601 as? ISO8601DateFormatter else {
-            XCTFail()
-            return
-        }
-        XCTAssert(true)
+        XCTAssert(GlossDateFormatterISO8601 is ISO8601DateFormatter)
     }
 
     func testDateFormatterISO8601ForcesGregorianCalendar() {
