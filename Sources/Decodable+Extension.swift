@@ -24,7 +24,7 @@
 
 import Foundation
 
-extension Decodable {
+public extension Decodable {
     
     /**
      Initializes model object of type which implements protocol.
@@ -34,12 +34,10 @@ extension Decodable {
      
      - returns: Object or nil.
      */
-    init?(data: Data?) {
-        if let data = data {
-            if let json = (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)) as? [String: Any] {
-                self.init(json: json)
-                return
-            }
+    init?(data: Data) {
+        if let json = (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)) as? JSON {
+            self.init(json: json)
+            return
         }
         
         return nil
@@ -54,12 +52,10 @@ extension Decodable {
      
      - returns: Array containing objects of type which implements protocol.
      */
-    static func array(from data: Data?) -> [Self] {
-        if let data = data {
-            if let json = (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)) as? [[String: Any]] {
-                if let array = [Self].from(jsonArray: json) {
-                    return array
-                }
+    static func array(from data: Data) -> [Self] {
+        if let json = (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)) as? [JSON] {
+            if let array = [Self].from(jsonArray: json) {
+                return array
             }
         }
         
