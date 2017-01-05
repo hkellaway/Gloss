@@ -57,7 +57,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decode(dateForKey key: String, dateFormatter: DateFormatter, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> Date? {
+    public static func decode(dateForKey key: String, dateFormatter: GlossDateFormatter, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> Date? {
         return {
             json in
             
@@ -77,7 +77,7 @@ public struct Decoder {
      
      - returns: Value decoded from JSON.
      */
-    public static func decode(dateArrayForKey key: String, dateFormatter: DateFormatter, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> [Date]? {
+    public static func decode(dateArrayForKey key: String, dateFormatter: GlossDateFormatter, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> [Date]? {
         return {
             json in
             

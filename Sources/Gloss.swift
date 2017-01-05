@@ -66,12 +66,26 @@ public protocol Encodable {
 
 // MARK: - Global
 
+public protocol GlossDateFormatter {
+    func date(from string: String) -> Date?
+    func string(from date: Date) -> String
+}
+
+@available(iOSApplicationExtension 10.0, *)
+extension ISO8601DateFormatter: GlossDateFormatter {}
+
+extension DateFormatter: GlossDateFormatter {} 
 /**
 Date formatter used for ISO8601 dates.
  
  - returns: Date formatter.
  */
-public private(set) var GlossDateFormatterISO8601: DateFormatter = {
+public private(set) var GlossDateFormatterISO8601: GlossDateFormatter = {
+
+    if #available(iOSApplicationExtension 10.0, *) {
+        return ISO8601DateFormatter()
+    }
+
     let dateFormatterISO8601 = DateFormatter()
     
     // WORKAROUND to ignore device configuration regarding AM/PM http://openradar.appspot.com/radar?id=1110403
