@@ -476,6 +476,8 @@ and
 
 #### On Using Gloss Operators
 
+_Remark: Int32, UInt32, Int64 and UInt64 types, and Int32, UInt32, Int64 and UInt64 arrays can't be used on Linux platform. Use Int, UInt and according arrays. - @rbukovansky_
+
 ##### The Decode Operator: `<~~`
 
 The `<~~` operator is simply syntactic sugar for a set of `Decoder.decode` functions:

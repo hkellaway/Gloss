@@ -32,7 +32,7 @@
 		9F055DC91DCBC24000EB78C1 /* DecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F055DC01DCBC24000EB78C1 /* DecoderTests.swift */; };
 		9F055DCA1DCBC24000EB78C1 /* EncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F055DC11DCBC24000EB78C1 /* EncoderTests.swift */; };
 		9F055DCB1DCBC24000EB78C1 /* FlowObjectCreationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F055DC21DCBC24000EB78C1 /* FlowObjectCreationTests.swift */; };
-		9F055DCC1DCBC24000EB78C1 /* FlowObjectToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F055DC31DCBC24000EB78C1 /* FlowObjectToJSON.swift */; };
+		9F055DCC1DCBC24000EB78C1 /* ObjectToJSONFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F055DC31DCBC24000EB78C1 /* ObjectToJSONFlowTests.swift */; };
 		9F055DCD1DCBC24000EB78C1 /* GlossTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F055DC41DCBC24000EB78C1 /* GlossTests.swift */; };
 		9F055DCE1DCBC24000EB78C1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F055DC51DCBC24000EB78C1 /* Info.plist */; };
 		9F055DCF1DCBC24000EB78C1 /* KeyPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F055DC61DCBC24000EB78C1 /* KeyPathTests.swift */; };
@@ -79,7 +79,7 @@
 		9F055DC01DCBC24000EB78C1 /* DecoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DecoderTests.swift; path = Tests/GlossTests/DecoderTests.swift; sourceTree = SOURCE_ROOT; };
 		9F055DC11DCBC24000EB78C1 /* EncoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncoderTests.swift; path = Tests/GlossTests/EncoderTests.swift; sourceTree = SOURCE_ROOT; };
 		9F055DC21DCBC24000EB78C1 /* FlowObjectCreationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlowObjectCreationTests.swift; path = Tests/GlossTests/FlowObjectCreationTests.swift; sourceTree = SOURCE_ROOT; };
-		9F055DC31DCBC24000EB78C1 /* FlowObjectToJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlowObjectToJSON.swift; path = Tests/GlossTests/FlowObjectToJSON.swift; sourceTree = SOURCE_ROOT; };
+		9F055DC31DCBC24000EB78C1 /* ObjectToJSONFlowTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObjectToJSONFlowTests.swift; path = Tests/GlossTests/ObjectToJSONFlowTests.swift; sourceTree = SOURCE_ROOT; };
 		9F055DC41DCBC24000EB78C1 /* GlossTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GlossTests.swift; path = Tests/GlossTests/GlossTests.swift; sourceTree = SOURCE_ROOT; };
 		9F055DC51DCBC24000EB78C1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/GlossTests/Info.plist; sourceTree = SOURCE_ROOT; };
 		9F055DC61DCBC24000EB78C1 /* KeyPathTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyPathTests.swift; path = Tests/GlossTests/KeyPathTests.swift; sourceTree = SOURCE_ROOT; };
@@ -149,7 +149,7 @@
 				9F055DC01DCBC24000EB78C1 /* DecoderTests.swift */,
 				9F055DC11DCBC24000EB78C1 /* EncoderTests.swift */,
 				9F055DC21DCBC24000EB78C1 /* FlowObjectCreationTests.swift */,
-				9F055DC31DCBC24000EB78C1 /* FlowObjectToJSON.swift */,
+				9F055DC31DCBC24000EB78C1 /* ObjectToJSONFlowTests.swift */,
 				9F055DC41DCBC24000EB78C1 /* GlossTests.swift */,
 				9F055DC51DCBC24000EB78C1 /* Info.plist */,
 				9F055DC61DCBC24000EB78C1 /* KeyPathTests.swift */,
@@ -453,7 +453,7 @@
 				9F055DCD1DCBC24000EB78C1 /* GlossTests.swift in Sources */,
 				9F055DCB1DCBC24000EB78C1 /* FlowObjectCreationTests.swift in Sources */,
 				9F055DDE1DCBC25000EB78C1 /* TestKeyPathModelCustomDelimiter.swift in Sources */,
-				9F055DCC1DCBC24000EB78C1 /* FlowObjectToJSON.swift in Sources */,
+				9F055DCC1DCBC24000EB78C1 /* ObjectToJSONFlowTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
