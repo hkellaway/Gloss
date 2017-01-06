@@ -71,8 +71,10 @@ public protocol GlossDateFormatter {
     func string(from date: Date) -> String
 }
 
+#if os(iOS)
 @available(iOSApplicationExtension 10.0, *)
 extension ISO8601DateFormatter: GlossDateFormatter {}
+#endif
 
 extension DateFormatter: GlossDateFormatter {} 
 /**
@@ -82,9 +84,11 @@ Date formatter used for ISO8601 dates.
  */
 public private(set) var GlossDateFormatterISO8601: GlossDateFormatter = {
 
+	#if os(iOS)
     if #available(iOSApplicationExtension 10.0, *) {
         return ISO8601DateFormatter()
     }
+	#endif
 
     let dateFormatterISO8601 = DateFormatter()
     
