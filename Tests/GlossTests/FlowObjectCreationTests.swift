@@ -28,6 +28,12 @@ import Gloss
 import XCTest
 
 class FlowObjectCreationTests: XCTestCase {
+
+    static var allTests : [(String, (FlowObjectCreationTests) -> () throws -> Void)] {
+        return [
+            ("testObjectDecodedFromJSONHasCorrectProperties", testObjectDecodedFromJSONHasCorrectProperties)
+        ]
+    }
     
     var testJSON: JSON? = [:]
     
@@ -78,15 +84,17 @@ class FlowObjectCreationTests: XCTestCase {
         XCTAssertTrue((TestModel.dateFormatter.string(from: result.date!) == "2015-08-16T20:51:46.600Z"), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.dateArray!.map { date in TestModel.dateFormatter.string(from: date) }) == ["2015-08-16T20:51:46.600Z", "2015-08-16T20:51:46.600Z"], "Model created from JSON should have correct property values")
         XCTAssertTrue((result.dateISO8601 == Date(timeIntervalSince1970: 1439071033)), "Model created from JSON should have correct property values")
+        #if !os(Linux)
         XCTAssertTrue((result.int32 == 100000000), "Model created from JSON should have correct property values")
         XCTAssertTrue(result.int32Array! == [100000000, -2147483648, 2147483647], "Model created from JSON should have correct property values")
-		XCTAssertTrue((result.uInt32 == 4294967295), "Model created from JSON should have correct property values")
-		XCTAssertTrue(result.uInt32Array! == [100000000, 2147483648, 4294967295], "Model created from JSON should have correct property values")
-		XCTAssertTrue((result.int64 == 300000000), "Model created from JSON should have correct property values")
+        XCTAssertTrue((result.uInt32 == 4294967295), "Model created from JSON should have correct property values")
+        XCTAssertTrue(result.uInt32Array! == [100000000, 2147483648, 4294967295], "Model created from JSON should have correct property values")
+        XCTAssertTrue((result.int64 == 300000000), "Model created from JSON should have correct property values")
         XCTAssertTrue(result.int64Array! == [300000000, -9223372036854775808, 9223372036854775807], "Model created from JSON should have correct property values")
-		XCTAssertTrue((result.uInt64 == 18446744073709551615), "Model created from JSON should have correct property values")
-		XCTAssertTrue(result.uInt64Array! == [300000000, 9223372036854775808, 18446744073709551615], "Model created from JSON should have correct property values")
-		XCTAssertTrue((result.dateISO8601Array!.map { date in date.timeIntervalSince1970 }) == [1439071033, 1439071033], "Model created from JSON should have correct property values")
+        XCTAssertTrue((result.uInt64 == 18446744073709551615), "Model created from JSON should have correct property values")
+        XCTAssertTrue(result.uInt64Array! == [300000000, 9223372036854775808, 18446744073709551615], "Model created from JSON should have correct property values")
+        #endif
+        XCTAssertTrue((result.dateISO8601Array!.map { date in date.timeIntervalSince1970 }) == [1439071033, 1439071033], "Model created from JSON should have correct property values")
         XCTAssertTrue((result.url?.absoluteString == "http://github.com"), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.urlArray?.map { url in url.absoluteString })! == ["http://github.com", "http://github.com", "http://github.com"], "Model created from JSON should have correct property values")
 

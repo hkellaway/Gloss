@@ -28,6 +28,12 @@ import Gloss
 import XCTest
 
 class ObjectToJSONFlowTests: XCTestCase {
+    
+    static var allTests : [(String, (ObjectToJSONFlowTests) -> () throws -> Void)] {
+        return [
+            ("testObjectEncodedToJSONHasCorrectProperties", testObjectEncodedToJSONHasCorrectProperties)
+        ]
+    }
 
     var testModel: TestModel?
     
@@ -117,10 +123,12 @@ class ObjectToJSONFlowTests: XCTestCase {
         XCTAssertTrue((result!["stringArray"] as! [String] == ["def", "ghi", "jkl"]), "JSON created from model should have correct values")
         XCTAssertTrue((result!["enumValue"] as! String == "A"), "JSON created from model should have correct values")
         XCTAssertTrue((result!["enumValueArray"] as! [String] == ["A", "B", "C"]), "JSON created from model should have correct values")
+        #if !os(Linux)
         XCTAssertTrue(((result!["int32Array"] as! [NSNumber]) == [100000000, 100000000, 100000000]), "JSON created from model should have correct values")
         XCTAssertTrue(((result!["int32"] as! NSNumber).int32Value == 100000000), "JSON created from model should have correct values")
         XCTAssertTrue(((result!["int64"] as! NSNumber).int64Value == 300000000), "JSON created from model should have correct values")
         XCTAssertTrue(((result!["int64Array"] as! [NSNumber]) == [300000000, 300000000, 300000000]), "JSON created from model should have correct values")
+        #endif
         XCTAssertTrue(((result!["date"] as! String) == "2015-08-16T20:51:46.600Z"), "JSON created from model should have correct values")
         XCTAssertTrue(result!["dateArray"] as! [String] == ["2015-08-16T20:51:46.600Z", "2015-08-16T20:51:46.600Z"], "JSON created from model should have correct values")
         
