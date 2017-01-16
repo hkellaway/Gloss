@@ -86,8 +86,11 @@ class OperatorTests: XCTestCase {
             ("testEncodeOperatorURLReturnsEncoderEncodeURL", testEncodeOperatorURLReturnsEncoderEncodeURL),
             ("testEncodeOperatorURLArrayReturnsEncoderEncodeURLArray", testEncodeOperatorURLArrayReturnsEncoderEncodeURLArray),
             ("testEncodeOperatorUUIDReturnsEncoderEncodeUUID", testEncodeOperatorUUIDReturnsEncoderEncodeUUID),
-            ("testEncodeOperatorUUIDArrayReturnsEncoderEncodeUUIDArray", testEncodeOperatorUUIDArrayReturnsEncoderEncodeUUIDArray)
+            ("testEncodeOperatorUUIDArrayReturnsEncoderEncodeUUIDArray", testEncodeOperatorUUIDArrayReturnsEncoderEncodeUUIDArray),
+            ("testEncodeOperatorDecimalReturnsEncoderEncodeDecimal", testEncodeOperatorDecimalReturnsEncoderEncodeDecimal),
+            ("testEncodeOperatorDecimalReturnsEncoderEncodeDecimalArray", testEncodeOperatorDecimalReturnsEncoderEncodeDecimalArray)
         ]
+    
 #else
         return [
             ("testDecodeOperatorForInvalidReturnsDecoderDecode", testDecodeOperatorForInvalidReturnsDecoderDecode),
@@ -136,9 +139,12 @@ class OperatorTests: XCTestCase {
             ("testEncodeOperatorURLReturnsEncoderEncodeURL", testEncodeOperatorURLReturnsEncoderEncodeURL),
             ("testEncodeOperatorURLArrayReturnsEncoderEncodeURLArray", testEncodeOperatorURLArrayReturnsEncoderEncodeURLArray),
             ("testEncodeOperatorUUIDReturnsEncoderEncodeUUID", testEncodeOperatorUUIDReturnsEncoderEncodeUUID),
-            ("testEncodeOperatorUUIDArrayReturnsEncoderEncodeUUIDArray", testEncodeOperatorUUIDArrayReturnsEncoderEncodeUUIDArray)
+            ("testEncodeOperatorUUIDArrayReturnsEncoderEncodeUUIDArray", testEncodeOperatorUUIDArrayReturnsEncoderEncodeUUIDArray),
+            ("testEncodeOperatorDecimalReturnsEncoderEncodeDecimal", testEncodeOperatorDecimalReturnsEncoderEncodeDecimal),
+            ("testEncodeOperatorDecimalReturnsEncoderEncodeDecimalArray", testEncodeOperatorDecimalReturnsEncoderEncodeDecimalArray)
         ]
 #endif
+        
 	}
     
     var testJSON: JSON? = [:]

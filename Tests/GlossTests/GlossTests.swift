@@ -40,7 +40,9 @@ class GlossTests: XCTestCase {
 			("testJSONArrayFromModelsProducesValidJSON", testJSONArrayFromModelsProducesValidJSON),
 			("testJSONArrayFromModelsReturnsNilIfEncodingFails", testJSONArrayFromModelsReturnsNilIfEncodingFails),
 			("testJsonifyTurnsJSONOptionalArrayToSingleJSONOptional", testJsonifyTurnsJSONOptionalArrayToSingleJSONOptional),
-			("testJsonifyReturnsEmptyJSONWhenGivenEmptyArray", testJsonifyReturnsEmptyJSONWhenGivenEmptyArray)
+			("testJsonifyReturnsEmptyJSONWhenGivenEmptyArray", testJsonifyReturnsEmptyJSONWhenGivenEmptyArray),
+			("testModelFromJSONRawData", testModelFromJSONRawData),
+			("testModelArrayFromJSONArrayRawData", testModelArrayFromJSONArrayRawData)
         ]
     }
     

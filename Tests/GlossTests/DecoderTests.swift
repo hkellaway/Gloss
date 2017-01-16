@@ -77,7 +77,10 @@ class DecoderTests: XCTestCase {
             ("testDecodeURLArrayReturnsNilIfJSONInvalid", testDecodeURLArrayReturnsNilIfJSONInvalid),
             ("testDecodeUUID", testDecodeUUID),
             ("testDecodeUUIDArray", testDecodeUUIDArray),
-            ("testDecodeUUIDArrayReturnsNilIfJSONInvalid", testDecodeUUIDArrayReturnsNilIfJSONInvalid)
+            ("testDecodeUUIDArrayReturnsNilIfJSONInvalid", testDecodeUUIDArrayReturnsNilIfJSONInvalid),
+            ("testDecodeDecimal", testDecodeDecimal),
+            ("testDecodeDecimalArray", testDecodeDecimalArray),
+            ("testDecodeDecimalArrayReturnsNilIfJSONInvalid", testDecodeDecimalArrayReturnsNilIfJSONInvalid)
         ]
 	}
     
@@ -89,14 +92,14 @@ class DecoderTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        #if SWIFT_PACKAGE
+#if SWIFT_PACKAGE
             
         testJSON = TestModel.testJSON
         testFailableModelJSONValid = TestFailableModel.testValidJSON
         testFailableModelJSONInvalid = TestFailableModel.testInvalidJSON
         testUnknownTypeJSON = TestUnknownTypeModel.testJSON
             
-        #else
+#else
         
         var testJSONPath: String = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")!
         var testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath))
@@ -135,7 +138,7 @@ class DecoderTests: XCTestCase {
                 print(error)
         }
             
-        #endif
+#endif
     }
     
     override func tearDown() {

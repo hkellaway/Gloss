@@ -73,7 +73,10 @@ class EncoderTests: XCTestCase {
             ("testEncodeURLArrayReturnsNilIfModelInvalid", testEncodeURLArrayReturnsNilIfModelInvalid),
             ("testEncodeUUID", testEncodeUUID),
             ("testEncodeUUIDArray", testEncodeUUIDArray),
-            ("testEncodeUUIDArrayReturnsNilIfModelInvalid", testEncodeUUIDArrayReturnsNilIfModelInvalid)
+            ("testEncodeUUIDArrayReturnsNilIfModelInvalid", testEncodeUUIDArrayReturnsNilIfModelInvalid),
+            ("testEncodeDecimal", testEncodeDecimal),
+            ("testEncodeDecimalArray", testEncodeDecimalArray),
+            ("testEncodeDecimalArrayReturnsNilIfModelInvalid", testEncodeDecimalArrayReturnsNilIfModelInvalid)
         ]
 	}
     
@@ -443,4 +446,12 @@ class EncoderTests: XCTestCase {
         
         XCTAssertTrue(((result!["decimalArray"] as! [NSNumber]).map { $0.decimalValue } == [3.14159, 1.618, -2.7182]), "Encode Decimal array should return correct value")
     }
+    
+    func testEncodeDecimalArrayReturnsNilIfModelInvalid() {
+        let invalidModel = ["1", "2", "3"]
+        let result: JSON? = Encoder.encode(arrayForKey: "decimalArray")(invalidModel)
+        
+        XCTAssertNil(result?["decimalArray"] as? [NSNumber], "Encode Decimal array should return nil if model is invalid")
+    }
+    
 }
