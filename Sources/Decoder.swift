@@ -282,12 +282,16 @@ public struct Decoder {
     public static func decode(int32ForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> Int32? {
         return {
             json in
-            
-            if let number = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? NSNumber {
-                return number.int32Value
-            }
-            
-            return nil
+
+			guard let unwrappedValue: Int = json[key] as? Int else {
+				return nil
+			}
+
+			guard (unwrappedValue >= -2147483648) && (unwrappedValue <= 2147483647) else {
+				return nil
+			}
+
+			return Int32(unwrappedValue)
         }
     }
     
@@ -302,14 +306,16 @@ public struct Decoder {
         return {
             json in
             
-            if let numbers = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? [NSNumber] {
-                let ints: [Int32] = numbers.map { $0.int32Value }
-                
-                return ints
-            }
-            
-            return nil
-        }
+			guard let unwrappedArray: [Int] = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? [Int] else {
+				return nil
+			}
+
+			let finalArray = unwrappedArray.map {
+				Int32($0)
+			}
+
+			return finalArray
+		}
     }
 
 	/**
@@ -323,11 +329,15 @@ public struct Decoder {
 		return {
 			json in
 
-			if let number = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? NSNumber {
-				return number.uint32Value
+			guard let unwrappedValue: Int = json[key] as? Int else {
+				return nil
 			}
 
-			return nil
+			guard (unwrappedValue >= 0) && (unwrappedValue <= 4294967295) else {
+				return nil
+			}
+
+			return UInt32(unwrappedValue)
 		}
 	}
 
@@ -342,13 +352,15 @@ public struct Decoder {
 		return {
 			json in
 
-			if let numbers = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? [NSNumber] {
-				let uints: [UInt32] = numbers.map { $0.uint32Value }
-
-				return uints
+			guard let unwrappedArray: [Int] = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? [Int] else {
+				return nil
 			}
 
-			return nil
+			let finalArray = unwrappedArray.map {
+				UInt32($0)
+			}
+
+			return finalArray
 		}
 	}
 
@@ -362,12 +374,16 @@ public struct Decoder {
     public static func decode(int64ForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> Int64? {
         return {
             json in
-            
-            if let number = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? NSNumber {
-                return number.int64Value
-            }
-            
-            return nil
+
+			guard let unwrappedValue: Int = json[key] as? Int else {
+				return nil
+			}
+
+			guard (unwrappedValue >= -9223372036854775808) && (unwrappedValue <= 9223372036854775807) else {
+				return nil
+			}
+
+			return Int64(unwrappedValue)
         }
     }
     
@@ -382,13 +398,15 @@ public struct Decoder {
         return {
             json in
             
-            if let numbers = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? [NSNumber] {
-                let ints: [Int64] = numbers.map { $0.int64Value }
-                
-                return ints
-            }
-            
-            return nil
+			guard let unwrappedArray: [Int] = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? [Int] else {
+				return nil
+			}
+
+			let finalArray = unwrappedArray.map {
+				Int64($0)
+			}
+
+			return finalArray
         }
     }
 
@@ -403,11 +421,15 @@ public struct Decoder {
 		return {
 			json in
 
-			if let number = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? NSNumber {
-				return number.uint64Value
+			guard let unwrappedValue: UInt64 = json[key] as? UInt64 else {
+				return nil
 			}
 
-			return nil
+			guard (unwrappedValue >= 0) && (unwrappedValue <= 18446744073709551615) else {
+				return nil
+			}
+
+			return UInt64(unwrappedValue)
 		}
 	}
 
@@ -422,13 +444,15 @@ public struct Decoder {
 		return {
 			json in
 
-			if let numbers = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? [NSNumber] {
-				let uints: [UInt64] = numbers.map { $0.uint64Value }
-
-				return uints
+			guard let unwrappedArray: [UInt64] = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? [UInt64] else {
+				return nil
 			}
 
-			return nil
+			let finalArray = unwrappedArray.map {
+				UInt64($0)
+			}
+
+			return finalArray
 		}
 	}
 

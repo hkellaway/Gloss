@@ -28,6 +28,66 @@ import Gloss
 import XCTest
 
 class OperatorTests: XCTestCase {
+
+    static var allTests : [(String, (OperatorTests) -> () throws -> Void)] {
+        return [
+            ("testDecodeOperatorForInvalidReturnsDecoderDecode", testDecodeOperatorForInvalidReturnsDecoderDecode),
+            ("testDecodeOperatorGenericReturnsDecoderDecodeForBool", testDecodeOperatorGenericReturnsDecoderDecodeForBool),
+            ("testDecodeOperatorGenericReturnsDecoderDecodeForBoolArray", testDecodeOperatorGenericReturnsDecoderDecodeForBoolArray),
+            ("testDecodeOperatorGenericReturnsDecoderDecodeForInt", testDecodeOperatorGenericReturnsDecoderDecodeForInt),
+            ("testDecodeOperatorGenericReturnsDecoderDecodeForIntArray", testDecodeOperatorGenericReturnsDecoderDecodeForIntArray),
+            ("testDecodeOperatorGenericReturnsDecoderDecodeForFloat", testDecodeOperatorGenericReturnsDecoderDecodeForFloat),
+            ("testDecodeOperatorGenericReturnsDecoderDecodeForFloatArray", testDecodeOperatorGenericReturnsDecoderDecodeForFloatArray),
+            ("testDecodeOperatorGenericReturnsDecoderDecodeForDouble", testDecodeOperatorGenericReturnsDecoderDecodeForDouble),
+            ("testDecodeOperatorGenericReturnsDecoderDecodeForDoubleArray", testDecodeOperatorGenericReturnsDecoderDecodeForDoubleArray),
+            ("testDecodeOperatorGenericReturnsDecoderDecodableDictionary", testDecodeOperatorGenericReturnsDecoderDecodableDictionary),
+            ("testDecodeOperatorGenericReturnsDecoderDecodableDictionaryWithArray", testDecodeOperatorGenericReturnsDecoderDecodableDictionaryWithArray),
+            ("testDecodeOperatorGenericReturnsDecoderDecodeForString", testDecodeOperatorGenericReturnsDecoderDecodeForString),
+            ("testDecodeOperatorGenericReturnsDecoderDecodeForStringArray", testDecodeOperatorGenericReturnsDecoderDecodeForStringArray),
+            ("testDecodeOperatorDecodableReturnsDecoderDecode", testDecodeOperatorDecodableReturnsDecoderDecode),
+            ("testDecodeOperatorDecodableArrayReturnsDecoderDecodeArray", testDecodeOperatorDecodableArrayReturnsDecoderDecodeArray),
+            ("testDecodeOperatorEnumValueReturnsDecoderDecodeEnum", testDecodeOperatorEnumValueReturnsDecoderDecodeEnum),
+            ("testDecodeOperatorEnumArrayReturnsDecoderDecodeArray", testDecodeOperatorEnumArrayReturnsDecoderDecodeArray),
+            ("testDecodeOperatorInt32ReturnsDecoderInt32", testDecodeOperatorInt32ReturnsDecoderInt32),
+            ("testDecodeOperatorInt32ArrayReturnsDecoderInt32Array", testDecodeOperatorInt32ArrayReturnsDecoderInt32Array),
+            ("testDecodeOperatorUInt32ReturnsDecoderUInt32", testDecodeOperatorUInt32ReturnsDecoderUInt32),
+            ("testDecodeOperatorUInt32ArrayReturnsDecoderUInt32Array", testDecodeOperatorUInt32ArrayReturnsDecoderUInt32Array),
+            ("testDecodeOperatorInt64ReturnsDecoderInt64", testDecodeOperatorInt64ReturnsDecoderInt64),
+            ("testDecodeOperatorInt64ArrayReturnsDecoderInt64Array", testDecodeOperatorInt64ArrayReturnsDecoderInt64Array),
+            ("testDecodeOperatorUInt64ReturnsDecoderUInt64", testDecodeOperatorUInt64ReturnsDecoderUInt64),
+            ("testDecodeOperatorUInt64ArrayReturnsDecoderUInt64Array", testDecodeOperatorUInt64ArrayReturnsDecoderUInt64Array),
+            ("testDecodeOperatorURLReturnsDecoderDecodeURL", testDecodeOperatorURLReturnsDecoderDecodeURL),
+            ("testDecodeOperatorURLArrayReturnsDecoderDecodeURLArray", testDecodeOperatorURLArrayReturnsDecoderDecodeURLArray),
+            ("testEncodeOperatorGenericReturnsEncoderEncodeForBool", testEncodeOperatorGenericReturnsEncoderEncodeForBool),
+            ("testEncodeOperatorGenericReturnsEncoderEncodeForBoolArray", testEncodeOperatorGenericReturnsEncoderEncodeForBoolArray),
+            ("testEncodeOperatorGenericReturnsEncoderEncodeForInt", testEncodeOperatorGenericReturnsEncoderEncodeForInt),
+            ("testEncodeOperatorGenericReturnsEncoderEncodeForIntArray", testEncodeOperatorGenericReturnsEncoderEncodeForIntArray),
+            ("testEncodeOperatorGenericReturnsEncoderEncodeForFloat", testEncodeOperatorGenericReturnsEncoderEncodeForFloat),
+            ("testEncodeOperatorGenericReturnsEncoderEncodeForFloatArray", testEncodeOperatorGenericReturnsEncoderEncodeForFloatArray),
+            ("testEncodeOperatorGenericReturnsEncoderEncodeForDouble", testEncodeOperatorGenericReturnsEncoderEncodeForDouble),
+            ("testEncodeOperatorGenericReturnsEncoderEncodeForDoubleArray", testEncodeOperatorGenericReturnsEncoderEncodeForDoubleArray),
+            ("testEncodeOperatorGenericReturnsEncoderEncodeEncodableDictionary", testEncodeOperatorGenericReturnsEncoderEncodeEncodableDictionary),
+            ("testEncodeOperatorGenericReturnsEncoderEncodeEncodableDictionaryWithArray", testEncodeOperatorGenericReturnsEncoderEncodeEncodableDictionaryWithArray),
+            ("testEncodeOperatorGenericReturnsEncoderEncodeForString", testEncodeOperatorGenericReturnsEncoderEncodeForString),
+            ("testEncodeOperatorGenericReturnsEncoderEncodeForStringArray", testEncodeOperatorGenericReturnsEncoderEncodeForStringArray),
+            ("testEncodeOperatorEncodableReturnsEncoderEncode", testEncodeOperatorEncodableReturnsEncoderEncode),
+            ("testEncodeOperatorEncodableArrayReturnsEncoderEncodeArray", testEncodeOperatorEncodableArrayReturnsEncoderEncodeArray),
+            ("testEncodeOperatorEnumValueReturnsEncoderEncode", testEncodeOperatorEnumValueReturnsEncoderEncode),
+            ("testEncodeOperatorEnumArrayReturnsEncoderEncodeArray", testEncodeOperatorEnumArrayReturnsEncoderEncodeArray),
+            ("testEncodeOperatorInt32ReturnsEncoderEncodeInt32", testEncodeOperatorInt32ReturnsEncoderEncodeInt32),
+            ("testEncodeOperatorInt32ArrayReturnsEncoderEncodeInt32Array", testEncodeOperatorInt32ArrayReturnsEncoderEncodeInt32Array),
+            ("testEncodeOperatorUInt32ReturnsEncoderEncodeUInt32", testEncodeOperatorUInt32ReturnsEncoderEncodeUInt32),
+            ("testEncodeOperatorUInt32ArrayReturnsEncoderEncodeUInt32Array", testEncodeOperatorUInt32ArrayReturnsEncoderEncodeUInt32Array),
+            ("testEncodeOperatorInt64ReturnsEncoderEncodeInt64", testEncodeOperatorInt64ReturnsEncoderEncodeInt64),
+            ("testEncodeOperatorInt64ArrayReturnsEncoderEncodeInt64Array", testEncodeOperatorInt64ArrayReturnsEncoderEncodeInt64Array),
+            ("testEncodeOperatorUInt64ReturnsEncoderEncodeUInt64", testEncodeOperatorUInt64ReturnsEncoderEncodeUInt64),
+            ("testEncodeOperatorUInt64ArrayReturnsEncoderEncodeUInt64Array", testEncodeOperatorUInt64ArrayReturnsEncoderEncodeUInt64Array),
+            ("testEncodeOperatorURLReturnsEncoderEncodeURL", testEncodeOperatorURLReturnsEncoderEncodeURL),
+            ("testEncodeOperatorURLArrayReturnsEncoderEncodeURLArray", testEncodeOperatorURLArrayReturnsEncoderEncodeURLArray),
+            ("testEncodeOperatorUUIDReturnsEncoderEncodeUUID", testEncodeOperatorUUIDReturnsEncoderEncodeUUID),
+            ("testEncodeOperatorUUIDArrayReturnsEncoderEncodeUUIDArray", testEncodeOperatorUUIDArrayReturnsEncoderEncodeUUIDArray)
+        ]
+	}
     
     var testJSON: JSON? = [:]
     var testNestedModel1: TestNestedModel? = nil
@@ -211,7 +271,9 @@ class OperatorTests: XCTestCase {
 		let result: [Int32]? = "int32Array" <~~ testJSON!
         let decoderResult: [Int32]? = Decoder.decode(int32ArrayForKey: "int32Array")(testJSON!)
 
+//		#if !os(Linux)
 		XCTAssertTrue((result! == decoderResult!), "<~~ for [Int32] should return same as Decoder.decodeInt32Array")
+//		#endif
 	}
 
 	func testDecodeOperatorUInt32ReturnsDecoderUInt32() {
@@ -225,7 +287,9 @@ class OperatorTests: XCTestCase {
 		let result: [UInt32]? = "uInt32Array" <~~ testJSON!
         let decoderResult: [UInt32]? = Decoder.decode(uint32ArrayForKey: "uInt32Array")(testJSON!)
 
+//		#if !os(Linux)
 		XCTAssertTrue((result! == decoderResult!), "<~~ for [UInt32] should return same as Decoder.decodeUInt32Array")
+//		#endif
 	}
 
     func testDecodeOperatorInt64ReturnsDecoderInt64() {
@@ -239,7 +303,9 @@ class OperatorTests: XCTestCase {
 		let result: [Int64]? = "int64Array" <~~ testJSON!
         let decoderResult: [Int64]? = Decoder.decode(int64ArrayForKey: "int64Array")(testJSON!)
 
+//		#if !os(Linux)
 		XCTAssertTrue((result! == decoderResult!), "<~~ for [Int64] should return same as Decoder.decodeInt64Array")
+//		#endif
 	}
 
 	func testDecodeOperatorUInt64ReturnsDecoderUInt64() {
@@ -253,7 +319,9 @@ class OperatorTests: XCTestCase {
 		let result: [UInt64]? = "uInt64Array" <~~ testJSON!
         let decoderResult: [UInt64]? = Decoder.decode(uint64ArrayForKey: "uInt64Array")(testJSON!)
 
+//		#if !os(Linux)
 		XCTAssertTrue((result! == decoderResult!), "<~~ for [UInt64] should return same as Decoder.decodeUInt64Array")
+//		#endif
 	}
 
     func testDecodeOperatorURLReturnsDecoderDecodeURL() {
