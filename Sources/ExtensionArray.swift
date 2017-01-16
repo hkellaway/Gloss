@@ -67,11 +67,13 @@ public extension Array where Element: Decodable {
      Returns array of new objects created from provided data.
      If creation of JSON or any decodings fail, nil is returned.
      
-     - parameter data: Data representations of objects.
+     - parameter data:       Raw JSON data.
+     - parameter serializer: Serializer to use when creating JSON from data.
+     - parameter ooptions:   Options for reading the JSON data.
      
-     - returns: Array of objects created from data.
+     - returns: Object or nil.
      */
-    static func from(data: Data) -> [Element]? {
+    static func from(data: Data, serializer: JSONSerializer = GlossJSONSerializer(), options: JSONSerialization.ReadingOptions = .mutableContainers) -> [Element]? {
         guard
             let jsonArray = (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)) as? [JSON],
             let models = [Element].from(jsonArray: jsonArray) else {

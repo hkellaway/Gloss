@@ -29,12 +29,14 @@ public extension Decodable {
     /**
      Initializes array of model objects from provided data.
      
-     - parameter data: Raw JSON data, i.e. received from server.
+     - parameter data:       Raw JSON data.
+     - parameter serializer: Serializer to use when creating JSON from data.
+     - parameter ooptions:   Options for reading the JSON data.
      
      - returns: Object or nil.
      */
-    init?(data: Data) {
-        if let json = (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)) as? JSON {
+    init?(data: Data, serializer: JSONSerializer = GlossJSONSerializer(), options: JSONSerialization.ReadingOptions = .mutableContainers) {
+        if let json = serializer.json(from: data, options: options) {
             self.init(json: json)
             return
         }
