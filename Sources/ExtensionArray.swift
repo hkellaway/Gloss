@@ -55,6 +55,32 @@ public extension Array where Element: Decodable {
         return models
     }
     
+    /**
+     Initializes array of model objects from provided data.
+     
+     - parameter data: Raw JSON array data.
+     
+     - returns: Array with model objects when decoding is successful, empty otherwise.
+     */
+    
+    /**
+     Returns array of new objects created from provided data.
+     If creation of JSON or any decodings fail, nil is returned.
+     
+     - parameter data: Data representations of objects.
+     
+     - returns: Array of objects created from data.
+     */
+    static func from(data: Data) -> [Element] {
+        if let json = (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)) as? [JSON] {
+            if let array = [Element].from(jsonArray: json) {
+                return array
+            }
+        }
+        
+        return [Element]()
+    }
+    
 }
 
 // MARK: - Encodable

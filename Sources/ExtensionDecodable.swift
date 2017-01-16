@@ -42,22 +42,4 @@ public extension Decodable {
         return nil
     }
     
-    
-    /**
-     Initializes array of model objects from provided data.
-     
-     - parameter data: Raw JSON array data.
-     
-     - returns: Array with model objects when decoding is successful, empty otherwise.
-     */
-    static func from(data: Data) -> [Self] {
-        if let json = (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)) as? [JSON] {
-            if let array = [Self].from(jsonArray: json) {
-                return array
-            }
-        }
-        
-        return [Self]()
-    }
-    
 }
