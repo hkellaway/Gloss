@@ -1,9 +1,11 @@
-language: objective-c
-osx_image: xcode8
-
-before_install:
-   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
-
+os:
+- linux
+- osx
+language: generic
+sudo: required
+dist: trusty
+osx_image: xcode8.2
+install:
+- eval "$(curl -sL https://gist.githubusercontent.com/kylef/5c0475ff02b7c7671d2a/raw/9f442512a46d7a2af7b850d65a7e9bd31edfb09b/swiftenv-install.sh)"
 script:
-   - xcodebuild test -project Gloss.xcodeproj -scheme GlossTests -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0'
-   - pod lib lint --quick
+- swift test
