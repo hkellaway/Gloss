@@ -71,14 +71,14 @@ public extension Array where Element: Decodable {
      
      - returns: Array of objects created from data.
      */
-    static func from(data: Data) -> [Element] {
-        if let json = (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)) as? [JSON] {
-            if let array = [Element].from(jsonArray: json) {
-                return array
-            }
+    static func from(data: Data) -> [Element]? {
+        guard
+            let jsonArray = (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)) as? [JSON],
+            let models = [Element].from(jsonArray: jsonArray) else {
+                return nil
         }
         
-        return [Element]()
+        return models
     }
     
 }
