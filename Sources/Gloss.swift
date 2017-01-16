@@ -44,9 +44,20 @@ public protocol Decodable {
     /**
      Returns new instance created from provided JSON.
 
-     - parameter: json: JSON representation of object.
+     - parameter json: JSON representation of object.
+     
+     - returns: New instance when JSON parsing successful, false otherwise.
      */
     init?(json: JSON)
+    
+    /**
+     Returns new instance created from provided Data.
+     
+     - parameter json: JSON representation of object.
+     
+     - returns: New instance when JSON parsing successful, false otherwise.
+     */
+    init?(data: Data)
 
 }
 
