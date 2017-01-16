@@ -346,7 +346,7 @@ class GlossTests: XCTestCase {
     
     func testModelArrayFromJSONArrayRawData() {
         let data = try! JSONSerialization.data(withJSONObject: testJSONArray!, options: [])
-        let modelArray = TestModel.array(from: data)
+        let modelArray = TestModel.from(data: data)
         
         XCTAssertGreaterThan(modelArray.count, 0, "Number of elements in array from Data should be grater than 0.")
     }
