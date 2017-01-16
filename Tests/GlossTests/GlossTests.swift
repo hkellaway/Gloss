@@ -337,4 +337,18 @@ class GlossTests: XCTestCase {
         XCTAssertTrue(result!.isEmpty, "Jsonify should return empty JSON when given an empty array")
     }
     
+    func testModelFromJSONRawData() {
+        let data = try! JSONSerialization.data(withJSONObject: testModelsJSON!, options: [])
+        let model = TestModel(data: data)
+        
+        XCTAssertNotNil(model, "Model from Data should not be nil.")
+    }
+    
+    func testModelArrayFromJSONArrayRawData() {
+        let data = try! JSONSerialization.data(withJSONObject: testJSONArray!, options: [])
+        let modelArray = TestModel.array(from: data)
+        
+        XCTAssertGreaterThan(modelArray.count, 0, "Number of elements in array from Data should be grater than 0.")
+    }
+    
 }

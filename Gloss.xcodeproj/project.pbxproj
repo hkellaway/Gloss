@@ -28,6 +28,7 @@
 		2F3A83461C66D11200ECC4B8 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A832E1C66CF3C00ECC4B8 /* Operators.swift */; };
 		2F3A83471C66D11600ECC4B8 /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F3A832B1C66CF3C00ECC4B8 /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FA4CE9F1C947E3000EB8AB8 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC39BF611B8A7AD200088CE0 /* Gloss.framework */; };
+		8E96F1471E1C359B00B1B702 /* Decodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96F1461E1C359B00B1B702 /* Decodable+Extension.swift */; };
 		9F055DC81DCBC24000EB78C1 /* Comparators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F055DBF1DCBC24000EB78C1 /* Comparators.swift */; };
 		9F055DC91DCBC24000EB78C1 /* DecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F055DC01DCBC24000EB78C1 /* DecoderTests.swift */; };
 		9F055DCA1DCBC24000EB78C1 /* EncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F055DC11DCBC24000EB78C1 /* EncoderTests.swift */; };
@@ -74,6 +75,7 @@
 		2F3A832D1C66CF3C00ECC4B8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = SOURCE_ROOT; };
 		2F3A832E1C66CF3C00ECC4B8 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Sources/Operators.swift; sourceTree = SOURCE_ROOT; };
 		2FA4CE9A1C947E3000EB8AB8 /* GlossTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlossTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E96F1461E1C359B00B1B702 /* Decodable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Decodable+Extension.swift"; path = "Sources/Decodable+Extension.swift"; sourceTree = SOURCE_ROOT; };
 		9F055DBF1DCBC24000EB78C1 /* Comparators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comparators.swift; path = Tests/GlossTests/Comparators.swift; sourceTree = SOURCE_ROOT; };
 		9F055DC01DCBC24000EB78C1 /* DecoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DecoderTests.swift; path = Tests/GlossTests/DecoderTests.swift; sourceTree = SOURCE_ROOT; };
 		9F055DC11DCBC24000EB78C1 /* EncoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncoderTests.swift; path = Tests/GlossTests/EncoderTests.swift; sourceTree = SOURCE_ROOT; };
@@ -197,6 +199,7 @@
 		DC39BF631B8A7AD200088CE0 /* Gloss */ = {
 			isa = PBXGroup;
 			children = (
+				8E96F1461E1C359B00B1B702 /* Decodable+Extension.swift */,
 				2F3A83281C66CF3C00ECC4B8 /* Decoder.swift */,
 				2F3A832A1C66CF3C00ECC4B8 /* Encoder.swift */,
 				DCD40A5E1C7A7B11007EE251 /* ExtensionArray.swift */,
@@ -472,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F3A832F1C66CF3C00ECC4B8 /* Decoder.swift in Sources */,
+				8E96F1471E1C359B00B1B702 /* Decodable+Extension.swift in Sources */,
 				2F3A83351C66CF3C00ECC4B8 /* Operators.swift in Sources */,
 				2F3A83331C66CF3C00ECC4B8 /* Gloss.swift in Sources */,
 				DCD40A601C7A7B11007EE251 /* ExtensionArray.swift in Sources */,
