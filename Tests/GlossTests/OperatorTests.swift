@@ -29,8 +29,8 @@ import XCTest
 
 class OperatorTests: XCTestCase {
 
-    static var allTests : [(String, (OperatorTests) -> () throws -> Void)] {
-        #if !os(Linux)
+    static var allTests : [(String, (OperatorTests) -> () throws -> Void)] {        
+#if !os(Linux)
         return [
             ("testDecodeOperatorForInvalidReturnsDecoderDecode", testDecodeOperatorForInvalidReturnsDecoderDecode),
             ("testDecodeOperatorGenericReturnsDecoderDecodeForBool", testDecodeOperatorGenericReturnsDecoderDecodeForBool),
@@ -88,7 +88,7 @@ class OperatorTests: XCTestCase {
             ("testEncodeOperatorUUIDReturnsEncoderEncodeUUID", testEncodeOperatorUUIDReturnsEncoderEncodeUUID),
             ("testEncodeOperatorUUIDArrayReturnsEncoderEncodeUUIDArray", testEncodeOperatorUUIDArrayReturnsEncoderEncodeUUIDArray)
         ]
-        #else
+#else
         return [
             ("testDecodeOperatorForInvalidReturnsDecoderDecode", testDecodeOperatorForInvalidReturnsDecoderDecode),
             ("testDecodeOperatorGenericReturnsDecoderDecodeForBool", testDecodeOperatorGenericReturnsDecoderDecodeForBool),
@@ -138,7 +138,7 @@ class OperatorTests: XCTestCase {
             ("testEncodeOperatorUUIDReturnsEncoderEncodeUUID", testEncodeOperatorUUIDReturnsEncoderEncodeUUID),
             ("testEncodeOperatorUUIDArrayReturnsEncoderEncodeUUIDArray", testEncodeOperatorUUIDArrayReturnsEncoderEncodeUUIDArray)
         ]
-        #endif
+#endif
 	}
     
     var testJSON: JSON? = [:]

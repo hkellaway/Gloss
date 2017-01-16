@@ -375,11 +375,12 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((hour == 20), "Decode Date should return correct value")
         XCTAssertTrue((minute == 51), "Decode Date should return correct value")
         XCTAssertTrue((second == 46), "Decode Date should return correct value")
-		#if !os(Linux)
-	        XCTAssertTrue((nanosecond/1000000 == 599), "Decode Date should return correct value")
-		#else
-			XCTAssertTrue((nanosecond == 16843009), "Decode Date should return correct value")
-		#endif
+        
+#if !os(Linux)
+        XCTAssertTrue((nanosecond/1000000 == 599), "Decode Date should return correct value")
+#else
+        XCTAssertTrue((nanosecond == 16843009), "Decode Date should return correct value")
+#endif
     }
     
     func testDecodeDateArray() {
@@ -409,11 +410,12 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((hour1 == 20), "Decode Date array should return correct value")
         XCTAssertTrue((minute1 == 51), "Decode Date array should return correct value")
         XCTAssertTrue((second1 == 46), "Decode Date array should return correct value")
-		#if !os(Linux)
-	        XCTAssertTrue((nanosecond1/1000000 == 599), "Decode Date should return correct value")
-		#else
-			XCTAssertTrue((nanosecond1 == 16843009), "Decode Date should return correct value")
-		#endif
+        
+#if !os(Linux)
+        XCTAssertTrue((nanosecond1/1000000 == 599), "Decode Date should return correct value")
+#else
+        XCTAssertTrue((nanosecond1 == 16843009), "Decode Date should return correct value")
+#endif
         
         XCTAssertTrue((year2 == 2015), "Decode Date array should return correct value")
         XCTAssertTrue((month2 == 8), "Decode Date array should return correct value")
@@ -421,11 +423,12 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((hour2 == 20), "Decode Date array should return correct value")
         XCTAssertTrue((minute2 == 51), "Decode Date array should return correct value")
         XCTAssertTrue((second2 == 46), "Decode Date array should return correct value")
-		#if !os(Linux)
-	        XCTAssertTrue((nanosecond2/1000000 == 599), "Decode Date should return correct value")
-		#else
-			XCTAssertTrue((nanosecond2 == 16843009), "Decode Date should return correct value")
-		#endif
+        
+#if !os(Linux)
+        XCTAssertTrue((nanosecond2/1000000 == 599), "Decode Date should return correct value")
+#else
+        XCTAssertTrue((nanosecond2 == 16843009), "Decode Date should return correct value")
+#endif
     }
     
     func testDecodeDateArrayReturnsNilIfJSONInvalid() {
@@ -463,17 +466,17 @@ class DecoderTests: XCTestCase {
     func testDecodeInt32() {
         let result: Int32? = Decoder.decode(int32ForKey: "int32")(testJSON!)
 
-        #if !os(Linux)
+#if !os(Linux)
         XCTAssertTrue((result == 100000000), "Decode Int32 should return correct value")
-        #endif
+#endif
     }
     
     func testDecodeInt32Array() {
         let result: [Int32]? = Decoder.decode(int32ArrayForKey: "int32Array")(testJSON!)
 
-        #if !os(Linux)        
+#if !os(Linux)
         XCTAssertTrue((result! == [100000000, -2147483648, 2147483647]), "Decode Int32 array should return correct value")
-        #endif
+#endif
     }
     
     func testDecodeInt32ArrayReturnsNilIfJSONInvalid() {
@@ -486,17 +489,17 @@ class DecoderTests: XCTestCase {
     func testDecodeUInt32() {
         let result: UInt32? = Decoder.decode(uint32ForKey: "uInt32")(testJSON!)
 
-        #if !os(Linux)
+#if !os(Linux)
         XCTAssertTrue((result == 4294967295), "Decode UInt32 should return correct value")
-        #endif
+#endif
     }
 
     func testDecodeUInt32Array() {
         let result: [UInt32]? = Decoder.decode(uint32ArrayForKey: "uInt32Array")(testJSON!)
 
-        #if !os(Linux)
+#if !os(Linux)
         XCTAssertTrue((result! == [100000000, 2147483648, 4294967295]), "Decode UInt32 array should return correct value")
-        #endif
+#endif
     }
     
     func testDecodeUInt32ArrayReturnsNilIfJSONInvalid() {
@@ -509,17 +512,17 @@ class DecoderTests: XCTestCase {
     func testDecodeInt64() {
         let result: Int64? = Decoder.decode(int64ForKey: "int64")(testJSON!)
         
-        #if !os(Linux)
+#if !os(Linux)
         XCTAssertTrue((result == 300000000), "Decode Int64 should return correct value")
-        #endif
+#endif
     }
     
     func testDecodeInt64Array() {
         let result: [Int64]? = Decoder.decode(int64ArrayForKey: "int64Array")(testJSON!)
         
-        #if !os(Linux)
+#if !os(Linux)
         XCTAssertTrue((result! == [300000000, -9223372036854775808, 9223372036854775807]), "Decode Int64 array should return correct value")
-        #endif
+#endif
     }
     
     func testDecodeInt64ArrayReturnsNilIfJSONInvalid() {
@@ -532,17 +535,17 @@ class DecoderTests: XCTestCase {
     func testDecodeUInt64() {
         let result: UInt64? = Decoder.decode(uint64ForKey: "uInt64")(testJSON!)
 
-        #if !os(Linux)
+#if !os(Linux)
         XCTAssertTrue((result == 18446744073709551615), "Decode UInt64 should return correct value")
-        #endif
+#endif
     }
 
     func testDecodeUInt64Array() {
         let result: [UInt64]? = Decoder.decode(uint64ArrayForKey: "uInt64Array")(testJSON!)
 
-        #if !os(Linux)
+#if !os(Linux)
         XCTAssertTrue((result! == [300000000, 9223372036854775808, 18446744073709551615]), "Decode UInt64 array should return correct value")
-        #endif
+#endif
     }
     
     func testDecodeUInt64ArrayReturnsNilIfJSONInvalid() {
