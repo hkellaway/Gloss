@@ -43,8 +43,23 @@
                           "name" : "nestedModel3"
                           }
     ],
+    "nonHomogeneousNestedModelArray" : [
+                          {
+                          "id" : 456,
+                          "name" : "nestedModel2"
+                          },
+                          {
+                          "id" : 789,
+                          "name" : "nestedModel3"
+                          },
+                          {
+                          "id" : 789,
+                          "uuid" : "BA34F5F0-E5AA-4ECE-B25C-90195D7AF0D0"
+                          }
+    ],
     "enumValue" : "A",
     "enumValueArray" : ["A", "B", "C"],
+    "nonHomogeneousEnumValueArray" : ["A", "B", "C", "X"],
     "date" : "2015-08-16T20:51:46.600Z",
     "dateArray" : ["2015-08-16T20:51:46.600Z", "2015-08-16T20:51:46.600Z"],
     "dateISO8601" : "2015-08-08T21:57:13Z",

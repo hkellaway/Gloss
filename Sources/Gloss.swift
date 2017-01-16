@@ -64,6 +64,13 @@ public protocol Encodable {
     
 }
 
+/**
+Enables an array of objects to be partially decoded from JSON.
+ If the array is not homogeneous the decoding process will return only the successfully decoded objects instead of nil
+*/
+public protocol ArrayPartiallyDecodable { }
+
+
 // MARK: - Global
 
 public protocol GlossDateFormatter {

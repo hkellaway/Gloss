@@ -218,6 +218,11 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((name2 == "otherModel2"), "Decode Dictionary should return correct value")
     }
     
+    func testDecodePartiallyArray() {
+        let result: [TestPartiallyDecodedModel]? = Decoder.decode(decodableArrayForKey: "nonHomogeneousNestedModelArray")(testJSON!)
+        XCTAssertNotNil(result, "Decode result array should not return nil if JSON is not homogeneous but return only the successfully decoded objects instead")
+    }
+    
     func testDecodeString() {
         let result: String? = Decoder.decode(key: "string")(testJSON!)
         
@@ -266,6 +271,11 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((element1 == TestModel.EnumValue.A), "Decode enum value array should return correct value")
         XCTAssertTrue((element2 == TestModel.EnumValue.B), "Decode enum value array should return correct value")
         XCTAssertTrue((element3 == TestModel.EnumValue.C), "Decode enum value array should return correct value")
+    }
+    
+    func testPartiallyDecodeEnumArray() {
+        let result: [TestModel.EnumValuePartiallyDecodable]? = Decoder.decode(enumArrayForKey: "nonHomogeneousEnumValueArray")(testJSON!)
+        XCTAssertNotNil(result, "Decode result array should not return nil if JSON contains a rawValue not declared in the enum but return only the successfully decoded objects instead")
     }
     
     func testDecodeEnumArrayReturnsNilIfJSONInvalid() {
