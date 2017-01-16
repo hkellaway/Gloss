@@ -103,20 +103,25 @@ class GlossTests: XCTestCase {
     }
     
     func testDateFormatterISO8601HasCorrectLocale() {
-        let dateFormatterISO8601 = GlossDateFormatterISO8601
+        let dateFormatterISO8601 = GlossDateFormatterISO8601 as! DateFormatter
         
         XCTAssertTrue(dateFormatterISO8601.locale.identifier == "en_US_POSIX", "Date formatter ISO8601 should have correct locale.")
     }
     
     func testDateFormatterISO8601HasCorrectDateFormat() {
-        let dateFormatterISO8601 = GlossDateFormatterISO8601
+        let dateFormatterISO8601 = GlossDateFormatterISO8601 as! DateFormatter
         
         XCTAssertTrue(dateFormatterISO8601.dateFormat == "yyyy-MM-dd'T'HH:mm:ssZZZZZ", "Date formatter ISO8601 should have correct date format.")
     }
-    
+
     func testDateFormatterISO8601ForcesGregorianCalendar() {
-        let dateFormatterISO8601 = GlossDateFormatterISO8601
-        
+        if #available(iOS 10.0, *) {
+            XCTAssert(true)
+            return
+        }
+
+        let dateFormatterISO8601 = GlossDateFormatterISO8601 as! DateFormatter
+
         XCTAssertTrue(dateFormatterISO8601.calendar.identifier == Calendar.Identifier.gregorian, "Date formatter ISO8601 should force use of Gregorian calendar.")
          XCTAssertTrue(dateFormatterISO8601.calendar.timeZone.abbreviation() == "GMT", "Date formatter ISO8601 Gregorian calendar should use GMT timezone.")
     }
@@ -316,6 +321,20 @@ class GlossTests: XCTestCase {
         let result = jsonify([])
         
         XCTAssertTrue(result!.isEmpty, "Jsonify should return empty JSON when given an empty array")
+    }
+    
+    func testModelFromJSONRawData() {
+        let data = try! JSONSerialization.data(withJSONObject: testModelsJSON!, options: [])
+        let model = TestModel(data: data)
+        
+        XCTAssertNotNil(model, "Model from Data should not be nil.")
+    }
+    
+    func testModelArrayFromJSONArrayRawData() {
+        let data = try! JSONSerialization.data(withJSONObject: testJSONArray!, options: [])
+        let modelArray = [TestModel].from(data: data)
+        
+        XCTAssertNotNil(modelArray, "Model array from Data should not be nil.")
     }
     
 }

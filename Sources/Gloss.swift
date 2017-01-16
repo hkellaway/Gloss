@@ -27,6 +27,8 @@ import Foundation
 
 // MARK: - Types
 
+// MARK: JSON
+
 public typealias JSON = [String : Any]
 
 // MARK: - Protocols
@@ -44,10 +46,12 @@ public protocol Decodable {
     /**
      Returns new instance created from provided JSON.
 
-     - parameter: json: JSON representation of object.
+     - parameter json: JSON representation of object.
+     
+     - returns: New instance when JSON parsing successful, false otherwise.
      */
     init?(json: JSON)
-
+    
 }
 
 /**
@@ -66,12 +70,15 @@ public protocol Encodable {
 
 // MARK: - Global
 
+// MARK: DateFormatter
+
 /**
 Date formatter used for ISO8601 dates.
  
  - returns: Date formatter.
  */
 public private(set) var GlossDateFormatterISO8601: DateFormatter = {
+
     let dateFormatterISO8601 = DateFormatter()
     
     // WORKAROUND to ignore device configuration regarding AM/PM http://openradar.appspot.com/radar?id=1110403
@@ -85,7 +92,58 @@ public private(set) var GlossDateFormatterISO8601: DateFormatter = {
     dateFormatterISO8601.calendar = gregorian
 
     return dateFormatterISO8601
+    
 }()
+
+// MARK: GlossJSONSerializer
+
+/// Creates JSON from data.
+public protocol JSONSerializer {
+    
+    /**
+     Creates JSON from provided data.
+     
+     - parameter data:    Data to create JSON from.
+     - parameter options: Options for reading the JSON data.
+     
+     - returns: JSON if created successfully, nil otherwise.
+     */
+    func json(from data: Data, options: JSONSerialization.ReadingOptions) -> JSON?
+    
+    /**
+     Creates JSON array from provided data.
+     
+     - parameter data:    Data to create JSON array from.
+     - parameter options: Options for reading the JSON data.
+     
+     - returns: JSON array if created successfully, nil otherwise.
+     */
+    func jsonArray(from data: Data, options: JSONSerialization.ReadingOptions) -> [JSON]?
+    
+}
+
+/// Gloss JSON Serializer.
+public struct GlossJSONSerializer: JSONSerializer {
+
+    public func json(from data: Data, options: JSONSerialization.ReadingOptions) -> JSON? {
+        guard let json = (try? JSONSerialization.jsonObject(with: data, options: options)) as? JSON else {
+            return nil
+        }
+        
+        return json
+    }
+    
+    public func jsonArray(from data: Data, options: JSONSerialization.ReadingOptions) -> [JSON]? {
+        guard let jsonArray = (try? JSONSerialization.jsonObject(with: data, options: options)) as? [JSON] else {
+            return nil
+        }
+        
+        return jsonArray
+    }
+
+}
+
+// MARK: GlossKeyPathDelimiter
 
 /**
  Default delimiter used for nested key paths.
@@ -95,6 +153,8 @@ public private(set) var GlossDateFormatterISO8601: DateFormatter = {
 public private(set) var GlossKeyPathDelimiter: String = {
     return "."
 }()
+
+// MARK: jsonify
 
 /**
  Transforms an array of JSON optionals to a single optional JSON dictionary.
@@ -151,4 +211,5 @@ private func setValue(inJSON json: inout JSON, value: Any, forKeyPath keyPath: S
         setValue(inJSON: &subJSON, value:value, forKeyPath: rejoined, withDelimiter: delimiter)
         json[firstKey] = subJSON
     }
+    
 }

@@ -1,8 +1,8 @@
 //
-//  TestNestedModel.swift
-//  GlossExample
+//  ExtensionDecodable.swift
+//  Gloss
 //
-// Copyright (c) 2015 Harlan Kellaway
+// Copyright © 2017 kampro
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,45 +21,27 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-//
 
 import Foundation
-import Gloss
 
-struct TestNestedModel: Glossy {
+public extension Decodable {
     
-    let id: Int?
-    let name: String?
-    let uuid: UUID?
-    let url: URL?
-    
-    // MARK: - Deserialization
-    
-    init(json: JSON) {
-        self.id = "id" <~~ json
-        self.name = "name" <~~ json
-        self.uuid = "uuid" <~~ json
-        self.url = "url" <~~ json
+    /**
+     Initializes array of model objects from provided data.
+     
+     - parameter data:       Raw JSON data.
+     - parameter serializer: Serializer to use when creating JSON from data.
+     - parameter ooptions:   Options for reading the JSON data.
+     
+     - returns: Object or nil.
+     */
+    init?(data: Data, serializer: JSONSerializer = GlossJSONSerializer(), options: JSONSerialization.ReadingOptions = .mutableContainers) {
+        if let json = serializer.json(from: data, options: options) {
+            self.init(json: json)
+            return
+        }
+        
+        return nil
     }
     
-    // MARK: - Serialization
-    
-    func toJSON() -> JSON? {
-        return jsonify([
-            "id" ~~> self.id,
-            "name" ~~> self.name,
-            "uuid" ~~> self.uuid,
-            "url" ~~> self.url
-            ])
-    }
-    
-}
-
-extension TestNestedModel: Equatable { }
-
-func == (lhs: TestNestedModel, rhs: TestNestedModel) -> Bool {
-    return lhs.id == rhs.id
-        && lhs.name == rhs.name
-        && lhs.uuid == rhs.uuid
-        && lhs.url == rhs.url
 }

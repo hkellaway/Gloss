@@ -443,9 +443,8 @@ public struct Decoder {
         return {
             json in
             
-            if let urlString = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? String,
-                let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
-                return URL(string: encodedString)
+            if let urlString = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? String {
+                return URL(string: urlString)
             }
             
             return nil
@@ -523,6 +522,46 @@ public struct Decoder {
                 }
                 
                 return uuids
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
+     Decodes JSON to a Decimal.
+     
+     - parameter key: Key used in JSON for decoded value.
+     
+     - returns: Value decoded from JSON.
+     */
+    public static func decode(decimalForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> Decimal? {
+        return {
+            json in
+            
+            if let number = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? NSNumber {
+                return number.decimalValue
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
+     Decodes JSON to a Decimal array.
+     
+     - parameter key: Key used in JSON for decoded value.
+     
+     - returns: Value decoded from JSON.
+     */
+    public static func decode(decimalArrayForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> [Decimal]? {
+        return {
+            json in
+            
+            if let numbers = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? [NSNumber] {
+                let decimals: [Decimal] = numbers.map { $0.decimalValue }
+                
+                return decimals
             }
             
             return nil

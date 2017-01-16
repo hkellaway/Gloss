@@ -28,7 +28,7 @@ The Gloss source currently available via CocoaPods and Carthage is compatible wi
 ### Installation with CocoaPods
 
 ```ruby
-pod 'Gloss', '~> 1.1'
+pod 'Gloss', '~> 1.2'
 ```
 
 ### Installation with Carthage
@@ -39,15 +39,13 @@ github "hkellaway/Gloss"
 
 ### Installation with Swift Package Manager
 
-To use Gloss as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
-
 ``` swift
 import PackageDescription
 
 let package = Package(
     name: "HelloWorld",
     dependencies: [
-        .Package(url: "https://github.com/hkellaway/Gloss.git", majorVersion: 1, minorVersion: 1)
+        .Package(url: "https://github.com/hkellaway/Gloss.git", majorVersion: 1, minorVersion: 2)
     ]
 )
 ```
@@ -283,6 +281,18 @@ guard let repoOwners = [RepoOwner].from(jsonArray: repoOwnersJSON) else {
 print(repoOwners)
 ```
 
+#### Model Objects from Data
+
+Model objects can also be initialized directly from `Data` for convenience:
+
+``` swift
+let repoOwner: RepoOwner? = RepoOwner(data: repoOwnerData)
+```
+
+``` swift
+let repoOwners: [RepoOwner]? = [RepoOwner].from(data: repoOwnerDAta)
+```
+
 ### Translating Model Objects to JSON
 
 The JSON representation of an `Encodable` Gloss model is retrieved via `toJSON()`:
@@ -489,6 +499,8 @@ The `<~~` operator is simply syntactic sugar for a set of `Decoder.decode` funct
 * NSURL arrays (`Decode.decode(urlArrayForKey:)`)
 * UUID types (`Decoder.decode(uuidForKey:)`)
 * UUID arrays (`Decoder.decode(uuidArrayForKey:)`)
+* Decimal types `(Decoder.decode(dedimalForKey:)`)
+* Decimal arrays (`Decoder.decode(decimalArrayForKey:)`)
 
 ##### The Encode Operator: `~~>`
 
@@ -511,6 +523,8 @@ The `~~>` operator is simply syntactic sugar for a set of `Encoder.encode` funct
 * UInt64 arrays (`Encoder.encode(uint64ArrayForKey:)`)
 * NSURL types (`Encoder.encode(urlForKey:)`)
 * UUID types (`Encoder.encode(uuidForKey:)`)
+* Decimal types (`Encoder.encode(decimalForKey:)`)
+* Decimal array (`Encoder.encode(decimalArrayForKey:)`)
 
 ### Gloss Protocols
 
