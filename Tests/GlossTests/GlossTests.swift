@@ -55,11 +55,11 @@ class GlossTests: XCTestCase {
         
         var testJSON: JSON? = [:]
         
-        #if SWIFT_PACKAGE
+#if SWIFT_PACKAGE
         
         testJSON = TestModel.testJSON
         
-        #else
+#else
         
         let testJSONPath: String = Bundle(for: type(of: self)).path(forResource: "TestModel", ofType: "json")!
         let testJSONData: Data = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath as String))
@@ -70,7 +70,7 @@ class GlossTests: XCTestCase {
             print(error)
         }
         
-        #endif
+#endif
         
         testJSONArray = [testJSON!, testJSON!]
         

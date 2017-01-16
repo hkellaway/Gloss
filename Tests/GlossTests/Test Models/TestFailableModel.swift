@@ -49,6 +49,7 @@ struct TestFailableModel: Glossy {
 
 // Since Swift Package Manager doesn't support fixtures (i.e. stored JSON), we have to access the JSON using this method rather than reading file from Bundle.
 #if SWIFT_PACKAGE
+    
 extension TestFailableModel {
     
     static var testInvalidJSON: JSON {
@@ -66,4 +67,5 @@ extension TestFailableModel {
         ]
     }
 }
+    
 #endif
