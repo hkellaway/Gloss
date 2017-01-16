@@ -103,29 +103,15 @@ class GlossTests: XCTestCase {
     }
     
     func testDateFormatterISO8601HasCorrectLocale() {
-        if #available(iOS 10.0, *) {
-            XCTAssert(true)
-            return
-        }
-
         let dateFormatterISO8601 = GlossDateFormatterISO8601 as! DateFormatter
         
         XCTAssertTrue(dateFormatterISO8601.locale.identifier == "en_US_POSIX", "Date formatter ISO8601 should have correct locale.")
     }
     
     func testDateFormatterISO8601HasCorrectDateFormat() {
-        if #available(iOS 10.0, *) {
-            XCTAssert(true)
-            return
-        }
         let dateFormatterISO8601 = GlossDateFormatterISO8601 as! DateFormatter
         
         XCTAssertTrue(dateFormatterISO8601.dateFormat == "yyyy-MM-dd'T'HH:mm:ssZZZZZ", "Date formatter ISO8601 should have correct date format.")
-    }
-
-    @available(iOS 10.0, *)
-    func testDateFormatterReturnsFoundationVersion() {
-        XCTAssert(GlossDateFormatterISO8601 is ISO8601DateFormatter)
     }
 
     func testDateFormatterISO8601ForcesGregorianCalendar() {
