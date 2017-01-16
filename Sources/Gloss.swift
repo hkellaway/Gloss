@@ -44,10 +44,12 @@ public protocol Decodable {
     /**
      Returns new instance created from provided JSON.
 
-     - parameter: json: JSON representation of object.
+     - parameter json: JSON representation of object.
+     
+     - returns: New instance when JSON parsing successful, false otherwise.
      */
     init?(json: JSON)
-
+    
 }
 
 /**
@@ -100,6 +102,54 @@ public private(set) var GlossDateFormatterISO8601: GlossDateFormatter = {
 
     return dateFormatterISO8601
 }()
+
+// MARK: GlossJSONSerializer
+
+/// Creates JSON from data.
+public protocol JSONSerializer {
+    
+    /**
+     Creates JSON from provided data.
+     
+     - parameter data:    Data to create JSON from.
+     - parameter options: Options for reading the JSON data.
+     
+     - returns: JSON if created successfully, nil otherwise.
+     */
+    func json(from data: Data, options: JSONSerialization.ReadingOptions) -> JSON?
+    
+    /**
+     Creates JSON array from provided data.
+     
+     - parameter data:    Data to create JSON array from.
+     - parameter options: Options for reading the JSON data.
+     
+     - returns: JSON array if created successfully, nil otherwise.
+     */
+    func jsonArray(from data: Data, options: JSONSerialization.ReadingOptions) -> [JSON]?
+    
+}
+
+/// Gloss JSON Serializer.
+public struct GlossJSONSerializer: JSONSerializer {
+
+    public func json(from data: Data, options: JSONSerialization.ReadingOptions) -> JSON? {
+        guard let json = (try? JSONSerialization.jsonObject(with: data, options: options)) as? JSON else {
+            return nil
+        }
+        
+        return json
+    }
+    
+    public func jsonArray(from data: Data, options: JSONSerialization.ReadingOptions) -> [JSON]? {
+        guard let jsonArray = (try? JSONSerialization.jsonObject(with: data, options: options)) as? [JSON] else {
+            return nil
+        }
+        
+        return jsonArray
+    }
+
+}
 
 /**
  Default delimiter used for nested key paths.

@@ -1,8 +1,8 @@
 //
-//  Decodable+Extension.swift
+//  ExtensionDecodable.swift
 //  Gloss
 //
-// Copyright © 2017 https://github.com/kampro
+// Copyright © 2017 kampro
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,39 +27,21 @@ import Foundation
 public extension Decodable {
     
     /**
-     Initializes model object of type which implements protocol.
-     If data are incorrect returns nil.
+     Initializes array of model objects from provided data.
      
-     - parameter data: Raw JSON data, i.e. received from server.
+     - parameter data:       Raw JSON data.
+     - parameter serializer: Serializer to use when creating JSON from data.
+     - parameter ooptions:   Options for reading the JSON data.
      
      - returns: Object or nil.
      */
-    init?(data: Data) {
-        if let json = (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)) as? JSON {
+    init?(data: Data, serializer: JSONSerializer = GlossJSONSerializer(), options: JSONSerialization.ReadingOptions = .mutableContainers) {
+        if let json = serializer.json(from: data, options: options) {
             self.init(json: json)
             return
         }
         
         return nil
-    }
-    
-    
-    /**
-     Initializes array of model objects of type which implements protocol.
-     If data are incorrect returned array is empty.
-     
-     - parameter data: Raw JSON array data, i.e. received from server.
-     
-     - returns: Array containing objects of type which implements protocol.
-     */
-    static func array(from data: Data) -> [Self] {
-        if let json = (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)) as? [JSON] {
-            if let array = [Self].from(jsonArray: json) {
-                return array
-            }
-        }
-        
-        return [Self]()
     }
     
 }
