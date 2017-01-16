@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 `Gloss` adheres to [Semantic Versioning](http://semver.org/).
 
+- `1.2.x` Releases - [1.2.0](#120)
 - `1.1.x` Releases - [1.1.0](#110) | [1.1.1](#111)
 - `1.0.x` Releases - [1.0.0](#100)
 - `0.8.x` Releases - [0.8.0](#080)
@@ -15,11 +16,23 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [1.2.0](https://github.com/hkellaway/Gloss/releases/tag/1.2.0)
+Released on 2017-01-15. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A1.2.0)
+
+#### Added
+- Ability to initialize models and model arrays using Data [PR [256](https://github.com/hkellaway/Gloss/pull/256)]
+- Support for de/encoding Decimal types [PR [#243](https://github.com/hkellaway/Gloss/pull/243)]
+
+#### Fixed
+- Issues in URL decoding caused by escaping URLs [Issue [238](https://github.com/hkellaway/Gloss/issues/238)]
+
+---
+
 ## [1.1.1](https://github.com/hkellaway/Gloss/releases/tag/1.1.1)
 Released on 2016-11-27. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A1.1.1)
 
 #### Fixed
-- Nexted UUID values not being decoded properly [PR [#233](https://github.com/hkellaway/Gloss/pull/233)]
+- Nested UUID values not being decoded properly [PR [#233](https://github.com/hkellaway/Gloss/pull/233)]
 
 #### Updated
 - Tests to be run using `swift test` when loading as a Swift Package [PR [#228](https://github.com/hkellaway/Gloss/pull/228)]
