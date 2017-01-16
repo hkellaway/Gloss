@@ -27,6 +27,8 @@ import Foundation
 
 // MARK: - Types
 
+// MARK: JSON
+
 public typealias JSON = [String : Any]
 
 // MARK: - Protocols
@@ -90,6 +92,7 @@ public private(set) var GlossDateFormatterISO8601: DateFormatter = {
     dateFormatterISO8601.calendar = gregorian
 
     return dateFormatterISO8601
+    
 }()
 
 // MARK: GlossJSONSerializer
@@ -140,6 +143,8 @@ public struct GlossJSONSerializer: JSONSerializer {
 
 }
 
+// MARK: GlossKeyPathDelimiter
+
 /**
  Default delimiter used for nested key paths.
  
@@ -148,6 +153,8 @@ public struct GlossJSONSerializer: JSONSerializer {
 public private(set) var GlossKeyPathDelimiter: String = {
     return "."
 }()
+
+// MARK: jsonify
 
 /**
  Transforms an array of JSON optionals to a single optional JSON dictionary.
@@ -204,4 +211,5 @@ private func setValue(inJSON json: inout JSON, value: Any, forKeyPath keyPath: S
         setValue(inJSON: &subJSON, value:value, forKeyPath: rejoined, withDelimiter: delimiter)
         json[firstKey] = subJSON
     }
+    
 }
