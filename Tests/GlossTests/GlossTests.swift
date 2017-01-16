@@ -123,10 +123,12 @@ class GlossTests: XCTestCase {
         XCTAssertTrue(dateFormatterISO8601.dateFormat == "yyyy-MM-dd'T'HH:mm:ssZZZZZ", "Date formatter ISO8601 should have correct date format.")
     }
 
+	#if os(iOS)
     @available(iOS 10.0, *)
     func testDateFormatterReturnsFoundationVersion() {
         XCTAssert(GlossDateFormatterISO8601 is ISO8601DateFormatter)
     }
+	#endif
 
     func testDateFormatterISO8601ForcesGregorianCalendar() {
         if #available(iOS 10.0, *) {
