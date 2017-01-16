@@ -28,6 +28,12 @@ import Gloss
 import XCTest
 
 class FlowObjectCreationTests: XCTestCase {
+
+    static var allTests : [(String, (FlowObjectCreationTests) -> () throws -> Void)] {
+        return [
+            ("testObjectDecodedFromJSONHasCorrectProperties", testObjectDecodedFromJSONHasCorrectProperties)
+        ]
+    }
     
     var testJSON: JSON? = [:]
     

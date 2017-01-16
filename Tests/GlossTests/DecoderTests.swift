@@ -28,6 +28,58 @@ import Gloss
 import XCTest
 
 class DecoderTests: XCTestCase {
+
+    static var allTests : [(String, (DecoderTests) -> () throws -> Void)] {
+        return [
+            ("testInitializingFailableObjectsWithBadDataCanFail", testInitializingFailableObjectsWithBadDataCanFail),
+            ("testInitializingFailableObjectsWithValidDataCanSucceed", testInitializingFailableObjectsWithValidDataCanSucceed),
+            ("testInvalidValue", testInvalidValue),
+            ("testDecodeBoolArray", testDecodeBoolArray),
+            ("testDecodeBoolArrayReturnsNilIfJSONInvalid", testDecodeBoolArrayReturnsNilIfJSONInvalid),
+            ("testDecodeInt", testDecodeInt),
+            ("testDecodeIntArray", testDecodeIntArray),
+            ("testDecodeIntArrayReturnsNilIfJSONInvalid", testDecodeIntArrayReturnsNilIfJSONInvalid),
+            ("testDecodeFloat", testDecodeFloat),
+            ("testDecodeFloatArray", testDecodeFloatArray),
+            ("testDecodeFloatArrayReturnsNilIfJSONInvalid", testDecodeFloatArrayReturnsNilIfJSONInvalid),
+            ("testDecodeDouble", testDecodeDouble),
+            ("testDecodeDoubleArray", testDecodeDoubleArray),
+            ("testDecodeDoubleArrayReturnsNilIfJSONInvalid", testDecodeDoubleArrayReturnsNilIfJSONInvalid),
+            ("testDecodeDictionary", testDecodeDictionary),
+            ("testDecodeDictionaryWithArray", testDecodeDictionaryWithArray),
+            ("testDecodeString", testDecodeString),
+            ("testDecodeStringArray", testDecodeStringArray),
+            ("testDecodeStringArrayReturnsNilIfJSONInvalid", testDecodeStringArrayReturnsNilIfJSONInvalid),
+            ("testDecodeNestedModel", testDecodeNestedModel),
+            ("testDecodeEnumValue", testDecodeEnumValue),
+            ("testDecodeEnumArray", testDecodeEnumArray),
+            ("testDecodeEnumArrayReturnsNilIfJSONInvalid", testDecodeEnumArrayReturnsNilIfJSONInvalid),
+            ("testDecodeDate", testDecodeDate),
+            ("testDecodeDateArray", testDecodeDateArray),
+            ("testDecodeDateArrayReturnsNilIfJSONInvalid", testDecodeDateArrayReturnsNilIfJSONInvalid),
+            ("testDecodeDateISO8601", testDecodeDateISO8601),
+            ("testDecodeDateISO8601Array", testDecodeDateISO8601Array),
+            ("testDecodeDateISO8601ArrayArrayReturnsNilIfJSONInvalid", testDecodeDateISO8601ArrayArrayReturnsNilIfJSONInvalid),
+            ("testDecodeInt32", testDecodeInt32),
+            ("testDecodeInt32Array", testDecodeInt32Array),
+            ("testDecodeInt32ArrayReturnsNilIfJSONInvalid", testDecodeInt32ArrayReturnsNilIfJSONInvalid),
+            ("testDecodeUInt32", testDecodeUInt32),
+            ("testDecodeUInt32Array", testDecodeUInt32Array),
+            ("testDecodeUInt32ArrayReturnsNilIfJSONInvalid", testDecodeUInt32ArrayReturnsNilIfJSONInvalid),
+            ("testDecodeInt64", testDecodeInt64),
+            ("testDecodeInt64Array", testDecodeInt64Array),
+            ("testDecodeInt64ArrayReturnsNilIfJSONInvalid", testDecodeInt64ArrayReturnsNilIfJSONInvalid),
+            ("testDecodeUInt64", testDecodeUInt64),
+            ("testDecodeUInt64Array", testDecodeUInt64Array),
+            ("testDecodeUInt64ArrayReturnsNilIfJSONInvalid", testDecodeUInt64ArrayReturnsNilIfJSONInvalid),
+            ("testDecodeURL", testDecodeURL),
+            ("testDecodeURLArray", testDecodeURLArray),
+            ("testDecodeURLArrayReturnsNilIfJSONInvalid", testDecodeURLArrayReturnsNilIfJSONInvalid),
+            ("testDecodeUUID", testDecodeUUID),
+            ("testDecodeUUIDArray", testDecodeUUIDArray),
+            ("testDecodeUUIDArrayReturnsNilIfJSONInvalid", testDecodeUUIDArrayReturnsNilIfJSONInvalid)
+        ]
+	}
     
     var testJSON: JSON? = [:]
     var testFailableModelJSONValid: JSON? = [:]
@@ -277,7 +329,13 @@ class DecoderTests: XCTestCase {
     
     func testDecodeDate() {
         let result: Date? = Decoder.decode(dateForKey: "date", dateFormatter: TestModel.dateFormatter)(testJSON!)
-        
+
+/*		print(result)
+
+		let datetimeFormatter = DateFormatter()
+		datetimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS ZZZ"
+		print(datetimeFormatter.string(from: result!))
+*/      
         let year: Int = Calendar.current.dateComponents([.year], from: result!).year!
         let month: Int = Calendar.current.dateComponents([.month], from: result!).month!
         let day: Int = Calendar.current.dateComponents([.day], from: result!).day!
@@ -285,6 +343,13 @@ class DecoderTests: XCTestCase {
         let minute: Int = Calendar.current.dateComponents([.minute], from: result!).minute!
         let second: Int = Calendar.current.dateComponents([.second], from: result!).second!
         let nanosecond: Int = Calendar.current.dateComponents([.nanosecond], from: result!).nanosecond!
+/*		print("Year = \(year)")
+		print("Month = \(month)")
+		print("Day = \(day)")
+		print("Hour = \(hour)")
+		print("Minute = \(minute)")
+		print("Second = \(second)")
+*/		print("Nanosecond = \(nanosecond)")
         
         XCTAssertTrue((year == 2015), "Decode Date should return correct value")
         XCTAssertTrue((month == 8), "Decode Date should return correct value")

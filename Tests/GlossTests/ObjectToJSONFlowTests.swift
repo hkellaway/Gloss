@@ -1,5 +1,5 @@
 //
-//  FlowObjectToJSON.swift
+//  ObjectToJSONFlowTests.swift
 //  GlossExample
 //
 // Copyright (c) 2015 Harlan Kellaway
@@ -28,7 +28,13 @@ import Gloss
 import XCTest
 
 class ObjectToJSONFlowTests: XCTestCase {
-    
+
+    static var allTests : [(String, (ObjectToJSONFlowTests) -> () throws -> Void)] {
+        return [
+            ("testObjectEncodedToJSONHasCorrectProperties", testObjectEncodedToJSONHasCorrectProperties)
+        ]
+    }
+
     var testModel: TestModel?
     
     override func setUp() {
