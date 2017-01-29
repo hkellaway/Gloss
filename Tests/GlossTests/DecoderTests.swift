@@ -62,15 +62,23 @@ class DecoderTests: XCTestCase {
             ("testDecodeDateISO8601ArrayArrayReturnsNilIfJSONInvalid", testDecodeDateISO8601ArrayArrayReturnsNilIfJSONInvalid),
             ("testDecodeInt32", testDecodeInt32),
             ("testDecodeInt32Array", testDecodeInt32Array),
+            ("testDecodeInt32String", testDecodeInt32String),
+            ("testDecodeInt32StringArray", testDecodeInt32StringArray),
             ("testDecodeInt32ArrayReturnsNilIfJSONInvalid", testDecodeInt32ArrayReturnsNilIfJSONInvalid),
             ("testDecodeUInt32", testDecodeUInt32),
             ("testDecodeUInt32Array", testDecodeUInt32Array),
+            ("testDecodeUInt32String", testDecodeUInt32String),
+            ("testDecodeUInt32StringArray", testDecodeUInt32StringArray),
             ("testDecodeUInt32ArrayReturnsNilIfJSONInvalid", testDecodeUInt32ArrayReturnsNilIfJSONInvalid),
             ("testDecodeInt64", testDecodeInt64),
             ("testDecodeInt64Array", testDecodeInt64Array),
+            ("testDecodeInt64String", testDecodeInt64String),
+            ("testDecodeInt64StringArray", testDecodeInt64StringArray),
             ("testDecodeInt64ArrayReturnsNilIfJSONInvalid", testDecodeInt64ArrayReturnsNilIfJSONInvalid),
             ("testDecodeUInt64", testDecodeUInt64),
             ("testDecodeUInt64Array", testDecodeUInt64Array),
+            ("testDecodeUInt64String", testDecodeUInt64String),
+            ("testDecodeUInt64StringArray", testDecodeUInt64StringArray),
             ("testDecodeUInt64ArrayReturnsNilIfJSONInvalid", testDecodeUInt64ArrayReturnsNilIfJSONInvalid),
             ("testDecodeURL", testDecodeURL),
             ("testDecodeURLArray", testDecodeURLArray),
@@ -445,8 +453,24 @@ class DecoderTests: XCTestCase {
         #endif
     }
     
+    func testDecodeInt32String() {
+        let result: Int32? = Decoder.decode(int32ForKey: "int32String")(testJSON!)
+
+        #if !os(Linux)
+        XCTAssertTrue((result == 100000000), "Decode Int32 should return correct value")
+        #endif
+    }
+    
+    func testDecodeInt32StringArray() {
+        let result: [Int32]? = Decoder.decode(int32ArrayForKey: "int32StringArray")(testJSON!)
+
+        #if !os(Linux)        
+        XCTAssertTrue((result! == [100000000, -2147483648, 2147483647]), "Decode Int32 array should return correct value")
+        #endif
+    }
+    
     func testDecodeInt32ArrayReturnsNilIfJSONInvalid() {
-        let invalidJSON = [ "array" : ["1", "2", "3"] ]
+        let invalidJSON = [ "array" : ["x", "2", "3"] ]
         let result: [Int32]? = Decoder.decode(int32ArrayForKey: "array")(invalidJSON as JSON)
         
         XCTAssertNil(result, "Decode Int32 array should return nil if JSON is invalid")
@@ -468,8 +492,24 @@ class DecoderTests: XCTestCase {
         #endif
     }
     
+    func testDecodeUInt32String() {
+        let result: UInt32? = Decoder.decode(uint32ForKey: "uInt32String")(testJSON!)
+
+        #if !os(Linux)
+        XCTAssertTrue((result == 4294967295), "Decode UInt32 should return correct value")
+        #endif
+    }
+
+    func testDecodeUInt32StringArray() {
+        let result: [UInt32]? = Decoder.decode(uint32ArrayForKey: "uInt32StringArray")(testJSON!)
+
+        #if !os(Linux)
+        XCTAssertTrue((result! == [100000000, 2147483648, 4294967295]), "Decode UInt32 array should return correct value")
+        #endif
+    }
+    
     func testDecodeUInt32ArrayReturnsNilIfJSONInvalid() {
-        let invalidJSON = [ "array" : ["1", "2", "3"] ]
+        let invalidJSON = [ "array" : ["x", "2", "3"] ]
         let result: [UInt32]? = Decoder.decode(uint32ArrayForKey: "array")(invalidJSON as JSON)
         
         XCTAssertNil(result, "Decode UInt32 array should return nil if JSON is invalid")
@@ -491,8 +531,24 @@ class DecoderTests: XCTestCase {
         #endif
     }
     
+    func testDecodeInt64String() {
+        let result: Int64? = Decoder.decode(int64ForKey: "int64String")(testJSON!)
+        
+        #if !os(Linux)
+        XCTAssertTrue((result == 300000000), "Decode Int64 should return correct value")
+        #endif
+    }
+    
+    func testDecodeInt64StringArray() {
+        let result: [Int64]? = Decoder.decode(int64ArrayForKey: "int64StringArray")(testJSON!)
+        
+        #if !os(Linux)
+        XCTAssertTrue((result! == [300000000, -9223372036854775808, 9223372036854775807]), "Decode Int64 array should return correct value")
+        #endif
+    }
+    
     func testDecodeInt64ArrayReturnsNilIfJSONInvalid() {
-        let invalidJSON = [ "array" : ["1", "2", "3"] ]
+        let invalidJSON = [ "array" : ["x", "2", "3"] ]
         let result: [Int64]? = Decoder.decode(int64ArrayForKey: "array")(invalidJSON as JSON)
         
         XCTAssertNil(result, "Decode Int64 array should return nil if JSON is invalid")
@@ -514,8 +570,24 @@ class DecoderTests: XCTestCase {
         #endif
     }
     
+    func testDecodeUInt64String() {
+        let result: UInt64? = Decoder.decode(uint64ForKey: "uInt64String")(testJSON!)
+
+        #if !os(Linux)
+        XCTAssertTrue((result == 18446744073709551615), "Decode UInt64 should return correct value")
+        #endif
+    }
+
+    func testDecodeUInt64StringArray() {
+        let result: [UInt64]? = Decoder.decode(uint64ArrayForKey: "uInt64StringArray")(testJSON!)
+
+        #if !os(Linux)
+        XCTAssertTrue((result! == [300000000, 9223372036854775808, 18446744073709551615]), "Decode UInt64 array should return correct value")
+        #endif
+    }
+    
     func testDecodeUInt64ArrayReturnsNilIfJSONInvalid() {
-        let invalidJSON = [ "array" : ["1", "2", "3"] ]
+        let invalidJSON = [ "array" : ["x", "2", "3"] ]
         let result: [UInt64]? = Decoder.decode(uint64ArrayForKey: "array")(invalidJSON as JSON)
         
         XCTAssertNil(result, "Decode UInt64 array should return nil if JSON is invalid")
