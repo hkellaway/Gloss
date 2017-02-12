@@ -34,7 +34,6 @@
 		9F055DCB1DCBC24000EB78C1 /* FlowObjectCreationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F055DC21DCBC24000EB78C1 /* FlowObjectCreationTests.swift */; };
 		9F055DCC1DCBC24000EB78C1 /* ObjectToJSONFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F055DC31DCBC24000EB78C1 /* ObjectToJSONFlowTests.swift */; };
 		9F055DCD1DCBC24000EB78C1 /* GlossTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F055DC41DCBC24000EB78C1 /* GlossTests.swift */; };
-		9F055DCE1DCBC24000EB78C1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F055DC51DCBC24000EB78C1 /* Info.plist */; };
 		9F055DCF1DCBC24000EB78C1 /* KeyPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F055DC61DCBC24000EB78C1 /* KeyPathTests.swift */; };
 		9F055DD01DCBC24000EB78C1 /* OperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F055DC71DCBC24000EB78C1 /* OperatorTests.swift */; };
 		9F055DDA1DCBC25000EB78C1 /* TestFailableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F055DD11DCBC25000EB78C1 /* TestFailableModel.swift */; };
@@ -399,7 +398,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F055DDC1DCBC25000EB78C1 /* TestFailableModelValid.json in Resources */,
-				9F055DCE1DCBC24000EB78C1 /* Info.plist in Resources */,
 				9F055DDB1DCBC25000EB78C1 /* TestFailableModelInvalid.json in Resources */,
 				9F055DDF1DCBC25000EB78C1 /* TestModel.json in Resources */,
 			);
