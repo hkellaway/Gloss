@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 `Gloss` adheres to [Semantic Versioning](http://semver.org/).
 
-- `1.2.x` Releases - [1.2.0](#120)
+- `1.2.x` Releases - [1.2.0](#120) | [1.2.1](#121)
 - `1.1.x` Releases - [1.1.0](#110) | [1.1.1](#111)
 - `1.0.x` Releases - [1.0.0](#100)
 - `0.8.x` Releases - [0.8.0](#080)
@@ -15,6 +15,12 @@ All notable changes to this project will be documented in this file.
 - `0.1.x` Releases - [0.1.0](#010)
 
 ---
+
+## [1.2.1](https://github.com/hkellaway/Gloss/releases/tag/1.2.1)
+Released on 2017-02-11. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C$
+
+#### Fixed
+- Decodable extension not being available on all platforms [Issue [#270](https://github.com/hkellaway/Gloss/issues/270)]
 
 ## [1.2.0](https://github.com/hkellaway/Gloss/releases/tag/1.2.0)
 Released on 2017-01-15. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A1.2.0)
