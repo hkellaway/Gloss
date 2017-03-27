@@ -39,6 +39,7 @@ extension Dictionary {
      
      - parameter keyPath:   Key path delimited by delimiter.
      - parameter delimiter: Delimiter.
+     - parameter logger:    Logger.
      
      - returns: Value retrieved from dic
      */

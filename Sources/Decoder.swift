@@ -48,8 +48,8 @@ public struct Decoder {
             // If Gloss cannot determine the type being decoded, this generic decode function
             // will be used. At times, this will result in a value being present in the JSON
             // but Gloss returning nil - in this case, we log the failure.
-            if let value = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) {
-                logger.log(message: "Value found for \(key) but type cannot be decoded.")
+            if let _ = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) {
+                logger.log(message: "Value found for key \"\(key)\" but decoding failed.")
             }
             
             return nil

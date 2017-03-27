@@ -95,7 +95,7 @@ public private(set) var GlossDateFormatterISO8601: DateFormatter = {
     
 }()
 
-// MARK: GlossJSONSerializer
+// MARK: JSONSerializer
 
 /// Creates JSON from data.
 public protocol JSONSerializer {
