@@ -32,6 +32,7 @@ class DecoderTests: XCTestCase {
     var testJSON: JSON? = [:]
     var testFailableModelJSONValid: JSON? = [:]
     var testFailableModelJSONInvalid: JSON? = [:]
+    var testUnknownTypeJSON: JSON? = [:]
 
     override func setUp() {
         super.setUp()
@@ -41,6 +42,7 @@ class DecoderTests: XCTestCase {
         testJSON = TestModel.testJSON
         testFailableModelJSONValid = TestFailableModel.testValidJSON
         testFailableModelJSONInvalid = TestFailableModel.testInvalidJSON
+        testUnknownTypeJSON = TestUnknownTypeModel.testJSON
             
         #else
         
@@ -71,6 +73,16 @@ class DecoderTests: XCTestCase {
         } catch {
             print(error)
         }
+            
+        testJSONPath  = Bundle(for: type(of: self)).path(forResource: "TestUnknownTypeModel", ofType: "json")!
+        testJSONData = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath))
+            
+        do {
+            try testUnknownTypeJSON = JSONSerialization.jsonObject(with: testJSONData, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? JSON
+        } catch {
+                print(error)
+        }
+            
         #endif
     }
     
@@ -78,8 +90,17 @@ class DecoderTests: XCTestCase {
         testJSON = nil
         testFailableModelJSONValid = nil
         testFailableModelJSONInvalid = nil
+        testUnknownTypeJSON = nil
         
         super.tearDown()
+    }
+    
+    func testDecodingModelWithUnknownTypeLogsErrorMessage() {
+        let fakeLogger = FakeLogger()
+        let value: UnknownType? = Decoder.decode(key: "value", logger: fakeLogger)(testUnknownTypeJSON!)
+        
+        XCTAssertNil(value)
+        XCTAssertTrue(fakeLogger.wasMessageLogged, "Message should be logged when an unknown type is attempted to be decoded.")
     }
     
     func testInitializingFailableObjectsWithBadDataCanFail() {

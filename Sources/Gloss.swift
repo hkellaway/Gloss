@@ -95,7 +95,7 @@ public private(set) var GlossDateFormatterISO8601: DateFormatter = {
     
 }()
 
-// MARK: GlossJSONSerializer
+// MARK: JSONSerializer
 
 /// Creates JSON from data.
 public protocol JSONSerializer {
@@ -141,6 +141,27 @@ public struct GlossJSONSerializer: JSONSerializer {
         return jsonArray
     }
 
+}
+
+// MARK: Logger
+
+/// Logs messages about unexpected behavior.
+public protocol Logger {
+    
+    /// Logs provided message.
+    ///
+    /// - Parameter message: Message.
+    func log(message: String)
+    
+}
+
+/// Gloss Logger.
+public struct GlossLogger: Logger {
+    
+    public func log(message: String) {
+        print("[Gloss] \(message)")
+    }
+    
 }
 
 // MARK: GlossKeyPathDelimiter
