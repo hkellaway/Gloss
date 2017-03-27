@@ -143,6 +143,27 @@ public struct GlossJSONSerializer: JSONSerializer {
 
 }
 
+// MARK: Logger
+
+/// Logs messages about unexpected behavior.
+public protocol Logger {
+    
+    /// Logs provided message.
+    ///
+    /// - Parameter message: Message.
+    func log(message: String)
+    
+}
+
+/// Gloss Logger.
+public struct GlossLogger: Logger {
+    
+    public func log(message: String) {
+        print("[Gloss] \(message)")
+    }
+    
+}
+
 // MARK: GlossKeyPathDelimiter
 
 /**

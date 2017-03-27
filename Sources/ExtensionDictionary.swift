@@ -42,11 +42,11 @@ extension Dictionary {
      
      - returns: Value retrieved from dic
      */
-    public func valueForKeyPath(keyPath: String, withDelimiter delimiter: String = GlossKeyPathDelimiter) -> Any? {
+    public func valueForKeyPath(keyPath: String, withDelimiter delimiter: String = GlossKeyPathDelimiter, logger: Logger = GlossLogger()) -> Any? {
         let keys = keyPath.components(separatedBy: delimiter)
         
         guard keys.first as? Key != nil else {
-            print("[Gloss] Unable to use keyPath '\(keyPath)' as key on type: \(Key.self)")
+            logger.log(message: "Unable to use keyPath '\(keyPath)' as key on type: \(Key.self)")
             return nil
         }
         
