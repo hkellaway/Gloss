@@ -37,12 +37,19 @@ public struct Decoder {
     
     - returns: Value decoded from JSON.
     */
-    public static func decode<T>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> T? {
+    public static func decode<T>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter, logger: Logger = GlossLogger()) -> (JSON) -> T? {
         return {
             json in
             
             if let value = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? T {
                 return value
+            }
+            
+            // If Gloss cannot determine the type being decoded, this generic decode function
+            // will be used. At times, this will result in a value being present in the JSON
+            // but Gloss returning nil - in this case, we log the failure.
+            if let value = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) {
+                logger.log(message: "Value found for \(key) but type cannot be decoded.")
             }
             
             return nil
