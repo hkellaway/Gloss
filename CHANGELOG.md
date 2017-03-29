@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 `Gloss` adheres to [Semantic Versioning](http://semver.org/).
 
-- `1.2.x` Releases - [1.2.0](#120) | [1.2.1](#121) | [1.2.2](#122)
+- `1.2.x` Releases - [1.2.0](#120) | [1.2.1](#121) | [1.2.2](#122) | [1.2.3](#123)
 - `1.1.x` Releases - [1.1.0](#110) | [1.1.1](#111)
 - `1.0.x` Releases - [1.0.0](#100)
 - `0.8.x` Releases - [0.8.0](#080)
@@ -16,11 +16,19 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [1.2.3](https://github.com/hkellaway/Gloss/releases/tag/1.2.3)
+Released on 2017-03-29. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A1.2.3)
+
+#### Fixed
+- Logging when a value cannot be found despite the value being null [Issue #279](https://github.com/hkellaway/Gloss/issues/279)
+
+---
+
 ## [1.2.2](https://github.com/hkellaway/Gloss/releases/tag/1.2.2)
-Released on 2017-03-27. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A1.2.2)
+Released on 2017-03-28. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A1.2.2)
 
 #### Added
-- Logging for when a value is found but cannot be decoded
+- Logging for when a value is found but cannot be decoded [PR #277](https://github.com/hkellaway/Gloss/pull/277)
 
 ---
 
