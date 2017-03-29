@@ -584,7 +584,7 @@ Check out Gloss in these cool places!
 * [Swift Sandbox](http://swiftsandbox.io/issues/3#b1RJwo2)
 * [iOS Goodies](http://ios-goodies.com/post/127166753231/week-93)
 
-Using Gloss in your app? [Let me know.](mailto:hello@harlankellaway.com?subject=Using Gloss in my project)
+Using Gloss in your app? Let me know: hello@harlankellaway.com
 
 ## License
 
