@@ -103,6 +103,16 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue(fakeLogger.wasMessageLogged, "Message should be logged when an unknown type is attempted to be decoded.")
     }
     
+    func testDecodingModelWithUnknownTypeLogsErrorMessageInInjectedDefaultLogger() {
+        let fakeLogger = FakeLogger()
+        Decoder.logger = fakeLogger
+        
+        let value: UnknownType? = Decoder.decode(key: "value")(testUnknownTypeJSON!)
+        
+        XCTAssertNil(value)
+        XCTAssertTrue(fakeLogger.wasMessageLogged, "Message should be logged when an unknown type is attempted to be decoded.")
+    }
+    
     func testInitializingFailableObjectsWithBadDataCanFail() {
         let result = TestFailableModel(json: testFailableModelJSONInvalid!)
         
