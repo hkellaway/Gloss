@@ -30,6 +30,9 @@ Decodes JSON to objects.
 */
 public struct Decoder {
     
+    /// Default logger
+    public static var logger: Logger = GlossLogger()
+    
     /**
      Decodes JSON to a generic value.
     
@@ -37,7 +40,7 @@ public struct Decoder {
     
     - returns: Value decoded from JSON.
     */
-    public static func decode<T>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter, logger: Logger = GlossLogger()) -> (JSON) -> T? {
+    public static func decode<T>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter, logger: Logger = logger) -> (JSON) -> T? {
         return {
             json in
             
