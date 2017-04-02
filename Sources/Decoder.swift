@@ -284,6 +284,32 @@ public struct Decoder {
         }
     }
     
+    // Attempt to convert a String to an Int of type T
+    private static func decodeStringAsInt<T: Integer>(json: JSON, toInt:(String) -> T?, keyPath: String, keyPathDelimiter: String) -> T? {
+    
+        if let string = json.valueForKeyPath(keyPath: keyPath, withDelimiter: keyPathDelimiter) as? String {
+            return toInt(string)
+        }
+        
+        return nil
+    }
+    
+    // Attempt to convert a [String] to an [Int] of with Int's of type T
+    private static func decodeStringArrayAsInts<T: Integer>(json: JSON, toInt:(String) -> T?, keyPath: String, keyPathDelimiter: String) -> [T]? {
+    
+        if let strings = json.valueForKeyPath(keyPath: keyPath, withDelimiter: keyPathDelimiter) as? [String] {
+            let ints: [T] =
+                strings.map { toInt($0) } // some of the strings may be malformed as Int's
+                    .filter { $0 != nil } // remove any nils (from malformed Int's)
+                    .map({ $0! })
+            if ints.count == strings.count {
+                return ints
+            }
+        }
+
+        return nil
+    }
+    
     /**
      Decodes JSON to an Int32.
      
@@ -299,7 +325,7 @@ public struct Decoder {
                 return number.int32Value
             }
             
-            return nil
+            return decodeStringAsInt(json: json, toInt:{ Int32($0) }, keyPath: key, keyPathDelimiter: keyPathDelimiter)
         }
     }
     
@@ -320,7 +346,7 @@ public struct Decoder {
                 return ints
             }
             
-            return nil
+            return decodeStringArrayAsInts(json: json, toInt: { Int32($0) }, keyPath: key, keyPathDelimiter: keyPathDelimiter)
         }
     }
 
@@ -338,8 +364,8 @@ public struct Decoder {
 			if let number = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? NSNumber {
 				return number.uint32Value
 			}
-
-			return nil
+            
+            return decodeStringAsInt(json: json, toInt:{ UInt32($0) }, keyPath: key, keyPathDelimiter: keyPathDelimiter)
 		}
 	}
 
@@ -360,7 +386,7 @@ public struct Decoder {
 				return uints
 			}
 
-			return nil
+            return decodeStringArrayAsInts(json: json, toInt: { UInt32($0) }, keyPath: key, keyPathDelimiter: keyPathDelimiter)
 		}
 	}
 
@@ -379,7 +405,7 @@ public struct Decoder {
                 return number.int64Value
             }
             
-            return nil
+            return decodeStringAsInt(json: json, toInt:{ Int64($0) }, keyPath: key, keyPathDelimiter: keyPathDelimiter)
         }
     }
     
@@ -400,7 +426,7 @@ public struct Decoder {
                 return ints
             }
             
-            return nil
+            return decodeStringArrayAsInts(json: json, toInt: { Int64($0) }, keyPath: key, keyPathDelimiter: keyPathDelimiter)
         }
     }
 
@@ -419,7 +445,7 @@ public struct Decoder {
 				return number.uint64Value
 			}
 
-			return nil
+            return decodeStringAsInt(json: json, toInt:{ UInt64($0) }, keyPath: key, keyPathDelimiter: keyPathDelimiter)
 		}
 	}
 
@@ -440,7 +466,7 @@ public struct Decoder {
 				return uints
 			}
 
-			return nil
+            return decodeStringArrayAsInts(json: json, toInt: { UInt64($0) }, keyPath: key, keyPathDelimiter: keyPathDelimiter)
 		}
 	}
 
@@ -581,4 +607,3 @@ public struct Decoder {
     }
     
 }
-
