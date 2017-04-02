@@ -28,21 +28,6 @@ import Gloss
 import XCTest
 
 class GlossTests: XCTestCase {
-
-    static var allTests : [(String, (GlossTests) -> () throws -> Void)] {
-        return [
-            ("testDateFormatterISO8601HasCorrectLocale", testDateFormatterISO8601HasCorrectLocale),
-            ("testDateFormatterISO8601HasCorrectDateFormat", testDateFormatterISO8601HasCorrectDateFormat),
-			("testDateFormatterISO8601ForcesGregorianCalendar", testDateFormatterISO8601ForcesGregorianCalendar),
-			("testJsonifyTurnsArrayOfJsonDictsToSingleJsonDict", testJsonifyTurnsArrayOfJsonDictsToSingleJsonDict),
-			("testModelsFromJSONArrayProducesValidModels", testModelsFromJSONArrayProducesValidModels),
-			("testModelsFromJSONArrayReturnsNilIfDecodingFails", testModelsFromJSONArrayReturnsNilIfDecodingFails),
-			("testJSONArrayFromModelsProducesValidJSON", testJSONArrayFromModelsProducesValidJSON),
-			("testJSONArrayFromModelsReturnsNilIfEncodingFails", testJSONArrayFromModelsReturnsNilIfEncodingFails),
-			("testJsonifyTurnsJSONOptionalArrayToSingleJSONOptional", testJsonifyTurnsJSONOptionalArrayToSingleJSONOptional),
-			("testJsonifyReturnsEmptyJSONWhenGivenEmptyArray", testJsonifyReturnsEmptyJSONWhenGivenEmptyArray)
-        ]
-    }
     
     var testJSONArray: [JSON]? = []
     var testModels: [TestModel]? = nil
@@ -118,13 +103,13 @@ class GlossTests: XCTestCase {
     }
     
     func testDateFormatterISO8601HasCorrectLocale() {
-        let dateFormatterISO8601 = GlossDateFormatterISO8601 as! DateFormatter
+        let dateFormatterISO8601 = GlossDateFormatterISO8601 
         
         XCTAssertTrue(dateFormatterISO8601.locale.identifier == "en_US_POSIX", "Date formatter ISO8601 should have correct locale.")
     }
     
     func testDateFormatterISO8601HasCorrectDateFormat() {
-        let dateFormatterISO8601 = GlossDateFormatterISO8601 as! DateFormatter
+        let dateFormatterISO8601 = GlossDateFormatterISO8601 
         
         XCTAssertTrue(dateFormatterISO8601.dateFormat == "yyyy-MM-dd'T'HH:mm:ssZZZZZ", "Date formatter ISO8601 should have correct date format.")
     }
@@ -135,7 +120,7 @@ class GlossTests: XCTestCase {
             return
         }
 
-        let dateFormatterISO8601 = GlossDateFormatterISO8601 as! DateFormatter
+        let dateFormatterISO8601 = GlossDateFormatterISO8601 
 
         XCTAssertTrue(dateFormatterISO8601.calendar.identifier == Calendar.Identifier.gregorian, "Date formatter ISO8601 should force use of Gregorian calendar.")
          XCTAssertTrue(dateFormatterISO8601.calendar.timeZone.abbreviation() == "GMT", "Date formatter ISO8601 Gregorian calendar should use GMT timezone.")

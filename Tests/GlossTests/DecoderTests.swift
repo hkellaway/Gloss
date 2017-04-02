@@ -28,7 +28,6 @@ import Gloss
 import XCTest
 
 class DecoderTests: XCTestCase {
-
     static var allTests : [(String, (DecoderTests) -> () throws -> Void)] {
         return [
             ("testInitializingFailableObjectsWithBadDataCanFail", testInitializingFailableObjectsWithBadDataCanFail),
@@ -92,6 +91,7 @@ class DecoderTests: XCTestCase {
     var testJSON: JSON? = [:]
     var testFailableModelJSONValid: JSON? = [:]
     var testFailableModelJSONInvalid: JSON? = [:]
+    var testUnknownTypeJSON: JSON? = [:]
 
     override func setUp() {
         super.setUp()
@@ -101,6 +101,7 @@ class DecoderTests: XCTestCase {
         testJSON = TestModel.testJSON
         testFailableModelJSONValid = TestFailableModel.testValidJSON
         testFailableModelJSONInvalid = TestFailableModel.testInvalidJSON
+        testUnknownTypeJSON = TestUnknownTypeModel.testJSON
             
         #else
         
@@ -131,6 +132,16 @@ class DecoderTests: XCTestCase {
         } catch {
             print(error)
         }
+            
+        testJSONPath  = Bundle(for: type(of: self)).path(forResource: "TestUnknownTypeModel", ofType: "json")!
+        testJSONData = try! Data(contentsOf: URL(fileURLWithPath: testJSONPath))
+            
+        do {
+            try testUnknownTypeJSON = JSONSerialization.jsonObject(with: testJSONData, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? JSON
+        } catch {
+                print(error)
+        }
+            
         #endif
     }
     
@@ -138,20 +149,39 @@ class DecoderTests: XCTestCase {
         testJSON = nil
         testFailableModelJSONValid = nil
         testFailableModelJSONInvalid = nil
+        testUnknownTypeJSON = nil
         
         super.tearDown()
+    }
+    
+    func testDecodingModelWithUnknownTypeLogsErrorMessage() {
+        let fakeLogger = FakeLogger()
+        let value: UnknownType? = Decoder.decode(key: "value", logger: fakeLogger)(testUnknownTypeJSON!)
+        
+        XCTAssertNil(value)
+        XCTAssertTrue(fakeLogger.wasMessageLogged, "Message should be logged when an unknown type is attempted to be decoded.")
+    }
+    
+    func testDecodingModelWithUnknownTypeLogsErrorMessageInInjectedDefaultLogger() {
+        let fakeLogger = FakeLogger()
+        Decoder.logger = fakeLogger
+        
+        let value: UnknownType? = Decoder.decode(key: "value")(testUnknownTypeJSON!)
+        
+        XCTAssertNil(value)
+        XCTAssertTrue(fakeLogger.wasMessageLogged, "Message should be logged when an unknown type is attempted to be decoded.")
     }
     
     func testInitializingFailableObjectsWithBadDataCanFail() {
         let result = TestFailableModel(json: testFailableModelJSONInvalid!)
         
-        XCTAssertTrue(result == nil, "Expected initialization with bad data to fail, instead got \(String(describing: result))")
+        XCTAssertTrue(result == nil, "Expected initialization with bad data to fail, instead got \(result)")
     }
     
     func testInitializingFailableObjectsWithValidDataCanSucceed() {
         let result = TestFailableModel(json: testFailableModelJSONValid!)
         
-        XCTAssertTrue(result != nil, "Expected initialization with valid data to succeed, instead got \(String(describing: result))")
+        XCTAssertTrue(result != nil, "Expected initialization with valid data to succeed, instead got \(result)")
     }
     
     func testInvalidValue() {
@@ -337,7 +367,7 @@ class DecoderTests: XCTestCase {
     
     func testDecodeDate() {
         let result: Date? = Decoder.decode(dateForKey: "date", dateFormatter: TestModel.dateFormatter)(testJSON!)
-
+        
         let year: Int = Calendar.current.dateComponents([.year], from: result!).year!
         let month: Int = Calendar.current.dateComponents([.month], from: result!).month!
         let day: Int = Calendar.current.dateComponents([.day], from: result!).day!
@@ -352,11 +382,7 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((hour == 20), "Decode Date should return correct value")
         XCTAssertTrue((minute == 51), "Decode Date should return correct value")
         XCTAssertTrue((second == 46), "Decode Date should return correct value")
-		#if !os(Linux)
-	        XCTAssertTrue((nanosecond/1000000 == 599), "Decode Date should return correct value")
-		#else
-			XCTAssertTrue((nanosecond == 16843009), "Decode Date should return correct value")
-		#endif
+        XCTAssertTrue((nanosecond/1000000 == 599), "Decode Date should return correct value")
     }
     
     func testDecodeDateArray() {
@@ -386,11 +412,7 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((hour1 == 20), "Decode Date array should return correct value")
         XCTAssertTrue((minute1 == 51), "Decode Date array should return correct value")
         XCTAssertTrue((second1 == 46), "Decode Date array should return correct value")
-		#if !os(Linux)
-	        XCTAssertTrue((nanosecond1/1000000 == 599), "Decode Date should return correct value")
-		#else
-			XCTAssertTrue((nanosecond1 == 16843009), "Decode Date should return correct value")
-		#endif
+        XCTAssertTrue((nanosecond1/1000000 == 599), "Decode Date array should return correct value")
         
         XCTAssertTrue((year2 == 2015), "Decode Date array should return correct value")
         XCTAssertTrue((month2 == 8), "Decode Date array should return correct value")
@@ -398,11 +420,7 @@ class DecoderTests: XCTestCase {
         XCTAssertTrue((hour2 == 20), "Decode Date array should return correct value")
         XCTAssertTrue((minute2 == 51), "Decode Date array should return correct value")
         XCTAssertTrue((second2 == 46), "Decode Date array should return correct value")
-		#if !os(Linux)
-	        XCTAssertTrue((nanosecond2/1000000 == 599), "Decode Date should return correct value")
-		#else
-			XCTAssertTrue((nanosecond2 == 16843009), "Decode Date should return correct value")
-		#endif
+        XCTAssertTrue((nanosecond2/1000000 == 599), "Decode Date array should return correct value")
     }
     
     func testDecodeDateArrayReturnsNilIfJSONInvalid() {
@@ -439,18 +457,14 @@ class DecoderTests: XCTestCase {
     
     func testDecodeInt32() {
         let result: Int32? = Decoder.decode(int32ForKey: "int32")(testJSON!)
-
-        #if !os(Linux)
+        
         XCTAssertTrue((result == 100000000), "Decode Int32 should return correct value")
-        #endif
     }
     
     func testDecodeInt32Array() {
         let result: [Int32]? = Decoder.decode(int32ArrayForKey: "int32Array")(testJSON!)
-
-        #if !os(Linux)        
+        
         XCTAssertTrue((result! == [100000000, -2147483648, 2147483647]), "Decode Int32 array should return correct value")
-        #endif
     }
     
     func testDecodeInt32String() {
@@ -476,21 +490,17 @@ class DecoderTests: XCTestCase {
         XCTAssertNil(result, "Decode Int32 array should return nil if JSON is invalid")
     }
 
-    func testDecodeUInt32() {
+	func testDecodeUInt32() {
         let result: UInt32? = Decoder.decode(uint32ForKey: "uInt32")(testJSON!)
 
-        #if !os(Linux)
-        XCTAssertTrue((result == 4294967295), "Decode UInt32 should return correct value")
-        #endif
-    }
+		XCTAssertTrue((result == 4294967295), "Decode UInt32 should return correct value")
+	}
 
-    func testDecodeUInt32Array() {
+	func testDecodeUInt32Array() {
         let result: [UInt32]? = Decoder.decode(uint32ArrayForKey: "uInt32Array")(testJSON!)
 
-        #if !os(Linux)
-        XCTAssertTrue((result! == [100000000, 2147483648, 4294967295]), "Decode UInt32 array should return correct value")
-        #endif
-    }
+		XCTAssertTrue((result! == [100000000, 2147483648, 4294967295]), "Decode UInt32 array should return correct value")
+	}
     
     func testDecodeUInt32String() {
         let result: UInt32? = Decoder.decode(uint32ForKey: "uInt32String")(testJSON!)
@@ -518,17 +528,13 @@ class DecoderTests: XCTestCase {
     func testDecodeInt64() {
         let result: Int64? = Decoder.decode(int64ForKey: "int64")(testJSON!)
         
-        #if !os(Linux)
         XCTAssertTrue((result == 300000000), "Decode Int64 should return correct value")
-        #endif
     }
     
     func testDecodeInt64Array() {
         let result: [Int64]? = Decoder.decode(int64ArrayForKey: "int64Array")(testJSON!)
         
-        #if !os(Linux)
         XCTAssertTrue((result! == [300000000, -9223372036854775808, 9223372036854775807]), "Decode Int64 array should return correct value")
-        #endif
     }
     
     func testDecodeInt64String() {
@@ -554,21 +560,17 @@ class DecoderTests: XCTestCase {
         XCTAssertNil(result, "Decode Int64 array should return nil if JSON is invalid")
     }
 
-    func testDecodeUInt64() {
+	func testDecodeUInt64() {
         let result: UInt64? = Decoder.decode(uint64ForKey: "uInt64")(testJSON!)
 
-        #if !os(Linux)
-        XCTAssertTrue((result == 18446744073709551615), "Decode UInt64 should return correct value")
-        #endif
-    }
+		XCTAssertTrue((result == 18446744073709551615), "Decode UInt64 should return correct value")
+	}
 
-    func testDecodeUInt64Array() {
+	func testDecodeUInt64Array() {
         let result: [UInt64]? = Decoder.decode(uint64ArrayForKey: "uInt64Array")(testJSON!)
 
-        #if !os(Linux)
-        XCTAssertTrue((result! == [300000000, 9223372036854775808, 18446744073709551615]), "Decode UInt64 array should return correct value")
-        #endif
-    }
+		XCTAssertTrue((result! == [300000000, 9223372036854775808, 18446744073709551615]), "Decode UInt64 array should return correct value")
+	}
     
     func testDecodeUInt64String() {
         let result: UInt64? = Decoder.decode(uint64ForKey: "uInt64String")(testJSON!)

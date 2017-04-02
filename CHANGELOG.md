@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 `Gloss` adheres to [Semantic Versioning](http://semver.org/).
 
-- `1.2.x` Releases - [1.2.0](#120)
+- `1.2.x` Releases - [1.2.0](#120) | [1.2.1](#121) | [1.2.2](#122) | [1.2.3](#123) | [1.2.4](#124)
 - `1.1.x` Releases - [1.1.0](#110) | [1.1.1](#111)
 - `1.0.x` Releases - [1.0.0](#100)
 - `0.8.x` Releases - [0.8.0](#080)
@@ -13,6 +13,37 @@ All notable changes to this project will be documented in this file.
 - `0.3.x` Releases - [0.3.0](#030) | [0.3.1](#031)
 - `0.2.x` Releases - [0.2.0](#020)
 - `0.1.x` Releases - [0.1.0](#010)
+
+---
+
+## [1.2.4](https://github.com/hkellaway/Gloss/releases/tag/1.2.4)
+Released on 2017-03-30. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A1.2.4)
+
+#### Added
+- Ability to inject logger used by Decoder [Issue #282](https://github.com/hkellaway/Gloss/pull/282)
+---
+
+## [1.2.3](https://github.com/hkellaway/Gloss/releases/tag/1.2.3)
+Released on 2017-03-29. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A1.2.3)
+
+#### Fixed
+- Logging when a value cannot be found despite the value being null [Issue #279](https://github.com/hkellaway/Gloss/issues/279)
+
+---
+
+## [1.2.2](https://github.com/hkellaway/Gloss/releases/tag/1.2.2)
+Released on 2017-03-28. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A1.2.2)
+
+#### Added
+- Logging for when a value is found but cannot be decoded [PR #277](https://github.com/hkellaway/Gloss/pull/277)
+
+---
+
+## [1.2.1](https://github.com/hkellaway/Gloss/releases/tag/1.2.1)
+Released on 2017-02-11. All issues associated with this milestone can be found using this [filter](https://github.com/hkellaway/Gloss/issues?utf8=%E2%9C%93&q=milestone%3A1.2.1)
+
+#### Fixed
+- Decodable extension not being available on all platforms [Issue [#270](https://github.com/hkellaway/Gloss/issues/270)]
 
 ---
 
