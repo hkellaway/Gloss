@@ -608,14 +608,16 @@ class DecoderTests: XCTestCase {
     
     func testDecodeDecimal() {
         let result: Decimal? = Decoder.decode(decimalForKey: "decimal")(testJSON!)
-        
+#if !os(Linux)        
         XCTAssertTrue((result == 3.14159), "Decode Decimal should return correct value")
+#endif
     }
     
     func testDecodeDecimalArray() {
         let result: [Decimal]? = Decoder.decode(decimalArrayForKey: "decimalArray")(testJSON!)
-        
+#if !os(Linux)        
         XCTAssertTrue(result! == [3.14159, 1.618, -2.7182], "Decode Decimal array should return correct value")
+#endif
     }
     
     func testDecodeDecimalArrayReturnsNilIfJSONInvalid() {

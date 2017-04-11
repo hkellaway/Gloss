@@ -476,7 +476,7 @@ and
 
 #### On Using Gloss Operators
 
-_Remark: Int32, UInt32, Int64 and UInt64 types, and Int32, UInt32, Int64 and UInt64 arrays can't be used on Linux platform. Use Int, UInt and according arrays. - @rbukovansky_
+_Remark: Int32, UInt32, Int64 and UInt64 types, and Int32, UInt32, Int64 and UInt64 arrays can't be used on Linux platform. Use Int, UInt and according arrays. Similar is to Decimal and Decimal array. For now, raw data are not suggested either. - @rbukovansky_
 
 ##### The Decode Operator: `<~~`
 
