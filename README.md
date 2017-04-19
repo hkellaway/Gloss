@@ -43,7 +43,7 @@ github "hkellaway/Gloss"
 import PackageDescription
 
 let package = Package(
-    name: "HelloWorld",
+    name: "Gloss",
     dependencies: [
         .Package(url: "https://github.com/hkellaway/Gloss.git", majorVersion: 1, minor: 2)
     ]
