@@ -267,6 +267,30 @@ public func <~~ (key: String, json: JSON) -> [UUID]? {
 }
 
 /**
+ Convenience operator for decoding JSON to Double.
+ 
+ - parameter key:  JSON key for value to decode.
+ - parameter json: JSON.
+ 
+ - returns: Decoded value when successful, nil otherwise.
+ */
+public func <~~ (key: String, json: JSON) -> Double? {
+    return Decoder.decode(doubleForKey: key)(json)
+}
+
+/**
+ Convenience operator for decoding JSON to Double array.
+ 
+ - parameter key:  JSON key for value to decode.
+ - parameter json: JSON.
+ 
+ - returns: Decoded value when successful, nil otherwise.
+ */
+public func <~~ (key: String, json: JSON) -> [Double]? {
+    return Decoder.decode(doubleArrayForKey: key)(json)
+}
+
+/**
  Convenience operator for decoding JSON to Decimal.
  
  - parameter key:  JSON key for value to decode.

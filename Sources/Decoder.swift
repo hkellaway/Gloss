@@ -541,6 +541,46 @@ public struct Decoder {
     }
     
     /**
+     Decodes JSON to an Double.
+     
+     - parameter key: Key used in JSON for decoded value.
+     
+     - returns: Value decoded from JSON.
+     */
+    public static func decode(doubleForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> Double? {
+        return {
+            json in
+            
+            if let number = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? NSNumber {
+                return number.doubleValue
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
+     Decodes JSON to an Double array.
+     
+     - parameter key: Key used in JSON for decoded value.
+     
+     - returns: Value decoded from JSON.
+     */
+    public static func decode(doubleArrayForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> [Double]? {
+        return {
+            json in
+            
+            if let numbers = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? [NSNumber] {
+                let doubles: [Double] = numbers.map { $0.doubleValue }
+                
+                return doubles
+            }
+            
+            return nil
+        }
+    }
+    
+    /**
      Decodes JSON to a Decimal.
      
      - parameter key: Key used in JSON for decoded value.
