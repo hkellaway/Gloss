@@ -116,14 +116,14 @@ class OperatorTests: XCTestCase {
     
     func testDecodeOperatorGenericReturnsDecoderDecodeForDouble() {
         let resultDouble: Double? = "double" <~~ testJSON!
-        let decoderResultDouble: Double? = Decoder.decode(key: "double")(testJSON!)
+        let decoderResultDouble: Double? = Decoder.decode(doubleForKey: "double")(testJSON!)
         
         XCTAssertTrue((resultDouble == decoderResultDouble), "<~~ for generic value should return same as Decoder.decode for Double")
     }
     
     func testDecodeOperatorGenericReturnsDecoderDecodeForDoubleArray() {
         let resultDoubleArray: [Double]? = "doubleArray" <~~ testJSON!
-        let decoderResultDoubleArray: [Double]? = Decoder.decode(key: "doubleArray")(testJSON!)
+        let decoderResultDoubleArray: [Double]? = Decoder.decode(doubleArrayForKey: "doubleArray")(testJSON!)
         
         XCTAssertTrue((resultDoubleArray! == decoderResultDoubleArray!), "<~~ for generic value should return same as Decoder.decode for Double array")
     }
@@ -337,15 +337,15 @@ class OperatorTests: XCTestCase {
     func testEncodeOperatorGenericReturnsEncoderEncodeForDouble() {
         let double: Double? = 1.0
         let resultDouble: JSON? = "double" ~~> double
-        let encoderResultDouble: JSON? = Encoder.encode(key: "double")(double)
+        let encoderResultDouble: JSON? = Encoder.encode(doubleForKey: "double")(double)
         
         XCTAssertTrue(((resultDouble!["double"] as! Double) == (encoderResultDouble!["double"] as! Double)), "~~> for generic value should return same as Encoder.encode for Double")
     }
     
     func testEncodeOperatorGenericReturnsEncoderEncodeForDoubleArray() {
-        let doubleArray: [Double]? = [1.0, 2.0, 3.0]
+        let doubleArray: [Double]? = [1.0, 2, 3.0]
         let resultDoubleArray: JSON? = "doubleArray" ~~> doubleArray
-        let encoderResultDoubleArray: JSON? = Encoder.encode(key: "doubleArray")(doubleArray)
+        let encoderResultDoubleArray: JSON? = Encoder.encode(doubleArrayForKey: "doubleArray")(doubleArray)
         
         XCTAssertTrue(((resultDoubleArray!["doubleArray"] as! [Double]) == (encoderResultDoubleArray!["doubleArray"] as! [Double])), "~~> for generic value should return same as Encoder.encode for Double array")
     }
