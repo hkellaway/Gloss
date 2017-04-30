@@ -174,7 +174,7 @@ extension TestModel {
             "float" : Float(2.0),
             "floatArray" : [Float(1.0), Float(2.0), Float(3.0)],
             "double" : Double(6.0),
-            "doubleArray" : [Double(4.0), Double(5.0), Double(6.0)],
+            "doubleArray" : [Double(4.0), Double(5), Double(6.0)],
             "dictionary" : [
                 "otherModel" : [
                     "id" : 789,
