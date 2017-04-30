@@ -199,19 +199,19 @@ class DecoderTests: XCTestCase {
     }
     
     func testDecodeDouble() {
-        let result: Double? = Decoder.decode(key: "double")(testJSON!)
+        let result: Double? = Decoder.decode(doubleForKey: "double")(testJSON!)
         
         XCTAssertTrue((result == 6.0), "Decode Double should return correct value")
     }
     
     func testDecodeDoubleArray() {
-        let result: [Double]? = Decoder.decode(key: "doubleArray")(testJSON!)
+        let result: [Double]? = Decoder.decode(doubleArrayForKey: "doubleArray")(testJSON!)
         let element1: Double = result![0]
         let element2: Double = result![1]
         let element3: Double = result![2]
         
         XCTAssertTrue((element1 == 4.0), "Decode Double array should return correct value")
-        XCTAssertTrue((element2 == 5.0), "Decode Double array should return correct value")
+        XCTAssertTrue((element2 == 5), "Decode Double array should return correct value")
         XCTAssertTrue((element3 == 6.0), "Decode Double array should return correct value")
     }
     
