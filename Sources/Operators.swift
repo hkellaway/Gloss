@@ -547,6 +547,30 @@ public func ~~> (key: String, property: UUID?) -> JSON? {
 }
 
 /**
+ Convenience operator for encoding a Double to JSON.
+ 
+ - parameter key:      JSON key for value to encode.
+ - parameter property: Object to encode to JSON.
+ 
+ - returns: JSON when successful, nil otherwise.
+ */
+public func ~~> (key: String, property: Double?) -> JSON? {
+    return Encoder.encode(doubleForKey: key)(property)
+}
+
+/**
+ Convenience operator for encoding a Double array to JSON.
+ 
+ - parameter key:      JSON key for value to encode.
+ - parameter property: Object to encode to JSON.
+ 
+ - returns: JSON when successful, nil otherwise.
+ */
+public func ~~> (key: String, property: [Double]?) -> JSON? {
+    return Encoder.encode(doubleArrayForKey: key)(property)
+}
+
+/**
  Convenience operator for encoding a Decimal to JSON.
  
  - parameter key:      JSON key for value to encode.
