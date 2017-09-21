@@ -125,6 +125,8 @@ public protocol JSONSerializer {
 /// Gloss JSON Serializer.
 public struct GlossJSONSerializer: JSONSerializer {
 
+    public init() {}
+    
     public func json(from data: Data, options: JSONSerialization.ReadingOptions) -> JSON? {
         guard let json = (try? JSONSerialization.jsonObject(with: data, options: options)) as? JSON else {
             return nil
@@ -157,6 +159,7 @@ public protocol Logger {
 
 /// Gloss Logger.
 public struct GlossLogger: Logger {
+    public init() {}
     
     public func log(message: String) {
         print("[Gloss] \(message)")
