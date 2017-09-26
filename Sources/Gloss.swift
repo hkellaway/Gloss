@@ -124,6 +124,9 @@ public protocol JSONSerializer {
 
 /// Gloss JSON Serializer.
 public struct GlossJSONSerializer: JSONSerializer {
+    
+    /// Creates a new instance.
+    public init() { }
 
     public init() {}
     
@@ -160,6 +163,9 @@ public protocol Logger {
 /// Gloss Logger.
 public struct GlossLogger: Logger {
     public init() {}
+    
+    /// Creates a new instance.
+    public init() { }
     
     public func log(message: String) {
         print("[Gloss] \(message)")
