@@ -127,8 +127,6 @@ public struct GlossJSONSerializer: JSONSerializer {
     
     /// Creates a new instance.
     public init() { }
-
-    public init() {}
     
     public func json(from data: Data, options: JSONSerialization.ReadingOptions) -> JSON? {
         guard let json = (try? JSONSerialization.jsonObject(with: data, options: options)) as? JSON else {
