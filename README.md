@@ -19,16 +19,18 @@
 - [Download Gloss](https://github.com/hkellaway/Gloss/archive/master.zip) and do a `pod install` on the included `GlossExample` app to see Gloss in action
 - Check out the [documentation](http://cocoadocs.org/docsets/Gloss/) for a more comprehensive look at the classes available in Gloss
 
-### Swift 2.x
+### Swift Version
 
-Use the `swift_2.3` branch for a compatible version of Gloss plus Example project.
+The Gloss source currently available via CocoaPods and Carthage is compatible with Swift 4.0 (version `2.0.0-beta.x`).
 
-The Gloss source currently available via CocoaPods and Carthage is compatible with Swift 3.0.
+To use the lastest version compatible with Swift 3.0, utilize version `1.2.x`.
+
+Swift 2.x is no longer supported.
 
 ### Installation with CocoaPods
 
 ```ruby
-pod 'Gloss', '~> 1.2'
+pod 'Gloss', '~> 2.0'
 ```
 
 ### Installation with Carthage
@@ -45,7 +47,7 @@ import PackageDescription
 let package = Package(
     name: "HelloWorld",
     dependencies: [
-        .Package(url: "https://github.com/hkellaway/Gloss.git", majorVersion: 1, minor: 2)
+        .Package(url: "https://github.com/hkellaway/Gloss.git", majorVersion: 2, minor: 0)
     ]
 )
 ```
