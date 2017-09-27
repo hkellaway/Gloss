@@ -26,6 +26,9 @@
 import Gloss
 import UIKit
 
+typealias Decoder = Gloss.Decoder
+typealias Encoder = Gloss.Encoder
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -51,14 +54,14 @@ class ViewController: UIViewController {
         
         print(repo.repoId)
         print(repo.name)
-        print(repo.desc)
+        print(repo.desc!)
         print(repo.url)
         print(repo.owner)
         print(repo.ownerURL)
-        print(repo.primaryLanguage?.rawValue)
+        print(repo.primaryLanguage?.rawValue ?? "No language")
         print("")
         
-        print("JSON: \(repo.toJSON())")
+        print("JSON: \(repo.toJSON()!)")
         print("")
         
         guard let repos = [Repo].from(jsonArray: [repoJSON, repoJSON, repoJSON]) else {

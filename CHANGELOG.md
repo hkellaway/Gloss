@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 `Gloss` adheres to [Semantic Versioning](http://semver.org/).
 
+- `2.0.x` Releases - [2.0.0-beta.1](#200-beta1)
 - `1.2.x` Releases - [1.2.0](#120) | [1.2.1](#121) | [1.2.2](#122) | [1.2.3](#123) | [1.2.4](#124)
 - `1.1.x` Releases - [1.1.0](#110) | [1.1.1](#111)
 - `1.0.x` Releases - [1.0.0](#100)
@@ -13,6 +14,14 @@ All notable changes to this project will be documented in this file.
 - `0.3.x` Releases - [0.3.0](#030) | [0.3.1](#031)
 - `0.2.x` Releases - [0.2.0](#020)
 - `0.1.x` Releases - [0.1.0](#010)
+
+---
+
+## [2.0.0-beta.1](https://github.com/hkellaway/Gloss/releases/tag/2.0.0-beta.1)
+Released on 2017-09-27.
+
+#### Updated
+- Swift 4 compatibility [PR #307](https://github.com/hkellaway/Gloss/pull/307)
 
 ---
 
