@@ -118,14 +118,14 @@ class EncoderTests: XCTestCase {
     
     func testEncodeDouble() {
         let double: Double? = 4.0
-        let result: JSON? = Encoder.encode(key: "double")(double)
+        let result: JSON? = Encoder.encode(doubleForKey: "double")(double)
         
         XCTAssertTrue((result!["double"] as! Double == 4.0), "Encode Double should return correct value")
     }
     
     func testEncodeDoubleArray() {
-        let doubleArray: [Double]? = [4.0, 5.0, 6.0]
-        let result: JSON? = Encoder.encode(key: "doubleArray")(doubleArray)
+        let doubleArray: [Double]? = [4.0, 5, 6.0]
+        let result: JSON? = Encoder.encode(doubleArrayForKey: "doubleArray")(doubleArray)
         
         XCTAssertTrue((result!["doubleArray"] as! [Double] == [4.0, 5.0, 6.0]), "Encode Double array should return correct value")
     }
