@@ -139,13 +139,13 @@ public struct Encoder {
     }
     
     /**
-     Encodes an Encodable object to JSON.
+     Encodes an JSONEncodable object to JSON.
      
      - parameter key: Key used in JSON for decoded value.
      
      - returns: JSON encoded from value.
      */
-    public static func encode<T: Encodable>(encodableForKey key: String) -> (T?) -> JSON? {
+    public static func encode<T: JSONEncodable>(encodableForKey key: String) -> (T?) -> JSON? {
         return {
             model in
             
@@ -158,13 +158,13 @@ public struct Encoder {
     }
     
     /**
-     Encodes an Encodable array to JSON.
+     Encodes an JSONEncodable array to JSON.
      
      - parameter key: Key used in JSON for decoded value.
      
      - returns: JSON encoded from value.
      */
-    public static func encode<T: Encodable>(encodableArrayForKey key: String) -> ([T]?) -> JSON? {
+    public static func encode<T: JSONEncodable>(encodableArrayForKey key: String) -> ([T]?) -> JSON? {
         return {
             array in
             
@@ -187,13 +187,13 @@ public struct Encoder {
     }
     
     /**
-     Encodes a dictionary of String to Encodable to JSON.
+     Encodes a dictionary of String to JSONEncodable to JSON.
      
      - parameter key: Key used in JSON for decoded value.
      
      - returns: JSON encoded from value.
      */
-    public static func encode<T: Encodable>(encodableDictionaryForKey key: String) -> ([String : T]?) -> JSON? {
+    public static func encode<T: JSONEncodable>(encodableDictionaryForKey key: String) -> ([String : T]?) -> JSON? {
         return {
             dictionary in
             
@@ -214,13 +214,13 @@ public struct Encoder {
     }
     
     /**
-     Encodes a dictionary of String to Encodable array to JSON.
+     Encodes a dictionary of String to JSONEncodable array to JSON.
      
      - parameter key: Key used in JSON for decoded value.
      
      - returns: JSON encoded from value.
      */
-    public static func encode<T: Encodable>(encodableDictionaryForKey key: String) -> ([String : [T]]?) -> JSON? {
+    public static func encode<T: JSONEncodable>(encodableDictionaryForKey key: String) -> ([String : [T]]?) -> JSON? {
         return {
             dictionary in
             

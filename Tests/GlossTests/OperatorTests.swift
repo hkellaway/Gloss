@@ -128,18 +128,18 @@ class OperatorTests: XCTestCase {
         XCTAssertTrue((resultDoubleArray! == decoderResultDoubleArray!), "<~~ for generic value should return same as Decoder.decode for Double array")
     }
     
-    func testDecodeOperatorGenericReturnsDecoderDecodableDictionary() {
+    func testDecodeOperatorGenericReturnsDecoderJSONDecodableDictionary() {
         let resultDictionary: [String : TestNestedModel]? = "dictionary" <~~ testJSON!
         let decoderDictionary: [String : TestNestedModel]? = Decoder.decode(decodableDictionaryForKey: "dictionary")(testJSON!)
         
-        XCTAssertTrue(resultDictionary!["otherModel"]! == decoderDictionary!["otherModel"]!, "<~~ for generic value should result same as Decoder.decodeDecodableDictionary for dictionary")
+        XCTAssertTrue(resultDictionary!["otherModel"]! == decoderDictionary!["otherModel"]!, "<~~ for generic value should result same as Decoder.decodeJSONDecodableDictionary for dictionary")
     }
     
-    func testDecodeOperatorGenericReturnsDecoderDecodableDictionaryWithArray() {
+    func testDecodeOperatorGenericReturnsDecoderJSONDecodableDictionaryWithArray() {
         let resultDictionary: [String : [TestNestedModel]]? = "dictionaryWithArray" <~~ testJSON!
         let decoderDictionary: [String : [TestNestedModel]]? = Decoder.decode(decodableDictionaryForKey: "dictionaryWithArray")(testJSON!)
         
-        XCTAssertTrue(resultDictionary!["otherModels"]! == decoderDictionary!["otherModels"]!, "<~~ for generic value should result same as Decoder.decodeDecodableDictionary for dictionary")
+        XCTAssertTrue(resultDictionary!["otherModels"]! == decoderDictionary!["otherModels"]!, "<~~ for generic value should result same as Decoder.decodeJSONDecodableDictionary for dictionary")
     }
     
     func testDecodeOperatorGenericReturnsDecoderDecodeForString() {
@@ -156,15 +156,15 @@ class OperatorTests: XCTestCase {
         XCTAssertTrue((resultStringArray! == decoderResultStringArray!), "<~~ for generic value should return same as Decoder.decode for String array")
     }
     
-    func testDecodeOperatorDecodableReturnsDecoderDecode() {
+    func testDecodeOperatorJSONDecodableReturnsDecoderDecode() {
         let resultNestedModel: TestNestedModel? = "nestedModel" <~~ testJSON!
         let decoderResultNestedModel: TestNestedModel? = Decoder.decode(decodableForKey: "nestedModel")(testJSON!)
         
-        XCTAssertTrue((resultNestedModel!.id == decoderResultNestedModel!.id), "<~~ for Decodable models should return same as Decoder.decode")
-        XCTAssertTrue((resultNestedModel!.name == decoderResultNestedModel!.name), "<~~ for Decodable models should return same as Decoder.decode")
+        XCTAssertTrue((resultNestedModel!.id == decoderResultNestedModel!.id), "<~~ for JSONDecodable models should return same as Decoder.decode")
+        XCTAssertTrue((resultNestedModel!.name == decoderResultNestedModel!.name), "<~~ for JSONDecodable models should return same as Decoder.decode")
     }
     
-    func testDecodeOperatorDecodableArrayReturnsDecoderDecodeArray() {
+    func testDecodeOperatorJSONDecodableArrayReturnsDecoderDecodeArray() {
         let result: [TestNestedModel]? = "nestedModelArray" <~~ testJSON!
         let resultElement1: TestNestedModel = result![0]
         let resultElement2: TestNestedModel = result![1]
@@ -172,10 +172,10 @@ class OperatorTests: XCTestCase {
         let decoderResultElement1: TestNestedModel = decoderResult![0]
         let decoderResultElement2: TestNestedModel = decoderResult![1]
         
-        XCTAssertTrue((resultElement1.id == decoderResultElement1.id), "<~~ for Decodable models array should return same as Decoder.decodeArray")
-        XCTAssertTrue((resultElement1.name == decoderResultElement1.name), "<~~ for Decodable models array should return same as Decoder.decodeArray")
-        XCTAssertTrue((resultElement2.id == decoderResultElement2.id), "<~~ for Decodable models array should return same as Decoder.decodeArray")
-        XCTAssertTrue((resultElement2.name == decoderResultElement2.name), "<~~ for Decodable models array should return same as Decoder.decodeArray")
+        XCTAssertTrue((resultElement1.id == decoderResultElement1.id), "<~~ for JSONDecodable models array should return same as Decoder.decodeArray")
+        XCTAssertTrue((resultElement1.name == decoderResultElement1.name), "<~~ for JSONDecodable models array should return same as Decoder.decodeArray")
+        XCTAssertTrue((resultElement2.id == decoderResultElement2.id), "<~~ for JSONDecodable models array should return same as Decoder.decodeArray")
+        XCTAssertTrue((resultElement2.name == decoderResultElement2.name), "<~~ for JSONDecodable models array should return same as Decoder.decodeArray")
     }
     
     func testDecodeOperatorEnumValueReturnsDecoderDecodeEnum() {
@@ -350,7 +350,7 @@ class OperatorTests: XCTestCase {
         XCTAssertTrue(((resultDoubleArray!["doubleArray"] as! [Double]) == (encoderResultDoubleArray!["doubleArray"] as! [Double])), "~~> for generic value should return same as Encoder.encode for Double array")
     }
     
-    func testEncodeOperatorGenericReturnsEncoderEncodeEncodableDictionary() {
+    func testEncodeOperatorGenericReturnsEncoderEncodeJSONEncodableDictionary() {
         let dictionary: [String : TestNestedModel]? = ["otherModel" : testNestedModel1!]
         let result: JSON? = "dictionary" ~~> dictionary
         let encoderResult: JSON? = Encoder.encode(encodableDictionaryForKey: "dictionary")(dictionary)
@@ -358,21 +358,21 @@ class OperatorTests: XCTestCase {
         let dict = (result!["dictionary"] as! JSON)["otherModel"] as! JSON
         let encDict = (encoderResult!["dictionary"] as! JSON)["otherModel"] as! JSON
         
-        XCTAssertTrue(dict["id"] as! Int == encDict["id"] as! Int, "~~> for [String:Encodable] value should return same as Encoder.encodeEncodableDictionary for dictionary")
-        XCTAssertTrue(dict["name"] as! String == encDict["name"] as! String, "~~> for [String:Encodable] value should return same as Encoder.encodeEncodableDictionary for dictionary")
+        XCTAssertTrue(dict["id"] as! Int == encDict["id"] as! Int, "~~> for [String:JSONEncodable] value should return same as Encoder.encodeJSONEncodableDictionary for dictionary")
+        XCTAssertTrue(dict["name"] as! String == encDict["name"] as! String, "~~> for [String:JSONEncodable] value should return same as Encoder.encodeJSONEncodableDictionary for dictionary")
     }
     
-    func testEncodeOperatorGenericReturnsEncoderEncodeEncodableDictionaryWithArray() {
+    func testEncodeOperatorGenericReturnsEncoderEncodeJSONEncodableDictionaryWithArray() {
         let dictionaryWithArray: [String : [TestNestedModel]]? = ["otherModels" : [testNestedModel1!, testNestedModel2!]]
         let result: JSON? = "dictionaryWithArray" ~~> dictionaryWithArray
         let encoderResult: JSON? = Encoder.encode(encodableDictionaryForKey: "dictionaryWithArray")(dictionaryWithArray)
         let dictArray = (result!["dictionaryWithArray"] as! JSON)["otherModels"] as! [JSON]
         let encDictArray = (encoderResult!["dictionaryWithArray"] as! JSON)["otherModels"] as! [JSON]
         
-        XCTAssertTrue(dictArray[0]["id"] as! Int == encDictArray[0]["id"] as! Int, "~~> for [String:Encodable] value should return same as Encoder.encodeEncodableDictionary for dictionary")
-        XCTAssertTrue(dictArray[0]["name"] as! String == encDictArray[0]["name"] as! String, "~~> for [String:Encodable] value should return same as Encoder.encodeEncodableDictionary for dictionary")
-        XCTAssertTrue(dictArray[1]["id"] as! Int == encDictArray[1]["id"] as! Int, "~~> for [String:Encodable] value should return same as Encoder.encodeEncodableDictionary for dictionary")
-        XCTAssertTrue(dictArray[1]["name"] as! String == encDictArray[1]["name"] as! String, "~~> for [String:Encodable] value should return same as Encoder.encodeEncodableDictionary for dictionary")
+        XCTAssertTrue(dictArray[0]["id"] as! Int == encDictArray[0]["id"] as! Int, "~~> for [String:JSONEncodable] value should return same as Encoder.encodeJSONEncodableDictionary for dictionary")
+        XCTAssertTrue(dictArray[0]["name"] as! String == encDictArray[0]["name"] as! String, "~~> for [String:JSONEncodable] value should return same as Encoder.encodeJSONEncodableDictionary for dictionary")
+        XCTAssertTrue(dictArray[1]["id"] as! Int == encDictArray[1]["id"] as! Int, "~~> for [String:JSONEncodable] value should return same as Encoder.encodeJSONEncodableDictionary for dictionary")
+        XCTAssertTrue(dictArray[1]["name"] as! String == encDictArray[1]["name"] as! String, "~~> for [String:JSONEncodable] value should return same as Encoder.encodeJSONEncodableDictionary for dictionary")
     }
     
     func testEncodeOperatorGenericReturnsEncoderEncodeForString() {
@@ -391,7 +391,7 @@ class OperatorTests: XCTestCase {
         XCTAssertTrue(((resultStringArray!["stringArray"] as! [String]) == (encoderResultStringArray!["stringArray"] as! [String])), "~~> for generic value should return same as Encoder.encode for String array")
     }
     
-    func testEncodeOperatorEncodableReturnsEncoderEncode() {
+    func testEncodeOperatorJSONEncodableReturnsEncoderEncode() {
         let result: JSON? = "nestedModel" ~~> testNestedModel1
         let modelJSON: JSON = result!["nestedModel"] as! JSON
         let encoderResult: JSON? = Encoder.encode(encodableForKey: "nestedModel")(testNestedModel1)
@@ -401,7 +401,7 @@ class OperatorTests: XCTestCase {
         XCTAssertTrue((modelJSON["name"] as! String == encoderModelJSON["name"] as! String), "~~> for nested model should return same as Encoder.encode")
     }
     
-    func testEncodeOperatorEncodableArrayReturnsEncoderEncodeArray() {
+    func testEncodeOperatorJSONEncodableArrayReturnsEncoderEncodeArray() {
         let model1: TestNestedModel = testNestedModel1!
         let model2: TestNestedModel = testNestedModel2!
         let result: JSON? = "nestedModelArray" ~~> ([model1, model2])

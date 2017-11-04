@@ -36,12 +36,12 @@ public typealias JSON = [String : Any]
 /**
 Convenience protocol for objects that can be translated from and to JSON.
 */
-public protocol Glossy: Decodable, Encodable { }
+public protocol Glossy: JSONDecodable, JSONEncodable { }
 
 /**
 Enables an object to be decoded from JSON.
 */
-public protocol Decodable {
+public protocol JSONDecodable {
 
     /**
      Returns new instance created from provided JSON.
@@ -57,7 +57,7 @@ public protocol Decodable {
 /**
 Enables an object to be encoded to JSON.
 */
-public protocol Encodable {
+public protocol JSONEncodable {
     
     /**
     Encodes and object as JSON.

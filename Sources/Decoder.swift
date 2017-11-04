@@ -134,13 +134,13 @@ public struct Decoder {
     }
     
     /**
-     Decodes JSON to a Decodable object.
+     Decodes JSON to a JSONDecodable object.
      
      - parameter key: Key used in JSON for decoded value.
      
      - returns: Value decoded from JSON.
      */
-    public static func decode<T: Decodable>(decodableForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> T? {
+    public static func decode<T: JSONDecodable>(decodableForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> T? {
         return {
             json in
             
@@ -154,13 +154,13 @@ public struct Decoder {
     }
     
     /**
-     Decodes JSON to a Decodable object array.
+     Decodes JSON to a JSONDecodable object array.
      
      - parameter key: Key used in JSON for decoded value.
      
      - returns: Value decoded from JSON.
      */
-    public static func decode<T: Decodable>(decodableArrayForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> [T]? {
+    public static func decode<T: JSONDecodable>(decodableArrayForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> [T]? {
         return {
             json in
             
@@ -183,13 +183,13 @@ public struct Decoder {
     }
     
     /**
-     Decodes JSON to a dictionary of String to Decodable.
+     Decodes JSON to a dictionary of String to JSONDecodable.
      
      - parameter key: Key used in JSON for decoded value.
      
      - returns: Value decoded from JSON.
      */
-    public static func decode<T:Decodable>(decodableDictionaryForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> [String : T]? {
+    public static func decode<T:JSONDecodable>(decodableDictionaryForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> [String : T]? {
         return {
             json in
             
@@ -210,13 +210,13 @@ public struct Decoder {
     }
     
     /**
-     Decodes JSON to a dictionary of String to Decodable array.
+     Decodes JSON to a dictionary of String to JSONDecodable array.
      
      - parameter key: Key used in JSON for decoded value.
      
      - returns: Value decoded from JSON.
      */
-    public static func decode<T:Decodable>(decodableDictionaryForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> [String : [T]]? {
+    public static func decode<T:JSONDecodable>(decodableDictionaryForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> [String : [T]]? {
         return {
             json in
             

@@ -15,7 +15,7 @@ protocol UnknownType {
     
 }
 
-struct TestUnknownTypeModel: Gloss.Decodable {
+struct TestUnknownTypeModel: Gloss.JSONDecodable {
     
     var value: UnknownType?
     
