@@ -137,7 +137,7 @@ class EncoderTests: XCTestCase {
         XCTAssertNil(result?["array"] as? [Double], "Encode double array should return nil if model is invalid")
     }
     
-    func testEncodeEncodableDictionary() {
+    func testEncodeJSONEncodableDictionary() {
         let result: JSON? = Encoder.encode(encodableDictionaryForKey: "dictionary")(["model1" : testNestedModel1!])
         let dictionary = result!["dictionary"] as! [String : [String : Any]]
         
@@ -145,7 +145,7 @@ class EncoderTests: XCTestCase {
         XCTAssertTrue(dictionary["model1"]!["name"] as! String == "nestedModel1", "Encode Dictionary should return correct value")
     }
     
-    func testEncodeEncodableDictionaryWithArray() {
+    func testEncodeJSONEncodableDictionaryWithArray() {
         let result: JSON? = Encoder.encode(encodableDictionaryForKey: "dictionaryWithArray")(["models" : [testNestedModel1!, testNestedModel2!]])
         let dictionary = result!["dictionaryWithArray"] as! [String : [Any]]
         let json1 = dictionary["models"]![0] as! JSON
