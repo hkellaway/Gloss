@@ -30,7 +30,7 @@ Swift 2.x is no longer supported.
 ### Installation with CocoaPods
 
 ```ruby
-pod 'Gloss', '~> 2.0'
+pod 'Gloss', '2.0.0-beta.2'
 ```
 
 ### Installation with Carthage
@@ -72,7 +72,7 @@ Our Gloss model would look as such:
 ``` swift
 import Gloss
 
-struct RepoOwner: Decodable {
+struct RepoOwner: JSONDecodable {
 
     let ownerId: Int?
     let username: String?
@@ -90,7 +90,7 @@ struct RepoOwner: Decodable {
 This model:
 
 * Imports `Gloss`
-* Adopts the `Decodable` protocol
+* Adopts the `JSONDecodable` protocol
 * Implements the `init?(json:)` initializer
 
 (Note: If using custom operators like `<~~` is not desired, see [On Not Using Gloss Operators](#on-not-using-gloss-operators).)
@@ -106,7 +106,7 @@ Let's imagine we know that the value for our `RepoOwner` property `ownerId` will
 ``` swift
 import Gloss
 
-struct RepoOwner: Decodable {
+struct RepoOwner: JSONDecodable {
 
     let ownerId: Int
     let username: String?
@@ -158,7 +158,7 @@ Our Gloss model would look as such:
 ``` swift
 import Gloss
 
-struct Repo: Decodable {
+struct Repo: JSONDecodable {
 
     let repoId: Int?
     let name: String?
@@ -227,7 +227,7 @@ This model now:
 
 ### Initializing Model Objects and Arrays
 
-Instances of `Decodable` Gloss models are made by calling `init?(json:)`.
+Instances of `JSONDecodable` Gloss models are made by calling `init?(json:)`.
 
 For example, we can create a `RepoOwner` as follows:
 
@@ -297,7 +297,7 @@ let repoOwners: [RepoOwner]? = [RepoOwner].from(data: repoOwnerDAta)
 
 ### Translating Model Objects to JSON
 
-The JSON representation of an `Encodable` Gloss model is retrieved via `toJSON()`:
+The JSON representation of an `JSONEncodable` Gloss model is retrieved via `toJSON()`:
 
 ``` swift
 repoOwner.toJSON()
@@ -305,7 +305,7 @@ repoOwner.toJSON()
 ```
 #### JSON Arrays from Model Objects
 
-An array of JSON from an array of `Encodable` models is retrieved via `toJSONArray()`:
+An array of JSON from an array of `JSONEncodable` models is retrieved via `toJSONArray()`:
 
 ``` swift
 guard let jsonArray = repoOwners.toJSONArray() else {
@@ -377,7 +377,7 @@ Let's imagine the `username` property on our `RepoOwner` model was to be an uppe
 ``` swift
 import Gloss
 
-struct RepoOwner: Decodable {
+struct RepoOwner: JSONDecodable {
 
     let ownerId: Int?
     let username: String?
@@ -483,10 +483,10 @@ and
 The `<~~` operator is simply syntactic sugar for a set of `Decoder.decode` functions:
 
 * Simple types (`Decoder.decode(key:)`)
-* `Decodable` models (`Decoder.decode(decodableForKey:)`)
+* `JSONDecodable` models (`Decoder.decode(decodableForKey:)`)
 * Simple arrays (`Decoder.decode(key:)`)
-* Arrays of `Decodable` models (`Decoder.decode(decodableArrayForKey:)`)
-* Dictionaries of `Decodable` models (`Decoder.decode(decodableDictionaryForKey:)`)
+* Arrays of `JSONDecodable` models (`Decoder.decode(decodableArrayForKey:)`)
+* Dictionaries of `JSONDecodable` models (`Decoder.decode(decodableDictionaryForKey:)`)
 * Enum types (`Decoder.decode(enumForKey:)`)
 * Enum arrays (`Decoder.decode(enumArrayForKey:)`)
 * Int32 types (`Decoder.decode(int32ForKey:)`)
@@ -509,10 +509,10 @@ The `<~~` operator is simply syntactic sugar for a set of `Decoder.decode` funct
 The `~~>` operator is simply syntactic sugar for a set of `Encoder.encode` functions:
 
 * Simple types (`Encoder.encode(key:)`)
-* `Encodable` models (`Encoder.encode(encodableForKey:)`)
+* `JSONEncodable` models (`Encoder.encode(encodableForKey:)`)
 * Simple arrays (`Encoder.encode(arrayForKey:)`)
-* Arrays of `Encodable` models (`Encoder.encode(encodableArrayForKey:)`)
-* Dictionaries of `Encodable` models (`Encoder.encode(encodableDictionaryForKey:)`)
+* Arrays of `JSONEncodable` models (`Encoder.encode(encodableArrayForKey:)`)
+* Dictionaries of `JSONEncodable` models (`Encoder.encode(encodableDictionaryForKey:)`)
 * Enum types (`Encoder.encode(enumForKey:)`)
 * Enum arrays (`Encoder.encode(enumArrayForKey:)`)
 * Int32 types (`Encoder.encode(int32ForKey:)`)
@@ -530,11 +530,11 @@ The `~~>` operator is simply syntactic sugar for a set of `Encoder.encode` funct
 
 ### Gloss Protocols
 
-Models that are to be created from JSON _must_ adopt the `Decodable` protocol.
+Models that are to be created from JSON _must_ adopt the `JSONDecodable` protocol.
 
-Models that are to be transformed to JSON _must_ adopt the `Encodable` protocol.
+Models that are to be transformed to JSON _must_ adopt the `JSONEncodable` protocol.
 
-The `Glossy` protocol depicted in the examples is simply a convenience for defining models that can translated to _and_ from JSON. `Glossy` can be replaced by `Decodable, Encodable` for more preciseness, if desired.
+The `Glossy` protocol depicted in the examples is simply a convenience for defining models that can translated to _and_ from JSON. `Glossy` can be replaced by `JSONDecodable, JSONEncodable` for more preciseness, if desired.
 
 ## Why "Gloss"?
 
@@ -561,32 +561,14 @@ Check out Gloss in these cool places!
 #### Libraries
 
 * [Alamofire-Gloss](https://github.com/spxrogers/Alamofire-Gloss)
-* [CRUD](https://github.com/MetalheadSanya/CRUD)
-* [Moya-Gloss](https://github.com/spxrogers/Moya-Gloss)
-* [OctoAPI](http://github.com/ferusinfo/OctoAPI)
+* [Moya-Gloss](https://github.com/spxrogers/Moya-Gloss)]
 * [Restofire-Gloss](https://github.com/Restofire/Restofire-Gloss)
-
-#### SDKs/Products
-
-* [AniList](http://anilist.co) ([Unofficial iOS SDK](https://github.com/CodeEagle/AniList))
-* [Phillips Hue](http://www2.meethue.com/en-US) ([Unofficial iOS SDK](https://github.com/Spriter/SwiftyHue))
-* [Skiplagged](http://skiplagged.com) ([Unofficial iOS SDK](https://github.com/bulusoy/Skiplagged))
-
-#### Apps
-
-* [Ether Tracker](https://itunes.apple.com/us/app/ether-tracker/id1118248702?mt=8)
-
-#### Tools
-
-* [JSON Export](https://github.com/Ahmed-Ali/JSONExport) - generate Gloss models from JSON
 
 #### Newsletters
 
 * [The iOS Times](http://theiostimes.com/year-01-issue-12.html)
 * [Swift Sandbox](http://swiftsandbox.io/issues/3#b1RJwo2)
 * [iOS Goodies](http://ios-goodies.com/post/127166753231/week-93)
-
-Using Gloss in your app? Let me know: hello@harlankellaway.com
 
 ## License
 
