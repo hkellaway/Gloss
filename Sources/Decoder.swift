@@ -1,5 +1,5 @@
 //
-//  JSONDecoder.swift
+//  Decoder.swift
 //  Gloss
 //
 // Copyright (c) 2015 Harlan Kellaway
@@ -28,7 +28,7 @@ import Foundation
 /**
 Decodes JSON to objects.
 */
-public struct JSONDecoder {
+public struct Decoder {
     
     /// Default logger
     public static var logger: Logger = GlossLogger()
@@ -119,7 +119,7 @@ public struct JSONDecoder {
      - returns: Value decoded from JSON.
      */
     public static func decode(dateISO8601ForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> Date? {
-        return JSONDecoder.decode(dateForKey: key, dateFormatter: GlossDateFormatterISO8601, keyPathDelimiter: keyPathDelimiter)
+        return Decoder.decode(dateForKey: key, dateFormatter: GlossDateFormatterISO8601, keyPathDelimiter: keyPathDelimiter)
     }
     
     /**
@@ -130,7 +130,7 @@ public struct JSONDecoder {
      - returns: Value decoded from JSON.
      */
     public static func decode(dateISO8601ArrayForKey key: String, keyPathDelimiter: String = GlossKeyPathDelimiter) -> (JSON) -> [Date]? {
-        return JSONDecoder.decode(dateArrayForKey: key, dateFormatter: GlossDateFormatterISO8601, keyPathDelimiter: keyPathDelimiter)
+        return Decoder.decode(dateArrayForKey: key, dateFormatter: GlossDateFormatterISO8601, keyPathDelimiter: keyPathDelimiter)
     }
     
     /**

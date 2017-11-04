@@ -15,8 +15,8 @@ struct TestKeyPathModelCustomDelimiter: Glossy {
     let url: URL?
     
     init?(json: JSON) {
-        self.id = JSONDecoder.decode(key: "nested*id", keyPathDelimiter: "*")(json)
-        self.url = JSONDecoder.decode(urlForKey: "nested*url", keyPathDelimiter: "*")(json)
+        self.id = Decoder.decode(key: "nested*id", keyPathDelimiter: "*")(json)
+        self.url = Decoder.decode(urlForKey: "nested*url", keyPathDelimiter: "*")(json)
     }
     
     func toJSON() -> JSON? {

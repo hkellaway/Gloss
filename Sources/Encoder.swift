@@ -1,5 +1,5 @@
 //
-//  JSONEncoder.swift
+//  Encoder.swift
 //  Gloss
 //
 // Copyright (c) 2015 Harlan Kellaway
@@ -28,7 +28,7 @@ import Foundation
 /**
 Encodes objects to JSON.
 */
-public struct JSONEncoder {
+public struct Encoder {
     
     /**
      Encodes a generic value to JSON.
@@ -124,7 +124,7 @@ public struct JSONEncoder {
      - returns: JSON encoded from value.
      */
     public static func encode(dateISO8601ForKey key: String) -> (Date?) -> JSON? {
-        return JSONEncoder.encode(dateForKey: key, dateFormatter: GlossDateFormatterISO8601)
+        return Encoder.encode(dateForKey: key, dateFormatter: GlossDateFormatterISO8601)
     }
     
     /**
@@ -135,7 +135,7 @@ public struct JSONEncoder {
      - returns: JSON encoded from value.
      */
     public static func encode(dateISO8601ArrayForKey key: String) -> ([Date]?) -> JSON? {
-        return JSONEncoder.encode(dateArrayForKey: key, dateFormatter: GlossDateFormatterISO8601)
+        return Encoder.encode(dateArrayForKey: key, dateFormatter: GlossDateFormatterISO8601)
     }
     
     /**
