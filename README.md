@@ -21,7 +21,7 @@
 
 ### Swift Version
 
-The Gloss source currently available via CocoaPods and Carthage is compatible with Swift 4.0 (version `2.0.0-beta.x`).
+The Gloss source currently available via CocoaPods and Carthage is compatible with Swift 4.0.
 
 To use the lastest version compatible with Swift 3.0, utilize version `1.2.x`.
 
@@ -30,7 +30,7 @@ Swift 2.x is no longer supported.
 ### Installation with CocoaPods
 
 ```ruby
-pod 'Gloss', '2.0.0-beta.2'
+pod 'Gloss', '~> 2.0'
 ```
 
 ### Installation with Carthage
@@ -497,6 +497,8 @@ The `<~~` operator is simply syntactic sugar for a set of `Decoder.decode` funct
 * Int64 array (`Decoder.decode(int64ArrayForKey:)`)
 * UInt64 types (`Decoder.decode(uint64ForKey:)`)
 * UInt64 array (`Decoder.decode(uint64ArrayForKey:)`)
+* Double types (`Decoder.decode(doubleForKey:)`)
+* Double array (`Decoder.decode(doubleArrayForKey:)`)
 * NSURL types (`Decoder.decode(urlForKey:)`)
 * NSURL arrays (`Decode.decode(urlArrayForKey:)`)
 * UUID types (`Decoder.decode(uuidForKey:)`)
@@ -523,6 +525,8 @@ The `~~>` operator is simply syntactic sugar for a set of `Encoder.encode` funct
 * Int64 arrays (`Encoder.encode(int64ArrayForKey:)`)
 * UInt64 types (`Encoder.encode(uint64ForKey:)`)
 * UInt64 arrays (`Encoder.encode(uint64ArrayForKey:)`)
+* Double types (`Encoder.encode(doubleForKey:)`)
+* Double arrays (`Encoder.encode(doubleArrayForKey:)`)
 * NSURL types (`Encoder.encode(urlForKey:)`)
 * UUID types (`Encoder.encode(uuidForKey:)`)
 * Decimal types (`Encoder.encode(decimalForKey:)`)
@@ -561,7 +565,7 @@ Check out Gloss in these cool places!
 #### Libraries
 
 * [Alamofire-Gloss](https://github.com/spxrogers/Alamofire-Gloss)
-* [Moya-Gloss](https://github.com/spxrogers/Moya-Gloss)]
+* [Moya-Gloss](https://github.com/spxrogers/Moya-Gloss)
 * [Restofire-Gloss](https://github.com/Restofire/Restofire-Gloss)
 
 #### Newsletters
