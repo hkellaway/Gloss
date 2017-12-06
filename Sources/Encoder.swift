@@ -483,9 +483,49 @@ public struct Encoder {
             return nil
         }
     }
+   
+    /**
+     Encodes a Double array to JSON.
+     
+     - parameter key: Key used in JSON for decoded value.
+     
+     - returns: JSON encoded from value.
+     */
+    public static func encode(doubleForKey key: String) -> (Double?) -> JSON? {
+        return {
+            double in
+            
+            if let double = double {
+                return [key : NSNumber(value: double)]
+            }
+            
+            return nil
+        }
+    }
     
     /**
-     Encodes a Decimal to JSON.
+     Encodes a Double array to JSON.
+     
+     - parameter key: Key used in JSON for decoded value.
+     
+     - returns: JSON encoded from value.
+     */
+    public static func encode(doubleArrayForKey key: String) -> ([Double]?) -> JSON? {
+        return {
+            doubleArray in
+            
+            if let doubleArray = doubleArray {
+                let numbers: [NSNumber] = doubleArray.map { NSNumber(value: $0) }
+                
+                return [key : numbers]
+            }
+            
+            return nil
+        }
+    }
+
+    /**
+     Encodes a Double to JSON.
      
      - parameter key: Key used in JSON for decoded value.
      

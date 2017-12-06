@@ -6,7 +6,7 @@
     "float" : 2.0,
     "floatArray" : [1.0, 2.0, 3.0],
     "double" : 6.0,
-    "doubleArray" : [4.0, 5.0, 6.0],
+    "doubleArray" : [4.0, 5, 6.0],
     "dictionary" : {
         "otherModel" : {
             "id" : 789,
