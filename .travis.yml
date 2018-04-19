@@ -2,5 +2,5 @@ language: objective-c
 osx_image: xcode9.3
 
 script:
-   - xcodebuild test -project Gloss.xcodeproj -scheme Gloss -destination 'platform=iOS Simulator,name=iPhone 6,OS=11.0'
+   - xcodebuild test -project Gloss.xcodeproj -scheme GlossTests -destination 'platform=iOS Simulator,name=iPhone X,OS=11.3'
    - pod lib lint --quick
