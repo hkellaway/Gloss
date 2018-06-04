@@ -6,7 +6,6 @@
 [![SPM](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE) 
 [![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss)
-[![Reference Status](https://www.versioneye.com/objective-c/gloss/reference_badge.svg)](https://www.versioneye.com/objective-c/gloss/references)
 [![Build Status](https://travis-ci.org/hkellaway/Gloss.svg?branch=develop)](https://travis-ci.org/hkellaway/Gloss)
 
 * Mapping JSON to objects
@@ -30,7 +29,7 @@ Swift 2.x is no longer supported.
 ### Installation with CocoaPods
 
 ```ruby
-pod 'Gloss', '~> 2.0'
+pod 'Gloss', '~> 2.0.1'
 ```
 
 ### Installation with Carthage
