@@ -29,7 +29,7 @@ Swift 2.x is no longer supported.
 ### Installation with CocoaPods
 
 ```ruby
-pod 'Gloss', '~> 2.0.1'
+pod 'Gloss', '~> 2.0'
 ```
 
 ### Installation with Carthage
