@@ -18,13 +18,13 @@ All notable changes to this project will be documented in this file.
 ---
 
 ## [2.0.1](https://github.com/hkellaway/Gloss/releases/tag/2.0.1)
-Released on 2017-12-06.
+Released on 2018-06-04.
 
 #### Fixed
 - Carthage builds failing for non-iOS [[PR #319](https://github.com/hkellaway/Gloss/pull/319)]
 
 #### Removed
-- Experimental support for Linux [Issue #322](https://github.com/hkellaway/Gloss/issues/322)
+- Experimental support for Linux [[Issue #322](https://github.com/hkellaway/Gloss/issues/322)]
 
 ---
 
