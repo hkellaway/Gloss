@@ -43,7 +43,6 @@
 		DC47CB021FAE57BE006E6F9A /* ExtensionDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAA1FAE56D0006E6F9A /* ExtensionDictionary.swift */; };
 		DC47CB031FAE57BE006E6F9A /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC47CAAB1FAE56D0006E6F9A /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC47CB041FAE57BE006E6F9A /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAC1FAE56D0006E6F9A /* Gloss.swift */; };
-		DC47CB051FAE57BE006E6F9A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC47CAAD1FAE56D0006E6F9A /* Info.plist */; };
 		DC47CB061FAE57BE006E6F9A /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAE1FAE56D0006E6F9A /* Operators.swift */; };
 		DC47CB071FAE57BF006E6F9A /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAA61FAE56D0006E6F9A /* Decoder.swift */; };
 		DC47CB081FAE57BF006E6F9A /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAA71FAE56D0006E6F9A /* Encoder.swift */; };
@@ -52,7 +51,6 @@
 		DC47CB0B1FAE57BF006E6F9A /* ExtensionDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAA1FAE56D0006E6F9A /* ExtensionDictionary.swift */; };
 		DC47CB0C1FAE57BF006E6F9A /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC47CAAB1FAE56D0006E6F9A /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC47CB0D1FAE57BF006E6F9A /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAC1FAE56D0006E6F9A /* Gloss.swift */; };
-		DC47CB0E1FAE57BF006E6F9A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC47CAAD1FAE56D0006E6F9A /* Info.plist */; };
 		DC47CB0F1FAE57BF006E6F9A /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAE1FAE56D0006E6F9A /* Operators.swift */; };
 		DC47CB101FAE57BF006E6F9A /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAA61FAE56D0006E6F9A /* Decoder.swift */; };
 		DC47CB111FAE57BF006E6F9A /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAA71FAE56D0006E6F9A /* Encoder.swift */; };
@@ -61,7 +59,6 @@
 		DC47CB141FAE57BF006E6F9A /* ExtensionDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAA1FAE56D0006E6F9A /* ExtensionDictionary.swift */; };
 		DC47CB151FAE57BF006E6F9A /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC47CAAB1FAE56D0006E6F9A /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC47CB161FAE57BF006E6F9A /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAC1FAE56D0006E6F9A /* Gloss.swift */; };
-		DC47CB171FAE57BF006E6F9A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC47CAAD1FAE56D0006E6F9A /* Info.plist */; };
 		DC47CB181FAE57BF006E6F9A /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAE1FAE56D0006E6F9A /* Operators.swift */; };
 /* End PBXBuildFile section */
 
@@ -369,7 +366,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Harlan Kellaway";
 				TargetAttributes = {
 					2FA4CE991C947E3000EB8AB8 = {
@@ -378,7 +375,7 @@
 					};
 					A04168E61C0DF69900269A6A = {
 						CreatedOnToolsVersion = 7.1.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1010;
 					};
 					DC39BF601B8A7AD200088CE0 = {
 						CreatedOnToolsVersion = 7.0;
@@ -386,11 +383,11 @@
 					};
 					DC683ADA1C2C615D0035EAC3 = {
 						CreatedOnToolsVersion = 7.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1010;
 					};
 					DCF300891BDCA3FF003FBF15 = {
 						CreatedOnToolsVersion = 7.0;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -431,7 +428,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC47CB0E1FAE57BF006E6F9A /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,7 +442,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC47CB171FAE57BF006E6F9A /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,7 +449,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC47CB051FAE57BE006E6F9A /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,7 +592,8 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -622,7 +617,8 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -640,12 +636,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -697,12 +695,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -753,7 +753,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -775,7 +775,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -795,7 +795,8 @@
 				PRODUCT_NAME = Gloss;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -818,7 +819,8 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -844,7 +846,8 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -868,7 +871,8 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
