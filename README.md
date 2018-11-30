@@ -20,16 +20,12 @@
 
 ### Swift Version
 
-The Gloss source currently available via CocoaPods and Carthage is compatible with Swift 4.0.
-
-To use the lastest version compatible with Swift 3.0, utilize version `1.2.x`.
-
-Swift 2.x is no longer supported.
+The Gloss source currently available via CocoaPods and Carthage is compatible with Swift 4.2.
 
 ### Installation with CocoaPods
 
 ```ruby
-pod 'Gloss', '~> 2.0.1'
+pod 'Gloss', '~> 2.0'
 ```
 
 ### Installation with Carthage
@@ -46,7 +42,7 @@ import PackageDescription
 let package = Package(
     name: "HelloWorld",
     dependencies: [
-        .Package(url: "https://github.com/hkellaway/Gloss.git", majorVersion: 2, minor: 0)
+        .Package(url: "https://github.com/hkellaway/Gloss.git", majorVersion: 2, minor: 1)
     ]
 )
 ```
