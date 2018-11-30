@@ -43,6 +43,7 @@
 		DC47CB021FAE57BE006E6F9A /* ExtensionDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAA1FAE56D0006E6F9A /* ExtensionDictionary.swift */; };
 		DC47CB031FAE57BE006E6F9A /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC47CAAB1FAE56D0006E6F9A /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC47CB041FAE57BE006E6F9A /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAC1FAE56D0006E6F9A /* Gloss.swift */; };
+		DC47CB051FAE57BE006E6F9A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC47CAAD1FAE56D0006E6F9A /* Info.plist */; };
 		DC47CB061FAE57BE006E6F9A /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAE1FAE56D0006E6F9A /* Operators.swift */; };
 		DC47CB071FAE57BF006E6F9A /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAA61FAE56D0006E6F9A /* Decoder.swift */; };
 		DC47CB081FAE57BF006E6F9A /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAA71FAE56D0006E6F9A /* Encoder.swift */; };
@@ -51,6 +52,7 @@
 		DC47CB0B1FAE57BF006E6F9A /* ExtensionDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAA1FAE56D0006E6F9A /* ExtensionDictionary.swift */; };
 		DC47CB0C1FAE57BF006E6F9A /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC47CAAB1FAE56D0006E6F9A /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC47CB0D1FAE57BF006E6F9A /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAC1FAE56D0006E6F9A /* Gloss.swift */; };
+		DC47CB0E1FAE57BF006E6F9A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC47CAAD1FAE56D0006E6F9A /* Info.plist */; };
 		DC47CB0F1FAE57BF006E6F9A /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAE1FAE56D0006E6F9A /* Operators.swift */; };
 		DC47CB101FAE57BF006E6F9A /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAA61FAE56D0006E6F9A /* Decoder.swift */; };
 		DC47CB111FAE57BF006E6F9A /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAA71FAE56D0006E6F9A /* Encoder.swift */; };
@@ -59,6 +61,7 @@
 		DC47CB141FAE57BF006E6F9A /* ExtensionDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAA1FAE56D0006E6F9A /* ExtensionDictionary.swift */; };
 		DC47CB151FAE57BF006E6F9A /* Gloss.h in Headers */ = {isa = PBXBuildFile; fileRef = DC47CAAB1FAE56D0006E6F9A /* Gloss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC47CB161FAE57BF006E6F9A /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAC1FAE56D0006E6F9A /* Gloss.swift */; };
+		DC47CB171FAE57BF006E6F9A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC47CAAD1FAE56D0006E6F9A /* Info.plist */; };
 		DC47CB181FAE57BF006E6F9A /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAAE1FAE56D0006E6F9A /* Operators.swift */; };
 /* End PBXBuildFile section */
 
@@ -428,6 +431,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC47CB0E1FAE57BF006E6F9A /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +439,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC47CB171FAE57BF006E6F9A /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +447,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC47CB051FAE57BE006E6F9A /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
