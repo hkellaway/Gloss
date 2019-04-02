@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 `Gloss` adheres to [Semantic Versioning](http://semver.org/).
 
-- `2.1.x` Releases - [2.1.0](#210)
+- `2.1.x` Releases - [2.1.0](#210) | [2.1.1](#211)
 - `2.0.x` Releases - [2.0.0-beta.1](#200-beta1) | [2.0.0-beta.2](#200-beta2) | [2.0.0](#200) | [2.0.1](#201)
 - `1.2.x` Releases - [1.2.0](#120) | [1.2.1](#121) | [1.2.2](#122) | [1.2.3](#123) | [1.2.4](#124)
 - `1.1.x` Releases - [1.1.0](#110) | [1.1.1](#111)
@@ -15,6 +15,14 @@ All notable changes to this project will be documented in this file.
 - `0.3.x` Releases - [0.3.0](#030) | [0.3.1](#031)
 - `0.2.x` Releases - [0.2.0](#020)
 - `0.1.x` Releases - [0.1.0](#010)
+
+---
+
+## [2.1.1](https://github.com/hkellaway/Gloss/releases/tag/2.1.1)
+Released on 2019-04-02.
+
+#### Fixed
+- Targets not specifying version 4.2 of Swift [[Issue #351](https://github.com/hkellaway/Gloss/issues/351)]
 
 ---
 
