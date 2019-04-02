@@ -393,10 +393,11 @@
 			};
 			buildConfigurationList = DC39BF5B1B8A7AD200088CE0 /* Build configuration list for PBXProject "Gloss" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = DC39BF571B8A7AD200088CE0;
 			productRefGroup = DC39BF621B8A7AD200088CE0 /* Products */;
