@@ -39,7 +39,7 @@ public extension Array where Element: JSONDecodable {
      
      - returns: Array of objects created from JSON.
      */
-    public static func from(jsonArray: [JSON]) -> [Element]? {
+    static func from(jsonArray: [JSON]) -> [Element]? {
         var models: [Element] = []
         
         for json in jsonArray {
@@ -73,7 +73,7 @@ public extension Array where Element: JSONDecodable {
      
      - returns: Object or nil.
      */
-    public static func from(data: Data, serializer: JSONSerializer = GlossJSONSerializer(), options: JSONSerialization.ReadingOptions = .mutableContainers) -> [Element]? {
+    static func from(data: Data, serializer: JSONSerializer = GlossJSONSerializer(), options: JSONSerialization.ReadingOptions = .mutableContainers) -> [Element]? {
         guard
             let jsonArray = (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)) as? [JSON],
             let models = [Element].from(jsonArray: jsonArray) else {
