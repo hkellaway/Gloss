@@ -23,6 +23,7 @@
 // THE SOFTWARE.
 //
 
+import Foundation
 import Gloss
 
 struct RepoOwner: Glossy {

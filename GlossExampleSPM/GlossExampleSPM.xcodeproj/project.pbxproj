@@ -3,27 +3,32 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		DC0974E623561A9E00045AB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0974E523561A9E00045AB3 /* AppDelegate.swift */; };
 		DC0974E823561A9E00045AB3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0974E723561A9E00045AB3 /* SceneDelegate.swift */; };
-		DC0974EA23561A9E00045AB3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0974E923561A9E00045AB3 /* ViewController.swift */; };
 		DC0974ED23561A9E00045AB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC0974EB23561A9E00045AB3 /* Main.storyboard */; };
 		DC0974EF23561A9F00045AB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC0974EE23561A9F00045AB3 /* Assets.xcassets */; };
 		DC0974F223561A9F00045AB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC0974F023561A9F00045AB3 /* LaunchScreen.storyboard */; };
+		DC0974FB23561ADD00045AB3 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0974F923561ADD00045AB3 /* Repo.swift */; };
+		DC0974FC23561ADD00045AB3 /* RepoOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0974FA23561ADD00045AB3 /* RepoOwner.swift */; };
+		DC0974FF23561B0200045AB3 /* Gloss in Frameworks */ = {isa = PBXBuildFile; productRef = DC0974FE23561B0200045AB3 /* Gloss */; };
+		DC09750123561B1E00045AB3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC09750023561B1D00045AB3 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DC0974E223561A9E00045AB3 /* GlossExampleSPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlossExampleSPM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC0974E523561A9E00045AB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC0974E723561A9E00045AB3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DC0974E923561A9E00045AB3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DC0974EC23561A9E00045AB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DC0974EE23561A9F00045AB3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC0974F123561A9F00045AB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC0974F323561A9F00045AB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC0974F923561ADD00045AB3 /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Repo.swift; path = ../../GlossExample/GlossExample/Repo.swift; sourceTree = "<group>"; };
+		DC0974FA23561ADD00045AB3 /* RepoOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepoOwner.swift; path = ../../GlossExample/GlossExample/RepoOwner.swift; sourceTree = "<group>"; };
+		DC09750023561B1D00045AB3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../../GlossExample/GlossExample/ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC0974FF23561B0200045AB3 /* Gloss in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +64,9 @@
 			children = (
 				DC0974E523561A9E00045AB3 /* AppDelegate.swift */,
 				DC0974E723561A9E00045AB3 /* SceneDelegate.swift */,
-				DC0974E923561A9E00045AB3 /* ViewController.swift */,
+				DC0974F923561ADD00045AB3 /* Repo.swift */,
+				DC0974FA23561ADD00045AB3 /* RepoOwner.swift */,
+				DC09750023561B1D00045AB3 /* ViewController.swift */,
 				DC0974EB23561A9E00045AB3 /* Main.storyboard */,
 				DC0974EE23561A9F00045AB3 /* Assets.xcassets */,
 				DC0974F023561A9F00045AB3 /* LaunchScreen.storyboard */,
@@ -83,6 +91,9 @@
 			dependencies = (
 			);
 			name = GlossExampleSPM;
+			packageProductDependencies = (
+				DC0974FE23561B0200045AB3 /* Gloss */,
+			);
 			productName = GlossExampleSPM;
 			productReference = DC0974E223561A9E00045AB3 /* GlossExampleSPM.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +122,9 @@
 				Base,
 			);
 			mainGroup = DC0974D923561A9E00045AB3;
+			packageReferences = (
+				DC0974FD23561B0200045AB3 /* XCRemoteSwiftPackageReference "Gloss" */,
+			);
 			productRefGroup = DC0974E323561A9E00045AB3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +152,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC0974EA23561A9E00045AB3 /* ViewController.swift in Sources */,
+				DC09750123561B1E00045AB3 /* ViewController.swift in Sources */,
+				DC0974FC23561ADD00045AB3 /* RepoOwner.swift in Sources */,
 				DC0974E623561A9E00045AB3 /* AppDelegate.swift in Sources */,
 				DC0974E823561A9E00045AB3 /* SceneDelegate.swift in Sources */,
+				DC0974FB23561ADD00045AB3 /* Repo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +302,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = GlossExampleSPM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -303,6 +320,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = GlossExampleSPM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -336,6 +354,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DC0974FD23561B0200045AB3 /* XCRemoteSwiftPackageReference "Gloss" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hkellaway/Gloss.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DC0974FE23561B0200045AB3 /* Gloss */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC0974FD23561B0200045AB3 /* XCRemoteSwiftPackageReference "Gloss" */;
+			productName = Gloss;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DC0974DA23561A9E00045AB3 /* Project object */;
 }
