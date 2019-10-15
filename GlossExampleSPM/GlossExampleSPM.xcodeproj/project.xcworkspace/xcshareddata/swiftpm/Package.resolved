@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Gloss",
+        "repositoryURL": "https://github.com/hkellaway/Gloss.git",
+        "state": {
+          "branch": "develop",
+          "revision": "346902f31ef8ac2828bb2c02bdb35fc8bc7734c9",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

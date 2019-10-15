@@ -150,11 +150,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07400D1B2354B248008D701C /* Gloss */ = {
+			isa = PBXGroup;
+			children = (
+				DC47CAA61FAE56D0006E6F9A /* Decoder.swift */,
+				DC47CAA71FAE56D0006E6F9A /* Encoder.swift */,
+				DC47CAA81FAE56D0006E6F9A /* ExtensionArray.swift */,
+				DC47CAA91FAE56D0006E6F9A /* ExtensionDecodable.swift */,
+				DC47CAAA1FAE56D0006E6F9A /* ExtensionDictionary.swift */,
+				DC47CAAC1FAE56D0006E6F9A /* Gloss.swift */,
+				DC47CAAD1FAE56D0006E6F9A /* Info.plist */,
+				DC47CAAE1FAE56D0006E6F9A /* Operators.swift */,
+			);
+			path = Gloss;
+			sourceTree = "<group>";
+		};
+		07400D1C2354B261008D701C /* GlossTests */ = {
+			isa = PBXGroup;
+			children = (
+				DC47CACC1FAE572D006E6F9A /* Fakes */,
+				DC47CAD41FAE572D006E6F9A /* Test Models */,
+				DC47CAD01FAE572D006E6F9A /* Info.plist */,
+				DC47CAC91FAE572D006E6F9A /* Comparators.swift */,
+				DC47CACF1FAE572D006E6F9A /* GlossTests.swift */,
+				DC47CAD11FAE572D006E6F9A /* KeyPathTests.swift */,
+				DC47CAD21FAE572D006E6F9A /* ObjectToJSONFlowTests.swift */,
+				DC47CAD31FAE572D006E6F9A /* OperatorTests.swift */,
+				DC47CACA1FAE572D006E6F9A /* DecoderTests.swift */,
+				DC47CACB1FAE572D006E6F9A /* EncoderTests.swift */,
+				DC47CACE1FAE572D006E6F9A /* FlowObjectCreationTests.swift */,
+			);
+			path = GlossTests;
+			sourceTree = "<group>";
+		};
 		DC39BF571B8A7AD200088CE0 = {
 			isa = PBXGroup;
 			children = (
+				DC47CAAB1FAE56D0006E6F9A /* Gloss.h */,
 				DC47CAA51FAE56D0006E6F9A /* Sources */,
-				DC47CAC81FAE572D006E6F9A /* Tests */,
 				DC39BF621B8A7AD200088CE0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -174,35 +207,10 @@
 		DC47CAA51FAE56D0006E6F9A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				DC47CAA61FAE56D0006E6F9A /* Decoder.swift */,
-				DC47CAA71FAE56D0006E6F9A /* Encoder.swift */,
-				DC47CAA81FAE56D0006E6F9A /* ExtensionArray.swift */,
-				DC47CAA91FAE56D0006E6F9A /* ExtensionDecodable.swift */,
-				DC47CAAA1FAE56D0006E6F9A /* ExtensionDictionary.swift */,
-				DC47CAAB1FAE56D0006E6F9A /* Gloss.h */,
-				DC47CAAC1FAE56D0006E6F9A /* Gloss.swift */,
-				DC47CAAD1FAE56D0006E6F9A /* Info.plist */,
-				DC47CAAE1FAE56D0006E6F9A /* Operators.swift */,
+				07400D1C2354B261008D701C /* GlossTests */,
+				07400D1B2354B248008D701C /* Gloss */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		DC47CAC81FAE572D006E6F9A /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				DC47CAC91FAE572D006E6F9A /* Comparators.swift */,
-				DC47CACA1FAE572D006E6F9A /* DecoderTests.swift */,
-				DC47CACB1FAE572D006E6F9A /* EncoderTests.swift */,
-				DC47CACC1FAE572D006E6F9A /* Fakes */,
-				DC47CACE1FAE572D006E6F9A /* FlowObjectCreationTests.swift */,
-				DC47CACF1FAE572D006E6F9A /* GlossTests.swift */,
-				DC47CAD01FAE572D006E6F9A /* Info.plist */,
-				DC47CAD11FAE572D006E6F9A /* KeyPathTests.swift */,
-				DC47CAD21FAE572D006E6F9A /* ObjectToJSONFlowTests.swift */,
-				DC47CAD31FAE572D006E6F9A /* OperatorTests.swift */,
-				DC47CAD41FAE572D006E6F9A /* Test Models */,
-			);
-			path = Tests;
 			sourceTree = "<group>";
 		};
 		DC47CACC1FAE572D006E6F9A /* Fakes */ = {
@@ -550,7 +558,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = Sources/GlossTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.GlossTests;
@@ -563,7 +571,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = Sources/GlossTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.GlossTests;
@@ -583,7 +591,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Gloss/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
@@ -607,7 +615,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Gloss/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
@@ -742,7 +750,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Gloss/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
@@ -763,7 +771,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Gloss/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
@@ -783,7 +791,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Gloss/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
@@ -805,7 +813,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Gloss/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harlankellaway.Gloss;
@@ -830,7 +838,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Gloss/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -854,7 +862,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Gloss/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
