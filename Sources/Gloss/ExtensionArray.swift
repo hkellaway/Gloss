@@ -25,6 +25,60 @@
 
 import Foundation
 
+// MARK: - Migration to Codable
+
+public extension Array where Element: JSONDecodable & Decodable {
+    
+    /**
+     Returns array of new objects created from provided JSON array.
+     If any decodings fail, nil is returned.
+     
+     - parameter jsonArray: Array of JSON representations of objects.
+     
+     - returns: Array of objects created from JSON.
+     */
+    static func from(decodableJSONArray jsonArray: [JSON], jsonDecoder: JSONDecoder = JSONDecoder(), serializer: JSONSerializer = GlossJSONSerializer(), options: JSONSerialization.WritingOptions? = nil, logger: Logger = GlossLogger()) -> [Element]? {
+        var models: [Element] = []
+        
+        for json in jsonArray {
+            let model: Element? = .from(decodableJSON: json, jsonDecoder: jsonDecoder, serializer: serializer, options: options, logger: logger)
+            
+            if let model = model {
+                models.append(model)
+            } else {
+                return nil
+            }
+        }
+        
+        return models
+    }
+    
+}
+
+public extension Array where Element: JSONEncodable & Encodable {
+    
+    /**
+     Encodes array of objects as JSON array.
+     If any encodings fail, nil is returned.
+     
+     - returns: Array of JSON created from objects.
+     */
+    func toEncodableJSONArray(jsonEncoder: JSONEncoder = JSONEncoder(), serializer: JSONSerializer = GlossJSONSerializer(), options: JSONSerialization.ReadingOptions = .mutableContainers, logger: Logger = GlossLogger()) -> [JSON]? {
+        var jsonArray: [JSON] = []
+        
+        for json in self {
+            if let json = json.toEncodableJSON(jsonEncoder: jsonEncoder, serializer: serializer, options: options, logger: logger) {
+                jsonArray.append(json)
+            } else {
+                return nil
+            }
+        }
+        
+        return jsonArray
+    }
+    
+}
+
 // MARK: - JSONDecodable
 
 public extension Array where Element: JSONDecodable {
@@ -55,6 +109,15 @@ public extension Array where Element: JSONDecodable {
         return models
     }
     
+    /**
+     Returns array of new objects created from provided JSON array.
+     If any decodings fail, nil is returned.
+     
+     - parameter jsonArray: Array of JSON representations of objects.
+     
+     - returns: Array of objects created from JSON.
+     */
+
     /**
      Initializes array of model objects from provided data.
      
