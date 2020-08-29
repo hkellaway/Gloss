@@ -2,9 +2,9 @@
 
 ## Features :sparkles:  
 [![CocoaPods](https://img.shields.io/cocoapods/v/Gloss.svg)](http://cocoapods.org/pods/Gloss) 
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage) 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg)](https://github.com/Carthage/Carthage) 
 [![SPM](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
-[![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE) 
+[![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/production/LICENSE) 
 [![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss)
 [![Build Status](https://travis-ci.org/hkellaway/Gloss.svg?branch=develop)](https://travis-ci.org/hkellaway/Gloss)
 
@@ -19,7 +19,7 @@ The Gloss source currently available via CocoaPods, Carthage and Swift Package M
 
 ### Swift Version
 
-It is compatible with Swift 5.0.
+Gloss is compatible with Swift 5.0.
 
 To use a version compatible with Swift 4.2, use version 2.1.x.
 
@@ -37,7 +37,7 @@ github "hkellaway/Gloss"
 
 ### Installation with Swift Package Manager
 
-See [Adding Package Dependencies to Your App](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app). Search for `Gloss` with **Owner** `hkellaway`. Point to the desired version or `master` branch.
+See [Adding Package Dependencies to Your App](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app). Search for `Gloss` with *Owner* `hkellaway`. Point to the desired version or the `production` branch.
 
 ## Usage
 
@@ -535,7 +535,7 @@ The particular word "gloss" was chosen as it evokes both being lightweight and a
 
 ## Credits
 
-Gloss was created by [Harlan Kellaway](http://harlankellaway.com).
+Gloss was created by [Harlan Kellaway](http://hkellaway.github.io).
 
 Inspiration was gathered from other great JSON parsing libraries like [Argo](https://github.com/thoughtbot/Argo). Read more about why Gloss was made [here](http://harlankellaway.com/blog/2015/08/16/introducing-gloss-json-parsing-swift).
 
@@ -563,4 +563,4 @@ Check out Gloss in these cool places!
 
 ## License
 
-Gloss is available under the MIT license. See the [LICENSE](https://raw.githubusercontent.com/hkellaway/Gloss/master/LICENSE) file for more info.
+Gloss is available under the MIT license. See the [LICENSE](https://raw.githubusercontent.com/hkellaway/Gloss/production/LICENSE) file for more info.
