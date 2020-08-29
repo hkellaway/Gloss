@@ -120,6 +120,16 @@ public protocol JSONSerializer {
      */
     func jsonArray(from data: Data, options: JSONSerialization.ReadingOptions) -> [JSON]?
     
+    /**
+     Converts provided JSON into data.
+     
+     - parameter json:    JSON to convert to data.
+     - parameter options: Options for writing the JSON data.
+     
+     - returns: Data if converted successfully, nil otherwise.
+     */
+    func data(from json: JSON, options: JSONSerialization.WritingOptions?) -> Data?
+    
 }
 
 /// Gloss JSON Serializer.
@@ -142,6 +152,14 @@ public struct GlossJSONSerializer: JSONSerializer {
         }
         
         return jsonArray
+    }
+    
+    public func data(from json: JSON, options: JSONSerialization.WritingOptions?) -> Data? {
+        guard JSONSerialization.isValidJSONObject(json) else {
+            return nil
+        }
+
+        return try? JSONSerialization.data(withJSONObject: json, options: options ?? [])
     }
 
 }
