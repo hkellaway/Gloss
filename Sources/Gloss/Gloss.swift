@@ -31,6 +31,13 @@ import Foundation
 
 public typealias JSON = [String : Any]
 
+// MARK: Errors
+
+public enum GlossError: Error {
+    case decodableMigrationUnimplemented(context: String)
+    case encodableMigrationUnimplemented(context: String)
+}
+
 // MARK: - Protocols
 
 /**
