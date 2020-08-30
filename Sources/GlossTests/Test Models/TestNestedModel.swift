@@ -63,3 +63,21 @@ func == (lhs: TestNestedModel, rhs: TestNestedModel) -> Bool {
         && lhs.uuid == rhs.uuid
         && lhs.url == rhs.url
 }
+
+// MARK: - Codable Migration
+
+extension TestNestedModel: Decodable {
+    
+    init(from decoder: Swift.Decoder) throws {
+        throw GlossError.decodableMigrationUnimplemented(context: "TestNestedModel")
+    }
+    
+}
+
+extension TestNestedModel: Encodable {
+    
+    func encode(to encoder: Swift.Encoder) throws {
+        throw GlossError.encodableMigrationUnimplemented(context: "TestNestedModel")
+    }
+    
+}

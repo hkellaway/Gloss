@@ -67,3 +67,22 @@ extension TestFailableModel {
     }
 }
 #endif
+
+// MARK: - Codable Migration
+
+extension TestFailableModel: Decodable {
+    
+    init(from decoder: Swift.Decoder) throws {
+        throw GlossError.decodableMigrationUnimplemented(context: "TestFailableModel")
+    }
+    
+}
+
+extension TestFailableModel: Encodable {
+    
+    func encode(to encoder: Swift.Encoder) throws {
+        // Remove GlossError to see Codable error in console
+        throw GlossError.encodableMigrationUnimplemented(context: "TestFailableModel")
+    }
+    
+}

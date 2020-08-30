@@ -51,8 +51,8 @@ class OperatorTests: XCTestCase {
         }
         #endif
         
-        testNestedModel1 = TestNestedModel(json: [ "id" : 1, "name" : "nestedModel1"])
-        testNestedModel2 = TestNestedModel(json: ["id" : 2, "name" : "nestedModel2"])
+        testNestedModel1 = .from(decodableJSON: [ "id" : 1, "name" : "nestedModel1"])
+        testNestedModel2 = .from(decodableJSON: ["id" : 2, "name" : "nestedModel2"])
     }
     
     override func tearDown() {

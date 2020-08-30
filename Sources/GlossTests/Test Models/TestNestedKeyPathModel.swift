@@ -27,3 +27,22 @@ struct TestNestedKeyPathModel: Glossy {
     }
     
 }
+
+// MARK: - Codable Migration
+
+extension TestNestedKeyPathModel: Decodable {
+    
+    init(from decoder: Swift.Decoder) throws {
+        throw GlossError.decodableMigrationUnimplemented(context: "TestNestedKeyPathModel")
+    }
+    
+}
+
+extension TestNestedKeyPathModel: Encodable {
+    
+    func encode(to encoder: Swift.Encoder) throws {
+        // Remove GlossError to see Codable error in console
+        throw GlossError.encodableMigrationUnimplemented(context: "TestNestedKeyPathModel")
+    }
+    
+}

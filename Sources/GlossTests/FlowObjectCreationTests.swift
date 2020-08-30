@@ -55,7 +55,7 @@ class FlowObjectCreationTests: XCTestCase {
     }
     
     func testObjectDecodedFromJSONHasCorrectProperties() {
-        let result = TestModel(json: testJSON!)!
+        let result: TestModel = .from(decodableJSON: testJSON!)!
         
         XCTAssertTrue((result.bool == true), "Model created from JSON should have correct property values")
         XCTAssertTrue((result.boolArray! == [true, false, true]), "Model created from JSON should have correct property values")
