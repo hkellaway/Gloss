@@ -31,7 +31,7 @@ public extension JSONDecodable {
      
      - parameter data:       Raw JSON data.
      - parameter serializer: Serializer to use when creating JSON from data.
-     - parameter ooptions:   Options for reading the JSON data.
+     - parameter options:    Options for reading the JSON data.
      
      - returns: Object or nil.
      */
@@ -42,6 +42,54 @@ public extension JSONDecodable {
         }
         
         return nil
+    }
+    
+    // MARK: - Migration to Swift.Decodable
+    
+    /**
+     Attempts to create a Gloss model using `Swift.Decodable`.
+     Will fallback to Gloss initialization in case of error.
+     
+     - parameter data:          Raw JSON data.
+     - parameter jsonDecoder:   A `Swift.JSONDecoder`.
+     - parameter serializer:    Serializes JSON to data and vice versa.
+     - parameter options:       Options for reading the JSON data.
+     - parameter logger:        Logs issues with `Swift.Decodable`.
+     
+     - returns: Object or nil.
+     */
+    static func from<T: Decodable & JSONDecodable>(decodableData data: Data, jsonDecoder: JSONDecoder = JSONDecoder(), serializer: JSONSerializer = GlossJSONSerializer(), options: JSONSerialization.ReadingOptions = .mutableContainers, logger: Logger = GlossLogger()) -> T? {
+        do {
+            return try jsonDecoder.decode(T.self, from: data)
+        } catch {
+            logger.log(message: "Swift.Decodable error: \(error)")
+            return T(data: data, serializer: serializer, options: options)
+        }
+    }
+    
+    /**
+     Attempts to create a Gloss model using `Swift.Decodable`.
+     Will fallback to Gloss initialization in case of error.
+     
+     - parameter json:          JSON to create model from.
+     - parameter jsonDecoder:   A `Swift.JSONDecoder`.
+     - parameter serializer:    Serializes JSON to data and vice versa.
+     - parameter options:       Options for writing the JSON data.
+     - parameter logger:        Logs issues with `Swift.Decodable`.
+     
+     - returns: Object or nil.
+     */
+    static func from<T: Decodable & JSONDecodable>(decodableJSON json: JSON, jsonDecoder: JSONDecoder = JSONDecoder(), serializer: JSONSerializer = GlossJSONSerializer(), options: JSONSerialization.WritingOptions? = nil, logger: Logger = GlossLogger()) -> T? {
+        do {
+            if let data = serializer.data(from: json, options: options) {
+                return try jsonDecoder.decode(T.self, from: data)
+            } else {
+                return T(json: json)
+            }
+        } catch {
+            logger.log(message: "Swift.Decodable error: \(error)")
+            return T(json: json)
+        }
     }
     
 }
