@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  GlossExample
 //
-// Copyright (c) 2015 Harlan Kellaway
+// Copyright (c) 2020 Harlan Kellaway
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,8 +26,27 @@
 import Gloss
 import UIKit
 
-typealias Decoder = Gloss.Decoder
-typealias Encoder = Gloss.Encoder
+extension JSONDecoder {
+    
+    // GitHub API uses snake-case
+    static func snakeCase() -> JSONDecoder {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return decoder
+    }
+    
+}
+
+extension JSONEncoder {
+    
+    // GitHub API uses snake-case
+    static func snakeCase() -> JSONEncoder {
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        return encoder
+    }
+    
+}
 
 class ViewController: UIViewController {
 
@@ -46,8 +65,10 @@ class ViewController: UIViewController {
             ],
             "language" : "Swift"
             ]
-        
-        guard let repo = Repo(json: repoJSON) else {
+       
+        let decodedRepo: Repo? = .from(decodableJSON: repoJSON,
+                                       jsonDecoder: .snakeCase())
+        guard let repo = decodedRepo else {
             print("DECODING FAILURE :(")
             return
         }
@@ -55,30 +76,38 @@ class ViewController: UIViewController {
         print(repo.repoId)
         print(repo.name)
         print(repo.desc!)
-        print(repo.url)
+        print(repo.urlString!)
         print(repo.owner)
-        print(repo.ownerURL)
         print(repo.primaryLanguage?.rawValue ?? "No language")
         print("")
-        
-        print("JSON: \(repo.toJSON()!)")
+
+        print("JSON: \(repo.toEncodableJSON(jsonEncoder: .snakeCase())!)")
         print("")
-        
-        guard let repos = [Repo].from(jsonArray: [repoJSON, repoJSON, repoJSON]) else {
+
+        guard let repos = [Repo].from(decodableJSONArray: [repoJSON, repoJSON, repoJSON],
+                                      jsonDecoder: .snakeCase()) else {
             print("DECODING FAILURE :(")
             return
         }
-        
+
         print("REPOS: \(repos)")
         print("")
-        
-        guard let jsonArray = repos.toJSONArray() else {
+
+        guard let jsonArray = repos.toEncodableJSONArray(jsonEncoder: .snakeCase()) else {
             print("ENCODING FAILURE :(")
             return
         }
-        
+
         print("JSON ARRAY: \(jsonArray)")
+        
+        if let data = GlossJSONSerializer().data(from: repoJSON, options: nil) {
+            do {
+                let repo = try JSONDecoder.snakeCase().decode(Repo.self, from: data)
+                print(repo.name)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
 
     }
 }
-

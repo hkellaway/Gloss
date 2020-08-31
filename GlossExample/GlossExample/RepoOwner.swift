@@ -2,7 +2,7 @@
 //  RepoOwner.swift
 //  GlossExample
 //
-// Copyright (c) 2015 Harlan Kellaway
+// Copyright (c) 2020 Harlan Kellaway
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,25 +26,36 @@
 import Foundation
 import Gloss
 
-struct RepoOwner: Glossy {
+struct RepoOwner: Glossy, Codable {
+    let id: Int
+    let login: String?
+    let htmlUrl: String?
+}
+
+// MARK: - Gloss
+
+extension RepoOwner {
     
-    let ownerId: Int
-    let username: String?
-    
-    // MARK: - Deserialization
+    // MARK: JSONDecodable
     
     init?(json: JSON) {
-        guard let ownerId: Int = "id" <~~ json else { return nil }
-        self.ownerId = ownerId
-        self.username = "login" <~~ json
+        guard
+            let id: Int = "id" <~~ json else {
+            return nil
+        }
+        let login: String? = "login" <~~ json
+        let htmlUrl: String? = "html_url" <~~ json
+        
+        self.init(id: id, login: login, htmlUrl: htmlUrl)
     }
     
-    // MARK: - Serialization
+    // MARK: JSONEncodable
     
     func toJSON() -> JSON? {
         return jsonify([
-            "id" ~~> self.ownerId,
-            "login" ~~> self.username
+            "id" ~~> self.id,
+            "login" ~~> self.login,
+            "html_url" ~~> self.htmlUrl
         ])
     }
     
