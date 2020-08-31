@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 `Gloss` adheres to [Semantic Versioning](http://semver.org/).
 
-- `3.0.X` Releases - [3.0.0](#300) | [3.1.0](#310) | [3.1.1](#311)
+- `3.0.X` Releases - [3.0.0](#300) | [3.1.0](#310) | [3.1.1](#311) | [3.2.0](#320)
 - `2.1.x` Releases - [2.1.0](#210) | [2.1.1](#211)
 - `2.0.x` Releases - [2.0.0-beta.1](#200-beta1) | [2.0.0-beta.2](#200-beta2) | [2.0.0](#200) | [2.0.1](#201)
 - `1.2.x` Releases - [1.2.0](#120) | [1.2.1](#121) | [1.2.2](#122) | [1.2.3](#123) | [1.2.4](#124)
@@ -16,6 +16,18 @@ All notable changes to this project will be documented in this file.
 - `0.3.x` Releases - [0.3.0](#030) | [0.3.1](#031)
 - `0.2.x` Releases - [0.2.0](#020)
 - `0.1.x` Releases - [0.1.0](#010)
+
+---
+## [3.2.0](https://github.com/hkellaway/Gloss/releases/tag/3.2.0)
+Released on 2020-08-30.
+
+#### Added
+- Helper methods for migrating to Codable [[PR #363](https://github.com/hkellaway/Gloss/pull/363)]
+
+#### Deprecation Notes
+
+Gloss is officially deprecated for Swift's Codable. See the Migration Guide for details.
+
 
 ---
 ## [3.1.1](https://github.com/hkellaway/Gloss/releases/tag/3.1.1)

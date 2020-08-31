@@ -235,3 +235,24 @@ extension TestModel {
     }
 }
 #endif
+
+// MARK: - Codable Migration
+
+extension TestModel.EnumValue: Decodable { }
+
+extension TestModel: Decodable {
+    
+    init(from decoder: Swift.Decoder) throws {
+        throw GlossError.decodableMigrationUnimplemented(context: "TestModel")
+    }
+    
+}
+
+extension TestModel: Encodable {
+    
+    func encode(to encoder: Swift.Encoder) throws {
+        // Remove GlossError to see Codable error in console
+        throw GlossError.encodableMigrationUnimplemented(context: "TestModel")
+    }
+    
+}

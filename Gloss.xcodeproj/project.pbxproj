@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2FA4CE9F1C947E3000EB8AB8 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC39BF611B8A7AD200088CE0 /* Gloss.framework */; };
+		DC424CD124FAA173001AD4E7 /* ExtensionEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC424CD024FAA173001AD4E7 /* ExtensionEncodable.swift */; };
+		DC424CD224FAA173001AD4E7 /* ExtensionEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC424CD024FAA173001AD4E7 /* ExtensionEncodable.swift */; };
+		DC424CD324FAA173001AD4E7 /* ExtensionEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC424CD024FAA173001AD4E7 /* ExtensionEncodable.swift */; };
+		DC424CD424FAA173001AD4E7 /* ExtensionEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC424CD024FAA173001AD4E7 /* ExtensionEncodable.swift */; };
 		DC47CAE01FAE578D006E6F9A /* Comparators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CAC91FAE572D006E6F9A /* Comparators.swift */; };
 		DC47CAE11FAE578F006E6F9A /* DecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CACA1FAE572D006E6F9A /* DecoderTests.swift */; };
 		DC47CAE21FAE5792006E6F9A /* EncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CACB1FAE572D006E6F9A /* EncoderTests.swift */; };
@@ -76,6 +80,7 @@
 		2FA4CE9A1C947E3000EB8AB8 /* GlossTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlossTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A04168E71C0DF69900269A6A /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC39BF611B8A7AD200088CE0 /* Gloss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gloss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC424CD024FAA173001AD4E7 /* ExtensionEncodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionEncodable.swift; sourceTree = "<group>"; };
 		DC47CAA61FAE56D0006E6F9A /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		DC47CAA71FAE56D0006E6F9A /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
 		DC47CAA81FAE56D0006E6F9A /* ExtensionArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionArray.swift; sourceTree = "<group>"; };
@@ -157,10 +162,11 @@
 				DC47CAA71FAE56D0006E6F9A /* Encoder.swift */,
 				DC47CAA81FAE56D0006E6F9A /* ExtensionArray.swift */,
 				DC47CAA91FAE56D0006E6F9A /* ExtensionDecodable.swift */,
+				DC424CD024FAA173001AD4E7 /* ExtensionEncodable.swift */,
 				DC47CAAA1FAE56D0006E6F9A /* ExtensionDictionary.swift */,
+				DC47CAAE1FAE56D0006E6F9A /* Operators.swift */,
 				DC47CAAC1FAE56D0006E6F9A /* Gloss.swift */,
 				DC47CAAD1FAE56D0006E6F9A /* Info.plist */,
-				DC47CAAE1FAE56D0006E6F9A /* Operators.swift */,
 			);
 			path = Gloss;
 			sourceTree = "<group>";
@@ -207,8 +213,8 @@
 		DC47CAA51FAE56D0006E6F9A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				07400D1C2354B261008D701C /* GlossTests */,
 				07400D1B2354B248008D701C /* Gloss */,
+				07400D1C2354B261008D701C /* GlossTests */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -496,6 +502,7 @@
 				DC47CB0F1FAE57BF006E6F9A /* Operators.swift in Sources */,
 				DC47CB081FAE57BF006E6F9A /* Encoder.swift in Sources */,
 				DC47CB071FAE57BF006E6F9A /* Decoder.swift in Sources */,
+				DC424CD324FAA173001AD4E7 /* ExtensionEncodable.swift in Sources */,
 				DC47CB091FAE57BF006E6F9A /* ExtensionArray.swift in Sources */,
 				DC47CB0A1FAE57BF006E6F9A /* ExtensionDecodable.swift in Sources */,
 			);
@@ -510,6 +517,7 @@
 				DC47CAFD1FAE57BE006E6F9A /* Operators.swift in Sources */,
 				DC47CAF61FAE57BE006E6F9A /* Encoder.swift in Sources */,
 				DC47CAF51FAE57BE006E6F9A /* Decoder.swift in Sources */,
+				DC424CD124FAA173001AD4E7 /* ExtensionEncodable.swift in Sources */,
 				DC47CAF71FAE57BE006E6F9A /* ExtensionArray.swift in Sources */,
 				DC47CAF81FAE57BE006E6F9A /* ExtensionDecodable.swift in Sources */,
 			);
@@ -524,6 +532,7 @@
 				DC47CB181FAE57BF006E6F9A /* Operators.swift in Sources */,
 				DC47CB111FAE57BF006E6F9A /* Encoder.swift in Sources */,
 				DC47CB101FAE57BF006E6F9A /* Decoder.swift in Sources */,
+				DC424CD424FAA173001AD4E7 /* ExtensionEncodable.swift in Sources */,
 				DC47CB121FAE57BF006E6F9A /* ExtensionArray.swift in Sources */,
 				DC47CB131FAE57BF006E6F9A /* ExtensionDecodable.swift in Sources */,
 			);
@@ -538,6 +547,7 @@
 				DC47CB061FAE57BE006E6F9A /* Operators.swift in Sources */,
 				DC47CAFF1FAE57BE006E6F9A /* Encoder.swift in Sources */,
 				DC47CAFE1FAE57BE006E6F9A /* Decoder.swift in Sources */,
+				DC424CD224FAA173001AD4E7 /* ExtensionEncodable.swift in Sources */,
 				DC47CB001FAE57BE006E6F9A /* ExtensionArray.swift in Sources */,
 				DC47CB011FAE57BE006E6F9A /* ExtensionDecodable.swift in Sources */,
 			);

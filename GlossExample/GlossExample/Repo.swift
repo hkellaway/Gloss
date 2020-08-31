@@ -2,7 +2,7 @@
 //  Repo.swift
 //  GlossExample
 //
-// Copyright (c) 2015 Harlan Kellaway
+// Copyright (c) 2020 Harlan Kellaway
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,78 +26,103 @@
 import Foundation
 import Gloss
 
-struct Repo: Glossy {
+struct Repo: Glossy, Codable {
     
     let repoId: Int
     let desc: String?
     let name: String
-    let url: URL
+    let urlString: String?
     let owner: RepoOwner // nested model
-    let ownerURL: URL
     let primaryLanguage: Language?
     
     enum Language: String {
         case Swift = "Swift"
         case ObjectiveC = "Objective-C"
     }
+}
+
+// MARK: - Gloss
+
+extension Repo {
     
-    // MARK: - Deserialization
+    // MARK: JSONDecodable
     
     init?(json: JSON) {
         guard let repoId: Int = "id" <~~ json,
-            let name: String = Decoder.decodeStringUppercase(key: "name", json: json),
-            let url: URL = "html_url" <~~ json,
-            let owner: RepoOwner = "owner" <~~ json,
-            let ownerURL: URL = "owner.html_url" <~~ json else {
+            let name: String = "name" <~~ json,
+            let ownerJSON: JSON = json["owner"] as? JSON,
+            let owner: RepoOwner = .from(decodableJSON: ownerJSON) else {
                 return nil
         }
         
         self.repoId = repoId
         self.name = name
         self.desc = "description" <~~ json
-        self.url = url
+        self.urlString = "html_url" <~~ json
         self.owner = owner
-        self.ownerURL = ownerURL
         self.primaryLanguage = "language" <~~ json
     }
     
-    // MARK: - Serialization
+    // MARK: JSONEncodable
     
     func toJSON() -> JSON? {
+        var ownerJSON: JSON? = nil
+        if let owner = self.owner.toEncodableJSON(jsonEncoder: .snakeCase()) {
+            ownerJSON = ["owner": owner]
+        }
         return jsonify([
             "id" ~~> self.repoId,
-            Encoder.encodeStringCapitalized(key: "name", value: self.name),
+            "name" ~~> name,
             "description" ~~> self.desc,
-            "html_url" ~~> self.url,
-            "owner" ~~> self.owner,
-            "owner.html_url" ~~> self.ownerURL,
+            "html_url" ~~> self.urlString,
+            ownerJSON,
             "language" ~~> self.primaryLanguage
             ])
     }
+    
 }
 
-// MARK: - Custom transformers
+// MARK: - Migration to Codable
 
-extension Decoder {
+// MARK: Decodable
+
+extension Repo.Language: Decodable { }
+
+extension Repo {
     
-    static func decodeStringUppercase(key: String, json: JSON) -> String? {
-        if let string = json[key] as? String {
-            return string.uppercased()
-        }
-        
-        return nil
+
+    
+    init(from decoder: Swift.Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let repoId = try container.decode(Int.self, forKey: .id)
+        let name = try container.decode(String.self, forKey: .name)
+        let desc = try container.decode(String.self, forKey: .description)
+        let urlString = try container.decode(String.self, forKey: .htmlUrl)
+        let owner = try container.decode(RepoOwner.self, forKey: .owner)
+        let primaryLanguage = try container.decodeIfPresent(Language.self, forKey: .language)
+        self.init(repoId: repoId, desc: desc, name: name, urlString: urlString, owner: owner, primaryLanguage: primaryLanguage)
     }
     
 }
 
-extension Encoder {
+// MARK: Encodable
+
+extension Repo.Language: Encodable { }
+
+extension Repo {
     
-    static func encodeStringCapitalized(key: String, value: String?) -> JSON? {
-        if let value = value {
-            return [key : value.capitalized]
-        }
-        
-        return nil
+    fileprivate enum CodingKeys: String, CodingKey {
+        case id, name, description, htmlUrl, owner, language
+    }
+    
+    func encode(to encoder: Swift.Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.repoId, forKey: .id)
+        try container.encode(self.name, forKey: .name)
+        try container.encode(self.desc, forKey: .description)
+        try container.encodeIfPresent(self.urlString, forKey: .htmlUrl)
+        try container.encode(self.owner, forKey: .owner)
+        try container.encodeIfPresent(self.primaryLanguage, forKey: .language)
     }
     
 }

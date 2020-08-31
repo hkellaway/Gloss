@@ -93,7 +93,7 @@ class ObjectToJSONFlowTests: XCTestCase {
             "uuidArray" : ["572099C2-B9AA-42AA-8A25-66E3F3056271", "54DB8DCF-F68D-4B55-A3FC-EB8CF4C36B06", "982CED72-743A-45F8-87CF-278386D32EBF"]
         ]
         
-        testModel = TestModel(json: json)
+        testModel = .from(decodableJSON: json)
     }
     
     override func tearDown() {
@@ -103,7 +103,7 @@ class ObjectToJSONFlowTests: XCTestCase {
     }
     
     func testObjectEncodedToJSONHasCorrectProperties() {
-        let result = testModel!.toJSON()
+        let result = testModel!.toEncodableJSON()
         
         XCTAssertTrue((result!["bool"] as! Bool == true), "JSON created from model should have correct values")
         XCTAssertTrue((result!["boolArray"] as! [Bool] == [true, false, true]), "JSON created from model should have correct values")

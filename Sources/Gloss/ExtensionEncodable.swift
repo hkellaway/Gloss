@@ -1,6 +1,6 @@
 //
-//  RepoOwner.swift
-//  GlossExample
+//  ExtensionEncodable.swift
+//  Gloss
 //
 // Copyright (c) 2020 Harlan Kellaway
 //
@@ -24,39 +24,29 @@
 //
 
 import Foundation
-import Gloss
 
-struct RepoOwner: Glossy, Codable {
-    let id: Int
-    let login: String?
-    let htmlUrl: String?
-}
+// MARK: - Migration to Swift.Encodable
 
-// MARK: - Gloss
-
-extension RepoOwner {
+public extension JSONEncodable where Self:Encodable {
     
-    // MARK: JSONDecodable
-    
-    init?(json: JSON) {
-        guard
-            let id: Int = "id" <~~ json else {
-            return nil
+    /**
+     Encodes provided model as JSON.
+     
+     - parameter model:      Model to encode as JSon.
+     - parameter serializer: Serializer to use when creating JSON from data.
+     - parameter options:    Options for reading the JSON data.
+     - parameter logger:     Logs issues with `Swift.Encodable`.
+     
+     - returns: Object or nil.
+     */
+    func toEncodableJSON(jsonEncoder: JSONEncoder = JSONEncoder(), serializer: JSONSerializer = GlossJSONSerializer(), options: JSONSerialization.ReadingOptions = .mutableContainers, logger: Logger = GlossLogger()) -> JSON? {
+        do {
+            let data = try jsonEncoder.encode(self)
+            return serializer.json(from: data, options: options)
+        } catch {
+            logger.log(message: "Swift.Encodable error: \(error)")
+            return self.toJSON()
         }
-        let login: String? = "login" <~~ json
-        let htmlUrl: String? = "html_url" <~~ json
-        
-        self.init(id: id, login: login, htmlUrl: htmlUrl)
-    }
-    
-    // MARK: JSONEncodable
-    
-    func toJSON() -> JSON? {
-        return jsonify([
-            "id" ~~> self.id,
-            "login" ~~> self.login,
-            "html_url" ~~> self.htmlUrl
-        ])
     }
     
 }
