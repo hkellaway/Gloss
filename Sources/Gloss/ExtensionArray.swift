@@ -53,6 +53,35 @@ public extension Array where Element: JSONDecodable & Decodable {
         return models
     }
     
+    /**
+     Returns array of new objects created from provided data.
+     If creation of JSON or any decodings fail, nil is returned.
+     
+     - parameter data:        Raw JSON data.
+     - parameter jsonDecoder: A `Swift.JSONDecoder`.
+     - parameter serializer:  Serializer to use when creating JSON from data.
+     - parameter ooptions:    Options for reading the JSON data.
+     - parameter logger:        Logs issues with `Swift.Decodable`.
+     
+     - returns: Object or nil.
+     */
+    static func from(decodableData data: Data, jsonDecoder: JSONDecoder = JSONDecoder(), serializer: JSONSerializer = GlossJSONSerializer(), options: JSONSerialization.ReadingOptions = .mutableContainers, logger: GlossLogger = GlossLogger()) -> [Element]? {
+        do {
+            let jsonArray = try jsonDecoder.decode([Element].self, from: data)
+            return jsonArray
+        } catch {
+            logger.log(message: "Swift.Decodable error: \(error)")
+            
+            guard
+                let jsonArray = serializer.jsonArray(from: data, options: options),
+                let models = [Element].from(jsonArray: jsonArray) else {
+                    return nil
+            }
+
+            return models
+        }
+    }
+    
 }
 
 public extension Array where Element: JSONEncodable & Encodable {
@@ -108,15 +137,6 @@ public extension Array where Element: JSONDecodable {
         
         return models
     }
-    
-    /**
-     Returns array of new objects created from provided JSON array.
-     If any decodings fail, nil is returned.
-     
-     - parameter jsonArray: Array of JSON representations of objects.
-     
-     - returns: Array of objects created from JSON.
-     */
 
     /**
      Initializes array of model objects from provided data.
@@ -138,7 +158,7 @@ public extension Array where Element: JSONDecodable {
      */
     static func from(data: Data, serializer: JSONSerializer = GlossJSONSerializer(), options: JSONSerialization.ReadingOptions = .mutableContainers) -> [Element]? {
         guard
-            let jsonArray = (try? JSONSerialization.jsonObject(with: data, options: options)) as? [JSON],
+            let jsonArray = serializer.jsonArray(from: data, options: options),
             let models = [Element].from(jsonArray: jsonArray) else {
                 return nil
         }

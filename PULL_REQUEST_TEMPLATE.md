@@ -3,7 +3,6 @@ Gloss is deprecated in favor of Swift's `Codable`. Only Issues and Pull Requests
 ### Acknowledgment of Deprecation
 
 * [ ] I acknowledge awareness that Gloss is deprecated in favor of Codable
-* [ ] Are you using Gloss 3.2.x or higher?
 
 ### Description
 

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name             = "Gloss"
-  s.version          = "3.2.0"
+  s.version          = "3.2.1"
   s.summary          = "[Deprecated] A shiny JSON parsing library in Swift"
   s.description      = "[Deprecated] A shiny JSON parsing library in Swift."
   s.homepage         = "https://github.com/hkellaway/Gloss"
