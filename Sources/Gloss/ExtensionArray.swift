@@ -137,15 +137,6 @@ public extension Array where Element: JSONDecodable {
         
         return models
     }
-    
-    /**
-     Returns array of new objects created from provided JSON array.
-     If any decodings fail, nil is returned.
-     
-     - parameter jsonArray: Array of JSON representations of objects.
-     
-     - returns: Array of objects created from JSON.
-     */
 
     /**
      Initializes array of model objects from provided data.
