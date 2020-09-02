@@ -135,9 +135,9 @@ let json: JSON? = myModel.toEncodableJSON(jsonEncoder: mySharedJSONEncoder)
 
 ### :warning: One Caveat: Nested Data :warning:
 
-**One significant caveat** is for models using [a special feature of Gloss that allows nested values to be retrieved](/README_ARCHIVE.md#retrieving-nested-model-values-without-creating-extra-models)  using a period-delimited string. 
+**One significant caveat** is for models using [a special feature of Gloss that allows nested values to be retrieved](/README_ARCHIVE.md#retrieving-nested-model-values-without-creating-extra-models) using a period-delimited string. 
 
-Before migrating to `Codable`, it may be simpler to un-nest those values by creating the nested models you were avoiding in the first place :cold_sweat: It's what Codable encourages regardless!
+Before migrating to `Codable`, it may be simpler to un-nest those values by creating the nested models you were avoiding in the first place :cold_sweat: It's what Codable encourages regardless! Alternatively, you can use Codable's [nested containers](https://www.hackingwithswift.com/articles/119/codable-cheat-sheet) syntax.
 
 ## Case Study
 
