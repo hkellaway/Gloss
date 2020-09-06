@@ -1,6 +1,6 @@
 ---
-name: Default
-about: General purpose Issue template
+name: Feature request
+about: 'Note: New features are not being added since deprecation'
 title: ''
 labels: ''
 assignees: ''
