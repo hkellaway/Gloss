@@ -113,7 +113,7 @@ let json: JSON? = myModel.toEncodableJSON()
 
 #### Step 3: Update your model to use `Codable` for decoding/encoding
 
-This means fleshing out that `init(from decoder: Swift.Decoder) throws` or `func encode(to encoder: Swift.Encoder) throws ` method. Or, better yet, removing them is Codable can synthesize your decoding/encoding for you.
+This means fleshing out that `init(from decoder: Swift.Decoder) throws` or `func encode(to encoder: Swift.Encoder) throws ` method. Or, better yet, removing them if Codable can synthesize your decoding/encoding for you.
 
 Rinse and repeat this process for every Gloss model. You can leave the fallback Gloss methods in place until you're comfortable with your Codable implementation - then take the Gloss wheels off and ride into the sunset with Codable :sunrise: 
 
@@ -327,7 +327,7 @@ There we go! Our Codable code-paths now should be executing and our Gloss defint
 
 Could we do better? Could we get Swift-ier?
 
-The answer is: Yes. One of the most powerful things about Codable is it it can auto-magically use poperty names to synthesize our JSON decoding and encoding for us. Unless we have a special need for our key names or de/encoding logic, this is what we should aim for.
+The answer is: Yes. One of the most powerful things about Codable is it it can auto-magically use property names to synthesize our JSON decoding and encoding for us. Unless we have a special need for our key names or de/encoding logic, this is what we should aim for.
 
 Let's revisit our JSON:
 
