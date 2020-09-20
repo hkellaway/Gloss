@@ -1,6 +1,6 @@
 # Gloss → Codable Migration Guide
 
-Adopters of Gloss are urged to migrate to Swift's first-class JSON parsing framwork, [Codable](https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types). Gloss is no longer maintainined as of September 2020, unless in support of Codable migration. For more context on this decision, see: [hkellaway.github.io/blog](https://hkellaway.github.io/blog/2020/08/30/tale-of-third-parties)
+Adopters of Gloss are urged to migrate to Swift's first-class JSON parsing framwork, [Codable](https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types). Gloss is no longer maintainined as of September 2020, unless in support of Codable migration. For more context on this decision, see: [hkellaway.github.io/blog/2020/08/30/tale-of-third-parties](https://hkellaway.github.io/blog/2020/08/30/tale-of-third-parties)
 
 ## :rotating_light: Before Migration :rotating_light:
 
