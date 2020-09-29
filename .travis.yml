@@ -1,9 +1,9 @@
 language: objective-c
-osx_image: xcode10.2
+osx_image: xcode11
 
 before_install:
    - gem install cocoapods --no-document --quiet
 
 script:
-   - xcodebuild test -project Gloss.xcodeproj -scheme GlossTests -destination 'platform=iOS Simulator,name=iPhone 6,OS=12.0'
+   - xcodebuild test -project Gloss.xcodeproj -scheme GlossTests -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.0'
    - pod lib lint --quick
