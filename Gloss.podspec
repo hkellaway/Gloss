@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/hkellaway/Gloss.git", :tag => s.version.to_s }
   
   s.swift_version    = "5.0"
-  s.platforms        = { :ios => "8.0", :osx => "10.9", :tvos => "9.0", :watchos => "2.0" }
+  s.platforms        = { :ios => "9.0", :osx => "10.9", :tvos => "9.0", :watchos => "2.0" }
   s.requires_arc     = true
 
   s.source_files     = 'Sources/Gloss/*.{swift}'
