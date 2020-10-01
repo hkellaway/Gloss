@@ -97,7 +97,7 @@ let myModel = MyModel(json: someJSON)
 it becomes:
 
 ``` swift
-let myModel: MyModel = .from(decodableJSON: someJSON)
+let myModel: MyModel? = .from(decodableJSON: someJSON)
 ```
 As for encoding, this:
 
@@ -125,7 +125,7 @@ If your Codable definitions are sound, but you're still receiving errors - you m
 
 ``` swift
 let mySharedJSONDecoder: JSONDecoder = ...
-let myModel: MyModel = .from(decodableJSON: someJSON, jsonDecoder: mySharedJSONDecoder)
+let myModel: MyModel? = .from(decodableJSON: someJSON, jsonDecoder: mySharedJSONDecoder)
 ```
 
 ``` swift
@@ -193,7 +193,7 @@ Let's change that to use our new Codable-friendly method:
 
 ``` swift
 let json: JSON = ...
-let repoOwner: RepoOwner = .from(decodableJSON: json)
+let repoOwner: RepoOwner? = .from(decodableJSON: json)
 ```
 
 That's it! We're done preparing our Gloss decoding for a rewrite to Codable. For now, Gloss will attempt to use Codable but safely fallback to our Gloss decoding if there's an error.
