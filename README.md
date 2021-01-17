@@ -1,4 +1,4 @@
-![Gloss](http://hkellaway.github.io/Gloss/images/gloss_logo_tagline.png)
+![Gloss](https://github.com/hkellaway/Gloss/raw/main/img/Gloss_Logo_Word_Tagline.png)
 
 ## :rotating_light: Deprecation Notice :rotating_light:
 
