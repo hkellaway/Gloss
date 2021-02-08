@@ -393,7 +393,7 @@ struct RepoOwner: Codable {
 }
 ```
 
-And our need for snake-case is defined in just one place, instead of stringly-typed in each and every model. Talk about [lightweight](https://github.com/hkellaway/Gloss/blob/production/README_ARCHIVE.md#why-gloss)!
+And our need for snake-case is defined in just one place, instead of stringly-typed in each and every model. Talk about [lightweight](https://github.com/hkellaway/Gloss/blob/main/README_ARCHIVE.md#why-gloss)!
 
 Take the opportunity with this migration to pare your models down to the slim amount of code Codable needs to work its magic and detangle your networking code from the details of JSON serialization. Future you will be grateful! :crystal_ball:
 

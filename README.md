@@ -15,7 +15,7 @@ The existing Gloss source is not going away, however updates will only be made t
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg)](https://github.com/Carthage/Carthage) 
 [![SPM](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager) 
 [![CocoaPods](https://img.shields.io/cocoapods/p/Gloss.svg)](http://cocoapods.org/pods/Gloss)
-[![Build Status](https://travis-ci.org/hkellaway/Gloss.svg?branch=production)](https://travis-ci.org/hkellaway/Gloss)
+[![Build Status](https://travis-ci.org/hkellaway/Gloss.svg?branch=main)](https://travis-ci.org/hkellaway/Gloss)
 
 See the [former README.md](README_ARCHIVE.md) on instructions for using Gloss pre-Codable migration.
 
@@ -25,9 +25,9 @@ Gloss was created by [Harlan Kellaway](http://hkellaway.github.io)
 
 Thank you to all [contributors](https://github.com/hkellaway/Gloss/contributors) and the Swift community for 5 years of Gloss! :sparkling_heart:
 
-### License [![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/production/LICENSE)
+### License [![License](https://img.shields.io/cocoapods/l/Gloss.svg)](https://raw.githubusercontent.com/hkellaway/Gloss/main/LICENSE)
 
-See the [LICENSE](https://raw.githubusercontent.com/hkellaway/Gloss/production/LICENSE) file for more info.
+See the [LICENSE](https://raw.githubusercontent.com/hkellaway/Gloss/main/LICENSE) file for more info.
 
 ## Codable Migration Quick Reference
 
